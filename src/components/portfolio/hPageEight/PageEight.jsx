@@ -4,10 +4,13 @@ import Link from "next/link";
 
 import styles from "./PageEight.module.css";
 import Image from "next/image";
+import Contact from "@/app/(navPages)/contact/page";
 
 const PageEight = () => {
   return (
-    <></>
+    <>
+      <Contact />
+    </>
     //   <div className={styles.pageContainer}>
     //     <h1 className={styles.header}>
     //       <span className={styles.span}>Visit</span> our salons

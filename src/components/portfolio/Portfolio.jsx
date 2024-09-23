@@ -10,7 +10,7 @@ import PageFour from "./dPageFour/PageFour";
 import PageFive from "./ePageFive/PageFive";
 import PageSix from "./fPageSix/PageSix";
 import PageSeven from "./gPageSeven/PageSeven";
-// import PageEight from "./hPageEight/PageEight";
+import PageEight from "./hPageEight/PageEight";
 import PageNine from "./iPageNine/PageNine";
 import PageTen from "./jPageTen/PageTen";
 import PageEleven from "./kPageEleven/PageEleven";
@@ -116,14 +116,14 @@ export default function Portfolio() {
       >
         <PageSeven />
       </motion.div>
-      {/* <motion.div
+      <motion.div
         initial="hidden"
         whileInView="visible"
         viewport={{ once: true, amount: 0.2 }}
         variants={fadeInVariants}
       >
         <PageEight />
-      </motion.div> */}
+      </motion.div>
       <motion.div
         initial="hidden"
         whileInView="visible"
