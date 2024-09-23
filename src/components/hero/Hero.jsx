@@ -9,7 +9,7 @@ export default function Hero() {
     <>
       <div className={styles.relative}>
         <video
-          src="/hero.mp4"
+          src="https://res.cloudinary.com/dzzm7ye56/video/upload/v1727082316/hero_qwgwb5.mp4"
           alt="Salon Video"
           autoPlay
           muted

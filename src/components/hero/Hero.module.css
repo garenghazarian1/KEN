@@ -39,6 +39,7 @@
   justify-content: flex-end;
   align-items: flex-start;
 }
+
 .gradientA {
   padding-right: 2rem;
   display: flex;
@@ -105,7 +106,7 @@
   align-items: center;
   justify-content: center;
   overflow: hidden;
-  background-image: url("/background.jpg");
+  background-image: url("https://res.cloudinary.com/dzzm7ye56/image/upload/v1727098698/background_pt2alb.jpg");
   background-size: cover;
   background-position: center;
   width: 100vw;
@@ -117,7 +118,6 @@
 
 .flexContainer1 {
   display: flex;
-  /* flex-direction: column; */
   align-items: flex-start;
   justify-content: center;
   margin-top: 0.5rem;
@@ -136,6 +136,7 @@
   text-align: center;
   color: var(--teal-950);
 }
+
 .endTitle {
   color: var(--teal-950);
 }
@@ -164,7 +165,7 @@
 .smallSlideShow {
   margin-bottom: 2rem;
   width: 100%;
-  height: 50vh;
+  height: 75vh;
   background-size: contain; /* Ensures the full image is visible, maintaining aspect ratio */
   background-position: center; /* Centers the image within the container */
   background-repeat: no-repeat; /* Prevents the image from repeating */
@@ -173,13 +174,13 @@
 
 @keyframes smallSlide {
   0% {
-    background-image: url("/hero01.jpg");
+    background-image: url("https://res.cloudinary.com/dzzm7ye56/image/upload/v1727098791/hero01_wq6t45.jpg");
   }
   50% {
-    background-image: url("/ken.jpg");
+    background-image: url("https://res.cloudinary.com/dzzm7ye56/image/upload/v1727098791/hero04_woh6x2.jpg");
   }
   100% {
-    background-image: url("/hero04.jpg");
+    background-image: url("https://res.cloudinary.com/dzzm7ye56/image/upload/v1727098802/ken_cdbcuy.jpg");
   }
 }
 
@@ -234,10 +235,18 @@
     align-items: center;
     flex-direction: column-reverse;
   }
+
+  /* Ensure full-screen slideshow */
   .smallSlideShow {
-    width: 100%;
-    height: 100%;
+    width: 100vw; /* Full width */
+    height: 100vh; /* Full height */
+    margin: 0; /* Remove any margins */
+    padding: 0; /* Remove any padding */
+    background-size: cover; /* Cover entire background */
+    background-position: center; /* Center the background */
+    background-repeat: no-repeat; /* No repeat */
   }
+
   .paragraph {
     padding: 0 2rem 0 2rem;
   }
@@ -327,7 +336,6 @@
 
   .flexContainer1 {
     align-items: center;
-
     flex-direction: column-reverse;
   }
 
