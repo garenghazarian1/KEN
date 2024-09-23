@@ -1,0 +1,56 @@
+.hamburgerBtn {
+    position: fixed;
+    top: 1rem; /* top-4 */
+    right: 2rem; /* right-8 */
+    z-index: 50; /* z-50 */
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 3rem; /* w-12 */
+    height: 3rem; /* h-12 */
+    border-radius: 0.375rem; /* rounded-md */
+    background-color: transparent; /* bg-transparent */
+    transition: background-color 200ms ease-in-out; /* for hover effect */
+  }
+  
+  .hamburgerBtn:hover {
+    background-color: #162122; /* hover:bg-teal-900 */
+  }
+
+  .lineBase {
+    width: 2rem; /* w-8 */
+    height: 0.25rem; /* h-1 */
+    margin-bottom: 0.5rem; /* mb-2 */
+    transition: transform 300ms ease-in-out, opacity 300ms ease-in-out;
+    background-color: #d1fae5; /* green-100, update with correct colors */
+  }
+  
+  .lineMiddle {
+    background-color: #a7f3d0; /* green-200 */
+  }
+  
+  .lineBottom {
+    margin-top: 0.5rem; /* mt-2 */
+    background-color: #6ee7b7; /* green-300 */
+  }
+  
+  .rotate45 {
+    transform: rotate(45deg) translateY(0.875rem); /* translate-y-3.5 */
+  }
+  
+  .rotateNegative45 {
+    transform: rotate(-45deg) translateY(-0.875rem);
+  }
+  
+  .hidden {
+    opacity: 0;
+  }
+  
+  
+  @media (min-width: 1024px) {
+    .hamburgerBtn {
+      display: none; /* lg:hidden */
+    }
+  }
+  

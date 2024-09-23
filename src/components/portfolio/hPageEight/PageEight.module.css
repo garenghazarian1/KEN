@@ -1,0 +1,100 @@
+/* app/stores/StoresPage.module.css */
+.error {
+    color: #ef4444;
+}
+
+.loading {
+    color: #6b7280;
+}
+
+.pageContainer {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    background-image: url('/background.jpg'); 
+    background-size: cover; 
+    background-position: center; 
+  }
+
+.header {
+    font-size: 1.5rem;
+    font-weight: bold;
+    margin-bottom: 1rem;
+    margin-top: 1rem;
+    color: var(--header-1);
+}
+.span {
+    color:var(--teal-950);
+}
+
+.storeList {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 1rem;
+    margin: 0.5rem;
+    padding: 1rem;
+    max-width: 800px; 
+    margin-left: auto; 
+    margin-right: auto; 
+}
+
+.storeCard {
+    display: flex;
+    flex-direction: column;
+    align-items: start;
+    padding: 1.5rem; 
+    gap: 1.5rem;
+    transition: transform 0.3s ease, box-shadow 0.3s ease, background-color 0.3s ease;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.12); 
+    border-radius: 8px; 
+    background-color: var(--navbar-background);
+    color: var(--text-color);
+}
+
+.storeCard:hover {
+    transform: translateY(-5px) scale(1.03); 
+    box-shadow: 0 8px 16px rgba(0,0,0,0.18);
+    background-color: var(--teal-950); 
+    color: var(--text-hover);
+}
+
+
+.storeImage {
+    position: relative;
+    margin-top: 0.5rem;
+    border-radius: 10%;
+    width: auto;
+    height: auto;
+}
+
+.storeDetails,
+.storeContacts {
+    color: var(--text-color);
+    font-size: 0.875rem;
+}
+
+.contactLink,
+.emailLink {
+    color: var(--text-color);
+    /* text-decoration: none; */
+}
+
+.contactLink:hover,
+.emailLink:hover {
+    text-decoration: underline;
+    color: var(--text-hover);
+}
+
+@media (min-width: 800px) {
+    .pageContainer{
+        padding-top:5rem ;
+    }
+    .storeList {
+        
+        flex-direction: row;
+    }
+}
+
+

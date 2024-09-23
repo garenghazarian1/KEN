@@ -1,0 +1,117 @@
+.container {
+    margin:1rem;
+    border-bottom: 1px solid black;
+    display: flex;
+    flex-direction: column;
+   flex-wrap: wrap;
+}
+
+.heading {
+    font-size: 1rem;
+    margin-bottom: 0.5rem;
+}
+
+.list {
+    list-style-type: disc;
+    padding-left: 0.5rem;
+
+}
+
+.listItem {
+    margin-top: 0.5rem;
+    margin-bottom: 0.5rem;
+    display: flex;
+    justify-content: space-between;
+    border-bottom: 1px solid black;
+}
+
+.itemText {
+    margin: 0.5rem;
+}
+
+.buttonContainer {
+    display: flex;
+    gap: 0.5rem;
+}
+
+.button {
+    cursor: pointer;
+    text-align: center;
+    display: inline-block;
+    margin: 0 auto;
+    background-color: var(--dark-green);
+    color: #ffffff;
+    opacity: 0.75;
+    font-weight: bold;
+    border-radius: 9999px;
+    padding: 0.4rem 0.8rem;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease-in-out;
+  }
+  
+  .button:hover {
+    transform: scale(1.05);
+  }
+
+.formHeading {
+    font-size: 1rem;
+    margin-top: 0.5rem;
+}
+
+.form {
+    margin-top: 0,5rem;
+    display: flex;
+    flex-direction: column;
+    align-items: start;
+}
+
+.formControl {
+    margin: 0.5rem;
+}
+
+.select {
+    width: 100%;
+    padding: 0.5rem;
+    border: 1px solid #d1d5db;
+    border-radius: 0.25rem;
+    font-size: 0.8rem;
+    color: black;
+}
+
+.datePicker {
+    width: 100% ;
+    text-align: center ;
+    padding: 0.5rem;
+    border: 1px solid #d1d5db;
+    border-radius: 0.25rem;
+    font-size: 0.8rem;
+    color: black;
+}
+
+.submitButton {
+    background-color: var(--dark-green);
+    padding: 0.5rem;
+    align-self: start;
+    border-radius: 0.5rem;
+}
+
+.submitButton:hover {
+    background-color: #059669;
+}
+
+.submitButton:focus {
+    box-shadow: 0 0 0 0.125rem #059669;
+}
+
+.cancelButton {
+    background-color: #6B7280;
+    margin-left: 0.5rem;
+}
+
+.cancelButton:hover {
+    background-color: #4B5563;
+}
+
+.cancelButton:focus {
+    box-shadow: 0 0 0 0.125rem #4B5563;
+}

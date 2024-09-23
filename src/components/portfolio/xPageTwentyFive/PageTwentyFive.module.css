@@ -1,0 +1,82 @@
+/* PageTwentyFive.module.css */
+
+
+  
+  .container {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    padding: 1rem; 
+    background-color: var(--light-gray);
+    color: var(--text-color);
+  }
+  
+  .sectionA {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 1rem; 
+  }
+  
+  .sectionAContent {
+    background-color: var(--olive-silvery-green);
+    padding: 1rem;
+    border-radius: 0.5rem; 
+  }
+  
+  .sectionAHeader {
+    font-size: 1.5rem; 
+    color: var(--header-1);
+    margin-bottom: 0.5rem; 
+  }
+  
+  .sectionAText {
+    font-size: 1rem; 
+    line-height: 1.5;
+    color: var(--text-color);
+  }
+  
+  .sectionAHeader:hover,
+  .sectionAText:hover {
+    color: var(--text-hover);
+  }
+  
+  .sectionB {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  
+  .video {
+    width: 100%;
+    max-width: 37.5rem;  
+    border-radius: 0.5rem; 
+  }
+  
+  /* Responsive styling */
+  @media (min-width: 768px) { 
+    .container {
+      flex-direction: row;
+    }
+  
+    .sectionA {
+      flex: 1;
+    }
+  
+    .sectionB {
+      flex: 1;
+      padding: 1rem; 
+    }
+  }
+  
+  @media (min-width: 1024px) { 
+    .sectionAHeader {
+      font-size: 1.75rem; 
+    }
+  
+    .sectionAText {
+      font-size: 1rem; 
+    }
+  }
+  

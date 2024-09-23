@@ -1,0 +1,62 @@
+/* StoreHoursDisplay.module.css */
+.container {
+    padding: 0.5rem;
+    background: #204d32; 
+    border-radius: 0.5rem;
+    color: #fff;
+    margin: 0.5rem;
+  }
+  
+  .header {
+    font-size: 0.8rem;
+    margin: 0.3rem;
+    cursor: pointer;
+    background-color: gray;
+    text-align: center;
+    border-radius: 0.5rem;
+    padding: 0.5rem;
+  }
+  .header:hover {
+    background-color: var(--dark-gray);
+  }
+  
+  .list {
+    padding-left: 0.5rem;
+    list-style: none;
+  }
+  
+  .listItem {
+    font-size: 0.8rem;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1); 
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  
+  .listItem:last-child {
+    border-bottom: none; /* Removes border from the last item */
+  }
+  
+  .button {
+    font-size: 0.8rem;
+    cursor: pointer;
+    text-align: center;
+    display: inline-block;
+    margin: 0.3rem;
+    background-color: var(--custom-green);
+    color: #ffffff;
+    border-radius: 1rem;
+    padding: 0.3rem 1rem;
+  }
+  
+  .button:hover {
+    background-color: var(--dark-green);
+  }
+  
+  
+  .noHours {
+    color: #ccc;
+    text-align: center;
+    padding: 20px;
+  }
+  

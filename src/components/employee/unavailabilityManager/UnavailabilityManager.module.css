@@ -1,0 +1,104 @@
+/* UnavailabilityManager.module.css */
+.container {
+    padding: 20px;
+    background-color: #f0fdf4; /* Light green background */
+  }
+  
+  .formGroup {
+    margin-bottom: 16px;
+  }
+  
+  .label {
+    display: block;
+    margin-bottom: 8px;
+    font-weight: bold;
+    color: #065f46; /* Dark green text */
+  }
+  
+  .input {
+    width: 100%;
+    padding: 8px;
+    border: 1px solid #065f46; /* Dark green border */
+    border-radius: 4px;
+    transition: border-color 0.3s ease, box-shadow 0.3s ease;
+  }
+  
+  .input:focus {
+    border-color: #10b981; /* Green border on focus */
+    box-shadow: 0 0 5px rgba(16, 185, 129, 0.5); /* Green shadow on focus */
+  }
+  
+  .button {
+    padding: 10px 20px;
+    background-color: #10b981; /* Green background */
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+  }
+  
+  .button:hover {
+    background-color: #047857; /* Darker green on hover */
+  }
+  
+  .unavailabilityCard {
+    background-color: white;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    border-radius: 8px;
+    padding: 20px;
+    margin-bottom: 16px;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+  }
+  
+  .unavailabilityCard:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  }
+  
+  .cardTitle {
+    font-size: 1.25rem;
+    font-weight: 600;
+    color: #065f46; /* Dark green text */
+  }
+  
+  .cardText {
+    color: #4b5563; /* Gray text */
+  }
+  
+  .cardDates {
+    font-style: italic;
+    color: #6b7280; /* Light gray text */
+  }
+  
+  .actionButtons {
+    display: flex;
+    justify-content: flex-end;
+    gap: 10px;
+    margin-top: 16px;
+  }
+  
+  .actionButton {
+    padding: 8px 16px;
+    border-radius: 4px;
+    transition: background-color 0.3s ease;
+  }
+  
+  .editButton {
+    background-color: #3b82f6; /* Blue background */
+    color: white;
+  }
+  
+  .editButton:hover {
+    background-color: #1d4ed8; /* Darker blue on hover */
+  }
+  
+  .deleteButton {
+    background-color: #ef4444; /* Red background */
+    color: white;
+  }
+  
+  .deleteButton:hover {
+    background-color: #b91c1c; /* Darker red on hover */
+  }
+  

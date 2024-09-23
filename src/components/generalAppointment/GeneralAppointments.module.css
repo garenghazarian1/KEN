@@ -1,0 +1,135 @@
+/* GeneralAppointments.module.css */
+
+  .container {
+    background-color: var(--teal-950);
+    color: var(--text-color);
+    padding: 1rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    min-height: 100vh;
+  }
+  
+  .header {
+    font-size: 1.5rem;
+    color: var(--text-color);
+    margin-bottom: 1rem;
+    text-align: center;
+  }
+  
+  .calendar {
+    margin-bottom: 1rem;
+  }
+  
+  .subHeader {
+    font-size: 1rem;
+    margin-bottom: 1rem;
+    text-align: center;
+  }
+  
+  .employeeList {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 0.5rem;
+    margin-bottom: 1rem;
+  }
+  
+  .employeeItem {
+    
+    padding: 0.5rem;
+    background-color: var(--teal-800);
+    border-radius: 0.5rem;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.3s ease;
+    color: var(--text-color);
+  }
+  
+  .employeeItem:hover {
+    background-color: var(--olive-silvery-green);
+    transform: scale(1.05);
+  }
+  
+  .selectedEmployee {
+    background-color: var(--olive-silvery-green);
+    color: var(--text-hover);
+  }
+  
+  .appointmentList {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+    list-style: none;
+    padding: 0;
+    font-size: 0.8rem;
+  }
+  
+  .appointmentItem {
+    padding: 1rem;
+    margin: 0.5rem 0;
+    background-color: var(--teal-800);
+    border-radius: 0.5rem;
+    box-shadow: 0 1px 5px rgba(0, 0, 0, 0.1);
+  }
+  
+  .serviceList {
+    padding-left: 1rem;
+    margin: 0.5rem 0;
+  }
+  
+  .serviceDetails {
+    margin: 0.2rem 0;
+    font-size: 0.6rem;
+  }
+  
+  
+  
+  /* Responsive Design */
+  @media (max-width: 768px) {
+    .header {
+      font-size: 1.5rem;
+    }
+  
+    .subHeader {
+      font-size: 1rem;
+    }
+  
+    .employeeItem {
+      padding: 0.5rem;
+      font-size: 0.8rem;
+    }
+  
+    .appointmentItem {
+      padding: 1rem;
+    }
+  
+    .serviceDetails {
+      font-size: 0.6rem;
+    }
+  }
+  
+  @media (max-width: 480px) {
+    .header {
+      font-size: 1rem;
+    }
+  
+    .subHeader {
+      font-size: 0.8rem;
+    }
+  
+    .employeeItem {
+      padding: 0.4rem;
+      font-size: 0.8rem;
+    }
+  
+    .appointmentItem {
+      padding: 0.75rem;
+      margin: 0.5rem 0;
+    }
+  
+    .serviceDetails {
+      font-size: 0.6rem;
+    }
+  }
+  

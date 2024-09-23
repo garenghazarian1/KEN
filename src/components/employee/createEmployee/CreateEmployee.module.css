@@ -1,0 +1,65 @@
+/* CreateEmployee.module.css */
+.container {
+   display: flex;
+   background-color: var(--custom-green);
+  }
+  
+  .formGroup {
+    margin-bottom: 16px;
+  }
+  
+  .label {
+    display: block;
+    margin-bottom: 8px;
+    font-weight: bold;
+    color: #065f46; /* Dark green text */
+  }
+  
+  .input {
+    width: 100%;
+    padding: 8px;
+    border: 1px solid #065f46; /* Dark green border */
+    border-radius: 4px;
+    transition: border-color 0.3s ease, box-shadow 0.3s ease;
+    color: black;
+  }
+  
+  .input:focus {
+    border-color: #10b981; /* Green border on focus */
+    box-shadow: 0 0 5px rgba(16, 185, 129, 0.5); /* Green shadow on focus */
+  }
+  
+  .button {
+    padding: 10px 20px;
+    background-color: #10b981; 
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+  }
+  
+  .button:hover {
+    background-color: #047857; /* Darker green on hover */
+  }
+  
+  .error {
+    color: #dc2626; /* Red text */
+    margin-top: 8px;
+    font-weight: bold;
+  }
+  
+  .hiddenForm {
+    display: none;
+  }
+  
+  .visibleForm {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    padding: 16px;
+    max-width: 500px;
+    margin: auto;
+   
+  }
+  

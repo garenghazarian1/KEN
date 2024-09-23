@@ -1,0 +1,134 @@
+/* PAGE01 ********************************************/
+
+.containerA {
+    display: flex;
+    flex-direction: row;
+    height: 800px;
+    width: 100vw;
+    overflow: hidden;
+    background-color: black; 
+  }
+
+  .leftPaneA  {
+    width: 50vw;
+    height: 100%;
+    background-color: black;
+    display: flex;
+    flex-direction: column;
+    justify-content:flex-start;
+    align-items: center;
+    transform: scale(1);
+    transition: transform 0.5s ease;
+    position: relative;
+
+  }
+
+  .rightPaneA{
+    width: 50vw;
+    height: 100%;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    transition: transform 0.5s ease;
+    background-color: black;
+    transform: scale(1);
+    transition: transform 0.5s ease;
+  }
+
+  .leftPaneA:hover, .leftPaneA:active { 
+    transform: scale(1.05);
+  }
+  
+  .leftPaneA:hover, .leftPaneA:active { 
+    transform: scale(1.05);
+  }
+
+  .rightPaneA {
+    transition: transform 0.5s ease;
+  }
+  
+  .rightPaneA:hover, .rightPaneA:active {
+    transform: scale(1.05);
+  }
+
+  .imageA {
+    margin-top: 2rem;
+    transition: transform 0.5s ease;
+  }
+  
+  .imageA:hover, .imageA:active {
+    transform: scale(1.1);
+  }
+  
+  .portfolioTextA {
+    margin-top: 1rem;
+    color: var(--teal-800);
+    font-size: 4rem;
+    text-transform: uppercase;
+    letter-spacing: 0.3rem;
+    opacity: 0;
+    animation: fadeInUp 1s ease forwards;
+    animation-delay: 0.3s;
+    position: absolute;
+    top: 25rem;
+  }
+
+  
+  
+  @keyframes fadeInUp {
+    from {
+      opacity: 0;
+      transform: translateY(20px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+
+  /* MEDIA ***********************************************/
+
+
+  @media (max-width: 800px) {
+
+    /* PAGE01 */
+    .leftPaneA, .rightPaneA {
+        
+        transition: transform 0.5s ease; 
+    }
+    .leftPaneA, .rightPaneA {
+        transform: scale(1);
+    }
+    .portfolioTextA {
+        top: 28rem;
+      font-size: 2rem; 
+      margin-top: 0.5rem; 
+    }
+    .imageA {
+      transform: scale(1.05); 
+    }
+  }
+
+ 
+
+
+  @media (max-width: 600px) {
+    /* PAGE01 */
+    .containerA {
+      flex-direction: column;
+      height: 1000px; 
+    }
+  
+    .leftPaneA, .rightPaneA {
+      flex: none;
+      width: 100%; 
+      height: 500px; 
+    }
+  
+    .portfolioTextA {
+      font-size: 1rem; 
+    }
+
+    
+  }

@@ -1,0 +1,101 @@
+/* HorizontalCalendar.module.css */
+.container {
+  height: 100%;
+  width: 100%;
+  background: var(--header-1)
+}
+
+.headOne{
+  color: var(--teal-950);
+  margin-left: 0.5rem;
+}
+
+.timeText{
+  margin-right: 1rem;
+}
+.text{
+  text-align: center;
+  color: var(--text-color);
+}
+.unavailable {
+  background-color: red;
+  color: white;
+  pointer-events: none; 
+}
+
+.swiper {
+  width: 100%;
+  height: 100%;
+  background: var(--header-2)
+}
+
+.slide {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 4rem;
+  height: 4rem;
+  background-color: #15251c;
+  color: var(--text-color);
+  border-radius: 50% !important;
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.3), 0 2px 4px -1px rgba(0, 0, 0, 0.2);
+  padding: 0.3rem;
+  margin: 0.3rem;
+  cursor: pointer;
+  font-size: 12px;
+  transition: all 0.3s ease-in-out;
+  text-transform: uppercase;
+  font-weight: bold;
+}
+
+.slide:hover {
+  background-color: var(--teal-800);
+  box-shadow: 0 8px 16px -2px rgba(0, 0, 0, 0.4);
+  transform: scale(1.05);
+}
+
+.slide.selected {
+  background-color: #077739;
+  color: white;
+  border: 3px solid #05a84f;
+  box-shadow: 0 6px 8px -2px #118a47, 0 3px 6px -2px #07d464;
+  transform: translateY(-2px);
+  transition: transform 0.2s ease-out, box-shadow 0.2s ease-out;
+}
+
+.datePickerContainer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 0.5rem;
+  margin-top: 0.5rem;
+  background: var(--header-1);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.25); 
+}
+
+.input {
+  padding: 0.2rem 0.5rem;
+  font-size: 1rem;
+  color: #E3E3E3; 
+  background-color: #15251c; 
+  border: 2px solid #34D399; 
+  border-radius: 0.5rem;
+  border-radius: 50% !important;
+  width: 4rem;
+  height: 4rem;
+  box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.15); 
+  transition: border-color 0.3s ease, box-shadow 0.3s ease; 
+}
+
+.input:hover {
+  border-color: #81E6D9; 
+  box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.15), 0 0 8px rgba(34, 211, 198, 0.6);
+}
+
+.input:focus {
+  outline: none;
+  border-color: #2DD4BF;
+  box-shadow: 0 0 0 4px rgba(32, 211, 158, 0.5);
+  
+}
+

@@ -1,0 +1,122 @@
+/* PAGE03 */
+
+.containerC {
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+    flex-direction: row;
+    background-color: black;
+  }
+  
+  .leftPaneC, .rightPaneC {
+    width: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  
+  .leftPaneC {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+  }
+  
+  .textCA, .textCB {
+  
+    font-size: 2rem; 
+    margin: 1rem;
+    text-align: center;
+    opacity: 0; 
+    animation-duration: 1s;
+    animation-fill-mode: forwards; 
+  }
+  
+  .textCA {
+    font-size: 2rem; 
+    font-weight: lighter;
+    color: var(--text-color);
+  }
+  
+  .textCB {
+    font-size: 2.5rem;
+    color: var(--teal-800);
+    font-weight: bolder;
+  }
+  
+  .textAnimationCA {
+    animation-name: fadeInUp;
+  }
+  
+  .textAnimationCB {
+    animation-name: fadeInUp;
+    animation-delay: 0.5s; 
+  }
+  
+  @keyframes fadeInUp {
+    from {
+      opacity: 0;
+      transform: translateY(30px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+  
+  .textA:hover, .textB:hover {
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+    transition: text-shadow 0.3s ease-in-out;
+  }
+  
+  .rightPaneC {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  
+  .videoC {
+    width: 100%;
+    height: 100vh;
+    background-color: black;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); 
+  }
+  
+  .leftPaneC::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(rgba(255, 255, 255, 0.5), rgba(255, 255, 255, 0.2));
+    z-index: -1;
+  }
+
+  @media (max-width: 600px) {
+ 
+
+
+    /* PAGE03 */
+    .containerC {
+        flex-direction: column;
+      }
+      
+      .leftPaneC  {
+        width: 100%;
+        height: 20vh;
+      }
+      .rightPaneC{
+        width: 100%;
+        height: 80vh;
+      }
+    .textCA,.textCB{
+        font-size: 1rem;
+    }
+      .videoC {
+        height: 100%;
+        width: 100%;
+      }
+
+  }

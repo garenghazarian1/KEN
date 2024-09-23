@@ -1,0 +1,76 @@
+/* EmployeeList.module.css */
+.toggleButton {
+  background: rgb(2, 63, 35);
+  color: rgb(255, 255, 255);
+  border: none;
+  padding: 0.5rem;
+  cursor: pointer;
+  transition: color 200ms ease-in-out, 200ms ease-in-out;
+  font-size: 1rem;
+  border-radius: 0.25rem;
+}
+
+.toggleButton:hover {
+  background: green;
+  color: white;
+}
+
+.li {
+  margin-bottom: 0.5rem;
+}
+
+.container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0.5rem;
+  background-color: #a9f8d3;
+  border-radius: 0.5rem;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.container1{
+    background-color: var(--custom-green);
+    
+}
+.spanContainer {
+  display: flex;
+  flex-direction: column;
+}
+
+.span {
+  display: inline-block;
+  margin-right: 0.5rem;
+  color: #333;
+  font-weight: 500;
+}
+
+.storeName {
+  color: #555;
+  font-weight: 400;
+}
+
+.sections {
+  color: #888;
+  font-weight: 300;
+}
+
+.button {
+  cursor: pointer;
+  text-align: center;
+  display: inline-block;
+  background-color: var(--custom-green);
+  color: #ffffff;
+  opacity: 0.75;
+  font-weight: bold;
+  border-radius: 9999px;
+  padding: 0.5rem 1rem;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s ease-in-out, background-color 200ms ease-in-out;
+  margin: 0.5rem;
+}
+
+.button:hover {
+  transform: scale(1.05);
+  opacity: 1;
+}

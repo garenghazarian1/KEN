@@ -1,0 +1,56 @@
+/* PageTwentyThree.module.css */
+.container {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    
+    width: 100vw;
+  }
+  
+  .sectionA  {
+    width: 40vw;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 1rem;
+  }
+  .sectionB{
+    width: 40vw;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    margin: 1rem;
+  }
+  
+  .video {
+    width: 100%;
+    height: auto;
+  }
+
+  .header{
+    color: var(--teal-950);
+    font-size: 2rem;
+    font-weight: bold;
+  }
+  
+  .text {
+    color: var(--teal-950);
+    font-size: 1rem;
+    line-height: 1.5;
+    text-align: center;
+  }
+  
+  @media (max-width: 900px) {
+    .container {
+      flex-direction: column;
+    }
+    .sectionA{
+        width: 80vw;
+    }
+    .sectionB{
+        width: 80vw;
+    }
+  }
+  

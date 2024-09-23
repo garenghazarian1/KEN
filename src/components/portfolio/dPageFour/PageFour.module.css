@@ -1,0 +1,62 @@
+
+   /* PAGE04  */
+
+  
+   .containerD {
+    background-color: gray;
+    width: 100vw;
+    height: 50vh; 
+    display: flex;
+    justify-content: start;
+    align-items: center;
+  }
+  
+  .leftPaneD, .rightPaneD{
+    width: 50%;
+    display: flex;
+
+  }
+  .leftPaneD{
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    margin-left: 2rem;
+  }
+
+  .rightPaneD{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+  }
+  
+  .textNumDA{
+    color: var(--teal-800);
+    font-weight: bolder;
+    font-size: 2rem;
+  }
+  .textNumDB{
+    font-weight:lighter;
+    font-size: 4rem;
+  }
+
+  .textNumDC{
+    position: absolute;
+    top: 5rem;
+    font-size: 4rem;
+    color: var(--teal-800);
+  }
+  
+  @media (max-width: 600px) {
+    /* PAGE04 */
+
+
+    .rightPaneD{
+      width: 100vw;
+    }
+    .leftPaneD{
+      display:none;
+    }
+
+}

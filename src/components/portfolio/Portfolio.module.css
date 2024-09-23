@@ -1,0 +1,36 @@
+.backToTop {
+  display: none; /* Hidden by default */
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  z-index: 100;
+  background-color: var(--teal-950);
+  opacity: 0.8;
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 1.5rem;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  transition: opacity 0.3s ease;
+}
+
+.backToTop:hover {
+  background-color: var(--teal-800);
+}
+
+/* @keyframes fadeOut {
+  from {
+    opacity: 0.2;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+.scroll {
+  opacity: 0.5;
+  animation: fadeOut 2s forwards;
+  animation-timeline: scroll();
+} */

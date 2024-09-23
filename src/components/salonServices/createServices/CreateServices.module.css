@@ -1,0 +1,83 @@
+/* CreateStore.module.css */
+.toggleButton {
+    background: rgb(2, 63, 35);
+    color: rgb(255, 255, 255); 
+    border: none;
+    padding:0.5rem;
+    cursor: pointer;
+    transition: color 200ms ease-in-out;
+  }
+  
+  .toggleButton:hover {
+   
+    background: green;
+    color: white; 
+  }
+
+  .formContainer {
+    background-color: #ffffff; 
+    padding: 0.5rem;
+    border-radius: 12px;
+    box-shadow: 0 2px 12px rgba(0, 0, 0, 0.1);
+    display: flex;
+    flex-direction: column;
+    gap: 0.3rem;
+    max-width: 400px;
+    margin: 0.5rem;
+  }
+
+  .label {
+    display: block;
+    font-size: 0.9rem; 
+    font-weight: 500; 
+    color: #4b5563; 
+}
+
+.inputStyle {
+    padding: 0.2rem;
+    border: 1px solid #000000; 
+    border-radius: 6px;
+    transition: border-color 200ms ease-in-out;
+    width: 100%;
+    color: black; 
+  }
+  
+  .inputStyle:focus {
+    border-color: #6366f1; 
+    outline: none; 
+    box-shadow: 0 0 0 2px rgba(99, 102, 241, 0.5); 
+  }
+  
+  .button {
+      background-color: #6366f1; 
+      color: white;
+      font-weight: 500;
+      padding: 10px 20px;
+      border-radius: 8px;
+      cursor: pointer;
+      transition: background-color 250ms ease-in-out;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+    
+    .button:hover {
+      background-color: #4f46e5; 
+    }
+    
+
+    
+
+    
+    .fileInput {
+      border: 1px solid #e5e7eb;
+      padding: 8px 12px;
+      border-radius: 6px;
+      background-color: #f9fafb; 
+      cursor: pointer;
+    }
+    
+    .errorMessage {
+      color: red;
+      margin-top: 10px;
+    }

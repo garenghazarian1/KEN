@@ -1,0 +1,17 @@
+/* MyCalendar.module.css */
+.calendarContainer {
+    margin-top: 1.25rem; 
+    background-color: white;
+    color: #1f2937; 
+    border: 1px solid #e5e7eb;
+    border-radius: 0.5rem; 
+  }
+  
+  .closed {
+    color: red;
+  }
+  
+  .open {
+    color: green;
+  }
+  

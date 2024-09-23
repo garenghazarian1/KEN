@@ -1,0 +1,17 @@
+.flexCenter {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding-left: 0.5rem; 
+}
+
+.paddedRelative {
+    padding: 0.5rem; 
+    position: relative;
+    overflow: hidden;
+}
+
+.image {
+    width: auto;
+    height: fit-content;
+}

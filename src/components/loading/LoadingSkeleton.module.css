@@ -1,0 +1,18 @@
+/* LoadingSkeleton.module.css */
+.container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-image: url('/background.jpg'); 
+    background-size: cover; 
+    background-position: center; 
+    width: 100vw;
+    height: 100vh;
+}
+.logo{
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+}
+
+

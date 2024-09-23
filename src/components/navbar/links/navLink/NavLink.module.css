@@ -1,0 +1,19 @@
+.linkBase {
+    font-size: 0.875rem; /* text-sm */
+    cursor: pointer;
+    color: var(--text-color);
+    padding: 1rem; /* p-4 */
+    border-radius: 9999px; /* rounded-full */
+    transition: all 300ms ease-in-out; /* transition and duration */
+  }
+  
+  .activeLink {
+    color: var(--teal-950);
+  }
+  
+  .inactiveLink {
+    color: var(--text-color); 
+  }
+  .inactiveLink:hover {
+    color: var(--teal-800);
+  }

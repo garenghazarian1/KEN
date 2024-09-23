@@ -1,0 +1,36 @@
+.container {
+    width: 100%;
+    padding: 1rem;
+    background-color: var(--olive-silvery-green);
+}
+
+.header {
+    font-size: 1rem;
+    font-weight: bold;
+    margin-bottom: 16px;
+    color:var(--teal-950);
+}
+
+.item {
+    margin-bottom: 0.5rem;
+    margin-right: 0.8rem;
+    display: flex;
+    align-items: center;
+    font-size: 0.8rem;
+    color: red; 
+}
+
+.itemPrice {
+    margin-right: 8px;
+    color: var(--text-color); 
+}
+
+.removeButton {
+    color: #E53E3E; 
+    cursor: pointer;
+    transition: color 0.3s;
+}
+
+.removeButton:hover {
+    color: #C53030; 
+}
