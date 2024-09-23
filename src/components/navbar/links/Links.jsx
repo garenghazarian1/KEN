@@ -8,7 +8,6 @@ import Image from "next/image";
 import styles from "./Links.module.css";
 
 export default function Links() {
-  const { data: session, status } = useSession();
   const [open, setOpen] = useState(false);
   const menuRef = useRef();
 
@@ -62,34 +61,6 @@ export default function Links() {
         {Links.map((link) => (
           <NavLink item={link} key={link.title} />
         ))}
-        {/* {session ? (
-          <Link href="/user">
-            <div className={styles.imageContainer}>
-              <Image
-                src={session?.user?.image}
-                alt="Profile"
-                as="image"
-                width={50}
-                height={50}
-                priority
-                className={styles.image}
-              />
-              <h2>Welcome {session?.user?.name}</h2>
-              <button onClick={handleLogout} className={styles.button}>
-                Logout
-              </button>
-            </div>
-          </Link>
-        ) : (
-          <>
-            <Link href="/login" className={styles.button}>
-              Login
-            </Link>
-            <Link href="/register" className={styles.button}>
-              Register
-            </Link>
-          </>
-        )} */}
       </div>
 
       {/* Toggle button for smaller screens */}
@@ -102,40 +73,6 @@ export default function Links() {
         </div>
         {open && (
           <div ref={menuRef} className={styles.menuContainer}>
-            {/* {session ? (
-              <>
-                <Link href="/user" onClick={closeMenu}>
-                  <Image
-                    src={session?.user?.image}
-                    alt="Profile"
-                    width={50}
-                    height={50}
-                    priority
-                    className={styles.image}
-                  />
-                </Link>
-                <button onClick={handleLogout} className={styles.button}>
-                  Logout
-                </button>
-              </>
-            ) : (
-              <>
-                <Link
-                  href="/login"
-                  className={styles.button}
-                  onClick={closeMenu}
-                >
-                  Login
-                </Link>
-                <Link
-                  href="/register"
-                  className={styles.button}
-                  onClick={closeMenu}
-                >
-                  Register
-                </Link>
-              </>
-            )} */}
             {Links.map((link) => (
               <NavLink item={link} key={link.title} onClick={closeMenu} />
             ))}
