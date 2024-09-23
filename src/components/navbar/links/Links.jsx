@@ -3,7 +3,7 @@ import { useState, useEffect, useRef } from "react";
 import Link from "next/link";
 import NavLink from "./navLink/navLink";
 import HamburgerButton from "../HamburgerButton/HamburgerButton";
-import { useSession, signOut } from "next-auth/react";
+
 import Image from "next/image";
 import styles from "./Links.module.css";
 

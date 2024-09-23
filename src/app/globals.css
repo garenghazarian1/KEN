@@ -2,26 +2,154 @@
 @tailwind components;
 @tailwind utilities;
 
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+
+  overflow-wrap: break-word;
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+html {
+  scroll-behavior: smooth;
+}
+
+.inter-regular {
+  font-family: "Inter", sans-serif;
+  font-optical-sizing: auto;
+  font-weight: 400;
+  font-style: normal;
+  font-variation-settings: "slnt" 0;
 }
 
 body {
-  color: var(--foreground);
-  background: var(--background);
-  font-family: Arial, Helvetica, sans-serif;
+  background: #efe7e5;
+  color: white;
+  width: 100vw;
 }
 
-@layer utilities {
-  .text-balance {
-    text-wrap: balance;
-  }
+:root {
+  --custom-green: #10b981;
+  --custom-green-01: #5eead4;
+  --dark-green: #15251c;
+  --custom-gray: #d0d4d4;
+  --dark-gray: #1f2937;
+
+  /* used colors */
+  --text-color: #e4dede;
+  --text-hover: #ffffff;
+  --teal-950: #042f2e;
+  --teal-800: #115e59;
+  --navbar-background: #a0a79a;
+  --header-2: #828773;
+  --header-1: #293423;
+  --light-gray: #cbd1d8;
+  --olive-silvery-green: #8f9a88;
+
+  --custom-color7: #e6e0e0;
+  --custom-color8: #dbd3d1;
+  --custom-color9: #ddd7d7;
+  --custom-color10: #e0dada;
+
+  --olive-soft-gray-green: #a7b0a2;
+  --olive-darker-green: #6e7a68;
+  --custom-teal: #115e59;
+}
+Image {
+  width: auto;
+  height: auto;
+}
+
+/* globals.css */
+
+.swiper-button-next,
+.swiper-button-prev {
+  position: absolute;
+  top: 50% !important;
+  width: 2rem !important;
+  height: 2rem !important;
+  margin-top: -2rem !important;
+  z-index: 10 !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  background-color: rgba(0, 0, 0, 0.1) !important;
+  color: rgb(133, 132, 132) !important;
+  border-radius: 50% !important;
+  transition: background-color 0.3s !important;
+  cursor: pointer !important;
+}
+
+.swiper-button-next:hover,
+.swiper-button-prev:hover {
+  background-color: rgba(0, 0, 0, 0.7) !important;
+}
+
+.swiper-button-next {
+  right: 5% !important;
+}
+
+.swiper-button-prev {
+  display: hidden !important;
+  left: -10% !important;
+}
+
+.swiper-button-next::after,
+.swiper-button-prev::after {
+  font-size: 1rem !important;
+}
+
+/* React Calendar Custom Styles */
+.react-calendar {
+  background-color: var(--teal-950) !important;
+  border: none;
+  border-radius: 0.5rem;
+  color: var(--text-color) !important;
+  font-family: inherit;
+  font-size: 1rem;
+}
+
+.react-calendar__navigation button {
+  color: var(--text-color) !important;
+  min-width: 44px;
+  background: var(--teal-950) !important;
+  font-size: 1rem;
+  margin-top: 0.5rem;
+}
+
+.react-calendar__navigation button:disabled {
+  background-color: var(--teal-800) !important;
+}
+
+.react-calendar__month-view__days__day--weekend {
+  color: var(--light-gray) !important;
+}
+
+.react-calendar__tile {
+  background: none;
+  border: none;
+  color: var(--text-color) !important;
+  padding: 0.5rem;
+  transition: background-color 0.3s ease;
+}
+
+.react-calendar__tile:enabled:hover,
+.react-calendar__tile:enabled:focus {
+  background-color: var(--teal-800) !important;
+  border-radius: 0.5rem;
+}
+
+.react-calendar__tile--now {
+  background: gray !important;
+  border-radius: 0.5rem;
+}
+
+.react-calendar__tile--active {
+  background: var(--teal-800) !important;
+  border-radius: 0.5rem;
+  color: var(--text-hover);
+}
+
+.react-calendar--selectRange .react-calendar__tile--hover {
+  background-color: var(--teal-800) !important;
 }
