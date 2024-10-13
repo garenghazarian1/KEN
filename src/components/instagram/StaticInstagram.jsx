@@ -31,6 +31,22 @@ const InstagramEmbed = () => {
           justify-content: center;
           gap: 20px;
           padding: 20px;
+          background-color: var(--teal-950);
+
+          box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+          transition: background-color 0.3s ease;
+        }
+
+        .instagram-embed-container:hover {
+          background-color: var(--teal-800);
+        }
+        .instagram-embed-container::-webkit-scrollbar {
+          width: 10px;
+        }
+
+        .instagram-embed-container::-webkit-scrollbar-thumb {
+          background-color: var(--light-gray);
+          border-radius: 10px;
         }
       `}</style>
 
@@ -45,7 +61,7 @@ const InstagramEmbed = () => {
          .instagram-media iframe {
            margin: auto !important;
          }
-         .instagram-media [role='button'],  .instagram-media .InstagramCaption,  {
+         .instagram-media [role='button'], .instagram-media header,  .instagram-media .InstagramCaption,  {
            display: none !important;
          }
       </style>
