@@ -14,8 +14,7 @@ const stores = [
     phone: "(02) 6218808",
     mobile: "+971 503043570",
     email: "ken.beauty1@hotmail.com",
-    imageStore:
-      "https://res.cloudinary.com/dzzm7ye56/image/upload/v1727123223/The-Galleria-Mall-Cover_vd3dau.jpg",
+    imageStore: "/Galleria.jpg",
   },
   {
     _id: "2",
@@ -28,8 +27,7 @@ const stores = [
     mobile: "+971 55 557 0029",
     barberMobile: "+971 56 181 6017",
     email: "ken.beauty1@hotmail.com",
-    imageStore:
-      "https://res.cloudinary.com/dzzm7ye56/image/upload/v1727123735/495553057_zs2coz.jpg",
+    imageStore: "Rixos.jpg",
   },
 ];
 
