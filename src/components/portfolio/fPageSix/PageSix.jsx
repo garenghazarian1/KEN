@@ -8,7 +8,7 @@ export default function PageSix() {
       <div className={styles.containerF}>
         <div className={styles.subContainerFA}>
           <Image
-            src="https://res.cloudinary.com/dzzm7ye56/image/upload/v1727124886/portfolioE001_v5zw9q.jpg"
+            src="/portfolio/portfolioE001.jpg"
             alt="Portfolio Image 1"
             width={500}
             height={500}
@@ -33,7 +33,7 @@ export default function PageSix() {
             allow Ken Salon to unveil the most beautiful version of yourself.
           </p>
           <Image
-            src="https://res.cloudinary.com/dzzm7ye56/image/upload/v1727124888/portfolioE003_a8uayw.jpg"
+            src="/portfolio/portfolioE003.jpg"
             alt="Portfolio Image 2"
             width={500}
             height={500}

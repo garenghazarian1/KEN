@@ -13,7 +13,7 @@ export default function PageTen() {
               target="_blank"
             >
               <Image
-                src="https://res.cloudinary.com/dzzm7ye56/image/upload/v1727125282/barberShop_j8orj7.jpg"
+                src="/portfolio/barberShop.jpg"
                 alt="KenInstagram"
                 className={styles.profileImage}
                 width={500}
@@ -28,7 +28,7 @@ export default function PageTen() {
               target="_blank"
             >
               <Image
-                src="https://res.cloudinary.com/dzzm7ye56/image/upload/v1727125329/insta02_ket2ej.jpg"
+                src="/portfolio/insta02.jpg"
                 alt="KenInstagram01"
                 className={styles.profileImage}
                 width={500}
@@ -43,7 +43,7 @@ export default function PageTen() {
               target="_blank"
             >
               <Image
-                src="https://res.cloudinary.com/dzzm7ye56/image/upload/v1727125377/insta01_uyu4hh.jpg"
+                src="/portfolio/insta01.jpg"
                 alt="KenInstagram01"
                 className={styles.profileImage}
                 width={500}
