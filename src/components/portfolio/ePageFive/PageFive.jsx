@@ -26,7 +26,7 @@ export default function PageFive() {
             >
               <SwiperSlide>
                 <Image
-                  src="https://res.cloudinary.com/dzzm7ye56/image/upload/v1727124498/portfolioA003_zypcjn.jpg"
+                  src="/portfolio/portfolioA001.jpg"
                   alt="K Logo"
                   className={styles.rightLeftImagesPageE}
                   width={300}
@@ -35,7 +35,7 @@ export default function PageFive() {
               </SwiperSlide>
               <SwiperSlide>
                 <Image
-                  src="https://res.cloudinary.com/dzzm7ye56/image/upload/v1727124497/portfolioA002_y3rsjh.jpg"
+                  src="/portfolio/portfolioA002.jpg"
                   alt="K Logo"
                   className={styles.rightLeftImagesPageE}
                   width={300}
@@ -44,7 +44,7 @@ export default function PageFive() {
               </SwiperSlide>
               <SwiperSlide>
                 <Image
-                  src="https://res.cloudinary.com/dzzm7ye56/image/upload/v1727124497/portfolioA001_japva9.jpg"
+                  src="/portfolio/portfolioA003.jpg"
                   alt="K Logo"
                   className={styles.rightLeftImagesPageE}
                   width={300}
@@ -80,7 +80,7 @@ export default function PageFive() {
             >
               <SwiperSlide>
                 <Image
-                  src="https://res.cloudinary.com/dzzm7ye56/image/upload/v1727124605/portfolioB003_jzpclw.jpg"
+                  src="/portfolio/portfolioB001.jpg"
                   alt="K Logo"
                   className={styles.rightLeftImagesPageE}
                   width={300}
@@ -89,7 +89,7 @@ export default function PageFive() {
               </SwiperSlide>
               <SwiperSlide>
                 <Image
-                  src="https://res.cloudinary.com/dzzm7ye56/image/upload/v1727124603/portfolioB002_prqz0y.jpg"
+                  src="/portfolio/portfolioB002.jpg"
                   alt="K Logo"
                   className={styles.rightLeftImagesPageE}
                   width={300}
@@ -98,7 +98,7 @@ export default function PageFive() {
               </SwiperSlide>
               <SwiperSlide>
                 <Image
-                  src="https://res.cloudinary.com/dzzm7ye56/image/upload/v1727124603/portfolioB001_amyngl.jpg"
+                  src="/portfolio/portfolioB003.jpg"
                   alt="K Logo"
                   className={styles.rightLeftImagesPageE}
                   width={300}
@@ -121,7 +121,7 @@ export default function PageFive() {
             >
               <SwiperSlide>
                 <Image
-                  src="https://res.cloudinary.com/dzzm7ye56/image/upload/v1727124684/portfolioC004_a2ftgz.jpg"
+                  src="/portfolio/portfolioC001.jpg"
                   alt="K Logo"
                   className={styles.rightLeftImagesPageE}
                   width={300}
@@ -130,7 +130,7 @@ export default function PageFive() {
               </SwiperSlide>
               <SwiperSlide>
                 <Image
-                  src="https://res.cloudinary.com/dzzm7ye56/image/upload/v1727124682/portfolioC003_a0vsxy.jpg"
+                  src="/portfolio/portfolioC002.jpg"
                   alt="K Logo"
                   className={styles.rightLeftImagesPageE}
                   width={300}
@@ -139,7 +139,7 @@ export default function PageFive() {
               </SwiperSlide>
               <SwiperSlide>
                 <Image
-                  src="https://res.cloudinary.com/dzzm7ye56/image/upload/v1727124682/portfolioC002_kcae4b.jpg"
+                  src="/portfolio/portfolioC003.jpg"
                   alt="K Logo"
                   className={styles.rightLeftImagesPageE}
                   width={300}
@@ -148,7 +148,7 @@ export default function PageFive() {
               </SwiperSlide>
               <SwiperSlide>
                 <Image
-                  src="https://res.cloudinary.com/dzzm7ye56/image/upload/v1727124681/portfolioC001_onwwgb.jpg"
+                  src="/portfolio/portfolioC004.jpg"
                   alt="K Logo"
                   className={styles.rightLeftImagesPageE}
                   width={300}
@@ -185,7 +185,7 @@ export default function PageFive() {
             >
               <SwiperSlide>
                 <Image
-                  src="https://res.cloudinary.com/dzzm7ye56/image/upload/v1727124755/portfolioD002_seqqa8.jpg"
+                  src="/portfolio/portfolioD001.jpg"
                   alt="K Logo"
                   className={styles.rightLeftImagesPageE}
                   width={300}
@@ -194,7 +194,7 @@ export default function PageFive() {
               </SwiperSlide>
               <SwiperSlide>
                 <Image
-                  src="https://res.cloudinary.com/dzzm7ye56/image/upload/v1727124754/portfolioD001_sr0xue.jpg"
+                  src="/portfolio/portfolioD002.jpg"
                   alt="K Logo"
                   className={styles.rightLeftImagesPageE}
                   width={300}

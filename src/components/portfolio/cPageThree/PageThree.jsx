@@ -17,7 +17,7 @@ export default function PageThree() {
         </div>
         <div className={styles.rightPaneC}>
           <video
-            src="https://res.cloudinary.com/dzzm7ye56/video/upload/v1727124376/PortfolioVideo01_nziw8p.mp4"
+            src="/PortfolioVideo01.mp4"
             alt="Salon Video"
             autoPlay
             muted
