@@ -4,6 +4,7 @@ import "./globals.css";
 import Navbar from "@/components/navbar/Navbar";
 import Footer from "@/components/footer/Footer";
 import styles from "./Layout.module.css";
+import { Analytics } from "@vercel/analytics/react";
 
 // const inter = Inter({ subsets: ["latin"] });
 // const arapeyStatic = Lora ({
@@ -26,6 +27,7 @@ export default function RootLayout({ children }) {
           <div className={styles.childrenContainer}>{children}</div>
           <Footer />
         </div>
+        <Analytics />
         <script
           src="//code.tidio.co/wuxjaut5j0iru5lnq6efealcjpqmlyhw.js"
           async
