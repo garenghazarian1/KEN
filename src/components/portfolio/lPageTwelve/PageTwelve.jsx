@@ -11,7 +11,7 @@ export default function PageTwelve() {
         </div>
         <div className={styles.content}>
           <video
-            src="https://res.cloudinary.com/dzzm7ye56/video/upload/v1727125661/description01_dpts3m.mp4"
+            src="/portfolio/description01.mp4"
             alt="Salon Video"
             autoPlay
             muted

@@ -7,7 +7,7 @@ export default function PageTwentyFour() {
     <div className={styles.containerD}>
       <div className={styles.leftPaneD}>
         <Image
-          src="https://res.cloudinary.com/dzzm7ye56/image/upload/v1727124214/logo01_kyphyv.png"
+          src="/logo01.png"
           alt="K Logo"
           className={styles.imageD}
           width={250}

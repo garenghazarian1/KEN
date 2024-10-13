@@ -8,7 +8,7 @@ export default function PageFourteen() {
       <div className={styles.containerD}>
         <div className={styles.leftPaneD}>
           <Image
-            src="https://res.cloudinary.com/dzzm7ye56/image/upload/v1727125819/mission01_cwa74w.jpg"
+            src="/portfolio/mission01.jpg"
             alt="K Logo"
             className={styles.imageD}
             width={250}

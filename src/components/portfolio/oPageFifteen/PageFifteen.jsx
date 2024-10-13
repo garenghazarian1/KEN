@@ -9,7 +9,7 @@ export default function PageFifteen() {
         <div className={styles.leftPaneD}>
           {/* <Image src="/portfolio/philosophy01.jpg" alt="K Logo" className={styles.imageD} width={250} height={250} />  */}
           <Image
-            src="https://res.cloudinary.com/dzzm7ye56/image/upload/v1727125869/philosophy02_fmmghh.jpg"
+            src="/portfolio/philosophy02.jpg"
             alt="K Logo"
             className={styles.imageD}
             width={250}

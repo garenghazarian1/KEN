@@ -22,7 +22,7 @@ export default function PageTwentyThree() {
         <div>
           <div className={styles.sectionA}>
             <video
-              src="https://res.cloudinary.com/dzzm7ye56/video/upload/v1727126293/Celeb01_zxxyir.mp4"
+              src="portfolio/Celeb01.mp4"
               alt="Salon Video"
               autoPlay
               muted

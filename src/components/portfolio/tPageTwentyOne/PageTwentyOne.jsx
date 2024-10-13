@@ -78,7 +78,7 @@ export default function PageTwentyOne() {
         </div>
         <div className={styles.sectionA}>
           <video
-            src="https://res.cloudinary.com/dzzm7ye56/video/upload/v1727126202/description05_iov7by.mp4"
+            src="portfolio/description05.mp4"
             alt="Salon Video"
             autoPlay
             muted

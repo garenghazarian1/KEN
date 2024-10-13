@@ -36,7 +36,7 @@ export default function PageTwentyFive() {
         </div>
         <div className={styles.sectionB}>
           <video
-            src="https://res.cloudinary.com/dzzm7ye56/video/upload/v1727126368/CommunityEngagement_miahtc.mp4"
+            src="portfolio/CommunityEngagement.mp4"
             alt="Salon Video"
             autoPlay
             muted
