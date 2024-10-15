@@ -65,12 +65,19 @@ const InstagramEmbed = () => {
            display: none !important;
          }
       </style>
-            <blockquote class="instagram-media" data-instgrm-captioned data-instgrm-permalink="https://www.instagram.com/reel/C3c9gsRxDOg/?utm_source=ig_embed&amp;utm_campaign=loading" data-instgrm-version="14"></blockquote>
+            <blockquote class="instagram-media" data-instgrm-captioned data-instgrm-permalink="https://www.instagram.com/reel/DBHmaFdCGkf/?utm_source=ig_embed&amp;utm_campaign=loading" data-instgrm-version="14" ></blockquote></blockquote>
+
+          `,
+        }}
+      />
+      <div
+        dangerouslySetInnerHTML={{
+          __html: `
+             <blockquote class="instagram-media" data-instgrm-captioned data-instgrm-permalink="https://www.instagram.com/reel/C3c9gsRxDOg/?utm_source=ig_embed&amp;utm_campaign=loading" data-instgrm-version="14"></blockquote>
           `,
         }}
       />
 
-      {/* Embed for the second Instagram post */}
       <div
         dangerouslySetInnerHTML={{
           __html: `
@@ -79,7 +86,6 @@ const InstagramEmbed = () => {
         }}
       />
 
-      {/* Embed for the third Instagram post */}
       <div
         dangerouslySetInnerHTML={{
           __html: `
@@ -88,7 +94,6 @@ const InstagramEmbed = () => {
         }}
       />
 
-      {/* Embed for the fourth Instagram post */}
       <div
         dangerouslySetInnerHTML={{
           __html: `
@@ -97,7 +102,6 @@ const InstagramEmbed = () => {
         }}
       />
 
-      {/* Embed for the fifth Instagram post */}
       <div
         dangerouslySetInnerHTML={{
           __html: `
