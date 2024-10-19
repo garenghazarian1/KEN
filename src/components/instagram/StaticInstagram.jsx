@@ -65,12 +65,8 @@ const InstagramEmbed = () => {
            display: none !important;
          }
       </style>
-            <blockquote
-  class="instagram-media"
-  data-instgrm-captioned
-  data-instgrm-permalink="https://www.instagram.com/reel/DBLSZ1USWI7/?utm_source=ig_embed&amp;utm_campaign=loading"
-  data-instgrm-version="14"
-></blockquote>;
+                         <blockquote class="instagram-media" data-instgrm-captioned data-instgrm-permalink="https://www.instagram.com/reel/DBHmaFdCGkf/?utm_source=ig_embed&amp;utm_campaign=loading" data-instgrm-version="14" ></blockquote></blockquote>
+            
 
           `,
         }}
@@ -79,7 +75,16 @@ const InstagramEmbed = () => {
       <div
         dangerouslySetInnerHTML={{
           __html: `
-                         <blockquote class="instagram-media" data-instgrm-captioned data-instgrm-permalink="https://www.instagram.com/reel/DBHmaFdCGkf/?utm_source=ig_embed&amp;utm_campaign=loading" data-instgrm-version="14" ></blockquote></blockquote>
+          <blockquote class="instagram-media" data-instgrm-captioned data-instgrm-permalink="https://www.instagram.com/reel/DBT--MQSRWY/?utm_source=ig_embed&amp;utm_campaign=loading" data-instgrm-version="14" ></blockquote>
+
+          `,
+        }}
+      />
+
+      <div
+        dangerouslySetInnerHTML={{
+          __html: `
+          <blockquote class="instagram-media" data-instgrm-captioned data-instgrm-permalink="https://www.instagram.com/reel/DBLSZ1USWI7/?utm_source=ig_embed&amp;utm_campaign=loading" data-instgrm-version="14"></blockquote>;
 
           `,
         }}
