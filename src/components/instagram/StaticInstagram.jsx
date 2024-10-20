@@ -71,6 +71,12 @@ const InstagramEmbed = () => {
           `,
         }}
       />
+      <div
+        dangerouslySetInnerHTML={{
+          __html: `
+ <blockquote class="instagram-media" data-instgrm-captioned data-instgrm-permalink="https://www.instagram.com/reel/DBWc41MSDJu/?utm_source=ig_embed&amp;utm_campaign=loading" data-instgrm-version="14" ></blockquote>          `,
+        }}
+      />
 
       <div
         dangerouslySetInnerHTML={{
