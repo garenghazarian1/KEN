@@ -74,6 +74,22 @@ const InstagramEmbed = () => {
       <div
         dangerouslySetInnerHTML={{
           __html: `
+         
+                         <blockquote class="instagram-media" data-instgrm-captioned data-instgrm-permalink="https://www.instagram.com/reel/DBes7pNCy9Q/?utm_source=ig_embed&amp;utm_campaign=loading" data-instgrm-version="14" ></blockquote>
+          `,
+        }}
+      />
+      <div
+        dangerouslySetInnerHTML={{
+          __html: `
+         
+                         <blockquote class="instagram-media" data-instgrm-captioned data-instgrm-permalink="https://www.instagram.com/reel/DBZdZ1IC_Aa/?utm_source=ig_embed&amp;utm_campaign=loading" data-instgrm-version="14" ></blockquote></blockquote>
+          `,
+        }}
+      />
+      <div
+        dangerouslySetInnerHTML={{
+          __html: `
  <blockquote class="instagram-media" data-instgrm-captioned data-instgrm-permalink="https://www.instagram.com/reel/DBWc41MSDJu/?utm_source=ig_embed&amp;utm_campaign=loading" data-instgrm-version="14" ></blockquote>          `,
         }}
       />
