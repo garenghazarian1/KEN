@@ -31,9 +31,9 @@ export default function Gallery() {
             {/* Add more InstagramEmbed components for additional posts */}
           </div>
         </section>
-        <section>
+        {/* <section>
           <InstagramFeed />
-        </section>
+        </section> */}
       </main>
     </>
   );
