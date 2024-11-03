@@ -6,7 +6,7 @@ export default function Logo() {
     <div className={styles.flexCenter}>
       <div className={styles.paddedRelative}>
         <Image
-          src="https://res.cloudinary.com/dzzm7ye56/image/upload/v1727122226/logo03_olcvzr.png"
+          src="/logo03.png"
           alt="logo"
           width={50}
           height={50}

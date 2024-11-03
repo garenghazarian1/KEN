@@ -13,10 +13,10 @@ export default function Gallery() {
           name="description"
           content="Explore our curated gallery featuring Instagram content."
         />
-        <script
+        {/* <script
           src="https://cdn.lightwidget.com/widgets/lightwidget.js"
           async
-        ></script>
+        ></script> */}
       </Head>
       <main className={styles.main}>
         <h1 className={styles.title}>Welcome to Our Gallery</h1>

@@ -15,7 +15,7 @@ export default function Links() {
     { title: "Home", path: "/" },
     {
       title: "Book",
-      path: "./logo03.png",
+      path: "https://kenbeauty.zenoti.com/webstoreNew/services",
     },
     { title: "About Us", path: "/about" },
     { title: "Contact", path: "/contact" },
