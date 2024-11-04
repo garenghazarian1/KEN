@@ -2,6 +2,7 @@
 import { useEffect } from "react";
 
 const instagramLinks = [
+  "https://www.instagram.com/reel/DB89gC2ycom/?utm_source=ig_embed&amp;utm_campaign=loading",
   "https://www.instagram.com/reel/DB1BE3UttXT/?utm_source=ig_embed&amp;utm_campaign=loading",
   "https://www.instagram.com/reel/DBHmaFdCGkf/?utm_source=ig_embed&amp;utm_campaign=loading",
   "https://www.instagram.com/reel/DBjvVYpBsCZ/?utm_source=ig_embed&amp;utm_campaign=loading",
@@ -48,13 +49,17 @@ const InstagramEmbed = () => {
           justify-content: center;
           gap: 20px;
           padding: 20px;
-          background-color: var(--teal-950);
-          box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
-          transition: background-color 0.3s ease;
         }
 
-        .instagram-embed-container:hover {
-          background-color: var(--teal-800);
+        .instagram-embed-container > div {
+          perspective: 1000px; /* Create 3D effect */
+          transition: transform 0.3s ease, box-shadow 0.3s ease;
+          transform-style: preserve-3d;
+        }
+
+        .instagram-embed-container > div:hover {
+          transform: rotateY(10deg) scale(1.05); /* 3D rotation and scaling */
+          box-shadow: 0 10px 20px rgba(0, 0, 0, 0.5); /* Enhanced shadow on hover */
         }
 
         .instagram-embed-container::-webkit-scrollbar {
@@ -64,6 +69,13 @@ const InstagramEmbed = () => {
         .instagram-embed-container::-webkit-scrollbar-thumb {
           background-color: var(--light-gray);
           border-radius: 10px;
+        }
+
+        /* Optional: add individual styling for Instagram embeds */
+        .instagram-media {
+          max-height: 500px !important;
+          border-radius: 10px; /* Rounded corners */
+          overflow: hidden;
         }
       `}</style>
 
