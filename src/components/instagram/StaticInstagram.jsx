@@ -2,6 +2,8 @@
 import { useEffect } from "react";
 
 const instagramLinks = [
+  "https://www.instagram.com/p/DDNB8CPhWgg/?utm_source=ig_embed&amp;utm_campaign=loading",
+  "https://www.instagram.com/reel/DDMKZTCyLCs/?utm_source=ig_embed&amp;utm_campaign=loading",
   "https://www.instagram.com/reel/DDCPB-JSAXl/?utm_source=ig_embed&amp;utm_campaign=loading",
   "https://www.instagram.com/reel/DC9dIVSBLb3/?utm_source=ig_embed&amp;utm_campaign=loading",
   "https://www.instagram.com/reel/DC4egODhnCv/?utm_source=ig_embed&amp;utm_campaign=loading",
