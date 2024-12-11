@@ -3,8 +3,43 @@
 import styles from "./Hero.module.css";
 import { FaWhatsapp } from "react-icons/fa";
 import Image from "next/image";
+import { useState, useEffect } from "react";
+
+const imagesSet = [
+  [
+    "/heroGridImage/hero001.jpg",
+    "/heroGridImage/hero002.jpg",
+    "/heroGridImage/hero003.jpg",
+    "/heroGridImage/hero004.jpg",
+    "/heroGridImage/hero005.jpg",
+  ],
+  [
+    "/heroGridImage/hero006.jpg",
+    "/heroGridImage/hero007.jpg",
+    "/heroGridImage/hero008.jpg",
+    "/heroGridImage/hero009.jpg",
+    "/heroGridImage/hero010.jpg",
+  ],
+];
 
 export default function Hero() {
+  const [activeIndices, setActiveIndices] = useState([0, 0]); // Active image index for each box
+
+  useEffect(() => {
+    const intervals = imagesSet.map(
+      (_, boxIndex) =>
+        setInterval(() => {
+          setActiveIndices((prevIndices) => {
+            const newIndices = [...prevIndices];
+            newIndices[boxIndex] =
+              (newIndices[boxIndex] + 1) % imagesSet[boxIndex].length;
+            return newIndices;
+          });
+        }, 3000 + boxIndex * 1000) // Box 1: 3000ms, Box 2: 4000ms
+    );
+
+    return () => intervals.forEach((interval) => clearInterval(interval)); // Cleanup intervals on unmount
+  }, []);
   return (
     <>
       <div className={styles.page}>
@@ -54,7 +89,27 @@ export default function Hero() {
       </div>
 
       <div className={styles.gridImageContainer}>
+        <div className={styles.glassTop} />
+
         <div className={styles.grid}>
+          {imagesSet.map((images, boxIndex) => (
+            <div key={boxIndex} className={styles.gridBox}>
+              {images.map((image, imageIndex) => (
+                <Image
+                  key={imageIndex}
+                  src={image}
+                  alt={`Image ${imageIndex + 1}`}
+                  className={`${styles.image} ${
+                    activeIndices[boxIndex] === imageIndex ? styles.active : ""
+                  }`}
+                  width={500}
+                  height={500}
+                />
+              ))}
+            </div>
+          ))}
+        </div>
+        {/* <div className={styles.grid}>
           <div className={styles.gridBox}>
             <Image
               src="/heroGridImage/hero001.jpg"
@@ -73,7 +128,7 @@ export default function Hero() {
               height={500}
             />
           </div>
-          <div className={styles.gridBox}>
+           <div className={styles.gridBox}>
             <Image
               src="/heroGridImage/hero003.jpg"
               alt="Hero 03"
@@ -90,8 +145,8 @@ export default function Hero() {
               width={500}
               height={500}
             />
-          </div>
-        </div>
+          </div> 
+        </div> */}
 
         <div className={styles.textContainer}>
           <h1 className={styles.mainTitle}>
@@ -113,6 +168,7 @@ export default function Hero() {
             </p>
           </div>
         </div>
+        <div className={styles.glassBottom} />
       </div>
     </>
   );

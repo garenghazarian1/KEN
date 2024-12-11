@@ -85,8 +85,9 @@
   box-shadow: 0 4px 8px #00000033;
 }
 
-/* Grid Image Section */
+/* Grid Image Section 2 */
 .gridImageContainer {
+  position: relative;
   width: 100vw;
   height: 100vh;
   display: flex;
@@ -97,7 +98,7 @@
 .grid {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
-  grid-template-rows: repeat(2, 1fr);
+  grid-template-rows: repeat(1, 1fr);
   width: 50%;
   height: 100%;
   box-sizing: border-box;
@@ -109,7 +110,7 @@
   overflow: hidden;
   position: relative;
   box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1); /* Optional shadow */
-  transition: transform 0.5s ease, opacity 0.5s ease;
+  transition: transform 0.5s ease, opacity 0.5s ease, box-shadow 0.5s ease;
   box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
 }
 
@@ -117,16 +118,49 @@
   width: 100%;
   height: 100%;
   object-fit: cover;
-  transition: transform 0.3s ease;
+  position: absolute; /* To enable layering */
+  opacity: 0; /* Hidden by default */
+  z-index: 0; /* Behind the active image */
+  transition: transform 0.8s cubic-bezier(0.25, 1, 0.5, 1),
+    opacity 0.5s ease-in-out, z-index 0.5s ease-in-out;
 }
 
-.changing {
-  transform: scale(0.9);
-  opacity: 0.5;
+.image.active {
+  opacity: 1; /* Fully visible */
+  z-index: 1; /* Bring active image to the front */
+  transform: scale(1.05); /* Slight zoom for the active image */
+}
+
+.image.exiting {
+  opacity: 0; /* Fade out */
+  z-index: 0; /* Push exiting image back */
+  transform: scale(0.95); /* Shrink effect for exiting images */
+}
+
+.gridBox:hover {
+  transform: translateY(-5px); /* Lift effect on hover */
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.25); /* Enhanced shadow */
 }
 
 .image:hover {
-  transform: scale(1.1);
+  transform: scale(1.1); /* Further zoom effect on hover */
+}
+
+.gridBox.changing {
+  animation: bounce 0.6s ease-out;
+}
+
+/* Keyframes for bounce effect */
+@keyframes bounce {
+  0% {
+    transform: translateY(-10px);
+  }
+  50% {
+    transform: translateY(5px);
+  }
+  100% {
+    transform: translateY(0);
+  }
 }
 
 /*
@@ -212,7 +246,7 @@ Medium screens: 2 videos per row */
   }
   .grid {
     width: 100%;
-    height: 50%;
+    min-height: 50%;
   }
   .gridImageContainer {
     flex-direction: column-reverse;
