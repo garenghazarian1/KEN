@@ -57,7 +57,7 @@ export default function Hero() {
         <div className={styles.grid}>
           <div className={styles.gridBox}>
             <Image
-              src="/heroGridImage/hero01.jpg"
+              src="/heroGridImage/hero001.jpg"
               alt="Hero 01"
               className={styles.image}
               width={500}
@@ -66,7 +66,7 @@ export default function Hero() {
           </div>
           <div className={styles.gridBox}>
             <Image
-              src="/heroGridImage/hero02.jpg"
+              src="/heroGridImage/hero002.jpg"
               alt="Hero 02"
               className={styles.image}
               width={500}
@@ -75,7 +75,7 @@ export default function Hero() {
           </div>
           <div className={styles.gridBox}>
             <Image
-              src="/heroGridImage/hero03.jpg"
+              src="/heroGridImage/hero003.jpg"
               alt="Hero 03"
               className={styles.image}
               width={500}
@@ -84,7 +84,7 @@ export default function Hero() {
           </div>
           <div className={styles.gridBox}>
             <Image
-              src="/heroGridImage/hero04.jpg"
+              src="/heroGridImage/hero004.jpg"
               alt="Hero 04"
               className={styles.image}
               width={500}
