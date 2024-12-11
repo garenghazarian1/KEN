@@ -12,8 +12,8 @@
 /* WhatsApp Button Styling */
 .buttonContainer {
   position: absolute;
-  bottom: 12rem;
-  right: 2rem;
+  bottom: 9rem;
+  right: 50%;
   z-index: 3;
 }
 
@@ -85,20 +85,148 @@
   box-shadow: 0 4px 8px #00000033;
 }
 
-/* Medium screens: 2 videos per row */
-@media (max-width: 1024px) {
+/* Grid Image Section */
+.gridImageContainer {
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  flex-direction: row;
+  background-color: #ffe9da;
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  grid-template-rows: repeat(2, 1fr);
+  width: 50%;
+  height: 100%;
+  box-sizing: border-box;
+}
+
+.gridBox {
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  position: relative;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1); /* Optional shadow */
+  transition: transform 0.5s ease, opacity 0.5s ease;
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+}
+
+.image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.3s ease;
+}
+
+.changing {
+  transform: scale(0.9);
+  opacity: 0.5;
+}
+
+.image:hover {
+  transform: scale(1.1);
+}
+
+/*
+
+
+
+
+
+
+
+textContainer
+
+*/
+.textContainer {
+  width: 50%;
+  padding: 2rem;
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  justify-content: start;
+  align-items: start;
+  gap: 1rem;
+}
+
+.mainTitle {
+  font-size: 2.5rem;
+  font-weight: bold;
+  color: #293423;
+}
+
+.subTitle {
+  color: #828773;
+}
+
+.endTitle {
+  color: #115e59;
+}
+
+.paragraph {
+  font-size: 1rem;
+  line-height: 1.5;
+  color: #6e7a68;
+}
+
+/*
+
+
+
+
+
+
+
+
+
+Medium screens: 2 videos per row */
+@media (max-width: 1175px) {
   .heroVideo {
-    flex: 1 1 calc(50% - 20px); /* 2 videos in a row */
+    flex: 1 1 calc(50% - 20px);
+  }
+  .heroVideo:nth-child(n + 3) {
+    display: none;
+  }
+  .buttonContainer {
+    position: absolute;
+    bottom: 12rem;
+    right: 7%;
   }
 }
 
 /* Small screens: 1 video, hide others */
-@media (max-width: 768px) {
+@media (max-width: 790px) {
   .heroVideo {
     flex: 1 1 100%; /* Full-width video */
   }
   .heroVideo:nth-child(n + 2) {
     /* Hide all videos except the first */
     display: none;
+  }
+  .buttonContainer {
+    position: absolute;
+    bottom: 12rem;
+    right: 7%;
+  }
+  .grid {
+    width: 100%;
+    height: 50%;
+  }
+  .gridImageContainer {
+    flex-direction: column-reverse;
+    justify-content: space-between;
+  }
+  .textContainer {
+    width: 100%;
+  }
+  .mainTitle {
+    font-size: 1.5rem;
+  }
+  .paragraph {
+    font-size: 0.8rem;
+    line-height: 1.5;
+    color: #6e7a68;
   }
 }
