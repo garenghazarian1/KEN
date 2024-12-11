@@ -2,6 +2,7 @@
 
 import styles from "./Hero.module.css";
 import { FaWhatsapp } from "react-icons/fa";
+import Image from "next/image";
 
 export default function Hero() {
   return (
@@ -55,7 +56,7 @@ export default function Hero() {
       <div className={styles.gridImageContainer}>
         <div className={styles.grid}>
           <div className={styles.gridBox}>
-            <img
+            <Image
               src="/heroGridImage/hero01.jpg"
               alt="Hero 01"
               className={styles.image}
@@ -64,7 +65,7 @@ export default function Hero() {
             />
           </div>
           <div className={styles.gridBox}>
-            <img
+            <Image
               src="/heroGridImage/hero02.jpg"
               alt="Hero 02"
               className={styles.image}
@@ -73,7 +74,7 @@ export default function Hero() {
             />
           </div>
           <div className={styles.gridBox}>
-            <img
+            <Image
               src="/heroGridImage/hero03.jpg"
               alt="Hero 03"
               className={styles.image}
@@ -82,7 +83,7 @@ export default function Hero() {
             />
           </div>
           <div className={styles.gridBox}>
-            <img
+            <Image
               src="/heroGridImage/hero04.jpg"
               alt="Hero 04"
               className={styles.image}
