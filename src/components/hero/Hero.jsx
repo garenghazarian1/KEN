@@ -1,61 +1,9 @@
 "use client";
 
-import Link from "next/link";
-import { useState, useEffect } from "react";
 import styles from "./Hero.module.css";
 import { FaWhatsapp } from "react-icons/fa";
 
 export default function Hero() {
-  const allImages = [
-    "/heroGridImage/hero01.jpg",
-    "/heroGridImage/hero02.jpg",
-    "/heroGridImage/hero03.jpg",
-    "/heroGridImage/hero04.jpg",
-    "/heroGridImage/hero05.jpg",
-    "/heroGridImage/hero06.jpg",
-    "/heroGridImage/hero07.jpg",
-    "/heroGridImage/hero08.jpg",
-    "/heroGridImage/hero09.jpg",
-    "/heroGridImage/hero10.jpg",
-  ];
-
-  const [displayImages, setDisplayImages] = useState(allImages.slice(0, 4)); // First 4 images
-  const [currentIndex, setCurrentIndex] = useState(4); // Start cycling from the 5th image
-  const [changingIndex, setChangingIndex] = useState(null); // Track which box is changing
-
-  useEffect(() => {
-    const interval = setInterval(() => {
-      setDisplayImages((prevDisplayImages) => {
-        // Determine which box to change
-        const randomBoxIndex = Math.floor(
-          Math.random() * prevDisplayImages.length
-        );
-
-        // Get the next image in the sequence
-        const newImage = allImages[currentIndex];
-
-        // Update displayImages with the next image
-        const updatedDisplayImages = [...prevDisplayImages];
-        updatedDisplayImages[randomBoxIndex] = newImage;
-
-        // Move to the next image in the sequence
-        const nextIndex = (currentIndex + 1) % allImages.length;
-
-        // Trigger the "changing" effect
-        setChangingIndex(randomBoxIndex);
-
-        // Remove the animation effect after 500ms
-        setTimeout(() => setChangingIndex(null), 500);
-
-        setCurrentIndex(nextIndex);
-
-        return updatedDisplayImages;
-      });
-    }, 2000); // Change one image every second
-
-    return () => clearInterval(interval); // Cleanup on unmount
-  }, [currentIndex]);
-
   return (
     <>
       <div className={styles.page}>
@@ -106,20 +54,34 @@ export default function Hero() {
 
       <div className={styles.gridImageContainer}>
         <div className={styles.grid}>
-          {displayImages.map((image, index) => (
-            <div
-              key={index}
-              className={`${styles.gridBox} ${
-                changingIndex === index ? styles.changing : ""
-              }`}
-            >
-              <img
-                src={image}
-                alt={`Image ${index + 1}`}
-                className={styles.image}
-              />
-            </div>
-          ))}
+          <div className={styles.gridBox}>
+            <img
+              src="/heroGridImage/hero01.jpg"
+              alt="Hero 01"
+              className={styles.image}
+            />
+          </div>
+          <div className={styles.gridBox}>
+            <img
+              src="/heroGridImage/hero02.jpg"
+              alt="Hero 02"
+              className={styles.image}
+            />
+          </div>
+          <div className={styles.gridBox}>
+            <img
+              src="/heroGridImage/hero03.jpg"
+              alt="Hero 03"
+              className={styles.image}
+            />
+          </div>
+          <div className={styles.gridBox}>
+            <img
+              src="/heroGridImage/hero04.jpg"
+              alt="Hero 04"
+              className={styles.image}
+            />
+          </div>
         </div>
 
         <div className={styles.textContainer}>
