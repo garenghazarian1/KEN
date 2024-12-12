@@ -12,17 +12,17 @@ const HamburgerButton = ({ isOpen, toggle }) => {
       bg-green-200
       bg-green-300 */}
       <div
-        className={`w-8 h-0.5 bg-teal-400 mb-2 transition-transform duration-300 ease-in-out ${
+        className={`w-8 h-0.5 bg-customBrown-light mb-2 transition-transform duration-300 ease-in-out ${
           isOpen ? "rotate-45 translate-y-3.5" : ""
         }`}
       ></div>
       <div
-        className={`w-8 h-0.5 bg-teal-600 transition-opacity duration-300 ease-in-out ${
+        className={`w-8 h-0.5 bg-customBrown transition-opacity duration-300 ease-in-out ${
           isOpen ? "opacity-0" : ""
         }`}
       ></div>
       <div
-        className={`w-8 h-0.5 bg-teal-800 mt-2 transition-transform duration-300 ease-in-out ${
+        className={`w-8 h-0.5 bg-customBrown-dark mt-2 transition-transform duration-300 ease-in-out ${
           isOpen ? "-rotate-45 -translate-y-3.5" : ""
         }`}
       ></div>

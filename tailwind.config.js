@@ -10,6 +10,11 @@ module.exports = {
       colors: {
         background: "var(--background)",
         foreground: "var(--foreground)",
+        customBrown: {
+          light: "#c8a697",
+          DEFAULT: "#ae8b77", // Base color
+          dark: "#8b6e60",
+        },
       },
     },
   },
