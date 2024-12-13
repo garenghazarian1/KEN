@@ -1,5 +1,4 @@
 /* Flex container for videos */
-
 .page {
   position: relative;
   width: 100vw;
@@ -23,18 +22,18 @@
   justify-content: center;
   width: 60px;
   height: 60px;
-  background-color: #25d3659a;
+  background-color: var(--whatsapp-bg);
   border-radius: 50%;
   color: white;
   text-decoration: none;
-  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+  box-shadow: 0 4px 10px var(--box-shadow-medium);
   transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
 .whatsappButton:hover {
   transform: scale(1.1);
-  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
-  background-color: #25d365;
+  box-shadow: 0 8px 20px var(--box-shadow-hover);
+  background-color: var(--whatsapp-hover-bg);
 }
 
 .glassTop,
@@ -48,24 +47,12 @@
 
 .glassTop {
   top: 0; /* Stick to the top */
-  background: linear-gradient(
-    to bottom,
-    #ffe9dae6,
-    #ffe9da99,
-    #ffe9da4d,
-    #ffe9da0d
-  );
+  background: var(--glass-gradient-top);
 }
 
 .glassBottom {
   bottom: 0;
-  background: linear-gradient(
-    to top,
-    #ffe9dae6,
-    #ffe9da99,
-    #ffe9da4d,
-    #ffe9da00
-  );
+  background: var(--glass-gradient-bottom);
 }
 
 .videoContainer {
@@ -82,7 +69,7 @@
   flex: 1 1 calc(33.333% - 20px);
   height: 100%;
   object-fit: cover;
-  box-shadow: 0 4px 8px #00000033;
+  box-shadow: 0 4px 8px var(--box-shadow-medium);
 }
 
 /* Grid Image Section 2 */
@@ -92,7 +79,7 @@
   height: 100vh;
   display: flex;
   flex-direction: row;
-  background-color: #ffe9da;
+  background-color: var(--main-color);
 }
 
 .grid {
@@ -109,9 +96,9 @@
   height: 100%;
   overflow: hidden;
   position: relative;
-  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1); /* Optional shadow */
+  box-shadow: 0 4px 10px var(--box-shadow-light);
   transition: transform 0.5s ease, opacity 0.5s ease, box-shadow 0.5s ease;
-  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+  box-shadow: 0 6px 12px var(--box-shadow-hover);
 }
 
 .image {
@@ -139,18 +126,18 @@
 
 .gridBox:hover {
   transform: translateY(-5px); /* Lift effect on hover */
-  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.25); /* Enhanced shadow */
+  box-shadow: 0 8px 20px var(--box-shadow-hover); /* Enhanced shadow */
 }
 
 .image:hover {
   transform: scale(1.1); /* Further zoom effect on hover */
 }
 
+/* Bounce Animation */
 .gridBox.changing {
   animation: bounce 0.6s ease-out;
 }
 
-/* Keyframes for bounce effect */
 @keyframes bounce {
   0% {
     transform: translateY(-10px);
@@ -163,17 +150,7 @@
   }
 }
 
-/*
-
-
-
-
-
-
-
-textContainer
-
-*/
+/* Text Container */
 .textContainer {
   width: 50%;
   padding: 2rem;
@@ -188,34 +165,24 @@ textContainer
 .mainTitle {
   font-size: 2.5rem;
   font-weight: bold;
-  color: #293423;
+  color: var(--main-title-color);
 }
 
 .subTitle {
-  color: #828773;
+  color: var(--sub-title-color);
 }
 
 .endTitle {
-  color: #115e59;
+  color: var(--end-title-color);
 }
 
 .paragraph {
   font-size: 1rem;
   line-height: 1.5;
-  color: #6e7a68;
+  color: var(--paragraph-text-color);
 }
 
-/*
-
-
-
-
-
-
-
-
-
-Medium screens: 2 videos per row */
+/* Responsive Styling */
 @media (max-width: 1175px) {
   .heroVideo {
     flex: 1 1 calc(50% - 20px);
@@ -223,14 +190,8 @@ Medium screens: 2 videos per row */
   .heroVideo:nth-child(n + 3) {
     display: none;
   }
-  .buttonContainer {
-    position: absolute;
-    bottom: 12rem;
-    right: 7%;
-  }
 }
 
-/* Small screens: 1 video, hide others */
 @media (max-width: 790px) {
   .heroVideo {
     flex: 1 1 100%; /* Full-width video */
@@ -238,11 +199,6 @@ Medium screens: 2 videos per row */
   .heroVideo:nth-child(n + 2) {
     /* Hide all videos except the first */
     display: none;
-  }
-  .buttonContainer {
-    position: absolute;
-    bottom: 12rem;
-    right: 7%;
   }
   .grid {
     width: 100%;
@@ -261,6 +217,5 @@ Medium screens: 2 videos per row */
   .paragraph {
     font-size: 0.8rem;
     line-height: 1.5;
-    color: #6e7a68;
   }
 }

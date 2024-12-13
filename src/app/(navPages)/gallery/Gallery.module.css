@@ -1,22 +1,25 @@
 .main {
   min-height: 100vh;
-  background-color: #f3f4f6;
+  background-color: var(
+    --main-color
+  ); /* Updated to use the main background color */
 }
+
 .title {
   text-align: center;
   font-size: 4vw; /* Responsive font size based on viewport width */
   font-weight: 700; /* Bolder weight for emphasis */
   margin-top: 40px;
   margin-bottom: 20px;
-  color: var(--teal-800); /* Using header-1 color for the title */
+  color: var(--header-1); /* Using the strong dark for primary headers */
   text-transform: uppercase; /* Clean, modern look */
   letter-spacing: 1.5px; /* Adds space between letters */
-  text-shadow: 2px 2px 6px rgba(0, 0, 0, 0.2); /* Soft shadow for depth */
+  text-shadow: 2px 2px 6px var(--dark-gray); /* Soft shadow with warm darker gray */
   transition: color 0.3s ease-in-out, transform 0.3s ease-in-out; /* Smooth hover effect */
 }
 
 .title:hover {
-  color: var(--text-hover); /* White color on hover */
+  color: var(--text-hover); /* Slightly darker hover effect */
   transform: scale(1.05); /* Slight scale-up on hover */
 }
 

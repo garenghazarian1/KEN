@@ -23,7 +23,7 @@ export default function Gallery() {
 
         {/* Static Instagram Posts Section */}
         <section className={styles.instagramStaticPosts}>
-          <h2>Instagram Highlights</h2>
+          {/* <h2>Instagram Highlights</h2> */}
           <div className={styles.staticPostsGrid}>
             {/* Instagram Post 1 */}
             <InstagramEmbed />
