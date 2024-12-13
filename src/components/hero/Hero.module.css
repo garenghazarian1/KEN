@@ -11,8 +11,8 @@
 /* WhatsApp Button Styling */
 .buttonContainer {
   position: absolute;
-  bottom: 9rem;
-  right: 50%;
+  bottom: 12rem;
+  right: 5%;
   z-index: 3;
 }
 
