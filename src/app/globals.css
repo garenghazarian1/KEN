@@ -28,13 +28,13 @@ body {
 }
 
 :root {
-  --custom-green: #10b981;
+  /*--custom-green: #10b981;
   --custom-green-01: #5eead4;
   --dark-green: #15251c;
   --custom-gray: #d0d4d4;
-  --dark-gray: #1f2937;
+  --dark-gray: #1f2937;*/
 
-  /* used colors */
+  /* used colors 
   --text-color: #e4dede;
   --text-hover: #ffffff;
   --teal-950: #042f2e;
@@ -54,42 +54,43 @@ body {
   --olive-darker-green: #6e7a68;
   --custom-teal: #115e59;
 
-  /* new colors */
-  --Main-color: #ffe9da;
+  /* new colors 
+  --Main-color: #ffe9da;*/
 
-  /* Primary Colors */
-  --custom-green: #f6d2c3; /* Soft peach-like green */
-  --custom-green-01: #fcd5c7; /* Lighter complementary peach */
-  --dark-green: #ffe9da; /* Base peach tone requested by the client */
+  /* Primary Colors 
+  --custom-green: #f6d2c3; 
+  --custom-green-01: #fcd5c7; 
+  --dark-green: #ffe9da;  */
 
-  /* Grayscale */
-  --custom-gray: #f5ebe2; /* Light peach-tinted gray */
-  --dark-gray: #a87d6d; /* Warm darker gray complementing the peach */
+  /* Grayscale 
+  --custom-gray: #f5ebe2; 
+  --dark-gray: #a87d6d;  */
 
-  /* Text and Teal Tones */
-  --text-color: #513c3a; /* Darker text for contrast against light peach */
-  --text-hover: #2e2e2e; /* Slightly darker for hover effect */
-  --teal-950: #ae8b77; /* Soft muted brownish-teal for depth */
-  --teal-800: #d3b4a4; /* Warm complementary tone for secondary UI */
+  /* Text and Teal Tones
+  --text-color: #513c3a; 
+  --text-hover: #2e2e2e; 
+  --teal-950: #ae8b77; 
+  --teal-800: #d3b4a4; */
 
-  /* Backgrounds and Headers */
-  --navbar-background: #fbe4d5; /* Soft complementary peach for navigation */
-  --header-2: #b58b78; /* Mid-tone for headers */
-  --header-1: #4a312d; /* Strong dark for primary headers */
+  /* Backgrounds and Headers 
+  --navbar-background: #fbe4d5; 
+  --header-2: #b58b78; 
+  --header-1: #4a312d; */
 
-  /* Grays and Silvery Tones */
-  --light-gray: #f7ece5; /* Very light warm gray */
-  --olive-silvery-green: #dab7a5; /* Muted olive-brown matching the peach */
+  /* Grays and Silvery Tones 
+  --light-gray: #f7ece5; 
+  --olive-silvery-green: #dab7a5; */
 
-  /* Additional Colors */
-  --custom-color7: #ffe5d0; /* Slightly lighter peach */
-  --custom-color8: #fbdac4; /* Warm peach for subtle accents */
-  --custom-color9: #ffefe2; /* Very light peach background */
-  --custom-color10: #f9ddc5; /* Softer beige-peach for highlights */
+  /* Additional Colors 
+  --custom-color7: #ffe5d0; 
+  --custom-color8: #fbdac4; 
+  --custom-color9: #ffefe2; 
+  --custom-color10: #f9ddc5; 
 
-  --olive-soft-gray-green: #dfc2b4; /* Subtle olive-beige */
-  --olive-darker-green: #9a7565; /* Deeper complementary tone */
-  --custom-teal: #d4ad9a; /* Muted teal adjusted for harmony */
+  --olive-soft-gray-green: #dfc2b4; 
+  --olive-darker-green: #9a7565;
+  --custom-teal: #d4ad9a; 
+  */
 
   /* colors dec 2024 
   

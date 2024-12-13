@@ -43,20 +43,17 @@ const instagramLinks = [
 
 const InstagramEmbed = () => {
   useEffect(() => {
-    // Inject the Instagram embed script only once
     const script = document.createElement("script");
     script.setAttribute("src", "https://www.instagram.com/embed.js");
     script.setAttribute("async", "true");
     document.body.appendChild(script);
 
-    // Load the embed script to process the embeds
     script.onload = () => {
       if (window.instgrm) {
         window.instgrm.Embeds.process();
       }
     };
 
-    // Clean up the script to avoid memory leaks
     return () => {
       document.body.removeChild(script);
     };
@@ -66,38 +63,56 @@ const InstagramEmbed = () => {
     <div className="instagram-embed-container">
       <style jsx>{`
         .instagram-embed-container {
-          display: flex;
-          flex-wrap: wrap;
-          justify-content: center;
-          gap: 20px;
-          padding: 20px;
+          display: grid;
+          grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+          gap: 1.5rem;
+          padding: 2rem;
+          background-color: var(--light-gray);
+          border-radius: 15px;
+          box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
         }
 
         .instagram-embed-container > div {
-          perspective: 1000px; /* Create 3D effect */
+          perspective: 1000px;
           transition: transform 0.3s ease, box-shadow 0.3s ease;
           transform-style: preserve-3d;
         }
 
         .instagram-embed-container > div:hover {
-          transform: rotateY(10deg) scale(1.05); /* 3D rotation and scaling */
-          box-shadow: 0 10px 20px rgba(0, 0, 0, 0.5); /* Enhanced shadow on hover */
-        }
-
-        .instagram-embed-container::-webkit-scrollbar {
-          width: 10px;
-        }
-
-        .instagram-embed-container::-webkit-scrollbar-thumb {
-          background-color: var(--light-gray);
+          transform: rotateY(10deg) scale(1.05);
+          box-shadow: 0 12px 24px rgba(0, 0, 0, 0.2);
+          background-color: var(--custom-color8);
           border-radius: 10px;
         }
 
-        /* Optional: add individual styling for Instagram embeds */
         .instagram-media {
-          max-height: 500px !important;
-          border-radius: 10px; /* Rounded corners */
+          max-height: 400px !important;
+          border-radius: 10px;
           overflow: hidden;
+          box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        .instagram-media iframe {
+          margin: auto !important;
+          border-radius: 10px;
+        }
+
+        .instagram-media [role="button"],
+        .instagram-media header,
+        .instagram-media .InstagramCaption {
+          display: none !important;
+        }
+
+        @media (max-width: 768px) {
+          .instagram-embed-container {
+            gap: 1rem;
+            padding: 1rem;
+          }
+
+          .instagram-embed-container > div {
+            transform: none;
+            box-shadow: none;
+          }
         }
       `}</style>
 
@@ -106,18 +121,7 @@ const InstagramEmbed = () => {
           key={index}
           dangerouslySetInnerHTML={{
             __html: `
-              <style>
-                .instagram-media {
-                  max-height: 500px !important;
-                }
-                .instagram-media iframe {
-                  margin: auto !important;
-                }
-                .instagram-media [role='button'], .instagram-media header, .instagram-media .InstagramCaption {
-                  display: none !important;
-                }
-              </style>
-              <blockquote class="instagram-media" data-instgrm-captioned data-instgrm-permalink="${link}" data-instgrm-version="14"></blockquote>
+              <blockquote class="instagram-media" data-instgrm-permalink="${link}" data-instgrm-version="14"></blockquote>
             `,
           }}
         />
