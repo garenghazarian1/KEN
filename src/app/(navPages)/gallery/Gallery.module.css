@@ -1,41 +1,32 @@
 .main {
   min-height: 100vh;
-  background-color: var(
-    --main-color
-  ); /* Updated to use the main background color */
+  background-color: var(--main-color);
 }
 
 .title {
   text-align: center;
-  font-size: 4vw; /* Responsive font size based on viewport width */
-  font-weight: 700; /* Bolder weight for emphasis */
-  margin-top: 40px;
-  margin-bottom: 20px;
-  color: var(--header-1); /* Using the strong dark for primary headers */
-  text-transform: uppercase; /* Clean, modern look */
-  letter-spacing: 1.5px; /* Adds space between letters */
-  text-shadow: 2px 2px 6px var(--dark-gray); /* Soft shadow with warm darker gray */
-  transition: color 0.3s ease-in-out, transform 0.3s ease-in-out; /* Smooth hover effect */
+  font-size: 4rem;
+  font-weight: 700;
+  color: var(--header-1);
+  text-shadow: 2px 2px 6px var(--dark-gray);
+  transition: color 0.3s ease-in-out, transform 0.3s ease-in-out;
 }
 
 .title:hover {
-  color: var(--text-hover); /* Slightly darker hover effect */
-  transform: scale(1.05); /* Slight scale-up on hover */
+  color: var(--text-hover);
+  transform: scale(1.05);
 }
 
 /* Adjustments for smaller screens (tablets and below) */
 @media (max-width: 768px) {
   .title {
-    font-size: 6vw; /* Slightly larger font size for smaller screens */
-    letter-spacing: 1px; /* Reduced spacing for better readability */
+    font-size: 2rem;
   }
 }
 
 /* Adjustments for very small screens (mobile) */
 @media (max-width: 480px) {
   .title {
-    font-size: 8vw; /* Larger font size for mobile */
-    margin-top: 20px;
-    margin-bottom: 10px;
+    font-size: 1.5rem;
   }
 }
