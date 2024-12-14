@@ -65,53 +65,41 @@ const InstagramEmbed = () => {
         .instagram-embed-container {
           display: grid;
           grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-          gap: 1.5rem;
-          padding: 2rem;
-          background-color: var(--light-gray);
-          border-radius: 15px;
-          box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
+          gap: 1rem;
+          padding: 1rem;
         }
 
         .instagram-embed-container > div {
-          perspective: 1000px;
-          transition: transform 0.3s ease, box-shadow 0.3s ease;
-          transform-style: preserve-3d;
-        }
-
-        .instagram-embed-container > div:hover {
-          transform: rotateY(10deg) scale(1.05);
-          box-shadow: 0 12px 24px rgba(0, 0, 0, 0.2);
-          background-color: var(--custom-color8);
-          border-radius: 10px;
-        }
-
-        .instagram-media {
-          max-height: 400px !important;
-          border-radius: 10px;
+          position: relative;
           overflow: hidden;
+          border-radius: 10px;
           box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
         }
 
-        .instagram-media iframe {
-          margin: auto !important;
-          border-radius: 10px;
+        .instagram-embed-container > div iframe {
+          width: 100%;
+          height: 100%;
+          border: none;
+          background-color: transparent;
         }
 
-        .instagram-media [role="button"],
+        .instagram-media {
+          border: none !important;
+          padding: 0 !important;
+          margin: 0 !important;
+          background: none !important;
+        }
+
         .instagram-media header,
+        .instagram-media footer,
+        .instagram-media [role="button"],
         .instagram-media .InstagramCaption {
           display: none !important;
         }
 
         @media (max-width: 768px) {
           .instagram-embed-container {
-            gap: 1rem;
-            padding: 1rem;
-          }
-
-          .instagram-embed-container > div {
-            transform: none;
-            box-shadow: none;
+            grid-template-columns: 1fr;
           }
         }
       `}</style>
