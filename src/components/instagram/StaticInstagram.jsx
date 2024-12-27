@@ -47,8 +47,8 @@ const instagramLinks = [
 const InstagramEmbed = () => {
   useEffect(() => {
     const script = document.createElement("script");
-    script.setAttribute("src", "https://www.instagram.com/embed.js");
-    script.setAttribute("async", "true");
+    script.src = "https://www.instagram.com/embed.js";
+    script.async = true;
     document.body.appendChild(script);
 
     script.onload = () => {
@@ -68,36 +68,68 @@ const InstagramEmbed = () => {
         .instagram-embed-container {
           display: grid;
           grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-          gap: 1rem;
-          padding: 1rem;
+          gap: 1.5rem;
+          padding: 2rem;
+          overflow: hidden;
         }
 
         .instagram-embed-container > div {
           position: relative;
+          border-radius: 15px;
+          box-shadow: 0 6px 15px rgba(0, 0, 0, 0.2);
+          transition: transform 0.4s ease, box-shadow 0.4s ease;
+          animation: fadeIn 0.6s ease;
           overflow: hidden;
-          border-radius: 10px;
-          box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        .instagram-embed-container > div:hover {
+          transform: scale(1.05);
+          box-shadow: 0 12px 25px rgba(0, 0, 0, 0.4);
         }
 
         .instagram-embed-container > div iframe {
           width: 100%;
           height: 100%;
           border: none;
-          background-color: transparent;
+          pointer-events: auto; /* Ensures iframe is clickable */
+          transition: transform 0.4s ease;
         }
 
-        .instagram-media {
-          border: none !important;
-          padding: 0 !important;
-          margin: 0 !important;
-          background: none !important;
+        .instagram-embed-container > div:hover iframe {
+          transform: scale(1.03);
         }
 
-        .instagram-media header,
-        .instagram-media footer,
-        .instagram-media [role="button"],
-        .instagram-media .InstagramCaption {
-          display: none !important;
+        .instagram-embed-container > div::after {
+          content: "";
+          position: absolute;
+          top: 0;
+          left: 0;
+          width: 100%;
+          height: 100%;
+          background: radial-gradient(
+            circle,
+            rgba(255, 255, 255, 0.3),
+            transparent 70%
+          );
+          z-index: 1;
+          pointer-events: none; /* Prevents blocking iframe interactions */
+          opacity: 0;
+          transition: opacity 0.4s ease;
+        }
+
+        .instagram-embed-container > div:hover::after {
+          opacity: 1;
+        }
+
+        @keyframes fadeIn {
+          from {
+            opacity: 0;
+            transform: translateY(10px);
+          }
+          to {
+            opacity: 1;
+            transform: translateY(0);
+          }
         }
 
         @media (max-width: 768px) {
