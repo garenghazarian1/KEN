@@ -153,6 +153,8 @@
 /* Text Container */
 .textContainer {
   width: 50%;
+  min-width: 350px;
+  height: 100%;
   padding: 2rem;
   box-sizing: border-box;
   display: flex;
@@ -160,6 +162,7 @@
   justify-content: start;
   align-items: start;
   gap: 1rem;
+  overflow: hidden;
 }
 
 .mainTitle {

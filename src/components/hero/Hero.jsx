@@ -109,44 +109,6 @@ export default function Hero() {
             </div>
           ))}
         </div>
-        {/* <div className={styles.grid}>
-          <div className={styles.gridBox}>
-            <Image
-              src="/heroGridImage/hero001.jpg"
-              alt="Hero 01"
-              className={styles.image}
-              width={500}
-              height={500}
-            />
-          </div>
-          <div className={styles.gridBox}>
-            <Image
-              src="/heroGridImage/hero002.jpg"
-              alt="Hero 02"
-              className={styles.image}
-              width={500}
-              height={500}
-            />
-          </div>
-           <div className={styles.gridBox}>
-            <Image
-              src="/heroGridImage/hero003.jpg"
-              alt="Hero 03"
-              className={styles.image}
-              width={500}
-              height={500}
-            />
-          </div>
-          <div className={styles.gridBox}>
-            <Image
-              src="/heroGridImage/hero004.jpg"
-              alt="Hero 04"
-              className={styles.image}
-              width={500}
-              height={500}
-            />
-          </div> 
-        </div> */}
 
         <div className={styles.textContainer}>
           <h1 className={styles.mainTitle}>
