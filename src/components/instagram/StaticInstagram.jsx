@@ -3,6 +3,8 @@ import { useEffect } from "react";
 
 const instagramLinks = [
   "https://www.instagram.com/reel/DFsmjP_t98e/?utm_source=ig_embed&amp;utm_campaign=loading",
+  "https://www.instagram.com/reel/DFdRZ65yhUI/?utm_source=ig_embed&amp;utm_campaign=loading",
+  "https://www.instagram.com/reel/DFVqft7BvHx/?utm_source=ig_embed&amp;utm_campaign=loading",
   "https://www.instagram.com/reel/DFaUK16oTwC/?utm_source=ig_embed&amp;utm_campaign=loading",
   "https://www.instagram.com/reel/DFIao9eyOGO/?utm_source=ig_embed&amp;utm_campaign=loading",
   "https://www.instagram.com/reel/DEmg7lSyZe4/?utm_source=ig_embed&amp;utm_campaign=loading",
