@@ -1,0 +1,41 @@
+/* delete-account.module.css */
+
+.container {
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 2rem;
+  font-family: sans-serif;
+  color: #293423;
+  line-height: 1.7;
+  background-color: #f9f9f9;
+  border-radius: 12px;
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.08);
+}
+
+.heading {
+  font-size: 2rem;
+  margin-bottom: 1rem;
+  color: #115e59;
+}
+
+.email {
+  font-size: 1.1rem;
+  background-color: #e4dede;
+  padding: 0.6rem 1rem;
+  border-radius: 8px;
+  margin: 1rem 0;
+}
+
+@media screen and (max-width: 480px) {
+  .container {
+    padding: 1.5rem 1rem;
+  }
+
+  .heading {
+    font-size: 1.5rem;
+  }
+
+  .email {
+    font-size: 1rem;
+  }
+}
