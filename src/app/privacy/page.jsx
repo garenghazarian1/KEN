@@ -23,10 +23,24 @@ export default function PrivacyPage() {
       </p>
       <p>
         We do not collect, store, or share any personal data through the app.
-        All information shared or entered is handled by the website and follows
-        its own privacy terms.
+        All personal information is handled directly by the Ken Beauty Salon
+        website according to its own Privacy Policy.
       </p>
-      <p>If you have any questions, contact us at garenghazarian1@gmail.com.</p>
+      <p>
+        Any data you enter (such as booking information) is transmitted securely
+        and used only to provide salon services. We do not sell or share your
+        personal data with third parties for marketing.
+      </p>
+      <p>
+        Children under the age of 13 are not intended users of this app, and we
+        do not knowingly collect information from children.
+      </p>
+      <p>
+        If you have any questions about this Privacy Policy, please contact us
+        at:
+        <br />
+        📧 garenghazarian1@gmail.com
+      </p>
     </main>
   );
 }
