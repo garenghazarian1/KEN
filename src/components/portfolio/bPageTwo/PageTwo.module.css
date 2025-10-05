@@ -2,7 +2,7 @@
 
 .containerB {
   color: var(--teal-800);
-  background-image: url("https://res.cloudinary.com/dzzm7ye56/image/upload/v1727098698/background_pt2alb.jpg");
+  background-image: url("/background.jpg");
   background-size: cover;
   background-position: center;
   overflow: hidden;

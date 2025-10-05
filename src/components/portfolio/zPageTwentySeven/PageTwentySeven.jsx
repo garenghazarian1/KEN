@@ -17,7 +17,7 @@ export default function PageTwentySeven() {
 
         <div className={styles.sectionB}>
           {/* <h2 className={styles.sectionAHeader}> We Are Featured in the Press and Media</h2> */}
-          <video
+          {/* <video
             src="portfolio/press.mp4"
             alt="Salon Video"
             autoPlay
@@ -26,7 +26,7 @@ export default function PageTwentySeven() {
             playsInline
             preload="auto"
             className={styles.video}
-          />
+          /> */}
           <video
             src="portfolio/PressYerevan.mp4"
             alt="Salon Video"

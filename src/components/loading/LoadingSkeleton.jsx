@@ -5,12 +5,12 @@ export default function LoadingSkeleton() {
   return (
     <div className={styles.container}>
       <Image
-        src="https://res.cloudinary.com/dzzm7ye56/image/upload/v1727122226/logo03_olcvzr.png"
+        src="/logo03.png"
         alt="loading"
-        loading="lazy"
         as="image"
         width={100}
         height={100}
+        priority
         className={styles.logo}
       />
     </div>

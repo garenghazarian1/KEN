@@ -8,7 +8,7 @@ export default function PageEleven() {
       <div className={styles.containerD}>
         <div className={styles.leftPaneD}>
           <Image
-            src="/logo01.jpg"
+            src="/logo01.png"
             alt="K Logo"
             className={styles.imageD}
             width={250}
