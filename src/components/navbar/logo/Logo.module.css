@@ -12,6 +12,6 @@
 }
 
 .image {
-  width: 50px;
-  height: 60;
+  width: auto;
+  height: auto;
 }
