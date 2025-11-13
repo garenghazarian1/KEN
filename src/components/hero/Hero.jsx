@@ -16,7 +16,7 @@ const imagesSet = [
     "/heroGridImage/hero007.jpg",
     "/heroGridImage/hero008.jpg",
     "/heroGridImage/hero009.jpg",
-    "/heroGridImage/hero010.jpg",
+    "/heroGridImage/hero003.jpg",
   ],
 ];
 
