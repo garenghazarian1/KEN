@@ -59,7 +59,7 @@ export default function DeleteAccountPage() {
         number) to be deleted from our records, please send an email to:
       </p>
       <p className={styles.email}>
-        dY"� <strong>garenghazarian1@gmail.com</strong>
+        Email: <strong>garenghazarian1@gmail.com</strong>
       </p>
       <p>We will delete your data within 48 hours of receiving your request.</p>
     </main>

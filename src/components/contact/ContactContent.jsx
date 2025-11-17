@@ -1,5 +1,6 @@
 ﻿"use client";
 
+import Image from "next/image";
 import styles from "@/app/(navPages)/contact/Contact.module.css";
 
 // Reusable Store Info Component
@@ -7,10 +8,13 @@ const StoreInfo = ({ store }) => (
   <div className={styles.storeContainer}>
     <div className={styles.section}>
       <h2 className={styles.sectionHeader}>{store.name}</h2>
-      <img
+      <Image
         src={store.imageStore}
         alt={`${store.name} image`}
         className={styles.storeImage}
+        width={500}
+        height={500}
+        priority={false}
       />
       <div className={styles.storeDetails}>
         <p className={styles.p}>{store.street}</p>

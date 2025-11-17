@@ -74,7 +74,7 @@ export default function PrivacyPage() {
         If you have any questions about this Privacy Policy, please contact us
         at:
         <br />
-        dY"� garenghazarian1@gmail.com
+        Email: garenghazarian1@gmail.com
       </p>
     </main>
   );

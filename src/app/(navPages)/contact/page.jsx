@@ -49,7 +49,7 @@ const stores = [
     mobile: "+971 55 557 0029",
     barberMobile: "+971 56 181 6017",
     email: "ken.beauty1@hotmail.com",
-    imageStore: "Rixos.jpg",
+    imageStore: "/Rixos.jpg",
   },
 ];
 
