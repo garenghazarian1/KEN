@@ -1,6 +1,29 @@
-"use client";
-
+﻿import Script from "next/script";
 import styles from "./Contact.module.css";
+
+export const metadata = {
+  title: "Contact & Locations | Ken Beauty Salon Abu Dhabi",
+  description:
+    "Contact Ken Beauty Salon and find our Abu Dhabi locations at The Galleria Al Maryah Island and Rixos Hotel Marina.",
+  alternates: {
+    canonical: "/contact",
+  },
+  openGraph: {
+    title: "Contact & Locations | Ken Beauty Salon Abu Dhabi",
+    description:
+      "Call, email, or visit Ken Beauty Salon at The Galleria or Rixos Hotel Marina in Abu Dhabi.",
+    url: "/contact",
+    siteName: "Ken Beauty Salon",
+    locale: "en_US",
+    type: "website",
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Contact & Locations | Ken Beauty Salon Abu Dhabi",
+    description:
+      "Reach Ken Beauty Salon at The Galleria Al Maryah Island and Rixos Hotel Marina in Abu Dhabi.",
+  },
+};
 
 // Store data
 const stores = [
@@ -30,6 +53,30 @@ const stores = [
     imageStore: "Rixos.jpg",
   },
 ];
+
+const contactJsonLd = {
+  "@context": "https://schema.org",
+  "@type": "ContactPage",
+  name: "Contact Ken Beauty Salon",
+  url: "https://www.kenbeautysalon.com/contact",
+  contactPoint: stores.map((store) => ({
+    "@type": "ContactPoint",
+    contactType: "customer service",
+    telephone: store.mobile,
+    areaServed: "AE",
+  })),
+  mainEntity: {
+    "@type": "Organization",
+    name: "Ken Beauty Salon",
+    url: "https://www.kenbeautysalon.com/",
+    sameAs: [
+      "https://www.instagram.com/ken_beauty_ad",
+      "https://www.instagram.com/ken_barbershop.ad",
+      "https://www.tiktok.com/@ken_barbershop.ad",
+      "https://www.tiktok.com/@kenbeauty04",
+    ],
+  },
+};
 
 // Reusable Store Info Component
 const StoreInfo = ({ store }) => (
@@ -83,6 +130,12 @@ const StoreInfo = ({ store }) => (
 const Contact = () => {
   return (
     <div className={styles.container}>
+      <Script
+        id="ld-contact"
+        type="application/ld+json"
+        strategy="beforeInteractive"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(contactJsonLd) }}
+      />
       {/* Render Each Store Using the StoreInfo Component */}
       {stores.map((store) => (
         <StoreInfo key={store._id} store={store} />

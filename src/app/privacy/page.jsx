@@ -1,14 +1,49 @@
-// app/privacy/page.tsx
+﻿// app/privacy/page.tsx
+import Script from "next/script";
 import styles from "./privacy.module.css";
 
 export const metadata = {
-  title: "Privacy Policy Ken Beauty Salon",
-  description: "How Ken Beauty Salon handles your privacy.",
+  title: "Privacy Policy | Ken Beauty Salon",
+  description: "How Ken Beauty Salon handles your privacy and data.",
+  alternates: {
+    canonical: "/privacy",
+  },
+  openGraph: {
+    title: "Privacy Policy | Ken Beauty Salon",
+    description: "Learn how Ken Beauty Salon manages your data and privacy.",
+    url: "/privacy",
+    siteName: "Ken Beauty Salon",
+    locale: "en_US",
+    type: "article",
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Privacy Policy | Ken Beauty Salon",
+    description: "Learn how Ken Beauty Salon manages your data and privacy.",
+  },
+};
+
+const privacyJsonLd = {
+  "@context": "https://schema.org",
+  "@type": "PrivacyPolicy",
+  name: "Ken Beauty Salon Privacy Policy",
+  url: "https://www.kenbeautysalon.com/privacy",
+  publisher: {
+    "@type": "Organization",
+    name: "Ken Beauty Salon",
+    url: "https://www.kenbeautysalon.com/",
+  },
 };
 
 export default function PrivacyPage() {
   return (
     <main className={styles.container}>
+      <Script
+        id="ld-privacy"
+        type="application/ld+json"
+        strategy="beforeInteractive"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(privacyJsonLd) }}
+      />
       <h1>Privacy Policy</h1>
       <p>
         This app displays the Ken Beauty Salon website (
@@ -39,7 +74,7 @@ export default function PrivacyPage() {
         If you have any questions about this Privacy Policy, please contact us
         at:
         <br />
-        📧 garenghazarian1@gmail.com
+        dY"� garenghazarian1@gmail.com
       </p>
     </main>
   );
