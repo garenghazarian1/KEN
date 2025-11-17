@@ -1,5 +1,4 @@
-﻿import Script from "next/script";
-import styles from "./Contact.module.css";
+﻿import styles from "./Contact.module.css";
 
 export const metadata = {
   title: "Contact & Locations | Ken Beauty Salon Abu Dhabi",
@@ -130,10 +129,9 @@ const StoreInfo = ({ store }) => (
 const Contact = () => {
   return (
     <div className={styles.container}>
-      <Script
+      <script
         id="ld-contact"
         type="application/ld+json"
-        strategy="beforeInteractive"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(contactJsonLd) }}
       />
       {/* Render Each Store Using the StoreInfo Component */}
