@@ -9,112 +9,29 @@
   top: 0;
   left: 0;
   right: 0;
-  z-index: var(--z-index-50);
-  padding: 0 var(--spacing-4);
-  gap: var(--spacing-2);
+  z-index: 50;
 }
 
 .button {
   cursor: pointer;
   text-align: center;
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
+  display: inline-block;
   background-color: var(--teal-950);
   color: var(--color-text-inverse);
-  font-weight: var(--font-weight-bold);
-  font-size: var(--font-size-sm);
-  border-radius: var(--radius-full);
-  padding: var(--spacing-3) var(--spacing-4);
-  min-width: 44px; /* Minimum touch target size for accessibility */
-  min-height: 44px;
-  box-shadow: var(--shadow-light);
-  transition: transform var(--transition-base) var(--ease-in-out),
-    background-color var(--transition-base) var(--ease-in-out);
-  text-decoration: none;
+  font-weight: bold;
+  font-size: 0.8rem;
+  border-radius: 9999px;
+  padding: 0.5rem 1rem;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s ease, background-color 0.3s ease;
 }
 
 .button:hover {
   background-color: var(--color-secondary-dark);
-  transform: scale(1.05);
 }
 
-.button:active {
-  transform: scale(0.95);
-}
-
-/* Tablet adjustments */
 @media (max-width: 1024px) {
-  .navbar {
-    padding: 0 var(--spacing-3);
-  }
-
   .button {
-    margin-right: var(--spacing-12);
-    font-size: var(--font-size-xs);
-    padding: var(--spacing-2) var(--spacing-3);
-  }
-}
-
-/* Mobile landscape and small tablets */
-@media (max-width: 768px) {
-  .navbar {
-    height: 4.5rem;
-    padding: 0 var(--spacing-2);
-    gap: var(--spacing-1);
-  }
-
-  .button {
-    margin-right: var(--spacing-8);
-    font-size: var(--font-size-xs);
-    padding: var(--spacing-2) var(--spacing-3);
-  }
-}
-
-/* Small mobile devices (480px and below) */
-@media (max-width: 480px) {
-  .navbar {
-    height: 4rem;
-    padding: 0 var(--spacing-2);
-  }
-
-  .button {
-    margin-right: var(--spacing-6);
-    font-size: var(--font-size-xs);
-    padding: var(--spacing-2) var(--spacing-2-5);
-    min-width: 44px;
-    min-height: 44px;
-  }
-}
-
-/* Extra small mobile devices (360px and below) */
-@media (max-width: 360px) {
-  .navbar {
-    height: 3.75rem;
-    padding: 0 var(--spacing-1-5);
-  }
-
-  .button {
-    margin-right: var(--spacing-4);
-    font-size: var(--font-size-xs);
-    padding: var(--spacing-1-5) var(--spacing-2);
-    min-width: 44px;
-    min-height: 44px;
-  }
-}
-
-/* Minimum mobile size (320px) */
-@media (max-width: 320px) {
-  .navbar {
-    height: 3.5rem;
-    padding: 0 var(--spacing-1);
-  }
-
-  .button {
-    margin-right: var(--spacing-3);
-    font-size: var(--font-size-xs);
-    padding: var(--spacing-1-5) var(--spacing-2);
-    min-width: 44px; /* Maintain minimum touch target */
-    min-height: 44px;
+    margin-right: 5rem;
   }
 }

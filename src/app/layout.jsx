@@ -45,7 +45,7 @@ export default function RootLayout({ children }) {
           </div>
         </ClientLayout>
         <Analytics />
-        <Script src={THIRD_PARTY.tidio.scriptUrl} strategy="afterInteractive" />
+        <Script src={THIRD_PARTY.tidio.scriptUrl} strategy="lazyOnload" />
       </body>
     </html>
   );
