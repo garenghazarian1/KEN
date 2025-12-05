@@ -72,7 +72,7 @@ export default function TestErrorPage() {
             overlay first.
             <br />
             <strong>To see ErrorBoundary:</strong> Press <kbd>ESC</kbd> or click
-            the X to dismiss the overlay, then you'll see the ErrorBoundary
+            the X to dismiss the overlay, then you&apos;ll see the ErrorBoundary
             fallback UI
           </li>
           <li>
@@ -81,10 +81,10 @@ export default function TestErrorPage() {
             directly (no Next.js overlay)
           </li>
           <li>
-            Once you see the ErrorBoundary UI, try the "Try Again" button to
+            Once you see the ErrorBoundary UI, try the &quot;Try Again&quot; button to
             reset
           </li>
-          <li>Try the "Go to Home" link to navigate away</li>
+          <li>Try the &quot;Go to Home&quot; link to navigate away</li>
         </ol>
 
         <div
@@ -97,7 +97,7 @@ export default function TestErrorPage() {
           }}
         >
           <strong>💡 Tip:</strong> The ErrorBoundary is working correctly!
-          Next.js's development overlay is just showing first. In production,
+          Next.js&apos;s development overlay is just showing first. In production,
           users will only see the ErrorBoundary UI.
         </div>
       </div>
