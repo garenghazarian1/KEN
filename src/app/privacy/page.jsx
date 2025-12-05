@@ -1,37 +1,38 @@
 ﻿// app/privacy/page.tsx
 import Script from "next/script";
 import styles from "./privacy.module.css";
+import { BASE_URL, BUSINESS, getFullUrl } from "@/config/constants";
 
 export const metadata = {
-  title: "Privacy Policy | Ken Beauty Salon",
-  description: "How Ken Beauty Salon handles your privacy and data.",
+  title: `Privacy Policy | ${BUSINESS.name}`,
+  description: `How ${BUSINESS.name} handles your privacy and data.`,
   alternates: {
     canonical: "/privacy",
   },
   openGraph: {
-    title: "Privacy Policy | Ken Beauty Salon",
-    description: "Learn how Ken Beauty Salon manages your data and privacy.",
+    title: `Privacy Policy | ${BUSINESS.name}`,
+    description: `Learn how ${BUSINESS.name} manages your data and privacy.`,
     url: "/privacy",
-    siteName: "Ken Beauty Salon",
+    siteName: BUSINESS.name,
     locale: "en_US",
     type: "article",
   },
   twitter: {
     card: "summary_large_image",
-    title: "Privacy Policy | Ken Beauty Salon",
-    description: "Learn how Ken Beauty Salon manages your data and privacy.",
+    title: `Privacy Policy | ${BUSINESS.name}`,
+    description: `Learn how ${BUSINESS.name} manages your data and privacy.`,
   },
 };
 
 const privacyJsonLd = {
   "@context": "https://schema.org",
   "@type": "PrivacyPolicy",
-  name: "Ken Beauty Salon Privacy Policy",
-  url: "https://www.kenbeautysalon.com/privacy",
+  name: `${BUSINESS.name} Privacy Policy`,
+  url: getFullUrl("/privacy"),
   publisher: {
     "@type": "Organization",
-    name: "Ken Beauty Salon",
-    url: "https://www.kenbeautysalon.com/",
+    name: BUSINESS.name,
+    url: BASE_URL,
   },
 };
 
@@ -46,13 +47,9 @@ export default function PrivacyPage() {
       />
       <h1>Privacy Policy</h1>
       <p>
-        This app displays the Ken Beauty Salon website (
-        <a
-          href="https://www.kenbeautysalon.com"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          https://www.kenbeautysalon.com
+        This app displays the {BUSINESS.name} website (
+        <a href={BASE_URL} target="_blank" rel="noopener noreferrer">
+          {BASE_URL}
         </a>
         ) using a WebView.
       </p>

@@ -2,44 +2,42 @@
 import InstagramFeed from "@/components/instagram/InstagramFeed";
 import styles from "./Gallery.module.css";
 import InstagramEmbed from "@/components/instagram/StaticInstagram";
+import { BASE_URL, BUSINESS, getFullUrl } from "@/config/constants";
 
 export const metadata = {
-  title: "Gallery | Ken Beauty Salon Abu Dhabi",
-  description:
-    "Browse Ken Beauty Salon's gallery featuring our latest looks and Instagram highlights in Abu Dhabi.",
+  title: `Gallery | ${BUSINESS.name} Abu Dhabi`,
+  description: `Browse ${BUSINESS.name}'s gallery featuring our latest looks and Instagram highlights in Abu Dhabi.`,
   alternates: {
     canonical: "/gallery",
   },
   openGraph: {
-    title: "Gallery | Ken Beauty Salon Abu Dhabi",
-    description:
-      "See recent work from Ken Beauty Salon including hair, nails, and beauty transformations.",
+    title: `Gallery | ${BUSINESS.name} Abu Dhabi`,
+    description: `See recent work from ${BUSINESS.name} including hair, nails, and beauty transformations.`,
     url: "/gallery",
-    siteName: "Ken Beauty Salon",
+    siteName: BUSINESS.name,
     locale: "en_US",
     type: "website",
   },
   twitter: {
     card: "summary_large_image",
-    title: "Gallery | Ken Beauty Salon Abu Dhabi",
-    description:
-      "See recent work from Ken Beauty Salon including hair, nails, and beauty transformations.",
+    title: `Gallery | ${BUSINESS.name} Abu Dhabi`,
+    description: `See recent work from ${BUSINESS.name} including hair, nails, and beauty transformations.`,
   },
 };
 
 const galleryJsonLd = {
   "@context": "https://schema.org",
   "@type": "CollectionPage",
-  name: "Ken Beauty Salon Gallery",
-  url: "https://www.kenbeautysalon.com/gallery",
+  name: `${BUSINESS.name} Gallery`,
+  url: getFullUrl("/gallery"),
   about: {
     "@type": "Service",
     name: "Beauty and Barber Services",
-    areaServed: "Abu Dhabi",
+    areaServed: BUSINESS.location.city,
     provider: {
       "@type": "BeautySalon",
-      name: "Ken Beauty Salon",
-      url: "https://www.kenbeautysalon.com/",
+      name: BUSINESS.name,
+      url: BASE_URL,
     },
   },
 };

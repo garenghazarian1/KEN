@@ -4,6 +4,7 @@ import styles from "./Hero.module.css";
 import { FaWhatsapp } from "react-icons/fa";
 import Image from "next/image";
 import { useState, useEffect } from "react";
+import { CONTACT } from "@/config/constants";
 
 const imagesSet = [
   [
@@ -74,7 +75,7 @@ export default function Hero() {
         </div>
         <div className={styles.buttonContainer}>
           <a
-            href="https://wa.me/971555570029?text=Hello%20KEN%20Beauty%20Center%2C%20I%20would%20like%20to%20know%20more%20about%20your%20services."
+            href={CONTACT.whatsapp.url()}
             target="_blank"
             rel="noopener noreferrer"
             className={styles.whatsappButton}

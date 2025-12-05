@@ -3,9 +3,9 @@ import { useState, useEffect, useRef } from "react";
 import Link from "next/link";
 import NavLink from "./navLink/navLink";
 import HamburgerButton from "../HamburgerButton/HamburgerButton";
-
 import Image from "next/image";
 import styles from "./Links.module.css";
+import { BOOKING_URL } from "@/config/constants";
 
 export default function Links() {
   const [open, setOpen] = useState(false);
@@ -15,7 +15,7 @@ export default function Links() {
     { title: "Home", path: "/" },
     {
       title: "Book",
-      path: "https://kenbeauty.zenoti.com/webstoreNew/services",
+      path: BOOKING_URL,
     },
     { title: "About Us", path: "/about" },
     { title: "Contact", path: "/contact" },
@@ -43,16 +43,6 @@ export default function Links() {
   // Function to close the menu
   const closeMenu = () => {
     setOpen(false);
-  };
-
-  //LOGOUT *******************************************
-  const handleLogout = async () => {
-    try {
-      await signOut({ redirect: false });
-      // No need to manually route to '/' since NextAuth will handle this based on your configuration
-    } catch (error) {
-      console.error(error, "Logout error:");
-    }
   };
 
   return (

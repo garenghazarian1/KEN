@@ -18,19 +18,26 @@
   text-align: center;
   display: inline-block;
   background-color: var(--teal-950);
-  color: var(--text-color);
-  opacity: 0.75;
+  color: var(
+    --color-text-inverse
+  ); /* Use inverse text for better contrast on dark button */
+  opacity: 1; /* Removed opacity for better contrast */
   font-weight: bold;
   font-size: 0.8rem;
   border-radius: 9999px;
   padding: 0.5rem 1rem;
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-  transition: transform 0.3s ease-in-out;
+  transition: transform var(--transition-base) var(--ease-in-out),
+    background-color var(--transition-base) var(--ease-in-out);
 }
 
 .button:hover {
-  transform: scale(1.05);
+  background-color: var(
+    --color-secondary-dark
+  ); /* Darker on hover for better feedback */
 }
+
+/* Removed - hover styles now in .button rule above */
 
 @media (max-width: 1024px) {
   .button {

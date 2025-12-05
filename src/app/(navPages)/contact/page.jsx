@@ -1,4 +1,11 @@
 ﻿import ContactContent from "@/components/contact/ContactContent";
+import { stores } from "@/data/stores";
+import {
+  BASE_URL,
+  BUSINESS,
+  getSocialMediaArray,
+  getFullUrl,
+} from "@/config/constants";
 
 export const metadata = {
   title: "Contact & Locations | Ken Beauty Salon Abu Dhabi",
@@ -12,7 +19,7 @@ export const metadata = {
     description:
       "Call, email, or visit Ken Beauty Salon at The Galleria or Rixos Hotel Marina in Abu Dhabi.",
     url: "/contact",
-    siteName: "Ken Beauty Salon",
+    siteName: BUSINESS.name,
     locale: "en_US",
     type: "website",
   },
@@ -24,56 +31,22 @@ export const metadata = {
   },
 };
 
-// Store data
-const stores = [
-  {
-    _id: "1",
-    name: "Ken Salon, The Galleria Al Maryah Island",
-    street: "The Galleria Al Maryah Island - 107 Hamouda Bin Ali Al Dhaheri St",
-    city: "Abu Dhabi",
-    zipCode: "00000",
-    country: "United Arab Emirates",
-    phone: "(02) 6218808",
-    mobile: "+971 503043570",
-    email: "ken.beauty1@hotmail.com",
-    imageStore: "/Galleria.jpg",
-  },
-  {
-    _id: "2",
-    name: "Ken Salon, Rixos Hotel",
-    street: "Rixos Hotel, Marina - Al Kasir - Al Marina",
-    city: "Abu Dhabi",
-    zipCode: "00000",
-    country: "United Arab Emirates",
-    phone: "(02) 635 9993",
-    mobile: "+971 55 557 0029",
-    barberMobile: "+971 56 181 6017",
-    email: "ken.beauty1@hotmail.com",
-    imageStore: "/Rixos.jpg",
-  },
-];
-
 const contactJsonLd = {
   "@context": "https://schema.org",
   "@type": "ContactPage",
-  name: "Contact Ken Beauty Salon",
-  url: "https://www.kenbeautysalon.com/contact",
+  name: `Contact ${BUSINESS.name}`,
+  url: getFullUrl("/contact"),
   contactPoint: stores.map((store) => ({
     "@type": "ContactPoint",
     contactType: "customer service",
     telephone: store.mobile,
-    areaServed: "AE",
+    areaServed: BUSINESS.location.countryCode,
   })),
   mainEntity: {
     "@type": "Organization",
-    name: "Ken Beauty Salon",
-    url: "https://www.kenbeautysalon.com/",
-    sameAs: [
-      "https://www.instagram.com/ken_beauty_ad",
-      "https://www.instagram.com/ken_barbershop.ad",
-      "https://www.tiktok.com/@ken_barbershop.ad",
-      "https://www.tiktok.com/@kenbeauty04",
-    ],
+    name: BUSINESS.name,
+    url: BASE_URL,
+    sameAs: getSocialMediaArray(),
   },
 };
 

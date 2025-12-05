@@ -1,24 +1,25 @@
 ﻿import Script from "next/script";
 import styles from "./delete-account.module.css";
+import { BASE_URL, BUSINESS, getFullUrl } from "@/config/constants";
 
 export const metadata = {
-  title: "Delete Account | Ken Beauty Salon",
-  description: "Request deletion of your data from Ken Beauty Salon.",
+  title: `Delete Account | ${BUSINESS.name}`,
+  description: `Request deletion of your data from ${BUSINESS.name}.`,
   alternates: {
     canonical: "/deleteAccount",
   },
   openGraph: {
-    title: "Delete Account | Ken Beauty Salon",
-    description: "Request removal of your personal data from Ken Beauty Salon.",
+    title: `Delete Account | ${BUSINESS.name}`,
+    description: `Request removal of your personal data from ${BUSINESS.name}.`,
     url: "/deleteAccount",
-    siteName: "Ken Beauty Salon",
+    siteName: BUSINESS.name,
     locale: "en_US",
     type: "article",
   },
   twitter: {
     card: "summary_large_image",
-    title: "Delete Account | Ken Beauty Salon",
-    description: "Request removal of your personal data from Ken Beauty Salon.",
+    title: `Delete Account | ${BUSINESS.name}`,
+    description: `Request removal of your personal data from ${BUSINESS.name}.`,
   },
 };
 
@@ -35,8 +36,8 @@ const deleteJsonLd = {
       },
     },
   ],
-  url: "https://www.kenbeautysalon.com/deleteAccount",
-  name: "Delete Account | Ken Beauty Salon",
+  url: getFullUrl("/deleteAccount"),
+  name: `Delete Account | ${BUSINESS.name}`,
 };
 
 export default function DeleteAccountPage() {
@@ -50,7 +51,7 @@ export default function DeleteAccountPage() {
       />
       <h1 className={styles.heading}>Request to Delete Your Data</h1>
       <p>
-        At Ken Beauty Salon, we respect your privacy. While we do not offer
+        At {BUSINESS.name}, we respect your privacy. While we do not offer
         account creation, we may store your booking or contact information
         temporarily to process your appointment.
       </p>

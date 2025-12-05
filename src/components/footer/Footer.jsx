@@ -1,4 +1,5 @@
 import Link from "next/link";
+import { BUSINESS, SOCIAL_MEDIA, SOCIAL_HANDLES } from "@/config/constants";
 
 export default function Footer() {
   return (
@@ -6,16 +7,17 @@ export default function Footer() {
       <div className="mb-4 flex-grow sm:flex-grow-0">
         <Link href="/" passHref>
           <span className="flex title-font font-medium items-center justify-center text-white text-xl cursor-pointer">
-            Ken Salon
+            {BUSINESS.name}
           </span>
         </Link>
       </div>
 
       <div className="flex justify-center items-center gap-8 mb-4">
         <Link
-          href="https://www.instagram.com/ken_beauty_ad"
+          href={SOCIAL_MEDIA.instagram.beauty}
           passHref
           target="_blank"
+          aria-label={`Follow us on Instagram: ${SOCIAL_HANDLES.instagram.beauty}`}
         >
           <svg
             stroke="currentColor"
@@ -29,9 +31,10 @@ export default function Footer() {
           </svg>
         </Link>
         <Link
-          href="https://www.instagram.com/ken_barbershop.ad"
+          href={SOCIAL_MEDIA.instagram.barbershop}
           passHref
           target="_blank"
+          aria-label={`Follow us on Instagram: ${SOCIAL_HANDLES.instagram.barbershop}`}
         >
           <svg
             stroke="currentColor"
@@ -45,9 +48,10 @@ export default function Footer() {
           </svg>
         </Link>
         <Link
-          href="https://www.tiktok.com/@ken_barbershop.ad"
+          href={SOCIAL_MEDIA.tiktok.barbershop}
           passHref
           target="_blank"
+          aria-label={`Follow us on TikTok: ${SOCIAL_HANDLES.tiktok.barbershop}`}
         >
           <svg
             stroke="currentColor"
@@ -61,9 +65,10 @@ export default function Footer() {
           </svg>
         </Link>
         <Link
-          href="https://www.tiktok.com/@kenbeauty04"
+          href={SOCIAL_MEDIA.tiktok.beauty}
           passHref
           target="_blank"
+          aria-label={`Follow us on TikTok: ${SOCIAL_HANDLES.tiktok.beauty}`}
         >
           <svg
             stroke="currentColor"
@@ -80,12 +85,13 @@ export default function Footer() {
 
       <div>
         <p className="text-sm text-gray-400">
-          © 2024 Ken&apos;s Salon —
+          © 2024 {BUSINESS.name} —
           <Link
-            href="https://twitter.com/kenssalon"
+            href={SOCIAL_MEDIA.twitter}
             className="text-gray-500 ml-1"
+            aria-label={`Follow us on Twitter: ${SOCIAL_HANDLES.twitter}`}
           >
-            @kenssalon
+            {SOCIAL_HANDLES.twitter}
           </Link>
         </p>
       </div>
