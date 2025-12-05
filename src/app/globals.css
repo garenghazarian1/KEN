@@ -126,6 +126,35 @@ img {
   --glass-blur-lg: 15px; /* Large blur */
   --glass-blur-xl: 20px; /* Extra large blur */
 
+  /* ============================================
+     MODERN GLASS EFFECT COLORS
+     Centralized colors for glassmorphism design pattern
+     Used in navbar, buttons, and other modern UI elements
+     ============================================ */
+
+  /* Glass Background - White/Neutral */
+  --glass-white-light: rgba(255, 255, 255, 0.1);
+  --glass-white-medium: rgba(255, 255, 255, 0.15);
+  --glass-white-strong: rgba(255, 255, 255, 0.2);
+  --glass-white-stronger: rgba(255, 255, 255, 0.3);
+  --glass-white-strongest: rgba(255, 255, 255, 0.4);
+
+  /* Glass Background - Teal/Brand Colors */
+  --glass-teal-light: rgba(174, 139, 119, 0.2);
+  --glass-teal-medium: rgba(174, 139, 119, 0.3);
+  --glass-teal-strong: rgba(174, 139, 119, 0.5);
+  --glass-teal-stronger: rgba(174, 139, 119, 0.8);
+  --glass-teal-dark: rgba(154, 117, 101, 0.6);
+  --glass-teal-darker: rgba(154, 117, 101, 0.9);
+
+  /* Glass Border Colors */
+  --glass-border-light: rgba(174, 139, 119, 0.3);
+  --glass-border-medium: rgba(174, 139, 119, 0.5);
+  --glass-border-strong: rgba(174, 139, 119, 0.7);
+
+  /* Glass Effect - Transparent (blur only) */
+  --glass-transparent: transparent;
+
   /* Legacy Color Mappings (for backward compatibility during migration) */
   --main-color: var(--color-primary);
   --custom-green: var(--color-primary-dark);
