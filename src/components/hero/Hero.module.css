@@ -22,18 +22,25 @@
   justify-content: center;
   width: 60px;
   height: 60px;
+  min-width: 44px; /* Minimum touch target size for accessibility */
+  min-height: 44px;
   background-color: var(--whatsapp-bg);
-  border-radius: 50%;
-  color: white;
+  border-radius: var(--radius-full);
+  color: var(--color-text-inverse);
   text-decoration: none;
   box-shadow: 0 4px 10px var(--box-shadow-medium);
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  transition: transform var(--transition-base) var(--ease-in-out),
+    box-shadow var(--transition-base) var(--ease-in-out);
 }
 
 .whatsappButton:hover {
   transform: scale(1.1);
   box-shadow: 0 8px 20px var(--box-shadow-hover);
   background-color: var(--whatsapp-hover-bg);
+}
+
+.whatsappButton:active {
+  transform: scale(0.95);
 }
 
 .glassTop,
@@ -155,20 +162,21 @@
   width: 50%;
   min-width: 350px;
   height: 100%;
-  padding: 2rem;
+  padding: var(--spacing-8);
   box-sizing: border-box;
   display: flex;
   flex-direction: column;
   justify-content: start;
   align-items: start;
-  gap: 1rem;
+  gap: var(--spacing-4);
   overflow: hidden;
 }
 
 .mainTitle {
-  font-size: 2.5rem;
-  font-weight: bold;
+  font-size: var(--font-size-4xl);
+  font-weight: var(--font-weight-bold);
   color: var(--main-title-color);
+  line-height: var(--line-height-tight);
 }
 
 .subTitle {
@@ -180,8 +188,8 @@
 }
 
 .paragraph {
-  font-size: 1rem;
-  line-height: 1.5;
+  font-size: var(--font-size-base);
+  line-height: var(--line-height-relaxed);
   color: var(--paragraph-text-color);
 }
 
@@ -195,6 +203,20 @@
   }
 }
 
+/* Tablet and below (768px) */
+@media (max-width: 768px) {
+  .buttonContainer {
+    bottom: var(--spacing-16);
+    right: var(--spacing-4);
+  }
+
+  .whatsappButton {
+    width: 56px;
+    height: 56px;
+  }
+}
+
+/* Mobile landscape and small tablets (below 790px) */
 @media (max-width: 790px) {
   .heroVideo {
     flex: 1 1 100%; /* Full-width video */
@@ -213,12 +235,87 @@
   }
   .textContainer {
     width: 100%;
+    min-width: unset; /* Remove min-width constraint for mobile */
+    padding: var(--spacing-6);
   }
   .mainTitle {
-    font-size: 1.5rem;
+    font-size: var(--font-size-2xl);
   }
   .paragraph {
-    font-size: 0.8rem;
-    line-height: 1.5;
+    font-size: var(--font-size-sm);
+    line-height: var(--line-height-relaxed);
+  }
+}
+
+/* Small mobile devices (480px and below) */
+@media (max-width: 480px) {
+  .buttonContainer {
+    bottom: var(--spacing-12);
+    right: var(--spacing-3);
+  }
+
+  .whatsappButton {
+    width: 52px;
+    height: 52px;
+  }
+
+  .textContainer {
+    padding: var(--spacing-4);
+    gap: var(--spacing-3);
+  }
+
+  .mainTitle {
+    font-size: var(--font-size-xl);
+  }
+
+  .paragraph {
+    font-size: var(--font-size-sm);
+  }
+
+  .grid {
+    grid-template-columns: 1fr; /* Single column on very small screens */
+    min-height: 40%;
+  }
+}
+
+/* Extra small mobile devices (360px and below) */
+@media (max-width: 360px) {
+  .buttonContainer {
+    bottom: var(--spacing-10);
+    right: var(--spacing-2);
+  }
+
+  .whatsappButton {
+    width: 48px;
+    height: 48px;
+  }
+
+  .textContainer {
+    padding: var(--spacing-3);
+    gap: var(--spacing-2);
+  }
+
+  .mainTitle {
+    font-size: var(--font-size-lg);
+  }
+
+  .paragraph {
+    font-size: var(--font-size-xs);
+  }
+}
+
+/* Minimum mobile size (320px) */
+@media (max-width: 320px) {
+  .textContainer {
+    padding: var(--spacing-2);
+  }
+
+  .mainTitle {
+    font-size: var(--font-size-base);
+  }
+
+  .whatsappButton {
+    width: 44px; /* Minimum touch target */
+    height: 44px;
   }
 }

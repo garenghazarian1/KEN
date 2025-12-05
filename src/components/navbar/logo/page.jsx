@@ -7,10 +7,11 @@ export default function Logo() {
       <div className={styles.paddedRelative}>
         <Image
           src="/logo03.png"
-          alt="logo"
+          alt="Ken Beauty Salon logo"
           width={50}
           height={50}
           className={styles.image}
+          priority
         />
       </div>
     </div>

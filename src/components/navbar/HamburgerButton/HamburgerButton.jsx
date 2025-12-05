@@ -5,7 +5,9 @@ const HamburgerButton = ({ isOpen, toggle }) => {
     <button
       onClick={toggle}
       className="hamburger-btn lg:hidden fixed top-4 right-8 z-50 flex flex-col justify-center items-center w-12 h-12 rounded-md bg-transparent  border border-transparent hover:border-teal-950 "
-      aria-label="Toggle menu"
+      aria-label={isOpen ? "Close navigation menu" : "Open navigation menu"}
+      aria-expanded={isOpen}
+      aria-controls="mobile-navigation-menu"
     >
       {/* green-200
       bg-green-100

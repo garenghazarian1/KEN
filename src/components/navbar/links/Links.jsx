@@ -62,7 +62,13 @@ export default function Links() {
           />
         </div>
         {open && (
-          <div ref={menuRef} className={styles.menuContainer}>
+          <div
+            ref={menuRef}
+            className={styles.menuContainer}
+            id="mobile-navigation-menu"
+            role="menu"
+            aria-label="Navigation menu"
+          >
             {Links.map((link) => (
               <NavLink item={link} key={link.title} onClick={closeMenu} />
             ))}

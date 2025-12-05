@@ -2,11 +2,11 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  padding-left: 0.5rem;
+  padding-left: var(--spacing-2);
 }
 
 .paddedRelative {
-  padding: 0.5rem;
+  padding: var(--spacing-2);
   position: relative;
   overflow: hidden;
 }
@@ -14,4 +14,50 @@
 .image {
   width: auto;
   height: auto;
+  max-width: 100%;
+  max-height: 100%;
+}
+
+/* Mobile responsive logo sizing */
+@media (max-width: 768px) {
+  .flexCenter {
+    padding-left: var(--spacing-1-5);
+  }
+
+  .paddedRelative {
+    padding: var(--spacing-1-5);
+  }
+}
+
+/* Small mobile devices (480px and below) */
+@media (max-width: 480px) {
+  .flexCenter {
+    padding-left: var(--spacing-1);
+  }
+
+  .paddedRelative {
+    padding: var(--spacing-1);
+  }
+}
+
+/* Extra small mobile devices (360px and below) */
+@media (max-width: 360px) {
+  .flexCenter {
+    padding-left: var(--spacing-1);
+  }
+
+  .paddedRelative {
+    padding: var(--spacing-0-75);
+  }
+}
+
+/* Minimum mobile size (320px) */
+@media (max-width: 320px) {
+  .flexCenter {
+    padding-left: var(--spacing-0-5);
+  }
+
+  .paddedRelative {
+    padding: var(--spacing-0-5);
+  }
 }

@@ -13,6 +13,8 @@ const NavLink = ({ item, onClick }) => {
       className={`${styles.linkBase} ${
         pathName === item.path ? styles.activeLink : styles.inactiveLink
       }`}
+      aria-label={`Navigate to ${item.title} page`}
+      aria-current={pathName === item.path ? "page" : undefined}
     >
       {item.title}
     </Link>
