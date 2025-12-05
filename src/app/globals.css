@@ -15,12 +15,19 @@
 
 html {
   scroll-behavior: smooth;
+  width: 100vw;
+  overflow-x: hidden; /* Prevent horizontal overflow */
+  margin: 0;
+  padding: 0;
 }
 
 body {
   background: var(--color-bg-primary);
   color: var(--color-text-primary);
   width: 100vw;
+  margin: 0;
+  padding: 0;
+  overflow-x: hidden; /* Prevent horizontal scroll */
 }
 
 img {
@@ -87,6 +94,37 @@ img {
   --shadow-light: rgba(0, 0, 0, 0.2);
   --shadow-medium: rgba(0, 0, 0, 0.33);
   --shadow-heavy: rgba(0, 0, 0, 0.4);
+
+  /* ============================================
+     GLASS EFFECT (GLASSMORPHISM) SYSTEM
+     Modern transparent backgrounds with blur effects
+     ============================================ */
+
+  /* Glass Background Colors - Transparent white overlays */
+  --glass-bg-light: rgba(255, 255, 255, 0.1); /* Subtle glass effect */
+  --glass-bg-medium: rgba(255, 255, 255, 0.2); /* Medium glass effect */
+  --glass-bg-strong: rgba(255, 255, 255, 0.3); /* Strong glass effect */
+
+  /* Glass Background Colors - Brand color overlays */
+  --glass-bg-primary: rgba(251, 228, 213, 0.1); /* Primary color glass */
+  --glass-bg-primary-medium: rgba(
+    251,
+    228,
+    213,
+    0.2
+  ); /* Primary color glass medium */
+  --glass-bg-primary-strong: rgba(
+    251,
+    228,
+    213,
+    0.3
+  ); /* Primary color glass strong */
+
+  /* Glass Blur Values */
+  --glass-blur-sm: 5px; /* Small blur */
+  --glass-blur-md: 10px; /* Medium blur (default) */
+  --glass-blur-lg: 15px; /* Large blur */
+  --glass-blur-xl: 20px; /* Extra large blur */
 
   /* Legacy Color Mappings (for backward compatibility during migration) */
   --main-color: var(--color-primary);
@@ -186,6 +224,7 @@ img {
   --spacing-0: 0;
   --spacing-1: 0.25rem; /* 4px */
   --spacing-2: 0.5rem; /* 8px */
+  --spacing-2-5: 0.625rem; /* 10px */
   --spacing-3: 0.75rem; /* 12px */
   --spacing-4: 1rem; /* 16px */
   --spacing-5: 1.25rem; /* 20px */

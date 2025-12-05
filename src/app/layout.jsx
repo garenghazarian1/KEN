@@ -1,6 +1,6 @@
 ﻿import { lora, inter } from "@/app/ui/fonts";
 import "./globals.css";
-import Navbar from "@/components/navbar/Navbar";
+import NavbarModern from "@/components/navbar/Navbar.modern";
 import Footer from "@/components/footer/Footer";
 import ClientLayout from "@/components/ClientLayout";
 import styles from "./Layout.module.css";
@@ -39,7 +39,7 @@ export default function RootLayout({ children }) {
       <body>
         <ClientLayout>
           <div className={styles.layoutContainer}>
-            <Navbar />
+            <NavbarModern />
             <div className={styles.childrenContainer}>{children}</div>
             <Footer />
           </div>

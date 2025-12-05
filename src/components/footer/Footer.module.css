@@ -1,0 +1,244 @@
+/* Footer Container */
+.footer {
+  background-color: var(--color-bg-dark);
+  color: var(--color-text-inverse);
+  max-width: 100%;
+  padding: var(--spacing-6) var(--spacing-4);
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: center;
+  gap: var(--spacing-4);
+  box-sizing: border-box; /* Ensure padding doesn't cause overflow */
+}
+
+/* Business Name Section */
+.businessName {
+  margin-bottom: var(--spacing-4);
+  flex-grow: 1;
+}
+
+.businessNameLink {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--color-text-inverse);
+  font-size: var(--font-size-xl);
+  font-weight: var(--font-weight-medium);
+  cursor: pointer;
+  text-decoration: none;
+  transition: color var(--transition-base) var(--ease-in-out);
+}
+
+.businessNameLink:hover {
+  color: var(--color-primary);
+}
+
+/* Social Icons Container */
+.socialIcons {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: var(--spacing-8);
+  margin-bottom: var(--spacing-4);
+}
+
+.socialLink {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 44px; /* Minimum touch target size */
+  min-height: 44px;
+  color: var(--color-text-inverse);
+  text-decoration: none;
+  transition: transform var(--transition-base) var(--ease-in-out),
+    color var(--transition-base) var(--ease-in-out);
+}
+
+.socialLink:hover {
+  transform: scale(1.1);
+  color: var(--color-primary);
+}
+
+.socialLink:active {
+  transform: scale(0.95);
+}
+
+.socialIcon {
+  width: 25px;
+  height: 25px;
+  min-width: 25px;
+  min-height: 25px;
+}
+
+/* Copyright Section */
+.copyright {
+  width: 100%;
+  text-align: center;
+  font-size: var(--font-size-sm);
+  color: var(--color-neutral-400);
+}
+
+.copyrightLink {
+  color: var(--color-neutral-500);
+  margin-left: var(--spacing-1);
+  text-decoration: none;
+  transition: color var(--transition-base) var(--ease-in-out);
+}
+
+.copyrightLink:hover {
+  color: var(--color-text-inverse);
+}
+
+/* Tablet adjustments */
+@media (max-width: 1024px) {
+  .footer {
+    padding: var(--spacing-5) var(--spacing-3);
+    gap: var(--spacing-3);
+  }
+
+  .socialIcons {
+    gap: var(--spacing-6);
+  }
+}
+
+/* Mobile landscape and small tablets */
+@media (max-width: 768px) {
+  .footer {
+    padding: var(--spacing-4) var(--spacing-3);
+    flex-direction: column;
+    text-align: center;
+    gap: var(--spacing-3);
+  }
+
+  .businessName {
+    margin-bottom: var(--spacing-3);
+    width: 100%;
+  }
+
+  .businessNameLink {
+    font-size: var(--font-size-lg);
+  }
+
+  .socialIcons {
+    gap: var(--spacing-4);
+    margin-bottom: var(--spacing-3);
+    width: 100%;
+    justify-content: center;
+  }
+
+  .socialLink {
+    min-width: 44px;
+    min-height: 44px;
+  }
+
+  .socialIcon {
+    width: 24px;
+    height: 24px;
+  }
+
+  .copyright {
+    font-size: var(--font-size-xs);
+    width: 100%;
+  }
+}
+
+/* Small mobile devices (480px and below) */
+@media (max-width: 480px) {
+  .footer {
+    padding: var(--spacing-3) var(--spacing-2);
+    gap: var(--spacing-2);
+  }
+
+  .businessName {
+    margin-bottom: var(--spacing-2);
+  }
+
+  .businessNameLink {
+    font-size: var(--font-size-base);
+  }
+
+  .socialIcons {
+    gap: var(--spacing-3);
+    margin-bottom: var(--spacing-2);
+    flex-wrap: wrap;
+  }
+
+  .socialLink {
+    min-width: 44px;
+    min-height: 44px;
+    padding: var(--spacing-2);
+  }
+
+  .socialIcon {
+    width: 22px;
+    height: 22px;
+  }
+
+  .copyright {
+    font-size: var(--font-size-xs);
+    line-height: var(--line-height-relaxed);
+  }
+}
+
+/* Extra small mobile devices (360px and below) */
+@media (max-width: 360px) {
+  .footer {
+    padding: var(--spacing-2-5) var(--spacing-2);
+  }
+
+  .businessNameLink {
+    font-size: var(--font-size-sm);
+  }
+
+  .socialIcons {
+    gap: var(--spacing-2);
+  }
+
+  .socialLink {
+    min-width: 44px;
+    min-height: 44px;
+    padding: var(--spacing-1-5);
+  }
+
+  .socialIcon {
+    width: 20px;
+    height: 20px;
+  }
+
+  .copyright {
+    font-size: var(--font-size-xs);
+    word-wrap: break-word;
+  }
+}
+
+/* Minimum mobile size (320px) */
+@media (max-width: 320px) {
+  .footer {
+    padding: var(--spacing-2) var(--spacing-1-5);
+  }
+
+  .businessNameLink {
+    font-size: var(--font-size-xs);
+  }
+
+  .socialIcons {
+    gap: var(--spacing-1-5);
+  }
+
+  .socialLink {
+    min-width: 44px; /* Maintain minimum touch target */
+    min-height: 44px;
+    padding: var(--spacing-1);
+  }
+
+  .socialIcon {
+    width: 18px;
+    height: 18px;
+  }
+
+  .copyright {
+    font-size: var(--font-size-xs);
+    line-height: var(--line-height-relaxed);
+  }
+}

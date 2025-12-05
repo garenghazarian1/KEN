@@ -1,0 +1,413 @@
+/* ============================================
+   MODERN NAVBAR - NEW DESIGN
+   ============================================
+   This is a new modern redesign of the navbar.
+   Old file: Navbar.module.css (kept as backup)
+   ============================================ */
+
+.navbar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  width: 100%;
+  min-height: 5rem; /* Match old navbar height */
+  display: flex;
+  align-items: center; /* Center vertically */
+  z-index: var(--z-fixed);
+  background-color: rgba(255, 255, 255, 0.2); /* Transparent background */
+  backdrop-filter: blur(10px);
+  transition: all var(--transition-base) var(--ease-in-out);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+}
+
+.navbar.scrolled {
+  background-color: rgba(
+    251,
+    228,
+    213,
+    0.1
+  ); /* Slightly more opaque when scrolled */
+  backdrop-filter: blur(10px);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+.container {
+  max-width: 1280px;
+  width: 100%;
+  margin: 0 auto;
+  padding: var(--spacing-4) var(--spacing-6);
+  display: flex;
+  align-items: center; /* Center vertically */
+  justify-content: space-between;
+  gap: var(--spacing-4);
+  height: 100%; /* Take full height of navbar */
+}
+
+/* Logo */
+.logoLink {
+  display: flex;
+  align-items: center;
+  transition: transform var(--transition-base) var(--ease-in-out);
+  z-index: var(--z-fixed);
+}
+
+.logoLink:hover {
+  transform: scale(1.05);
+}
+
+.logo {
+  width: auto;
+  height: auto;
+  max-width: 50px;
+  max-height: 50px;
+}
+
+/* Desktop Navigation */
+.desktopNav {
+  display: none;
+  align-items: center;
+  gap: var(--spacing-2); /* Tighter spacing for modern look */
+}
+
+.navLink {
+  color: var(--color-text-primary);
+  font-size: var(--font-size-base);
+  font-weight: var(--font-weight-medium);
+  text-decoration: none;
+  padding: var(--spacing-2-5) var(--spacing-4);
+  border-radius: var(--radius-full); /* Full rounded for modern pill shape */
+  background-color: transparent; /* No background by default */
+  backdrop-filter: blur(10px);
+  transition: all var(--transition-base) var(--ease-in-out);
+  position: relative;
+  border: 1px solid transparent; /* Smooth border transition */
+}
+
+.navLink:hover {
+  color: var(--color-text-primary);
+  background-color: rgba(255, 255, 255, 0.15);
+  backdrop-filter: blur(15px);
+  border-color: rgba(174, 139, 119, 0.3);
+  transform: translateY(-1px);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+.navLink:active {
+  transform: translateY(0);
+}
+
+/* Book Now Button - Desktop */
+.bookButton {
+  display: none;
+  align-items: center;
+  gap: var(--spacing-2);
+  padding: var(--spacing-3) var(--spacing-5);
+  background-color: transparent; /* No background color, only blur */
+  backdrop-filter: blur(20px); /* Strong blur effect */
+  border: 1px solid rgba(174, 139, 119, 0.3); /* Subtle border for definition */
+  color: var(--color-text-primary); /* Dark text for contrast */
+  border-radius: var(--radius-full);
+  font-size: var(--font-size-sm);
+  font-weight: var(--font-weight-semibold);
+  text-decoration: none;
+  cursor: pointer;
+  transition: all var(--transition-base) var(--ease-in-out);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  min-width: 44px;
+  min-height: 44px;
+}
+
+.bookButton:hover {
+  background-color: rgba(174, 139, 119, 0.2); /* Subtle background on hover */
+  backdrop-filter: blur(20px); /* Maintain strong blur */
+  border-color: rgba(174, 139, 119, 0.5); /* Stronger border on hover */
+  color: var(--color-text-primary);
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+}
+
+.bookButton:active {
+  transform: translateY(0);
+}
+
+/* Book Now Button - Mobile (in navbar container) */
+.mobileBookButtonNavbar {
+  display: none; /* Hidden by default, shown on mobile */
+  align-items: center;
+  justify-content: center;
+  gap: var(--spacing-2);
+  padding: var(--spacing-2-5) var(--spacing-4);
+  background-color: transparent; /* No background color, only blur */
+  backdrop-filter: blur(20px); /* Strong blur effect */
+  border: 1px solid rgba(174, 139, 119, 0.3); /* Subtle border for definition */
+  color: var(--color-text-primary); /* Dark text for contrast */
+  border-radius: var(--radius-full);
+  font-size: var(--font-size-sm);
+  font-weight: var(--font-weight-semibold);
+  text-decoration: none;
+  transition: all var(--transition-base) var(--ease-in-out);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+  min-width: 44px;
+  min-height: 44px;
+  margin: 0 auto; /* Center between logo and hamburger */
+}
+
+.mobileBookButtonNavbar:hover {
+  background-color: rgba(174, 139, 119, 0.2); /* Subtle background on hover */
+  backdrop-filter: blur(20px); /* Maintain strong blur */
+  border-color: rgba(174, 139, 119, 0.5); /* Stronger border on hover */
+  color: var(--color-text-primary);
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+}
+
+/* Mobile Menu Button */
+.menuButton {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 44px;
+  height: 44px;
+  background-color: transparent;
+  border: 2px solid var(--color-secondary);
+  border-radius: var(--radius-md);
+  color: var(--color-text-primary);
+  cursor: pointer;
+  transition: all var(--transition-base) var(--ease-in-out);
+  z-index: var(--z-fixed);
+}
+
+.menuButton:hover {
+  background-color: var(--color-secondary);
+  color: var(--color-text-inverse);
+  transform: scale(1.05);
+}
+
+.menuButton:active {
+  transform: scale(0.95);
+}
+
+/* Mobile Menu */
+.mobileMenu {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  right: 0;
+  width: 100%;
+  background-color: rgba(255, 255, 255, 0.4); /* Less transparent background */
+  backdrop-filter: blur(10px); /* Same blur as navbar */
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05); /* Match navbar shadow */
+  overflow: hidden;
+}
+
+.mobileMenuContent {
+  padding: var(--spacing-4) var(--spacing-6);
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-2);
+}
+
+.mobileLink {
+  display: block;
+  padding: var(--spacing-4) var(--spacing-3);
+  color: var(--color-text-primary);
+  font-size: var(--font-size-lg);
+  font-weight: var(--font-weight-medium);
+  text-decoration: none;
+  border-radius: var(--radius-md);
+  background-color: rgba(255, 255, 255, 0.3); /* Less transparent */
+  backdrop-filter: blur(10px);
+  transition: all var(--transition-base) var(--ease-in-out);
+  min-height: 44px;
+  display: flex;
+  align-items: center;
+}
+
+.mobileLink:hover {
+  background-color: rgba(255, 255, 255, 0.4); /* Less transparent on hover */
+  backdrop-filter: blur(10px);
+  color: var(--color-text-hover);
+  padding-left: var(--spacing-5);
+}
+
+.mobileBookButton {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--spacing-2);
+  margin-top: var(--spacing-2);
+  padding: var(--spacing-4) var(--spacing-5);
+  background-color: rgba(
+    174,
+    139,
+    119,
+    0.9
+  ); /* Less transparent teal with glass effect */
+  backdrop-filter: blur(10px);
+  color: var(--color-text-inverse);
+  border-radius: var(--radius-full);
+  font-size: var(--font-size-base);
+  font-weight: var(--font-weight-semibold);
+  text-decoration: none;
+  transition: all var(--transition-base) var(--ease-in-out);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+  min-height: 44px;
+}
+
+.mobileBookButton:hover {
+  background-color: rgba(
+    154,
+    117,
+    101,
+    0.95
+  ); /* Less transparent darker teal */
+  backdrop-filter: blur(10px);
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+}
+
+.mobileBookButton:active {
+  transform: translateY(0);
+}
+
+/* Tablet and Desktop */
+@media (min-width: 1024px) {
+  .desktopNav {
+    display: flex;
+  }
+
+  .bookButton {
+    display: flex;
+  }
+
+  .mobileBookButtonNavbar {
+    display: none; /* Hide mobile button on desktop */
+  }
+
+  .menuButton {
+    display: none;
+  }
+
+  .mobileMenu {
+    display: none;
+  }
+}
+
+/* Mobile - Show mobile button in navbar */
+@media (max-width: 1023px) {
+  .bookButton {
+    display: none; /* Hide desktop button on mobile */
+  }
+
+  .mobileBookButtonNavbar {
+    display: flex; /* Show mobile button in navbar */
+  }
+}
+
+/* Mobile adjustments - Responsive padding for all device sizes */
+
+/* Tablets and small desktops (768px and below) */
+@media (max-width: 768px) {
+  .container {
+    padding: var(--spacing-3) var(--spacing-4); /* 0.75rem 1rem = 12px 16px */
+  }
+
+  .logo {
+    max-width: 45px;
+    max-height: 45px;
+  }
+
+  .mobileMenuContent {
+    padding: var(--spacing-4) var(--spacing-5); /* 1rem 1.25rem = 16px 20px */
+  }
+}
+
+/* Large phones and small tablets (490px and below) */
+@media (max-width: 490px) {
+  .container {
+    padding: var(--spacing-3) var(--spacing-3); /* 0.75rem = 12px */
+  }
+
+  .mobileMenuContent {
+    padding: var(--spacing-3) var(--spacing-4); /* 0.75rem 1rem = 12px 16px */
+  }
+}
+
+/* Standard phones (480px and below) - iPhone 6/7/8 Plus, Android large */
+@media (max-width: 480px) {
+  .container {
+    padding: var(--spacing-2-5) var(--spacing-3); /* 0.625rem 0.75rem = 10px 12px */
+  }
+
+  .logo {
+    max-width: 40px;
+    max-height: 40px;
+  }
+
+  .menuButton {
+    width: 40px;
+    height: 40px;
+  }
+
+  .mobileMenuContent {
+    padding: var(--spacing-3) var(--spacing-3); /* 0.75rem = 12px */
+  }
+}
+
+/* iPhone 12/13/14, iPhone X, iPhone 11 Pro (390px and below) */
+@media (max-width: 390px) {
+  .container {
+    padding: var(--spacing-2-5) var(--spacing-2-5); /* 0.625rem = 10px */
+  }
+}
+
+/* iPhone SE, iPhone 6/7/8, Android standard (375px and below) */
+@media (max-width: 375px) {
+  .container {
+    padding: var(--spacing-2-5) var(--spacing-2-5); /* 0.625rem = 10px */
+  }
+
+  .mobileMenuContent {
+    padding: var(--spacing-2-5) var(--spacing-3); /* 0.625rem 0.75rem = 10px 12px */
+  }
+}
+
+/* Small Android phones (360px and below) */
+@media (max-width: 360px) {
+  .container {
+    padding: var(--spacing-2) var(--spacing-2-5); /* 0.5rem 0.625rem = 8px 10px */
+  }
+
+  .logo {
+    max-width: 35px;
+    max-height: 35px;
+  }
+
+  .mobileMenuContent {
+    padding: var(--spacing-2-5) var(--spacing-2-5); /* 0.625rem = 10px */
+  }
+}
+
+/* Extra small phones (320px and below) - iPhone 3/4, small Android */
+@media (max-width: 320px) {
+  .container {
+    padding: var(--spacing-2); /* 0.5rem = 8px */
+  }
+
+  .logo {
+    max-width: 32px;
+    max-height: 32px;
+  }
+
+  .menuButton {
+    width: 36px;
+    height: 36px;
+    min-width: 44px; /* Maintain touch target */
+    min-height: 44px; /* Maintain touch target */
+  }
+
+  .mobileMenuContent {
+    padding: var(--spacing-2); /* 0.5rem = 8px */
+  }
+}
