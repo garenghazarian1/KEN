@@ -5,7 +5,7 @@ import Link from "next/link";
 import { motion, AnimatePresence } from "framer-motion";
 import {
   Instagram,
-  Twitter,
+  Facebook,
   Mail,
   Phone,
   MapPin,
@@ -264,18 +264,26 @@ export default function FooterModern() {
                   </svg>
                   <span>TikTok</span>
                 </a>
-                {SOCIAL_MEDIA.twitter && (
-                  <a
-                    href={SOCIAL_MEDIA.twitter}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className={styles.socialLink}
-                    aria-label="Follow us on Twitter"
-                  >
-                    <Twitter size={20} />
-                    <span>Twitter</span>
-                  </a>
-                )}
+                <a
+                  href={SOCIAL_MEDIA.facebook.beauty}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className={styles.socialLink}
+                  aria-label="Follow us on Facebook - Beauty"
+                >
+                  <Facebook size={20} />
+                  <span>Beauty</span>
+                </a>
+                <a
+                  href={SOCIAL_MEDIA.facebook.barbershop}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className={styles.socialLink}
+                  aria-label="Follow us on Facebook - Barbershop"
+                >
+                  <Facebook size={20} />
+                  <span>Barbershop</span>
+                </a>
               </div>
             </motion.div>
           </div>
@@ -308,4 +316,3 @@ export default function FooterModern() {
     </>
   );
 }
-

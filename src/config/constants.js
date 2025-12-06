@@ -40,10 +40,13 @@ export const SOCIAL_MEDIA = {
     ghazarian: "https://www.instagram.com/ken_ghazarian/",
   },
   tiktok: {
-    barbershop: "https://www.tiktok.com/@ken_barbershop.ad",
     beauty: "https://www.tiktok.com/@kenbeauty04",
+    barbershop: "https://www.tiktok.com/@ken_barbershop.ad",
   },
-  twitter: "https://twitter.com/kenssalon",
+  facebook: {
+    beauty: "https://www.facebook.com/profile.php?id=100087593044512",
+    barbershop: "https://www.facebook.com/profile.php?id=61570395518132",
+  },
 };
 
 // Social Media Handles (for display)
@@ -57,7 +60,10 @@ export const SOCIAL_HANDLES = {
     barbershop: "@ken_barbershop.ad",
     beauty: "@kenbeauty04",
   },
-  twitter: "@kenssalon",
+  facebook: {
+    beauty: "Ken Beauty Salon",
+    barbershop: "Ken Barbershop",
+  },
 };
 
 // Business Information
@@ -105,4 +111,6 @@ export const getSocialMediaArray = () => [
   SOCIAL_MEDIA.instagram.barbershop,
   SOCIAL_MEDIA.tiktok.barbershop,
   SOCIAL_MEDIA.tiktok.beauty,
+  SOCIAL_MEDIA.facebook.beauty,
+  SOCIAL_MEDIA.facebook.barbershop,
 ];

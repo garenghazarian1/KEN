@@ -87,16 +87,7 @@ export default function Footer() {
       </div>
 
       <div className={styles.copyright}>
-        <p>
-          © 2024 {BUSINESS.name} —
-          <Link
-            href={SOCIAL_MEDIA.twitter}
-            className={styles.copyrightLink}
-            aria-label={`Follow us on Twitter: ${SOCIAL_HANDLES.twitter}`}
-          >
-            {SOCIAL_HANDLES.twitter}
-          </Link>
-        </p>
+        <p>© 2024 {BUSINESS.name}</p>
       </div>
     </footer>
   );
