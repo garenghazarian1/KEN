@@ -1,5 +1,5 @@
 /* ============================================
-   PRIVACY POLICY PAGE - MODERN STYLING
+   COOKIE NOTICE PAGE - MODERN STYLING
    ============================================ */
 
 .container {
@@ -121,19 +121,6 @@
   margin-bottom: 0;
 }
 
-.section a {
-  color: var(--color-secondary);
-  text-decoration: none;
-  font-weight: var(--font-weight-semibold);
-  transition: all var(--transition-base) var(--ease-in-out);
-  border-bottom: 1px solid transparent;
-}
-
-.section a:hover {
-  color: var(--color-secondary-dark);
-  border-bottom-color: var(--color-secondary-dark);
-}
-
 .section ul {
   list-style: none;
   padding: 0;
@@ -161,6 +148,19 @@
 .section li strong {
   color: var(--color-text-primary);
   font-weight: var(--font-weight-semibold);
+}
+
+.section a {
+  color: var(--color-secondary);
+  text-decoration: none;
+  font-weight: var(--font-weight-semibold);
+  transition: all var(--transition-base) var(--ease-in-out);
+  border-bottom: 1px solid transparent;
+}
+
+.section a:hover {
+  color: var(--color-secondary-dark);
+  border-bottom-color: var(--color-secondary-dark);
 }
 
 .highlight {
@@ -234,3 +234,4 @@
     font-size: var(--font-size-sm);
   }
 }
+

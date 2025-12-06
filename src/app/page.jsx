@@ -1,5 +1,5 @@
 ﻿import Script from "next/script";
-import Hero from "@/components/hero/Hero";
+import HeroModern from "@/components/hero/Hero.modern";
 import { stores } from "@/data/stores";
 import {
   BASE_URL,
@@ -8,7 +8,7 @@ import {
   IMAGES,
   getSocialMediaArray,
 } from "@/config/constants";
-
+import styles from "./mainPage.module.css";
 export const metadata = {
   title: BUSINESS.fullName,
   description: BUSINESS.description,
@@ -50,7 +50,7 @@ const localBusinessJsonLd = {
 
 export default function Home() {
   return (
-    <main>
+    <main className={styles.main}>
       <Script
         id="ld-local-business"
         type="application/ld+json"
@@ -59,7 +59,7 @@ export default function Home() {
           __html: JSON.stringify(localBusinessJsonLd),
         }}
       />
-      <Hero />
+      <HeroModern />
     </main>
   );
 }

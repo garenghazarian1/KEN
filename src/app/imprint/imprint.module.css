@@ -1,5 +1,5 @@
 /* ============================================
-   PRIVACY POLICY PAGE - MODERN STYLING
+   IMPRINT PAGE - MODERN STYLING
    ============================================ */
 
 .container {
@@ -121,46 +121,44 @@
   margin-bottom: 0;
 }
 
-.section a {
+.infoBlock {
+  background: var(--glass-white-medium);
+  backdrop-filter: blur(var(--glass-blur-md));
+  border: 1px solid var(--glass-border-medium);
+  border-radius: var(--radius-lg);
+  padding: var(--spacing-6);
+  margin: var(--spacing-4) 0;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+}
+
+.infoBlock p {
+  margin-bottom: var(--spacing-3);
+  font-size: var(--font-size-base);
+  line-height: var(--line-height-relaxed);
+}
+
+.infoBlock p:last-child {
+  margin-bottom: 0;
+}
+
+.infoBlock strong {
+  color: var(--color-text-primary);
+  font-weight: var(--font-weight-semibold);
+  display: inline-block;
+  min-width: 140px;
+}
+
+.infoBlock a {
   color: var(--color-secondary);
   text-decoration: none;
-  font-weight: var(--font-weight-semibold);
+  font-weight: var(--font-weight-medium);
   transition: all var(--transition-base) var(--ease-in-out);
   border-bottom: 1px solid transparent;
 }
 
-.section a:hover {
+.infoBlock a:hover {
   color: var(--color-secondary-dark);
   border-bottom-color: var(--color-secondary-dark);
-}
-
-.section ul {
-  list-style: none;
-  padding: 0;
-  margin: var(--spacing-4) 0;
-}
-
-.section li {
-  font-size: var(--font-size-base);
-  line-height: var(--line-height-relaxed);
-  color: var(--color-text-secondary);
-  margin-bottom: var(--spacing-3);
-  padding-left: var(--spacing-6);
-  position: relative;
-}
-
-.section li::before {
-  content: "•";
-  position: absolute;
-  left: 0;
-  color: var(--color-secondary);
-  font-weight: var(--font-weight-bold);
-  font-size: var(--font-size-xl);
-}
-
-.section li strong {
-  color: var(--color-text-primary);
-  font-weight: var(--font-weight-semibold);
 }
 
 .highlight {
@@ -200,6 +198,12 @@
   .section h2 {
     font-size: var(--font-size-xl);
   }
+
+  .infoBlock strong {
+    min-width: auto;
+    display: block;
+    margin-bottom: var(--spacing-1);
+  }
 }
 
 @media (max-width: 480px) {
@@ -229,8 +233,12 @@
     font-size: var(--font-size-lg);
   }
 
-  .section p,
-  .section li {
+  .section p {
     font-size: var(--font-size-sm);
   }
+
+  .infoBlock {
+    padding: var(--spacing-4);
+  }
 }
+

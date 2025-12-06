@@ -1,0 +1,682 @@
+/* ============================================
+   MODERN HERO - COMPLETELY NEW DESIGN
+   ============================================
+   This is a completely new modern redesign of the Hero section.
+   Old file: Hero.module.css (kept as backup)
+   ============================================ */
+
+/* Hero Section - Full Screen with Video Background */
+.heroSection {
+  position: relative;
+  max-width: 100%;
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  box-sizing: border-box;
+}
+
+/* Video Background */
+.videoBackground {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 0;
+}
+
+.heroVideo {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.videoOverlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    135deg,
+    rgba(0, 0, 0, 0.3) 0%,
+    rgba(0, 0, 0, 0.1) 50%,
+    rgba(0, 0, 0, 0.2) 100%
+  );
+  backdrop-filter: blur(2px);
+  z-index: 1;
+}
+
+/* Hero Content - Centered Modern Layout */
+.heroContent {
+  position: relative;
+  z-index: 2;
+  width: 100%;
+  max-width: 1200px;
+  padding: var(--spacing-6);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+}
+
+.contentWrapper {
+  width: 100%;
+  max-width: 800px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--spacing-6);
+}
+
+/* Decorative Icon */
+.decorativeIcon {
+  color: var(--color-secondary);
+  opacity: 0.8;
+  margin-bottom: var(--spacing-2);
+}
+
+/* Main Title - Modern Typography */
+.mainTitle {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-2);
+  font-size: var(--font-size-6xl);
+  font-weight: var(--font-weight-bold);
+  line-height: var(--line-height-tight);
+  color: var(--color-text-inverse);
+  text-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
+}
+
+.titleLine1 {
+  color: var(--color-text-inverse);
+}
+
+.titleLine2 {
+  color: var(--color-secondary-light);
+  background: linear-gradient(
+    135deg,
+    var(--color-secondary-light),
+    var(--color-primary-light)
+  );
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+/* Subtitle */
+.subtitle {
+  font-size: var(--font-size-xl);
+  font-weight: var(--font-weight-medium);
+  color: var(--color-text-inverse);
+  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+  opacity: 0.95;
+}
+
+/* CTA Buttons */
+.ctaButtons {
+  display: flex;
+  gap: var(--spacing-4);
+  flex-wrap: wrap;
+  justify-content: center;
+  margin-top: var(--spacing-4);
+}
+
+.primaryButton {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-2);
+  padding: var(--spacing-4) var(--spacing-8);
+  background-color: var(--glass-transparent);
+  backdrop-filter: blur(var(--glass-blur-xl));
+  border: 2px solid var(--glass-border-medium);
+  border-radius: var(--radius-full);
+  color: var(--color-text-inverse);
+  font-size: var(--font-size-lg);
+  font-weight: var(--font-weight-semibold);
+  text-decoration: none;
+  transition: all var(--transition-base) var(--ease-in-out);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+  min-height: 44px;
+}
+
+.primaryButton:hover {
+  background-color: var(--glass-teal-light);
+  border-color: var(--glass-border-strong);
+  transform: translateY(-2px);
+  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.3);
+}
+
+.secondaryButton {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-2);
+  padding: var(--spacing-4) var(--spacing-8);
+  background-color: var(--color-whatsapp);
+  backdrop-filter: blur(var(--glass-blur-md));
+  border-radius: var(--radius-full);
+  color: var(--color-text-inverse);
+  font-size: var(--font-size-lg);
+  font-weight: var(--font-weight-semibold);
+  text-decoration: none;
+  transition: all var(--transition-base) var(--ease-in-out);
+  box-shadow: 0 4px 12px rgba(37, 211, 101, 0.3);
+  min-height: 44px;
+}
+
+.secondaryButton:hover {
+  transform: translateY(-2px) scale(1.05);
+  box-shadow: 0 6px 16px rgba(37, 211, 101, 0.4);
+}
+
+/* Scroll Indicator */
+.scrollIndicator {
+  position: absolute;
+  bottom: var(--spacing-8);
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 2;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--spacing-2);
+}
+
+.scrollDot {
+  width: 6px;
+  height: 6px;
+  background-color: var(--color-text-inverse);
+  border-radius: var(--radius-full);
+  opacity: 0.8;
+}
+
+/* ============================================
+   MODERN CAROUSEL GALLERY - 2025 DESIGN
+   ============================================
+   Modern carousel with glass morphism,
+   smooth animations, and 2025 design trends
+   ============================================ */
+
+.gallerySection {
+  position: relative;
+  width: 100%;
+  max-width: 100%;
+  min-height: 100vh;
+  padding: var(--spacing-20) var(--spacing-6);
+  overflow-x: hidden;
+  box-sizing: border-box;
+  background: linear-gradient(
+    135deg,
+    var(--color-primary) 0%,
+    var(--color-bg-primary) 25%,
+    var(--color-primary-light) 50%,
+    var(--color-bg-secondary) 75%,
+    var(--color-primary) 100%
+  );
+  z-index: 0;
+}
+
+/* Decorative Background Elements */
+.gallerySection::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(
+      circle at 20% 30%,
+      rgba(174, 139, 119, 0.15) 0%,
+      transparent 50%
+    ),
+    radial-gradient(
+      circle at 80% 70%,
+      rgba(174, 139, 119, 0.12) 0%,
+      transparent 50%
+    ),
+    radial-gradient(
+      circle at 50% 50%,
+      rgba(255, 255, 255, 0.1) 0%,
+      transparent 60%
+    );
+  z-index: 0;
+  pointer-events: none;
+}
+
+.gallerySection::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background-image: repeating-linear-gradient(
+      45deg,
+      transparent,
+      transparent 2px,
+      rgba(255, 255, 255, 0.03) 2px,
+      rgba(255, 255, 255, 0.03) 4px
+    ),
+    repeating-linear-gradient(
+      -45deg,
+      transparent,
+      transparent 2px,
+      rgba(174, 139, 119, 0.02) 2px,
+      rgba(174, 139, 119, 0.02) 4px
+    );
+  z-index: 0;
+  pointer-events: none;
+  opacity: 0.6;
+}
+
+/* Section Header */
+.sectionHeader {
+  position: relative;
+  z-index: 2;
+  text-align: center;
+  margin-bottom: var(--spacing-4);
+}
+
+.sectionTitle {
+  font-size: var(--font-size-5xl);
+  font-weight: var(--font-weight-bold);
+  margin-bottom: var(--spacing-4);
+  line-height: var(--line-height-tight);
+}
+
+.titleMain {
+  color: var(--color-text-primary);
+}
+
+.titleAccent {
+  color: var(--color-secondary);
+}
+
+.sectionSubtitle {
+  font-size: var(--font-size-lg);
+  color: var(--color-text-secondary);
+  font-weight: var(--font-weight-medium);
+}
+
+/* Scroll-Driven Image Stack - 2025 Design */
+.scrollStackContainer {
+  position: relative;
+  width: 100%;
+  max-width: 1600px;
+  margin: var(--spacing-4) auto 0;
+  z-index: 2;
+}
+
+.stackSection {
+  position: relative;
+  width: 100%;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  overflow: hidden;
+  padding: var(--spacing-8) 0;
+}
+
+.stackImageContainer {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 1;
+}
+
+.stackImageWrapper {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+}
+
+.stackImage {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+  display: block;
+}
+
+.stackContent {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  z-index: 10;
+  text-align: center;
+  padding: var(--spacing-8);
+  background: var(--glass-white-medium);
+  backdrop-filter: blur(var(--glass-blur-xl));
+  border: 1px solid var(--glass-border-light);
+  border-radius: var(--radius-2xl);
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3),
+    0 0 0 1px rgba(255, 255, 255, 0.2) inset;
+  max-width: 600px;
+  width: 90%;
+  pointer-events: none;
+}
+
+.contentIcon {
+  display: inline-flex;
+  color: var(--color-secondary);
+  margin-bottom: var(--spacing-4);
+  filter: drop-shadow(0 0 10px rgba(174, 139, 119, 0.5));
+}
+
+.contentTitle {
+  font-size: var(--font-size-4xl);
+  font-weight: var(--font-weight-bold);
+  color: var(--color-text-primary);
+  margin-bottom: var(--spacing-3);
+  line-height: var(--line-height-tight);
+}
+
+.contentSubtitle {
+  font-size: var(--font-size-lg);
+  color: var(--color-text-secondary);
+  font-weight: var(--font-weight-medium);
+  line-height: var(--line-height-relaxed);
+}
+
+.scrollIndicator {
+  position: absolute;
+  bottom: var(--spacing-8);
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 3;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--spacing-2);
+  color: var(--color-text-inverse);
+  font-size: var(--font-size-sm);
+  font-weight: var(--font-weight-medium);
+  text-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
+}
+
+/* Content Card - Modern Glass Design */
+.contentCard {
+  position: relative;
+  max-width: 1200px;
+  margin: 0 auto;
+  background: var(--glass-white-light);
+  backdrop-filter: blur(var(--glass-blur-sm));
+  border: 1px solid var(--glass-border-light);
+  border-radius: var(--radius-xl);
+  padding: var(--spacing-10);
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+  z-index: 2;
+}
+
+.cardContent {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-6);
+}
+
+.cardTitle {
+  font-size: var(--font-size-3xl);
+  font-weight: var(--font-weight-bold);
+  color: var(--main-title-color);
+  line-height: var(--line-height-tight);
+}
+
+.cardText {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-4);
+}
+
+.cardText p {
+  font-size: var(--font-size-base);
+  line-height: var(--line-height-relaxed);
+  color: var(--paragraph-text-color);
+}
+
+.cardButton {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--spacing-2);
+  padding: var(--spacing-3) var(--spacing-6);
+  background-color: var(--glass-transparent);
+  backdrop-filter: blur(var(--glass-blur-xl));
+  border: 1px solid var(--glass-border-medium);
+  border-radius: var(--radius-full);
+  color: var(--color-text-primary);
+  font-size: var(--font-size-base);
+  font-weight: var(--font-weight-semibold);
+  text-decoration: none;
+  transition: all var(--transition-base) var(--ease-in-out);
+  align-self: flex-start;
+  min-height: 44px;
+}
+
+.cardButton:hover {
+  background-color: var(--glass-teal-light);
+  border-color: var(--glass-border-strong);
+  transform: translateX(4px);
+}
+
+/* Responsive Design */
+
+/* Large tablets and small desktops (1024px and below) */
+@media (max-width: 1024px) {
+  .carouselItem {
+    width: 350px;
+    height: 350px;
+  }
+
+  .sectionTitle {
+    font-size: var(--font-size-4xl);
+  }
+
+  .contentCard {
+    padding: var(--spacing-8);
+  }
+
+  .cardTitle {
+    font-size: var(--font-size-2xl);
+  }
+
+  .mainTitle {
+    font-size: var(--font-size-5xl);
+  }
+}
+
+/* Tablets (768px and below) */
+@media (max-width: 768px) {
+  .heroContent {
+    padding: var(--spacing-4);
+  }
+
+  .contentWrapper {
+    gap: var(--spacing-4);
+  }
+
+  .mainTitle {
+    font-size: var(--font-size-4xl);
+  }
+
+  .subtitle {
+    font-size: var(--font-size-lg);
+  }
+
+  .ctaButtons {
+    flex-direction: column;
+    width: 100%;
+  }
+
+  .primaryButton,
+  .secondaryButton {
+    width: 100%;
+    justify-content: center;
+  }
+
+  .gallerySection {
+    padding: var(--spacing-12) var(--spacing-4);
+  }
+
+  .scrollStackContainer {
+    height: calc(100vh * 7);
+  }
+
+  .stackContent {
+    max-width: 90%;
+    padding: var(--spacing-6);
+  }
+
+  .contentTitle {
+    font-size: var(--font-size-2xl);
+  }
+
+  .contentSubtitle {
+    font-size: var(--font-size-sm);
+  }
+
+  .contentCard {
+    padding: var(--spacing-6);
+  }
+
+  .sectionTitle {
+    font-size: var(--font-size-3xl);
+  }
+
+  .sectionSubtitle {
+    font-size: var(--font-size-base);
+  }
+
+  .cardTitle {
+    font-size: var(--font-size-2xl);
+  }
+}
+
+/* Mobile (480px and below) */
+@media (max-width: 480px) {
+  .mainTitle {
+    font-size: var(--font-size-3xl);
+  }
+
+  .subtitle {
+    font-size: var(--font-size-base);
+  }
+
+  .primaryButton,
+  .secondaryButton {
+    padding: var(--spacing-3) var(--spacing-6);
+    font-size: var(--font-size-base);
+  }
+
+  .scrollStackContainer {
+    height: calc(100vh * 7);
+  }
+
+  .stackContent {
+    max-width: 95%;
+    padding: var(--spacing-4);
+  }
+
+  .contentTitle {
+    font-size: var(--font-size-xl);
+  }
+
+  .contentSubtitle {
+    font-size: var(--font-size-xs);
+  }
+
+  .scrollIndicator {
+    bottom: var(--spacing-4);
+    font-size: var(--font-size-xs);
+  }
+
+  .gallerySection {
+    padding: var(--spacing-8) var(--spacing-3);
+  }
+
+  .contentCard {
+    padding: var(--spacing-4);
+  }
+
+  .sectionTitle {
+    font-size: var(--font-size-2xl);
+  }
+
+  .sectionSubtitle {
+    font-size: var(--font-size-sm);
+  }
+
+  .cardTitle {
+    font-size: var(--font-size-xl);
+  }
+}
+
+/* Small mobile (360px and below) */
+@media (max-width: 360px) {
+  .mainTitle {
+    font-size: var(--font-size-2xl);
+  }
+
+  .subtitle {
+    font-size: var(--font-size-sm);
+  }
+
+  .gallerySection {
+    padding: var(--spacing-6) var(--spacing-2);
+  }
+
+  .contentCard {
+    padding: var(--spacing-3);
+  }
+
+  .sectionTitle {
+    font-size: var(--font-size-xl);
+  }
+
+  .cardTitle {
+    font-size: var(--font-size-lg);
+  }
+
+  .cardText p {
+    font-size: var(--font-size-sm);
+  }
+}
+
+/* Extra small mobile (320px) */
+@media (max-width: 320px) {
+  .mainTitle {
+    font-size: var(--font-size-xl);
+  }
+
+  .scrollStackContainer {
+    height: calc(100vh * 7);
+  }
+
+  .stackContent {
+    max-width: 95%;
+    padding: var(--spacing-4);
+  }
+
+  .contentTitle {
+    font-size: var(--font-size-xl);
+  }
+
+  .contentSubtitle {
+    font-size: var(--font-size-xs);
+  }
+
+  .scrollIndicator {
+    bottom: var(--spacing-4);
+    font-size: var(--font-size-xs);
+  }
+
+  .gallerySection {
+    padding: var(--spacing-4) var(--spacing-2);
+  }
+
+  .contentCard {
+    padding: var(--spacing-2);
+  }
+
+  .sectionTitle {
+    font-size: var(--font-size-lg);
+  }
+
+  .cardTitle {
+    font-size: var(--font-size-base);
+  }
+}

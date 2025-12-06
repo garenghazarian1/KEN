@@ -1,8 +1,9 @@
 ﻿import { lora, inter } from "@/app/ui/fonts";
 import "./globals.css";
 import NavbarModern from "@/components/navbar/Navbar.modern";
-import Footer from "@/components/footer/Footer";
+import FooterModern from "@/components/footer/Footer.modern";
 import ClientLayout from "@/components/ClientLayout";
+import InitialLoader from "@/components/InitialLoader";
 import styles from "./Layout.module.css";
 import { Analytics } from "@vercel/analytics/react";
 import Script from "next/script";
@@ -37,11 +38,12 @@ export default function RootLayout({ children }) {
   return (
     <html lang="en" className={`${inter.className} ${lora.className}`}>
       <body>
+        <InitialLoader />
         <ClientLayout>
           <div className={styles.layoutContainer}>
             <NavbarModern />
             <div className={styles.childrenContainer}>{children}</div>
-            <Footer />
+            <FooterModern />
           </div>
         </ClientLayout>
         <Analytics />

@@ -1,10 +1,5 @@
-import LoadingSkeleton from "@/components/loading/LoadingSkeleton";
+import LoadingSkeletonModern from "@/components/loading/LoadingSkeleton.modern";
 
 export default function Loading() {
-  return (
-    <>
-    <LoadingSkeleton/>
-    </>
-
-  );
+  return <LoadingSkeletonModern />;
 }
