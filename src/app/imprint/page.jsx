@@ -50,7 +50,11 @@ export default function Imprint() {
             </p>
             <p>
               <strong>Email:</strong>{" "}
-              <a href={`mailto:${CONTACT.email}`}>{CONTACT.email}</a>
+              <a
+                href={`mailto:${CONTACT.email}?subject=Inquiry about ${BUSINESS.name}&body=Hello, I would like to know more about your services.`}
+              >
+                {CONTACT.email}
+              </a>
             </p>
           </div>
         </section>

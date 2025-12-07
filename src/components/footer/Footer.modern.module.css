@@ -203,6 +203,12 @@
   line-height: var(--line-height-relaxed);
 }
 
+.locationPhoneContainer {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-2);
+}
+
 .locationPhone {
   font-size: var(--font-size-sm);
   color: var(--color-secondary);
@@ -213,6 +219,23 @@
 .locationPhone:hover {
   color: var(--color-secondary-dark);
   text-decoration: underline;
+}
+
+.locationWhatsApp {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  color: #25d365;
+  text-decoration: none;
+  transition: all var(--transition-base) var(--ease-in-out);
+  padding: 4px;
+  border-radius: var(--border-radius-full);
+}
+
+.locationWhatsApp:hover {
+  color: #128c7e;
+  background-color: rgba(37, 211, 101, 0.1);
+  transform: scale(1.1);
 }
 
 /* Social Links */

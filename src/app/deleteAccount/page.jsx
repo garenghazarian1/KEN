@@ -60,7 +60,13 @@ export default function DeleteAccountPage() {
         number) to be deleted from our records, please send an email to:
       </p>
       <p className={styles.email}>
-        Email: <strong>garenghazarian1@gmail.com</strong>
+        Email:{" "}
+        <a
+          href="mailto:garenghazarian1@gmail.com?subject=Request to Delete My Data&body=Hello, I would like to request deletion of my personal data (name, email, phone number) from your records."
+          className={styles.emailLink}
+        >
+          <strong>garenghazarian1@gmail.com</strong>
+        </a>
       </p>
       <p>We will delete your data within 48 hours of receiving your request.</p>
     </main>

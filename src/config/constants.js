@@ -106,6 +106,13 @@ export const IMAGES = {
   favicon: `${BASE_URL}/favicon.ico`,
 };
 
+// Helper function to format phone number for tel: links
+// Removes spaces, dashes, parentheses, and other formatting
+export const formatPhoneForTel = (phone) => {
+  if (!phone) return "";
+  return phone.replace(/[\s\-\(\)]/g, "");
+};
+
 // Helper function to get full URL
 export const getFullUrl = (path) => {
   // Remove leading slash if present to avoid double slashes

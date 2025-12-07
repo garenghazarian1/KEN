@@ -26,6 +26,17 @@
   margin: 1rem 0;
 }
 
+.emailLink {
+  color: #1e90ff;
+  text-decoration: none;
+  transition: all 0.2s ease;
+}
+
+.emailLink:hover {
+  color: #0066cc;
+  text-decoration: underline;
+}
+
 @media screen and (max-width: 480px) {
   .container {
     padding: 1.5rem 1rem;

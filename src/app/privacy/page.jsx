@@ -151,7 +151,11 @@ export default function PrivacyPage() {
           <div className={styles.highlight}>
             <p>
               <strong>Email:</strong>{" "}
-              <a href="mailto:garenghazarian1@gmail.com">garenghazarian1@gmail.com</a>
+              <a
+                href="mailto:garenghazarian1@gmail.com?subject=Privacy Inquiry&body=Hello, I have a question regarding privacy."
+              >
+                garenghazarian1@gmail.com
+              </a>
             </p>
             <p>
               <strong>Phone:</strong> +971-50-304-3570

@@ -19,6 +19,7 @@ import {
   Building2,
   X,
   Check,
+  MessageCircle,
 } from "lucide-react";
 import {
   CONTACT,
@@ -26,6 +27,7 @@ import {
   BUSINESS,
   BOOKING_URL,
   BASE_URL,
+  formatPhoneForTel,
 } from "@/config/constants";
 import { stores } from "@/data/stores";
 import styles from "./Footer.modern.module.css";
@@ -137,7 +139,7 @@ export default function FooterModern() {
               </p>
               <div className={styles.contactInfo}>
                 <a
-                  href={`tel:${CONTACT.primaryMobile.replace(/\s/g, "")}`}
+                  href={`tel:${formatPhoneForTel(CONTACT.primaryMobile)}`}
                   className={styles.contactLink}
                   aria-label="Call us"
                 >
@@ -145,7 +147,17 @@ export default function FooterModern() {
                   <span>{CONTACT.primaryPhone}</span>
                 </a>
                 <a
-                  href={`mailto:${CONTACT.email}`}
+                  href={CONTACT.whatsapp.url()}
+                  className={styles.contactLink}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  aria-label="Contact us on WhatsApp"
+                >
+                  <MessageCircle size={18} />
+                  <span>WhatsApp: {CONTACT.whatsapp.formatted}</span>
+                </a>
+                <a
+                  href={`mailto:${CONTACT.email}?subject=Inquiry about ${BUSINESS.name}&body=Hello, I would like to know more about your services.`}
                   className={styles.contactLink}
                   aria-label="Email us"
                 >
@@ -201,12 +213,30 @@ export default function FooterModern() {
                     <p className={styles.locationAddress}>
                       {store.street}, {store.city}
                     </p>
-                    <a
-                      href={`tel:${store.mobile.replace(/\s/g, "")}`}
-                      className={styles.locationPhone}
-                    >
-                      {store.phone}
-                    </a>
+                    <div className={styles.locationPhoneContainer}>
+                      <a
+                        href={`tel:${formatPhoneForTel(store.mobile)}`}
+                        className={styles.locationPhone}
+                        aria-label={`Call ${store.name}`}
+                      >
+                        {store.mobile}
+                      </a>
+                      {store.mobile && (
+                        <a
+                          href={`https://wa.me/${formatPhoneForTel(
+                            store.mobile
+                          ).replace(/^\+/, "")}?text=${encodeURIComponent(
+                            `Hello ${store.name}, I would like to know more about your services.`
+                          )}`}
+                          className={styles.locationWhatsApp}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          aria-label={`WhatsApp ${store.name}`}
+                        >
+                          <MessageCircle size={14} />
+                        </a>
+                      )}
+                    </div>
                   </li>
                 ))}
               </ul>

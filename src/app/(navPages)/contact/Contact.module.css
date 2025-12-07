@@ -52,10 +52,53 @@
 .a {
   color: #1e90ff;
   text-decoration: none;
+  transition: color 0.2s ease;
 }
 
 .a:hover {
+  color: #0066cc;
   text-decoration: underline;
+}
+
+.emailLink {
+  color: #1e90ff;
+  text-decoration: none;
+  transition: all 0.2s ease;
+  font-weight: 500;
+}
+
+.emailLink:hover {
+  color: #0066cc;
+  text-decoration: underline;
+  background-color: rgba(30, 144, 255, 0.05);
+  padding: 2px 4px;
+  border-radius: 4px;
+}
+
+.whatsappLink {
+  color: #25d365;
+  text-decoration: none;
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  font-weight: 500;
+  transition: all 0.2s ease;
+}
+
+.whatsappLink:hover {
+  color: #128c7e;
+  text-decoration: underline;
+}
+
+.whatsappIcon {
+  display: inline-block;
+}
+
+.icon {
+  display: inline-block;
+  vertical-align: middle;
+  margin-right: 4px;
+  color: #666;
 }
 
 /* Responsive Styles */
