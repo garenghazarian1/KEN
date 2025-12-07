@@ -24,6 +24,7 @@
   inset: 0;
   background: var(--glass-white-light);
   backdrop-filter: blur(var(--glass-blur-sm));
+  -webkit-backdrop-filter: blur(var(--glass-blur-sm));
   z-index: 0;
   pointer-events: none;
 }
@@ -35,6 +36,7 @@
   margin: 0 auto;
   background: var(--glass-white-medium);
   backdrop-filter: blur(var(--glass-blur-lg));
+  -webkit-backdrop-filter: blur(var(--glass-blur-lg));
   border: 1px solid var(--glass-border-light);
   border-radius: var(--radius-2xl);
   padding: var(--spacing-12);
@@ -76,6 +78,7 @@
   padding: var(--spacing-6);
   background: var(--glass-white-light);
   backdrop-filter: blur(var(--glass-blur-sm));
+  -webkit-backdrop-filter: blur(var(--glass-blur-sm));
   border: 1px solid var(--glass-border-light);
   border-radius: var(--radius-xl);
   transition: all var(--transition-base) var(--ease-in-out);
@@ -166,6 +169,7 @@
 .highlight {
   background: var(--glass-teal-light);
   backdrop-filter: blur(var(--glass-blur-sm));
+  -webkit-backdrop-filter: blur(var(--glass-blur-sm));
   padding: var(--spacing-4);
   border-radius: var(--radius-lg);
   border-left: 4px solid var(--color-secondary);

@@ -30,6 +30,7 @@ import {
   BOOKING_URL,
   formatPhoneForTel,
   getTelLink,
+  handlePhoneClick,
   APP_STORES,
 } from "@/config/constants";
 import { stores } from "@/data/stores";
@@ -144,6 +145,7 @@ export default function FooterModern() {
               <div className={styles.contactInfo}>
                 <a
                   href={getTelLink(CONTACT.primaryMobile)}
+                  onClick={(e) => handlePhoneClick(CONTACT.primaryMobile, e)}
                   className={styles.contactLink}
                   aria-label="Call us"
                 >
@@ -220,6 +222,7 @@ export default function FooterModern() {
                     <div className={styles.locationPhoneContainer}>
                       <a
                         href={getTelLink(store.mobile)}
+                        onClick={(e) => handlePhoneClick(store.mobile, e)}
                         className={styles.locationPhone}
                         aria-label={`Call ${store.name}`}
                       >

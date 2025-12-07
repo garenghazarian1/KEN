@@ -194,6 +194,7 @@
   padding: 0.875rem 1.75rem;
   background: var(--glass-white-medium, rgba(255, 255, 255, 0.15));
   backdrop-filter: blur(var(--glass-blur-lg, 15px));
+  -webkit-backdrop-filter: blur(var(--glass-blur-lg, 15px));
   border: 1.5px solid var(--glass-border-light, rgba(174, 139, 119, 0.3));
   border-radius: var(--radius-full, 9999px);
   color: var(--color-text-primary, #3d2f2d);
@@ -239,6 +240,7 @@
   padding: 1.5rem 2rem;
   background: var(--glass-white-light, rgba(255, 255, 255, 0.1));
   backdrop-filter: blur(var(--glass-blur-lg, 15px));
+  -webkit-backdrop-filter: blur(var(--glass-blur-lg, 15px));
   border: 1px solid var(--glass-border-light, rgba(174, 139, 119, 0.2));
   border-radius: var(--radius-2xl, 1.5rem);
   box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
@@ -433,6 +435,7 @@
   padding: 0.5rem 1rem;
   background: var(--glass-white-strong, rgba(255, 255, 255, 0.3));
   backdrop-filter: blur(var(--glass-blur-md, 10px));
+  -webkit-backdrop-filter: blur(var(--glass-blur-md, 10px));
   border: 1px solid var(--glass-border-light, rgba(174, 139, 119, 0.3));
   border-radius: var(--radius-full, 9999px);
   color: var(--color-text-primary, #3d2f2d);
@@ -470,6 +473,7 @@
   height: 80px;
   background: var(--glass-white-medium, rgba(255, 255, 255, 0.15));
   backdrop-filter: blur(var(--glass-blur-lg, 15px));
+  -webkit-backdrop-filter: blur(var(--glass-blur-lg, 15px));
   border: 2px solid var(--glass-border-light, rgba(174, 139, 119, 0.3));
   border-radius: var(--radius-full, 9999px);
   color: var(--color-secondary, #ae8b77);
@@ -501,6 +505,7 @@
   z-index: 9999;
   background: rgba(61, 47, 45, 0.95);
   backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
   display: flex;
   align-items: center;
   justify-content: center;
@@ -515,6 +520,7 @@
   height: 48px;
   background: var(--glass-white-medium, rgba(255, 255, 255, 0.15));
   backdrop-filter: blur(var(--glass-blur-md, 10px));
+  -webkit-backdrop-filter: blur(var(--glass-blur-md, 10px));
   border: 1px solid var(--glass-border-light, rgba(255, 255, 255, 0.3));
   border-radius: var(--radius-full, 9999px);
   color: var(--color-text-inverse, #ffffff);
@@ -539,6 +545,7 @@
   height: 56px;
   background: var(--glass-white-medium, rgba(255, 255, 255, 0.15));
   backdrop-filter: blur(var(--glass-blur-md, 10px));
+  -webkit-backdrop-filter: blur(var(--glass-blur-md, 10px));
   border: 1px solid var(--glass-border-light, rgba(255, 255, 255, 0.3));
   border-radius: var(--radius-full, 9999px);
   color: var(--color-text-inverse, #ffffff);
@@ -598,6 +605,7 @@
   padding: 0.5rem 1.25rem;
   background: var(--glass-white-medium, rgba(255, 255, 255, 0.15));
   backdrop-filter: blur(var(--glass-blur-md, 10px));
+  -webkit-backdrop-filter: blur(var(--glass-blur-md, 10px));
   border: 1px solid var(--glass-border-light, rgba(255, 255, 255, 0.3));
   border-radius: var(--radius-full, 9999px);
   font-size: 0.9375rem;
@@ -613,6 +621,7 @@
   padding: 0.75rem 1.5rem;
   background: var(--glass-white-medium, rgba(255, 255, 255, 0.15));
   backdrop-filter: blur(var(--glass-blur-md, 10px));
+  -webkit-backdrop-filter: blur(var(--glass-blur-md, 10px));
   border: 1px solid var(--glass-border-light, rgba(255, 255, 255, 0.3));
   border-radius: var(--radius-full, 9999px);
   color: var(--color-text-inverse, #ffffff);

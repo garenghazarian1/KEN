@@ -73,7 +73,7 @@ export default function HeroModern() {
             muted
             loop
             playsInline
-            preload={isMobile ? "metadata" : "auto"}
+            preload="auto"
             className={styles.heroVideo}
           />
           <div className={styles.videoOverlay} />

@@ -137,6 +137,49 @@ export const getTelLink = (phone) => {
   return `tel:${formatted}`;
 };
 
+// Detect if running in iOS WebView (App Store app)
+export const isIOSWebView = () => {
+  if (typeof window === "undefined") return false;
+  const userAgent =
+    window.navigator.userAgent || window.navigator.vendor || window.opera;
+  // Check for iOS
+  const isIOS = /iPad|iPhone|iPod/.test(userAgent) && !window.MSStream;
+  // Check if it's a WebView (not Safari)
+  const isWebView =
+    isIOS && !/Safari/.test(userAgent) && /AppleWebKit/.test(userAgent);
+  return isWebView;
+};
+
+// Handle phone number click with iOS WebView fallback
+export const handlePhoneClick = (phone, e) => {
+  if (typeof window === "undefined") return;
+
+  const formatted = formatPhoneForTel(phone);
+  if (!formatted) return;
+
+  // Check if we're in iOS WebView
+  if (isIOSWebView()) {
+    e.preventDefault();
+    // Try multiple methods for iOS WebView
+    try {
+      // Method 1: Try window.location
+      window.location.href = `tel:${formatted}`;
+    } catch (err) {
+      try {
+        // Method 2: Try window.open
+        window.open(`tel:${formatted}`, "_self");
+      } catch (err2) {
+        // Method 3: Fallback - show number for manual dialing
+        alert(`Please call: ${formatted}`);
+      }
+    }
+    return false;
+  }
+
+  // For regular browsers, let the default tel: link work
+  return true;
+};
+
 // Helper function to get full URL
 export const getFullUrl = (path) => {
   // Remove leading slash if present to avoid double slashes

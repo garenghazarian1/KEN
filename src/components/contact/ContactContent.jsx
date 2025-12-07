@@ -2,7 +2,12 @@
 
 import Image from "next/image";
 import { Phone, Mail, MessageCircle } from "lucide-react";
-import { CONTACT, formatPhoneForTel, getTelLink } from "@/config/constants";
+import {
+  CONTACT,
+  formatPhoneForTel,
+  getTelLink,
+  handlePhoneClick,
+} from "@/config/constants";
 import styles from "@/app/(navPages)/contact/Contact.module.css";
 
 // Helper function to get WhatsApp URL for a phone number
@@ -44,6 +49,7 @@ const StoreInfo = ({ store }) => (
             <a
               className={styles.a}
               href={getTelLink(store.phone)}
+              onClick={(e) => handlePhoneClick(store.phone, e)}
               aria-label={`Call ${store.phone}`}
             >
               {store.phone}
@@ -57,6 +63,7 @@ const StoreInfo = ({ store }) => (
             <a
               className={styles.a}
               href={getTelLink(store.mobile)}
+              onClick={(e) => handlePhoneClick(store.mobile, e)}
               aria-label={`Call ${store.mobile}`}
             >
               {store.mobile}
@@ -81,6 +88,7 @@ const StoreInfo = ({ store }) => (
             <a
               className={styles.a}
               href={getTelLink(store.barberMobile)}
+              onClick={(e) => handlePhoneClick(store.barberMobile, e)}
               aria-label={`Call ${store.barberMobile}`}
             >
               {store.barberMobile}
