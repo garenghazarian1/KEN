@@ -79,6 +79,14 @@ export const BUSINESS = {
   },
 };
 
+// App Store Links
+export const APP_STORES = {
+  googlePlay: "https://play.google.com/store/apps/details?id=com.kenbeautyapp",
+  appleAppStore: "https://apps.apple.com/app/id6752693871",
+  bundleId: "com.garenghazarian.kenbeautysalon",
+  appleId: "6752693871",
+};
+
 // Third-Party Services
 export const THIRD_PARTY = {
   tidio: {

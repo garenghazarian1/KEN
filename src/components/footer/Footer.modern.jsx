@@ -31,7 +31,6 @@ import { stores } from "@/data/stores";
 import styles from "./Footer.modern.module.css";
 
 export default function FooterModern() {
-  const [cookieConsent, setCookieConsent] = useState(false);
   const [showCookieBanner, setShowCookieBanner] = useState(false);
 
   useEffect(() => {
@@ -39,20 +38,16 @@ export default function FooterModern() {
     const consent = localStorage.getItem("cookieConsent");
     if (!consent) {
       setShowCookieBanner(true);
-    } else {
-      setCookieConsent(consent === "accepted");
     }
   }, []);
 
   const handleAcceptCookies = () => {
     localStorage.setItem("cookieConsent", "accepted");
-    setCookieConsent(true);
     setShowCookieBanner(false);
   };
 
   const handleDeclineCookies = () => {
     localStorage.setItem("cookieConsent", "declined");
-    setCookieConsent(false);
     setShowCookieBanner(false);
   };
 

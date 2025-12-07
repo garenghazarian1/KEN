@@ -2,6 +2,7 @@
 import "./globals.css";
 import NavbarModern from "@/components/navbar/Navbar.modern";
 import FooterModern from "@/components/footer/Footer.modern";
+import AppInstallBanner from "@/components/AppInstallBanner/AppInstallBanner";
 import ClientLayout from "@/components/ClientLayout";
 import InitialLoader from "@/components/InitialLoader";
 import styles from "./Layout.module.css";
@@ -39,6 +40,7 @@ export default function RootLayout({ children }) {
     <html lang="en" className={`${inter.className} ${lora.className}`}>
       <body>
         <InitialLoader />
+        <AppInstallBanner />
         <ClientLayout>
           <div className={styles.layoutContainer}>
             <NavbarModern />

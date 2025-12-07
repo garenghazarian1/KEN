@@ -693,3 +693,12 @@ img {
 .react-calendar--selectRange .react-calendar__tile--hover {
   background-color: var(--teal-800) !important;
 }
+
+/* App Install Banner - Adjust layout when banner is visible */
+:root {
+  --app-banner-height: 0px;
+}
+
+body.app-banner-visible {
+  --app-banner-height: auto;
+}

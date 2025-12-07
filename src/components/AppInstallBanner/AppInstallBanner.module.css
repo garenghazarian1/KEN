@@ -1,0 +1,226 @@
+/* ============================================
+   APP INSTALL BANNER
+   ============================================
+   Banner that prompts mobile users to install
+   the app from their respective app stores.
+   ============================================ */
+
+.banner {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 1040; /* Above navbar (1030) */
+  padding: var(--spacing-4);
+  background: linear-gradient(
+    135deg,
+    rgba(255, 255, 255, 0.95) 0%,
+    rgba(255, 255, 255, 0.98) 100%
+  );
+  backdrop-filter: blur(20px) saturate(180%);
+  -webkit-backdrop-filter: blur(20px) saturate(180%);
+  border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
+}
+
+.bannerContent {
+  max-width: 1400px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-4);
+  align-items: center;
+}
+
+.bannerText {
+  display: flex;
+  gap: var(--spacing-4);
+  align-items: flex-start;
+  flex: 1;
+  width: 100%;
+}
+
+.iconWrapper {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 48px;
+  height: 48px;
+  background: linear-gradient(
+    135deg,
+    var(--color-primary) 0%,
+    var(--color-secondary) 100%
+  );
+  border-radius: var(--border-radius-lg);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+.icon {
+  color: white;
+}
+
+.textContent {
+  flex: 1;
+}
+
+.textContent h3 {
+  font-size: var(--font-size-lg);
+  font-weight: var(--font-weight-semibold);
+  color: #1a1a1a; /* High contrast dark text */
+  margin: 0 0 var(--spacing-1) 0;
+  line-height: var(--line-height-tight);
+  text-shadow: 0 1px 2px rgba(255, 255, 255, 0.8);
+}
+
+.textContent p {
+  font-size: var(--font-size-sm);
+  color: #2d2d2d; /* Darker secondary text for better readability */
+  margin: 0;
+  line-height: var(--line-height-relaxed);
+  text-shadow: 0 1px 2px rgba(255, 255, 255, 0.6);
+}
+
+.bannerActions {
+  display: flex;
+  gap: var(--spacing-3);
+  align-items: center;
+  width: 100%;
+  justify-content: flex-end;
+}
+
+.installButton {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-2);
+  padding: var(--spacing-3) var(--spacing-5);
+  background: linear-gradient(
+    135deg,
+    var(--color-primary) 0%,
+    var(--color-secondary) 100%
+  );
+  color: white;
+  border: none;
+  border-radius: var(--border-radius-md);
+  font-size: var(--font-size-sm);
+  font-weight: var(--font-weight-semibold);
+  cursor: pointer;
+  transition: all var(--transition-base) var(--ease-in-out);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+}
+
+.installButton:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+}
+
+.installButton:active {
+  transform: translateY(0);
+}
+
+.dismissButton {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 36px;
+  height: 36px;
+  background: rgba(255, 255, 255, 0.9);
+  border: 1px solid rgba(0, 0, 0, 0.1);
+  border-radius: var(--border-radius-full);
+  color: #2d2d2d;
+  cursor: pointer;
+  transition: all var(--transition-base) var(--ease-in-out);
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.dismissButton:hover {
+  background: rgba(255, 255, 255, 1);
+  color: #1a1a1a;
+  transform: rotate(90deg);
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.15);
+}
+
+.dismissButton:active {
+  transform: rotate(90deg) scale(0.95);
+}
+
+/* Tablet and below */
+@media (max-width: 768px) {
+  .banner {
+    padding: var(--spacing-3);
+  }
+
+  .bannerContent {
+    gap: var(--spacing-3);
+  }
+
+  .bannerText {
+    gap: var(--spacing-3);
+  }
+
+  .iconWrapper {
+    min-width: 40px;
+    height: 40px;
+  }
+
+  .icon {
+    width: 20px;
+    height: 20px;
+  }
+
+  .textContent h3 {
+    font-size: var(--font-size-base);
+  }
+
+  .textContent p {
+    font-size: var(--font-size-xs);
+  }
+
+  .installButton {
+    padding: var(--spacing-2) var(--spacing-4);
+    font-size: var(--font-size-xs);
+  }
+
+  .bannerActions {
+    gap: var(--spacing-2);
+  }
+}
+
+/* Small mobile (480px and below) */
+@media (max-width: 480px) {
+  .banner {
+    padding: var(--spacing-2);
+  }
+
+  .bannerText {
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    gap: var(--spacing-2);
+  }
+
+  .bannerActions {
+    flex-direction: column;
+    width: 100%;
+  }
+
+  .installButton {
+    width: 100%;
+    justify-content: center;
+  }
+
+  .dismissButton {
+    align-self: flex-end;
+  }
+}
+
+/* Very small mobile (360px and below) */
+@media (max-width: 360px) {
+  .textContent h3 {
+    font-size: var(--font-size-sm);
+  }
+
+  .textContent p {
+    font-size: 11px;
+  }
+}
+

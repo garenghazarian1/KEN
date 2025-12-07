@@ -1,8 +1,5 @@
-﻿import Script from "next/script";
-import InstagramFeed from "@/components/instagram/InstagramFeed";
-import styles from "./Gallery.module.css";
-import InstagramEmbed from "@/components/instagram/StaticInstagram";
-import { BASE_URL, BUSINESS, getFullUrl } from "@/config/constants";
+﻿import { BUSINESS } from "@/config/constants";
+import Gallery from "./Gallery";
 
 export const metadata = {
   title: `Gallery | ${BUSINESS.name} Abu Dhabi`,
@@ -25,49 +22,6 @@ export const metadata = {
   },
 };
 
-const galleryJsonLd = {
-  "@context": "https://schema.org",
-  "@type": "CollectionPage",
-  name: `${BUSINESS.name} Gallery`,
-  url: getFullUrl("/gallery"),
-  about: {
-    "@type": "Service",
-    name: "Beauty and Barber Services",
-    areaServed: BUSINESS.location.city,
-    provider: {
-      "@type": "BeautySalon",
-      name: BUSINESS.name,
-      url: BASE_URL,
-    },
-  },
-};
-
-export default function Gallery() {
-  return (
-    <>
-      <Script
-        id="ld-gallery"
-        type="application/ld+json"
-        strategy="beforeInteractive"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(galleryJsonLd) }}
-      />
-      <main className={styles.main}>
-        <h1 className={styles.title}>Welcome to Our Gallery</h1>
-
-        {/* Static Instagram Posts Section */}
-        <section className={styles.instagramStaticPosts}>
-          {/* <h2>Instagram Highlights</h2> */}
-          <div className={styles.staticPostsGrid}>
-            {/* Instagram Post 1 */}
-            <InstagramEmbed />
-
-            {/* Add more InstagramEmbed components for additional posts */}
-          </div>
-        </section>
-        {/* <section>
-          <InstagramFeed />
-        </section> */}
-      </main>
-    </>
-  );
+export default function GalleryPage() {
+  return <Gallery />;
 }
