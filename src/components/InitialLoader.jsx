@@ -8,22 +8,24 @@ export default function InitialLoader() {
   const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
+    if (typeof window === "undefined") return;
+
     // Show loader for minimum 1.5 seconds for better UX
     const timer = setTimeout(() => {
       setIsLoading(false);
     }, 1500);
 
-    // Also hide when page is fully loaded
-    if (document.readyState === "complete") {
-      setTimeout(() => {
-        setIsLoading(false);
-      }, 1500);
-    } else {
-      window.addEventListener("load", () => {
-        setTimeout(() => {
-          setIsLoading(false);
-        }, 1500);
-      });
+    // Also hide when page is fully loaded (if not already complete)
+    if (document.readyState !== "complete") {
+      window.addEventListener(
+        "load",
+        () => {
+          setTimeout(() => {
+            setIsLoading(false);
+          }, 1500);
+        },
+        { once: true }
+      );
     }
 
     return () => clearTimeout(timer);
@@ -43,4 +45,3 @@ export default function InitialLoader() {
     </AnimatePresence>
   );
 }
-

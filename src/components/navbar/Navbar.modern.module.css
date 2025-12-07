@@ -196,10 +196,8 @@
   left: 0;
   right: 0;
   width: 100%;
-  background-color: var(
-    --glass-white-strongest
-  ); /* Less transparent background */
-  backdrop-filter: blur(var(--glass-blur-md)); /* Same blur as navbar */
+  background-color: rgba(255, 255, 255, 0.8);
+  backdrop-filter: blur(var(--glass-blur-lg)); /* Same blur as navbar */
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05); /* Match navbar shadow */
   overflow: hidden;
 }

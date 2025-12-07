@@ -4,7 +4,7 @@ import NavbarModern from "@/components/navbar/Navbar.modern";
 import FooterModern from "@/components/footer/Footer.modern";
 import AppInstallBanner from "@/components/AppInstallBanner/AppInstallBanner";
 import ClientLayout from "@/components/ClientLayout";
-import InitialLoader from "@/components/InitialLoader";
+// import InitialLoader from "@/components/InitialLoader";
 import styles from "./Layout.module.css";
 import { Analytics } from "@vercel/analytics/react";
 import Script from "next/script";
@@ -39,7 +39,7 @@ export default function RootLayout({ children }) {
   return (
     <html lang="en" className={`${inter.className} ${lora.className}`}>
       <body>
-        <InitialLoader />
+        {/* <InitialLoader /> */}
         <AppInstallBanner />
         <ClientLayout>
           <div className={styles.layoutContainer}>

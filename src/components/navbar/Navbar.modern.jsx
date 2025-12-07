@@ -14,6 +14,7 @@ const navLinks = [
   { title: "About Us", path: "/about" },
   { title: "Contact", path: "/contact" },
   { title: "Gallery", path: "/gallery" },
+  // { title: "Drinks", path: "/drinks" }, // Commented out - keeping only in footer
 ];
 
 export default function NavbarModern() {

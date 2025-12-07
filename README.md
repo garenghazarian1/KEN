@@ -1,4 +1,16 @@
+# Ken Beauty Salon - Next.js Application
+
 This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+
+## Features
+
+- 🎨 Modern glassmorphism design system
+- 📱 Fully responsive mobile design
+- 🚀 App installation banner (Android/iOS detection)
+- 📞 Clickable phone numbers and WhatsApp links
+- 📧 Clickable email links with pre-filled messages
+- 🎯 App store installation buttons in footer
+- ⚡ Optimized performance and loading states
 
 ## Getting Started
 

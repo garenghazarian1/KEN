@@ -275,6 +275,46 @@
   flex-shrink: 0;
 }
 
+/* App Store Links */
+.appDescription {
+  font-size: var(--font-size-sm);
+  color: var(--color-text-secondary);
+  margin: 0 0 var(--spacing-4) 0;
+  line-height: var(--line-height-relaxed);
+}
+
+.appStoreLinks {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-3);
+}
+
+.appStoreButton {
+  display: inline-block;
+  text-decoration: none;
+  transition: all var(--transition-base) var(--ease-in-out);
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+  line-height: 0;
+}
+
+.appStoreButton:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+}
+
+.appStoreButton:active {
+  transform: translateY(0);
+}
+
+.appStoreBadge {
+  display: block;
+  width: 100%;
+  max-width: 180px;
+  height: auto;
+  border-radius: var(--radius-md);
+}
+
 /* Bottom Section */
 .footerBottom {
   padding-top: var(--spacing-8);
@@ -542,4 +582,3 @@
     font-size: var(--font-size-sm);
   }
 }
-

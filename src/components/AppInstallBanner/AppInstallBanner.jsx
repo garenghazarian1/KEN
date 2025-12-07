@@ -12,26 +12,29 @@ export default function AppInstallBanner() {
   const bannerRef = useRef(null);
 
   useEffect(() => {
+    if (typeof window === "undefined") return;
+
     // Check if user has already dismissed the banner
     const dismissed = localStorage.getItem("appInstallBannerDismissed");
     
     // Development mode: Allow testing via URL parameter or localStorage flag
-    // Check if we're on localhost (development)
-    const isDevelopment = typeof window !== "undefined" && 
-      (window.location.hostname === "localhost" || window.location.hostname === "127.0.0.1");
-    const urlParams = typeof window !== "undefined" ? new URLSearchParams(window.location.search) : null;
-    const testMode = urlParams?.get("testAppBanner");
+    const isDevelopment = 
+      window.location.hostname === "localhost" || 
+      window.location.hostname === "127.0.0.1";
+    const urlParams = new URLSearchParams(window.location.search);
+    const testMode = urlParams.get("testAppBanner");
     const forceShow = localStorage.getItem("forceShowAppBanner") === "true";
     
+    // In development test mode, bypass dismissal check
     if (isDevelopment && (testMode || forceShow)) {
-      // In test mode, allow manual device type selection
-      const testDevice = urlParams?.get("device") || localStorage.getItem("testDeviceType") || "android";
+      const testDevice = urlParams.get("device") || localStorage.getItem("testDeviceType") || "android";
       setDeviceType(testDevice);
       setShowBanner(true);
       return;
     }
     
-    if (dismissed && !isDevelopment) {
+    // If dismissed, don't show banner (unless in test mode)
+    if (dismissed === "true") {
       return;
     }
 
@@ -51,11 +54,6 @@ export default function AppInstallBanner() {
       setShowBanner(true);
       return;
     }
-
-    // For desktop or other devices, you might want to show both options
-    // Uncomment the following if you want to show banner on desktop too
-    // setDeviceType("desktop");
-    // setShowBanner(true);
   }, []);
 
   // Add/remove class to body when banner is visible and update navbar position
@@ -84,7 +82,9 @@ export default function AppInstallBanner() {
   }, [showBanner]);
 
   const handleDismiss = () => {
-    localStorage.setItem("appInstallBannerDismissed", "true");
+    if (typeof window !== "undefined") {
+      localStorage.setItem("appInstallBannerDismissed", "true");
+    }
     setShowBanner(false);
   };
 

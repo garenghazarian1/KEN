@@ -37,11 +37,12 @@
   inset: 0;
   background: linear-gradient(
     135deg,
-    rgba(0, 0, 0, 0.3) 0%,
-    rgba(0, 0, 0, 0.1) 50%,
-    rgba(0, 0, 0, 0.2) 100%
+    rgba(174, 139, 119, 0.15) 0%,
+    rgba(251, 228, 213, 0.1) 50%,
+    rgba(255, 233, 218, 0.12) 100%
   );
-  backdrop-filter: blur(2px);
+  backdrop-filter: blur(3px);
+  -webkit-backdrop-filter: blur(3px);
   z-index: 1;
 }
 

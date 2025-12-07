@@ -2,6 +2,7 @@
 
 import { useState, useEffect } from "react";
 import Link from "next/link";
+import Image from "next/image";
 import { motion, AnimatePresence } from "framer-motion";
 import {
   Instagram,
@@ -20,6 +21,7 @@ import {
   X,
   Check,
   MessageCircle,
+  Coffee,
 } from "lucide-react";
 import {
   CONTACT,
@@ -28,6 +30,7 @@ import {
   BOOKING_URL,
   BASE_URL,
   formatPhoneForTel,
+  APP_STORES,
 } from "@/config/constants";
 import { stores } from "@/data/stores";
 import styles from "./Footer.modern.module.css";
@@ -61,6 +64,7 @@ export default function FooterModern() {
     { title: "About Us", path: "/about", icon: Info },
     { title: "Contact", path: "/contact", icon: Phone },
     { title: "Gallery", path: "/gallery", icon: ImageIcon },
+    { title: "Drinks Menu", path: "/drinks", icon: Coffee },
   ];
 
   const legalLinks = [
@@ -308,6 +312,54 @@ export default function FooterModern() {
                 >
                   <Facebook size={20} />
                   <span>Barbershop</span>
+                </a>
+              </div>
+            </motion.div>
+
+            {/* Get Our App */}
+            <motion.div
+              className={styles.footerSection}
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.6, delay: 0.4 }}
+            >
+              <h4 className={styles.sectionSubtitle}>Get Our App</h4>
+              <p className={styles.appDescription}>
+                Download our mobile app for a better experience
+              </p>
+              <div className={styles.appStoreLinks}>
+                <a
+                  href={APP_STORES.googlePlay}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className={styles.appStoreButton}
+                  aria-label="Download on Google Play"
+                >
+                  <Image
+                    src="https://upload.wikimedia.org/wikipedia/commons/7/78/Google_Play_Store_badge_EN.svg"
+                    alt="Get it on Google Play"
+                    width={180}
+                    height={70}
+                    className={styles.appStoreBadge}
+                    unoptimized
+                  />
+                </a>
+                <a
+                  href={APP_STORES.appleAppStore}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className={styles.appStoreButton}
+                  aria-label="Download on the App Store"
+                >
+                  <Image
+                    src="https://tools.applemediaservices.com/api/badges/download-on-the-app-store/black/en-us?size=250x83&releaseDate=1289433600"
+                    alt="Download on the App Store"
+                    width={180}
+                    height={60}
+                    className={styles.appStoreBadge}
+                    unoptimized
+                  />
                 </a>
               </div>
             </motion.div>
