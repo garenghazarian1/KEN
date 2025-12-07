@@ -108,9 +108,33 @@ export const IMAGES = {
 
 // Helper function to format phone number for tel: links
 // Removes spaces, dashes, parentheses, and other formatting
+// Ensures iOS WebView compatibility by keeping + prefix and removing all non-numeric characters except +
 export const formatPhoneForTel = (phone) => {
   if (!phone) return "";
-  return phone.replace(/[\s\-\(\)]/g, "");
+  // Remove all characters except digits and +
+  let cleaned = phone.replace(/[^\d+]/g, "");
+  // Ensure + is at the start if present, remove any other + signs
+  if (cleaned.includes("+")) {
+    cleaned = "+" + cleaned.replace(/\+/g, "");
+  }
+  // For iOS WebView, ensure the number starts with + for international format
+  // If no + and starts with country code, add +
+  if (!cleaned.startsWith("+") && cleaned.length > 7) {
+    // If it looks like an international number without +, add it
+    if (cleaned.startsWith("971")) {
+      cleaned = "+" + cleaned;
+    }
+  }
+  return cleaned;
+};
+
+// iOS WebView compatible tel: link handler
+// Some iOS WebViews require special handling for tel: links
+export const getTelLink = (phone) => {
+  const formatted = formatPhoneForTel(phone);
+  if (!formatted) return "#";
+  // Ensure tel: protocol is properly formatted for iOS
+  return `tel:${formatted}`;
 };
 
 // Helper function to get full URL

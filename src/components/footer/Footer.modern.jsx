@@ -28,8 +28,8 @@ import {
   SOCIAL_MEDIA,
   BUSINESS,
   BOOKING_URL,
-  BASE_URL,
   formatPhoneForTel,
+  getTelLink,
   APP_STORES,
 } from "@/config/constants";
 import { stores } from "@/data/stores";
@@ -143,7 +143,7 @@ export default function FooterModern() {
               </p>
               <div className={styles.contactInfo}>
                 <a
-                  href={`tel:${formatPhoneForTel(CONTACT.primaryMobile)}`}
+                  href={getTelLink(CONTACT.primaryMobile)}
                   className={styles.contactLink}
                   aria-label="Call us"
                 >
@@ -219,7 +219,7 @@ export default function FooterModern() {
                     </p>
                     <div className={styles.locationPhoneContainer}>
                       <a
-                        href={`tel:${formatPhoneForTel(store.mobile)}`}
+                        href={getTelLink(store.mobile)}
                         className={styles.locationPhone}
                         aria-label={`Call ${store.name}`}
                       >
