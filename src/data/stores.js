@@ -8,7 +8,7 @@
 export const stores = [
   {
     _id: "1",
-    name: "Ken Salon, The Galleria Al Maryah Island",
+    name: "Ken Beauty Salon, The Galleria Al Maryah Island",
     street: "The Galleria Al Maryah Island - 107 Hamouda Bin Ali Al Dhaheri St",
     city: "Abu Dhabi",
     zipCode: "00000",
@@ -20,14 +20,13 @@ export const stores = [
   },
   {
     _id: "2",
-    name: "Ken Salon, Rixos Hotel",
+    name: "Ken Beauty Salon & Ken Barbershop, Rixos Hotel",
     street: "Rixos Hotel, Marina - Al Kasir - Al Marina",
     city: "Abu Dhabi",
     zipCode: "00000",
     country: "United Arab Emirates",
     phone: "+971 2 635 9993",
     mobile: "+971 55 557 0029",
-    barberMobile: "+971 56 181 6017",
     email: "info@ken-salon.com",
     imageStore: "/Rixos.jpg",
   },

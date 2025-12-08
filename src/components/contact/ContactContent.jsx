@@ -81,31 +81,6 @@ const StoreInfo = ({ store }) => (
             </a>
           </p>
         )}
-        {store.barberMobile && (
-          <p className={styles.p}>
-            <Phone size={16} className={styles.icon} />
-            Barber Mobile:{" "}
-            <a
-              className={styles.a}
-              href={getTelLink(store.barberMobile)}
-              onClick={(e) => handlePhoneClick(store.barberMobile, e)}
-              aria-label={`Call ${store.barberMobile}`}
-            >
-              {store.barberMobile}
-            </a>
-            {" | "}
-            <a
-              className={styles.whatsappLink}
-              href={getWhatsAppUrl(store.barberMobile)}
-              target="_blank"
-              rel="noopener noreferrer"
-              aria-label={`WhatsApp ${store.barberMobile}`}
-            >
-              <MessageCircle size={16} className={styles.whatsappIcon} />
-              WhatsApp
-            </a>
-          </p>
-        )}
         <p className={styles.p}>
           <Mail size={16} className={styles.icon} />
           Email:{" "}
