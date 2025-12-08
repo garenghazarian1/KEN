@@ -17,7 +17,7 @@ export const stores = [
     mobile: "+971 50 304 3570",
     whatsapp: "+971 50 304 3570",
     email: "info@ken-salon.com",
-    imageStore: "/Galleria.jpg",
+    imageStore: "/Galleria.webp",
   },
   {
     _id: "2",

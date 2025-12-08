@@ -286,7 +286,7 @@ export default function ContactContent({ stores }) {
       <section className={styles.splitContainer}>
         <motion.div
           className={styles.splitLeft}
-          style={{ backgroundImage: "url('/heroGridImage/hero004.jpg')" }}
+          style={{ backgroundImage: "url('/heroGridImage/hero004.webp')" }}
           role="img"
           aria-label="Luxury beauty salon interior showcasing elegant design and ambiance"
           initial={{ opacity: 0, x: -30 }}

@@ -7,9 +7,9 @@ export default function PageFifteen() {
     <>
       <div className={styles.containerD}>
         <div className={styles.leftPaneD}>
-          {/* <Image src="/portfolio/philosophy01.jpg" alt="K Logo" className={styles.imageD} width={250} height={250} />  */}
+          {/* <Image src="/portfolio/philosophy01.webp" alt="K Logo" className={styles.imageD} width={250} height={250} />  */}
           <Image
-            src="/portfolio/philosophy02.jpg"
+            src="/portfolio/philosophy02.webp"
             alt="K Logo"
             className={styles.imageD}
             width={250}

@@ -6,7 +6,12 @@
     height: 800px;
     width: 100vw;
     overflow: hidden;
-    background-color: black; 
+    background-color: black;
+    /* Account for fixed navbar (5rem) + banner + spacing + safe area */
+    padding-top: calc(
+      var(--app-banner-height, 0px) + 5rem + var(--spacing-4) +
+        env(safe-area-inset-top, 0px)
+    );
   }
 
   .leftPaneA  {
@@ -91,10 +96,16 @@
 
 
   @media (max-width: 800px) {
-
     /* PAGE01 */
+    .containerA {
+      /* Account for fixed navbar (5rem) + banner + spacing + safe area on mobile */
+      padding-top: calc(
+        var(--app-banner-height, 0px) + 5rem + var(--spacing-3) +
+          env(safe-area-inset-top, 0px)
+      );
+    }
+
     .leftPaneA, .rightPaneA {
-        
         transition: transform 0.5s ease; 
     }
     .leftPaneA, .rightPaneA {
@@ -117,7 +128,12 @@
     /* PAGE01 */
     .containerA {
       flex-direction: column;
-      height: 1000px; 
+      height: 1000px;
+      /* Account for fixed navbar (5rem) + banner + spacing + safe area on small mobile */
+      padding-top: calc(
+        var(--app-banner-height, 0px) + 5rem + var(--spacing-2) +
+          env(safe-area-inset-top, 0px)
+      );
     }
   
     .leftPaneA, .rightPaneA {
@@ -129,6 +145,4 @@
     .portfolioTextA {
       font-size: 1rem; 
     }
-
-    
   }

@@ -1,3 +1,4 @@
+import Image from "next/image";
 import styles from "./PageTwentySeven.module.css";
 
 export default function PageTwentySeven() {
@@ -16,26 +17,13 @@ export default function PageTwentySeven() {
         </div>
 
         <div className={styles.sectionB}>
-          {/* <h2 className={styles.sectionAHeader}> We Are Featured in the Press and Media</h2> */}
-          {/* <video
-            src="portfolio/press.mp4"
-            alt="Salon Video"
-            autoPlay
-            muted
-            loop
-            playsInline
-            preload="auto"
+          <Image
+            src="/portfolio/press.jpg"
+            alt="Press coverage"
+            width={1200}
+            height={800}
             className={styles.video}
-          /> */}
-          <video
-            src="portfolio/PressYerevan.mp4"
-            alt="Salon Video"
-            autoPlay
-            muted
-            loop
-            playsInline
-            preload="auto"
-            className={styles.video}
+            priority
           />
         </div>
       </div>

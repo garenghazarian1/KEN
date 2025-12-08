@@ -26,7 +26,7 @@ export default function PageFive() {
             >
               <SwiperSlide>
                 <Image
-                  src="/portfolio/portfolioA001.jpg"
+                  src="/portfolio/portfolioA001.webp"
                   alt="K Logo"
                   className={styles.rightLeftImagesPageE}
                   width={300}
@@ -35,7 +35,7 @@ export default function PageFive() {
               </SwiperSlide>
               <SwiperSlide>
                 <Image
-                  src="/portfolio/portfolioA002.jpg"
+                  src="/portfolio/portfolioA002.webp"
                   alt="K Logo"
                   className={styles.rightLeftImagesPageE}
                   width={300}
@@ -44,7 +44,7 @@ export default function PageFive() {
               </SwiperSlide>
               <SwiperSlide>
                 <Image
-                  src="/portfolio/portfolioA003.jpg"
+                  src="/portfolio/portfolioA003.webp"
                   alt="K Logo"
                   className={styles.rightLeftImagesPageE}
                   width={300}
@@ -80,7 +80,7 @@ export default function PageFive() {
             >
               <SwiperSlide>
                 <Image
-                  src="/portfolio/portfolioB001.jpg"
+                  src="/portfolio/portfolioB001.webp"
                   alt="K Logo"
                   className={styles.rightLeftImagesPageE}
                   width={300}
@@ -89,7 +89,7 @@ export default function PageFive() {
               </SwiperSlide>
               <SwiperSlide>
                 <Image
-                  src="/portfolio/portfolioB002.jpg"
+                  src="/portfolio/portfolioB002.webp"
                   alt="K Logo"
                   className={styles.rightLeftImagesPageE}
                   width={300}
@@ -98,7 +98,7 @@ export default function PageFive() {
               </SwiperSlide>
               <SwiperSlide>
                 <Image
-                  src="/portfolio/portfolioB003.jpg"
+                  src="/portfolio/portfolioB003.webp"
                   alt="K Logo"
                   className={styles.rightLeftImagesPageE}
                   width={300}
@@ -121,7 +121,7 @@ export default function PageFive() {
             >
               <SwiperSlide>
                 <Image
-                  src="/portfolio/portfolioC001.jpg"
+                  src="/portfolio/portfolioC001.webp"
                   alt="K Logo"
                   className={styles.rightLeftImagesPageE}
                   width={300}
@@ -130,7 +130,7 @@ export default function PageFive() {
               </SwiperSlide>
               <SwiperSlide>
                 <Image
-                  src="/portfolio/portfolioC002.jpg"
+                  src="/portfolio/portfolioC002.webp"
                   alt="K Logo"
                   className={styles.rightLeftImagesPageE}
                   width={300}
@@ -139,7 +139,7 @@ export default function PageFive() {
               </SwiperSlide>
               <SwiperSlide>
                 <Image
-                  src="/portfolio/portfolioC003.jpg"
+                  src="/portfolio/portfolioC003.webp"
                   alt="K Logo"
                   className={styles.rightLeftImagesPageE}
                   width={300}
@@ -148,7 +148,7 @@ export default function PageFive() {
               </SwiperSlide>
               <SwiperSlide>
                 <Image
-                  src="/portfolio/portfolioC004.jpg"
+                  src="/portfolio/portfolioC004.webp"
                   alt="K Logo"
                   className={styles.rightLeftImagesPageE}
                   width={300}
@@ -185,7 +185,7 @@ export default function PageFive() {
             >
               <SwiperSlide>
                 <Image
-                  src="/portfolio/portfolioD001.jpg"
+                  src="/portfolio/portfolioD001.webp"
                   alt="K Logo"
                   className={styles.rightLeftImagesPageE}
                   width={300}
@@ -194,7 +194,7 @@ export default function PageFive() {
               </SwiperSlide>
               <SwiperSlide>
                 <Image
-                  src="/portfolio/portfolioD002.jpg"
+                  src="/portfolio/portfolioD002.webp"
                   alt="K Logo"
                   className={styles.rightLeftImagesPageE}
                   width={300}

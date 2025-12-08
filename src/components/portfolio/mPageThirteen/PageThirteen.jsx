@@ -8,7 +8,7 @@ export default function PageThirteen() {
       <div className={styles.containerD}>
         <div className={styles.leftPaneD}>
           <Image
-            src="/portfolio/vision.jpg"
+            src="/portfolio/vision.webp"
             alt="K Logo"
             className={styles.imageD}
             width={250}

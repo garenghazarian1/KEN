@@ -8,7 +8,7 @@ export default function PageSix() {
       <div className={styles.containerF}>
         <div className={styles.subContainerFA}>
           <Image
-            src="/portfolio/portfolioE001.jpg"
+            src="/portfolio/portfolioE001.webp"
             alt="Portfolio Image 1"
             width={500}
             height={500}
@@ -33,7 +33,7 @@ export default function PageSix() {
             allow Ken Salon to unveil the most beautiful version of yourself.
           </p>
           <Image
-            src="/portfolio/portfolioE003.jpg"
+            src="/portfolio/portfolioE003.webp"
             alt="Portfolio Image 2"
             width={500}
             height={500}

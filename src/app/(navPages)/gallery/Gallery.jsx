@@ -15,50 +15,50 @@ import {
   LayoutGrid,
 } from "lucide-react";
 import InstagramEmbed from "@/components/instagram/InstagramEmbed";
-import { BUSINESS, SOCIAL_MEDIA } from "@/config/constants";
+import { SOCIAL_MEDIA } from "@/config/constants";
 import styles from "./Gallery.modern.module.css";
 
 // Sample gallery images - replace with your actual images
 const galleryImages = [
   {
     id: 1,
-    src: "/heroGridImage/hero001.jpg",
+    src: "/heroGridImage/hero001.webp",
     category: "hair",
     title: "Hair Styling Excellence",
   },
   {
     id: 2,
-    src: "/heroGridImage/hero002.jpg",
+    src: "/heroGridImage/hero002.webp",
     category: "makeup",
     title: "Makeup Artistry",
   },
   {
     id: 3,
-    src: "/heroGridImage/hero003.jpg",
+    src: "/heroGridImage/hero003.webp",
     category: "hair",
     title: "Color Transformation",
   },
   {
     id: 4,
-    src: "/heroGridImage/hero004.jpg",
+    src: "/heroGridImage/hero004.webp",
     category: "nails",
     title: "Nail Art Design",
   },
   {
     id: 5,
-    src: "/heroGridImage/hero007.jpg",
+    src: "/heroGridImage/hero007.webp",
     category: "barber",
     title: "Men's Grooming",
   },
   {
     id: 6,
-    src: "/heroGridImage/hero008.jpg",
+    src: "/heroGridImage/hero008.webp",
     category: "facial",
     title: "Facial Treatment",
   },
   {
     id: 7,
-    src: "/heroGridImage/hero009.jpg",
+    src: "/heroGridImage/hero009.webp",
     category: "hair",
     title: "Complete Makeover",
   },

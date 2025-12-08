@@ -8,16 +8,16 @@ import { CONTACT } from "@/config/constants";
 
 const imagesSet = [
   [
-    "/heroGridImage/hero001.jpg",
-    "/heroGridImage/hero002.jpg",
-    "/heroGridImage/hero003.jpg",
-    "/heroGridImage/hero004.jpg",
+    "/heroGridImage/hero001.webp",
+    "/heroGridImage/hero002.webp",
+    "/heroGridImage/hero003.webp",
+    "/heroGridImage/hero004.webp",
   ],
   [
-    "/heroGridImage/hero007.jpg",
-    "/heroGridImage/hero008.jpg",
-    "/heroGridImage/hero009.jpg",
-    "/heroGridImage/hero003.jpg",
+    "/heroGridImage/hero007.webp",
+    "/heroGridImage/hero008.webp",
+    "/heroGridImage/hero009.webp",
+    "/heroGridImage/hero003.webp",
   ],
 ];
 

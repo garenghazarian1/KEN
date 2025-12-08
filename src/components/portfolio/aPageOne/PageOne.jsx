@@ -19,7 +19,7 @@ export default function PageOne() {
         </div>
         <div className={styles.rightPaneA}>
           <Image
-            src="/ken.jpg"
+            src="/ken.webp"
             alt="Ken Salon Portfolio"
             width={500}
             height={500}

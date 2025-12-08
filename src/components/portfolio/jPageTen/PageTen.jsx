@@ -15,7 +15,7 @@ export default function PageTen() {
               aria-label={`Follow us on Instagram: ${SOCIAL_HANDLES.instagram.barbershop}`}
             >
               <Image
-                src="/portfolio/barberShop.jpg"
+                src="/portfolio/barberShop.webp"
                 alt="Ken Barbershop Instagram profile"
                 className={styles.profileImage}
                 width={500}
@@ -33,7 +33,7 @@ export default function PageTen() {
               aria-label={`Follow us on Instagram: ${SOCIAL_HANDLES.instagram.beauty}`}
             >
               <Image
-                src="/portfolio/insta02.jpg"
+                src="/portfolio/insta02.webp"
                 alt="Ken Beauty Instagram profile"
                 className={styles.profileImage}
                 width={500}
@@ -51,7 +51,7 @@ export default function PageTen() {
               aria-label={`Follow us on Instagram: ${SOCIAL_HANDLES.instagram.ghazarian}`}
             >
               <Image
-                src="/portfolio/insta01.jpg"
+                src="/portfolio/insta01.webp"
                 alt="Ken Ghazarian Instagram profile"
                 className={styles.profileImage}
                 width={500}
