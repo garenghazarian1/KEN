@@ -235,7 +235,7 @@ export default function ContactContent({ stores }) {
       `Name: ${formData.name || "Not provided"}\nEmail: ${
         formData.email || "Not provided"
       }\nPhone: ${formData.phone || "Not provided"}\n\nMessage:\n${
-        formData.message || "I'd like to know more about your services."
+        formData.message || "I&apos;d like to know more about your services."
       }`
     );
     return `mailto:${CONTACT.email}?subject=${subject}&body=${body}`;
@@ -414,7 +414,7 @@ export default function ContactContent({ stores }) {
               <motion.a
                 className={styles.quickAction}
                 href={CONTACT.whatsapp.url(
-                  "Hi! I'd like to book an appointment."
+                  "Hi! I&apos;d like to book an appointment."
                 )}
                 target="_blank"
                 rel="noopener noreferrer"
@@ -517,8 +517,8 @@ export default function ContactContent({ stores }) {
                     animate={{ opacity: 1, x: 0 }}
                     transition={{ delay: 1.3, duration: 0.5 }}
                   >
-                    Share a few details and we'll confirm via WhatsApp or email
-                    within working hours.
+                    Share a few details and we&apos;ll confirm via WhatsApp or
+                    email within working hours.
                   </motion.p>
                 </div>
               </motion.div>
