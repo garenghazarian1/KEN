@@ -63,6 +63,12 @@ None at the moment.
 
 ---
 
+## References (merged)
+- App install banner quick test: use DevTools mobile toolbar or `?testAppBanner=true&device=android|ios`; reset via `localStorage.removeItem('appInstallBannerDismissed')`; force show by setting `forceShowAppBanner` and `testDeviceType`.
+- iOS WebView tel: allow `tel` in WKWebView `decidePolicyFor`, add `tel/telprompt` to Info.plist schemes, keep links as `tel:+971...`.
+
+---
+
 ## Notes
 
 - App banner only shows on mobile devices (Android/iOS)

@@ -1,16 +1,25 @@
 ﻿"use client";
 
 import Image from "next/image";
-import { Phone, Mail, MessageCircle } from "lucide-react";
+import { useMemo, useState } from "react";
+import { motion } from "framer-motion";
+import {
+  Phone,
+  Mail,
+  MessageCircle,
+  Send,
+  ArrowRight,
+  Sparkles,
+  MapPin,
+} from "lucide-react";
 import {
   CONTACT,
   formatPhoneForTel,
   getTelLink,
   handlePhoneClick,
 } from "@/config/constants";
-import styles from "@/app/(navPages)/contact/Contact.module.css";
+import styles from "./Contact.modern.module.css";
 
-// Helper function to get WhatsApp URL for a phone number
 const getWhatsAppUrl = (phoneNumber, message = null) => {
   const cleanNumber = formatPhoneForTel(phoneNumber).replace(/^\+/, "");
   const defaultMessage =
@@ -21,95 +30,690 @@ const getWhatsAppUrl = (phoneNumber, message = null) => {
   )}`;
 };
 
-// Reusable Store Info Component
-const StoreInfo = ({ store }) => (
-  <div className={styles.storeContainer}>
-    <div className={styles.section}>
-      <h2 className={styles.sectionHeader}>{store.name}</h2>
-      <Image
-        src={store.imageStore}
-        alt={`${store.name} image`}
-        className={styles.storeImage}
-        width={500}
-        height={500}
-        priority={false}
-      />
-      <div className={styles.storeDetails}>
-        <p className={styles.p}>{store.street}</p>
-        <p className={styles.p}>
-          {store.city}, {store.zipCode}
+const getGoogleMapsUrl = (store) =>
+  `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(
+    `${store.name} ${store.street}, ${store.city}, ${store.country || ""}`
+  )}`;
+
+const StoreInfo = ({ store, isFirst, index }) => (
+  <motion.div
+    className={styles.card}
+    initial={{ opacity: 0, y: 30 }}
+    whileInView={{ opacity: 1, y: 0 }}
+    viewport={{ once: true, amount: 0.2 }}
+    transition={{
+      duration: 0.6,
+      delay: index * 0.1,
+      ease: [0.22, 1, 0.36, 1],
+    }}
+    whileHover={{ y: -4 }}
+  >
+    <div className={styles.content}>
+      <motion.div
+        className={styles.header}
+        initial={{ opacity: 0, x: -20 }}
+        whileInView={{ opacity: 1, x: 0 }}
+        viewport={{ once: true }}
+        transition={{ duration: 0.5, delay: index * 0.1 + 0.2 }}
+      >
+        <h2 className={styles.title}>{store.name}</h2>
+        <p className={styles.subtitle}>
+          {store.street}, {store.city}
         </p>
-        <p className={styles.p}>{store.country}</p>
-      </div>
-      <div className={styles.contactDetails}>
+      </motion.div>
+
+      <motion.div
+        initial={{ opacity: 0, scale: 0.95 }}
+        whileInView={{ opacity: 1, scale: 1 }}
+        viewport={{ once: true }}
+        transition={{ duration: 0.5, delay: index * 0.1 + 0.3 }}
+      >
+        <Image
+          src={store.imageStore}
+          alt={`${store.name} location at ${store.street}, ${store.city}`}
+          className={styles.image}
+          width={800}
+          height={600}
+          priority={isFirst}
+          sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 33vw"
+          loading={isFirst ? "eager" : "lazy"}
+        />
+      </motion.div>
+
+      <motion.div
+        className={styles.details}
+        initial={{ opacity: 0 }}
+        whileInView={{ opacity: 1 }}
+        viewport={{ once: true }}
+        transition={{ duration: 0.5, delay: index * 0.1 + 0.4 }}
+      >
+        <motion.div
+          className={styles.row}
+          initial={{ opacity: 0, x: -10 }}
+          whileInView={{ opacity: 1, x: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.4, delay: index * 0.1 + 0.5 }}
+        >
+          <span className={styles.label}>Address</span>
+          <span>
+            {store.street}, {store.city}, {store.country}
+          </span>
+        </motion.div>
+
+        <motion.div
+          className={styles.row}
+          initial={{ opacity: 0, x: -10 }}
+          whileInView={{ opacity: 1, x: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.4, delay: index * 0.1 + 0.6 }}
+        >
+          <MapPin size={16} className={styles.icon} />
+          <span className={styles.label}>Map</span>
+          <motion.a
+            className={styles.mapLink}
+            href={store.mapUrl || getGoogleMapsUrl(store)}
+            target="_blank"
+            rel="noopener noreferrer"
+            aria-label={`Open ${store.name} in Google Maps`}
+            data-track="location-map"
+            whileHover={{ scale: 1.05 }}
+            whileTap={{ scale: 0.95 }}
+          >
+            Open in Google Maps
+          </motion.a>
+        </motion.div>
+
         {store.phone && (
-          <p className={styles.p}>
+          <motion.div
+            className={styles.row}
+            initial={{ opacity: 0, x: -10 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.4, delay: index * 0.1 + 0.7 }}
+          >
             <Phone size={16} className={styles.icon} />
-            Phone:{" "}
-            <a
-              className={styles.a}
+            <span className={styles.label}>Landline</span>
+            <motion.a
+              className={styles.link}
               href={getTelLink(store.phone)}
               onClick={(e) => handlePhoneClick(store.phone, e)}
               aria-label={`Call ${store.phone}`}
+              whileHover={{ scale: 1.05 }}
+              whileTap={{ scale: 0.95 }}
             >
               {store.phone}
-            </a>
-          </p>
+            </motion.a>
+          </motion.div>
         )}
+
         {store.mobile && (
-          <p className={styles.p}>
+          <motion.div
+            className={styles.row}
+            initial={{ opacity: 0, x: -10 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.4, delay: index * 0.1 + 0.8 }}
+          >
             <Phone size={16} className={styles.icon} />
-            Mobile:{" "}
-            <a
-              className={styles.a}
+            <span className={styles.label}>Mobile</span>
+            <motion.a
+              className={styles.link}
               href={getTelLink(store.mobile)}
               onClick={(e) => handlePhoneClick(store.mobile, e)}
               aria-label={`Call ${store.mobile}`}
+              whileHover={{ scale: 1.05 }}
+              whileTap={{ scale: 0.95 }}
             >
               {store.mobile}
-            </a>
-            {" | "}
-            <a
-              className={styles.whatsappLink}
-              href={getWhatsAppUrl(store.mobile)}
+            </motion.a>
+          </motion.div>
+        )}
+
+        {store.whatsapp && (
+          <motion.div
+            className={styles.row}
+            initial={{ opacity: 0, x: -10 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.4, delay: index * 0.1 + 0.9 }}
+          >
+            <MessageCircle size={16} className={styles.icon} />
+            <span className={styles.label}>WhatsApp</span>
+            <motion.a
+              className={styles.whatsapp}
+              href={getWhatsAppUrl(store.whatsapp)}
               target="_blank"
               rel="noopener noreferrer"
-              aria-label={`WhatsApp ${store.mobile}`}
+              aria-label={`WhatsApp ${store.whatsapp}`}
+              data-track="location-whatsapp"
+              whileHover={{ scale: 1.05 }}
+              whileTap={{ scale: 0.95 }}
             >
-              <MessageCircle size={16} className={styles.whatsappIcon} />
-              WhatsApp
-            </a>
-          </p>
+              {store.whatsapp}
+            </motion.a>
+          </motion.div>
         )}
-        <p className={styles.p}>
+
+        <motion.div
+          className={styles.row}
+          initial={{ opacity: 0, x: -10 }}
+          whileInView={{ opacity: 1, x: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.4, delay: index * 0.1 + 1.0 }}
+        >
           <Mail size={16} className={styles.icon} />
-          Email:{" "}
-          <a
-            className={styles.emailLink}
+          <span className={styles.label}>Email</span>
+          <motion.a
+            className={styles.link}
             href={`mailto:${store.email}?subject=Inquiry about ${store.name}&body=Hello, I would like to know more about your services.`}
             aria-label={`Email ${store.email}`}
+            data-track="location-email"
+            whileHover={{ scale: 1.05 }}
+            whileTap={{ scale: 0.95 }}
           >
             {store.email}
-          </a>
-        </p>
-      </div>
+          </motion.a>
+        </motion.div>
+      </motion.div>
     </div>
-  </div>
+  </motion.div>
 );
 
-export default function ContactContent({ stores, contactJsonLd }) {
+export default function ContactContent({ stores }) {
+  const [formData, setFormData] = useState({
+    name: "",
+    email: "",
+    phone: "",
+    message: "",
+  });
+
+  const mailtoHref = useMemo(() => {
+    const subject = encodeURIComponent(
+      `Inquiry from ${formData.name || "Ken Beauty guest"}`
+    );
+    const body = encodeURIComponent(
+      `Name: ${formData.name || "Not provided"}\nEmail: ${
+        formData.email || "Not provided"
+      }\nPhone: ${formData.phone || "Not provided"}\n\nMessage:\n${
+        formData.message || "I'd like to know more about your services."
+      }`
+    );
+    return `mailto:${CONTACT.email}?subject=${subject}&body=${body}`;
+  }, [formData]);
+
+  const handleChange = (field) => (event) => {
+    setFormData((prev) => ({ ...prev, [field]: event.target.value }));
+  };
+
+  const handleSubmit = (event) => {
+    event.preventDefault();
+
+    // Clear any previous error messages
+    const errorElements = document.querySelectorAll(`.${styles.errorText}`);
+    errorElements.forEach((el) => (el.textContent = ""));
+
+    // Basic validation
+    const form = event.target;
+    if (!form.checkValidity()) {
+      // Handle HTML5 validation
+      const firstInvalid = form.querySelector(":invalid");
+      if (firstInvalid) {
+        firstInvalid.focus();
+        const errorId = firstInvalid
+          .getAttribute("aria-describedby")
+          ?.split(" ")[0];
+        if (errorId) {
+          const errorEl = document.getElementById(errorId);
+          if (errorEl) {
+            errorEl.textContent = firstInvalid.validationMessage;
+          }
+        }
+      }
+      return;
+    }
+
+    // Open mailto link
+    window.location.href = mailtoHref;
+  };
+
   return (
-    <div className={styles.container}>
-      {contactJsonLd && (
-        <script
-          id="ld-contact"
-          type="application/ld+json"
-          dangerouslySetInnerHTML={{ __html: JSON.stringify(contactJsonLd) }}
-        />
-      )}
-      {stores.map((store) => (
-        <StoreInfo key={store._id} store={store} />
-      ))}
-    </div>
+    <motion.div
+      className={styles.page}
+      initial={{ opacity: 0 }}
+      animate={{ opacity: 1 }}
+      transition={{ duration: 0.5 }}
+    >
+      <section className={styles.splitContainer}>
+        <motion.div
+          className={styles.splitLeft}
+          style={{ backgroundImage: "url('/heroGridImage/hero004.jpg')" }}
+          role="img"
+          aria-label="Luxury beauty salon interior showcasing elegant design and ambiance"
+          initial={{ opacity: 0, x: -30 }}
+          animate={{ opacity: 1, x: 0 }}
+          transition={{ duration: 0.8, ease: [0.22, 1, 0.36, 1] }}
+        >
+          <div className={styles.splitOverlay} />
+          <div className={styles.heroCopy}>
+            <motion.div
+              className={styles.kicker}
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ delay: 0.3, duration: 0.6 }}
+            >
+              <motion.span
+                initial={{ rotate: -180, scale: 0 }}
+                animate={{ rotate: 0, scale: 1 }}
+                transition={{
+                  delay: 0.4,
+                  duration: 0.6,
+                  type: "spring",
+                  stiffness: 200,
+                }}
+              >
+                <Sparkles size={16} aria-hidden="true" />
+              </motion.span>
+              <span>Concierge, 7 days</span>
+            </motion.div>
+            <motion.h1
+              className={styles.editorialTitle}
+              initial={{ opacity: 0, y: 30 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ delay: 0.5, duration: 0.7 }}
+            >
+              Visit, call, or message our lounges
+            </motion.h1>
+            <motion.p
+              className={styles.heroSubtitle}
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ delay: 0.7, duration: 0.6 }}
+            >
+              Luxe care, zero friction. Stop by, call to reserve, or WhatsApp us
+              for instant confirmations.
+            </motion.p>
+            <motion.div
+              className={styles.heroActions}
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ delay: 0.9, duration: 0.6 }}
+            >
+              <motion.a
+                className={styles.primaryAction}
+                href={getTelLink(CONTACT.primaryMobile || CONTACT.primaryPhone)}
+                onClick={(e) =>
+                  handlePhoneClick(
+                    CONTACT.primaryMobile || CONTACT.primaryPhone,
+                    e
+                  )
+                }
+                data-track="cta-call"
+                whileHover={{ scale: 1.05, y: -2 }}
+                whileTap={{ scale: 0.95 }}
+              >
+                <Phone size={18} />
+                Call our team
+              </motion.a>
+              <motion.a
+                className={styles.secondaryAction}
+                href={CONTACT.whatsapp.url()}
+                target="_blank"
+                rel="noopener noreferrer"
+                data-track="cta-whatsapp"
+                whileHover={{ scale: 1.05, y: -2 }}
+                whileTap={{ scale: 0.95 }}
+              >
+                <MessageCircle size={18} />
+                WhatsApp now
+              </motion.a>
+            </motion.div>
+          </div>
+        </motion.div>
+
+        <motion.div
+          className={styles.splitRight}
+          initial={{ opacity: 0, x: 30 }}
+          animate={{ opacity: 1, x: 0 }}
+          transition={{ duration: 0.8, delay: 0.2, ease: [0.22, 1, 0.36, 1] }}
+        >
+          <motion.div
+            className={styles.floatingCard}
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ delay: 0.4, duration: 0.6 }}
+            whileHover={{ y: -4 }}
+          >
+            <div
+              className={styles.quickActions}
+              aria-label="Quick contact actions"
+            >
+              <motion.a
+                className={styles.quickAction}
+                href={`mailto:${CONTACT.email}`}
+                data-track="cta-email"
+                initial={{ opacity: 0, x: -20 }}
+                animate={{ opacity: 1, x: 0 }}
+                transition={{ delay: 0.5, duration: 0.5 }}
+                whileHover={{ scale: 1.02, x: 4 }}
+                whileTap={{ scale: 0.98 }}
+              >
+                <Mail size={16} />
+                Email concierge
+                <motion.span
+                  className={styles.quickActionArrow}
+                  animate={{ x: [0, 4, 0] }}
+                  transition={{
+                    duration: 1.5,
+                    repeat: Infinity,
+                    ease: "easeInOut",
+                  }}
+                >
+                  <ArrowRight size={14} />
+                </motion.span>
+              </motion.a>
+              <motion.a
+                className={styles.quickAction}
+                href={CONTACT.whatsapp.url(
+                  "Hi! I'd like to book an appointment."
+                )}
+                target="_blank"
+                rel="noopener noreferrer"
+                data-track="cta-whatsapp-secondary"
+                initial={{ opacity: 0, x: -20 }}
+                animate={{ opacity: 1, x: 0 }}
+                transition={{ delay: 0.6, duration: 0.5 }}
+                whileHover={{ scale: 1.02, x: 4 }}
+                whileTap={{ scale: 0.98 }}
+              >
+                <MessageCircle size={16} />
+                WhatsApp booking
+                <motion.span
+                  className={styles.quickActionArrow}
+                  animate={{ x: [0, 4, 0] }}
+                  transition={{
+                    duration: 1.5,
+                    repeat: Infinity,
+                    ease: "easeInOut",
+                    delay: 0.3,
+                  }}
+                >
+                  <ArrowRight size={14} />
+                </motion.span>
+              </motion.a>
+              <motion.a
+                className={styles.quickAction}
+                href={getTelLink(CONTACT.primaryPhone)}
+                onClick={(e) => handlePhoneClick(CONTACT.primaryPhone, e)}
+                data-track="cta-landline"
+                initial={{ opacity: 0, x: -20 }}
+                animate={{ opacity: 1, x: 0 }}
+                transition={{ delay: 0.7, duration: 0.5 }}
+                whileHover={{ scale: 1.02, x: 4 }}
+                whileTap={{ scale: 0.98 }}
+              >
+                <Phone size={16} />
+                Front desk
+                <motion.span
+                  className={styles.quickActionArrow}
+                  animate={{ x: [0, 4, 0] }}
+                  transition={{
+                    duration: 1.5,
+                    repeat: Infinity,
+                    ease: "easeInOut",
+                    delay: 0.6,
+                  }}
+                >
+                  <ArrowRight size={14} />
+                </motion.span>
+              </motion.a>
+            </div>
+          </motion.div>
+
+          <motion.div
+            className={styles.formShell}
+            aria-label="Send us a message"
+            initial={{ opacity: 0, y: 30 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ delay: 0.6, duration: 0.7 }}
+          >
+            <motion.div
+              className={`${styles.formCard} ${styles.floatingCard}`}
+              initial={{ opacity: 0, scale: 0.95 }}
+              animate={{ opacity: 1, scale: 1 }}
+              transition={{ delay: 0.8, duration: 0.6 }}
+              whileHover={{ y: -4 }}
+            >
+              <motion.div
+                className={styles.formHeader}
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ delay: 1.0, duration: 0.5 }}
+              >
+                <motion.div
+                  className={styles.formBadge}
+                  initial={{ scale: 0, rotate: -180 }}
+                  animate={{ scale: 1, rotate: 0 }}
+                  transition={{
+                    delay: 1.1,
+                    type: "spring",
+                    stiffness: 200,
+                    damping: 15,
+                  }}
+                >
+                  Concierge
+                </motion.div>
+                <div>
+                  <motion.h2
+                    className={styles.formTitle}
+                    initial={{ opacity: 0, x: -20 }}
+                    animate={{ opacity: 1, x: 0 }}
+                    transition={{ delay: 1.2, duration: 0.5 }}
+                  >
+                    Tell us what you need
+                  </motion.h2>
+                  <motion.p
+                    className={styles.formSubtitle}
+                    initial={{ opacity: 0, x: -20 }}
+                    animate={{ opacity: 1, x: 0 }}
+                    transition={{ delay: 1.3, duration: 0.5 }}
+                  >
+                    Share a few details and we'll confirm via WhatsApp or email
+                    within working hours.
+                  </motion.p>
+                </div>
+              </motion.div>
+
+              <motion.form
+                className={styles.form}
+                onSubmit={handleSubmit}
+                noValidate
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 1 }}
+                transition={{ delay: 1.1, duration: 0.5 }}
+              >
+                <motion.div
+                  className={styles.inputGrid}
+                  initial={{ opacity: 0, y: 20 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ delay: 1.2, duration: 0.5 }}
+                >
+                  <motion.div
+                    className={styles.field}
+                    initial={{ opacity: 0, x: -20 }}
+                    animate={{ opacity: 1, x: 0 }}
+                    transition={{ delay: 1.3, duration: 0.4 }}
+                  >
+                    <label htmlFor="contact-name" className={styles.labelText}>
+                      Full name
+                    </label>
+                    <input
+                      id="contact-name"
+                      type="text"
+                      name="name"
+                      placeholder="Your name"
+                      value={formData.name}
+                      onChange={handleChange("name")}
+                      required
+                      aria-required="true"
+                      aria-describedby="name-error"
+                    />
+                    <span
+                      id="name-error"
+                      className={styles.errorText}
+                      role="alert"
+                      aria-live="polite"
+                    ></span>
+                  </motion.div>
+                  <motion.div
+                    className={styles.field}
+                    initial={{ opacity: 0, x: -20 }}
+                    animate={{ opacity: 1, x: 0 }}
+                    transition={{ delay: 1.4, duration: 0.4 }}
+                  >
+                    <label htmlFor="contact-email" className={styles.labelText}>
+                      Email
+                    </label>
+                    <input
+                      id="contact-email"
+                      type="email"
+                      name="email"
+                      placeholder="you@example.com"
+                      value={formData.email}
+                      onChange={handleChange("email")}
+                      required
+                      aria-required="true"
+                      aria-describedby="email-error"
+                    />
+                    <span
+                      id="email-error"
+                      className={styles.errorText}
+                      role="alert"
+                      aria-live="polite"
+                    ></span>
+                  </motion.div>
+                  <motion.div
+                    className={styles.field}
+                    initial={{ opacity: 0, x: -20 }}
+                    animate={{ opacity: 1, x: 0 }}
+                    transition={{ delay: 1.5, duration: 0.4 }}
+                  >
+                    <label htmlFor="contact-phone" className={styles.labelText}>
+                      Phone / WhatsApp
+                    </label>
+                    <input
+                      id="contact-phone"
+                      type="tel"
+                      name="phone"
+                      placeholder="+971 ..."
+                      value={formData.phone}
+                      onChange={handleChange("phone")}
+                      aria-describedby="phone-help"
+                    />
+                    <span id="phone-help" className={styles.helperText}>
+                      Optional
+                    </span>
+                  </motion.div>
+                </motion.div>
+
+                <motion.div
+                  className={styles.field}
+                  initial={{ opacity: 0, y: 20 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ delay: 1.6, duration: 0.4 }}
+                >
+                  <label htmlFor="contact-message" className={styles.labelText}>
+                    How can we help?
+                  </label>
+                  <textarea
+                    id="contact-message"
+                    name="message"
+                    rows={4}
+                    placeholder="Tell us your preferred service, time, or any questions."
+                    value={formData.message}
+                    onChange={handleChange("message")}
+                    required
+                    aria-required="true"
+                    aria-describedby="message-error message-help"
+                  />
+                  <span id="message-help" className={styles.helperText}>
+                    We typically reply in minutes during open hours.
+                  </span>
+                  <span
+                    id="message-error"
+                    className={styles.errorText}
+                    role="alert"
+                    aria-live="polite"
+                  ></span>
+                </motion.div>
+
+                <motion.div
+                  className={styles.formActions}
+                  initial={{ opacity: 0, y: 20 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ delay: 1.4, duration: 0.5 }}
+                >
+                  <motion.button
+                    type="submit"
+                    className={styles.submitButton}
+                    whileHover={{ scale: 1.05, y: -2 }}
+                    whileTap={{ scale: 0.95 }}
+                  >
+                    <motion.span
+                      animate={{ rotate: [0, 10, -10, 0] }}
+                      transition={{
+                        duration: 2,
+                        repeat: Infinity,
+                        ease: "easeInOut",
+                      }}
+                    >
+                      <Send size={16} />
+                    </motion.span>
+                    Send & open email draft
+                  </motion.button>
+                  <motion.a
+                    className={styles.inlineLink}
+                    href={CONTACT.whatsapp.url()}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    data-track="cta-whatsapp-inline"
+                    whileHover={{ scale: 1.05, x: 4 }}
+                    whileTap={{ scale: 0.95 }}
+                  >
+                    Prefer chat? WhatsApp us
+                    <motion.span
+                      animate={{ x: [0, 4, 0] }}
+                      transition={{
+                        duration: 1.5,
+                        repeat: Infinity,
+                        ease: "easeInOut",
+                      }}
+                    >
+                      <ArrowRight size={14} />
+                    </motion.span>
+                  </motion.a>
+                </motion.div>
+              </motion.form>
+            </motion.div>
+          </motion.div>
+        </motion.div>
+      </section>
+
+      <motion.div
+        className={styles.grid}
+        initial={{ opacity: 0 }}
+        whileInView={{ opacity: 1 }}
+        viewport={{ once: true, amount: 0.1 }}
+        transition={{ duration: 0.6 }}
+      >
+        {stores.map((store, index) => (
+          <StoreInfo
+            key={store._id}
+            store={store}
+            isFirst={index === 0}
+            index={index}
+          />
+        ))}
+      </motion.div>
+    </motion.div>
   );
 }

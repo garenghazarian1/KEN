@@ -170,10 +170,10 @@ export default function FooterModern() {
                         <span>Mobile: {store.mobile}</span>
                       </a>
                     )}
-                    {store.mobile && (
+                    {store.whatsapp && (
                       <a
                         href={`https://wa.me/${formatPhoneForTel(
-                          store.mobile
+                          store.whatsapp
                         ).replace(/^\+/, "")}?text=${encodeURIComponent(
                           `Hello ${store.name}, I would like to know more about your services.`
                         )}`}

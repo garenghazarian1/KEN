@@ -1692,3 +1692,30 @@ _Version: 1.4 - Added App Install Features & Contact Enhancements_
 - ✅ **Clickable Contact Information**: Made all phone numbers, WhatsApp links, and email addresses clickable across the site (UX-002, A11Y-008)
 - ✅ **Footer App Store Buttons**: Added professional app store installation buttons to footer (UX-003)
 - ✅ **Loading Spinner Logo Fix**: Fixed logo sizing issue in loading spinner to show full logo (BUG-007)
+
+---
+
+## Merged References (formerly separate docs)
+
+### Project Overview & Setup (from README)
+- Next.js app with glassmorphism design, responsive layout, app install banner, clickable phone/WhatsApp/email links, and app store buttons.
+- Dev server: `npm run dev` (or yarn/pnpm/bun) → http://localhost:3000/.
+- Uses `next/font` for Inter; deploy per standard Next.js/Vercel flow.
+
+### Changelog Snapshot (from CHANGELOG)
+- Added: App Install Banner (mobile detection, dismissible), footer app-store buttons, phone format helper, WhatsApp integration with prefilled messages.
+- Changed: Contact links (phone/WhatsApp/email with icons), footer contact/app-store buttons responsive, email links with prefilled subject/body, loading spinner sizing, InitialLoader cleanup.
+- Fixed: Phone/email links, spinner logo crop, infinite InitialLoader, footer app-store styling.
+- New helpers/consts: `APP_STORES`, `formatPhoneForTel`, `getWhatsAppUrl`; key new files under `src/components/AppInstallBanner/`.
+
+### iOS WebView Tel: Link Fix (from IOS_WEBVIEW_TEL_FIX)
+- Problem: iOS WebView blocks `tel:` (error -1002). Web already outputs `tel:+971...`.
+- Swift WKWebView: allow tel in `decidePolicyFor`, open via `UIApplication.shared.open(url)` then cancel navigation. Add `tel`/`telprompt` to `LSApplicationQueriesSchemes`.
+- JS bridge option: add handler `phoneCall` and call `window.webkit.messageHandlers.phoneCall.postMessage(phoneNumber)`.
+- Test: tapping numbers opens Phone app; formatted as `tel:+971503043570`; no -1002.
+
+### App Install Banner Testing (from TESTING_APP_BANNER)
+- DevTools device toolbar (Android/iOS presets) → banner shows correct store button.
+- URL params (dev): `?testAppBanner=true&device=android|ios`.
+- Console helpers: clear `appInstallBannerDismissed`; set `forceShowAppBanner` and `testDeviceType` for forced display.
+- Validate: banner appears, navbar shifts down, dismiss persists, install buttons open store, responsive on mobile/tablet.
