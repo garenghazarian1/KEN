@@ -15,12 +15,12 @@ export const BOOKING_URL = "https://kenbeauty.zenoti.com/webstoreNew/services";
 
 // Contact Information
 export const CONTACT = {
-  primaryPhone: "+971-50-304-3570",
-  primaryMobile: "+971 503043570",
-  email: "ken.beauty1@hotmail.com",
+  primaryPhone: "+971 2 621 8802", // Galleria landline
+  primaryMobile: "+971 50 304 3570", // Galleria mobile/WhatsApp
+  email: "info@ken-salon.com",
   whatsapp: {
-    number: "971555570029", // Without + for wa.me links
-    formatted: "+971 55 557 0029",
+    number: "971503043570", // Galleria WhatsApp (no + for wa.me)
+    formatted: "+971 50 304 3570",
     message:
       "Hello KEN Beauty Center, I would like to know more about your services.",
     url: (message = null) => {

@@ -342,6 +342,43 @@
   display: block;
 }
 
+/* Desktop: Stack image with full height, max 90vh, responsive width, always show full image */
+@media (min-width: 769px) {
+  .stackImageContainer {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: auto;
+    height: 100%;
+    max-height: 90vh;
+    z-index: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .stackImageWrapper {
+    position: relative;
+    width: auto;
+    height: 100%;
+    max-height: 90vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .stackImage {
+    width: auto;
+    height: 100%;
+    max-height: 90vh;
+    object-fit: contain;
+    object-position: center;
+    display: block;
+  }
+}
+
 .stackContent {
   position: absolute;
   top: 50%;

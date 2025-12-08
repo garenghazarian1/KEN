@@ -4,7 +4,7 @@ import { useState, useEffect } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import { motion } from "framer-motion";
-import { MessageCircle, ArrowRight, Sparkles } from "lucide-react";
+import { MessageCircle, ArrowRight } from "lucide-react";
 import { CONTACT, BOOKING_URL } from "@/config/constants";
 import styles from "./Hero.modern.module.css";
 
@@ -50,17 +50,6 @@ const descriptions = [
 ];
 
 export default function HeroModern() {
-  const [isMobile, setIsMobile] = useState(false);
-
-  useEffect(() => {
-    const checkMobile = () => {
-      setIsMobile(window.innerWidth <= 768);
-    };
-    checkMobile();
-    window.addEventListener("resize", checkMobile);
-    return () => window.removeEventListener("resize", checkMobile);
-  }, []);
-
   return (
     <>
       {/* Modern Hero Section - Full Screen Video Background */}
@@ -87,16 +76,6 @@ export default function HeroModern() {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, ease: "easeOut" }}
           >
-            {/* Decorative Icon */}
-            <motion.div
-              className={styles.decorativeIcon}
-              initial={{ scale: 0, rotate: -180 }}
-              animate={{ scale: 1, rotate: 0 }}
-              transition={{ delay: 0.3, duration: 0.6, type: "spring" }}
-            >
-              <Sparkles size={40} />
-            </motion.div>
-
             {/* Main Title */}
             <motion.h1
               className={styles.mainTitle}
@@ -220,19 +199,6 @@ export default function HeroModern() {
                   viewport={{ once: false, amount: 0.3 }}
                   transition={{ duration: 0.6, delay: 0.4 }}
                 >
-                  <motion.div
-                    className={styles.contentIcon}
-                    animate={{
-                      rotate: [0, 360],
-                    }}
-                    transition={{
-                      duration: 3,
-                      repeat: Infinity,
-                      ease: "linear",
-                    }}
-                  >
-                    <Sparkles size={32} />
-                  </motion.div>
                   <h3 className={styles.contentTitle}>{description.title}</h3>
                   <p className={styles.contentSubtitle}>
                     {description.subtitle}

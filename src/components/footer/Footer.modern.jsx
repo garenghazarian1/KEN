@@ -9,7 +9,6 @@ import {
   Facebook,
   Mail,
   Phone,
-  MapPin,
   Calendar,
   Home,
   Info,
@@ -143,25 +142,52 @@ export default function FooterModern() {
                 {BUSINESS.description}
               </p>
               <div className={styles.contactInfo}>
-                <a
-                  href={getTelLink(CONTACT.primaryMobile)}
-                  onClick={(e) => handlePhoneClick(CONTACT.primaryMobile, e)}
-                  className={styles.contactLink}
-                  aria-label="Call us"
-                >
-                  <Phone size={18} />
-                  <span>{CONTACT.primaryPhone}</span>
-                </a>
-                <a
-                  href={CONTACT.whatsapp.url()}
-                  className={styles.contactLink}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  aria-label="Contact us on WhatsApp"
-                >
-                  <MessageCircle size={18} />
-                  <span>WhatsApp: {CONTACT.whatsapp.formatted}</span>
-                </a>
+                {stores.map((store) => (
+                  <div key={store._id}>
+                    <div className={styles.sectionSubtitle}>{store.name}</div>
+                    <div className={styles.sectionDescription}>
+                      {store.street}, {store.city}
+                    </div>
+                    {store.phone && (
+                      <a
+                        href={getTelLink(store.phone)}
+                        onClick={(e) => handlePhoneClick(store.phone, e)}
+                        className={styles.contactLink}
+                        aria-label={`Call ${store.name} landline`}
+                      >
+                        <Phone size={18} />
+                        <span>Landline: {store.phone}</span>
+                      </a>
+                    )}
+                    {store.mobile && (
+                      <a
+                        href={getTelLink(store.mobile)}
+                        onClick={(e) => handlePhoneClick(store.mobile, e)}
+                        className={styles.contactLink}
+                        aria-label={`Call ${store.name} mobile`}
+                      >
+                        <Phone size={18} />
+                        <span>Mobile: {store.mobile}</span>
+                      </a>
+                    )}
+                    {store.mobile && (
+                      <a
+                        href={`https://wa.me/${formatPhoneForTel(
+                          store.mobile
+                        ).replace(/^\+/, "")}?text=${encodeURIComponent(
+                          `Hello ${store.name}, I would like to know more about your services.`
+                        )}`}
+                        className={styles.contactLink}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        aria-label={`WhatsApp ${store.name}`}
+                      >
+                        <MessageCircle size={18} />
+                        <span>WhatsApp</span>
+                      </a>
+                    )}
+                  </div>
+                ))}
                 <a
                   href={`mailto:${CONTACT.email}?subject=Inquiry about ${BUSINESS.name}&body=Hello, I would like to know more about your services.`}
                   className={styles.contactLink}
@@ -170,12 +196,6 @@ export default function FooterModern() {
                   <Mail size={18} />
                   <span>{CONTACT.email}</span>
                 </a>
-                <div className={styles.location}>
-                  <MapPin size={18} />
-                  <span>
-                    {BUSINESS.location.city}, {BUSINESS.location.country}
-                  </span>
-                </div>
               </div>
             </motion.div>
 
@@ -200,52 +220,6 @@ export default function FooterModern() {
                     </li>
                   );
                 })}
-              </ul>
-            </motion.div>
-
-            {/* Locations */}
-            <motion.div
-              className={styles.footerSection}
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.6, delay: 0.2 }}
-            >
-              <h4 className={styles.sectionSubtitle}>Our Locations</h4>
-              <ul className={styles.locationList}>
-                {stores.map((store) => (
-                  <li key={store._id} className={styles.locationItem}>
-                    <h5 className={styles.locationName}>{store.name}</h5>
-                    <p className={styles.locationAddress}>
-                      {store.street}, {store.city}
-                    </p>
-                    <div className={styles.locationPhoneContainer}>
-                      <a
-                        href={getTelLink(store.mobile)}
-                        onClick={(e) => handlePhoneClick(store.mobile, e)}
-                        className={styles.locationPhone}
-                        aria-label={`Call ${store.name}`}
-                      >
-                        {store.mobile}
-                      </a>
-                      {store.mobile && (
-                        <a
-                          href={`https://wa.me/${formatPhoneForTel(
-                            store.mobile
-                          ).replace(/^\+/, "")}?text=${encodeURIComponent(
-                            `Hello ${store.name}, I would like to know more about your services.`
-                          )}`}
-                          className={styles.locationWhatsApp}
-                          target="_blank"
-                          rel="noopener noreferrer"
-                          aria-label={`WhatsApp ${store.name}`}
-                        >
-                          <MessageCircle size={14} />
-                        </a>
-                      )}
-                    </div>
-                  </li>
-                ))}
               </ul>
             </motion.div>
 
