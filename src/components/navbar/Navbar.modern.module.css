@@ -202,7 +202,7 @@
   left: 0;
   right: 0;
   width: 100%;
-  background-color: rgba(255, 255, 255, 0.8);
+  background-color: var(--overlay-white-82);
   backdrop-filter: blur(var(--glass-blur-lg)); /* Same blur as navbar */
   -webkit-backdrop-filter: blur(var(--glass-blur-lg)); /* iOS support */
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05); /* Match navbar shadow */
@@ -250,12 +250,7 @@
   gap: var(--spacing-2);
   margin-top: var(--spacing-2);
   padding: var(--spacing-4) var(--spacing-5);
-  background-color: rgba(
-    174,
-    139,
-    119,
-    0.9
-  ); /* Less transparent teal with glass effect */
+  background-color: var(--overlay-secondary-90); /* Less transparent teal with glass effect */
   backdrop-filter: blur(10px);
   -webkit-backdrop-filter: blur(10px); /* iOS support */
   color: var(--color-text-inverse);

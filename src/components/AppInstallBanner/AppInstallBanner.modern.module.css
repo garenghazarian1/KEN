@@ -1,0 +1,239 @@
+/* ============================================
+   APP INSTALL BANNER - MODERN STYLING
+   ============================================
+   Banner that prompts mobile users to install
+   the app from their respective app stores.
+   Modernized with CSS variables and glass effects.
+   ============================================ */
+
+.banner {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: var(--z-modal-backdrop); /* Above navbar (1030) */
+  padding: var(--spacing-4);
+  background: linear-gradient(
+    135deg,
+    var(--overlay-white-95) 0%,
+    var(--overlay-white-98) 100%
+  );
+  backdrop-filter: blur(var(--glass-blur-xl)) saturate(180%);
+  -webkit-backdrop-filter: blur(var(--glass-blur-xl)) saturate(180%);
+  border-bottom: 1px solid var(--overlay-black-10);
+  box-shadow: 0 4px 20px var(--shadow-card-strong);
+}
+
+.bannerContent {
+  max-width: 1400px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-4);
+  align-items: center;
+}
+
+.bannerText {
+  display: flex;
+  gap: var(--spacing-4);
+  align-items: flex-start;
+  flex: 1;
+  width: 100%;
+}
+
+.iconWrapper {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 48px;
+  height: 48px;
+  background: linear-gradient(
+    135deg,
+    var(--color-primary) 0%,
+    var(--color-secondary) 100%
+  );
+  border-radius: var(--radius-lg);
+  box-shadow: 0 2px 8px var(--shadow-light);
+}
+
+.icon {
+  color: var(--color-text-inverse);
+}
+
+.textContent {
+  flex: 1;
+}
+
+.textContentTitle {
+  font-size: var(--font-size-lg);
+  font-weight: var(--font-weight-semibold);
+  color: var(--color-text-hover); /* High contrast dark text - WCAG AAA */
+  margin: 0 0 var(--spacing-1) 0;
+  line-height: var(--line-height-tight);
+  text-shadow: 0 1px 2px var(--overlay-white-82);
+}
+
+.textContentDescription {
+  font-size: var(--font-size-sm);
+  color: var(--color-text-primary); /* Better readability with CSS variable */
+  margin: 0;
+  line-height: var(--line-height-relaxed);
+  text-shadow: 0 1px 2px var(--overlay-white-70);
+}
+
+.bannerActions {
+  display: flex;
+  gap: var(--spacing-3);
+  align-items: center;
+  width: 100%;
+  justify-content: flex-end;
+}
+
+.installButton {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-2);
+  padding: var(--spacing-3) var(--spacing-5);
+  background: linear-gradient(
+    135deg,
+    var(--color-primary) 0%,
+    var(--color-secondary) 100%
+  );
+  color: var(--color-text-inverse);
+  border: none;
+  border-radius: var(--radius-md);
+  font-size: var(--font-size-sm);
+  font-weight: var(--font-weight-semibold);
+  cursor: pointer;
+  transition: all var(--transition-base) var(--ease-in-out);
+  box-shadow: 0 2px 8px var(--shadow-light);
+  min-height: 44px; /* Touch target size */
+}
+
+.installButton:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px var(--shadow-medium);
+}
+
+.installButton:active {
+  transform: translateY(0);
+}
+
+.installButton:focus-visible {
+  outline: 2px solid var(--glass-border-strong);
+  outline-offset: 2px;
+}
+
+.dismissButton {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 36px;
+  height: 36px;
+  min-width: 44px; /* Touch target size */
+  min-height: 44px; /* Touch target size */
+  background: var(--overlay-white-90);
+  border: 1px solid var(--overlay-black-10);
+  border-radius: var(--radius-full);
+  color: var(--color-text-primary);
+  cursor: pointer;
+  transition: all var(--transition-base) var(--ease-in-out);
+  box-shadow: 0 2px 4px var(--shadow-very-light);
+}
+
+.dismissButton:hover {
+  background: rgba(255, 255, 255, 1);
+  color: var(--color-text-hover);
+  transform: rotate(90deg);
+  box-shadow: 0 2px 6px var(--shadow-light);
+}
+
+.dismissButton:active {
+  transform: rotate(90deg) scale(0.95);
+}
+
+.dismissButton:focus-visible {
+  outline: 2px solid var(--glass-border-strong);
+  outline-offset: 2px;
+}
+
+/* Tablet and below */
+@media (max-width: 768px) {
+  .banner {
+    padding: var(--spacing-3);
+  }
+
+  .bannerContent {
+    gap: var(--spacing-3);
+  }
+
+  .bannerText {
+    gap: var(--spacing-3);
+  }
+
+  .iconWrapper {
+    min-width: 40px;
+    height: 40px;
+  }
+
+  .icon {
+    width: 20px;
+    height: 20px;
+  }
+
+  .textContentTitle {
+    font-size: var(--font-size-base);
+  }
+
+  .textContentDescription {
+    font-size: var(--font-size-xs);
+  }
+
+  .installButton {
+    padding: var(--spacing-2) var(--spacing-4);
+    font-size: var(--font-size-xs);
+  }
+
+  .bannerActions {
+    gap: var(--spacing-2);
+  }
+}
+
+/* Small mobile (480px and below) */
+@media (max-width: 480px) {
+  .banner {
+    padding: var(--spacing-2);
+  }
+
+  .bannerText {
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    gap: var(--spacing-2);
+  }
+
+  .bannerActions {
+    flex-direction: column;
+    width: 100%;
+  }
+
+  .installButton {
+    width: 100%;
+    justify-content: center;
+  }
+
+  .dismissButton {
+    align-self: flex-end;
+  }
+}
+
+/* Very small mobile (360px and below) */
+@media (max-width: 360px) {
+  .textContentTitle {
+    font-size: var(--font-size-sm);
+  }
+
+  .textContentDescription {
+    font-size: var(--font-size-xs);
+  }
+}

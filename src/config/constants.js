@@ -150,7 +150,24 @@ export const isIOSWebView = () => {
   return isWebView;
 };
 
-// Handle phone number click with iOS WebView fallback
+// Detect if running in Android WebView (Google Play app, Chrome Custom Tabs, etc.)
+export const isAndroidWebView = () => {
+  if (typeof window === "undefined") return false;
+  const userAgent =
+    window.navigator.userAgent || window.navigator.vendor || window.opera;
+  // Check for Android
+  const isAndroid = /android/i.test(userAgent);
+  // Check if it's a WebView (not Chrome browser)
+  // Common Android WebView indicators: wv, WebView, or specific app user agents
+  const isWebView =
+    isAndroid &&
+    (/wv/i.test(userAgent) ||
+      /WebView/i.test(userAgent) ||
+      !/Chrome/i.test(userAgent));
+  return isWebView;
+};
+
+// Handle phone number click with WebView fallback for both iOS and Android
 export const handlePhoneClick = (phone, e) => {
   if (typeof window === "undefined") return;
 
@@ -174,6 +191,30 @@ export const handlePhoneClick = (phone, e) => {
       }
     }
     return false;
+  }
+
+  // Check if we're in Android WebView (like Google Play app)
+  if (isAndroidWebView()) {
+    // For Android WebView, try to open tel: link
+    // Don't prevent default - let it try first, but have a fallback
+    try {
+      // Try using window.location as fallback if default doesn't work
+      const link = document.createElement("a");
+      link.href = `tel:${formatted}`;
+      link.style.display = "none";
+      document.body.appendChild(link);
+      link.click();
+      document.body.removeChild(link);
+    } catch (err) {
+      // If that fails, try window.location
+      try {
+        window.location.href = `tel:${formatted}`;
+      } catch (err2) {
+        console.warn("Could not open phone link:", formatted);
+      }
+    }
+    // Don't prevent default - let the href work if possible
+    return true;
   }
 
   // For regular browsers, let the default tel: link work

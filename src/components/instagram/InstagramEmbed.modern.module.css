@@ -1,0 +1,130 @@
+/* ============================================
+   MODERN INSTAGRAM EMBED - 2025 DESIGN
+   Beautiful, responsive Instagram gallery
+   Modernized with CSS variables and glass effects
+   ============================================ */
+
+.container {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(min(100%, 350px), 1fr));
+  gap: var(--spacing-8);
+  padding: 0;
+  width: 100%;
+  max-width: 1400px;
+  margin: 0 auto;
+  position: relative;
+}
+
+.loading {
+  grid-column: 1 / -1;
+  text-align: center;
+  padding: var(--spacing-16) var(--spacing-8);
+  color: var(--color-text-secondary);
+  font-size: clamp(var(--font-size-base), 2vw, var(--font-size-xl));
+  background: var(--glass-white-light);
+  backdrop-filter: blur(var(--glass-blur-md));
+  -webkit-backdrop-filter: blur(var(--glass-blur-md));
+  border: 1px solid var(--glass-border-light);
+  border-radius: var(--radius-xl);
+  box-shadow: 0 4px 20px var(--shadow-very-light);
+}
+
+/* Instagram Media Styles */
+.instagram-media {
+  display: block !important;
+  margin: 0 auto !important;
+  min-width: 326px;
+  max-width: 540px;
+  width: 100% !important;
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+  box-shadow: 0 8px 30px var(--shadow-card-strong);
+  transition: all var(--transition-slow) var(--ease-in-out);
+  background: var(--glass-white-light);
+  backdrop-filter: blur(var(--glass-blur-sm));
+  -webkit-backdrop-filter: blur(var(--glass-blur-sm));
+}
+
+.instagram-media:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 16px 40px var(--shadow-button);
+}
+
+/* Ensure iframe inside instagram-media is responsive */
+/* NOTE: .instagram-media is injected by Instagram's embed script,
+   so we cannot add a class directly to the iframe. This nested selector
+   is acceptable for third-party injected content. */
+.instagram-media iframe {
+  width: 100% !important;
+  max-width: 100% !important;
+  border-radius: var(--radius-lg);
+  display: block !important;
+}
+
+/* Responsive Design - Mobile First */
+
+/* Large Tablets and Small Desktops (1024px and below) */
+@media (max-width: 1024px) {
+  .container {
+    grid-template-columns: repeat(auto-fill, minmax(min(100%, 320px), 1fr));
+    gap: var(--spacing-7);
+  }
+}
+
+/* Tablets (768px and below) */
+@media (max-width: 768px) {
+  .container {
+    grid-template-columns: 1fr;
+    gap: var(--spacing-6);
+    padding: 0;
+  }
+
+  .instagram-media {
+    min-width: 100%;
+    max-width: 100%;
+    width: 100% !important;
+  }
+
+  .loading {
+    padding: var(--spacing-12) var(--spacing-6);
+  }
+}
+
+/* Mobile (480px and below) */
+@media (max-width: 480px) {
+  .container {
+    gap: var(--spacing-5);
+  }
+
+  .instagram-media {
+    min-width: 100%;
+    border-radius: var(--radius-md);
+  }
+
+  .instagram-media:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 12px 30px var(--shadow-button);
+  }
+
+  .loading {
+    padding: var(--spacing-10) var(--spacing-4);
+    font-size: var(--font-size-base);
+    border-radius: var(--radius-md);
+  }
+}
+
+/* Small Mobile (360px and below) */
+@media (max-width: 360px) {
+  .container {
+    gap: var(--spacing-4);
+  }
+
+  .instagram-media {
+    border-radius: var(--radius-sm);
+  }
+
+  .loading {
+    padding: var(--spacing-8) var(--spacing-3);
+    font-size: var(--font-size-sm);
+  }
+}

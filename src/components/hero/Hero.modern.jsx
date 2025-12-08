@@ -220,7 +220,7 @@ export default function HeroModern() {
           <div className={styles.cardContent}>
             <h2 className={styles.cardTitle}>Welcome to Excellence</h2>
             <div className={styles.cardText}>
-              <p>
+              <p className={styles.cardTextParagraph}>
                 Visit our luxurious salon in the heart of the UAE to discover a
                 world where brilliance and beauty meet. Our team of specialists
                 is committed to providing a wide range of services, including

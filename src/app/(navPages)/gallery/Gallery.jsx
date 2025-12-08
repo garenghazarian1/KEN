@@ -3,30 +3,65 @@
 import { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import Image from "next/image";
-import { 
-  Instagram, 
-  X, 
-  ChevronLeft, 
+import {
+  Instagram,
+  X,
+  ChevronLeft,
   ChevronRight,
   ExternalLink,
   Heart,
   Sparkles,
   Grid3x3,
-  LayoutGrid
+  LayoutGrid,
 } from "lucide-react";
 import InstagramEmbed from "@/components/instagram/InstagramEmbed";
 import { BUSINESS, SOCIAL_MEDIA } from "@/config/constants";
-import styles from "./Gallery.module.css";
+import styles from "./Gallery.modern.module.css";
 
 // Sample gallery images - replace with your actual images
 const galleryImages = [
-  { id: 1, src: "/heroGridImage/hero001.jpg", category: "hair", title: "Hair Styling Excellence" },
-  { id: 2, src: "/heroGridImage/hero002.jpg", category: "makeup", title: "Makeup Artistry" },
-  { id: 3, src: "/heroGridImage/hero003.jpg", category: "hair", title: "Color Transformation" },
-  { id: 4, src: "/heroGridImage/hero004.jpg", category: "nails", title: "Nail Art Design" },
-  { id: 5, src: "/heroGridImage/hero007.jpg", category: "barber", title: "Men's Grooming" },
-  { id: 6, src: "/heroGridImage/hero008.jpg", category: "facial", title: "Facial Treatment" },
-  { id: 7, src: "/heroGridImage/hero009.jpg", category: "hair", title: "Complete Makeover" },
+  {
+    id: 1,
+    src: "/heroGridImage/hero001.jpg",
+    category: "hair",
+    title: "Hair Styling Excellence",
+  },
+  {
+    id: 2,
+    src: "/heroGridImage/hero002.jpg",
+    category: "makeup",
+    title: "Makeup Artistry",
+  },
+  {
+    id: 3,
+    src: "/heroGridImage/hero003.jpg",
+    category: "hair",
+    title: "Color Transformation",
+  },
+  {
+    id: 4,
+    src: "/heroGridImage/hero004.jpg",
+    category: "nails",
+    title: "Nail Art Design",
+  },
+  {
+    id: 5,
+    src: "/heroGridImage/hero007.jpg",
+    category: "barber",
+    title: "Men's Grooming",
+  },
+  {
+    id: 6,
+    src: "/heroGridImage/hero008.jpg",
+    category: "facial",
+    title: "Facial Treatment",
+  },
+  {
+    id: 7,
+    src: "/heroGridImage/hero009.jpg",
+    category: "hair",
+    title: "Complete Makeover",
+  },
 ];
 
 const categories = ["all", "hair", "makeup", "nails", "barber", "facial"];
@@ -50,9 +85,10 @@ export default function Gallery() {
     return () => window.removeEventListener("resize", checkMobile);
   }, []);
 
-  const filteredImages = selectedCategory === "all" 
-    ? galleryImages 
-    : galleryImages.filter(img => img.category === selectedCategory);
+  const filteredImages =
+    selectedCategory === "all"
+      ? galleryImages
+      : galleryImages.filter((img) => img.category === selectedCategory);
 
   const openLightbox = (index) => {
     setLightboxIndex(index);
@@ -67,9 +103,13 @@ export default function Gallery() {
 
   const navigateLightbox = (direction) => {
     if (direction === "prev") {
-      setLightboxIndex((prev) => (prev === 0 ? filteredImages.length - 1 : prev - 1));
+      setLightboxIndex((prev) =>
+        prev === 0 ? filteredImages.length - 1 : prev - 1
+      );
     } else {
-      setLightboxIndex((prev) => (prev === filteredImages.length - 1 ? 0 : prev + 1));
+      setLightboxIndex((prev) =>
+        prev === filteredImages.length - 1 ? 0 : prev + 1
+      );
     }
   };
 
@@ -103,14 +143,14 @@ export default function Gallery() {
         <div className={styles.heroContent}>
           <motion.div
             className={styles.decorativeIcon}
-            animate={{ 
+            animate={{
               y: [0, -15, 0],
-              rotate: [0, 5, -5, 0]
+              rotate: [0, 5, -5, 0],
             }}
-            transition={{ 
-              duration: 6, 
-              repeat: Infinity, 
-              ease: "easeInOut" 
+            transition={{
+              duration: 6,
+              repeat: Infinity,
+              ease: "easeInOut",
             }}
           >
             <Sparkles size={48} strokeWidth={1.5} />
@@ -137,7 +177,7 @@ export default function Gallery() {
             >
               <Instagram size={20} />
               <span>@ken_beauty_ad</span>
-              <ExternalLink size={16} />
+              <ExternalLink size={16} className={styles.socialLinkIcon} />
             </motion.a>
             <motion.a
               href={SOCIAL_MEDIA.instagram.barbershop}
@@ -149,7 +189,7 @@ export default function Gallery() {
             >
               <Instagram size={20} />
               <span>@ken_barbershop.ad</span>
-              <ExternalLink size={16} />
+              <ExternalLink size={16} className={styles.socialLinkIcon} />
             </motion.a>
           </div>
         </div>
@@ -230,10 +270,10 @@ export default function Gallery() {
                 className={styles.galleryItem}
                 initial={{ opacity: 0, scale: 0.9 }}
                 animate={{ opacity: 1, scale: 1 }}
-                transition={{ 
-                  duration: 0.5, 
+                transition={{
+                  duration: 0.5,
                   delay: index * 0.1,
-                  ease: [0.22, 1, 0.36, 1]
+                  ease: [0.22, 1, 0.36, 1],
                 }}
                 onClick={() => openLightbox(index)}
               >
@@ -253,9 +293,7 @@ export default function Gallery() {
                       <span className={styles.overlayText}>{image.title}</span>
                     </div>
                   </div>
-                  <div className={styles.imageBadge}>
-                    {image.category}
-                  </div>
+                  <div className={styles.imageBadge}>{image.category}</div>
                 </div>
               </motion.div>
             ))}
@@ -344,7 +382,9 @@ export default function Gallery() {
                 priority
               />
               <div className={styles.lightboxInfo}>
-                <h3>{filteredImages[lightboxIndex]?.title}</h3>
+                <h3 className={styles.lightboxInfoTitle}>
+                  {filteredImages[lightboxIndex]?.title}
+                </h3>
                 <span className={styles.lightboxCategory}>
                   {filteredImages[lightboxIndex]?.category}
                 </span>

@@ -44,9 +44,9 @@
   inset: 0;
   background: linear-gradient(
     135deg,
-    rgba(174, 139, 119, 0.15) 0%,
-    rgba(251, 228, 213, 0.1) 50%,
-    rgba(255, 233, 218, 0.12) 100%
+    var(--overlay-secondary) 0%,
+    var(--glass-bg-primary) 50%,
+    var(--color-primary) 100%
   );
   z-index: 1;
 }
@@ -89,7 +89,7 @@
   font-weight: var(--font-weight-bold);
   line-height: var(--line-height-tight);
   color: var(--color-text-inverse);
-  text-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
+  text-shadow: 0 2px 8px var(--shadow-heavy);
 }
 
 .titleLine1 {
@@ -113,7 +113,7 @@
   font-size: var(--font-size-xl);
   font-weight: var(--font-weight-medium);
   color: var(--color-text-inverse);
-  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+  text-shadow: 0 2px 4px var(--shadow-light);
   opacity: 0.95;
 }
 
@@ -141,7 +141,7 @@
   font-weight: var(--font-weight-semibold);
   text-decoration: none;
   transition: all var(--transition-base) var(--ease-in-out);
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+  box-shadow: 0 4px 12px var(--shadow-light);
   min-height: 44px;
 }
 
@@ -149,7 +149,7 @@
   background-color: var(--glass-teal-light);
   border-color: var(--glass-border-strong);
   transform: translateY(-2px);
-  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.3);
+  box-shadow: 0 6px 16px var(--shadow-medium);
 }
 
 .secondaryButton {
@@ -166,13 +166,13 @@
   font-weight: var(--font-weight-semibold);
   text-decoration: none;
   transition: all var(--transition-base) var(--ease-in-out);
-  box-shadow: 0 4px 12px rgba(37, 211, 101, 0.3);
+  box-shadow: 0 4px 12px var(--color-whatsapp-bg);
   min-height: 44px;
 }
 
 .secondaryButton:hover {
   transform: translateY(-2px) scale(1.05);
-  box-shadow: 0 6px 16px rgba(37, 211, 101, 0.4);
+  box-shadow: 0 6px 16px var(--color-whatsapp-bg);
 }
 
 /* Scroll Indicator */
@@ -229,17 +229,17 @@
   inset: 0;
   background: radial-gradient(
       circle at 20% 30%,
-      rgba(174, 139, 119, 0.15) 0%,
+      var(--overlay-secondary) 0%,
       transparent 50%
     ),
     radial-gradient(
       circle at 80% 70%,
-      rgba(174, 139, 119, 0.12) 0%,
+      var(--overlay-secondary-20) 0%,
       transparent 50%
     ),
     radial-gradient(
       circle at 50% 50%,
-      rgba(255, 255, 255, 0.1) 0%,
+      var(--glass-bg-light) 0%,
       transparent 60%
     );
   z-index: 0;
@@ -254,15 +254,15 @@
       45deg,
       transparent,
       transparent 2px,
-      rgba(255, 255, 255, 0.03) 2px,
-      rgba(255, 255, 255, 0.03) 4px
+      var(--overlay-white-20) 2px,
+      var(--overlay-white-20) 4px
     ),
     repeating-linear-gradient(
       -45deg,
       transparent,
       transparent 2px,
-      rgba(174, 139, 119, 0.02) 2px,
-      rgba(174, 139, 119, 0.02) 4px
+      var(--overlay-secondary-20) 2px,
+      var(--overlay-secondary-20) 4px
     );
   z-index: 0;
   pointer-events: none;
@@ -391,8 +391,8 @@
   -webkit-backdrop-filter: blur(var(--glass-blur-xl));
   border: 1px solid var(--glass-border-light);
   border-radius: var(--radius-2xl);
-  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3),
-    0 0 0 1px rgba(255, 255, 255, 0.2) inset;
+  box-shadow: 0 20px 60px var(--shadow-heavy),
+    0 0 0 1px var(--overlay-white-20) inset;
   max-width: 600px;
   width: 90%;
   pointer-events: none;
@@ -402,7 +402,7 @@
   display: inline-flex;
   color: var(--color-secondary);
   margin-bottom: var(--spacing-4);
-  filter: drop-shadow(0 0 10px rgba(174, 139, 119, 0.5));
+  filter: drop-shadow(0 0 10px var(--glass-teal-strong));
 }
 
 .contentTitle {
@@ -433,7 +433,7 @@
   color: var(--color-text-inverse);
   font-size: var(--font-size-sm);
   font-weight: var(--font-weight-medium);
-  text-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
+  text-shadow: 0 2px 8px var(--shadow-heavy);
 }
 
 /* Content Card - Modern Glass Design */
@@ -447,7 +447,7 @@
   border: 1px solid var(--glass-border-light);
   border-radius: var(--radius-xl);
   padding: var(--spacing-10);
-  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 8px 32px var(--shadow-card-hover);
   z-index: 2;
 }
 
@@ -470,7 +470,7 @@
   gap: var(--spacing-4);
 }
 
-.cardText p {
+.cardTextParagraph {
   font-size: var(--font-size-base);
   line-height: var(--line-height-relaxed);
   color: var(--paragraph-text-color);
@@ -679,7 +679,7 @@
     font-size: var(--font-size-lg);
   }
 
-  .cardText p {
+  .cardTextParagraph {
     font-size: var(--font-size-sm);
   }
 }

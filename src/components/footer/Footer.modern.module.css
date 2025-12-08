@@ -101,7 +101,7 @@
   transform: translateX(4px);
 }
 
-.contactLink svg {
+.contactLinkIcon {
   color: var(--color-secondary);
   flex-shrink: 0;
 }
@@ -115,7 +115,7 @@
   padding: var(--spacing-2) 0;
 }
 
-.location svg {
+.locationIcon {
   color: var(--color-secondary);
   flex-shrink: 0;
   margin-top: 2px;
@@ -131,7 +131,7 @@
   gap: var(--spacing-2);
 }
 
-.linkList li {
+.linkListItem {
   margin: 0;
 }
 
@@ -161,7 +161,7 @@
   transform: translateX(4px);
 }
 
-.footerLink svg {
+.footerLinkIcon {
   color: var(--color-secondary);
   flex-shrink: 0;
 }
@@ -231,7 +231,7 @@
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  color: #25d365;
+  color: var(--color-whatsapp);
   text-decoration: none;
   transition: all var(--transition-base) var(--ease-in-out);
   padding: 4px;
@@ -239,7 +239,7 @@
 }
 
 .locationWhatsApp:hover {
-  color: #128c7e;
+  color: var(--color-whatsapp-hover-alt);
   background-color: rgba(37, 211, 101, 0.1);
   transform: scale(1.1);
 }
@@ -278,7 +278,7 @@
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
 }
 
-.socialLink svg {
+.socialLinkIcon {
   color: var(--color-secondary);
   flex-shrink: 0;
 }
@@ -418,14 +418,14 @@
   margin-top: 2px;
 }
 
-.cookieText h3 {
+.cookieTextTitle {
   font-size: var(--font-size-lg);
   font-weight: var(--font-weight-semibold);
   color: var(--color-text-primary);
   margin-bottom: var(--spacing-2);
 }
 
-.cookieText p {
+.cookieTextDescription {
   font-size: var(--font-size-base);
   color: var(--color-text-secondary);
   line-height: var(--line-height-relaxed);
@@ -586,11 +586,11 @@
     padding: var(--spacing-6) var(--spacing-2);
   }
 
-  .cookieText h3 {
+  .cookieTextTitle {
     font-size: var(--font-size-base);
   }
 
-  .cookieText p {
+  .cookieTextDescription {
     font-size: var(--font-size-sm);
   }
 }

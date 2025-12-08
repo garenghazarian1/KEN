@@ -1,0 +1,131 @@
+/* ============================================
+   HAMBURGER BUTTON - MODERN STYLING
+   ============================================
+   Modern hamburger menu button with animations
+   Using CSS variables and glass effects
+   ============================================ */
+
+.hamburgerBtn {
+  position: fixed;
+  top: var(--spacing-4);
+  right: var(--spacing-8);
+  z-index: var(--z-fixed);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 3rem;
+  height: 3rem;
+  min-width: 44px; /* Minimum touch target size */
+  min-height: 44px;
+  border-radius: var(--radius-md);
+  background-color: var(--glass-transparent);
+  backdrop-filter: blur(var(--glass-blur-md));
+  -webkit-backdrop-filter: blur(var(--glass-blur-md));
+  border: 2px solid var(--color-secondary);
+  transition: all var(--transition-base) var(--ease-in-out);
+  cursor: pointer;
+}
+
+.hamburgerBtn:hover {
+  background-color: var(--color-secondary);
+  border-color: var(--color-secondary-dark);
+  transform: scale(1.05);
+}
+
+.hamburgerBtn:active {
+  transform: scale(0.95);
+}
+
+.hamburgerBtn:focus-visible {
+  outline: 2px solid var(--glass-border-strong);
+  outline-offset: 2px;
+}
+
+.line {
+  width: 2rem; /* 32px */
+  height: 0.125rem; /* 2px */
+  background-color: var(--color-secondary);
+  transition: all var(--transition-base) var(--ease-in-out);
+  border-radius: var(--radius-sm);
+}
+
+.lineTop {
+  margin-bottom: var(--spacing-2);
+}
+
+.lineMiddle {
+  margin-bottom: var(--spacing-2);
+}
+
+.lineBottom {
+  margin-top: var(--spacing-2);
+}
+
+/* Open state animations */
+.hamburgerBtn.isOpen .lineTop {
+  transform: rotate(45deg) translateY(0.875rem);
+}
+
+.hamburgerBtn.isOpen .lineMiddle {
+  opacity: 0;
+}
+
+.hamburgerBtn.isOpen .lineBottom {
+  transform: rotate(-45deg) translateY(-0.875rem);
+}
+
+/* When open, change line color */
+.hamburgerBtn.isOpen .line {
+  background-color: var(--color-text-inverse);
+}
+
+/* Mobile adjustments */
+@media (max-width: 768px) {
+  .hamburgerBtn {
+    top: var(--spacing-3);
+    right: var(--spacing-6);
+    width: 2.75rem;
+    height: 2.75rem;
+  }
+}
+
+/* Small mobile devices (480px and below) */
+@media (max-width: 480px) {
+  .hamburgerBtn {
+    top: var(--spacing-2-5);
+    right: var(--spacing-4);
+    width: 2.5rem;
+    height: 2.5rem;
+  }
+}
+
+/* Extra small mobile devices (360px and below) */
+@media (max-width: 360px) {
+  .hamburgerBtn {
+    top: var(--spacing-2);
+    right: var(--spacing-3);
+    width: 2.25rem;
+    height: 2.25rem;
+  }
+}
+
+/* Minimum mobile size (320px) */
+@media (max-width: 320px) {
+  .hamburgerBtn {
+    top: var(--spacing-2);
+    right: var(--spacing-2);
+    width: 2rem;
+    height: 2rem;
+    min-width: 44px; /* Maintain minimum touch target */
+    min-height: 44px;
+  }
+}
+
+/* Hide on desktop (1024px and above) */
+@media (min-width: 1024px) {
+  .hamburgerBtn {
+    display: none;
+  }
+}
+

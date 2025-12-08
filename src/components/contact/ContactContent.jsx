@@ -556,6 +556,7 @@ export default function ContactContent({ stores }) {
                       required
                       aria-required="true"
                       aria-describedby="name-error"
+                      className={styles.fieldInput}
                     />
                     <span
                       id="name-error"
@@ -583,6 +584,7 @@ export default function ContactContent({ stores }) {
                       required
                       aria-required="true"
                       aria-describedby="email-error"
+                      className={styles.fieldInput}
                     />
                     <span
                       id="email-error"
@@ -608,6 +610,7 @@ export default function ContactContent({ stores }) {
                       value={formData.phone}
                       onChange={handleChange("phone")}
                       aria-describedby="phone-help"
+                      className={styles.fieldInput}
                     />
                     <span id="phone-help" className={styles.helperText}>
                       Optional
@@ -634,6 +637,7 @@ export default function ContactContent({ stores }) {
                     required
                     aria-required="true"
                     aria-describedby="message-error message-help"
+                    className={styles.fieldTextarea}
                   />
                   <span id="message-help" className={styles.helperText}>
                     We typically reply in minutes during open hours.

@@ -81,13 +81,72 @@ img {
   /* UI Element Colors - Improved for better contrast */
   --color-whatsapp: #25d365;
   --color-whatsapp-hover: #1fb855; /* Slightly darker for better hover feedback */
+  --color-whatsapp-hover-alt: #128c7e; /* Alternative hover color for WhatsApp */
   --color-whatsapp-bg: #25d365cc; /* Increased opacity from 99 to cc for better text contrast */
   --color-whatsapp-text: #0f5c2e; /* Dark green for text on light WhatsApp backgrounds - WCAG AA */
+  --color-whatsapp-text-dark: #1a5c2e; /* Darker green for text - WCAG AA */
+  --color-whatsapp-text-hover: #0f3d1f; /* Darkest green for hover text - WCAG AAA */
+
+  /* Error and Status Colors */
+  --color-error: #dc2626; /* Error red for validation messages */
+  --color-error-bg: rgba(220, 38, 38, 0.1); /* Light error background */
+  --color-error-border: rgba(220, 38, 38, 0.3); /* Error border */
+
+  /* Link Colors - Enhanced for better contrast */
+  --color-link: #8b6b5a; /* Link color - matches secondary-dark - WCAG AA */
+  --color-link-hover: #6b4f42; /* Link hover - darker for better visibility - WCAG AA */
+
+  /* Badge and Kicker Colors */
+  --color-badge-text: #7a5f4f; /* Badge/kicker text color - WCAG AA compliant */
+  --color-badge-bg: #f7f0ea; /* Badge background color */
+
+  /* Gradient Colors - Contact Page Background */
+  --color-gradient-start: #f6ede9; /* Page gradient start */
+  --color-gradient-mid: #e9d9d1; /* Page gradient middle */
+  --color-gradient-end: #f5e7df; /* Page gradient end */
+  --color-gradient-accent: #dcb8a0; /* Gradient accent color for buttons */
 
   /* Shadow Colors */
   --shadow-light: rgba(0, 0, 0, 0.2);
   --shadow-medium: rgba(0, 0, 0, 0.33);
   --shadow-heavy: rgba(0, 0, 0, 0.4);
+  --shadow-very-light: rgba(0, 0, 0, 0.05); /* Very subtle shadow */
+  --shadow-card: rgba(0, 0, 0, 0.06); /* Card shadow */
+  --shadow-card-hover: rgba(0, 0, 0, 0.1); /* Card hover shadow */
+  --shadow-card-strong: rgba(0, 0, 0, 0.12); /* Strong card shadow */
+  --shadow-card-stronger: rgba(0, 0, 0, 0.14); /* Stronger card shadow */
+  --shadow-button: rgba(
+    174,
+    139,
+    119,
+    0.4
+  ); /* Button shadow with brand color */
+  --shadow-button-hover: rgba(174, 139, 119, 0.48); /* Button hover shadow */
+  --shadow-split: rgba(0, 0, 0, 0.18); /* Split container shadow */
+
+  /* Overlay and Background Gradients */
+  --overlay-white-65: rgba(255, 255, 255, 0.65); /* White overlay 65% */
+  --overlay-white-98: rgba(255, 255, 255, 0.98); /* White overlay 98% */
+  --overlay-white-95: rgba(255, 255, 255, 0.95); /* White overlay 95% */
+  --overlay-white-90: rgba(255, 255, 255, 0.9); /* White overlay 90% */
+  --overlay-white-82: rgba(255, 255, 255, 0.82); /* White overlay 82% */
+  --overlay-white-70: rgba(255, 255, 255, 0.7); /* White overlay 70% */
+  --overlay-white-25: rgba(255, 255, 255, 0.25); /* White overlay 25% */
+  --overlay-white-20: rgba(255, 255, 255, 0.2); /* White overlay 20% */
+  --overlay-beige: rgba(220, 200, 186, 0.48); /* Beige overlay */
+  --overlay-beige-35: rgba(220, 200, 186, 0.35); /* Beige overlay 35% */
+  --overlay-primary: rgba(252, 241, 234, 0.65); /* Primary color overlay */
+  --overlay-secondary: rgba(174, 139, 119, 0.25); /* Secondary color overlay */
+  --overlay-secondary-20: rgba(174, 139, 119, 0.2); /* Secondary overlay 20% */
+  --overlay-secondary-30: rgba(174, 139, 119, 0.3); /* Secondary overlay 30% */
+  --overlay-secondary-70: rgba(174, 139, 119, 0.7); /* Secondary overlay 70% */
+  --overlay-secondary-90: rgba(174, 139, 119, 0.9); /* Secondary overlay 90% */
+  --overlay-black-04: rgba(0, 0, 0, 0.04); /* Black overlay 4% */
+  --overlay-black-05: rgba(0, 0, 0, 0.05); /* Black overlay 5% */
+  --overlay-black-08: rgba(0, 0, 0, 0.08); /* Black overlay 8% */
+  --overlay-black-10: rgba(0, 0, 0, 0.1); /* Black overlay 10% */
+  --overlay-black-12: rgba(0, 0, 0, 0.12); /* Black overlay 12% */
+  --overlay-black-15: rgba(0, 0, 0, 0.15); /* Black overlay 15% */
 
   /* ============================================
      GLASS EFFECT (GLASSMORPHISM) SYSTEM

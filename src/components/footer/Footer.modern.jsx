@@ -90,8 +90,8 @@ export default function FooterModern() {
               <div className={styles.cookieText}>
                 <Cookie size={24} className={styles.cookieIcon} />
                 <div>
-                  <h3>Cookie Consent</h3>
-                  <p>
+                  <h3 className={styles.cookieTextTitle}>Cookie Consent</h3>
+                  <p className={styles.cookieTextDescription}>
                     We use cookies to enhance your browsing experience and
                     analyze site traffic. By clicking &quot;Accept All&quot;,
                     you consent to our use of cookies.{" "}
@@ -155,7 +155,7 @@ export default function FooterModern() {
                         className={styles.contactLink}
                         aria-label={`Call ${store.name} landline`}
                       >
-                        <Phone size={18} />
+                        <Phone size={18} className={styles.contactLinkIcon} />
                         <span>Landline: {store.phone}</span>
                       </a>
                     )}
@@ -166,7 +166,7 @@ export default function FooterModern() {
                         className={styles.contactLink}
                         aria-label={`Call ${store.name} mobile`}
                       >
-                        <Phone size={18} />
+                        <Phone size={18} className={styles.contactLinkIcon} />
                         <span>Mobile: {store.mobile}</span>
                       </a>
                     )}
@@ -182,7 +182,10 @@ export default function FooterModern() {
                         rel="noopener noreferrer"
                         aria-label={`WhatsApp ${store.name}`}
                       >
-                        <MessageCircle size={18} />
+                        <MessageCircle
+                          size={18}
+                          className={styles.contactLinkIcon}
+                        />
                         <span>WhatsApp</span>
                       </a>
                     )}
@@ -193,7 +196,7 @@ export default function FooterModern() {
                   className={styles.contactLink}
                   aria-label="Email us"
                 >
-                  <Mail size={18} />
+                  <Mail size={18} className={styles.contactLinkIcon} />
                   <span>{CONTACT.email}</span>
                 </a>
               </div>
@@ -212,9 +215,9 @@ export default function FooterModern() {
                 {navigationLinks.map((link) => {
                   const Icon = link.icon;
                   return (
-                    <li key={link.title}>
+                    <li key={link.title} className={styles.linkListItem}>
                       <Link href={link.path} className={styles.footerLink}>
-                        <Icon size={16} />
+                        <Icon size={16} className={styles.footerLinkIcon} />
                         <span>{link.title}</span>
                       </Link>
                     </li>
@@ -240,7 +243,7 @@ export default function FooterModern() {
                   className={styles.socialLink}
                   aria-label="Follow us on Instagram - Beauty"
                 >
-                  <Instagram size={20} />
+                  <Instagram size={20} className={styles.socialLinkIcon} />
                   <span>Beauty</span>
                 </a>
                 <a
@@ -250,7 +253,7 @@ export default function FooterModern() {
                   className={styles.socialLink}
                   aria-label="Follow us on Instagram - Barbershop"
                 >
-                  <Instagram size={20} />
+                  <Instagram size={20} className={styles.socialLinkIcon} />
                   <span>Barbershop</span>
                 </a>
                 <a
@@ -265,6 +268,7 @@ export default function FooterModern() {
                     height="20"
                     viewBox="0 0 24 24"
                     fill="currentColor"
+                    className={styles.socialLinkIcon}
                   >
                     <path d="M19.59 6.69a4.83 4.83 0 0 1-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 0 1-5.2 1.74 2.89 2.89 0 0 1 2.31-4.64 2.93 2.93 0 0 1 .88.13V9.4a6.84 6.84 0 0 0-1-.05A6.33 6.33 0 0 0 5 20.1a6.34 6.34 0 0 0 10.86-4.43v-7a8.16 8.16 0 0 0 4.77 1.52v-3.4a4.85 4.85 0 0 1-1-.1z" />
                   </svg>
@@ -277,7 +281,7 @@ export default function FooterModern() {
                   className={styles.socialLink}
                   aria-label="Follow us on Facebook - Beauty"
                 >
-                  <Facebook size={20} />
+                  <Facebook size={20} className={styles.socialLinkIcon} />
                   <span>Beauty</span>
                 </a>
                 <a
@@ -287,7 +291,7 @@ export default function FooterModern() {
                   className={styles.socialLink}
                   aria-label="Follow us on Facebook - Barbershop"
                 >
-                  <Facebook size={20} />
+                  <Facebook size={20} className={styles.socialLinkIcon} />
                   <span>Barbershop</span>
                 </a>
               </div>

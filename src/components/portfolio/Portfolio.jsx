@@ -1,6 +1,6 @@
 "use client";
 import { useEffect } from "react";
-import styles from "./Portfolio.module.css";
+import styles from "./Portfolio.modern.module.css";
 import { motion } from "framer-motion";
 
 import PageOne from "./aPageOne/PageOne";

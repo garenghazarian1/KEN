@@ -1,0 +1,59 @@
+/* ============================================
+   PORTFOLIO COMPONENT - MODERN STYLING
+   ============================================
+   Modern back-to-top button with CSS variables
+   ============================================ */
+
+.backToTop {
+  display: none; /* Hidden by default */
+  position: fixed;
+  bottom: var(--spacing-5);
+  right: var(--spacing-5);
+  z-index: var(--z-tooltip);
+  background-color: var(--color-secondary);
+  opacity: 0.8;
+  color: var(--color-text-inverse);
+  border: none;
+  padding: var(--spacing-2) var(--spacing-5);
+  border-radius: var(--radius-md);
+  cursor: pointer;
+  font-size: var(--font-size-2xl);
+  box-shadow: 0 0 10px var(--shadow-light);
+  transition: all var(--transition-base) var(--ease-in-out);
+  min-width: 44px;
+  min-height: 44px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.backToTop:hover {
+  background-color: var(--color-secondary-light);
+  opacity: 1;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px var(--shadow-medium);
+}
+
+.backToTop:focus-visible {
+  outline: 2px solid var(--glass-border-strong);
+  outline-offset: 2px;
+}
+
+/* Mobile adjustments */
+@media (max-width: 768px) {
+  .backToTop {
+    bottom: var(--spacing-4);
+    right: var(--spacing-4);
+    font-size: var(--font-size-xl);
+    padding: var(--spacing-2) var(--spacing-4);
+  }
+}
+
+@media (max-width: 480px) {
+  .backToTop {
+    bottom: var(--spacing-3);
+    right: var(--spacing-3);
+    font-size: var(--font-size-lg);
+  }
+}
+

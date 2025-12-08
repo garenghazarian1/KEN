@@ -2,7 +2,7 @@
 
 import { useEffect, useState } from "react";
 import Script from "next/script";
-import styles from "./InstagramEmbed.module.css";
+import styles from "./InstagramEmbed.modern.module.css";
 
 // Instagram post/reel IDs - add your Instagram post IDs here
 const INSTAGRAM_POSTS = [
