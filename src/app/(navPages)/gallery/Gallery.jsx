@@ -4,18 +4,14 @@ import { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import Image from "next/image";
 import {
-  Instagram,
   X,
   ChevronLeft,
   ChevronRight,
-  ExternalLink,
   Heart,
   Sparkles,
   Grid3x3,
   LayoutGrid,
 } from "lucide-react";
-import InstagramEmbed from "@/components/instagram/InstagramEmbed";
-import { SOCIAL_MEDIA } from "@/config/constants";
 import styles from "./Gallery.modern.module.css";
 
 // Sample gallery images - replace with your actual images
@@ -164,34 +160,6 @@ export default function Gallery() {
           <p className={styles.subtitle}>
             Discover our latest beauty transformations and stunning work
           </p>
-
-          {/* Social Links */}
-          <div className={styles.socialLinks}>
-            <motion.a
-              href={SOCIAL_MEDIA.instagram.beauty}
-              target="_blank"
-              rel="noopener noreferrer"
-              className={styles.socialLink}
-              whileHover={{ scale: 1.05, y: -2 }}
-              whileTap={{ scale: 0.95 }}
-            >
-              <Instagram size={20} />
-              <span>@ken_beauty_ad</span>
-              <ExternalLink size={16} className={styles.socialLinkIcon} />
-            </motion.a>
-            <motion.a
-              href={SOCIAL_MEDIA.instagram.barbershop}
-              target="_blank"
-              rel="noopener noreferrer"
-              className={styles.socialLink}
-              whileHover={{ scale: 1.05, y: -2 }}
-              whileTap={{ scale: 0.95 }}
-            >
-              <Instagram size={20} />
-              <span>@ken_barbershop.ad</span>
-              <ExternalLink size={16} className={styles.socialLinkIcon} />
-            </motion.a>
-          </div>
         </div>
       </motion.section>
 
@@ -299,26 +267,6 @@ export default function Gallery() {
             ))}
           </motion.div>
         </AnimatePresence>
-      </motion.section>
-
-      {/* Instagram Section */}
-      <motion.section
-        className={styles.instagramSection}
-        initial={{ opacity: 0, y: 50 }}
-        whileInView={{ opacity: 1, y: 0 }}
-        viewport={{ once: true, amount: 0.2 }}
-        transition={{ duration: 0.8 }}
-      >
-        <div className={styles.sectionHeader}>
-          <div className={styles.headerIcon}>
-            <Instagram size={32} />
-          </div>
-          <h2 className={styles.sectionTitle}>Instagram Highlights</h2>
-          <p className={styles.sectionSubtitle}>
-            Follow us for daily inspiration and behind-the-scenes content
-          </p>
-        </div>
-        <InstagramEmbed />
       </motion.section>
 
       {/* Lightbox Modal */}

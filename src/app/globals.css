@@ -21,6 +21,8 @@ body {
   margin: 0;
   padding: 0;
   overflow-x: hidden; /* Prevent horizontal scroll */
+  scroll-behavior: smooth; /* Smooth scrolling */
+  -webkit-overflow-scrolling: touch; /* Smooth scrolling on iOS */
 }
 
 img {
@@ -72,6 +74,7 @@ img {
   --color-bg-primary: #efe7e5;
   --color-bg-secondary: #fbe4d5;
   --color-bg-dark: #4a312d;
+  --color-bg-black: #000000; /* Pure black background */
 
   /* Accent Colors - Improved for better contrast */
   --color-accent-1: #b58b78;
@@ -147,6 +150,12 @@ img {
   --overlay-black-10: rgba(0, 0, 0, 0.1); /* Black overlay 10% */
   --overlay-black-12: rgba(0, 0, 0, 0.12); /* Black overlay 12% */
   --overlay-black-15: rgba(0, 0, 0, 0.15); /* Black overlay 15% */
+  --overlay-black-60: rgba(
+    0,
+    0,
+    0,
+    0.6
+  ); /* Black overlay 60% - for darkening backgrounds */
 
   /* ============================================
      GLASS EFFECT (GLASSMORPHISM) SYSTEM
@@ -216,6 +225,11 @@ img {
     255,
     0.65
   ); /* Increased from 0.4 for better text contrast */
+
+  /* Glass Background - Black - For dark glass effects with white text */
+  --glass-black-light: rgba(0, 0, 0, 0.3); /* Light black glass */
+  --glass-black-medium: rgba(0, 0, 0, 0.5); /* Medium black glass */
+  --glass-black-strong: rgba(0, 0, 0, 0.7); /* Strong black glass */
 
   /* Glass Background - Teal/Brand Colors - Optimized for text readability */
   --glass-teal-light: rgba(

@@ -1,148 +1,219 @@
 /* PAGE01 ********************************************/
 
 .containerA {
-    display: flex;
-    flex-direction: row;
-    height: 800px;
-    width: 100vw;
-    overflow: hidden;
-    background-color: black;
-    /* Account for fixed navbar (5rem) + banner + spacing + safe area */
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  width: 100%;
+  background-color: var(--color-bg-black);
+  /* Account for fixed navbar (5rem) + banner + spacing + safe area */
+  padding-top: calc(
+    var(--app-banner-height, 0px) + 5rem + var(--spacing-4) +
+      env(safe-area-inset-top, 0px)
+  );
+}
+
+.leftPaneA {
+  width: 50vw;
+  height: 100%;
+  background-color: var(--color-bg-black);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+}
+
+.rightPaneA {
+  width: 50vw;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background-color: var(--color-bg-black);
+}
+
+.rightPaneA img {
+  width: 100%;
+  height: auto;
+  max-width: 100%;
+  max-height: calc(
+    100vh - var(--app-banner-height, 0px) - 5rem - var(--spacing-4) -
+      env(safe-area-inset-top, 0px)
+  );
+  object-fit: contain;
+}
+
+.imageA {
+  margin-top: 2rem;
+  max-height: calc(
+    100vh - var(--app-banner-height, 0px) - 5rem - var(--spacing-4) -
+      env(safe-area-inset-top, 0px) - 4rem
+  );
+  width: auto;
+  height: auto;
+}
+
+.portfolioTextA {
+  margin-top: 2rem;
+  color: var(--teal-800);
+  font-size: 4rem;
+  text-transform: uppercase;
+  letter-spacing: 0.3rem;
+  position: relative;
+}
+
+/* MEDIA ***********************************************/
+
+@media (max-width: 800px) {
+  /* PAGE01 */
+  .containerA {
+    flex-direction: column;
+    min-height: 100vh;
+    height: 100vh;
+    /* Account for fixed navbar (5rem) + banner + spacing + safe area on mobile */
     padding-top: calc(
-      var(--app-banner-height, 0px) + 5rem + var(--spacing-4) +
+      var(--app-banner-height, 0px) + 5rem + var(--spacing-3) +
         env(safe-area-inset-top, 0px)
     );
   }
 
-  .leftPaneA  {
-    width: 50vw;
-    height: 100%;
-    background-color: black;
-    display: flex;
-    flex-direction: column;
-    justify-content:flex-start;
-    align-items: center;
-    transform: scale(1);
-    transition: transform 0.5s ease;
-    position: relative;
-
-  }
-
-  .rightPaneA{
-    width: 50vw;
-    height: 100%;
-    flex-direction: column;
+  .leftPaneA {
+    width: 100%;
+    height: 50%;
+    flex: 1;
     justify-content: center;
-    align-items: center;
-    transition: transform 0.5s ease;
-    background-color: black;
-    transform: scale(1);
-    transition: transform 0.5s ease;
-  }
-
-  .leftPaneA:hover, .leftPaneA:active { 
-    transform: scale(1.05);
-  }
-  
-  .leftPaneA:hover, .leftPaneA:active { 
-    transform: scale(1.05);
   }
 
   .rightPaneA {
-    transition: transform 0.5s ease;
+    width: 100%;
+    height: 50%;
+    flex: 1;
   }
-  
-  .rightPaneA:hover, .rightPaneA:active {
-    transform: scale(1.05);
+
+  .rightPaneA img {
+    max-width: calc(
+      (
+          100vh - var(--app-banner-height, 0px) - 5rem - var(--spacing-3) -
+            env(safe-area-inset-top, 0px)
+        ) * 0.5 * 0.9
+    );
+    max-height: calc(
+      (
+          100vh - var(--app-banner-height, 0px) - 5rem - var(--spacing-3) -
+            env(safe-area-inset-top, 0px)
+        ) * 0.5 * 0.9
+    );
+    width: auto;
+    height: auto;
   }
 
   .imageA {
-    margin-top: 2rem;
-    transition: transform 0.5s ease;
-  }
-  
-  .imageA:hover, .imageA:active {
-    transform: scale(1.1);
-  }
-  
-  .portfolioTextA {
+    width: auto;
+    height: auto;
+    max-width: calc(
+      (
+          100vh - var(--app-banner-height, 0px) - 5rem - var(--spacing-3) -
+            env(safe-area-inset-top, 0px)
+        ) * 0.5 * 0.85
+    );
+    max-height: calc(
+      (
+          100vh - var(--app-banner-height, 0px) - 5rem - var(--spacing-3) -
+            env(safe-area-inset-top, 0px)
+        ) * 0.5 * 0.85
+    );
     margin-top: 1rem;
-    color: var(--teal-800);
-    font-size: 4rem;
-    text-transform: uppercase;
-    letter-spacing: 0.3rem;
-    opacity: 0;
-    animation: fadeInUp 1s ease forwards;
-    animation-delay: 0.3s;
-    position: absolute;
-    top: 25rem;
   }
 
-  
-  
-  @keyframes fadeInUp {
-    from {
-      opacity: 0;
-      transform: translateY(20px);
-    }
-    to {
-      opacity: 1;
-      transform: translateY(0);
-    }
+  .portfolioTextA {
+    position: relative;
+    top: auto;
+    font-size: calc(
+      (
+          100vh - var(--app-banner-height, 0px) - 5rem - var(--spacing-3) -
+            env(safe-area-inset-top, 0px)
+        ) * 0.08
+    );
+    margin-top: 0.5rem;
+    letter-spacing: 0.1rem;
+  }
+}
+
+@media (max-width: 600px) {
+  /* PAGE01 */
+  .containerA {
+    flex-direction: column;
+    min-height: 100vh;
+    height: 100vh;
+    /* Account for fixed navbar (5rem) + banner + spacing + safe area on small mobile */
+    padding-top: calc(
+      var(--app-banner-height, 0px) + 5rem + var(--spacing-2) +
+        env(safe-area-inset-top, 0px)
+    );
   }
 
-
-  /* MEDIA ***********************************************/
-
-
-  @media (max-width: 800px) {
-    /* PAGE01 */
-    .containerA {
-      /* Account for fixed navbar (5rem) + banner + spacing + safe area on mobile */
-      padding-top: calc(
-        var(--app-banner-height, 0px) + 5rem + var(--spacing-3) +
-          env(safe-area-inset-top, 0px)
-      );
-    }
-
-    .leftPaneA, .rightPaneA {
-        transition: transform 0.5s ease; 
-    }
-    .leftPaneA, .rightPaneA {
-        transform: scale(1);
-    }
-    .portfolioTextA {
-        top: 28rem;
-      font-size: 2rem; 
-      margin-top: 0.5rem; 
-    }
-    .imageA {
-      transform: scale(1.05); 
-    }
+  .leftPaneA {
+    width: 100%;
+    height: 50%;
+    flex: 1;
+    justify-content: center;
   }
 
- 
-
-
-  @media (max-width: 600px) {
-    /* PAGE01 */
-    .containerA {
-      flex-direction: column;
-      height: 1000px;
-      /* Account for fixed navbar (5rem) + banner + spacing + safe area on small mobile */
-      padding-top: calc(
-        var(--app-banner-height, 0px) + 5rem + var(--spacing-2) +
-          env(safe-area-inset-top, 0px)
-      );
-    }
-  
-    .leftPaneA, .rightPaneA {
-      flex: none;
-      width: 100%; 
-      height: 500px; 
-    }
-  
-    .portfolioTextA {
-      font-size: 1rem; 
-    }
+  .rightPaneA {
+    width: 100%;
+    height: 50%;
+    flex: 1;
   }
+
+  .rightPaneA img {
+    max-width: calc(
+      (
+          100vh - var(--app-banner-height, 0px) - 5rem - var(--spacing-2) -
+            env(safe-area-inset-top, 0px)
+        ) * 0.5 * 0.9
+    );
+    max-height: calc(
+      (
+          100vh - var(--app-banner-height, 0px) - 5rem - var(--spacing-2) -
+            env(safe-area-inset-top, 0px)
+        ) * 0.5 * 0.9
+    );
+    width: auto;
+    height: auto;
+  }
+
+  .imageA {
+    width: auto;
+    height: auto;
+    max-width: calc(
+      (
+          100vh - var(--app-banner-height, 0px) - 5rem - var(--spacing-2) -
+            env(safe-area-inset-top, 0px)
+        ) * 0.5 * 0.85
+    );
+    max-height: calc(
+      (
+          100vh - var(--app-banner-height, 0px) - 5rem - var(--spacing-2) -
+            env(safe-area-inset-top, 0px)
+        ) * 0.5 * 0.85
+    );
+    margin-top: 0.5rem;
+  }
+
+  .portfolioTextA {
+    position: relative;
+    top: auto;
+    font-size: calc(
+      (
+          100vh - var(--app-banner-height, 0px) - 5rem - var(--spacing-2) -
+            env(safe-area-inset-top, 0px)
+        ) * 0.06
+    );
+    margin-top: 0.5rem;
+    letter-spacing: 0.05rem;
+  }
+}

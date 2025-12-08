@@ -1,6 +1,4 @@
 "use client";
-import { useEffect } from "react";
-import styles from "./Portfolio.modern.module.css";
 import { motion } from "framer-motion";
 
 import PageOne from "./aPageOne/PageOne";
@@ -32,30 +30,15 @@ import PageTwentySix from "./yPageTwentySix/PageTwentySix";
 import PageTwentySeven from "./zPageTwentySeven/PageTwentySeven";
 
 export default function Portfolio() {
-  useEffect(() => {
-    const handleScroll = () => {
-      const button = document.getElementById("backToTop");
-      if (window.scrollY > 300) {
-        button.style.display = "block";
-      } else {
-        button.style.display = "none";
-      }
-    };
-
-    window.addEventListener("scroll", handleScroll);
-
-    return () => {
-      window.removeEventListener("scroll", handleScroll);
-    };
-  }, []);
-
-  const scrollToTop = () => {
-    window.scrollTo({ top: 0, behavior: "smooth" });
-  };
-
   const fadeInVariants = {
-    hidden: { opacity: 0, y: 20 },
-    visible: { opacity: 1, y: 0, transition: { duration: 0.6 } },
+    hidden: { opacity: 0 },
+    visible: {
+      opacity: 1,
+      transition: {
+        duration: 0.4,
+        ease: "easeOut",
+      },
+    },
   };
 
   return (
@@ -63,7 +46,7 @@ export default function Portfolio() {
       <motion.div
         initial="hidden"
         whileInView="visible"
-        viewport={{ once: true, amount: 0.2 }}
+        viewport={{ once: true, amount: 0.1, margin: "0px 0px -100px 0px" }}
         variants={fadeInVariants}
       >
         <PageOne />
@@ -71,7 +54,7 @@ export default function Portfolio() {
       <motion.div
         initial="hidden"
         whileInView="visible"
-        viewport={{ once: true, amount: 0.2 }}
+        viewport={{ once: true, amount: 0.1, margin: "0px 0px -100px 0px" }}
         variants={fadeInVariants}
       >
         <PageTwo />
@@ -79,7 +62,7 @@ export default function Portfolio() {
       <motion.div
         initial="hidden"
         whileInView="visible"
-        viewport={{ once: true, amount: 0.2 }}
+        viewport={{ once: true, amount: 0.1, margin: "0px 0px -100px 0px" }}
         variants={fadeInVariants}
       >
         <PageThree />
@@ -87,7 +70,7 @@ export default function Portfolio() {
       <motion.div
         initial="hidden"
         whileInView="visible"
-        viewport={{ once: true, amount: 0.2 }}
+        viewport={{ once: true, amount: 0.1, margin: "0px 0px -100px 0px" }}
         variants={fadeInVariants}
       >
         <PageFour />
@@ -95,7 +78,7 @@ export default function Portfolio() {
       <motion.div
         initial="hidden"
         whileInView="visible"
-        viewport={{ once: true, amount: 0.2 }}
+        viewport={{ once: true, amount: 0.1, margin: "0px 0px -100px 0px" }}
         variants={fadeInVariants}
       >
         <PageFive />
@@ -103,7 +86,7 @@ export default function Portfolio() {
       <motion.div
         initial="hidden"
         whileInView="visible"
-        viewport={{ once: true, amount: 0.2 }}
+        viewport={{ once: true, amount: 0.1, margin: "0px 0px -100px 0px" }}
         variants={fadeInVariants}
       >
         <PageSix />
@@ -111,7 +94,7 @@ export default function Portfolio() {
       <motion.div
         initial="hidden"
         whileInView="visible"
-        viewport={{ once: true, amount: 0.2 }}
+        viewport={{ once: true, amount: 0.1, margin: "0px 0px -100px 0px" }}
         variants={fadeInVariants}
       >
         <PageSeven />
@@ -119,7 +102,7 @@ export default function Portfolio() {
       <motion.div
         initial="hidden"
         whileInView="visible"
-        viewport={{ once: true, amount: 0.2 }}
+        viewport={{ once: true, amount: 0.1, margin: "0px 0px -100px 0px" }}
         variants={fadeInVariants}
       >
         <PageEight />
@@ -127,7 +110,7 @@ export default function Portfolio() {
       <motion.div
         initial="hidden"
         whileInView="visible"
-        viewport={{ once: true, amount: 0.2 }}
+        viewport={{ once: true, amount: 0.1, margin: "0px 0px -100px 0px" }}
         variants={fadeInVariants}
       >
         <PageNine />
@@ -135,7 +118,7 @@ export default function Portfolio() {
       <motion.div
         initial="hidden"
         whileInView="visible"
-        viewport={{ once: true, amount: 0.2 }}
+        viewport={{ once: true, amount: 0.1, margin: "0px 0px -100px 0px" }}
         variants={fadeInVariants}
       >
         <PageTen />
@@ -143,7 +126,7 @@ export default function Portfolio() {
       <motion.div
         initial="hidden"
         whileInView="visible"
-        viewport={{ once: true, amount: 0.2 }}
+        viewport={{ once: true, amount: 0.1, margin: "0px 0px -100px 0px" }}
         variants={fadeInVariants}
       >
         <PageEleven />
@@ -151,7 +134,7 @@ export default function Portfolio() {
       <motion.div
         initial="hidden"
         whileInView="visible"
-        viewport={{ once: true, amount: 0.2 }}
+        viewport={{ once: true, amount: 0.1, margin: "0px 0px -100px 0px" }}
         variants={fadeInVariants}
       >
         <PageTwelve />
@@ -159,7 +142,7 @@ export default function Portfolio() {
       <motion.div
         initial="hidden"
         whileInView="visible"
-        viewport={{ once: true, amount: 0.2 }}
+        viewport={{ once: true, amount: 0.1, margin: "0px 0px -100px 0px" }}
         variants={fadeInVariants}
       >
         <PageThirteen />
@@ -167,7 +150,7 @@ export default function Portfolio() {
       <motion.div
         initial="hidden"
         whileInView="visible"
-        viewport={{ once: true, amount: 0.2 }}
+        viewport={{ once: true, amount: 0.1, margin: "0px 0px -100px 0px" }}
         variants={fadeInVariants}
       >
         <PageFourteen />
@@ -175,7 +158,7 @@ export default function Portfolio() {
       <motion.div
         initial="hidden"
         whileInView="visible"
-        viewport={{ once: true, amount: 0.2 }}
+        viewport={{ once: true, amount: 0.1, margin: "0px 0px -100px 0px" }}
         variants={fadeInVariants}
       >
         <PageFifteen />
@@ -183,7 +166,7 @@ export default function Portfolio() {
       <motion.div
         initial="hidden"
         whileInView="visible"
-        viewport={{ once: true, amount: 0.2 }}
+        viewport={{ once: true, amount: 0.1, margin: "0px 0px -100px 0px" }}
         variants={fadeInVariants}
       >
         <PageSixteen />
@@ -191,7 +174,7 @@ export default function Portfolio() {
       <motion.div
         initial="hidden"
         whileInView="visible"
-        viewport={{ once: true, amount: 0.2 }}
+        viewport={{ once: true, amount: 0.1, margin: "0px 0px -100px 0px" }}
         variants={fadeInVariants}
       >
         <PageSeventeen />
@@ -199,7 +182,7 @@ export default function Portfolio() {
       <motion.div
         initial="hidden"
         whileInView="visible"
-        viewport={{ once: true, amount: 0.2 }}
+        viewport={{ once: true, amount: 0.1, margin: "0px 0px -100px 0px" }}
         variants={fadeInVariants}
       >
         <PageEighteen />
@@ -207,7 +190,7 @@ export default function Portfolio() {
       <motion.div
         initial="hidden"
         whileInView="visible"
-        viewport={{ once: true, amount: 0.2 }}
+        viewport={{ once: true, amount: 0.1, margin: "0px 0px -100px 0px" }}
         variants={fadeInVariants}
       >
         <PageNineteen />
@@ -215,7 +198,7 @@ export default function Portfolio() {
       <motion.div
         initial="hidden"
         whileInView="visible"
-        viewport={{ once: true, amount: 0.2 }}
+        viewport={{ once: true, amount: 0.1, margin: "0px 0px -100px 0px" }}
         variants={fadeInVariants}
       >
         <PageTwenty />
@@ -223,7 +206,7 @@ export default function Portfolio() {
       <motion.div
         initial="hidden"
         whileInView="visible"
-        viewport={{ once: true, amount: 0.2 }}
+        viewport={{ once: true, amount: 0.1, margin: "0px 0px -100px 0px" }}
         variants={fadeInVariants}
       >
         <PageTwentyOne />
@@ -231,7 +214,7 @@ export default function Portfolio() {
       <motion.div
         initial="hidden"
         whileInView="visible"
-        viewport={{ once: true, amount: 0.2 }}
+        viewport={{ once: true, amount: 0.1, margin: "0px 0px -100px 0px" }}
         variants={fadeInVariants}
       >
         <PageTwentyTwo />
@@ -239,7 +222,7 @@ export default function Portfolio() {
       <motion.div
         initial="hidden"
         whileInView="visible"
-        viewport={{ once: true, amount: 0.2 }}
+        viewport={{ once: true, amount: 0.1, margin: "0px 0px -100px 0px" }}
         variants={fadeInVariants}
       >
         <PageTwentyThree />
@@ -247,7 +230,7 @@ export default function Portfolio() {
       <motion.div
         initial="hidden"
         whileInView="visible"
-        viewport={{ once: true, amount: 0.2 }}
+        viewport={{ once: true, amount: 0.1, margin: "0px 0px -100px 0px" }}
         variants={fadeInVariants}
       >
         <PageTwentyFour />
@@ -255,7 +238,7 @@ export default function Portfolio() {
       <motion.div
         initial="hidden"
         whileInView="visible"
-        viewport={{ once: true, amount: 0.2 }}
+        viewport={{ once: true, amount: 0.1, margin: "0px 0px -100px 0px" }}
         variants={fadeInVariants}
       >
         <PageTwentyFive />
@@ -263,7 +246,7 @@ export default function Portfolio() {
       <motion.div
         initial="hidden"
         whileInView="visible"
-        viewport={{ once: true, amount: 0.2 }}
+        viewport={{ once: true, amount: 0.1, margin: "0px 0px -100px 0px" }}
         variants={fadeInVariants}
       >
         <PageTwentySix />
@@ -271,14 +254,11 @@ export default function Portfolio() {
       <motion.div
         initial="hidden"
         whileInView="visible"
-        viewport={{ once: true, amount: 0.2 }}
+        viewport={{ once: true, amount: 0.1, margin: "0px 0px -100px 0px" }}
         variants={fadeInVariants}
       >
         <PageTwentySeven />
       </motion.div>
-      <button onClick={scrollToTop} id="backToTop" className={styles.backToTop}>
-        ↑ Top
-      </button>
     </>
   );
 }

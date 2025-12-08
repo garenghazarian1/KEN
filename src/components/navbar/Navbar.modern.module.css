@@ -70,28 +70,30 @@
 }
 
 .navLink {
-  color: var(--color-text-primary);
+  color: #ffffff; /* White text for visibility */
   font-size: var(--font-size-base);
   font-weight: var(--font-weight-medium);
   text-decoration: none;
   padding: var(--spacing-2-5) var(--spacing-4);
   border-radius: var(--radius-full); /* Full rounded for modern pill shape */
-  background-color: transparent; /* No background by default */
+  background-color: var(
+    --glass-black-light
+  ); /* Slightly transparent black background */
   backdrop-filter: blur(var(--glass-blur-md));
   -webkit-backdrop-filter: blur(var(--glass-blur-md));
   transition: all var(--transition-base) var(--ease-in-out);
   position: relative;
-  border: 1px solid transparent; /* Smooth border transition */
+  border: 1px solid rgba(255, 255, 255, 0.1); /* Subtle white border */
 }
 
 .navLink:hover {
-  color: var(--color-text-primary);
-  background-color: var(--glass-white-medium);
+  color: #ffffff; /* White text for visibility */
+  background-color: var(--glass-black-medium); /* More opaque on hover */
   backdrop-filter: blur(var(--glass-blur-lg));
   -webkit-backdrop-filter: blur(var(--glass-blur-lg));
-  border-color: var(--glass-border-light);
+  border-color: rgba(255, 255, 255, 0.2); /* Slightly more visible border */
   transform: translateY(-1px);
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
 }
 
 .navLink:active {
@@ -105,29 +107,29 @@
   gap: var(--spacing-2);
   padding: var(--spacing-3) var(--spacing-5);
   background-color: var(
-    --glass-transparent
-  ); /* No background color, only blur */
+    --glass-black-light
+  ); /* Slightly transparent black background */
   backdrop-filter: blur(var(--glass-blur-xl)); /* Strong blur effect */
-  border: 1px solid var(--glass-border-light); /* Subtle border for definition */
-  color: var(--color-text-primary); /* Dark text for contrast */
+  border: 1px solid rgba(255, 255, 255, 0.1); /* Subtle white border */
+  color: #ffffff; /* White text for visibility */
   border-radius: var(--radius-full);
   font-size: var(--font-size-sm);
   font-weight: var(--font-weight-semibold);
   text-decoration: none;
   cursor: pointer;
   transition: all var(--transition-base) var(--ease-in-out);
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
   min-width: 44px;
   min-height: 44px;
 }
 
 .bookButton:hover {
-  background-color: var(--glass-teal-light); /* Subtle background on hover */
+  background-color: var(--glass-black-medium); /* More opaque on hover */
   backdrop-filter: blur(var(--glass-blur-xl)); /* Maintain strong blur */
-  border-color: var(--glass-border-medium); /* Stronger border on hover */
-  color: var(--color-text-primary);
+  border-color: rgba(255, 255, 255, 0.2); /* Slightly more visible border */
+  color: #ffffff; /* White text for visibility */
   transform: translateY(-2px);
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.4);
 }
 
 .bookButton:active {
@@ -142,31 +144,31 @@
   gap: var(--spacing-2);
   padding: var(--spacing-2-5) var(--spacing-4);
   background-color: var(
-    --glass-transparent
-  ); /* No background color, only blur */
+    --glass-black-light
+  ); /* Slightly transparent black background */
   backdrop-filter: blur(var(--glass-blur-xl)); /* Strong blur effect */
   -webkit-backdrop-filter: blur(var(--glass-blur-xl)); /* iOS support */
-  border: 1px solid var(--glass-border-light); /* Subtle border for definition */
-  color: var(--color-text-primary); /* Dark text for contrast */
+  border: 1px solid rgba(255, 255, 255, 0.1); /* Subtle white border */
+  color: #ffffff; /* White text for visibility */
   border-radius: var(--radius-full);
   font-size: var(--font-size-sm);
   font-weight: var(--font-weight-semibold);
   text-decoration: none;
   transition: all var(--transition-base) var(--ease-in-out);
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
   min-width: 44px;
   min-height: 44px;
   margin: 0 auto; /* Center between logo and hamburger */
 }
 
 .mobileBookButtonNavbar:hover {
-  background-color: var(--glass-teal-light); /* Subtle background on hover */
+  background-color: var(--glass-black-medium); /* More opaque on hover */
   backdrop-filter: blur(var(--glass-blur-xl)); /* Maintain strong blur */
   -webkit-backdrop-filter: blur(var(--glass-blur-xl)); /* iOS support */
-  border-color: var(--glass-border-medium); /* Stronger border on hover */
-  color: var(--color-text-primary);
+  border-color: rgba(255, 255, 255, 0.2); /* Slightly more visible border */
+  color: #ffffff; /* White text for visibility */
   transform: translateY(-2px);
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.4);
 }
 
 /* Mobile Menu Button */
@@ -219,28 +221,30 @@
 .mobileLink {
   display: block;
   padding: var(--spacing-4) var(--spacing-3);
-  color: var(--color-text-primary);
+  color: #ffffff; /* White text for visibility */
   font-size: var(--font-size-lg);
   font-weight: var(--font-weight-medium);
   text-decoration: none;
   border-radius: var(--radius-md);
-  background-color: var(--glass-white-stronger); /* Less transparent */
+  background-color: var(
+    --glass-black-light
+  ); /* Slightly transparent black background */
   backdrop-filter: blur(var(--glass-blur-md));
   -webkit-backdrop-filter: blur(var(--glass-blur-md)); /* iOS support */
   transition: all var(--transition-base) var(--ease-in-out);
   min-height: 44px;
   display: flex;
   align-items: center;
+  border: 1px solid rgba(255, 255, 255, 0.1); /* Subtle white border */
 }
 
 .mobileLink:hover {
-  background-color: var(
-    --glass-white-strongest
-  ); /* Less transparent on hover */
+  background-color: var(--glass-black-medium); /* More opaque on hover */
   backdrop-filter: blur(var(--glass-blur-md));
   -webkit-backdrop-filter: blur(var(--glass-blur-md)); /* iOS support */
-  color: var(--color-text-hover);
+  color: #ffffff; /* White text for visibility */
   padding-left: var(--spacing-5);
+  border-color: rgba(255, 255, 255, 0.2); /* Slightly more visible border */
 }
 
 .mobileBookButton {
@@ -250,7 +254,9 @@
   gap: var(--spacing-2);
   margin-top: var(--spacing-2);
   padding: var(--spacing-4) var(--spacing-5);
-  background-color: var(--overlay-secondary-90); /* Less transparent teal with glass effect */
+  background-color: var(
+    --overlay-secondary-90
+  ); /* Less transparent teal with glass effect */
   backdrop-filter: blur(10px);
   -webkit-backdrop-filter: blur(10px); /* iOS support */
   color: var(--color-text-inverse);
