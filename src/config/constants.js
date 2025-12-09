@@ -167,57 +167,19 @@ export const isAndroidWebView = () => {
   return isWebView;
 };
 
-// Handle phone number click with WebView fallback for both iOS and Android
-export const handlePhoneClick = (phone, e) => {
-  if (typeof window === "undefined") return;
-
-  const formatted = formatPhoneForTel(phone);
-  if (!formatted) return;
-
-  // Check if we're in iOS WebView
-  if (isIOSWebView()) {
-    e.preventDefault();
-    // Try multiple methods for iOS WebView
-    try {
-      // Method 1: Try window.location
-      window.location.href = `tel:${formatted}`;
-    } catch (err) {
-      try {
-        // Method 2: Try window.open
-        window.open(`tel:${formatted}`, "_self");
-      } catch (err2) {
-        // Method 3: Fallback - show number for manual dialing
-        alert(`Please call: ${formatted}`);
-      }
+// Handle phone click: let the native navigation happen in the same tick.
+// Do NOT preventDefault or re-navigate in JS; WebViews block delayed tel: opens.
+export const handlePhoneClick = (phone) => {
+  // Optional: lightweight analytics that won't block navigation
+  try {
+    if (typeof navigator !== "undefined" && navigator.sendBeacon) {
+      const data = JSON.stringify({ event: "click_phone", phone });
+      navigator.sendBeacon("/api/track", data);
     }
-    return false;
+  } catch (_) {
+    // Best-effort only
   }
-
-  // Check if we're in Android WebView (like Google Play app)
-  if (isAndroidWebView()) {
-    // For Android WebView, try to open tel: link
-    // Don't prevent default - let it try first, but have a fallback
-    try {
-      // Try using window.location as fallback if default doesn't work
-      const link = document.createElement("a");
-      link.href = `tel:${formatted}`;
-      link.style.display = "none";
-      document.body.appendChild(link);
-      link.click();
-      document.body.removeChild(link);
-    } catch (err) {
-      // If that fails, try window.location
-      try {
-        window.location.href = `tel:${formatted}`;
-      } catch (err2) {
-        console.warn("Could not open phone link:", formatted);
-      }
-    }
-    // Don't prevent default - let the href work if possible
-    return true;
-  }
-
-  // For regular browsers, let the default tel: link work
+  // Return true to allow native tel: handling
   return true;
 };
 
