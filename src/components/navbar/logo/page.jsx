@@ -11,6 +11,7 @@ export default function Logo() {
           width={50}
           height={50}
           className={styles.image}
+          style={{ width: "50px", height: "50px", objectFit: "contain" }}
           priority
         />
       </div>

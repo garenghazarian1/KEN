@@ -126,6 +126,13 @@ export default function PageFive() {
                   className={styles.rightLeftImagesPageE}
                   width={300}
                   height={300}
+                  style={{
+                    width: "300px",
+                    height: "300px",
+                    maxWidth: "90vw",
+                    maxHeight: "70vh",
+                    objectFit: "cover",
+                  }}
                 />
               </SwiperSlide>
               <SwiperSlide>
@@ -135,6 +142,13 @@ export default function PageFive() {
                   className={styles.rightLeftImagesPageE}
                   width={300}
                   height={300}
+                  style={{
+                    width: "300px",
+                    height: "300px",
+                    maxWidth: "90vw",
+                    maxHeight: "70vh",
+                    objectFit: "cover",
+                  }}
                 />
               </SwiperSlide>
               <SwiperSlide>
@@ -144,6 +158,13 @@ export default function PageFive() {
                   className={styles.rightLeftImagesPageE}
                   width={300}
                   height={300}
+                  style={{
+                    width: "300px",
+                    height: "300px",
+                    maxWidth: "90vw",
+                    maxHeight: "70vh",
+                    objectFit: "cover",
+                  }}
                 />
               </SwiperSlide>
               <SwiperSlide>
@@ -153,6 +174,13 @@ export default function PageFive() {
                   className={styles.rightLeftImagesPageE}
                   width={300}
                   height={300}
+                  style={{
+                    width: "300px",
+                    height: "300px",
+                    maxWidth: "90vw",
+                    maxHeight: "70vh",
+                    objectFit: "cover",
+                  }}
                 />
               </SwiperSlide>
             </Swiper>

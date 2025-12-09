@@ -30,6 +30,7 @@ export default function PageOne() {
               width={350}
               height={350}
               className={styles.imageA}
+              style={{ width: "auto", height: "auto" }}
             />
           </motion.div>
           <motion.div
@@ -57,6 +58,7 @@ export default function PageOne() {
               alt="Ken Salon Portfolio"
               width={500}
               height={500}
+              priority
             />
           </motion.div>
         </motion.div>

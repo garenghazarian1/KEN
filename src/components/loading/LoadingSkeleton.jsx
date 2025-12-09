@@ -12,6 +12,7 @@ export default function LoadingSkeleton() {
         height={100}
         priority
         className={styles.logo}
+        style={{ width: "100px", height: "100px", objectFit: "contain" }}
       />
     </div>
   );

@@ -28,7 +28,7 @@ export default function LoadingSkeletonModern() {
             height={120}
             priority
             className={styles.logo}
-            style={{ width: "100%", height: "100%" }}
+            style={{ width: "100%", height: "100%", objectFit: "contain" }}
           />
         </motion.div>
 
@@ -120,4 +120,3 @@ export default function LoadingSkeletonModern() {
     </div>
   );
 }
-

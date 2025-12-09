@@ -7,6 +7,13 @@
   background-size: cover;
   background-position: center;
   overflow: hidden;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 1.5rem;
+  padding: 2rem 1.5rem;
 }
 
 .containerB::before {
@@ -27,7 +34,8 @@
 }
 .containerBHeader {
   display: flex;
-  margin-left: 1rem;
+  justify-content: center;
+  width: 100%;
 }
 .headerB {
   font-size: 4rem;
@@ -41,15 +49,19 @@
 }
 
 .itemsB {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+  gap: 1rem 1.25rem;
+  justify-items: center;
   align-items: center;
+  width: 100%;
+  max-width: 1100px;
 }
 
 .itemB {
-  width: 16rem;
-  padding: 0.5rem;
+  width: 100%;
+  max-width: 160px;
+  padding: 0.75rem 0.5rem;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -114,15 +126,52 @@
     justify-content: center;
   }
 
+  .headerB {
+    font-size: 2.5rem;
+    margin-bottom: 1.5rem;
+  }
+
   .itemB {
-    width: 10rem;
-    padding: 1rem;
+    width: 100%;
+    max-width: none;
+    padding: 0.5rem 0.4rem;
     animation: scaleIn 0.5s ease-out;
+  }
+
+  .itemsB {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 0.6rem;
+  }
+
+  .numB {
+    font-size: 1.35rem;
+  }
+
+  .textB {
+    font-size: 0.9rem;
+    line-height: 1.2;
   }
 }
 
 @media (max-width: 480px) {
   .br {
     display: block;
+  }
+
+  .headerB {
+    font-size: 2.1rem;
+    margin-bottom: 1.25rem;
+  }
+
+  .itemsB {
+    gap: 0.5rem;
+  }
+
+  .numB {
+    font-size: 1.25rem;
+  }
+
+  .textB {
+    font-size: 0.85rem;
   }
 }

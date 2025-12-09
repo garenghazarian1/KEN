@@ -13,6 +13,7 @@ export default function PageNine() {
             className={styles.imageD}
             width={250}
             height={250}
+            style={{ width: "auto", height: "auto" }}
           />
         </div>
         <div id="SocialMedia" className={styles.rightPaneD}>

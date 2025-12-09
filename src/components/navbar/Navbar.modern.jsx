@@ -75,6 +75,7 @@ export default function NavbarModern() {
             width={50}
             height={50}
             className={styles.logo}
+            style={{ width: "50px", height: "50px", objectFit: "contain" }}
             priority
           />
         </Link>
