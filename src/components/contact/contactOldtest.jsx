@@ -1,9 +1,3 @@
-﻿/* ContactContent.jsx
-   ------------------------------------------------------------------
-   Complete React component converted to plain JSX (no TypeScript).
-   Replace your existing file with this one.
------------------------------------------------------------------- */
-
 "use client";
 
 import Image from "next/image";
@@ -23,17 +17,17 @@ import {
   formatPhoneForTel,
   getTelLink,
   handlePhoneClick,
-} from "@/config/constants"; // adjust path if different
+} from "@/config/constants";
 import styles from "./Contact.modern.module.css";
 
-/* ───────────── helper fns ───────────── */
-
 const getWhatsAppUrl = (phoneNumber, message = null) => {
-  const clean = formatPhoneForTel(phoneNumber).replace(/^\+/, "");
-  const msg =
-    message ??
+  const cleanNumber = formatPhoneForTel(phoneNumber).replace(/^\+/, "");
+  const defaultMessage =
+    message ||
     "Hello KEN Beauty Center, I would like to know more about your services.";
-  return `https://wa.me/${clean}?text=${encodeURIComponent(msg)}`;
+  return `https://wa.me/${cleanNumber}?text=${encodeURIComponent(
+    defaultMessage
+  )}`;
 };
 
 const getGoogleMapsUrl = (store) =>
@@ -41,19 +35,20 @@ const getGoogleMapsUrl = (store) =>
     `${store.name} ${store.street}, ${store.city}, ${store.country || ""}`
   )}`;
 
-/* ───────────── store card ───────────── */
-
 const StoreInfo = ({ store, isFirst, index }) => (
   <motion.div
     className={styles.card}
     initial={{ opacity: 0, y: 30 }}
     whileInView={{ opacity: 1, y: 0 }}
     viewport={{ once: true, amount: 0.2 }}
-    transition={{ duration: 0.6, delay: index * 0.1, ease: [0.22, 1, 0.36, 1] }}
+    transition={{
+      duration: 0.6,
+      delay: index * 0.1,
+      ease: [0.22, 1, 0.36, 1],
+    }}
     whileHover={{ y: -4 }}
   >
     <div className={styles.content}>
-      {/* header ---------------------------------------------------- */}
       <motion.div
         className={styles.header}
         initial={{ opacity: 0, x: -20 }}
@@ -67,7 +62,6 @@ const StoreInfo = ({ store, isFirst, index }) => (
         </p>
       </motion.div>
 
-      {/* image ----------------------------------------------------- */}
       <motion.div
         initial={{ opacity: 0, scale: 0.95 }}
         whileInView={{ opacity: 1, scale: 1 }}
@@ -76,17 +70,16 @@ const StoreInfo = ({ store, isFirst, index }) => (
       >
         <Image
           src={store.imageStore}
-          alt={`${store.name} at ${store.street}, ${store.city}`}
+          alt={`${store.name} location at ${store.street}, ${store.city}`}
           className={styles.image}
           width={800}
           height={600}
           priority={isFirst}
-          sizes="(max-width:768px)100vw,(max-width:1024px)50vw,33vw"
+          sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 33vw"
           loading={isFirst ? "eager" : "lazy"}
         />
       </motion.div>
 
-      {/* details --------------------------------------------------- */}
       <motion.div
         className={styles.details}
         initial={{ opacity: 0 }}
@@ -94,7 +87,6 @@ const StoreInfo = ({ store, isFirst, index }) => (
         viewport={{ once: true }}
         transition={{ duration: 0.5, delay: index * 0.1 + 0.4 }}
       >
-        {/* address row */}
         <motion.div
           className={styles.row}
           initial={{ opacity: 0, x: -10 }}
@@ -108,7 +100,6 @@ const StoreInfo = ({ store, isFirst, index }) => (
           </span>
         </motion.div>
 
-        {/* map row */}
         <motion.div
           className={styles.row}
           initial={{ opacity: 0, x: -10 }}
@@ -132,7 +123,6 @@ const StoreInfo = ({ store, isFirst, index }) => (
           </motion.a>
         </motion.div>
 
-        {/* landline row */}
         {store.phone && (
           <motion.div
             className={styles.row}
@@ -146,7 +136,7 @@ const StoreInfo = ({ store, isFirst, index }) => (
             <motion.a
               className={styles.link}
               href={getTelLink(store.phone)}
-              onClick={() => handlePhoneClick(store.phone)}
+              onClick={(e) => handlePhoneClick(store.phone, e)}
               aria-label={`Call ${store.phone}`}
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
@@ -156,7 +146,6 @@ const StoreInfo = ({ store, isFirst, index }) => (
           </motion.div>
         )}
 
-        {/* mobile row */}
         {store.mobile && (
           <motion.div
             className={styles.row}
@@ -170,7 +159,7 @@ const StoreInfo = ({ store, isFirst, index }) => (
             <motion.a
               className={styles.link}
               href={getTelLink(store.mobile)}
-              onClick={() => handlePhoneClick(store.mobile)}
+              onClick={(e) => handlePhoneClick(store.mobile, e)}
               aria-label={`Call ${store.mobile}`}
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
@@ -180,7 +169,6 @@ const StoreInfo = ({ store, isFirst, index }) => (
           </motion.div>
         )}
 
-        {/* WhatsApp row */}
         {store.whatsapp && (
           <motion.div
             className={styles.row}
@@ -206,7 +194,6 @@ const StoreInfo = ({ store, isFirst, index }) => (
           </motion.div>
         )}
 
-        {/* email row */}
         <motion.div
           className={styles.row}
           initial={{ opacity: 0, x: -10 }}
@@ -218,11 +205,7 @@ const StoreInfo = ({ store, isFirst, index }) => (
           <span className={styles.label}>Email</span>
           <motion.a
             className={styles.link}
-            href={`mailto:${
-              store.email
-            }?subject=Inquiry about ${encodeURIComponent(
-              store.name
-            )}&body=Hello, I would like to know more about your services.`}
+            href={`mailto:${store.email}?subject=Inquiry about ${store.name}&body=Hello, I would like to know more about your services.`}
             aria-label={`Email ${store.email}`}
             data-track="location-email"
             whileHover={{ scale: 1.05 }}
@@ -236,8 +219,6 @@ const StoreInfo = ({ store, isFirst, index }) => (
   </motion.div>
 );
 
-/* ───────────── main contact page ───────────── */
-
 export default function ContactContent({ stores }) {
   const [formData, setFormData] = useState({
     name: "",
@@ -246,7 +227,6 @@ export default function ContactContent({ stores }) {
     message: "",
   });
 
-  /* mailto builder */
   const mailtoHref = useMemo(() => {
     const subject = encodeURIComponent(
       `Inquiry from ${formData.name || "Ken Beauty guest"}`
@@ -255,22 +235,44 @@ export default function ContactContent({ stores }) {
       `Name: ${formData.name || "Not provided"}\nEmail: ${
         formData.email || "Not provided"
       }\nPhone: ${formData.phone || "Not provided"}\n\nMessage:\n${
-        formData.message || "I'd like to know more about your services."
+        formData.message || "I&apos;d like to know more about your services."
       }`
     );
     return `mailto:${CONTACT.email}?subject=${subject}&body=${body}`;
   }, [formData]);
 
-  const handleChange = (key) => (e) =>
-    setFormData((prev) => ({ ...prev, [key]: e.target.value }));
+  const handleChange = (field) => (event) => {
+    setFormData((prev) => ({ ...prev, [field]: event.target.value }));
+  };
 
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    const form = e.currentTarget;
+  const handleSubmit = (event) => {
+    event.preventDefault();
+
+    // Clear any previous error messages
+    const errorElements = document.querySelectorAll(`.${styles.errorText}`);
+    errorElements.forEach((el) => (el.textContent = ""));
+
+    // Basic validation
+    const form = event.target;
     if (!form.checkValidity()) {
-      form.reportValidity(); // show browser validation UI
+      // Handle HTML5 validation
+      const firstInvalid = form.querySelector(":invalid");
+      if (firstInvalid) {
+        firstInvalid.focus();
+        const errorId = firstInvalid
+          .getAttribute("aria-describedby")
+          ?.split(" ")[0];
+        if (errorId) {
+          const errorEl = document.getElementById(errorId);
+          if (errorEl) {
+            errorEl.textContent = firstInvalid.validationMessage;
+          }
+        }
+      }
       return;
     }
+
+    // Open mailto link
     window.location.href = mailtoHref;
   };
 
@@ -281,21 +283,18 @@ export default function ContactContent({ stores }) {
       animate={{ opacity: 1 }}
       transition={{ duration: 0.5 }}
     >
-      {/* ---------- HERO SPLIT ---------- */}
       <section className={styles.splitContainer}>
-        {/* left visual panel */}
         <motion.div
           className={styles.splitLeft}
           style={{ backgroundImage: "url('/heroGridImage/hero004.webp')" }}
           role="img"
-          aria-label="Luxury beauty salon interior"
+          aria-label="Luxury beauty salon interior showcasing elegant design and ambiance"
           initial={{ opacity: 0, x: -30 }}
           animate={{ opacity: 1, x: 0 }}
           transition={{ duration: 0.8, ease: [0.22, 1, 0.36, 1] }}
         >
           <div className={styles.splitOverlay} />
           <div className={styles.heroCopy}>
-            {/* kicker */}
             <motion.div
               className={styles.kicker}
               initial={{ opacity: 0, y: 20 }}
@@ -312,12 +311,10 @@ export default function ContactContent({ stores }) {
                   stiffness: 200,
                 }}
               >
-                <Sparkles size={16} aria-hidden />
+                <Sparkles size={16} aria-hidden="true" />
               </motion.span>
               <span>Concierge, 7 days</span>
             </motion.div>
-
-            {/* title + subtitle */}
             <motion.h1
               className={styles.editorialTitle}
               initial={{ opacity: 0, y: 30 }}
@@ -335,21 +332,19 @@ export default function ContactContent({ stores }) {
               Luxe care, zero friction. Stop by, call to reserve, or WhatsApp us
               for instant confirmations.
             </motion.p>
-
-            {/* hero CTAs */}
             <motion.div
               className={styles.heroActions}
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.9, duration: 0.6 }}
             >
-              {/* call */}
               <motion.a
                 className={styles.primaryAction}
                 href={getTelLink(CONTACT.primaryMobile || CONTACT.primaryPhone)}
-                onClick={() =>
+                onClick={(e) =>
                   handlePhoneClick(
-                    CONTACT.primaryMobile || CONTACT.primaryPhone
+                    CONTACT.primaryMobile || CONTACT.primaryPhone,
+                    e
                   )
                 }
                 data-track="cta-call"
@@ -359,8 +354,6 @@ export default function ContactContent({ stores }) {
                 <Phone size={18} />
                 Call our team
               </motion.a>
-
-              {/* WhatsApp */}
               <motion.a
                 className={styles.secondaryAction}
                 href={CONTACT.whatsapp.url()}
@@ -377,14 +370,12 @@ export default function ContactContent({ stores }) {
           </div>
         </motion.div>
 
-        {/* right side (form & quick actions) */}
         <motion.div
           className={styles.splitRight}
           initial={{ opacity: 0, x: 30 }}
           animate={{ opacity: 1, x: 0 }}
           transition={{ duration: 0.8, delay: 0.2, ease: [0.22, 1, 0.36, 1] }}
         >
-          {/* quick-action floating card */}
           <motion.div
             className={styles.floatingCard}
             initial={{ opacity: 0, y: 20 }}
@@ -392,8 +383,10 @@ export default function ContactContent({ stores }) {
             transition={{ delay: 0.4, duration: 0.6 }}
             whileHover={{ y: -4 }}
           >
-            <div className={styles.quickActions} aria-label="Quick actions">
-              {/* email */}
+            <div
+              className={styles.quickActions}
+              aria-label="Quick contact actions"
+            >
               <motion.a
                 className={styles.quickAction}
                 href={`mailto:${CONTACT.email}`}
@@ -418,12 +411,10 @@ export default function ContactContent({ stores }) {
                   <ArrowRight size={14} />
                 </motion.span>
               </motion.a>
-
-              {/* WhatsApp */}
               <motion.a
                 className={styles.quickAction}
                 href={CONTACT.whatsapp.url(
-                  "Hi! I'd like to book an appointment."
+                  "Hi! I&apos;d like to book an appointment."
                 )}
                 target="_blank"
                 rel="noopener noreferrer"
@@ -449,12 +440,10 @@ export default function ContactContent({ stores }) {
                   <ArrowRight size={14} />
                 </motion.span>
               </motion.a>
-
-              {/* landline */}
               <motion.a
                 className={styles.quickAction}
                 href={getTelLink(CONTACT.primaryPhone)}
-                onClick={() => handlePhoneClick(CONTACT.primaryPhone)}
+                onClick={(e) => handlePhoneClick(CONTACT.primaryPhone, e)}
                 data-track="cta-landline"
                 initial={{ opacity: 0, x: -20 }}
                 animate={{ opacity: 1, x: 0 }}
@@ -480,7 +469,6 @@ export default function ContactContent({ stores }) {
             </div>
           </motion.div>
 
-          {/* contact form */}
           <motion.div
             className={styles.formShell}
             aria-label="Send us a message"
@@ -495,7 +483,6 @@ export default function ContactContent({ stores }) {
               transition={{ delay: 0.8, duration: 0.6 }}
               whileHover={{ y: -4 }}
             >
-              {/* form header */}
               <motion.div
                 className={styles.formHeader}
                 initial={{ opacity: 0, y: 20 }}
@@ -530,13 +517,12 @@ export default function ContactContent({ stores }) {
                     animate={{ opacity: 1, x: 0 }}
                     transition={{ delay: 1.3, duration: 0.5 }}
                   >
-                    Share a few details and we'll confirm via WhatsApp or email
-                    within working hours.
+                    Share a few details and we&apos;ll confirm via WhatsApp or
+                    email within working hours.
                   </motion.p>
                 </div>
               </motion.div>
 
-              {/* form body */}
               <motion.form
                 className={styles.form}
                 onSubmit={handleSubmit}
@@ -545,14 +531,12 @@ export default function ContactContent({ stores }) {
                 animate={{ opacity: 1 }}
                 transition={{ delay: 1.1, duration: 0.5 }}
               >
-                {/* name / email / phone grid */}
                 <motion.div
                   className={styles.inputGrid}
                   initial={{ opacity: 0, y: 20 }}
                   animate={{ opacity: 1, y: 0 }}
                   transition={{ delay: 1.2, duration: 0.5 }}
                 >
-                  {/* full name */}
                   <motion.div
                     className={styles.field}
                     initial={{ opacity: 0, x: -20 }}
@@ -579,10 +563,8 @@ export default function ContactContent({ stores }) {
                       className={styles.errorText}
                       role="alert"
                       aria-live="polite"
-                    />
+                    ></span>
                   </motion.div>
-
-                  {/* email */}
                   <motion.div
                     className={styles.field}
                     initial={{ opacity: 0, x: -20 }}
@@ -609,10 +591,8 @@ export default function ContactContent({ stores }) {
                       className={styles.errorText}
                       role="alert"
                       aria-live="polite"
-                    />
+                    ></span>
                   </motion.div>
-
-                  {/* phone */}
                   <motion.div
                     className={styles.field}
                     initial={{ opacity: 0, x: -20 }}
@@ -638,7 +618,6 @@ export default function ContactContent({ stores }) {
                   </motion.div>
                 </motion.div>
 
-                {/* message */}
                 <motion.div
                   className={styles.field}
                   initial={{ opacity: 0, y: 20 }}
@@ -668,10 +647,9 @@ export default function ContactContent({ stores }) {
                     className={styles.errorText}
                     role="alert"
                     aria-live="polite"
-                  />
+                  ></span>
                 </motion.div>
 
-                {/* buttons */}
                 <motion.div
                   className={styles.formActions}
                   initial={{ opacity: 0, y: 20 }}
@@ -696,7 +674,6 @@ export default function ContactContent({ stores }) {
                     </motion.span>
                     Send & open email draft
                   </motion.button>
-
                   <motion.a
                     className={styles.inlineLink}
                     href={CONTACT.whatsapp.url()}
@@ -706,7 +683,7 @@ export default function ContactContent({ stores }) {
                     whileHover={{ scale: 1.05, x: 4 }}
                     whileTap={{ scale: 0.95 }}
                   >
-                    Prefer chat? WhatsApp us{" "}
+                    Prefer chat? WhatsApp us
                     <motion.span
                       animate={{ x: [0, 4, 0] }}
                       transition={{
@@ -725,7 +702,6 @@ export default function ContactContent({ stores }) {
         </motion.div>
       </section>
 
-      {/* ---------- store grid ---------- */}
       <motion.div
         className={styles.grid}
         initial={{ opacity: 0 }}
@@ -733,8 +709,13 @@ export default function ContactContent({ stores }) {
         viewport={{ once: true, amount: 0.1 }}
         transition={{ duration: 0.6 }}
       >
-        {stores.map((s, i) => (
-          <StoreInfo key={s._id} store={s} isFirst={i === 0} index={i} />
+        {stores.map((store, index) => (
+          <StoreInfo
+            key={store._id}
+            store={store}
+            isFirst={index === 0}
+            index={index}
+          />
         ))}
       </motion.div>
     </motion.div>
