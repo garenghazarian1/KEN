@@ -110,6 +110,21 @@ export const IMAGES = {
 // Removes spaces, dashes, parentheses, and other formatting
 // Ensures iOS WebView compatibility by keeping + prefix and removing all non-numeric characters except +
 export const formatPhoneForTel = (phone) => {
+  // #region agent log
+  fetch("http://127.0.0.1:7242/ingest/00795e88-14ee-400a-b1a2-968f12c43d91", {
+    method: "POST",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify({
+      location: "constants.js:113",
+      message: "formatPhoneForTel called",
+      data: { input: phone },
+      timestamp: Date.now(),
+      sessionId: "debug-session",
+      runId: "run1",
+      hypothesisId: "A",
+    }),
+  }).catch(() => {});
+  // #endregion
   if (!phone) return "";
   // Remove all characters except digits and +
   let cleaned = phone.replace(/[^\d+]/g, "");
@@ -125,16 +140,62 @@ export const formatPhoneForTel = (phone) => {
       cleaned = "+" + cleaned;
     }
   }
+  // #region agent log
+  fetch("http://127.0.0.1:7242/ingest/00795e88-14ee-400a-b1a2-968f12c43d91", {
+    method: "POST",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify({
+      location: "constants.js:128",
+      message: "formatPhoneForTel result",
+      data: { input: phone, output: cleaned },
+      timestamp: Date.now(),
+      sessionId: "debug-session",
+      runId: "run1",
+      hypothesisId: "A",
+    }),
+  }).catch(() => {});
+  // #endregion
   return cleaned;
 };
 
 // iOS WebView compatible tel: link handler
 // Some iOS WebViews require special handling for tel: links
 export const getTelLink = (phone) => {
+  // #region agent log
+  fetch("http://127.0.0.1:7242/ingest/00795e88-14ee-400a-b1a2-968f12c43d91", {
+    method: "POST",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify({
+      location: "constants.js:133",
+      message: "getTelLink called",
+      data: { input: phone },
+      timestamp: Date.now(),
+      sessionId: "debug-session",
+      runId: "run1",
+      hypothesisId: "B",
+    }),
+  }).catch(() => {});
+  // #endregion
   const formatted = formatPhoneForTel(phone);
   if (!formatted) return "#";
   // Ensure tel: protocol is properly formatted for iOS
-  return `tel:${formatted}`;
+  const telLink = `tel:${formatted}`;
+  // #region agent log
+  fetch("http://127.0.0.1:7242/ingest/00795e88-14ee-400a-b1a2-968f12c43d91", {
+    method: "POST",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify({
+      location: "constants.js:137",
+      message: "getTelLink result",
+      data: { input: phone, formatted, telLink },
+      timestamp: Date.now(),
+      sessionId: "debug-session",
+      runId: "run1",
+      hypothesisId: "B",
+    }),
+  }).catch(() => {});
+  // #endregion
+  return telLink;
 };
 
 // Detect if running in iOS WebView (App Store app)
@@ -147,6 +208,21 @@ export const isIOSWebView = () => {
   // Check if it's a WebView (not Safari)
   const isWebView =
     isIOS && !/Safari/.test(userAgent) && /AppleWebKit/.test(userAgent);
+  // #region agent log
+  fetch("http://127.0.0.1:7242/ingest/00795e88-14ee-400a-b1a2-968f12c43d91", {
+    method: "POST",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify({
+      location: "constants.js:150",
+      message: "isIOSWebView check",
+      data: { userAgent, isIOS, isWebView },
+      timestamp: Date.now(),
+      sessionId: "debug-session",
+      runId: "run1",
+      hypothesisId: "C",
+    }),
+  }).catch(() => {});
+  // #endregion
   return isWebView;
 };
 
@@ -164,6 +240,21 @@ export const isAndroidWebView = () => {
     (/wv/i.test(userAgent) ||
       /WebView/i.test(userAgent) ||
       !/Chrome/i.test(userAgent));
+  // #region agent log
+  fetch("http://127.0.0.1:7242/ingest/00795e88-14ee-400a-b1a2-968f12c43d91", {
+    method: "POST",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify({
+      location: "constants.js:167",
+      message: "isAndroidWebView check",
+      data: { userAgent, isAndroid, isWebView },
+      timestamp: Date.now(),
+      sessionId: "debug-session",
+      runId: "run1",
+      hypothesisId: "C",
+    }),
+  }).catch(() => {});
+  // #endregion
   return isWebView;
 };
 

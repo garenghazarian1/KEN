@@ -1,7 +1,7 @@
 ﻿"use client";
 
 import Image from "next/image";
-import { useMemo, useState } from "react";
+import { useMemo, useState, useEffect, useRef } from "react";
 import { motion } from "framer-motion";
 import {
   Phone,
@@ -12,12 +12,7 @@ import {
   Sparkles,
   MapPin,
 } from "lucide-react";
-import {
-  CONTACT,
-  formatPhoneForTel,
-  getTelLink,
-  handlePhoneClick,
-} from "@/config/constants";
+import { CONTACT, formatPhoneForTel, getTelLink } from "@/config/constants";
 import styles from "./Contact.modern.module.css";
 
 const getWhatsAppUrl = (phoneNumber, message = null) => {
@@ -35,189 +30,271 @@ const getGoogleMapsUrl = (store) =>
     `${store.name} ${store.street}, ${store.city}, ${store.country || ""}`
   )}`;
 
-const StoreInfo = ({ store, isFirst, index }) => (
-  <motion.div
-    className={styles.card}
-    initial={{ opacity: 0, y: 30 }}
-    whileInView={{ opacity: 1, y: 0 }}
-    viewport={{ once: true, amount: 0.2 }}
-    transition={{
-      duration: 0.6,
-      delay: index * 0.1,
-      ease: [0.22, 1, 0.36, 1],
-    }}
-    whileHover={{ y: -4 }}
-  >
-    <div className={styles.content}>
-      <motion.div
-        className={styles.header}
-        initial={{ opacity: 0, x: -20 }}
-        whileInView={{ opacity: 1, x: 0 }}
-        viewport={{ once: true }}
-        transition={{ duration: 0.5, delay: index * 0.1 + 0.2 }}
-      >
-        <h2 className={styles.title}>{store.name}</h2>
-        <p className={styles.subtitle}>
-          {store.street}, {store.city}
-        </p>
-      </motion.div>
-
-      <motion.div
-        initial={{ opacity: 0, scale: 0.95 }}
-        whileInView={{ opacity: 1, scale: 1 }}
-        viewport={{ once: true }}
-        transition={{ duration: 0.5, delay: index * 0.1 + 0.3 }}
-      >
-        <Image
-          src={store.imageStore}
-          alt={`${store.name} location at ${store.street}, ${store.city}`}
-          className={styles.image}
-          width={800}
-          height={600}
-          priority={isFirst}
-          sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 33vw"
-          loading={isFirst ? "eager" : "lazy"}
-        />
-      </motion.div>
-
-      <motion.div
-        className={styles.details}
-        initial={{ opacity: 0 }}
-        whileInView={{ opacity: 1 }}
-        viewport={{ once: true }}
-        transition={{ duration: 0.5, delay: index * 0.1 + 0.4 }}
-      >
+const StoreInfo = ({ store, isFirst, index }) => {
+  // #region agent log
+  const phoneLinkRef = useRef(null);
+  const mobileLinkRef = useRef(null);
+  useEffect(() => {
+    if (phoneLinkRef.current) {
+      const href = phoneLinkRef.current.getAttribute("href");
+      fetch(
+        "http://127.0.0.1:7242/ingest/00795e88-14ee-400a-b1a2-968f12c43d91",
+        {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({
+            location: "ContactContent.jsx:131",
+            message: "Phone link rendered",
+            data: { store: store.name, phone: store.phone, href },
+            timestamp: Date.now(),
+            sessionId: "debug-session",
+            runId: "run1",
+            hypothesisId: "B",
+          }),
+        }
+      ).catch(() => {});
+    }
+    if (mobileLinkRef.current) {
+      const href = mobileLinkRef.current.getAttribute("href");
+      fetch(
+        "http://127.0.0.1:7242/ingest/00795e88-14ee-400a-b1a2-968f12c43d91",
+        {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({
+            location: "ContactContent.jsx:157",
+            message: "Mobile link rendered",
+            data: { store: store.name, mobile: store.mobile, href },
+            timestamp: Date.now(),
+            sessionId: "debug-session",
+            runId: "run1",
+            hypothesisId: "B",
+          }),
+        }
+      ).catch(() => {});
+    }
+  }, [store]);
+  // #endregion
+  return (
+    <motion.div
+      className={styles.card}
+      initial={{ opacity: 0, y: 30 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      viewport={{ once: true, amount: 0.2 }}
+      transition={{
+        duration: 0.6,
+        delay: index * 0.1,
+        ease: [0.22, 1, 0.36, 1],
+      }}
+      whileHover={{ y: -4 }}
+    >
+      <div className={styles.content}>
         <motion.div
-          className={styles.row}
-          initial={{ opacity: 0, x: -10 }}
+          className={styles.header}
+          initial={{ opacity: 0, x: -20 }}
           whileInView={{ opacity: 1, x: 0 }}
           viewport={{ once: true }}
-          transition={{ duration: 0.4, delay: index * 0.1 + 0.5 }}
+          transition={{ duration: 0.5, delay: index * 0.1 + 0.2 }}
         >
-          <span className={styles.label}>Address</span>
-          <span>
-            {store.street}, {store.city}, {store.country}
-          </span>
+          <h2 className={styles.title}>{store.name}</h2>
+          <p className={styles.subtitle}>
+            {store.street}, {store.city}
+          </p>
         </motion.div>
 
         <motion.div
-          className={styles.row}
-          initial={{ opacity: 0, x: -10 }}
-          whileInView={{ opacity: 1, x: 0 }}
+          initial={{ opacity: 0, scale: 0.95 }}
+          whileInView={{ opacity: 1, scale: 1 }}
           viewport={{ once: true }}
-          transition={{ duration: 0.4, delay: index * 0.1 + 0.6 }}
+          transition={{ duration: 0.5, delay: index * 0.1 + 0.3 }}
         >
-          <MapPin size={16} className={styles.icon} />
-          <span className={styles.label}>Map</span>
-          <motion.a
-            className={styles.mapLink}
-            href={store.mapUrl || getGoogleMapsUrl(store)}
-            target="_blank"
-            rel="noopener noreferrer"
-            aria-label={`Open ${store.name} in Google Maps`}
-            data-track="location-map"
-            whileHover={{ scale: 1.05 }}
-            whileTap={{ scale: 0.95 }}
-          >
-            Open in Google Maps
-          </motion.a>
+          <Image
+            src={store.imageStore}
+            alt={`${store.name} location at ${store.street}, ${store.city}`}
+            className={styles.image}
+            width={800}
+            height={600}
+            priority={isFirst}
+            sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 33vw"
+            loading={isFirst ? "eager" : "lazy"}
+          />
         </motion.div>
 
-        {store.phone && (
+        <motion.div
+          className={styles.details}
+          initial={{ opacity: 0 }}
+          whileInView={{ opacity: 1 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.5, delay: index * 0.1 + 0.4 }}
+        >
           <motion.div
             className={styles.row}
             initial={{ opacity: 0, x: -10 }}
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true }}
-            transition={{ duration: 0.4, delay: index * 0.1 + 0.7 }}
+            transition={{ duration: 0.4, delay: index * 0.1 + 0.5 }}
           >
-            <Phone size={16} className={styles.icon} />
-            <span className={styles.label}>Landline</span>
-            <motion.a
-              className={styles.link}
-              href={getTelLink(store.phone)}
-              onClick={() => handlePhoneClick(store.phone)}
-              aria-label={`Call ${store.phone}`}
-              whileHover={{ scale: 1.05 }}
-              whileTap={{ scale: 0.95 }}
-            >
-              {store.phone}
-            </motion.a>
+            <span className={styles.label}>Address</span>
+            <span>
+              {store.street}, {store.city}, {store.country}
+            </span>
           </motion.div>
-        )}
 
-        {store.mobile && (
           <motion.div
             className={styles.row}
             initial={{ opacity: 0, x: -10 }}
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true }}
-            transition={{ duration: 0.4, delay: index * 0.1 + 0.8 }}
+            transition={{ duration: 0.4, delay: index * 0.1 + 0.6 }}
           >
-            <Phone size={16} className={styles.icon} />
-            <span className={styles.label}>Mobile</span>
+            <MapPin size={16} className={styles.icon} />
+            <span className={styles.label}>Map</span>
             <motion.a
-              className={styles.link}
-              href={getTelLink(store.mobile)}
-              onClick={() => handlePhoneClick(store.mobile)}
-              aria-label={`Call ${store.mobile}`}
-              whileHover={{ scale: 1.05 }}
-              whileTap={{ scale: 0.95 }}
-            >
-              {store.mobile}
-            </motion.a>
-          </motion.div>
-        )}
-
-        {store.whatsapp && (
-          <motion.div
-            className={styles.row}
-            initial={{ opacity: 0, x: -10 }}
-            whileInView={{ opacity: 1, x: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.4, delay: index * 0.1 + 0.9 }}
-          >
-            <MessageCircle size={16} className={styles.icon} />
-            <span className={styles.label}>WhatsApp</span>
-            <motion.a
-              className={styles.whatsapp}
-              href={getWhatsAppUrl(store.whatsapp)}
+              className={styles.mapLink}
+              href={store.mapUrl || getGoogleMapsUrl(store)}
               target="_blank"
               rel="noopener noreferrer"
-              aria-label={`WhatsApp ${store.whatsapp}`}
-              data-track="location-whatsapp"
+              aria-label={`Open ${store.name} in Google Maps`}
+              data-track="location-map"
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
             >
-              {store.whatsapp}
+              Open in Google Maps
             </motion.a>
           </motion.div>
-        )}
 
-        <motion.div
-          className={styles.row}
-          initial={{ opacity: 0, x: -10 }}
-          whileInView={{ opacity: 1, x: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.4, delay: index * 0.1 + 1.0 }}
-        >
-          <Mail size={16} className={styles.icon} />
-          <span className={styles.label}>Email</span>
-          <motion.a
-            className={styles.link}
-            href={`mailto:${store.email}?subject=Inquiry about ${store.name}&body=Hello, I would like to know more about your services.`}
-            aria-label={`Email ${store.email}`}
-            data-track="location-email"
-            whileHover={{ scale: 1.05 }}
-            whileTap={{ scale: 0.95 }}
+          {store.phone && (
+            <motion.div
+              className={styles.row}
+              initial={{ opacity: 0, x: -10 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.4, delay: index * 0.1 + 0.7 }}
+            >
+              <Phone size={16} className={styles.icon} />
+              <span className={styles.label}>Landline</span>
+              <a
+                ref={phoneLinkRef}
+                className={styles.link}
+                href={getTelLink(store.phone)}
+                aria-label={`Call ${store.phone}`}
+                onClick={() => {
+                  // #region agent log
+                  fetch(
+                    "http://127.0.0.1:7242/ingest/00795e88-14ee-400a-b1a2-968f12c43d91",
+                    {
+                      method: "POST",
+                      headers: { "Content-Type": "application/json" },
+                      body: JSON.stringify({
+                        location: "ContactContent.jsx:136",
+                        message: "Phone link clicked",
+                        data: { store: store.name, phone: store.phone },
+                        timestamp: Date.now(),
+                        sessionId: "debug-session",
+                        runId: "run1",
+                        hypothesisId: "D",
+                      }),
+                    }
+                  ).catch(() => {});
+                  // #endregion
+                }}
+              >
+                {store.phone}
+              </a>
+            </motion.div>
+          )}
+
+          {store.mobile && (
+            <motion.div
+              className={styles.row}
+              initial={{ opacity: 0, x: -10 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.4, delay: index * 0.1 + 0.8 }}
+            >
+              <Phone size={16} className={styles.icon} />
+              <span className={styles.label}>Mobile</span>
+              <a
+                ref={mobileLinkRef}
+                className={styles.link}
+                href={getTelLink(store.mobile)}
+                aria-label={`Call ${store.mobile}`}
+                onClick={() => {
+                  // #region agent log
+                  fetch(
+                    "http://127.0.0.1:7242/ingest/00795e88-14ee-400a-b1a2-968f12c43d91",
+                    {
+                      method: "POST",
+                      headers: { "Content-Type": "application/json" },
+                      body: JSON.stringify({
+                        location: "ContactContent.jsx:156",
+                        message: "Mobile link clicked",
+                        data: { store: store.name, mobile: store.mobile },
+                        timestamp: Date.now(),
+                        sessionId: "debug-session",
+                        runId: "run1",
+                        hypothesisId: "D",
+                      }),
+                    }
+                  ).catch(() => {});
+                  // #endregion
+                }}
+              >
+                {store.mobile}
+              </a>
+            </motion.div>
+          )}
+
+          {store.whatsapp && (
+            <motion.div
+              className={styles.row}
+              initial={{ opacity: 0, x: -10 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.4, delay: index * 0.1 + 0.9 }}
+            >
+              <MessageCircle size={16} className={styles.icon} />
+              <span className={styles.label}>WhatsApp</span>
+              <motion.a
+                className={styles.whatsapp}
+                href={getWhatsAppUrl(store.whatsapp)}
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label={`WhatsApp ${store.whatsapp}`}
+                data-track="location-whatsapp"
+                whileHover={{ scale: 1.05 }}
+                whileTap={{ scale: 0.95 }}
+              >
+                {store.whatsapp}
+              </motion.a>
+            </motion.div>
+          )}
+
+          <motion.div
+            className={styles.row}
+            initial={{ opacity: 0, x: -10 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.4, delay: index * 0.1 + 1.0 }}
           >
-            {store.email}
-          </motion.a>
+            <Mail size={16} className={styles.icon} />
+            <span className={styles.label}>Email</span>
+            <motion.a
+              className={styles.link}
+              href={`mailto:${store.email}?subject=Inquiry about ${store.name}&body=Hello, I would like to know more about your services.`}
+              aria-label={`Email ${store.email}`}
+              data-track="location-email"
+              whileHover={{ scale: 1.05 }}
+              whileTap={{ scale: 0.95 }}
+            >
+              {store.email}
+            </motion.a>
+          </motion.div>
         </motion.div>
-      </motion.div>
-    </div>
-  </motion.div>
-);
+      </div>
+    </motion.div>
+  );
+};
 
 export default function ContactContent({ stores }) {
   const [formData, setFormData] = useState({
@@ -338,22 +415,36 @@ export default function ContactContent({ stores }) {
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.9, duration: 0.6 }}
             >
-              <motion.a
+              <a
                 className={styles.primaryAction}
                 href={getTelLink(CONTACT.primaryMobile || CONTACT.primaryPhone)}
-                onClick={(e) =>
-                  handlePhoneClick(
-                    CONTACT.primaryMobile || CONTACT.primaryPhone,
-                    e
-                  )
-                }
                 data-track="cta-call"
-                whileHover={{ scale: 1.05, y: -2 }}
-                whileTap={{ scale: 0.95 }}
+                onClick={() => {
+                  // #region agent log
+                  fetch(
+                    "http://127.0.0.1:7242/ingest/00795e88-14ee-400a-b1a2-968f12c43d91",
+                    {
+                      method: "POST",
+                      headers: { "Content-Type": "application/json" },
+                      body: JSON.stringify({
+                        location: "ContactContent.jsx:346",
+                        message: "Primary action phone clicked",
+                        data: {
+                          phone: CONTACT.primaryMobile || CONTACT.primaryPhone,
+                        },
+                        timestamp: Date.now(),
+                        sessionId: "debug-session",
+                        runId: "run1",
+                        hypothesisId: "D",
+                      }),
+                    }
+                  ).catch(() => {});
+                  // #endregion
+                }}
               >
                 <Phone size={18} />
                 Call our team
-              </motion.a>
+              </a>
               <motion.a
                 className={styles.secondaryAction}
                 href={CONTACT.whatsapp.url()}
@@ -440,16 +531,30 @@ export default function ContactContent({ stores }) {
                   <ArrowRight size={14} />
                 </motion.span>
               </motion.a>
-              <motion.a
+              <a
                 className={styles.quickAction}
                 href={getTelLink(CONTACT.primaryPhone)}
-                onClick={(e) => handlePhoneClick(CONTACT.primaryPhone, e)}
                 data-track="cta-landline"
-                initial={{ opacity: 0, x: -20 }}
-                animate={{ opacity: 1, x: 0 }}
-                transition={{ delay: 0.7, duration: 0.5 }}
-                whileHover={{ scale: 1.02, x: 4 }}
-                whileTap={{ scale: 0.98 }}
+                onClick={() => {
+                  // #region agent log
+                  fetch(
+                    "http://127.0.0.1:7242/ingest/00795e88-14ee-400a-b1a2-968f12c43d91",
+                    {
+                      method: "POST",
+                      headers: { "Content-Type": "application/json" },
+                      body: JSON.stringify({
+                        location: "ContactContent.jsx:427",
+                        message: "Quick action phone clicked",
+                        data: { phone: CONTACT.primaryPhone },
+                        timestamp: Date.now(),
+                        sessionId: "debug-session",
+                        runId: "run1",
+                        hypothesisId: "D",
+                      }),
+                    }
+                  ).catch(() => {});
+                  // #endregion
+                }}
               >
                 <Phone size={16} />
                 Front desk
@@ -465,7 +570,7 @@ export default function ContactContent({ stores }) {
                 >
                   <ArrowRight size={14} />
                 </motion.span>
-              </motion.a>
+              </a>
             </div>
           </motion.div>
 
