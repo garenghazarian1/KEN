@@ -1,28 +1,32 @@
-import styles from "./PageSixteen.module.css";
-import { inter, bad } from "@/app/ui/fonts";
+"use client";
+import { motion } from "framer-motion";
 import Image from "next/image";
+import styles from "./PageSixteen.modern.module.css";
 
 export default function PageSixteen() {
   return (
-    <>
-      <div className={styles.containerD}>
-        <div className={styles.leftPaneD}>
-          <Image
-            src="/logo01.png"
-            alt="K Logo"
-            className={styles.imageD}
-            width={250}
-            height={250}
-            style={{ width: "auto", height: "auto" }}
-          />
-        </div>
-
-        <div id="CoreValues" className={styles.rightPaneD}>
-          <p className={`${inter.className} ${styles.textNumDA}`}>08</p>
-          <p className={`${inter.className} ${styles.textNumDB}`}>Core</p>
-          <p className={`${styles.textNumDC} ${bad.className}`}>Values</p>
-        </div>
+    <section className={styles.container}>
+      <div className={styles.logoPane}>
+        <Image
+          src="/logo03.png"
+          alt="Ken Salon"
+          width={200}
+          height={200}
+          className={styles.logo}
+        />
       </div>
-    </>
+      <motion.div
+        id="CoreValues"
+        className={styles.textPane}
+        initial={{ opacity: 0, x: 30 }}
+        whileInView={{ opacity: 1, x: 0 }}
+        viewport={{ once: true }}
+        transition={{ duration: 0.5 }}
+      >
+        <span className={styles.number}>08</span>
+        <span className={styles.titleTop}>Core</span>
+        <span className={styles.titleBottom}>Values</span>
+      </motion.div>
+    </section>
   );
 }

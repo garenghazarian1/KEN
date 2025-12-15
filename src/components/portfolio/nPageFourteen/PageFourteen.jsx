@@ -1,22 +1,35 @@
-import styles from "./PageFourteen.module.css";
-import { inter, bad } from "@/app/ui/fonts";
+"use client";
+import { motion } from "framer-motion";
 import Image from "next/image";
+import styles from "./PageFourteen.modern.module.css";
 
 export default function PageFourteen() {
   return (
-    <>
-      <div className={styles.containerD}>
-        <div className={styles.leftPaneD}>
-          <Image
-            src="/portfolio/mission01.webp"
-            alt="K Logo"
-            className={styles.imageD}
-            width={250}
-            height={250}
-          />
-        </div>
+    <section className={styles.container}>
+      <motion.div
+        className={styles.imagePane}
+        initial={{ opacity: 0, x: -30 }}
+        whileInView={{ opacity: 1, x: 0 }}
+        viewport={{ once: true }}
+        transition={{ duration: 0.5 }}
+      >
+        <Image
+          src="/portfolio/mission01.webp"
+          alt="Our Mission"
+          width={300}
+          height={400}
+          className={styles.image}
+        />
+      </motion.div>
 
-        <div className={styles.middlePane}>
+      <motion.div
+        className={styles.textPane}
+        initial={{ opacity: 0, y: 30 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        viewport={{ once: true }}
+        transition={{ duration: 0.5, delay: 0.1 }}
+      >
+        <div className={styles.textCard}>
           <p className={styles.paragraph}>
             At Ken Salon, we are devoted to creating an unparalleled sanctuary
             where women and men alike can experience the transformative magic of
@@ -27,12 +40,20 @@ export default function PageFourteen() {
             you to shine as your most beautiful self.
           </p>
         </div>
-        <div id="OurMission" className={styles.rightPaneD}>
-          <p className={`${inter.className} ${styles.textNumDA}`}>06</p>
-          <p className={`${inter.className} ${styles.textNumDB}`}>Our</p>
-          <p className={`${styles.textNumDC} ${bad.className}`}>Mission</p>
-        </div>
-      </div>
-    </>
+      </motion.div>
+
+      <motion.div
+        id="OurMission"
+        className={styles.titlePane}
+        initial={{ opacity: 0, x: 30 }}
+        whileInView={{ opacity: 1, x: 0 }}
+        viewport={{ once: true }}
+        transition={{ duration: 0.5, delay: 0.2 }}
+      >
+        <span className={styles.number}>06</span>
+        <span className={styles.titleTop}>Our</span>
+        <span className={styles.titleBottom}>Mission</span>
+      </motion.div>
+    </section>
   );
 }

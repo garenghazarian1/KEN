@@ -1,0 +1,140 @@
+/* PageTen - Social Media / Instagram Profiles */
+
+.container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-height: 80vh;
+  padding: 4rem 2rem;
+  background: linear-gradient(180deg, #0a0a0a 0%, #111 100%);
+}
+
+.profiles {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 3rem;
+  margin-bottom: 3rem;
+}
+
+.profile {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-decoration: none;
+}
+
+.imageWrapper {
+  position: relative;
+  padding: 4px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, #feda75, #fa7e1e, #d62976, #962fbf, #4f5bd5);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.imageWrapper::before {
+  content: "";
+  position: absolute;
+  inset: -4px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, #feda75, #fa7e1e, #d62976, #962fbf, #4f5bd5);
+  opacity: 0;
+  filter: blur(12px);
+  transition: opacity 0.3s ease;
+  z-index: -1;
+}
+
+.profile:hover .imageWrapper {
+  transform: scale(1.05);
+}
+
+.profile:hover .imageWrapper::before {
+  opacity: 0.6;
+}
+
+.profileImage {
+  width: 220px;
+  height: 220px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 3px solid #0a0a0a;
+}
+
+.username {
+  margin-top: 1rem;
+  font-size: 1.1rem;
+  font-weight: 600;
+  color: #fff;
+  transition: color 0.3s ease;
+}
+
+.profile:hover .username {
+  color: #d62976;
+}
+
+.textContainer {
+  max-width: 700px;
+  text-align: center;
+}
+
+.textCard {
+  background: linear-gradient(135deg, rgba(255, 255, 255, 0.04) 0%, rgba(255, 255, 255, 0.01) 100%);
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.06);
+  border-radius: 20px;
+  padding: 2rem 2.5rem;
+}
+
+.textCard p {
+  font-size: 1.1rem;
+  color: rgba(255, 255, 255, 0.8);
+  line-height: 1.8;
+  margin: 0;
+}
+
+.textCard p + p {
+  margin-top: 1rem;
+}
+
+/* Tablet */
+@media (max-width: 900px) {
+  .profiles {
+    gap: 2rem;
+  }
+
+  .profileImage {
+    width: 180px;
+    height: 180px;
+  }
+}
+
+/* Mobile */
+@media (max-width: 600px) {
+  .container {
+    padding: 3rem 1.5rem;
+  }
+
+  .profiles {
+    gap: 1.5rem;
+  }
+
+  .profileImage {
+    width: 140px;
+    height: 140px;
+  }
+
+  .username {
+    font-size: 0.95rem;
+  }
+
+  .textCard {
+    padding: 1.5rem;
+  }
+
+  .textCard p {
+    font-size: 1rem;
+  }
+}
+

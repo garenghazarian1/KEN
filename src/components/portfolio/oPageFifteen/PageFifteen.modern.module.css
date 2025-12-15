@@ -1,0 +1,155 @@
+/* PageFifteen - Section: Our Philosophy */
+
+.container {
+  width: 100%;
+  min-height: 80vh;
+  display: grid;
+  grid-template-columns: 1fr 1.2fr 1fr;
+}
+
+/* Image Pane */
+.imagePane {
+  background: linear-gradient(135deg, #1a3a3a 0%, #0d1f1f 100%);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 2rem;
+  border-right: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.image {
+  width: 100%;
+  max-width: 300px;
+  height: auto;
+  object-fit: contain;
+}
+
+/* Text Pane */
+.textPane {
+  background: linear-gradient(180deg, #0a1a1a 0%, #0f2525 100%);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 3rem 2rem;
+}
+
+.textCard {
+  background: linear-gradient(135deg, rgba(255, 255, 255, 0.04) 0%, rgba(255, 255, 255, 0.01) 100%);
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.06);
+  border-radius: 20px;
+  padding: 2.5rem;
+  position: relative;
+}
+
+.textCard::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 20%;
+  right: 20%;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, rgba(212, 175, 55, 0.5), transparent);
+}
+
+.paragraph {
+  font-size: clamp(0.95rem, 1.3vw, 1.1rem);
+  color: rgba(255, 255, 255, 0.85);
+  line-height: 1.8;
+  text-align: center;
+  font-weight: 300;
+}
+
+/* Title Pane */
+.titlePane {
+  background: var(--color-neutral-400);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 2rem;
+  border-left: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.number {
+  font-size: 2rem;
+  font-weight: 700;
+  color: var(--color-secondary);
+}
+
+.titleTop {
+  font-size: clamp(2.5rem, 4vw, 4rem);
+  font-weight: 300;
+  color: #000;
+  line-height: 1;
+}
+
+.titleBottom {
+  font-size: clamp(2rem, 3.5vw, 3.5rem);
+  font-weight: 700;
+  font-style: italic;
+  color: var(--color-secondary);
+  margin-top: -0.3rem;
+}
+
+/* Tablet */
+@media (max-width: 1024px) {
+  .container {
+    grid-template-columns: 1fr;
+    grid-template-rows: auto auto auto;
+  }
+
+  .imagePane,
+  .textPane,
+  .titlePane {
+    border: none;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+  }
+
+  .titlePane {
+    order: -1;
+    padding: 3rem 2rem;
+  }
+
+  .imagePane {
+    padding: 2rem;
+  }
+
+  .image {
+    max-width: 250px;
+  }
+}
+
+/* Mobile */
+@media (max-width: 600px) {
+  .titlePane {
+    padding: 2rem 1rem;
+  }
+
+  .number {
+    font-size: 1.5rem;
+  }
+
+  .titleTop,
+  .titleBottom {
+    font-size: 2rem;
+  }
+
+  .textPane {
+    padding: 2rem 1rem;
+  }
+
+  .textCard {
+    padding: 1.5rem;
+  }
+
+  .paragraph {
+    font-size: 0.9rem;
+    line-height: 1.7;
+  }
+
+  .image {
+    max-width: 180px;
+  }
+}
+

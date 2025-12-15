@@ -1,94 +1,102 @@
-import styles from "./PageTwentyOne.module.css";
-import { bad } from "@/app/ui/fonts";
+"use client";
+import { useState, useEffect } from "react";
+import { motion, AnimatePresence } from "framer-motion";
+import styles from "./PageTwentyOne.modern.module.css";
+
+const services = [
+  { num: "01", title: "Regular Cut", text: "Fresh and polished look with expertly executed haircuts. Tailored to your style, leaving you sharp and confident." },
+  { num: "02", title: "Shaving", text: "Ultimate grooming with classic shaving. Precise techniques and high-quality products for smooth, refreshed skin." },
+  { num: "03", title: "Beard Trim Line-Up", text: "Professional beard trimming and lining. Sculpted to perfection, enhancing your facial features." },
+  { num: "04", title: "Beard Dyeing", text: "Enhanced color and definition for your beard. Natural-looking results that complement your style." },
+  { num: "05", title: "Manicure & Pedicure", text: "Pampering session designed for men. Groomed and buffed nails for hands and feet." },
+  { num: "06", title: "Facials", text: "Rejuvenating treatments for men's skincare. Refreshed, hydrated, and glowing skin." },
+];
 
 export default function PageTwentyOne() {
-  return (
-    <>
-      <div className={styles.container}>
-        <div className={styles.sectionB}>
-          <div className={styles.content}>
-            <h2 className={styles.num}>01</h2>
-            <h3 className={`${styles.header} ${bad.className}`}>
-              Regular Cut:
-            </h3>
-            <p className={styles.text}>
-              Achieve a fresh and polished look with our expertly executed
-              regular haircuts. Our skilled barbers will tailor the cut to suit
-              your style and preferences, leaving you looking sharp and
-              confident.
-            </p>
-          </div>
-          <div className={styles.content}>
-            <h2 className={styles.num}>02</h2>
-            <h3 className={`${styles.header} ${bad.className}`}>Shaving:</h3>
-            <p className={styles.text}>
-              Experience the ultimate grooming experience with our classic
-              shaving services. Using precise techniques and high-quality
-              products, our barbers will ensure a smooth and comfortable shave,
-              leaving your skin feeling refreshed and rejuvenated.
-            </p>
-          </div>
-          <div className={styles.content}>
-            <h2 className={styles.num}>03</h2>
-            <h3 className={`${styles.header} ${bad.className}`}>
-              Beard Trim Line-Up:
-            </h3>
-            <p className={styles.text}>
-              Maintain your signature style with our professional beard trimming
-              and lining services. Our barbers will sculpt and shape your beard
-              to perfection, enhancing your facial features and creating a
-              polished look.
-            </p>
-          </div>
+  const [currentAd, setCurrentAd] = useState(0);
 
-          <div className={styles.content}>
-            <h2 className={styles.num}>04</h2>
-            <h3 className={`${styles.header} ${bad.className}`}>
-              Beard Dyeing:
-            </h3>
-            <p className={styles.text}>
-              Enhance the color and definition of your beard with our beard
-              dyeing services. Whether you&apos;re looking to cover gray hairs
-              or experiment with a new hue, our expert barbers will deliver
-              natural-looking results that complement your style.
-            </p>
-          </div>
-          <div className={styles.content}>
-            <h2 className={styles.num}>05</h2>
-            <h3 className={`${styles.header} ${bad.className}`}>
-              Manicure and Pedicure:
-            </h3>
-            <p className={styles.text}>
-              Treat yourself to a pampering manicure and pedicure session
-              designed specifically for men. Relax and unwind as our technicians
-              groom and buff your nails, leaving your hands and feet looking and
-              feeling their best.
-            </p>
-          </div>
-          <div className={styles.content}>
-            <h2 className={styles.num}>06</h2>
-            <h3 className={`${styles.header} ${bad.className}`}>Facials:</h3>
-            <p className={styles.text}>
-              Revitalize your skin with our rejuvenating facial treatments
-              tailored to men&apos;s skincare needs. Our experienced
-              estheticians will cleanse, exfoliate, and moisturize your skin,
-              leaving it refreshed, hydrated, and glowing with health.
-            </p>
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setCurrentAd((prev) => (prev + 1) % services.length);
+    }, 3000);
+    return () => clearInterval(interval);
+  }, []);
+
+  return (
+    <div className={styles.page}>
+      {/* Hero with Full Video */}
+      <section className={styles.heroSection}>
+        <video
+          src="/portfolio/description05.mp4"
+          autoPlay
+          muted
+          loop
+          playsInline
+          preload="auto"
+          className={styles.video}
+        />
+        
+        {/* Cycling Ad Card */}
+        <div className={styles.adContainer}>
+          <AnimatePresence mode="wait">
+            <motion.div
+              key={currentAd}
+              className={styles.adCard}
+              initial={{ opacity: 0, y: 40, scale: 0.95 }}
+              animate={{ opacity: 1, y: 0, scale: 1 }}
+              exit={{ opacity: 0, y: -40, scale: 0.95 }}
+              transition={{ duration: 0.6, ease: "easeOut" }}
+            >
+              <span className={styles.adNum}>{services[currentAd].num}</span>
+              <h3 className={styles.adTitle}>{services[currentAd].title}</h3>
+              <p className={styles.adText}>{services[currentAd].text}</p>
+            </motion.div>
+          </AnimatePresence>
+          
+          <div className={styles.adDots}>
+            {services.map((_, index) => (
+              <button
+                key={index}
+                className={`${styles.dot} ${index === currentAd ? styles.dotActive : ""}`}
+                onClick={() => setCurrentAd(index)}
+                aria-label={`View service ${index + 1}`}
+              />
+            ))}
           </div>
         </div>
-        <div className={styles.sectionA}>
-          <video
-            src="portfolio/description05.mp4"
-            alt="Salon Video"
-            autoPlay
-            muted
-            loop
-            playsInline
-            preload="auto"
-            className={styles.video}
-          />
+      </section>
+
+      {/* Services List */}
+      <section className={styles.listSection}>
+        <motion.div
+          className={styles.sectionTitle}
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.5 }}
+        >
+          <h2 className={styles.titleText}>
+            Men&apos;s <span className={styles.titleAccent}>Grooming</span>
+          </h2>
+        </motion.div>
+
+        <div className={styles.servicesGrid}>
+          {services.map((service, index) => (
+            <motion.article
+              key={service.num}
+              className={styles.serviceCard}
+              initial={{ opacity: 0, y: 30 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.4, delay: index * 0.08 }}
+            >
+              <span className={styles.serviceNum}>{service.num}</span>
+              <h3 className={styles.serviceHeader}>{service.title}</h3>
+              <p className={styles.serviceText}>{service.text}</p>
+            </motion.article>
+          ))}
         </div>
-      </div>
-    </>
+      </section>
+    </div>
   );
 }

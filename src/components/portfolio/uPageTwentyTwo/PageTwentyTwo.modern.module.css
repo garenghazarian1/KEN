@@ -1,0 +1,103 @@
+/* PageTwentyTwo - Section Header: Celebrities We work with */
+
+.container {
+  background: var(--color-neutral-400);
+  width: 100%;
+  height: 80vh;
+  display: flex;
+  align-items: center;
+}
+
+.logoPane {
+  width: 50%;
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  padding-left: 3rem;
+}
+
+.logo {
+  width: auto;
+  height: auto;
+  max-width: 200px;
+}
+
+.textPane {
+  width: 50%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 2rem;
+}
+
+.number {
+  font-size: 2rem;
+  font-weight: 700;
+  color: var(--color-secondary);
+}
+
+.titleTop {
+  font-size: clamp(2rem, 4vw, 3rem);
+  font-weight: 300;
+  color: #000;
+  line-height: 1;
+}
+
+.titleBottom {
+  font-size: clamp(2rem, 4vw, 3rem);
+  font-weight: 700;
+  font-style: italic;
+  color: var(--color-secondary);
+  margin-top: -0.5rem;
+}
+
+@media (max-width: 768px) {
+  .logoPane {
+    width: 40%;
+    padding-left: 1.5rem;
+  }
+
+  .logo {
+    max-width: 100px;
+  }
+
+  .textPane {
+    width: 60%;
+    padding: 1rem;
+  }
+
+  .number {
+    font-size: 1.5rem;
+  }
+
+  .titleTop,
+  .titleBottom {
+    font-size: 2rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .logoPane {
+    display: none;
+  }
+
+  .textPane {
+    width: 100%;
+    padding: 1rem;
+  }
+
+  .number {
+    font-size: 1.25rem;
+  }
+
+  .titleTop,
+  .titleBottom {
+    font-size: 1.75rem;
+  }
+
+  .titleBottom {
+    margin-top: -0.3rem;
+  }
+}
+

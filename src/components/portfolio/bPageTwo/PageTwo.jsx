@@ -1,138 +1,67 @@
 "use client";
+import { motion } from "framer-motion";
+import styles from "./PageTwo.modern.module.css";
 
-import styles from "./PageTwo.module.css";
-import { gv, inter } from "@/app/ui/fonts";
+const tocItems = [
+  { id: "whoWeAre", num: "01", label: "Who We Are" },
+  { id: "OurLocations", num: "02", label: "Our Locations" },
+  { id: "SocialMedia", num: "03", label: "Social Media" },
+  { id: "TheDesigner", num: "04", label: "The Designer Behind Ken Salon" },
+  { id: "OurVision", num: "05", label: "Vision" },
+  { id: "OurMission", num: "06", label: "Mission" },
+  { id: "OurPhilosophy", num: "07", label: "Philosophy" },
+  { id: "CoreValues", num: "08", label: "Core Values" },
+  { id: "Services", num: "09", label: "Services" },
+  { id: "Celebrities", num: "10", label: "Clients We Work With" },
+  { id: "CommunityEngagement", num: "11", label: "Community Engagement" },
+  { id: "Press", num: "12", label: "Press & Media Features" },
+];
 
 export default function PageTwo() {
   const handleScroll = (sectionId) => {
     const section = document.getElementById(sectionId);
     if (section) {
-      const offset = 200; // Offset to stop before the section
+      const offset = 200;
       const elementPosition = section.getBoundingClientRect().top;
-      const offsetPosition = elementPosition - offset;
-
-      window.scrollBy({
-        top: offsetPosition,
-        behavior: "smooth",
-      });
+      window.scrollBy({ top: elementPosition - offset, behavior: "smooth" });
     }
   };
+
   return (
-    <>
-      {/* PAGE02 */}
-      <div className={styles.containerB}>
-        <div className={styles.containerBHeader}>
-          <p className={`${styles.headerB} ${inter.className}`}>
-            Table of
-            <span>
-              <span className={`${styles.headerBUnderline} ${gv.className}`}>
-                Content
-              </span>
-            </span>
-          </p>
-        </div>
-        <div className={styles.itemsB}>
-          <div
-            className={styles.itemB}
-            onClick={() => handleScroll("whoWeAre")}
+    <section className={styles.container}>
+      <motion.header
+        className={styles.header}
+        initial={{ opacity: 0, y: -20 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.5 }}
+      >
+        <h2 className={styles.title}>
+          Table of <span className={styles.titleAccent}>Content</span>
+        </h2>
+      </motion.header>
+
+      <motion.div
+        className={styles.grid}
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        transition={{ duration: 0.4, delay: 0.2 }}
+      >
+        {tocItems.map((item, index) => (
+          <motion.button
+            key={item.id}
+            className={styles.item}
+            onClick={() => handleScroll(item.id)}
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.3, delay: 0.1 + index * 0.05 }}
+            whileHover={{ scale: 1.05 }}
+            whileTap={{ scale: 0.95 }}
           >
-            <p className={styles.numB}>01</p>
-            <p className={styles.textB}>Who We Are</p>{" "}
-          </div>
-          <div
-            className={styles.itemB}
-            onClick={() => handleScroll("OurLocations")}
-          >
-            <p className={styles.numB}>02</p>
-            <p className={styles.textB}>Our Locations</p>{" "}
-          </div>
-          <div
-            className={styles.itemB}
-            onClick={() => handleScroll("SocialMedia")}
-          >
-            <p className={styles.numB}>03</p>
-            <p className={styles.textB}>Social Media</p>
-            <br className={styles.br} />
-            <br className={styles.br} />
-          </div>
-          <div className={styles.itemB}>
-            <p
-              className={styles.numB}
-              onClick={() => handleScroll("TheDesigner")}
-            >
-              04
-            </p>
-            <p className={styles.textB}>The Designer Behind Ken Salon</p>{" "}
-          </div>
-          <div className={styles.itemB}>
-            <p
-              className={styles.numB}
-              onClick={() => handleScroll("OurVision")}
-            >
-              05
-            </p>
-            <p className={styles.textB}>Vision</p>{" "}
-          </div>
-          <div className={styles.itemB}>
-            <p
-              className={styles.numB}
-              onClick={() => handleScroll("OurMission")}
-            >
-              06
-            </p>
-            <p className={styles.textB}>Mission</p>{" "}
-          </div>
-          <div className={styles.itemB}>
-            <p
-              className={styles.numB}
-              onClick={() => handleScroll("OurPhilosophy")}
-            >
-              07
-            </p>
-            <p className={styles.textB}>Philosophy</p>{" "}
-          </div>
-          <div className={styles.itemB}>
-            <p
-              className={styles.numB}
-              onClick={() => handleScroll("CoreValues")}
-            >
-              08
-            </p>
-            <p className={styles.textB}>Core Values</p>{" "}
-          </div>
-          <div className={styles.itemB}>
-            <p className={styles.numB} onClick={() => handleScroll("Services")}>
-              09
-            </p>
-            <p className={styles.textB}> Services</p>
-            <br className={styles.br} />
-          </div>
-          <div className={styles.itemB}>
-            <p
-              className={styles.numB}
-              onClick={() => handleScroll("Celebrities")}
-            >
-              10
-            </p>
-            <p className={styles.textB}>Clients We Work With</p>{" "}
-          </div>
-          <div className={styles.itemB}>
-            <p
-              className={styles.numB}
-              onClick={() => handleScroll("CommunityEngagement")}
-            >
-              11
-            </p>
-            <p className={styles.textB}>Community Engagement</p>{" "}
-          </div>
-          <div className={styles.itemB}>
-            <p className={styles.numB} onClick={() => handleScroll("Press")}>
-              12
-            </p>
-            <p className={styles.textB}>Press & Media Features</p>{" "}
-          </div>
-        </div>
-      </div>
-    </>
+            <span className={styles.number}>{item.num}</span>
+            <span className={styles.label}>{item.label}</span>
+          </motion.button>
+        ))}
+      </motion.div>
+    </section>
   );
 }

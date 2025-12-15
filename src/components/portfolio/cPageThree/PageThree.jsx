@@ -1,37 +1,39 @@
 "use client";
-
-import styles from "./PageThree.module.css";
+import { motion } from "framer-motion";
+import styles from "./PageThree.modern.module.css";
 
 export default function PageThree() {
   return (
-    <>
-      {/* PAGE03 */}
-      <div className={styles.containerC}>
-        <div className={styles.leftPaneC}>
-          <p className={`${styles.textCA} ${styles.textAnimationCA}`}>
-            Where Beauty Blossoms
-          </p>
-          <p className={`${styles.textCB} ${styles.textAnimationCB}`}>
-            and Confidence Reigns
-          </p>
-        </div>
-        <div className={styles.rightPaneC}>
-          <video
-            src="/PortfolioVideo01.mp4"
-            alt="Salon Video"
-            autoPlay
-            muted
-            loop
-            playsInline
-            preload="auto"
-            className={styles.videoC}
-          />
-          {/* <video className={styles.videoC} controls muted autoPlay loop>
-              <source src="/PortfolioVideo01.mp4" type="video/mp4" />
-                Your browser does not support the video tag.
-            </video> */}
-        </div>
+    <section className={styles.container}>
+      <div className={styles.textPane}>
+        <motion.p
+          className={styles.line1}
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.6 }}
+        >
+          Where Beauty Blossoms
+        </motion.p>
+        <motion.p
+          className={styles.line2}
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.6, delay: 0.3 }}
+        >
+          and Confidence Reigns
+        </motion.p>
       </div>
-    </>
+      <div className={styles.videoPane}>
+        <video
+          src="/PortfolioVideo01.mp4"
+          autoPlay
+          muted
+          loop
+          playsInline
+          preload="auto"
+          className={styles.video}
+        />
+      </div>
+    </section>
   );
 }

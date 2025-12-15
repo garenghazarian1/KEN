@@ -1,30 +1,32 @@
 "use client";
+import { motion } from "framer-motion";
 import Image from "next/image";
-import styles from "./PageFour.module.css";
-import { inter, bad } from "@/app/ui/fonts";
+import styles from "./PageFour.modern.module.css";
 
 export default function PageFour() {
   return (
-    <>
-      {/* PAGE04  */}
-
-      <div className={styles.containerD}>
-        <div className={styles.leftPaneD}>
-          <Image
-            src="/logo01.png"
-            alt="K Logo"
-            className={styles.imageD}
-            width={250}
-            height={250}
-            style={{ width: "auto", height: "auto" }}
-          />
-        </div>
-        <div id="whoWeAre" className={styles.rightPaneD}>
-          <p className={`${inter.className} ${styles.textNumDA}`}>01</p>
-          <p className={`${inter.className} ${styles.textNumDB}`}>Who</p>
-          <p className={`${styles.textNumDC} ${bad.className}`}>we are</p>
-        </div>
+    <section className={styles.container}>
+      <div className={styles.logoPane}>
+        <Image
+          src="/logo03.png"
+          alt="Ken Salon"
+          width={200}
+          height={200}
+          className={styles.logo}
+        />
       </div>
-    </>
+      <motion.div
+        id="whoWeAre"
+        className={styles.textPane}
+        initial={{ opacity: 0, x: 30 }}
+        whileInView={{ opacity: 1, x: 0 }}
+        viewport={{ once: true }}
+        transition={{ duration: 0.5 }}
+      >
+        <span className={styles.number}>01</span>
+        <span className={styles.titleTop}>Who</span>
+        <span className={styles.titleBottom}>we are</span>
+      </motion.div>
+    </section>
   );
 }
