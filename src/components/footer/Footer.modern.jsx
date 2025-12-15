@@ -23,12 +23,9 @@ import {
   Coffee,
 } from "lucide-react";
 import {
-  CONTACT,
   SOCIAL_MEDIA,
   BUSINESS,
   BOOKING_URL,
-  formatPhoneForTel,
-  getTelLink,
   APP_STORES,
 } from "@/config/constants";
 import { stores } from "@/data/stores";
@@ -149,7 +146,7 @@ export default function FooterModern() {
                     </div>
                     {store.phone && (
                       <a
-                        href={getTelLink(store.phone)}
+                        href={`tel:${store.phone.replace(/\s/g, "")}`}
                         className={styles.contactLink}
                         aria-label={`Call ${store.name} landline`}
                       >
@@ -159,7 +156,7 @@ export default function FooterModern() {
                     )}
                     {store.mobile && (
                       <a
-                        href={getTelLink(store.mobile)}
+                        href={`tel:${store.mobile.replace(/\s/g, "")}`}
                         className={styles.contactLink}
                         aria-label={`Call ${store.name} mobile`}
                       >
@@ -169,9 +166,7 @@ export default function FooterModern() {
                     )}
                     {store.whatsapp && (
                       <a
-                        href={`https://wa.me/${formatPhoneForTel(
-                          store.whatsapp
-                        ).replace(/^\+/, "")}?text=${encodeURIComponent(
+                        href={`https://wa.me/${store.whatsapp.replace(/[\s+]/g, "")}?text=${encodeURIComponent(
                           `Hello ${store.name}, I would like to know more about your services.`
                         )}`}
                         className={styles.contactLink}
@@ -189,12 +184,12 @@ export default function FooterModern() {
                   </div>
                 ))}
                 <a
-                  href={`mailto:${CONTACT.email}?subject=Inquiry about ${BUSINESS.name}&body=Hello, I would like to know more about your services.`}
+                  href={`mailto:info@ken-salon.com?subject=Inquiry about ${BUSINESS.name}&body=Hello, I would like to know more about your services.`}
                   className={styles.contactLink}
                   aria-label="Email us"
                 >
                   <Mail size={18} className={styles.contactLinkIcon} />
-                  <span>{CONTACT.email}</span>
+                  <span>info@ken-salon.com</span>
                 </a>
               </div>
             </motion.div>

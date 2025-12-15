@@ -1,7 +1,7 @@
 ﻿"use client";
 
 import Image from "next/image";
-import { useMemo, useState, useEffect, useRef } from "react";
+import { useMemo, useState } from "react";
 import { motion } from "framer-motion";
 import {
   Phone,
@@ -12,18 +12,7 @@ import {
   Sparkles,
   MapPin,
 } from "lucide-react";
-import { CONTACT, formatPhoneForTel, getTelLink } from "@/config/constants";
 import styles from "./Contact.modern.module.css";
-
-const getWhatsAppUrl = (phoneNumber, message = null) => {
-  const cleanNumber = formatPhoneForTel(phoneNumber).replace(/^\+/, "");
-  const defaultMessage =
-    message ||
-    "Hello KEN Beauty Center, I would like to know more about your services.";
-  return `https://wa.me/${cleanNumber}?text=${encodeURIComponent(
-    defaultMessage
-  )}`;
-};
 
 const getGoogleMapsUrl = (store) =>
   `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(
@@ -31,50 +20,6 @@ const getGoogleMapsUrl = (store) =>
   )}`;
 
 const StoreInfo = ({ store, isFirst, index }) => {
-  // #region agent log
-  const phoneLinkRef = useRef(null);
-  const mobileLinkRef = useRef(null);
-  useEffect(() => {
-    if (phoneLinkRef.current) {
-      const href = phoneLinkRef.current.getAttribute("href");
-      fetch(
-        "http://127.0.0.1:7242/ingest/00795e88-14ee-400a-b1a2-968f12c43d91",
-        {
-          method: "POST",
-          headers: { "Content-Type": "application/json" },
-          body: JSON.stringify({
-            location: "ContactContent.jsx:131",
-            message: "Phone link rendered",
-            data: { store: store.name, phone: store.phone, href },
-            timestamp: Date.now(),
-            sessionId: "debug-session",
-            runId: "run1",
-            hypothesisId: "B",
-          }),
-        }
-      ).catch(() => {});
-    }
-    if (mobileLinkRef.current) {
-      const href = mobileLinkRef.current.getAttribute("href");
-      fetch(
-        "http://127.0.0.1:7242/ingest/00795e88-14ee-400a-b1a2-968f12c43d91",
-        {
-          method: "POST",
-          headers: { "Content-Type": "application/json" },
-          body: JSON.stringify({
-            location: "ContactContent.jsx:157",
-            message: "Mobile link rendered",
-            data: { store: store.name, mobile: store.mobile, href },
-            timestamp: Date.now(),
-            sessionId: "debug-session",
-            runId: "run1",
-            hypothesisId: "B",
-          }),
-        }
-      ).catch(() => {});
-    }
-  }, [store]);
-  // #endregion
   return (
     <motion.div
       className={styles.card}
@@ -174,30 +119,9 @@ const StoreInfo = ({ store, isFirst, index }) => {
               <Phone size={16} className={styles.icon} />
               <span className={styles.label}>Landline</span>
               <a
-                ref={phoneLinkRef}
                 className={styles.link}
-                href={getTelLink(store.phone)}
+                href={`tel:${store.phone.replace(/\s/g, "")}`}
                 aria-label={`Call ${store.phone}`}
-                onClick={() => {
-                  // #region agent log
-                  fetch(
-                    "http://127.0.0.1:7242/ingest/00795e88-14ee-400a-b1a2-968f12c43d91",
-                    {
-                      method: "POST",
-                      headers: { "Content-Type": "application/json" },
-                      body: JSON.stringify({
-                        location: "ContactContent.jsx:136",
-                        message: "Phone link clicked",
-                        data: { store: store.name, phone: store.phone },
-                        timestamp: Date.now(),
-                        sessionId: "debug-session",
-                        runId: "run1",
-                        hypothesisId: "D",
-                      }),
-                    }
-                  ).catch(() => {});
-                  // #endregion
-                }}
               >
                 {store.phone}
               </a>
@@ -215,30 +139,9 @@ const StoreInfo = ({ store, isFirst, index }) => {
               <Phone size={16} className={styles.icon} />
               <span className={styles.label}>Mobile</span>
               <a
-                ref={mobileLinkRef}
                 className={styles.link}
-                href={getTelLink(store.mobile)}
+                href={`tel:${store.mobile.replace(/\s/g, "")}`}
                 aria-label={`Call ${store.mobile}`}
-                onClick={() => {
-                  // #region agent log
-                  fetch(
-                    "http://127.0.0.1:7242/ingest/00795e88-14ee-400a-b1a2-968f12c43d91",
-                    {
-                      method: "POST",
-                      headers: { "Content-Type": "application/json" },
-                      body: JSON.stringify({
-                        location: "ContactContent.jsx:156",
-                        message: "Mobile link clicked",
-                        data: { store: store.name, mobile: store.mobile },
-                        timestamp: Date.now(),
-                        sessionId: "debug-session",
-                        runId: "run1",
-                        hypothesisId: "D",
-                      }),
-                    }
-                  ).catch(() => {});
-                  // #endregion
-                }}
               >
                 {store.mobile}
               </a>
@@ -257,7 +160,12 @@ const StoreInfo = ({ store, isFirst, index }) => {
               <span className={styles.label}>WhatsApp</span>
               <motion.a
                 className={styles.whatsapp}
-                href={getWhatsAppUrl(store.whatsapp)}
+                href={`https://wa.me/${store.whatsapp.replace(
+                  /[\s+]/g,
+                  ""
+                )}?text=${encodeURIComponent(
+                  "Hello KEN Beauty Center, I would like to know more about your services."
+                )}`}
                 target="_blank"
                 rel="noopener noreferrer"
                 aria-label={`WhatsApp ${store.whatsapp}`}
@@ -315,7 +223,7 @@ export default function ContactContent({ stores }) {
         formData.message || "I&apos;d like to know more about your services."
       }`
     );
-    return `mailto:${CONTACT.email}?subject=${subject}&body=${body}`;
+    return `mailto:info@ken-salon.com?subject=${subject}&body=${body}`;
   }, [formData]);
 
   const handleChange = (field) => (event) => {
@@ -417,37 +325,15 @@ export default function ContactContent({ stores }) {
             >
               <a
                 className={styles.primaryAction}
-                href={getTelLink(CONTACT.primaryMobile || CONTACT.primaryPhone)}
+                href="tel:+971503043570"
                 data-track="cta-call"
-                onClick={() => {
-                  // #region agent log
-                  fetch(
-                    "http://127.0.0.1:7242/ingest/00795e88-14ee-400a-b1a2-968f12c43d91",
-                    {
-                      method: "POST",
-                      headers: { "Content-Type": "application/json" },
-                      body: JSON.stringify({
-                        location: "ContactContent.jsx:346",
-                        message: "Primary action phone clicked",
-                        data: {
-                          phone: CONTACT.primaryMobile || CONTACT.primaryPhone,
-                        },
-                        timestamp: Date.now(),
-                        sessionId: "debug-session",
-                        runId: "run1",
-                        hypothesisId: "D",
-                      }),
-                    }
-                  ).catch(() => {});
-                  // #endregion
-                }}
               >
                 <Phone size={18} />
                 Call our team
               </a>
               <motion.a
                 className={styles.secondaryAction}
-                href={CONTACT.whatsapp.url()}
+                href="https://wa.me/971503043570?text=Hello%20KEN%20Beauty%20Center%2C%20I%20would%20like%20to%20know%20more%20about%20your%20services."
                 target="_blank"
                 rel="noopener noreferrer"
                 data-track="cta-whatsapp"
@@ -480,7 +366,7 @@ export default function ContactContent({ stores }) {
             >
               <motion.a
                 className={styles.quickAction}
-                href={`mailto:${CONTACT.email}`}
+                href="mailto:info@ken-salon.com"
                 data-track="cta-email"
                 initial={{ opacity: 0, x: -20 }}
                 animate={{ opacity: 1, x: 0 }}
@@ -504,9 +390,7 @@ export default function ContactContent({ stores }) {
               </motion.a>
               <motion.a
                 className={styles.quickAction}
-                href={CONTACT.whatsapp.url(
-                  "Hi! I&apos;d like to book an appointment."
-                )}
+                href="https://wa.me/971503043570?text=Hi!%20I'd%20like%20to%20book%20an%20appointment."
                 target="_blank"
                 rel="noopener noreferrer"
                 data-track="cta-whatsapp-secondary"
@@ -533,28 +417,8 @@ export default function ContactContent({ stores }) {
               </motion.a>
               <a
                 className={styles.quickAction}
-                href={getTelLink(CONTACT.primaryPhone)}
+                href="tel:+97126218802"
                 data-track="cta-landline"
-                onClick={() => {
-                  // #region agent log
-                  fetch(
-                    "http://127.0.0.1:7242/ingest/00795e88-14ee-400a-b1a2-968f12c43d91",
-                    {
-                      method: "POST",
-                      headers: { "Content-Type": "application/json" },
-                      body: JSON.stringify({
-                        location: "ContactContent.jsx:427",
-                        message: "Quick action phone clicked",
-                        data: { phone: CONTACT.primaryPhone },
-                        timestamp: Date.now(),
-                        sessionId: "debug-session",
-                        runId: "run1",
-                        hypothesisId: "D",
-                      }),
-                    }
-                  ).catch(() => {});
-                  // #endregion
-                }}
               >
                 <Phone size={16} />
                 Front desk
@@ -781,7 +645,7 @@ export default function ContactContent({ stores }) {
                   </motion.button>
                   <motion.a
                     className={styles.inlineLink}
-                    href={CONTACT.whatsapp.url()}
+                    href="https://wa.me/971503043570?text=Hello%20KEN%20Beauty%20Center%2C%20I%20would%20like%20to%20know%20more%20about%20your%20services."
                     target="_blank"
                     rel="noopener noreferrer"
                     data-track="cta-whatsapp-inline"

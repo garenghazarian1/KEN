@@ -5,7 +5,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { motion } from "framer-motion";
 import { MessageCircle, ArrowRight } from "lucide-react";
-import { CONTACT, BOOKING_URL } from "@/config/constants";
+import { BOOKING_URL } from "@/config/constants";
 import styles from "./Hero.modern.module.css";
 
 const images = [
@@ -109,7 +109,7 @@ export default function HeroModern() {
                 <ArrowRight size={20} />
               </Link>
               <a
-                href={CONTACT.whatsapp.url()}
+                href="https://wa.me/971503043570?text=Hello%20KEN%20Beauty%20Center%2C%20I%20would%20like%20to%20know%20more%20about%20your%20services."
                 target="_blank"
                 rel="noopener noreferrer"
                 className={styles.secondaryButton}
