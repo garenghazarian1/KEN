@@ -31,7 +31,7 @@ export default function PageThirteen() {
       >
         <div className={styles.textCard}>
           <p className={styles.paragraph}>
-            To reign supreme in the UAE's luxury hair and beauty scene,
+            To reign supreme in the UAE&apos;s luxury hair and beauty scene,
             redefining the art of pampering and self-care. We aspire to craft
             transformative experiences that celebrate your unique beauty, boost
             your confidence, and pursue aesthetic perfection with relentless
