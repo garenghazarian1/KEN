@@ -28,6 +28,7 @@ export const drinksMenu = {
     "Orange Juice",
     "Ice Coffee",
     "Water",
+    "Blue-spark",
   ],
   addOns: ["Marshmallow", "Butter Cookies"],
 };
@@ -55,6 +56,7 @@ const getDrinkImagePath = (drinkName) => {
     "Orange Juice": "/drinks/Orange-Juice.jpeg",
     "Ice Coffee": "/drinks/Ice-Coffee.jpeg",
     Water: "/drinks/Water.jpeg",
+    "Blue-spark": "/drinks/Blue-spark.jpeg",
     Marshmallow: "/drinks/Marshmallow.jpeg",
   };
 
