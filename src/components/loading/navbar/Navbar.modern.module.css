@@ -7,7 +7,7 @@
 
 .navbar {
   position: fixed;
-  top: var(--app-banner-height, 0);
+  top: var(--app-banner-height);
   left: 0;
   right: 0;
   width: 100%;
@@ -19,7 +19,7 @@
   backdrop-filter: blur(var(--glass-blur-md));
   -webkit-backdrop-filter: blur(var(--glass-blur-md));
   transition: all var(--transition-base) var(--ease-in-out);
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+  box-shadow: 0 2px 8px var(--shadow-very-light);
 }
 
 .navbar.scrolled {
@@ -28,7 +28,7 @@
   ); /* Slightly more opaque when scrolled */
   backdrop-filter: blur(var(--glass-blur-md));
   -webkit-backdrop-filter: blur(var(--glass-blur-md));
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 4px 12px var(--shadow-card-hover);
 }
 
 .container {
@@ -69,7 +69,7 @@
 }
 
 .navLink {
-  color: #ffffff; /* White text for visibility */
+  color: var(--color-text-inverse);
   font-size: var(--font-size-base);
   font-weight: var(--font-weight-medium);
   text-decoration: none;
@@ -82,17 +82,17 @@
   -webkit-backdrop-filter: blur(var(--glass-blur-md));
   transition: all var(--transition-base) var(--ease-in-out);
   position: relative;
-  border: 1px solid rgba(255, 255, 255, 0.1); /* Subtle white border */
+  border: 1px solid var(--glass-border-white-light);
 }
 
 .navLink:hover {
-  color: #ffffff; /* White text for visibility */
+  color: var(--color-text-inverse);
   background-color: var(--glass-black-medium); /* More opaque on hover */
   backdrop-filter: blur(var(--glass-blur-lg));
   -webkit-backdrop-filter: blur(var(--glass-blur-lg));
-  border-color: rgba(255, 255, 255, 0.2); /* Slightly more visible border */
+  border-color: var(--glass-border-white-medium);
   transform: translateY(-1px);
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+  box-shadow: 0 4px 12px var(--shadow-nav);
 }
 
 .navLink:active {
@@ -109,15 +109,15 @@
     --glass-black-light
   ); /* Slightly transparent black background */
   backdrop-filter: blur(var(--glass-blur-xl)); /* Strong blur effect */
-  border: 1px solid rgba(255, 255, 255, 0.1); /* Subtle white border */
-  color: #ffffff; /* White text for visibility */
+  border: 1px solid var(--glass-border-white-light);
+  color: var(--color-text-inverse);
   border-radius: var(--radius-full);
   font-size: var(--font-size-sm);
   font-weight: var(--font-weight-semibold);
   text-decoration: none;
   cursor: pointer;
   transition: all var(--transition-base) var(--ease-in-out);
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
+  box-shadow: 0 2px 8px var(--shadow-nav);
   min-width: 44px;
   min-height: 44px;
 }
@@ -125,10 +125,10 @@
 .bookButton:hover {
   background-color: var(--glass-black-medium); /* More opaque on hover */
   backdrop-filter: blur(var(--glass-blur-xl)); /* Maintain strong blur */
-  border-color: rgba(255, 255, 255, 0.2); /* Slightly more visible border */
-  color: #ffffff; /* White text for visibility */
+  border-color: var(--glass-border-white-medium);
+  color: var(--color-text-inverse);
   transform: translateY(-2px);
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.4);
+  box-shadow: 0 4px 12px var(--shadow-nav-hover);
 }
 
 .bookButton:active {
@@ -147,14 +147,14 @@
   ); /* Slightly transparent black background */
   backdrop-filter: blur(var(--glass-blur-xl)); /* Strong blur effect */
   -webkit-backdrop-filter: blur(var(--glass-blur-xl)); /* iOS support */
-  border: 1px solid rgba(255, 255, 255, 0.1); /* Subtle white border */
-  color: #ffffff; /* White text for visibility */
+  border: 1px solid var(--glass-border-white-light);
+  color: var(--color-text-inverse);
   border-radius: var(--radius-full);
   font-size: var(--font-size-sm);
   font-weight: var(--font-weight-semibold);
   text-decoration: none;
   transition: all var(--transition-base) var(--ease-in-out);
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
+  box-shadow: 0 2px 8px var(--shadow-nav);
   min-width: 44px;
   min-height: 44px;
   margin: 0 auto; /* Center between logo and hamburger */
@@ -164,10 +164,10 @@
   background-color: var(--glass-black-medium); /* More opaque on hover */
   backdrop-filter: blur(var(--glass-blur-xl)); /* Maintain strong blur */
   -webkit-backdrop-filter: blur(var(--glass-blur-xl)); /* iOS support */
-  border-color: rgba(255, 255, 255, 0.2); /* Slightly more visible border */
-  color: #ffffff; /* White text for visibility */
+  border-color: var(--glass-border-white-medium);
+  color: var(--color-text-inverse);
   transform: translateY(-2px);
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.4);
+  box-shadow: 0 4px 12px var(--shadow-nav-hover);
 }
 
 /* Mobile Menu Button */
@@ -206,7 +206,7 @@
   background-color: var(--overlay-white-82);
   backdrop-filter: blur(var(--glass-blur-lg)); /* Same blur as navbar */
   -webkit-backdrop-filter: blur(var(--glass-blur-lg)); /* iOS support */
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05); /* Match navbar shadow */
+  box-shadow: 0 2px 8px var(--shadow-very-light);
   overflow: hidden;
 }
 
@@ -220,7 +220,7 @@
 .mobileLink {
   display: block;
   padding: var(--spacing-4) var(--spacing-3);
-  color: #ffffff; /* White text for visibility */
+  color: var(--color-text-inverse);
   font-size: var(--font-size-lg);
   font-weight: var(--font-weight-medium);
   text-decoration: none;
@@ -234,16 +234,16 @@
   min-height: 44px;
   display: flex;
   align-items: center;
-  border: 1px solid rgba(255, 255, 255, 0.1); /* Subtle white border */
+  border: 1px solid var(--glass-border-white-light);
 }
 
 .mobileLink:hover {
   background-color: var(--glass-black-medium); /* More opaque on hover */
   backdrop-filter: blur(var(--glass-blur-md));
   -webkit-backdrop-filter: blur(var(--glass-blur-md)); /* iOS support */
-  color: #ffffff; /* White text for visibility */
+  color: var(--color-text-inverse);
   padding-left: var(--spacing-5);
-  border-color: rgba(255, 255, 255, 0.2); /* Slightly more visible border */
+  border-color: var(--glass-border-white-medium);
 }
 
 .mobileBookButton {
@@ -264,7 +264,7 @@
   font-weight: var(--font-weight-semibold);
   text-decoration: none;
   transition: all var(--transition-base) var(--ease-in-out);
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+  box-shadow: 0 2px 8px var(--overlay-black-15);
   min-height: 44px;
 }
 
@@ -273,7 +273,7 @@
   backdrop-filter: blur(var(--glass-blur-md));
   -webkit-backdrop-filter: blur(var(--glass-blur-md)); /* iOS support */
   transform: translateY(-2px);
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+  box-shadow: 0 4px 12px var(--shadow-light);
 }
 
 .mobileBookButton:active {

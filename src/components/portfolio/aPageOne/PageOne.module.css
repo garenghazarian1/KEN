@@ -10,7 +10,7 @@
   background-color: var(--color-bg-black);
   /* Account for fixed navbar (5rem) + banner + spacing + safe area */
   padding-top: calc(
-    var(--app-banner-height, 0px) + 5rem + var(--spacing-4) +
+    var(--app-banner-height) + 5rem + var(--spacing-4) +
       env(safe-area-inset-top, 0px)
   );
 }
@@ -41,7 +41,7 @@
   height: auto;
   max-width: 100%;
   max-height: calc(
-    100vh - var(--app-banner-height, 0px) - 5rem - var(--spacing-4) -
+    100vh - var(--app-banner-height) - 5rem - var(--spacing-4) -
       env(safe-area-inset-top, 0px)
   );
   object-fit: contain;
@@ -50,7 +50,7 @@
 .imageA {
   margin-top: 2rem;
   max-height: calc(
-    100vh - var(--app-banner-height, 0px) - 5rem - var(--spacing-4) -
+    100vh - var(--app-banner-height) - 5rem - var(--spacing-4) -
       env(safe-area-inset-top, 0px) - 4rem
   );
   width: auto;
@@ -76,7 +76,7 @@
     height: 100vh;
     /* Account for fixed navbar (5rem) + banner + spacing + safe area on mobile */
     padding-top: calc(
-      var(--app-banner-height, 0px) + 5rem + var(--spacing-3) +
+      var(--app-banner-height) + 5rem + var(--spacing-3) +
         env(safe-area-inset-top, 0px)
     );
   }
@@ -97,13 +97,13 @@
   .rightPaneA img {
     max-width: calc(
       (
-          100vh - var(--app-banner-height, 0px) - 5rem - var(--spacing-3) -
+          100vh - var(--app-banner-height) - 5rem - var(--spacing-3) -
             env(safe-area-inset-top, 0px)
         ) * 0.5 * 0.9
     );
     max-height: calc(
       (
-          100vh - var(--app-banner-height, 0px) - 5rem - var(--spacing-3) -
+          100vh - var(--app-banner-height) - 5rem - var(--spacing-3) -
             env(safe-area-inset-top, 0px)
         ) * 0.5 * 0.9
     );
@@ -116,13 +116,13 @@
     height: auto;
     max-width: calc(
       (
-          100vh - var(--app-banner-height, 0px) - 5rem - var(--spacing-3) -
+          100vh - var(--app-banner-height) - 5rem - var(--spacing-3) -
             env(safe-area-inset-top, 0px)
         ) * 0.5 * 0.85
     );
     max-height: calc(
       (
-          100vh - var(--app-banner-height, 0px) - 5rem - var(--spacing-3) -
+          100vh - var(--app-banner-height) - 5rem - var(--spacing-3) -
             env(safe-area-inset-top, 0px)
         ) * 0.5 * 0.85
     );
@@ -134,7 +134,7 @@
     top: auto;
     font-size: calc(
       (
-          100vh - var(--app-banner-height, 0px) - 5rem - var(--spacing-3) -
+          100vh - var(--app-banner-height) - 5rem - var(--spacing-3) -
             env(safe-area-inset-top, 0px)
         ) * 0.08
     );
@@ -151,7 +151,7 @@
     height: 100vh;
     /* Account for fixed navbar (5rem) + banner + spacing + safe area on small mobile */
     padding-top: calc(
-      var(--app-banner-height, 0px) + 5rem + var(--spacing-2) +
+      var(--app-banner-height) + 5rem + var(--spacing-2) +
         env(safe-area-inset-top, 0px)
     );
   }
@@ -172,13 +172,13 @@
   .rightPaneA img {
     max-width: calc(
       (
-          100vh - var(--app-banner-height, 0px) - 5rem - var(--spacing-2) -
+          100vh - var(--app-banner-height) - 5rem - var(--spacing-2) -
             env(safe-area-inset-top, 0px)
         ) * 0.5 * 0.9
     );
     max-height: calc(
       (
-          100vh - var(--app-banner-height, 0px) - 5rem - var(--spacing-2) -
+          100vh - var(--app-banner-height) - 5rem - var(--spacing-2) -
             env(safe-area-inset-top, 0px)
         ) * 0.5 * 0.9
     );
@@ -191,13 +191,13 @@
     height: auto;
     max-width: calc(
       (
-          100vh - var(--app-banner-height, 0px) - 5rem - var(--spacing-2) -
+          100vh - var(--app-banner-height) - 5rem - var(--spacing-2) -
             env(safe-area-inset-top, 0px)
         ) * 0.5 * 0.85
     );
     max-height: calc(
       (
-          100vh - var(--app-banner-height, 0px) - 5rem - var(--spacing-2) -
+          100vh - var(--app-banner-height) - 5rem - var(--spacing-2) -
             env(safe-area-inset-top, 0px)
         ) * 0.5 * 0.85
     );
@@ -209,7 +209,7 @@
     top: auto;
     font-size: calc(
       (
-          100vh - var(--app-banner-height, 0px) - 5rem - var(--spacing-2) -
+          100vh - var(--app-banner-height) - 5rem - var(--spacing-2) -
             env(safe-area-inset-top, 0px)
         ) * 0.06
     );

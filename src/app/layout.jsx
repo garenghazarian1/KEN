@@ -1,6 +1,7 @@
-﻿import { lora, inter } from "@/app/ui/fonts";
+import { lora, inter } from "@/app/ui/fonts";
 import "./globals.css";
-import NavbarModern from "@/components/navbar/Navbar.modern";
+import NavbarModern from "@/components/loading/navbar/Navbar.modern";
+import { MobileNavTop, MobileNavBottom } from "@/components/mobileNav";
 import FooterModern from "@/components/footer/Footer.modern";
 import AppInstallBanner from "@/components/AppInstallBanner/AppInstallBanner";
 import ClientLayout from "@/components/ClientLayout";
@@ -43,9 +44,19 @@ export default function RootLayout({ children }) {
         <AppInstallBanner />
         <ClientLayout>
           <div className={styles.layoutContainer}>
-            <NavbarModern />
+            {/* Desktop: show; Mobile: hide */}
+            <div className={styles.desktopNavWrapper}>
+              <NavbarModern />
+            </div>
+            {/* Mobile: show; Desktop: hide */}
+            <div className={styles.mobileNavTopWrapper}>
+              <MobileNavTop />
+            </div>
             <div className={styles.childrenContainer}>{children}</div>
             <FooterModern />
+            <div className={styles.mobileNavBottomWrapper}>
+              <MobileNavBottom />
+            </div>
           </div>
         </ClientLayout>
         <Analytics />

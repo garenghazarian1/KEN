@@ -8,7 +8,7 @@
     width: 100vw;
     height: 100%;
     text-align: center;
-    background-color: black;
+    background-color: var(--color-bg-black);
     color: var(--text-color);
     padding: 1rem; 
   }
@@ -41,7 +41,7 @@
     width: 300px;
     height: 300px;
     border-radius: 50%;
-    background: linear-gradient(135deg, #feda75, #fa7e1e, #d62976, #962fbf, #4f5bd5);
+    background: linear-gradient(135deg, var(--color-instagram-yellow), var(--color-instagram-orange), var(--color-instagram-pink), var(--color-instagram-purple), var(--color-instagram-blue));
     padding: 3px; 
     object-fit: cover;
   }
@@ -50,7 +50,7 @@
     width: 300px;
     height: 300px;
     border-radius: 50%;
-    border: 3px solid #fff;
+    border: 3px solid var(--color-text-inverse);
     box-shadow: 0 0 8px rgba(0, 255, 255, 0.7); 
   } */
   
@@ -58,7 +58,7 @@
     width: 300px;
     height: 300px;
     border-radius: 50%;
-    border: 3px dashed #fff; 
+    border: 3px dashed var(--color-text-inverse); 
   } */
 
    /* @keyframes rotateGradient {
@@ -85,10 +85,10 @@
     width: 300px;
     height: 300px;
     border-radius: 50%;
-    background: linear-gradient(135deg, rgba(255, 255, 255, 0.25), rgba(255, 255, 255, 0.08));
+    background: linear-gradient(135deg, var(--overlay-white-25), var(--overlay-white-08));
     background-size: cover;
-    border: 2px solid rgba(255, 255, 255, 0.6);
-    box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
+    border: 2px solid var(--overlay-white-60);
+    box-shadow: 0 8px 32px 0 var(--overlay-indigo);
     backdrop-filter: blur(4px);
     -webkit-backdrop-filter: blur(4px);
   }  */
@@ -99,8 +99,8 @@
   border-radius: 50%;
   background: url('/hero01.jpg'); 
   background-size: cover;
-  box-shadow: 0 0 10px rgba(255, 0, 255, 0.5), 0 0 20px rgba(255, 0, 255, 0.4), 0 0 40px rgba(255, 0, 255, 0.3);
-  border: 2px solid rgba(255, 255, 255, 0.2);
+  box-shadow: 0 0 10px var(--glow-magenta), 0 0 20px var(--glow-magenta-4), 0 0 40px var(--glow-magenta-3);
+  border: 2px solid var(--overlay-white-20);
 } */
 
 /* .profileImage {
@@ -110,7 +110,7 @@
     background: url('/hero01.jpg'); 
     background-size: cover;
     border: none;
-    box-shadow: 0 5px 15px rgba(0,0,0,0.3), 0 10px 20px rgba(0,0,0,0.2), 0 15px 25px rgba(0,0,0,0.15);
+    box-shadow: 0 5px 15px var(--overlay-black-30), 0 10px 20px var(--overlay-black-20), 0 15px 25px var(--overlay-black-15);
   } */
   
   

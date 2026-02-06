@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useEffect } from "react";
+import { useState, useEffect, useCallback } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import Image from "next/image";
 import {
@@ -92,22 +92,18 @@ export default function Gallery() {
     document.body.style.overflow = "hidden";
   };
 
-  const closeLightbox = () => {
+  const closeLightbox = useCallback(() => {
     setLightboxOpen(false);
     document.body.style.overflow = "unset";
-  };
+  }, []);
 
-  const navigateLightbox = (direction) => {
-    if (direction === "prev") {
-      setLightboxIndex((prev) =>
-        prev === 0 ? filteredImages.length - 1 : prev - 1
-      );
-    } else {
-      setLightboxIndex((prev) =>
-        prev === filteredImages.length - 1 ? 0 : prev + 1
-      );
-    }
-  };
+  const navigateLightbox = useCallback((direction) => {
+    setLightboxIndex((prev) => {
+      const len = filteredImages.length;
+      if (direction === "prev") return prev === 0 ? len - 1 : prev - 1;
+      return prev === len - 1 ? 0 : prev + 1;
+    });
+  }, [filteredImages.length]);
 
   useEffect(() => {
     const handleKeyPress = (e) => {
@@ -118,7 +114,7 @@ export default function Gallery() {
     };
     window.addEventListener("keydown", handleKeyPress);
     return () => window.removeEventListener("keydown", handleKeyPress);
-  }, [lightboxOpen]);
+  }, [lightboxOpen, closeLightbox, navigateLightbox]);
 
   return (
     <main className={styles.main}>

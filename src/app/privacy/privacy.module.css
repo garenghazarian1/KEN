@@ -40,8 +40,7 @@
   border: 1px solid var(--glass-border-light);
   border-radius: var(--radius-2xl);
   padding: var(--spacing-12);
-  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.15),
-    0 0 0 1px rgba(255, 255, 255, 0.2) inset;
+  box-shadow: var(--shadow-content-card);
 }
 
 .header {
@@ -87,7 +86,7 @@
 .section:hover {
   background: var(--glass-white-medium);
   border-color: var(--glass-border-medium);
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+  box-shadow: 0 4px 12px var(--overlay-black-08);
 }
 
 .section h2 {

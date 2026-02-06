@@ -3,7 +3,7 @@
 .containerE {
   width: 100%;
   min-height: 100vh;
-  background-color: black;
+  background-color: var(--color-bg-black);
   display: flex;
   flex-direction: column;
   gap: 0.2rem;

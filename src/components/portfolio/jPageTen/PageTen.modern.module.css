@@ -7,7 +7,7 @@
   justify-content: center;
   min-height: 80vh;
   padding: 4rem 2rem;
-  background: linear-gradient(180deg, #0a0a0a 0%, #111 100%);
+  background: linear-gradient(180deg, var(--color-bg-near-black) 0%, var(--color-bg-dark-elevated) 100%);
 }
 
 .profiles {
@@ -30,7 +30,7 @@
   position: relative;
   padding: 4px;
   border-radius: 50%;
-  background: linear-gradient(135deg, #feda75, #fa7e1e, #d62976, #962fbf, #4f5bd5);
+  background: linear-gradient(135deg, var(--color-instagram-yellow), var(--color-instagram-orange), var(--color-instagram-pink), var(--color-instagram-purple), var(--color-instagram-blue));
   transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
@@ -39,7 +39,7 @@
   position: absolute;
   inset: -4px;
   border-radius: 50%;
-  background: linear-gradient(135deg, #feda75, #fa7e1e, #d62976, #962fbf, #4f5bd5);
+  background: linear-gradient(135deg, var(--color-instagram-yellow), var(--color-instagram-orange), var(--color-instagram-pink), var(--color-instagram-purple), var(--color-instagram-blue));
   opacity: 0;
   filter: blur(12px);
   transition: opacity 0.3s ease;
@@ -59,19 +59,19 @@
   height: 220px;
   border-radius: 50%;
   object-fit: cover;
-  border: 3px solid #0a0a0a;
+  border: 3px solid var(--color-bg-near-black);
 }
 
 .username {
   margin-top: 1rem;
   font-size: 1.1rem;
   font-weight: 600;
-  color: #fff;
+  color: var(--color-text-inverse);
   transition: color 0.3s ease;
 }
 
 .profile:hover .username {
-  color: #d62976;
+  color: var(--color-instagram-pink);
 }
 
 .textContainer {
@@ -80,16 +80,16 @@
 }
 
 .textCard {
-  background: linear-gradient(135deg, rgba(255, 255, 255, 0.04) 0%, rgba(255, 255, 255, 0.01) 100%);
+  background: linear-gradient(135deg, var(--overlay-white-04) 0%, var(--overlay-white-01) 100%);
   backdrop-filter: blur(10px);
-  border: 1px solid rgba(255, 255, 255, 0.06);
+  border: 1px solid var(--overlay-white-06);
   border-radius: 20px;
   padding: 2rem 2.5rem;
 }
 
 .textCard p {
   font-size: 1.1rem;
-  color: rgba(255, 255, 255, 0.8);
+  color: var(--overlay-white-82);
   line-height: 1.8;
   margin: 0;
 }

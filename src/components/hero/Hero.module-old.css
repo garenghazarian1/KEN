@@ -34,7 +34,7 @@
 .gradient {
   height: 100%;
   width: 100%;
-  background: linear-gradient(to top, #000000, transparent);
+  background: linear-gradient(to top, var(--color-bg-black), transparent);
   display: flex;
   justify-content: flex-end;
   align-items: flex-start;
@@ -83,7 +83,7 @@
   font-weight: bold;
   border-radius: 9999px;
   padding: 1rem 2rem;
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 4px 6px var(--overlay-black-10);
   transition: transform 0.3s ease-in-out;
 }
 
@@ -189,15 +189,15 @@
   display: inline-block;
   margin-left: 10px;
   padding: 10px;
-  background-color: #25d366;
+  background-color: var(--color-whatsapp);
   border-radius: 50%;
-  color: white;
+  color: var(--color-text-inverse);
   text-decoration: none;
   transition: background-color 0.3s;
 }
 
 .whatsappButton:hover {
-  background-color: #128c7e;
+  background-color: var(--color-whatsapp-hover-alt);
 }
 
 /* max-width: 599px */

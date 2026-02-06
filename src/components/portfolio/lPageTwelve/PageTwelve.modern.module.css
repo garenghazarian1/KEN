@@ -2,7 +2,7 @@
 
 .container {
   min-height: 80vh;
-  background: linear-gradient(180deg, #0f0f0f 0%, #1a1a1a 100%);
+  background: linear-gradient(180deg, var(--color-bg-dark-mid) 0%, var(--color-bg-dark-surface) 100%);
   padding: 4rem 2rem;
 }
 
@@ -15,7 +15,7 @@
   font-size: clamp(2.5rem, 5vw, 4rem);
   font-weight: 300;
   font-style: italic;
-  color: #fff;
+  color: var(--color-text-inverse);
   letter-spacing: 0.05em;
 }
 
@@ -41,7 +41,7 @@
   content: "";
   position: absolute;
   inset: -8px;
-  border: 1px solid rgba(212, 175, 55, 0.3);
+  border: 1px solid var(--glass-border-gold-medium);
   border-radius: 16px;
   transform: rotate(-2deg);
   transition: transform 0.4s ease;
@@ -55,7 +55,7 @@
   width: 280px;
   height: auto;
   border-radius: 12px;
-  box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5);
+  box-shadow: 0 25px 50px -12px var(--overlay-black-50);
 }
 
 .textContent {
@@ -66,14 +66,14 @@
 
 .paragraph {
   font-size: clamp(1rem, 1.4vw, 1.15rem);
-  color: rgba(255, 255, 255, 0.85);
+  color: var(--overlay-white-82);
   line-height: 1.8;
   font-weight: 300;
 }
 
 .paragraph:first-child {
   font-size: clamp(1.1rem, 1.6vw, 1.3rem);
-  color: rgba(255, 255, 255, 0.95);
+  color: var(--overlay-white-95);
   font-style: italic;
 }
 

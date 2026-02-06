@@ -11,20 +11,20 @@
   width: 100%;
   max-width: 600px;
   margin-bottom: 20px;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 4px 8px var(--shadow-card-hover);
   border-radius: 8px;
   overflow: hidden;
 }
 
 .section {
   padding: 16px;
-  background-color: #fff;
+  background-color: var(--color-bg-card);
   text-align: center;
 }
 
 .sectionHeader {
   font-size: 1.5em;
-  color: #333;
+  color: var(--color-text-primary);
   margin-bottom: 16px;
 }
 
@@ -46,37 +46,37 @@
 .p {
   margin: 8px 0;
   font-size: 1em;
-  color: #555;
+  color: var(--color-text-secondary);
 }
 
 .a {
-  color: #1e90ff;
+  color: var(--color-info);
   text-decoration: none;
   transition: color 0.2s ease;
 }
 
 .a:hover {
-  color: #0066cc;
+  color: var(--color-info-hover);
   text-decoration: underline;
 }
 
 .emailLink {
-  color: #1e90ff;
+  color: var(--color-info);
   text-decoration: none;
   transition: all 0.2s ease;
   font-weight: 500;
 }
 
 .emailLink:hover {
-  color: #0066cc;
+  color: var(--color-info-hover);
   text-decoration: underline;
-  background-color: rgba(30, 144, 255, 0.05);
+  background-color: var(--overlay-info-light);
   padding: 2px 4px;
   border-radius: 4px;
 }
 
 .whatsappLink {
-  color: #25d365;
+  color: var(--color-whatsapp);
   text-decoration: none;
   display: inline-flex;
   align-items: center;
@@ -86,7 +86,7 @@
 }
 
 .whatsappLink:hover {
-  color: #128c7e;
+  color: var(--color-whatsapp-hover-alt);
   text-decoration: underline;
 }
 
@@ -98,7 +98,7 @@
   display: inline-block;
   vertical-align: middle;
   margin-right: 4px;
-  color: #666;
+  color: var(--color-text-secondary);
 }
 
 /* Responsive Styles */

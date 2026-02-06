@@ -197,7 +197,7 @@
   -webkit-backdrop-filter: blur(var(--glass-blur-md));
   border-color: var(--glass-border-medium);
   transform: translateY(-2px);
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 4px 12px var(--shadow-card-hover);
 }
 
 .locationName {
@@ -245,7 +245,7 @@
 
 .locationWhatsApp:hover {
   color: var(--color-whatsapp-hover-alt);
-  background-color: rgba(37, 211, 101, 0.1);
+  background-color: var(--overlay-whatsapp-light);
   transform: scale(1.1);
 }
 
@@ -280,7 +280,7 @@
   border-color: var(--glass-border-light);
   color: var(--color-text-primary);
   transform: translateX(4px);
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 4px 12px var(--shadow-card-hover);
 }
 
 .socialLinkIcon {
@@ -313,7 +313,7 @@
 
 .appStoreButton:hover {
   transform: translateY(-2px);
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+  box-shadow: 0 4px 12px var(--shadow-nav);
 }
 
 .appStoreButton:active {
@@ -397,7 +397,7 @@
   backdrop-filter: blur(var(--glass-blur-xl));
   -webkit-backdrop-filter: blur(var(--glass-blur-xl));
   border-top: 1px solid var(--glass-border-medium);
-  box-shadow: 0 -4px 20px rgba(0, 0, 0, 0.15);
+  box-shadow: 0 -4px 20px var(--overlay-black-15);
 }
 
 .cookieContent {
@@ -476,7 +476,7 @@
     var(--color-secondary-dark) 100%
   );
   color: var(--color-text-inverse);
-  box-shadow: 0 4px 12px rgba(174, 139, 119, 0.3);
+  box-shadow: 0 4px 12px var(--shadow-secondary);
 }
 
 .cookieAccept:hover {
@@ -485,7 +485,7 @@
     var(--color-secondary-light) 0%,
     var(--color-secondary) 100%
   );
-  box-shadow: 0 6px 20px rgba(174, 139, 119, 0.4);
+  box-shadow: 0 6px 20px var(--shadow-button-hover);
   transform: translateY(-2px);
 }
 

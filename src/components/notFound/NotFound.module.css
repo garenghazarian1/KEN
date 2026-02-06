@@ -2,7 +2,7 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    background-color: #e2e8f0; 
+    background-color: var(--color-bg-muted); 
     margin: 16px;
   }
   .content {
@@ -12,15 +12,15 @@
   .header {
     font-size: 48px; 
     font-weight: bold;
-    color: #2d3748; 
+    color: var(--color-text-heading-dark); 
   }
   .subHeader {
     font-size: 20px; 
    
-    color: #718096; 
+    color: var(--color-text-muted); 
   }
   .description {
-    color: #a0aec0; 
+    color: var(--color-text-muted-light); 
     margin-top: 8px;
   }
   .linkButton {
@@ -30,13 +30,13 @@
     font-size: 14px; 
     font-weight: medium;
     color: white;
-    background-color: #3182ce;
+    background-color: var(--color-info);
     border-radius: 4px;
     cursor: pointer;
     text-decoration: none; 
   }
   .linkButton:hover {
-    background-color: #2b6cb0; 
+    background-color: var(--color-info-hover); 
   }
   .linkButton:focus {
     outline: none;

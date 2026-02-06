@@ -8,9 +8,42 @@
   overflow-x: hidden; /* Prevent horizontal overflow */
 }
 
+/* Desktop nav: visible by default; hidden on mobile */
+.desktopNavWrapper {
+  display: block;
+}
+
+/* Mobile nav wrappers: hidden by default; visible on mobile */
+.mobileNavTopWrapper,
+.mobileNavBottomWrapper {
+  display: none;
+}
+
 .childrenContainer {
   flex-grow: 1;
   width: 100%;
   padding: 0;
   overflow-x: hidden; /* Prevent horizontal overflow */
+}
+
+/* Mobile: show new top/bottom nav, hide desktop nav, add content padding */
+@media (max-width: 768px) {
+  .desktopNavWrapper {
+    display: none;
+  }
+
+  .mobileNavTopWrapper,
+  .mobileNavBottomWrapper {
+    display: block;
+  }
+
+  /* Prevent content from sitting under fixed top and bottom bars */
+  .childrenContainer {
+    padding-top: calc(
+      3.5rem + var(--spacing-2) + env(safe-area-inset-top, 0px)
+    );
+    padding-bottom: calc(
+      3.5rem + var(--spacing-2) + env(safe-area-inset-bottom, 0px)
+    );
+  }
 }

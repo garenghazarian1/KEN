@@ -78,16 +78,16 @@
   height: 0.25rem; /* h-1 */
   margin-bottom: 0.5rem; /* mb-2 */
   transition: transform 300ms ease-in-out, opacity 300ms ease-in-out;
-  background-color: #d1fae5; /* green-100, update with correct colors */
+  background-color: var(--color-secondary);
 }
 
 .lineMiddle {
-  background-color: #a7f3d0; /* green-200 */
+  background-color: var(--color-secondary-light);
 }
 
 .lineBottom {
   margin-top: 0.5rem; /* mt-2 */
-  background-color: #6ee7b7; /* green-300 */
+  background-color: var(--color-secondary-dark);
 }
 
 .rotate45 {

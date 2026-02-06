@@ -54,11 +54,11 @@
   align-items: center;
   justify-content: center;
   border-radius: var(--radius-full);
-  background: rgba(255, 255, 255, 0.1);
-  backdrop-filter: blur(10px);
-  -webkit-backdrop-filter: blur(10px);
-  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.2), 0 0 0 4px rgba(255, 255, 255, 0.1),
-    0 0 40px rgba(174, 139, 119, 0.3);
+  background: var(--glass-bg-light);
+  backdrop-filter: blur(var(--glass-blur-md));
+  -webkit-backdrop-filter: blur(var(--glass-blur-md));
+  box-shadow: 0 20px 60px var(--shadow-light), 0 0 0 4px var(--glass-bg-light),
+    0 0 40px var(--overlay-secondary-30);
   padding: 20px;
 }
 
@@ -69,12 +69,12 @@
   max-height: 100%;
   object-fit: contain;
   border-radius: 0;
-  filter: drop-shadow(0 0 20px rgba(174, 139, 119, 0.4));
+  filter: drop-shadow(0 0 20px var(--shadow-button));
 }
 
 .spinnerIcon {
   color: var(--color-secondary);
-  filter: drop-shadow(0 0 10px rgba(174, 139, 119, 0.5));
+  filter: drop-shadow(0 0 10px var(--shadow-button-hover));
   position: relative;
   z-index: 2;
 }
@@ -112,7 +112,7 @@
     var(--color-secondary) 0%,
     var(--color-secondary-dark) 100%
   );
-  box-shadow: 0 4px 12px rgba(174, 139, 119, 0.4);
+  box-shadow: 0 4px 12px var(--shadow-button);
 }
 
 /* Responsive Design */

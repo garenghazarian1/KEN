@@ -18,7 +18,7 @@
   content: "";
   position: absolute;
   inset: 0;
-  background: rgba(0, 0, 0, 0.6);
+  background: var(--overlay-black-60);
   backdrop-filter: blur(4px);
 }
 
@@ -35,7 +35,7 @@
 .title {
   font-size: clamp(2rem, 5vw, 4rem);
   font-weight: 200;
-  color: #fff;
+  color: var(--color-text-inverse);
 }
 
 .titleAccent {
@@ -71,7 +71,7 @@
 
 .item:hover {
   transform: scale(1.08);
-  background: rgba(255, 255, 255, 0.1);
+  background: var(--glass-bg-light);
 }
 
 .item:active {
@@ -86,7 +86,7 @@
 
 .label {
   font-size: 1rem;
-  color: #fff;
+  color: var(--color-text-inverse);
   text-align: center;
   line-height: 1.3;
 }

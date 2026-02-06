@@ -4,7 +4,7 @@
   display: flex;
   width: 100%;
   min-height: 100vh;
-  background: linear-gradient(135deg, #0a0a0a 0%, #111 100%);
+  background: linear-gradient(135deg, var(--color-bg-near-black) 0%, var(--color-bg-dark-elevated) 100%);
 }
 
 /* Text Section */
@@ -18,10 +18,10 @@
 }
 
 .contentCard {
-  background: rgba(255, 255, 255, 0.03);
+  background: var(--overlay-white-03);
   backdrop-filter: blur(10px);
   -webkit-backdrop-filter: blur(10px);
-  border: 1px solid rgba(255, 255, 255, 0.06);
+  border: 1px solid var(--overlay-white-06);
   border-left: 3px solid var(--color-secondary);
   border-radius: 12px;
   padding: 1.5rem 2rem;
@@ -30,14 +30,14 @@
 
 .contentCard:hover {
   transform: translateX(8px);
-  background: rgba(255, 255, 255, 0.05);
+  background: var(--overlay-white-05);
   border-left-width: 5px;
 }
 
 .cardHeader {
   font-size: 1.25rem;
   font-weight: 600;
-  color: #fff;
+  color: var(--color-text-inverse);
   margin-bottom: 0.75rem;
   display: flex;
   align-items: center;
@@ -54,7 +54,7 @@
 
 .cardText {
   font-size: 0.95rem;
-  color: rgba(255, 255, 255, 0.65);
+  color: var(--overlay-white-65);
   line-height: 1.8;
 }
 
@@ -74,7 +74,7 @@
   max-width: 500px;
   border-radius: 16px;
   overflow: hidden;
-  box-shadow: 0 30px 80px rgba(0, 0, 0, 0.5);
+  box-shadow: 0 30px 80px var(--overlay-black-50);
 }
 
 /* Gold border effect */
@@ -82,7 +82,7 @@
   content: "";
   position: absolute;
   inset: -3px;
-  background: linear-gradient(135deg, var(--color-secondary) 0%, rgba(212, 175, 55, 0.2) 50%, var(--color-secondary) 100%);
+  background: linear-gradient(135deg, var(--color-secondary) 0%, var(--overlay-gold-2) 50%, var(--color-secondary) 100%);
   border-radius: 18px;
   z-index: -1;
 }

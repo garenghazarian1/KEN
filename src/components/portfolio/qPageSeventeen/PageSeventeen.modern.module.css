@@ -5,7 +5,7 @@
   grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
   gap: 2rem;
   padding: 5rem 4rem;
-  background: #0a0a0a;
+  background: var(--color-bg-near-black);
   min-height: 80vh;
   position: relative;
 }
@@ -16,14 +16,14 @@
   position: absolute;
   inset: 0;
   background-image: 
-    linear-gradient(rgba(255, 255, 255, 0.02) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(255, 255, 255, 0.02) 1px, transparent 1px);
+    linear-gradient(var(--overlay-white-02) 1px, transparent 1px),
+    linear-gradient(90deg, var(--overlay-white-02) 1px, transparent 1px);
   background-size: 60px 60px;
   pointer-events: none;
 }
 
 .card {
-  background: #111;
+  background: var(--color-bg-dark-elevated);
   border-radius: 20px;
   padding: 2.5rem 2rem;
   position: relative;
@@ -39,28 +39,28 @@
   inset: 0;
   border-radius: 20px;
   padding: 1px;
-  background: linear-gradient(135deg, rgba(212, 175, 55, 0), rgba(212, 175, 55, 0));
-  -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
-  mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+  background: linear-gradient(135deg, transparent, transparent);
+  -webkit-mask: linear-gradient(var(--color-text-inverse) 0 0) content-box, linear-gradient(var(--color-text-inverse) 0 0);
+  mask: linear-gradient(var(--color-text-inverse) 0 0) content-box, linear-gradient(var(--color-text-inverse) 0 0);
   -webkit-mask-composite: xor;
   mask-composite: exclude;
   transition: background 0.4s ease;
 }
 
 .card:hover::before {
-  background: linear-gradient(135deg, rgba(212, 175, 55, 0.5), rgba(212, 175, 55, 0.1));
+  background: linear-gradient(135deg, var(--overlay-gold-5), var(--overlay-gold-1));
 }
 
 .card:hover {
   transform: translateY(-8px);
-  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4);
+  box-shadow: 0 20px 40px var(--shadow-heavy);
 }
 
 /* Large gradient number */
 .number {
   font-size: 6rem;
   font-weight: 900;
-  background: linear-gradient(180deg, rgba(212, 175, 55, 0.5) 0%, rgba(212, 175, 55, 0.1) 100%);
+  background: linear-gradient(180deg, var(--overlay-gold-5) 0%, var(--overlay-gold-1) 100%);
   -webkit-background-clip: text;
   background-clip: text;
   color: transparent;
@@ -76,7 +76,7 @@
 .accent {
   width: 40px;
   height: 3px;
-  background: linear-gradient(90deg, #d4af37, transparent);
+  background: linear-gradient(90deg, var(--color-gold), transparent);
   margin-bottom: 1rem;
   border-radius: 2px;
 }
@@ -84,7 +84,7 @@
 .header {
   font-size: 1.4rem;
   font-weight: 600;
-  color: #fff;
+  color: var(--color-text-inverse);
   margin-bottom: 1rem;
   position: relative;
   z-index: 1;
@@ -93,7 +93,7 @@
 
 .text {
   font-size: 0.95rem;
-  color: rgba(255, 255, 255, 0.6);
+  color: var(--overlay-white-60);
   line-height: 1.8;
   font-weight: 400;
   position: relative;

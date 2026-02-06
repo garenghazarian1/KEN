@@ -40,7 +40,7 @@
 .titleTop {
   font-size: clamp(2.5rem, 5vw, 4rem);
   font-weight: 300;
-  color: #000;
+  color: var(--color-text-primary);
   line-height: 1;
 }
 

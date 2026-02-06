@@ -2,7 +2,7 @@
 
 .container {
   width: 100%;
-  background: linear-gradient(180deg, #000 0%, #0a0a0a 100%);
+  background: linear-gradient(180deg, var(--color-bg-black) 0%, var(--color-bg-near-black) 100%);
 }
 
 .section {
@@ -23,7 +23,7 @@
   left: 50%;
   width: 600px;
   height: 600px;
-  background: radial-gradient(circle, rgba(212, 175, 55, 0.08) 0%, transparent 70%);
+  background: radial-gradient(circle, var(--overlay-gold-1) 0%, transparent 70%);
   transform: translate(-50%, -50%);
   pointer-events: none;
 }
@@ -53,7 +53,7 @@
   content: "";
   position: absolute;
   inset: 0;
-  border: 1px solid rgba(212, 175, 55, 0.3);
+  border: 1px solid var(--glass-border-gold-medium);
   border-radius: 16px;
   transform: rotate(-3deg);
   transition: transform 0.4s ease;
@@ -91,9 +91,9 @@
 }
 
 .textCard {
-  background: linear-gradient(135deg, rgba(255, 255, 255, 0.03) 0%, rgba(255, 255, 255, 0.01) 100%);
+  background: linear-gradient(135deg, var(--overlay-white-03) 0%, var(--overlay-white-01) 100%);
   backdrop-filter: blur(10px);
-  border: 1px solid rgba(255, 255, 255, 0.05);
+  border: 1px solid var(--overlay-white-05);
   border-radius: 24px;
   padding: 3rem;
   position: relative;
@@ -107,13 +107,13 @@
   left: 0;
   right: 0;
   height: 1px;
-  background: linear-gradient(90deg, transparent, rgba(212, 175, 55, 0.5), transparent);
+  background: linear-gradient(90deg, transparent, var(--overlay-gold-5), transparent);
 }
 
 .sectionNumber {
   font-size: 5rem;
   font-weight: 800;
-  background: linear-gradient(135deg, rgba(212, 175, 55, 0.2) 0%, rgba(212, 175, 55, 0.05) 100%);
+  background: linear-gradient(135deg, var(--overlay-gold-2) 0%, var(--overlay-gold-05) 100%);
   -webkit-background-clip: text;
   background-clip: text;
   color: transparent;
@@ -123,14 +123,14 @@
 
 .text {
   font-size: clamp(1.1rem, 1.8vw, 1.4rem);
-  color: rgba(255, 255, 255, 0.85);
+  color: var(--overlay-white-82);
   line-height: 1.8;
   font-weight: 300;
   letter-spacing: 0.02em;
 }
 
 .accent {
-  color: #d4af37;
+  color: var(--color-gold);
   font-weight: 500;
 }
 

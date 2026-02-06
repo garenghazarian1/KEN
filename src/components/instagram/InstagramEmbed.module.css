@@ -18,14 +18,14 @@
   grid-column: 1 / -1;
   text-align: center;
   padding: 4rem 2rem;
-  color: var(--color-text-secondary, #4a5243);
+  color: var(--color-text-secondary);
   font-size: clamp(1rem, 2vw, 1.25rem);
-  background: var(--glass-white-light, rgba(255, 255, 255, 0.1));
-  backdrop-filter: blur(var(--glass-blur-md, 10px));
-  -webkit-backdrop-filter: blur(var(--glass-blur-md, 10px));
-  border: 1px solid var(--glass-border-light, rgba(174, 139, 119, 0.3));
-  border-radius: var(--radius-xl, 1.5rem);
-  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
+  background: var(--glass-white-light);
+  backdrop-filter: blur(var(--glass-blur-md));
+  -webkit-backdrop-filter: blur(var(--glass-blur-md));
+  border: 1px solid var(--glass-border-light);
+  border-radius: var(--radius-xl);
+  box-shadow: 0 4px 20px var(--shadow-very-light);
 }
 
 /* Instagram Media Styles */
@@ -35,25 +35,25 @@
   min-width: 326px;
   max-width: 540px;
   width: 100% !important;
-  border-radius: var(--radius-lg, 1rem);
+  border-radius: var(--radius-lg);
   overflow: hidden;
-  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.12);
+  box-shadow: 0 8px 30px var(--overlay-black-12);
   transition: all 0.4s cubic-bezier(0.22, 1, 0.36, 1);
-  background: var(--glass-white-light, rgba(255, 255, 255, 0.1));
-  backdrop-filter: blur(var(--glass-blur-sm, 5px));
-  -webkit-backdrop-filter: blur(var(--glass-blur-sm, 5px));
+  background: var(--glass-white-light);
+  backdrop-filter: blur(var(--glass-blur-sm));
+  -webkit-backdrop-filter: blur(var(--glass-blur-sm));
 }
 
 .instagram-media:hover {
   transform: translateY(-8px);
-  box-shadow: 0 16px 40px rgba(174, 139, 119, 0.2);
+  box-shadow: 0 16px 40px var(--overlay-secondary-20);
 }
 
 /* Ensure iframe inside instagram-media is responsive */
 .instagram-media iframe {
   width: 100% !important;
   max-width: 100% !important;
-  border-radius: var(--radius-lg, 1rem);
+  border-radius: var(--radius-lg);
   display: block !important;
 }
 
@@ -94,18 +94,18 @@
 
   .instagram-media {
     min-width: 100%;
-    border-radius: var(--radius-md, 0.75rem);
+    border-radius: var(--radius-md);
   }
 
   .instagram-media:hover {
     transform: translateY(-4px);
-    box-shadow: 0 12px 30px rgba(174, 139, 119, 0.15);
+    box-shadow: 0 12px 30px var(--overlay-secondary-30);
   }
 
   .loading {
     padding: 2.5rem 1rem;
     font-size: 1rem;
-    border-radius: var(--radius-md, 0.75rem);
+    border-radius: var(--radius-md);
   }
 }
 
@@ -116,7 +116,7 @@
   }
 
   .instagram-media {
-    border-radius: var(--radius-sm, 0.5rem);
+    border-radius: var(--radius-sm);
   }
 
   .loading {

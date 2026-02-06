@@ -1,7 +1,7 @@
 /* Clean minimal contact page */
 
 .page {
-  padding: calc(var(--app-banner-height, 0px) + 6rem) var(--spacing-4)
+  padding: calc(var(--app-banner-height) + 6rem) var(--spacing-4)
     var(--spacing-12);
   max-width: 1200px;
   margin: 0 auto;
@@ -34,10 +34,10 @@
 }
 
 .location {
-  background: #fff;
+  background: var(--color-bg-card);
   border-radius: 16px;
   overflow: hidden;
-  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+  box-shadow: 0 4px 20px var(--overlay-black-08);
 }
 
 .locationImage {
@@ -88,22 +88,22 @@
 }
 
 .contactItem.whatsapp {
-  background: #25d366;
-  color: #fff;
+  background: var(--color-whatsapp);
+  color: var(--color-text-inverse);
 }
 
 .contactItem.whatsapp:hover {
-  background: #1fb855;
+  background: var(--color-whatsapp-hover);
 }
 
 /* Form Section */
 .formSection {
   max-width: 600px;
   margin: 0 auto;
-  background: #fff;
+  background: var(--color-bg-card);
   padding: var(--spacing-8);
   border-radius: 16px;
-  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+  box-shadow: 0 4px 20px var(--overlay-black-08);
 }
 
 .formTitle {
@@ -150,7 +150,7 @@
   gap: var(--spacing-2);
   padding: var(--spacing-4);
   background: var(--color-secondary);
-  color: #fff;
+  color: var(--color-text-inverse);
   border: none;
   border-radius: 10px;
   font-size: var(--font-size-base);
@@ -166,7 +166,7 @@
 /* Mobile */
 @media (max-width: 640px) {
   .page {
-    padding: calc(var(--app-banner-height, 0px) + 5rem) var(--spacing-4)
+    padding: calc(var(--app-banner-height) + 5rem) var(--spacing-4)
       var(--spacing-8);
   }
 

@@ -13,7 +13,7 @@
   content: "";
   position: absolute;
   inset: 0;
-  background: rgba(0, 0, 0, 0.75);
+  background: var(--overlay-black-75);
   backdrop-filter: blur(2px);
 }
 
@@ -51,7 +51,7 @@
   content: "";
   position: absolute;
   inset: -12px;
-  border: 1px solid rgba(212, 175, 55, 0.25);
+  border: 1px solid var(--glass-border-gold-light);
   border-radius: 20px;
   transform: rotate(3deg);
   transition: all 0.4s ease;
@@ -59,7 +59,7 @@
 
 .imageWrapper:hover::before {
   transform: rotate(0deg);
-  border-color: rgba(212, 175, 55, 0.5);
+  border-color: var(--glass-border-gold-strong);
 }
 
 .image {
@@ -67,7 +67,7 @@
   max-width: 400px;
   height: auto;
   border-radius: 16px;
-  box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5);
+  box-shadow: 0 25px 50px -12px var(--overlay-black-50);
   transition: transform 0.4s ease;
 }
 
@@ -83,9 +83,9 @@
 }
 
 .textCard {
-  background: linear-gradient(135deg, rgba(255, 255, 255, 0.05) 0%, rgba(255, 255, 255, 0.02) 100%);
+  background: linear-gradient(135deg, var(--overlay-white-05) 0%, var(--overlay-white-03) 100%);
   backdrop-filter: blur(12px);
-  border: 1px solid rgba(255, 255, 255, 0.08);
+  border: 1px solid var(--overlay-white-08);
   border-radius: 24px;
   padding: 3rem;
   position: relative;
@@ -99,7 +99,7 @@
   left: 0;
   right: 0;
   height: 1px;
-  background: linear-gradient(90deg, transparent, rgba(212, 175, 55, 0.6), transparent);
+  background: linear-gradient(90deg, transparent, var(--overlay-gold-6), transparent);
 }
 
 .textCard::after {
@@ -109,19 +109,19 @@
   left: 20%;
   right: 20%;
   height: 1px;
-  background: linear-gradient(90deg, transparent, rgba(212, 175, 55, 0.3), transparent);
+  background: linear-gradient(90deg, transparent, var(--overlay-gold-3), transparent);
 }
 
 .quoteIcon {
   font-size: 4rem;
   line-height: 1;
-  color: rgba(212, 175, 55, 0.2);
+  color: var(--overlay-gold-2);
   margin-bottom: 1rem;
 }
 
 .text {
   font-size: clamp(1.05rem, 1.6vw, 1.3rem);
-  color: rgba(255, 255, 255, 0.9);
+  color: var(--overlay-white-90);
   line-height: 1.9;
   font-weight: 300;
   font-style: italic;

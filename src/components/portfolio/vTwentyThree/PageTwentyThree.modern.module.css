@@ -4,7 +4,7 @@
   display: flex;
   width: 100%;
   min-height: 100vh;
-  background: linear-gradient(135deg, #0a0a0a 0%, #1a1a1a 50%, #0a0a0a 100%);
+  background: linear-gradient(135deg, var(--color-bg-near-black) 0%, var(--color-bg-dark-surface) 50%, var(--color-bg-near-black) 100%);
   overflow: hidden;
 }
 
@@ -32,7 +32,7 @@
 .header {
   font-size: clamp(2rem, 4vw, 3rem);
   font-weight: 200;
-  color: #fff;
+  color: var(--color-text-inverse);
   letter-spacing: 0.05em;
   margin-bottom: 2rem;
   text-transform: uppercase;
@@ -48,7 +48,7 @@
 
 .text {
   font-size: clamp(1rem, 1.5vw, 1.15rem);
-  color: rgba(255, 255, 255, 0.7);
+  color: var(--overlay-white-70);
   line-height: 1.9;
   max-width: 500px;
 }
@@ -73,7 +73,7 @@
   position: relative;
   border-radius: 16px;
   overflow: hidden;
-  box-shadow: 0 30px 80px rgba(0, 0, 0, 0.6);
+  box-shadow: 0 30px 80px var(--overlay-black-60);
 }
 
 /* Gold border effect */
@@ -81,7 +81,7 @@
   content: "";
   position: absolute;
   inset: -3px;
-  background: linear-gradient(135deg, var(--color-secondary), rgba(212, 175, 55, 0.3), var(--color-secondary));
+  background: linear-gradient(135deg, var(--color-secondary), var(--overlay-gold-3), var(--color-secondary));
   border-radius: 18px;
   z-index: -1;
 }
@@ -90,7 +90,7 @@
   position: relative;
   width: 100%;
   aspect-ratio: 3 / 4;
-  background: #111;
+  background: var(--color-bg-dark-elevated);
   border-radius: 16px;
   overflow: hidden;
 }
@@ -114,14 +114,14 @@
   height: 10px;
   border-radius: 50%;
   border: none;
-  background: rgba(255, 255, 255, 0.2);
+  background: var(--overlay-white-20);
   cursor: pointer;
   transition: all 0.3s ease;
   padding: 0;
 }
 
 .dot:hover {
-  background: rgba(255, 255, 255, 0.4);
+  background: var(--overlay-white-40);
 }
 
 .dotActive {
@@ -139,7 +139,7 @@
   align-items: baseline;
   gap: 0.25rem;
   font-size: 0.9rem;
-  color: rgba(255, 255, 255, 0.5);
+  color: var(--overlay-white-50);
 }
 
 .counterCurrent {

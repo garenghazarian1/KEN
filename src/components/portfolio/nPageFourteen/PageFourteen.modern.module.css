@@ -9,12 +9,12 @@
 
 /* Image Pane */
 .imagePane {
-  background: linear-gradient(135deg, #1a3a3a 0%, #0d1f1f 100%);
+  background: linear-gradient(135deg, var(--color-bg-teal-dark) 0%, var(--color-bg-teal-darker) 100%);
   display: flex;
   justify-content: center;
   align-items: center;
   padding: 2rem;
-  border-right: 1px solid rgba(255, 255, 255, 0.1);
+  border-right: 1px solid var(--glass-border-white-light);
 }
 
 .image {
@@ -26,7 +26,7 @@
 
 /* Text Pane */
 .textPane {
-  background: linear-gradient(180deg, #0a1a1a 0%, #0f2525 100%);
+  background: linear-gradient(180deg, var(--color-bg-teal-darkest) 0%, var(--color-bg-teal-elevated) 100%);
   display: flex;
   justify-content: center;
   align-items: center;
@@ -36,11 +36,11 @@
 .textCard {
   background: linear-gradient(
     135deg,
-    rgba(255, 255, 255, 0.04) 0%,
-    rgba(255, 255, 255, 0.01) 100%
+    var(--overlay-white-04) 0%,
+    var(--overlay-white-01) 100%
   );
   backdrop-filter: blur(10px);
-  border: 1px solid rgba(255, 255, 255, 0.06);
+  border: 1px solid var(--overlay-white-06);
   border-radius: 20px;
   padding: 2.5rem;
   position: relative;
@@ -56,14 +56,14 @@
   background: linear-gradient(
     90deg,
     transparent,
-    rgba(212, 175, 55, 0.5),
+    var(--overlay-gold-5),
     transparent
   );
 }
 
 .paragraph {
   font-size: clamp(0.95rem, 1.3vw, 1.1rem);
-  color: rgba(255, 255, 255, 0.85);
+  color: var(--overlay-white-82);
   line-height: 1.8;
   text-align: center;
   font-weight: 300;
@@ -77,7 +77,7 @@
   justify-content: center;
   align-items: center;
   padding: 2rem;
-  border-left: 1px solid rgba(255, 255, 255, 0.1);
+  border-left: 1px solid var(--glass-border-white-light);
 }
 
 .number {
@@ -89,7 +89,7 @@
 .titleTop {
   font-size: clamp(2.5rem, 4vw, 4rem);
   font-weight: 300;
-  color: #000;
+  color: var(--color-text-primary);
   line-height: 1;
 }
 
@@ -112,7 +112,7 @@
   .textPane,
   .titlePane {
     border: none;
-    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    border-bottom: 1px solid var(--glass-border-white-light);
   }
 
   .titlePane {
