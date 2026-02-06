@@ -60,7 +60,8 @@ export default function RootLayout({ children }) {
           </div>
         </ClientLayout>
         <Analytics />
-        <Script src={THIRD_PARTY.tidio.scriptUrl} strategy="lazyOnload" />
+        {/* Tidio chatbot – commented out for now, use later */}
+        {/* <Script src={THIRD_PARTY.tidio.scriptUrl} strategy="lazyOnload" /> */}
       </body>
     </html>
   );

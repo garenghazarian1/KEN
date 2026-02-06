@@ -955,6 +955,21 @@ img {
   background-color: var(--overlay-secondary-20) !important;
 }
 
+/* Tidio chatbot – sit above fixed bottom navbar on mobile (commented out for now, use later) */
+/*
+#tidio-chat iframe,
+#tidio-chat-iframe {
+  bottom: 5rem !important;
+}
+
+@media (min-width: 769px) {
+  #tidio-chat iframe,
+  #tidio-chat-iframe {
+    bottom: 1.5rem !important;
+  }
+}
+*/
+
 /* App Install Banner - Adjust layout when banner is visible */
 :root {
   --app-banner-height: 0px;

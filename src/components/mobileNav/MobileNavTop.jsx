@@ -2,7 +2,7 @@
 
 import Link from "next/link";
 import Image from "next/image";
-import { Calendar } from "lucide-react";
+import { Calendar, Coffee } from "lucide-react";
 import { BOOKING_URL } from "@/config/constants";
 import styles from "./MobileNavTop.module.css";
 
@@ -20,10 +20,15 @@ export default function MobileNavTop() {
           priority
         />
       </Link>
-      <Link href={BOOKING_URL} className={styles.bookButton} aria-label="Book now">
-        <Calendar size={18} aria-hidden />
-        <span>Book now</span>
-      </Link>
+      <div className={styles.navActions}>
+        <Link href="/drinks" className={styles.bookButton} aria-label="Drinks menu">
+          <Coffee size={18} aria-hidden />
+        </Link>
+        <Link href={BOOKING_URL} className={styles.bookButton} aria-label="Book now">
+          <Calendar size={18} aria-hidden />
+          <span>Book now</span>
+        </Link>
+      </div>
     </header>
   );
 }

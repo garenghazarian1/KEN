@@ -40,6 +40,12 @@
   object-fit: contain;
 }
 
+.navActions {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-2);
+}
+
 /* Match desktop navbar Book Now button (Navbar.modern) */
 .bookButton {
   display: flex;

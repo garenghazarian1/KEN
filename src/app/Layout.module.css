@@ -46,4 +46,5 @@
       3.5rem + var(--spacing-2) + env(safe-area-inset-bottom, 0px)
     );
   }
+
 }

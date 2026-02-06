@@ -4,7 +4,7 @@ import { useState, useEffect, useRef } from "react";
 import Link from "next/link";
 import Image from "next/image";
 import { motion, AnimatePresence } from "framer-motion";
-import { Menu, X, Calendar } from "lucide-react";
+import { Menu, X, Calendar, Coffee } from "lucide-react";
 import { BOOKING_URL } from "@/config/constants";
 import styles from "./Navbar.modern.module.css";
 
@@ -89,17 +89,27 @@ export default function NavbarModern() {
           ))}
         </div>
 
-        {/* Book Now Button - Desktop */}
-        <Link href={BOOKING_URL} className={styles.bookButton}>
-          <Calendar size={18} />
-          <span>Book Now</span>
-        </Link>
+        {/* Drinks (icon only) + Book Now (icon + text) - Desktop */}
+        <div className={styles.navActions}>
+          <Link href="/drinks" className={styles.drinksButton} aria-label="Drinks menu">
+            <Coffee size={18} aria-hidden />
+          </Link>
+          <Link href={BOOKING_URL} className={styles.bookButton} aria-label="Book now">
+            <Calendar size={18} aria-hidden />
+            <span>Book Now</span>
+          </Link>
+        </div>
 
-        {/* Book Now Button - Mobile (in navbar) */}
-        <Link href={BOOKING_URL} className={styles.mobileBookButtonNavbar}>
-          <Calendar size={18} />
-          <span>Book Now</span>
-        </Link>
+        {/* Drinks (icon only) + Book Now (icon + text) - Mobile navbar */}
+        <div className={styles.navActionsMobile}>
+          <Link href="/drinks" className={styles.mobileBookButtonNavbar} aria-label="Drinks menu">
+            <Coffee size={18} aria-hidden />
+          </Link>
+          <Link href={BOOKING_URL} className={styles.mobileBookButtonNavbar} aria-label="Book now">
+            <Calendar size={18} aria-hidden />
+            <span>Book Now</span>
+          </Link>
+        </div>
 
         {/* Mobile Menu Button */}
         <button
@@ -169,11 +179,26 @@ export default function NavbarModern() {
                 transition={{ delay: navLinks.length * 0.1 }}
               >
                 <Link
+                  href="/drinks"
+                  className={styles.mobileDrinksLink}
+                  onClick={closeMenu}
+                  aria-label="Drinks menu"
+                >
+                  <Coffee size={20} aria-hidden />
+                </Link>
+              </motion.div>
+              <motion.div
+                initial={{ opacity: 0, x: -20 }}
+                animate={{ opacity: 1, x: 0 }}
+                transition={{ delay: (navLinks.length + 1) * 0.1 }}
+              >
+                <Link
                   href={BOOKING_URL}
                   className={styles.mobileBookButton}
                   onClick={closeMenu}
+                  aria-label="Book now"
                 >
-                  <Calendar size={20} />
+                  <Calendar size={20} aria-hidden />
                   <span>Book Now</span>
                 </Link>
               </motion.div>

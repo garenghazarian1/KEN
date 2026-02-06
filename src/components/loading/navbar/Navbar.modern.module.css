@@ -99,6 +99,23 @@
   transform: translateY(0);
 }
 
+/* Wrappers for Drinks + Book Now */
+.navActions {
+  display: none;
+  align-items: center;
+  gap: var(--spacing-2);
+}
+
+.navActionsMobile {
+  display: none;
+  align-items: center;
+  gap: var(--spacing-2);
+}
+
+.navActionsMobile .mobileBookButtonNavbar {
+  margin: 0;
+}
+
 /* Book Now Button - Desktop */
 .bookButton {
   display: none;
@@ -135,6 +152,40 @@
   transform: translateY(0);
 }
 
+/* Drinks Button - Desktop (same style as Book Now) */
+.drinksButton {
+  display: none;
+  align-items: center;
+  gap: var(--spacing-2);
+  padding: var(--spacing-3) var(--spacing-5);
+  background-color: var(--glass-black-light);
+  backdrop-filter: blur(var(--glass-blur-xl));
+  border: 1px solid var(--glass-border-white-light);
+  color: var(--color-text-inverse);
+  border-radius: var(--radius-full);
+  font-size: var(--font-size-sm);
+  font-weight: var(--font-weight-semibold);
+  text-decoration: none;
+  cursor: pointer;
+  transition: all var(--transition-base) var(--ease-in-out);
+  box-shadow: 0 2px 8px var(--shadow-nav);
+  min-width: 44px;
+  min-height: 44px;
+}
+
+.drinksButton:hover {
+  background-color: var(--glass-black-medium);
+  backdrop-filter: blur(var(--glass-blur-xl));
+  border-color: var(--glass-border-white-medium);
+  color: var(--color-text-inverse);
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px var(--shadow-nav-hover);
+}
+
+.drinksButton:active {
+  transform: translateY(0);
+}
+
 /* Book Now Button - Mobile (in navbar container) */
 .mobileBookButtonNavbar {
   display: none; /* Hidden by default, shown on mobile */
@@ -157,7 +208,7 @@
   box-shadow: 0 2px 8px var(--shadow-nav);
   min-width: 44px;
   min-height: 44px;
-  margin: 0 auto; /* Center between logo and hamburger */
+  margin: 0 auto; /* Center between logo and hamburger when alone */
 }
 
 .mobileBookButtonNavbar:hover {
@@ -168,6 +219,39 @@
   color: var(--color-text-inverse);
   transform: translateY(-2px);
   box-shadow: 0 4px 12px var(--shadow-nav-hover);
+}
+
+/* Drinks link in mobile dropdown (same style as Book Now in menu) */
+.mobileDrinksLink {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--spacing-2);
+  margin-top: var(--spacing-2);
+  padding: var(--spacing-4) var(--spacing-5);
+  background-color: var(--overlay-secondary-90);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  color: var(--color-text-inverse);
+  border-radius: var(--radius-full);
+  font-size: var(--font-size-base);
+  font-weight: var(--font-weight-semibold);
+  text-decoration: none;
+  transition: all var(--transition-base) var(--ease-in-out);
+  box-shadow: 0 2px 8px var(--overlay-black-15);
+  min-height: 44px;
+}
+
+.mobileDrinksLink:hover {
+  background-color: var(--glass-teal-darker);
+  backdrop-filter: blur(var(--glass-blur-md));
+  -webkit-backdrop-filter: blur(var(--glass-blur-md));
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px var(--shadow-light);
+}
+
+.mobileDrinksLink:active {
+  transform: translateY(0);
 }
 
 /* Mobile Menu Button */
@@ -286,8 +370,17 @@
     display: flex;
   }
 
-  .bookButton {
+  .navActions {
     display: flex;
+  }
+
+  .bookButton,
+  .drinksButton {
+    display: flex;
+  }
+
+  .navActionsMobile {
+    display: none;
   }
 
   .mobileBookButtonNavbar {
@@ -303,10 +396,19 @@
   }
 }
 
-/* Mobile - Show mobile button in navbar */
+/* Mobile - Show mobile buttons (Drinks + Book Now) in navbar */
 @media (max-width: 1023px) {
-  .bookButton {
-    display: none; /* Hide desktop button on mobile */
+  .navActions {
+    display: none;
+  }
+
+  .bookButton,
+  .drinksButton {
+    display: none; /* Hide desktop buttons on mobile */
+  }
+
+  .navActionsMobile {
+    display: flex; /* Show Drinks + Book Now in navbar */
   }
 
   .mobileBookButtonNavbar {
