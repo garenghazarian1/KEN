@@ -1,0 +1,4 @@
+# Environment files - ignore so Cursor does not read sensitive env vars
+.env
+.env.local
+.env.*.local

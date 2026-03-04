@@ -4,8 +4,8 @@ import { useState, useEffect, useRef } from "react";
 import Link from "next/link";
 import Image from "next/image";
 import { motion, AnimatePresence } from "framer-motion";
-import { Menu, X, Calendar, Coffee } from "lucide-react";
-import { BOOKING_URL } from "@/config/constants";
+import { Menu, X, Calendar, Coffee, CreditCard } from "lucide-react";
+import { BOOKING_URL, CARD_URL } from "@/config/constants";
 import styles from "./Navbar.modern.module.css";
 
 const navLinks = [
@@ -91,6 +91,15 @@ export default function NavbarModern() {
 
         {/* Drinks (icon only) + Book Now (icon + text) - Desktop */}
         <div className={styles.navActions}>
+          <a
+            href={CARD_URL}
+            target="_blank"
+            rel="noopener noreferrer"
+            className={styles.drinksButton}
+            aria-label="Ken Card"
+          >
+            <CreditCard size={18} aria-hidden />
+          </a>
           <Link href="/drinks" className={styles.drinksButton} aria-label="Drinks menu">
             <Coffee size={18} aria-hidden />
           </Link>
@@ -102,6 +111,15 @@ export default function NavbarModern() {
 
         {/* Drinks (icon only) + Book Now (icon + text) - Mobile navbar */}
         <div className={styles.navActionsMobile}>
+          <a
+            href={CARD_URL}
+            target="_blank"
+            rel="noopener noreferrer"
+            className={styles.mobileBookButtonNavbar}
+            aria-label="Ken Card"
+          >
+            <CreditCard size={18} aria-hidden />
+          </a>
           <Link href="/drinks" className={styles.mobileBookButtonNavbar} aria-label="Drinks menu">
             <Coffee size={18} aria-hidden />
           </Link>
@@ -178,6 +196,23 @@ export default function NavbarModern() {
                 animate={{ opacity: 1, x: 0 }}
                 transition={{ delay: navLinks.length * 0.1 }}
               >
+                <a
+                  href={CARD_URL}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className={styles.mobileBookButton}
+                  onClick={closeMenu}
+                  aria-label="Ken Card"
+                >
+                  <CreditCard size={20} aria-hidden />
+                  <span>Ken Card</span>
+                </a>
+              </motion.div>
+              <motion.div
+                initial={{ opacity: 0, x: -20 }}
+                animate={{ opacity: 1, x: 0 }}
+                transition={{ delay: (navLinks.length + 1) * 0.1 }}
+              >
                 <Link
                   href="/drinks"
                   className={styles.mobileDrinksLink}
@@ -190,7 +225,7 @@ export default function NavbarModern() {
               <motion.div
                 initial={{ opacity: 0, x: -20 }}
                 animate={{ opacity: 1, x: 0 }}
-                transition={{ delay: (navLinks.length + 1) * 0.1 }}
+                transition={{ delay: (navLinks.length + 2) * 0.1 }}
               >
                 <Link
                   href={BOOKING_URL}

@@ -21,11 +21,13 @@ import {
   Check,
   MessageCircle,
   Coffee,
+  CreditCard,
 } from "lucide-react";
 import {
   SOCIAL_MEDIA,
   BUSINESS,
   BOOKING_URL,
+  CARD_URL,
   APP_STORES,
 } from "@/config/constants";
 import { stores } from "@/data/stores";
@@ -61,6 +63,7 @@ export default function FooterModern() {
     { title: "Contact", path: "/contact", icon: Phone },
     { title: "Gallery", path: "/gallery", icon: ImageIcon },
     { title: "Drinks Menu", path: "/drinks", icon: Coffee },
+    { title: "Ken Card", path: CARD_URL, icon: CreditCard, external: true },
   ];
 
   const legalLinks = [
@@ -208,10 +211,22 @@ export default function FooterModern() {
                   const Icon = link.icon;
                   return (
                     <li key={link.title} className={styles.linkListItem}>
-                      <Link href={link.path} className={styles.footerLink}>
-                        <Icon size={16} className={styles.footerLinkIcon} />
-                        <span>{link.title}</span>
-                      </Link>
+                      {link.external ? (
+                        <a
+                          href={link.path}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className={styles.footerLink}
+                        >
+                          <Icon size={16} className={styles.footerLinkIcon} />
+                          <span>{link.title}</span>
+                        </a>
+                      ) : (
+                        <Link href={link.path} className={styles.footerLink}>
+                          <Icon size={16} className={styles.footerLinkIcon} />
+                          <span>{link.title}</span>
+                        </Link>
+                      )}
                     </li>
                   );
                 })}
