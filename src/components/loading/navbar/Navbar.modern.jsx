@@ -93,17 +93,23 @@ export default function NavbarModern() {
         <div className={styles.navActions}>
           <a
             href={CARD_URL}
-            target="_blank"
-            rel="noopener noreferrer"
             className={styles.drinksButton}
             aria-label="Ken Card"
           >
             <CreditCard size={18} aria-hidden />
           </a>
-          <Link href="/drinks" className={styles.drinksButton} aria-label="Drinks menu">
+          <Link
+            href="/drinks"
+            className={styles.drinksButton}
+            aria-label="Drinks menu"
+          >
             <Coffee size={18} aria-hidden />
           </Link>
-          <Link href={BOOKING_URL} className={styles.bookButton} aria-label="Book now">
+          <Link
+            href={BOOKING_URL}
+            className={styles.bookButton}
+            aria-label="Book now"
+          >
             <Calendar size={18} aria-hidden />
             <span>Book Now</span>
           </Link>
@@ -113,17 +119,23 @@ export default function NavbarModern() {
         <div className={styles.navActionsMobile}>
           <a
             href={CARD_URL}
-            target="_blank"
-            rel="noopener noreferrer"
             className={styles.mobileBookButtonNavbar}
             aria-label="Ken Card"
           >
             <CreditCard size={18} aria-hidden />
           </a>
-          <Link href="/drinks" className={styles.mobileBookButtonNavbar} aria-label="Drinks menu">
+          <Link
+            href="/drinks"
+            className={styles.mobileBookButtonNavbar}
+            aria-label="Drinks menu"
+          >
             <Coffee size={18} aria-hidden />
           </Link>
-          <Link href={BOOKING_URL} className={styles.mobileBookButtonNavbar} aria-label="Book now">
+          <Link
+            href={BOOKING_URL}
+            className={styles.mobileBookButtonNavbar}
+            aria-label="Book now"
+          >
             <Calendar size={18} aria-hidden />
             <span>Book Now</span>
           </Link>
@@ -198,8 +210,6 @@ export default function NavbarModern() {
               >
                 <a
                   href={CARD_URL}
-                  target="_blank"
-                  rel="noopener noreferrer"
                   className={styles.mobileBookButton}
                   onClick={closeMenu}
                   aria-label="Ken Card"
