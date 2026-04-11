@@ -5,7 +5,12 @@ import Link from "next/link";
 import Image from "next/image";
 import { motion, AnimatePresence } from "framer-motion";
 import { Menu, X, Calendar, Coffee, CreditCard } from "lucide-react";
-import { BOOKING_URL, CARD_URL } from "@/config/constants";
+import {
+  BOOKING_URL,
+  CARD_URL,
+  NAVBAR_LOGO_DEFAULT_SRC,
+  getSpecialPeriodLogo,
+} from "@/config/constants";
 import styles from "./Navbar.modern.module.css";
 
 const navLinks = [
@@ -70,7 +75,7 @@ export default function NavbarModern() {
         {/* Logo */}
         <Link href="/" className={styles.logoLink} onClick={closeMenu}>
           <Image
-            src="/logo03.png"
+            src={NAVBAR_LOGO_DEFAULT_SRC}
             alt="Ken Beauty Salon logo"
             width={50}
             height={50}
@@ -78,6 +83,17 @@ export default function NavbarModern() {
             style={{ width: "50px", height: "50px", objectFit: "contain" }}
             priority
           />
+          {getSpecialPeriodLogo() && (
+            <Image
+              src={getSpecialPeriodLogo()}
+              alt="Commemorative emblem"
+              width={40}
+              height={40}
+              className={styles.specialLogo}
+              style={{ width: "40px", height: "40px", objectFit: "contain" }}
+              priority
+            />
+          )}
         </Link>
 
         {/* Desktop Navigation */}

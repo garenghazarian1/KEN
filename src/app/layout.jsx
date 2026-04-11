@@ -9,7 +9,14 @@ import ClientLayout from "@/components/ClientLayout";
 import styles from "./Layout.module.css";
 import { Analytics } from "@vercel/analytics/react";
 import Script from "next/script";
-import { BASE_URL, BUSINESS, THIRD_PARTY } from "@/config/constants";
+import {
+  BASE_URL,
+  BUSINESS,
+  THIRD_PARTY,
+  getSpecialPeriodLogo,
+} from "@/config/constants";
+
+const specialPeriodActive = getSpecialPeriodLogo() !== null;
 
 export const metadata = {
   metadataBase: new URL(BASE_URL),
@@ -18,6 +25,22 @@ export const metadata = {
     template: `%s | ${BUSINESS.name}`,
   },
   description: BUSINESS.description,
+  icons: specialPeriodActive
+    ? {
+        icon: [
+          { url: "/favicon-for-app/favicon.ico", sizes: "48x48" },
+          { url: "/favicon-for-app/favicon.svg", type: "image/svg+xml" },
+          {
+            url: "/favicon-for-app/favicon-96x96.png",
+            sizes: "96x96",
+            type: "image/png",
+          },
+        ],
+        apple: "/favicon-for-app/apple-touch-icon.png",
+      }
+    : {
+        icon: "/favicon.ico",
+      },
   alternates: {
     canonical: "/",
   },

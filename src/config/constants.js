@@ -104,10 +104,35 @@ export const THIRD_PARTY = {
 
 // Image URLs (for metadata, structured data, etc.)
 export const IMAGES = {
-  logo: `${BASE_URL}/logo01.png`,
+  get logo() {
+    return getSpecialPeriodLogo()
+      ? `${BASE_URL}/specialPeriodLogo/002.png`
+      : `${BASE_URL}/logo01.png`;
+  },
   hero: `${BASE_URL}/hero04.jpg`,
   favicon: `${BASE_URL}/favicon.ico`,
 };
+
+/** Navbar mark — always shown regardless of special periods. */
+export const NAVBAR_LOGO_DEFAULT_SRC = "/logo03.png";
+
+/**
+ * Temporary commemorative logo shown beside the Ken mark.
+ * Inclusive calendar dates in Asia/Dubai timezone.
+ */
+export const SPECIAL_PERIOD_LOGO = {
+  startDate: "2026-04-11",
+  endDate: "2026-05-11",
+  src: "/specialPeriodLogo/002.png",
+};
+
+/** Returns the special-period logo path during the active window, or null outside it. */
+export function getSpecialPeriodLogo(now = new Date()) {
+  const ymd = now.toLocaleDateString("en-CA", { timeZone: "Asia/Dubai" });
+  const { startDate, endDate, src } = SPECIAL_PERIOD_LOGO;
+  if (ymd >= startDate && ymd <= endDate) return src;
+  return null;
+}
 
 // Helper function to format phone number for tel: links
 // Removes spaces, dashes, parentheses, and other formatting

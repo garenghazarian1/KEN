@@ -40,6 +40,13 @@
   object-fit: contain;
 }
 
+.specialLogo {
+  width: 36px;
+  height: 36px;
+  object-fit: contain;
+  margin-left: var(--spacing-1-5, 6px);
+}
+
 .navActions {
   display: flex;
   align-items: center;

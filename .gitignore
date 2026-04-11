@@ -34,3 +34,6 @@ yarn-error.log*
 # typescript
 *.tsbuildinfo
 next-env.d.ts
+
+# Local-only markdown / notes at repo root (todo lists, scratch docs)
+/md/

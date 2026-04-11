@@ -3,5 +3,11 @@
     "paths": {
       "@/*": ["./src/*"]
     }
-  }
+  },
+  "typeAcquisition": {
+    "enable": false,
+    "disableFilenameBasedTypeAcquisition": true,
+    "exclude": ["page"]
+  },
+  "exclude": ["node_modules", ".next"]
 }
