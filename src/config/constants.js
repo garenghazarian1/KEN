@@ -116,6 +116,18 @@ export const IMAGES = {
 /** Navbar mark — always shown regardless of special periods. */
 export const NAVBAR_LOGO_DEFAULT_SRC = "/logo03.png";
 
+/** Bump when replacing `public/favicon-for-app/apple-touch-icon.png` so clients refetch. */
+export const APPLE_TOUCH_ICON_REVISION = 1;
+
+/** Safari / iOS Add to Home Screen (`rel="apple-touch-icon"`). */
+export const APPLE_TOUCH_ICON_URL = `/favicon-for-app/apple-touch-icon.png?v=${APPLE_TOUCH_ICON_REVISION}`;
+
+/** Bump when changing PWA manifest fields or launcher PNGs under `public/favicon-for-app/`. */
+export const WEB_APP_MANIFEST_REVISION = 1;
+
+/** Web app manifest for Chrome / Android install and launcher icons. */
+export const WEB_APP_MANIFEST_URL = `/favicon-for-app/site.webmanifest?v=${WEB_APP_MANIFEST_REVISION}`;
+
 /**
  * Temporary commemorative logo shown beside the Ken mark.
  * Inclusive calendar dates in Asia/Dubai timezone.

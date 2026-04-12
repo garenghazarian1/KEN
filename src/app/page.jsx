@@ -23,11 +23,18 @@ export const metadata = {
     siteName: BUSINESS.name,
     locale: "en_US",
     type: "website",
+    images: [
+      {
+        url: IMAGES.hero,
+        alt: BUSINESS.fullName,
+      },
+    ],
   },
   twitter: {
     card: "summary_large_image",
     title: BUSINESS.fullName,
     description: BUSINESS.description,
+    images: [IMAGES.hero],
   },
 };
 

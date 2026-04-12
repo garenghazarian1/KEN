@@ -10,9 +10,12 @@ import styles from "./Layout.module.css";
 import { Analytics } from "@vercel/analytics/react";
 import Script from "next/script";
 import {
+  APPLE_TOUCH_ICON_URL,
   BASE_URL,
   BUSINESS,
+  IMAGES,
   THIRD_PARTY,
+  WEB_APP_MANIFEST_URL,
   getSpecialPeriodLogo,
 } from "@/config/constants";
 
@@ -25,6 +28,7 @@ export const metadata = {
     template: `%s | ${BUSINESS.name}`,
   },
   description: BUSINESS.description,
+  manifest: WEB_APP_MANIFEST_URL,
   icons: specialPeriodActive
     ? {
         icon: [
@@ -36,10 +40,11 @@ export const metadata = {
             type: "image/png",
           },
         ],
-        apple: "/favicon-for-app/apple-touch-icon.png",
+        apple: APPLE_TOUCH_ICON_URL,
       }
     : {
         icon: "/favicon.ico",
+        apple: APPLE_TOUCH_ICON_URL,
       },
   alternates: {
     canonical: "/",
@@ -51,11 +56,18 @@ export const metadata = {
     siteName: BUSINESS.name,
     locale: "en_US",
     type: "website",
+    images: [
+      {
+        url: IMAGES.hero,
+        alt: BUSINESS.fullName,
+      },
+    ],
   },
   twitter: {
     card: "summary_large_image",
     title: BUSINESS.fullName,
     description: BUSINESS.description,
+    images: [IMAGES.hero],
   },
 };
 
