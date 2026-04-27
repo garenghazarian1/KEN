@@ -39,8 +39,6 @@ export default function PageTen() {
           >
             <Link
               href={profile.href}
-              target="_blank"
-              rel="noopener noreferrer"
               className={styles.profile}
               aria-label={`Follow @${profile.username} on Instagram`}
             >

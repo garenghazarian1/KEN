@@ -89,8 +89,6 @@ export default function Hero() {
         <div className={styles.buttonContainer}>
           <a
             href="https://wa.me/971503043570?text=Hello%20KEN%20Beauty%20Center%2C%20I%20would%20like%20to%20know%20more%20about%20your%20services."
-            target="_blank"
-            rel="noopener noreferrer"
             className={styles.whatsappButton}
             aria-label="Contact us on WhatsApp"
           >

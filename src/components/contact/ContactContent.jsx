@@ -2,7 +2,15 @@
 
 import Image from "next/image";
 import { useState } from "react";
-import { Phone, Mail, MessageCircle, MapPin, Send } from "lucide-react";
+import {
+  Phone,
+  Mail,
+  MessageCircle,
+  MapPin,
+  Send,
+  Briefcase,
+} from "lucide-react";
+import { CAREERS_URL } from "@/config/constants";
 import styles from "./Contact.modern.module.css";
 
 const getGoogleMapsUrl = (store) =>
@@ -40,6 +48,25 @@ export default function ContactContent({ stores }) {
         </p>
       </header>
 
+      {/* Careers CTA */}
+      <section className={styles.careersCta} aria-label="Careers">
+        <div className={styles.careersText}>
+          <h2 className={styles.careersTitle}>Join our team</h2>
+          <p className={styles.careersDescription}>
+            We&apos;re hiring stylists, barbers, and trainers across our Abu
+            Dhabi locations.
+          </p>
+        </div>
+        <a
+          href={CAREERS_URL}
+          className={styles.careersBtn}
+          aria-label="View open roles at Ken Beauty Salon"
+        >
+          <Briefcase size={18} aria-hidden />
+          <span>View open roles</span>
+        </a>
+      </section>
+
       {/* Locations */}
       <section className={styles.locations}>
         {stores.map((store) => (
@@ -76,8 +103,6 @@ export default function ContactContent({ stores }) {
 
                 <a
                   href={`https://wa.me/${store.whatsapp.replace(/[\s+]/g, "")}?text=${encodeURIComponent("Hi, I'd like to book an appointment.")}`}
-                  target="_blank"
-                  rel="noopener noreferrer"
                   className={`${styles.contactItem} ${styles.whatsapp}`}
                 >
                   <MessageCircle size={18} />
@@ -94,8 +119,6 @@ export default function ContactContent({ stores }) {
 
                 <a
                   href={getGoogleMapsUrl(store)}
-                  target="_blank"
-                  rel="noopener noreferrer"
                   className={styles.contactItem}
                 >
                   <MapPin size={18} />

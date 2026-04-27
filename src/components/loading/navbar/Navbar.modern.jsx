@@ -4,10 +4,11 @@ import { useState, useEffect, useRef } from "react";
 import Link from "next/link";
 import Image from "next/image";
 import { motion, AnimatePresence } from "framer-motion";
-import { Menu, X, Calendar, Coffee, CreditCard } from "lucide-react";
+import { Menu, X, Calendar, Coffee, CreditCard, Briefcase } from "lucide-react";
 import {
   BOOKING_URL,
   CARD_URL,
+  CAREERS_URL,
   NAVBAR_LOGO_DEFAULT_SRC,
   getSpecialPeriodLogo,
 } from "@/config/constants";
@@ -262,6 +263,21 @@ export default function NavbarModern() {
                   <Calendar size={20} aria-hidden />
                   <span>Book Now</span>
                 </Link>
+              </motion.div>
+              <motion.div
+                initial={{ opacity: 0, x: -20 }}
+                animate={{ opacity: 1, x: 0 }}
+                transition={{ delay: (navLinks.length + 3) * 0.1 }}
+              >
+                <a
+                  href={CAREERS_URL}
+                  className={styles.mobileBookButton}
+                  onClick={closeMenu}
+                  aria-label="Careers - open roles"
+                >
+                  <Briefcase size={20} aria-hidden />
+                  <span>Careers</span>
+                </a>
               </motion.div>
             </div>
           </motion.div>

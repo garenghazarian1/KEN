@@ -112,8 +112,6 @@ const StoreInfo = ({ store, isFirst, index }) => (
           <motion.a
             className={styles.mapLink}
             href={store.mapUrl || getGoogleMapsUrl(store)}
-            target="_blank"
-            rel="noopener noreferrer"
             aria-label={`Open ${store.name} in Google Maps`}
             data-track="location-map"
             whileHover={{ scale: 1.05 }}
@@ -182,8 +180,6 @@ const StoreInfo = ({ store, isFirst, index }) => (
             <motion.a
               className={styles.whatsapp}
               href={getWhatsAppUrl(store.whatsapp)}
-              target="_blank"
-              rel="noopener noreferrer"
               aria-label={`WhatsApp ${store.whatsapp}`}
               data-track="location-whatsapp"
               whileHover={{ scale: 1.05 }}
@@ -357,8 +353,6 @@ export default function ContactContent({ stores }) {
               <motion.a
                 className={styles.secondaryAction}
                 href={CONTACT.whatsapp.url()}
-                target="_blank"
-                rel="noopener noreferrer"
                 data-track="cta-whatsapp"
                 whileHover={{ scale: 1.05, y: -2 }}
                 whileTap={{ scale: 0.95 }}
@@ -416,8 +410,6 @@ export default function ContactContent({ stores }) {
                 href={CONTACT.whatsapp.url(
                   "Hi! I&apos;d like to book an appointment."
                 )}
-                target="_blank"
-                rel="noopener noreferrer"
                 data-track="cta-whatsapp-secondary"
                 initial={{ opacity: 0, x: -20 }}
                 animate={{ opacity: 1, x: 0 }}
@@ -677,8 +669,6 @@ export default function ContactContent({ stores }) {
                   <motion.a
                     className={styles.inlineLink}
                     href={CONTACT.whatsapp.url()}
-                    target="_blank"
-                    rel="noopener noreferrer"
                     data-track="cta-whatsapp-inline"
                     whileHover={{ scale: 1.05, x: 4 }}
                     whileTap={{ scale: 0.95 }}

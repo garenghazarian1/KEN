@@ -25,6 +25,59 @@
   color: var(--color-text-secondary);
 }
 
+/* Careers CTA */
+.careersCta {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--spacing-6);
+  flex-wrap: wrap;
+  max-width: 900px;
+  margin: 0 auto var(--spacing-12);
+  padding: var(--spacing-6) var(--spacing-8);
+  background: var(--color-bg-card);
+  border-radius: 16px;
+  box-shadow: 0 4px 20px var(--overlay-black-08);
+}
+
+.careersText {
+  flex: 1;
+  min-width: 240px;
+}
+
+.careersTitle {
+  font-size: var(--font-size-xl);
+  font-weight: 600;
+  color: var(--color-text-primary);
+  margin-bottom: var(--spacing-1);
+}
+
+.careersDescription {
+  font-size: var(--font-size-sm);
+  color: var(--color-text-secondary);
+  margin: 0;
+}
+
+.careersBtn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--spacing-2);
+  padding: var(--spacing-3) var(--spacing-5);
+  background: var(--color-secondary);
+  color: var(--color-text-inverse);
+  border-radius: 10px;
+  font-size: var(--font-size-base);
+  font-weight: 600;
+  text-decoration: none;
+  transition: background 0.2s;
+  white-space: nowrap;
+}
+
+.careersBtn:hover {
+  background: var(--color-secondary-dark);
+}
+
 /* Locations Grid */
 .locations {
   display: grid;
@@ -176,5 +229,16 @@
 
   .formSection {
     padding: var(--spacing-6);
+  }
+
+  .careersCta {
+    flex-direction: column;
+    align-items: stretch;
+    text-align: center;
+    padding: var(--spacing-6);
+  }
+
+  .careersBtn {
+    width: 100%;
   }
 }

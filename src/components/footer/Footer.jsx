@@ -14,8 +14,6 @@ export default function Footer() {
       <div className={styles.socialIcons}>
         <Link
           href={SOCIAL_MEDIA.instagram.beauty}
-          target="_blank"
-          rel="noopener noreferrer"
           className={styles.socialLink}
           aria-label={`Follow us on Instagram: ${SOCIAL_HANDLES.instagram.beauty}`}
         >
@@ -32,8 +30,6 @@ export default function Footer() {
         </Link>
         <Link
           href={SOCIAL_MEDIA.instagram.barbershop}
-          target="_blank"
-          rel="noopener noreferrer"
           className={styles.socialLink}
           aria-label={`Follow us on Instagram: ${SOCIAL_HANDLES.instagram.barbershop}`}
         >
@@ -50,8 +46,6 @@ export default function Footer() {
         </Link>
         <Link
           href={SOCIAL_MEDIA.tiktok.barbershop}
-          target="_blank"
-          rel="noopener noreferrer"
           className={styles.socialLink}
           aria-label={`Follow us on TikTok: ${SOCIAL_HANDLES.tiktok.barbershop}`}
         >
@@ -68,8 +62,6 @@ export default function Footer() {
         </Link>
         <Link
           href={SOCIAL_MEDIA.tiktok.beauty}
-          target="_blank"
-          rel="noopener noreferrer"
           className={styles.socialLink}
           aria-label={`Follow us on TikTok: ${SOCIAL_HANDLES.tiktok.beauty}`}
         >

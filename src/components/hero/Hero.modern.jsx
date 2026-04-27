@@ -4,8 +4,8 @@ import { useState, useEffect } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import { motion } from "framer-motion";
-import { MessageCircle, ArrowRight } from "lucide-react";
-import { BOOKING_URL } from "@/config/constants";
+import { MessageCircle, ArrowRight, Briefcase } from "lucide-react";
+import { BOOKING_URL, CAREERS_URL } from "@/config/constants";
 import styles from "./Hero.modern.module.css";
 
 const images = [
@@ -110,13 +110,27 @@ export default function HeroModern() {
               </Link>
               <a
                 href="https://wa.me/971503043570?text=Hello%20KEN%20Beauty%20Center%2C%20I%20would%20like%20to%20know%20more%20about%20your%20services."
-                target="_blank"
-                rel="noopener noreferrer"
                 className={styles.secondaryButton}
                 aria-label="Contact us on WhatsApp"
               >
                 <MessageCircle size={20} />
                 <span>Chat with Us</span>
+              </a>
+            </motion.div>
+
+            <motion.div
+              className={styles.heroCareers}
+              initial={{ opacity: 0, y: 12 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ delay: 1, duration: 0.5 }}
+            >
+              <a
+                href={CAREERS_URL}
+                className={styles.heroCareersLink}
+                aria-label="View open roles: stylists, barbers, and trainers"
+              >
+                <Briefcase size={16} className={styles.heroCareersIcon} aria-hidden />
+                <span>We&apos;re hiring — view open roles</span>
               </a>
             </motion.div>
           </motion.div>

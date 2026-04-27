@@ -22,12 +22,14 @@ import {
   MessageCircle,
   Coffee,
   CreditCard,
+  Briefcase,
 } from "lucide-react";
 import {
   SOCIAL_MEDIA,
   BUSINESS,
   BOOKING_URL,
   CARD_URL,
+  CAREERS_URL,
   APP_STORES,
 } from "@/config/constants";
 import { stores } from "@/data/stores";
@@ -64,6 +66,7 @@ export default function FooterModern() {
     { title: "Gallery", path: "/gallery", icon: ImageIcon },
     { title: "Drinks Menu", path: "/drinks", icon: Coffee },
     { title: "Ken Card", path: CARD_URL, icon: CreditCard, external: true },
+    { title: "Careers", path: CAREERS_URL, icon: Briefcase, external: true },
   ];
 
   const legalLinks = [
@@ -173,8 +176,6 @@ export default function FooterModern() {
                           `Hello ${store.name}, I would like to know more about your services.`
                         )}`}
                         className={styles.contactLink}
-                        target="_blank"
-                        rel="noopener noreferrer"
                         aria-label={`WhatsApp ${store.name}`}
                       >
                         <MessageCircle
@@ -214,8 +215,6 @@ export default function FooterModern() {
                       {link.external ? (
                         <a
                           href={link.path}
-                          target="_blank"
-                          rel="noopener noreferrer"
                           className={styles.footerLink}
                         >
                           <Icon size={16} className={styles.footerLinkIcon} />
@@ -245,8 +244,6 @@ export default function FooterModern() {
               <div className={styles.socialLinks}>
                 <a
                   href={SOCIAL_MEDIA.instagram.beauty}
-                  target="_blank"
-                  rel="noopener noreferrer"
                   className={styles.socialLink}
                   aria-label="Follow us on Instagram - Beauty"
                 >
@@ -255,8 +252,6 @@ export default function FooterModern() {
                 </a>
                 <a
                   href={SOCIAL_MEDIA.instagram.barbershop}
-                  target="_blank"
-                  rel="noopener noreferrer"
                   className={styles.socialLink}
                   aria-label="Follow us on Instagram - Barbershop"
                 >
@@ -265,8 +260,6 @@ export default function FooterModern() {
                 </a>
                 <a
                   href={SOCIAL_MEDIA.tiktok.beauty}
-                  target="_blank"
-                  rel="noopener noreferrer"
                   className={styles.socialLink}
                   aria-label="Follow us on TikTok - Beauty"
                 >
@@ -283,8 +276,6 @@ export default function FooterModern() {
                 </a>
                 <a
                   href={SOCIAL_MEDIA.facebook.beauty}
-                  target="_blank"
-                  rel="noopener noreferrer"
                   className={styles.socialLink}
                   aria-label="Follow us on Facebook - Beauty"
                 >
@@ -293,8 +284,6 @@ export default function FooterModern() {
                 </a>
                 <a
                   href={SOCIAL_MEDIA.facebook.barbershop}
-                  target="_blank"
-                  rel="noopener noreferrer"
                   className={styles.socialLink}
                   aria-label="Follow us on Facebook - Barbershop"
                 >
@@ -319,8 +308,6 @@ export default function FooterModern() {
               <div className={styles.appStoreLinks}>
                 <a
                   href={APP_STORES.googlePlay}
-                  target="_blank"
-                  rel="noopener noreferrer"
                   className={styles.appStoreButton}
                   aria-label="Download on Google Play"
                 >
@@ -335,8 +322,6 @@ export default function FooterModern() {
                 </a>
                 <a
                   href={APP_STORES.appleAppStore}
-                  target="_blank"
-                  rel="noopener noreferrer"
                   className={styles.appStoreButton}
                   aria-label="Download on the App Store"
                 >

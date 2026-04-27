@@ -59,7 +59,7 @@ export default function PrivacyPage() {
             {BUSINESS.name} (&quot;we,&quot; &quot;our,&quot; or &quot;us&quot;) is committed to
             protecting your privacy. This Privacy Policy explains how we collect, use, disclose,
             and safeguard your information when you visit our website{" "}
-            <a href={BASE_URL} target="_blank" rel="noopener noreferrer">
+            <a href={BASE_URL}>
               {BASE_URL}
             </a>
             .

@@ -16,6 +16,10 @@ export const BOOKING_URL = "https://kenbeauty.zenoti.com/webstoreNew/services";
 // Ken Card (subscription / rewards)
 export const CARD_URL = "https://card.kenbeautysalon.com/";
 
+// Careers / open roles (hosted on Superuser admin app)
+export const CAREERS_URL =
+  "https://beauty-admin-mauve.vercel.app/en/careers/company/ken-beauty-salon";
+
 // Contact Information
 export const CONTACT = {
   primaryPhone: "+971 2 621 8802", // Galleria landline
