@@ -204,7 +204,7 @@
   max-width: 920px;
   margin-left: auto;
   margin-right: auto;
-  padding: 0 var(--spacing-4);
+  padding: 0;
 }
 
 /* ─── Category accordion ───────────────────────────────── */
@@ -232,7 +232,7 @@
   align-items: flex-end;
   justify-content: space-between;
   gap: var(--spacing-3);
-  padding: var(--spacing-4) var(--spacing-4);
+  padding: var(--spacing-4) 0 0;
   background: transparent;
   border: none;
   cursor: pointer;
@@ -267,6 +267,23 @@
   pointer-events: none;
 }
 
+/* ─── Glass bar behind category name / controls ─── */
+.categoryGlassBar {
+  position: relative;
+  z-index: 2;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--spacing-3);
+  width: 100%;
+  padding: 0;
+  background: rgba(0, 0, 0, 0.3);
+  backdrop-filter: blur(14px) saturate(1.4);
+  -webkit-backdrop-filter: blur(14px) saturate(1.4);
+  border-top: 1px solid rgba(255, 255, 255, 0.08);
+  box-shadow: 0 2px 12px rgba(0, 0, 0, 0.25);
+}
+
 .categoryTrigger:hover {
   background: transparent;
 }
@@ -277,21 +294,19 @@
 }
 
 .categoryTriggerLeft {
-  position: relative;
-  z-index: 2;
   display: flex;
   align-items: center;
   gap: var(--spacing-3);
   min-width: 0;
+  padding: var(--spacing-3) var(--spacing-4);
 }
 
 .categoryTriggerRight {
-  position: relative;
-  z-index: 2;
   display: flex;
   align-items: center;
   gap: var(--spacing-3);
   flex-shrink: 0;
+  padding: var(--spacing-3) var(--spacing-4);
 }
 
 .categoryIcon {
@@ -313,14 +328,6 @@
   font-weight: 700;
   margin: 0;
   letter-spacing: -0.02em;
-  background: linear-gradient(
-    135deg,
-    var(--color-text-primary) 0%,
-    var(--color-secondary) 100%
-  );
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  background-clip: text;
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
@@ -328,8 +335,6 @@
 }
 
 .countBadge {
-  position: relative;
-  z-index: 2;
   display: inline-flex;
   align-items: center;
   padding: 0;
@@ -343,8 +348,6 @@
 }
 
 .chevron {
-  position: relative;
-  z-index: 2;
   display: flex;
   align-items: center;
   color: rgba(255, 255, 255, 0.85);

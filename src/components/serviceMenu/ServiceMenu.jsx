@@ -316,25 +316,27 @@ function CategoryAccordion({
           />
         )}
         <div className={styles.categoryTriggerOverlay} aria-hidden />
-        <div className={styles.categoryTriggerLeft}>
-          <motion.div
-            className={styles.categoryIcon}
-            whileHover={{ scale: 1.1 }}
-            transition={{ duration: 0.3 }}
-          >
-            <Icon size={20} strokeWidth={2} />
-          </motion.div>
-          <h2 className={styles.categoryTitle}>{section.title}</h2>
-        </div>
-        <div className={styles.categoryTriggerRight}>
-          <span className={styles.countBadge}>{count} services</span>
-          <motion.span
-            className={styles.chevron}
-            animate={{ rotate: isOpen ? 180 : 0 }}
-            transition={{ duration: 0.3, ease: "easeInOut" }}
-          >
-            <ChevronDown size={18} />
-          </motion.span>
+        <div className={styles.categoryGlassBar}>
+          <div className={styles.categoryTriggerLeft}>
+            <motion.div
+              className={styles.categoryIcon}
+              whileHover={{ scale: 1.1 }}
+              transition={{ duration: 0.3 }}
+            >
+              <Icon size={20} strokeWidth={2} />
+            </motion.div>
+            <h2 className={styles.categoryTitle}>{section.title}</h2>
+          </div>
+          <div className={styles.categoryTriggerRight}>
+            <span className={styles.countBadge}>{count} services</span>
+            <motion.span
+              className={styles.chevron}
+              animate={{ rotate: isOpen ? 180 : 0 }}
+              transition={{ duration: 0.3, ease: "easeInOut" }}
+            >
+              <ChevronDown size={18} />
+            </motion.span>
+          </div>
         </div>
       </button>
 
