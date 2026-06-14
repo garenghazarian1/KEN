@@ -23,6 +23,7 @@ import {
   Coffee,
   CreditCard,
   Briefcase,
+  Scissors,
 } from "lucide-react";
 import {
   SOCIAL_MEDIA,
@@ -64,6 +65,7 @@ export default function FooterModern() {
     { title: "About Us", path: "/about", icon: Info },
     { title: "Contact", path: "/contact", icon: Phone },
     { title: "Gallery", path: "/gallery", icon: ImageIcon },
+    { title: "Services & Prices", path: "/services", icon: Scissors },
     { title: "Drinks Menu", path: "/drinks", icon: Coffee },
     { title: "Ken Card", path: CARD_URL, icon: CreditCard, external: true },
     { title: "Careers", path: CAREERS_URL, icon: Briefcase, external: true },

@@ -1,0 +1,1020 @@
+/* ============================================
+   SERVICE MENU — accordion + search
+   ============================================ */
+
+.container {
+  position: relative;
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: calc(
+      var(--app-banner-height) + 5rem + var(--spacing-6) +
+        env(safe-area-inset-top)
+    )
+    0 var(--spacing-8);
+  min-height: calc(100vh - 10rem);
+  overflow-x: hidden;
+  background: var(--color-bg-primary);
+  background-image:
+    radial-gradient(
+      circle at 10% 20%,
+      var(--overlay-primary-tint-40) 0%,
+      transparent 40%
+    ),
+    radial-gradient(
+      circle at 90% 80%,
+      var(--overlay-primary-tint-30) 0%,
+      transparent 40%
+    ),
+    radial-gradient(
+      circle at 50% 50%,
+      var(--overlay-secondary-10) 0%,
+      transparent 50%
+    );
+  background-size: 100% 100%;
+  background-attachment: fixed;
+}
+
+.container::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: var(--glass-white-light);
+  backdrop-filter: blur(var(--glass-blur-sm));
+  -webkit-backdrop-filter: blur(var(--glass-blur-sm));
+  z-index: 0;
+  pointer-events: none;
+}
+
+/* ─── Search bar ────────────────────────────────── */
+.searchWrapper {
+  position: relative;
+  z-index: 10;
+  max-width: 920px;
+  margin: 0 auto var(--spacing-4);
+  padding: 0 var(--spacing-4);
+}
+
+.searchBar {
+  position: relative;
+  display: flex;
+  align-items: center;
+  background: transparent;
+  border: none;
+  border-bottom: 1px solid var(--glass-border-medium);
+  transition:
+    border-color 0.2s ease,
+    box-shadow 0.2s ease;
+  width: 100%;
+}
+
+.searchBar:focus-within {
+  border-bottom-color: var(--color-secondary);
+  box-shadow: none;
+}
+
+.searchIcon {
+  position: absolute;
+  left: var(--spacing-5);
+  color: var(--color-text-secondary);
+  flex-shrink: 0;
+  pointer-events: none;
+}
+
+.searchInput {
+  width: 100%;
+  background: transparent;
+  border: none;
+  outline: none;
+  font-size: var(--font-size-base);
+  color: var(--color-text-primary);
+  padding: var(--spacing-4) var(--spacing-12) var(--spacing-4)
+    calc(var(--spacing-5) + 18px + var(--spacing-3));
+  border-radius: 0;
+  min-height: 52px;
+}
+
+.searchInput::placeholder {
+  color: var(--color-text-secondary);
+  opacity: 0.7;
+}
+
+/* Remove browser default search cancel button */
+.searchInput::-webkit-search-cancel-button {
+  display: none;
+}
+
+.clearButton {
+  position: absolute;
+  right: var(--spacing-4);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 28px;
+  height: 28px;
+  background: transparent;
+  border: none;
+  border-radius: 0;
+  color: var(--color-text-secondary);
+  cursor: pointer;
+  transition:
+    background 0.2s ease,
+    color 0.2s ease;
+}
+
+.clearButton:hover {
+  color: var(--color-secondary);
+}
+
+.resultsCount {
+  text-align: center;
+  margin-top: var(--spacing-3);
+  font-size: var(--font-size-sm);
+  color: var(--color-text-secondary);
+  font-weight: var(--font-weight-medium);
+}
+
+/* ─── Highlight ────────────────────────────────────────── */
+.highlight {
+  background: var(--overlay-secondary-20);
+  color: var(--color-secondary-dark);
+  border-radius: 0;
+  padding: 0 2px;
+  font-weight: var(--font-weight-semibold);
+}
+
+/* ─── States ───────────────────────────────────────────── */
+.errorState,
+.emptyState,
+.noResults {
+  position: relative;
+  z-index: 1;
+  text-align: center;
+  padding: var(--spacing-12) var(--spacing-6);
+  margin-bottom: var(--spacing-8);
+  background: transparent;
+  border: none;
+  border-radius: 0;
+  color: var(--color-text-secondary);
+}
+
+.errorState {
+  border-left: 2px solid var(--color-secondary);
+}
+
+.errorHint {
+  margin-top: var(--spacing-2);
+  font-size: var(--font-size-sm);
+}
+
+.noResultsIcon {
+  color: var(--color-secondary);
+  opacity: 0.4;
+  margin: 0 auto var(--spacing-4);
+  display: block;
+}
+
+.noResultsClear {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--spacing-2);
+  margin-top: var(--spacing-4);
+  padding: var(--spacing-1) 0;
+  background: transparent;
+  border: none;
+  border-radius: 0;
+  color: var(--color-secondary);
+  font-size: var(--font-size-sm);
+  font-weight: var(--font-weight-semibold);
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.noResultsClear:hover {
+  color: var(--color-secondary-dark);
+}
+
+/* ─── Category list ────────────────────────────────────── */
+.categoriesGrid {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-2);
+  margin-bottom: var(--spacing-8);
+  max-width: 920px;
+  margin-left: auto;
+  margin-right: auto;
+  padding: 0 var(--spacing-4);
+}
+
+/* ─── Category accordion ───────────────────────────────── */
+.categorySection {
+  width: 100%;
+  background: transparent;
+  border: none;
+  border-radius: 0;
+  overflow: hidden;
+  transition:
+    border-color 0.2s ease,
+    box-shadow 0.2s ease;
+}
+
+.categorySection:has(.categoryTrigger[aria-expanded="true"]) {
+  border-color: transparent;
+  box-shadow: none;
+}
+
+/* ─── Category trigger — image as background, title on top ─ */
+.categoryTrigger {
+  position: relative;
+  width: 100%;
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: var(--spacing-3);
+  padding: var(--spacing-4) var(--spacing-4);
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  text-align: left;
+  min-height: 160px;
+  overflow: hidden;
+  transition: filter 0.2s ease;
+}
+
+.categoryImage {
+  object-fit: cover;
+  object-position: center top;
+  transition: transform 0.5s ease;
+  z-index: 0;
+}
+
+.categorySection:hover .categoryImage {
+  transform: scale(1.04);
+}
+
+/* Dark gradient so the white text is always readable */
+.categoryTriggerOverlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    to top,
+    rgba(0, 0, 0, 0.8) 0%,
+    rgba(0, 0, 0, 0.35) 45%,
+    rgba(0, 0, 0, 0.1) 100%
+  );
+  z-index: 1;
+  pointer-events: none;
+}
+
+.categoryTrigger:hover {
+  background: transparent;
+}
+
+.categoryTrigger:focus-visible {
+  outline: 2px solid var(--color-secondary);
+  outline-offset: -2px;
+}
+
+.categoryTriggerLeft {
+  position: relative;
+  z-index: 2;
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-3);
+  min-width: 0;
+}
+
+.categoryTriggerRight {
+  position: relative;
+  z-index: 2;
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-3);
+  flex-shrink: 0;
+}
+
+.categoryIcon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 36px;
+  height: 36px;
+  background: transparent;
+  border-radius: 0;
+  color: var(--color-secondary-light);
+  box-shadow: none;
+  flex-shrink: 0;
+}
+
+.categoryTitle {
+  color: #fff;
+  font-size: clamp(0.95rem, 2vw, 1.125rem);
+  font-weight: 700;
+  margin: 0;
+  letter-spacing: -0.02em;
+  background: linear-gradient(
+    135deg,
+    var(--color-text-primary) 0%,
+    var(--color-secondary) 100%
+  );
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  max-width: 100%;
+}
+
+.countBadge {
+  position: relative;
+  z-index: 2;
+  display: inline-flex;
+  align-items: center;
+  padding: 0;
+  background: transparent;
+  border: none;
+  border-radius: 0;
+  font-size: var(--font-size-xs);
+  font-weight: var(--font-weight-semibold);
+  color: rgba(255, 255, 255, 0.9);
+  white-space: nowrap;
+}
+
+.chevron {
+  position: relative;
+  z-index: 2;
+  display: flex;
+  align-items: center;
+  color: rgba(255, 255, 255, 0.85);
+}
+
+/* ─── Category body (expanded content) ────────────────── */
+.categoryBody {
+  padding: var(--spacing-2) 0 var(--spacing-4);
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-4);
+}
+
+/* ─── Subcategory accordion ────────────────────────────── */
+.subcategoryBlock {
+  border: none;
+  border-radius: 0;
+  overflow: hidden;
+  background: linear-gradient(
+    90deg,
+    color-mix(in srgb, var(--color-secondary) 6%, transparent) 0%,
+    color-mix(in srgb, var(--color-secondary-light) 3%, transparent) 42%,
+    transparent 100%
+  );
+}
+
+.subcategoryTrigger {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--spacing-3);
+  padding: var(--spacing-4) var(--spacing-5);
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  text-align: left;
+  transition: background 0.2s ease;
+  min-height: 52px;
+}
+
+.subcategoryTrigger:hover {
+  background: color-mix(in srgb, var(--color-secondary) 5%, transparent);
+}
+
+.subcategoryTrigger:focus-visible {
+  outline: 2px solid var(--color-secondary);
+  outline-offset: -2px;
+}
+
+.subcategoryTitleText {
+  font-size: var(--font-size-base);
+  font-weight: var(--font-weight-semibold);
+  color: color-mix(
+    in srgb,
+    var(--color-text-primary) 82%,
+    var(--color-secondary-dark)
+  );
+  padding-left: var(--spacing-3);
+  border-left: 4px solid var(--color-secondary);
+}
+
+.subcategoryMeta {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-2);
+  flex-shrink: 0;
+}
+
+.subCount {
+  display: inline-flex;
+  align-items: center;
+  padding: 0;
+  background: transparent;
+  border-radius: 0;
+  font-size: var(--font-size-xs);
+  font-weight: var(--font-weight-semibold);
+  color: var(--color-secondary);
+}
+
+.chevronSub {
+  display: flex;
+  align-items: center;
+  color: var(--color-text-secondary);
+}
+
+/* ─── Service Layout Switcher ──────────────────────────── */
+.viewSwitcher {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  gap: var(--spacing-3);
+  max-width: 920px;
+  margin: 0 auto var(--spacing-6);
+  padding: 0 var(--spacing-4);
+}
+
+.viewSwitcherLabel {
+  font-size: var(--font-size-xs);
+  font-weight: 800;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--color-text-secondary);
+}
+
+.viewButton {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  padding: var(--spacing-1) 0;
+  background: transparent;
+  border: none;
+  border-radius: 0;
+  color: var(--color-text-secondary);
+  cursor: pointer;
+  font-size: var(--font-size-sm);
+  font-weight: 800;
+  text-transform: capitalize;
+  transition: color 0.2s ease;
+}
+
+.viewButtonIcon {
+  flex-shrink: 0;
+  opacity: 0.85;
+  transition:
+    opacity 0.2s ease,
+    transform 0.2s ease;
+}
+
+.viewButton::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: -0.2rem;
+  height: 2px;
+  background: var(--color-secondary);
+  transform: scaleX(0);
+  transform-origin: left center;
+  transition: transform 0.2s ease;
+}
+
+.viewButton:hover,
+.viewButtonActive {
+  color: var(--color-secondary-dark);
+}
+
+.viewButton:hover .viewButtonIcon,
+.viewButtonActive .viewButtonIcon {
+  opacity: 1;
+  transform: translateY(-1px);
+}
+
+.viewButtonActive::after {
+  transform: scaleX(1);
+}
+
+/* ─── Services Display ─────────────────────────────────── */
+.servicesDisplay {
+  position: relative;
+  width: 100%;
+  padding: var(--spacing-4) 0 var(--spacing-3);
+}
+
+.carouselControls {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--spacing-3);
+  padding: 0 var(--spacing-4) var(--spacing-3);
+}
+
+.carouselHint {
+  font-size: var(--font-size-xs);
+  font-weight: 800;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--color-text-secondary);
+}
+
+.carouselButtons {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--spacing-2);
+}
+
+.carouselArrow {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 2.4rem;
+  height: 2.4rem;
+  background: transparent;
+  border: none;
+  border-radius: 0;
+  color: var(--color-secondary);
+  cursor: pointer;
+  transition:
+    color 0.2s ease,
+    transform 0.2s ease;
+}
+
+.carouselArrow:hover {
+  color: var(--color-secondary-dark);
+  transform: translateY(-1px);
+}
+
+.carouselArrow:focus-visible,
+.viewButton:focus-visible {
+  outline: 2px solid var(--color-secondary);
+  outline-offset: 2px;
+}
+
+.servicesTrack {
+  counter-reset: service;
+}
+
+.servicesDisplayHorizontal .servicesTrack {
+  display: flex;
+  gap: 0;
+  overflow-x: auto;
+  overflow-y: hidden;
+  scroll-behavior: smooth;
+  scroll-snap-type: x mandatory;
+  scrollbar-width: none;
+  -webkit-overflow-scrolling: touch;
+}
+
+.servicesDisplayHorizontal .servicesTrack::-webkit-scrollbar {
+  display: none;
+}
+
+.servicesDisplayVertical .servicesTrack {
+  display: flex;
+  flex-direction: column;
+}
+
+.servicesDisplayGrid .servicesTrack {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+}
+
+/* ─── Service item ─────────────────────────────────────── */
+.serviceCard {
+  position: relative;
+  counter-increment: service;
+  min-width: 0;
+  background: transparent;
+  border: none;
+  border-radius: 0;
+  box-shadow: none;
+  overflow: visible;
+}
+
+.servicesDisplayHorizontal .serviceCard {
+  flex: 0 0 25%;
+  scroll-snap-align: start;
+}
+
+.serviceCard::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: var(--spacing-3);
+  bottom: var(--spacing-3);
+  width: 1px;
+  background: linear-gradient(
+    180deg,
+    transparent 0%,
+    var(--overlay-secondary-20) 18%,
+    var(--overlay-secondary-30) 50%,
+    var(--overlay-secondary-20) 82%,
+    transparent 100%
+  );
+  pointer-events: none;
+}
+
+.serviceInfo {
+  position: relative;
+  min-height: 11rem;
+  padding: var(--spacing-6) var(--spacing-5) var(--spacing-4);
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  gap: var(--spacing-4);
+}
+
+.serviceInfo::before {
+  content: counter(service, decimal-leading-zero);
+  position: absolute;
+  top: var(--spacing-2);
+  left: var(--spacing-5);
+  font-size: 0.68rem;
+  font-weight: 800;
+  letter-spacing: 0.18em;
+  color: color-mix(
+    in srgb,
+    var(--color-secondary) 72%,
+    var(--color-text-secondary)
+  );
+  opacity: 0.85;
+}
+
+.serviceTopRow {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: flex-start;
+  gap: var(--spacing-3);
+}
+
+.servicesDisplayVertical .serviceTopRow {
+  flex-direction: row;
+  align-items: flex-start;
+  justify-content: space-between;
+}
+
+.servicesDisplayVertical .serviceInfo {
+  min-height: 0;
+  padding: var(--spacing-5) var(--spacing-5) var(--spacing-4);
+}
+
+.serviceName {
+  font-size: clamp(1rem, 1.45vw, 1.2rem);
+  color: var(--color-text-primary);
+  font-weight: 800;
+  margin: 0;
+  line-height: 1.18;
+  letter-spacing: -0.035em;
+}
+
+.serviceMeta {
+  display: inline-flex;
+  align-items: center;
+  flex-wrap: wrap;
+  justify-content: flex-start;
+  gap: 0.38rem;
+  flex-shrink: 0;
+  margin-top: 0.05rem;
+}
+
+.metaItem {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.18rem;
+  font-size: 0.8rem;
+  font-weight: 700;
+  color: var(--color-text-secondary);
+  letter-spacing: 0.01em;
+  white-space: nowrap;
+}
+
+.metaIcon {
+  color: var(--color-secondary);
+  opacity: 0.9;
+  flex-shrink: 0;
+}
+
+.metaDivider {
+  color: var(--color-text-tertiary);
+  font-size: 0.68rem;
+  line-height: 1;
+}
+
+.serviceDescription {
+  font-size: var(--font-size-sm);
+  color: var(--color-text-secondary);
+  margin: 0;
+  line-height: 1.45;
+  max-width: 18rem;
+}
+
+.servicesDisplayVertical .serviceDescription {
+  max-width: 42rem;
+}
+
+.serviceCard:hover .serviceName {
+  color: var(--color-secondary-dark);
+}
+
+/* ─── WhatsApp booking banner ──────────────────────────── */
+.whatsappBanner {
+  position: relative;
+  z-index: 1;
+  max-width: 920px;
+  margin: 0 auto var(--spacing-6);
+  border: 1.5px solid color-mix(in srgb, #25d366 30%, transparent);
+  border-radius: var(--border-radius-xl, 16px);
+  overflow: hidden;
+  box-shadow: 0 2px 12px color-mix(in srgb, #25d366 10%, transparent);
+}
+
+.whatsappBannerTrigger {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-3);
+  width: 100%;
+  padding: var(--spacing-3) var(--spacing-4);
+  background: color-mix(in srgb, #25d366 8%, var(--color-bg-primary));
+  border: none;
+  cursor: pointer;
+  text-align: left;
+  transition: background 0.2s ease;
+}
+
+.whatsappBannerTrigger:hover {
+  background: color-mix(in srgb, #25d366 13%, var(--color-bg-primary));
+}
+
+.whatsappBannerIcon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  background: color-mix(in srgb, #25d366 18%, var(--color-bg-primary));
+  color: #25d366;
+  flex-shrink: 0;
+}
+
+.whatsappBannerTitle {
+  flex: 1;
+  font-size: var(--font-size-base, 0.95rem);
+  font-weight: var(--font-weight-semibold, 600);
+  color: var(--color-text-primary);
+  line-height: 1;
+}
+
+.whatsappChevron {
+  display: flex;
+  align-items: center;
+  color: #25d366;
+  flex-shrink: 0;
+}
+
+.whatsappButtonsRow {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--spacing-3);
+  padding: var(--spacing-4) var(--spacing-4);
+  background: color-mix(in srgb, #25d366 5%, var(--color-bg-primary));
+  border-top: 1px solid color-mix(in srgb, #25d366 20%, transparent);
+}
+
+.whatsappButton {
+  display: inline-flex;
+  flex-direction: row;
+  align-items: center;
+  gap: var(--spacing-2);
+  padding: var(--spacing-2) var(--spacing-4);
+  background: #25d366;
+  color: #fff;
+  border-radius: 999px;
+  text-decoration: none;
+  white-space: nowrap;
+  transition:
+    background 0.2s ease,
+    transform 0.15s ease,
+    box-shadow 0.2s ease;
+  box-shadow: 0 2px 8px color-mix(in srgb, #25d366 40%, transparent);
+}
+
+.whatsappButton:hover {
+  background: #1da851;
+  transform: translateY(-1px);
+  box-shadow: 0 4px 14px color-mix(in srgb, #25d366 50%, transparent);
+}
+
+.whatsappButton:active {
+  transform: translateY(0);
+}
+
+.whatsappButtonIconWrap {
+  display: flex;
+  align-items: center;
+  flex-shrink: 0;
+}
+
+.whatsappButtonText {
+  font-weight: var(--font-weight-semibold, 600);
+  font-size: var(--font-size-sm, 0.875rem);
+  line-height: 1;
+}
+
+@media (max-width: 768px) {
+  .whatsappBanner {
+    margin: 0 var(--spacing-3) var(--spacing-5);
+  }
+
+  .whatsappButtonsRow {
+    flex-direction: column;
+  }
+
+  .whatsappButton {
+    width: 100%;
+  }
+}
+
+@media (max-width: 480px) {
+  .whatsappBanner {
+    margin: 0 var(--spacing-2) var(--spacing-4);
+  }
+}
+
+/* ─── Footer note ──────────────────────────────────────── */
+.footerNote {
+  position: relative;
+  z-index: 1;
+  text-align: center;
+  padding: var(--spacing-8) var(--spacing-6);
+  background: transparent;
+  border: none;
+  border-radius: 0;
+  margin-top: var(--spacing-12);
+  box-shadow: none;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--spacing-3);
+  max-width: 800px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.footerIcon {
+  color: var(--color-secondary);
+  flex-shrink: 0;
+  filter: drop-shadow(0 2px 8px var(--overlay-secondary-30));
+}
+
+.footerNote p {
+  font-size: var(--font-size-base);
+  color: var(--color-text-secondary);
+  margin: 0;
+  line-height: var(--line-height-relaxed);
+  font-weight: var(--font-weight-medium);
+}
+
+.footerLink {
+  color: var(--color-secondary);
+  font-weight: var(--font-weight-semibold);
+  text-decoration: underline;
+  text-underline-offset: 2px;
+}
+
+.footerLink:hover {
+  color: var(--color-secondary-dark);
+}
+
+/* ─── Responsive ───────────────────────────────────────── */
+@media (max-width: 1024px) {
+  .servicesDisplayHorizontal .serviceCard {
+    flex-basis: 33.333%;
+  }
+
+  .servicesDisplayGrid .servicesTrack {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+}
+
+@media (max-width: 768px) {
+  .container {
+    padding: 0 0 var(--spacing-6);
+  }
+
+  .searchWrapper,
+  .viewSwitcher {
+    max-width: 700px;
+  }
+
+  .categoriesGrid {
+    padding: 0 var(--spacing-3);
+    gap: var(--spacing-2);
+  }
+
+  .categoryTrigger {
+    padding: var(--spacing-3) var(--spacing-4);
+    min-height: 140px;
+  }
+
+  .categoryBody {
+    padding: var(--spacing-2) 0 var(--spacing-3);
+  }
+
+  .categoryIcon {
+    width: 32px;
+    height: 32px;
+  }
+
+  .countBadge {
+    display: none;
+  }
+
+  .viewSwitcher {
+    flex-wrap: wrap;
+    column-gap: var(--spacing-3);
+    row-gap: var(--spacing-2);
+    margin-bottom: var(--spacing-5);
+  }
+
+  .servicesDisplayHorizontal .serviceCard {
+    flex-basis: 50%;
+  }
+
+  .servicesDisplayGrid .servicesTrack {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .servicesDisplayVertical .serviceTopRow {
+    flex-direction: column;
+    gap: var(--spacing-2);
+  }
+
+  .carouselArrow {
+    width: 2.35rem;
+  }
+
+  .serviceInfo {
+    min-height: 9.5rem;
+    padding-right: var(--spacing-4);
+  }
+
+  .footerNote {
+    padding: var(--spacing-6) var(--spacing-4);
+    flex-direction: column;
+    gap: var(--spacing-2);
+  }
+}
+
+@media (max-width: 480px) {
+  .container {
+    padding: 0 0 var(--spacing-4);
+  }
+
+  .categoryTrigger {
+    padding: var(--spacing-3) var(--spacing-3);
+    min-height: 120px;
+  }
+
+  .categoryBody {
+    padding: var(--spacing-2) 0 var(--spacing-3);
+  }
+
+  .servicesDisplayHorizontal .serviceCard {
+    flex-basis: 82%;
+  }
+
+  .servicesDisplayGrid .servicesTrack {
+    grid-template-columns: 1fr;
+  }
+
+  .carouselControls {
+    padding-inline: var(--spacing-3);
+  }
+
+  .carouselHint {
+    font-size: 0.68rem;
+  }
+
+  .serviceInfo {
+    min-height: 8.5rem;
+    padding-inline: var(--spacing-4);
+  }
+
+  .categoryIcon {
+    width: 30px;
+    height: 30px;
+  }
+}

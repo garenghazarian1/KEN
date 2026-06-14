@@ -2,7 +2,7 @@
 
 import Link from "next/link";
 import Image from "next/image";
-import { Calendar, Coffee } from "lucide-react";
+import { Calendar, Coffee, Scissors } from "lucide-react";
 import {
   BOOKING_URL,
   NAVBAR_LOGO_DEFAULT_SRC,
@@ -36,6 +36,9 @@ export default function MobileNavTop() {
         )}
       </Link>
       <div className={styles.navActions}>
+        <Link href="/services" className={styles.bookButton} aria-label="Services and prices">
+          <Scissors size={18} aria-hidden />
+        </Link>
         <Link href="/drinks" className={styles.bookButton} aria-label="Drinks menu">
           <Coffee size={18} aria-hidden />
         </Link>

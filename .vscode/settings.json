@@ -1,3 +1,13 @@
 {
-  "cSpell.words": ["efealcjpqmlyhw", "wuxjaut"]
+  "cSpell.words": ["efealcjpqmlyhw", "wuxjaut"],
+  "cSpell.ignorePaths": [
+    "graphify-out/**"
+  ],
+  "files.watcherExclude": {
+    "**/graphify-out/cache/**": true
+  },
+  "search.exclude": {
+    "**/graphify-out/cache/**": true,
+    "**/graphify-out/graph.html": true
+  }
 }

@@ -16,9 +16,17 @@ export const BOOKING_URL = "https://kenbeauty.zenoti.com/webstoreNew/services";
 // Ken Card (subscription / rewards)
 export const CARD_URL = "https://card.kenbeautysalon.com/";
 
+// Admin system (public business API + careers)
+export const ADMIN_PUBLIC_BASE_URL = "https://beauty-admin-mauve.vercel.app";
+
+// Public business API slug for service catalog, prices, etc.
+export const BUSINESS_SLUG = "ken-beauty-salon";
+
+export const BUSINESS_CURRENCY = "AED";
+
 // Careers / open roles (hosted on Superuser admin app)
 export const CAREERS_URL =
-  "https://beauty-admin-mauve.vercel.app/en/careers/company/ken-beauty-salon";
+  `${ADMIN_PUBLIC_BASE_URL}/en/careers/company/ken-beauty-salon`;
 
 // Contact Information
 export const CONTACT = {
@@ -38,6 +46,25 @@ export const CONTACT = {
     },
   },
 };
+
+/**
+ * WhatsApp booking contacts — one entry per branch / number.
+ * Add more objects here when new branches open.
+ */
+export const WHATSAPP_CONTACTS = [
+  {
+    label: "Galleria Al Maryah Island",
+    number: "971503043570",
+    formatted: "+971 50 304 3570",
+    message: "Hello KEN Beauty Center (Galleria), I would like to book a service.",
+  },
+  {
+    label: "Rixos Hotel Marina",
+    number: "971555570029",
+    formatted: "+971 55 557 0029",
+    message: "Hello KEN Beauty Center (Rixos), I would like to book a service.",
+  },
+];
 
 // Social Media Links
 export const SOCIAL_MEDIA = {

@@ -1,4 +1,4 @@
-/* Mobile app-style bottom tab bar: Home, About us, Contact, Gallery. Visible only on mobile via layout wrapper. */
+/* Mobile app-style bottom tab bar: Home, About us, Contact, Gallery, Card. Visible only on mobile via layout wrapper. */
 
 .bottomBar {
   position: fixed;

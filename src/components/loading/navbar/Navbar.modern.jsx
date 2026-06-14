@@ -4,7 +4,7 @@ import { useState, useEffect, useRef } from "react";
 import Link from "next/link";
 import Image from "next/image";
 import { motion, AnimatePresence } from "framer-motion";
-import { Menu, X, Calendar, Coffee, CreditCard, Briefcase } from "lucide-react";
+import { Menu, X, Calendar, Coffee, CreditCard, Briefcase, Scissors } from "lucide-react";
 import {
   BOOKING_URL,
   CARD_URL,
@@ -20,6 +20,7 @@ const navLinks = [
   { title: "About Us", path: "/about" },
   { title: "Contact", path: "/contact" },
   { title: "Gallery", path: "/gallery" },
+  { title: "Services", path: "/services" },
   // { title: "Drinks", path: "/drinks" }, // Commented out - keeping only in footer
 ];
 
@@ -116,6 +117,13 @@ export default function NavbarModern() {
             <CreditCard size={18} aria-hidden />
           </a>
           <Link
+            href="/services"
+            className={styles.drinksButton}
+            aria-label="Services and prices"
+          >
+            <Scissors size={18} aria-hidden />
+          </Link>
+          <Link
             href="/drinks"
             className={styles.drinksButton}
             aria-label="Drinks menu"
@@ -141,6 +149,13 @@ export default function NavbarModern() {
           >
             <CreditCard size={18} aria-hidden />
           </a>
+          <Link
+            href="/services"
+            className={styles.mobileBookButtonNavbar}
+            aria-label="Services and prices"
+          >
+            <Scissors size={18} aria-hidden />
+          </Link>
           <Link
             href="/drinks"
             className={styles.mobileBookButtonNavbar}
@@ -241,6 +256,21 @@ export default function NavbarModern() {
                 transition={{ delay: (navLinks.length + 1) * 0.1 }}
               >
                 <Link
+                  href="/services"
+                  className={styles.mobileDrinksLink}
+                  onClick={closeMenu}
+                  aria-label="Services and prices"
+                >
+                  <Scissors size={20} aria-hidden />
+                  <span>Services</span>
+                </Link>
+              </motion.div>
+              <motion.div
+                initial={{ opacity: 0, x: -20 }}
+                animate={{ opacity: 1, x: 0 }}
+                transition={{ delay: (navLinks.length + 2) * 0.1 }}
+              >
+                <Link
                   href="/drinks"
                   className={styles.mobileDrinksLink}
                   onClick={closeMenu}
@@ -252,7 +282,7 @@ export default function NavbarModern() {
               <motion.div
                 initial={{ opacity: 0, x: -20 }}
                 animate={{ opacity: 1, x: 0 }}
-                transition={{ delay: (navLinks.length + 2) * 0.1 }}
+                transition={{ delay: (navLinks.length + 3) * 0.1 }}
               >
                 <Link
                   href={BOOKING_URL}
@@ -267,7 +297,7 @@ export default function NavbarModern() {
               <motion.div
                 initial={{ opacity: 0, x: -20 }}
                 animate={{ opacity: 1, x: 0 }}
-                transition={{ delay: (navLinks.length + 3) * 0.1 }}
+                transition={{ delay: (navLinks.length + 4) * 0.1 }}
               >
                 <a
                   href={CAREERS_URL}
