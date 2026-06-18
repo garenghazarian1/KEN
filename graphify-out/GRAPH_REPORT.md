@@ -1,16 +1,16 @@
-# Graph Report - ken  (2026-06-14)
+# Graph Report - ken  (2026-06-18)
 
 ## Corpus Check
-- 96 files · ~573,901 words
+- 97 files · ~603,659 words
 - Verdict: corpus is large enough that graph structure adds value.
 
 ## Summary
-- 723 nodes · 680 edges · 89 communities (59 shown, 30 thin omitted)
-- Extraction: 99% EXTRACTED · 1% INFERRED · 0% AMBIGUOUS · INFERRED: 9 edges (avg confidence: 0.8)
+- 743 nodes · 701 edges · 89 communities (60 shown, 29 thin omitted)
+- Extraction: 99% EXTRACTED · 1% INFERRED · 0% AMBIGUOUS · INFERRED: 10 edges (avg confidence: 0.8)
 - Token cost: 0 input · 0 output
 
 ## Graph Freshness
-- Built from commit: `e733aac4`
+- Built from commit: `cf90a41a`
 - Run `git rev-parse HEAD` and compare to check if the graph is stale.
 - Run `graphify update .` after code changes (no API cost).
 
@@ -97,11 +97,11 @@
 - `ContactContent()` --calls--> `getTelLink()`  [INFERRED]
   src/components/contact/contactOldtest.jsx → src/config/constants.js
 
-## Communities (89 total, 30 thin omitted)
+## Communities (89 total, 29 thin omitted)
 
 ### Community 0 - "Community 0"
-Cohesion: 0.04
-Nodes (46): Accessibility Patterns, Analytics, Animation, ARIA Attributes, Basic Component Template, Code Organization, code:jsx ("use client"; // Required for client-side features (state, e), code:jsx (import { Phone, Mail, MessageCircle, ArrowRight, MapPin } fr) (+38 more)
+Cohesion: 0.05
+Nodes (36): Analytics, Animation, Basic Component Template, Code Organization, code:jsx ("use client"; // Required for client-side features (state, e), code:jsx (import { Phone, Mail, MessageCircle, ArrowRight, MapPin } fr), code:jsx (<Phone className={styles.icon} size={20} />), code:jsx (// Decorative icons (no meaning)) (+28 more)
 
 ### Community 1 - "Community 1"
 Cohesion: 0.04
@@ -116,12 +116,12 @@ Cohesion: 0.06
 Nodes (33): 1. **Form Labels Not Properly Associated** ✅ FIXED, 1. **Form Validation Not User-Friendly** ✅ FIXED, 1. **JSON-LD Placement** ✅ FIXED, 1. **Missing `sizes` Attribute on Images** ✅ FIXED, 2. **Image Alt Text Quality** ✅ IMPROVED, 2. **Missing Error Handling** ✅ FIXED, 2. **Missing Error Message Accessibility** ✅ FIXED, 2. **Suboptimal Image Loading Priority** ✅ FIXED (+25 more)
 
 ### Community 4 - "Community 4"
-Cohesion: 0.08
-Nodes (19): APP_STORES, BUSINESS, CONTACT, formatPhoneForTel(), getSpecialPeriodLogo(), getTelLink(), IMAGES, SOCIAL_HANDLES (+11 more)
+Cohesion: 0.07
+Nodes (20): APP_STORES, BUSINESS, CONTACT, formatPhoneForTel(), getSpecialPeriodLogo(), getTelLink(), IMAGES, SOCIAL_HANDLES (+12 more)
 
 ### Community 5 - "Community 5"
-Cohesion: 0.07
-Nodes (29): Accessibility, App Install Banner Testing (from TESTING_APP_BANNER), Changelog Snapshot (from CHANGELOG), Code Quality, Completed Work (Latest Session), Component Testing, ✅ Critical Bug Fixes (BUG-001, BUG-002, BUG-003, BUG-006), ✅ Data Extraction & Centralized Configuration (CODE-001, CODE-002) (+21 more)
+Cohesion: 0.05
+Nodes (41): Accessibility, App Install Banner Testing (from TESTING_APP_BANNER), Changelog Snapshot (from CHANGELOG), Code Quality, code:css (/* Main Theme */), code:css (:root {), code:css (/* Heading Styles */), code:css (/* Margin Utilities */) (+33 more)
 
 ### Community 6 - "Community 6"
 Cohesion: 0.07
@@ -133,7 +133,7 @@ Nodes (24): 10. **Hardcoded Data** ✅ **RESOLVED**, 11. **Inconsistent Naming**
 
 ### Community 8 - "Community 8"
 Cohesion: 0.08
-Nodes (23): dependencies, framer-motion, lucide-react, next, react, react-dom, react-icons, swiper (+15 more)
+Nodes (24): dependencies, framer-motion, lucide-react, mongoose, next, react, react-dom, react-icons (+16 more)
 
 ### Community 9 - "Community 9"
 Cohesion: 0.09
@@ -172,8 +172,8 @@ Cohesion: 0.17
 Nodes (12): 1. Priority Loading (Above the fold), 2. Lazy Loading (Below the fold), 3. Responsive Sizes, code:jsx (import Image from "next/image";), code:jsx (<Image), code:jsx (<Image), code:jsx (<Image), code:jsx (<Image) (+4 more)
 
 ### Community 18 - "Community 18"
-Cohesion: 0.17
-Nodes (12): code:css (/* Main Theme */), code:css (:root {), code:css (/* Heading Styles */), code:css (/* Margin Utilities */), code:css (/* Mobile First Approach */), Current Color Variables (to be organized), Global Design System, Phase 1: Color System (+4 more)
+Cohesion: 0.20
+Nodes (10): Accessibility Patterns, ARIA Attributes, code:jsx (// Use semantic elements), code:jsx (// Labels), code:jsx (<div className={styles.field}>), code:css (/* Always style focus-visible for keyboard navigation */), Color Contrast, Focus States (+2 more)
 
 ### Community 19 - "Community 19"
 Cohesion: 0.17
@@ -195,36 +195,40 @@ Nodes (3): categories, galleryImages, metadata
 Cohesion: 0.50
 Nodes (3): description, name, version
 
+### Community 33 - "Community 33"
+Cohesion: 0.25
+Nodes (3): descriptions, HERO_VIDEO_PROPS, images
+
 ### Community 83 - "Community 83"
 Cohesion: 0.25
 Nodes (7): cSpell.ignorePaths, cSpell.words, files.watcherExclude, **/graphify-out/cache/**, search.exclude, **/graphify-out/cache/**, **/graphify-out/graph.html
 
 ### Community 87 - "Community 87"
-Cohesion: 0.15
-Nodes (11): getCategoryImage(), isMenSection(), SERVICE_CATEGORY_IMAGES, CATEGORY_ICONS, CategoryAccordion(), CategoryBanner(), formatDuration(), formatPrice() (+3 more)
+Cohesion: 0.11
+Nodes (12): getCategoryImage(), isMenSection(), SERVICE_CATEGORY_IMAGES, CATEGORY_ICONS, CategoryAccordion(), CategoryBanner(), formatDuration(), formatPrice() (+4 more)
 
 ### Community 88 - "Community 88"
-Cohesion: 0.33
-Nodes (4): buildServiceSections(), getServiceCatalog(), metadata, ServicesPage()
+Cohesion: 0.13
+Nodes (11): buildServiceSections(), BusinessSchema, BusinessServiceCategorySchema, BusinessServiceItemCategoryLinkSchema, BusinessServiceItemSchema, getModel(), getServiceCatalog(), connectDB (+3 more)
 
 ## Knowledge Gaps
-- **384 isolated node(s):** `extends`, `@/*`, `enable`, `disableFilenameBasedTypeAcquisition`, `exclude` (+379 more)
+- **393 isolated node(s):** `extends`, `@/*`, `enable`, `disableFilenameBasedTypeAcquisition`, `exclude` (+388 more)
   These have ≤1 connection - possible missing edges or undocumented components.
-- **30 thin communities (<3 nodes) omitted from report** — run `graphify query` to explore isolated nodes.
+- **29 thin communities (<3 nodes) omitted from report** — run `graphify query` to explore isolated nodes.
 
 ## Suggested Questions
 _Questions this graph is uniquely positioned to answer:_
 
-- **Why does `Ken Beauty Salon - Comprehensive Improvement Plan` connect `Community 5` to `Community 2`, `Community 7`, `Community 12`, `Community 13`, `Community 14`, `Community 18`, `Community 19`?**
-  _High betweenness centrality (0.047) - this node is a cross-community bridge._
-- **Why does `Component Development Patterns Guide` connect `Community 0` to `Community 9`, `Community 11`, `Community 17`, `Community 6`?**
-  _High betweenness centrality (0.027) - this node is a cross-community bridge._
+- **Why does `Ken Beauty Salon - Comprehensive Improvement Plan` connect `Community 5` to `Community 2`, `Community 7`, `Community 12`, `Community 13`, `Community 14`, `Community 19`?**
+  _High betweenness centrality (0.044) - this node is a cross-community bridge._
+- **Why does `Component Development Patterns Guide` connect `Community 0` to `Community 6`, `Community 9`, `Community 11`, `Community 17`, `Community 18`?**
+  _High betweenness centrality (0.026) - this node is a cross-community bridge._
 - **Why does `Implementation Plan` connect `Community 2` to `Community 5`?**
-  _High betweenness centrality (0.025) - this node is a cross-community bridge._
+  _High betweenness centrality (0.023) - this node is a cross-community bridge._
 - **What connects `extends`, `@/*`, `enable` to the rest of the system?**
-  _384 weakly-connected nodes found - possible documentation gaps or missing edges._
+  _393 weakly-connected nodes found - possible documentation gaps or missing edges._
 - **Should `Community 0` be split into smaller, more focused modules?**
-  _Cohesion score 0.0425531914893617 - nodes in this community are weakly interconnected._
+  _Cohesion score 0.05405405405405406 - nodes in this community are weakly interconnected._
 - **Should `Community 1` be split into smaller, more focused modules?**
   _Cohesion score 0.0425531914893617 - nodes in this community are weakly interconnected._
 - **Should `Community 2` be split into smaller, more focused modules?**

@@ -156,9 +156,9 @@ export default function FooterModern() {
                       <a
                         href={`tel:${store.phone.replace(/\s/g, "")}`}
                         className={styles.contactLink}
-                        aria-label={`Call ${store.name} landline`}
+                        aria-label={`Call ${store.name} landline: ${store.phone}`}
                       >
-                        <Phone size={18} className={styles.contactLinkIcon} />
+                        <Phone size={18} className={styles.contactLinkIcon} aria-hidden="true" />
                         <span>Landline: {store.phone}</span>
                       </a>
                     )}
@@ -166,9 +166,9 @@ export default function FooterModern() {
                       <a
                         href={`tel:${store.mobile.replace(/\s/g, "")}`}
                         className={styles.contactLink}
-                        aria-label={`Call ${store.name} mobile`}
+                        aria-label={`Call ${store.name} mobile: ${store.mobile}`}
                       >
-                        <Phone size={18} className={styles.contactLinkIcon} />
+                        <Phone size={18} className={styles.contactLinkIcon} aria-hidden="true" />
                         <span>Mobile: {store.mobile}</span>
                       </a>
                     )}
@@ -192,9 +192,9 @@ export default function FooterModern() {
                 <a
                   href={`mailto:info@ken-salon.com?subject=Inquiry about ${BUSINESS.name}&body=Hello, I would like to know more about your services.`}
                   className={styles.contactLink}
-                  aria-label="Email us"
+                  aria-label="Email us at info@ken-salon.com"
                 >
-                  <Mail size={18} className={styles.contactLinkIcon} />
+                  <Mail size={18} className={styles.contactLinkIcon} aria-hidden="true" />
                   <span>info@ken-salon.com</span>
                 </a>
               </div>

@@ -39,7 +39,7 @@ export default function ContactContent({ stores }) {
   };
 
   return (
-    <div className={styles.page}>
+    <main className={styles.page}>
       {/* Header */}
       <header className={styles.header}>
         <h1 className={styles.title}>Get in Touch</h1>
@@ -89,7 +89,7 @@ export default function ContactContent({ stores }) {
                   href={`tel:${store.phone.replace(/\s/g, "")}`}
                   className={styles.contactItem}
                 >
-                  <Phone size={18} />
+                  <Phone size={18} aria-hidden="true" />
                   <span>{store.phone}</span>
                 </a>
 
@@ -97,7 +97,7 @@ export default function ContactContent({ stores }) {
                   href={`tel:${store.mobile.replace(/\s/g, "")}`}
                   className={styles.contactItem}
                 >
-                  <Phone size={18} />
+                  <Phone size={18} aria-hidden="true" />
                   <span>{store.mobile}</span>
                 </a>
 
@@ -105,7 +105,7 @@ export default function ContactContent({ stores }) {
                   href={`https://wa.me/${store.whatsapp.replace(/[\s+]/g, "")}?text=${encodeURIComponent("Hi, I'd like to book an appointment.")}`}
                   className={`${styles.contactItem} ${styles.whatsapp}`}
                 >
-                  <MessageCircle size={18} />
+                  <MessageCircle size={18} aria-hidden="true" />
                   <span>WhatsApp</span>
                 </a>
 
@@ -113,7 +113,7 @@ export default function ContactContent({ stores }) {
                   href={`mailto:${store.email}`}
                   className={styles.contactItem}
                 >
-                  <Mail size={18} />
+                  <Mail size={18} aria-hidden="true" />
                   <span>{store.email}</span>
                 </a>
 
@@ -121,7 +121,7 @@ export default function ContactContent({ stores }) {
                   href={getGoogleMapsUrl(store)}
                   className={styles.contactItem}
                 >
-                  <MapPin size={18} />
+                  <MapPin size={18} aria-hidden="true" />
                   <span>Get Directions</span>
                 </a>
               </div>
@@ -164,6 +164,6 @@ export default function ContactContent({ stores }) {
           </button>
         </form>
       </section>
-    </div>
+    </main>
   );
 }

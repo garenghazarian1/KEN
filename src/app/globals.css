@@ -90,7 +90,12 @@ img {
   --color-whatsapp-text: #0f5c2e; /* Dark green for text on light WhatsApp backgrounds - WCAG AA */
   --color-whatsapp-text-dark: #1a5c2e; /* Darker green for text - WCAG AA */
   --color-whatsapp-text-hover: #0f3d1f; /* Darkest green for hover text - WCAG AAA */
-  --overlay-whatsapp-light: rgba(37, 211, 101, 0.1); /* WhatsApp hover background */
+  --overlay-whatsapp-light: rgba(
+    37,
+    211,
+    101,
+    0.1
+  ); /* WhatsApp hover background */
   --shadow-secondary: rgba(174, 139, 119, 0.3); /* Secondary/brand shadow */
 
   /* Error and Status Colors */
@@ -126,7 +131,8 @@ img {
   --overlay-secondary-light-20: rgba(211, 180, 164, 0.2);
 
   /* Content box shadow (card inset) */
-  --shadow-content-card: 0 20px 60px rgba(0, 0, 0, 0.15), 0 0 0 1px rgba(255, 255, 255, 0.2) inset;
+  --shadow-content-card:
+    0 20px 60px rgba(0, 0, 0, 0.15), 0 0 0 1px rgba(255, 255, 255, 0.2) inset;
 
   /* Link Colors - Enhanced for better contrast */
   --color-link: #8b6b5a; /* Link color - matches secondary-dark - WCAG AA */

@@ -5,7 +5,7 @@
    Old file: Hero.module.css (kept as backup)
    ============================================ */
 
-/* Hero Section - Full Screen with Video Background */
+/* Hero Section - blurred backdrop + sharp centered media (max 800px) */
 .heroSection {
   position: relative;
   max-width: 100%;
@@ -15,31 +15,29 @@
   justify-content: center;
   overflow: hidden;
   box-sizing: border-box;
+  --hero-bg-blur: 24px;
 }
 
-/* Video Background */
-.videoBackground {
+.heroMediaBg {
   position: absolute;
   inset: 0;
-  width: 100%;
-  height: 100%;
   z-index: 0;
+  overflow: hidden;
+  filter: blur(var(--hero-bg-blur));
 }
 
-.heroVideo {
+.heroVideoBg {
   width: 100%;
   height: 100%;
   object-fit: cover;
-  /* Optimize video rendering for smooth playback */
+  object-position: center;
+  transform: scale(1.12);
   will-change: auto;
-  transform: translateZ(0);
-  -webkit-transform: translateZ(0);
-  /* Prevent video stuttering */
   backface-visibility: hidden;
   -webkit-backface-visibility: hidden;
 }
 
-.videoOverlay {
+.heroBgOverlay {
   position: absolute;
   inset: 0;
   background: linear-gradient(
@@ -48,13 +46,52 @@
     var(--glass-bg-primary) 50%,
     var(--color-primary) 100%
   );
+  opacity: 0.45;
+}
+
+.heroMediaForeground {
+  position: absolute;
+  inset: 0;
   z-index: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: var(--spacing-4);
+  box-sizing: border-box;
+  pointer-events: none;
+}
+
+.heroVideoMain {
+  width: 100%;
+  max-width: 800px;
+  max-height: 100%;
+  height: auto;
+  object-fit: contain;
+  object-position: center;
+  display: block;
+  will-change: auto;
+  transform: translateZ(0);
+  -webkit-transform: translateZ(0);
+  backface-visibility: hidden;
+  -webkit-backface-visibility: hidden;
+}
+
+.heroOverlay {
+  position: absolute;
+  inset: 0;
+  z-index: 2;
+  pointer-events: none;
+  background: linear-gradient(
+    to top,
+    var(--overlay-secondary) 0%,
+    transparent 55%
+  );
 }
 
 /* Hero Content - Bottom-aligned */
 .heroContent {
   position: relative;
-  z-index: 2;
+  z-index: 3;
   width: 100%;
   max-width: 1200px;
   padding: var(--spacing-6);
@@ -180,38 +217,78 @@
   box-shadow: 0 6px 16px var(--color-whatsapp-bg);
 }
 
-/* Careers — secondary line under main CTAs */
-.heroCareers {
-  margin-top: var(--spacing-1);
-  text-align: center;
-  max-width: 100%;
+/* Careers banner — full-width glass strip below navbar */
+.careersBanner {
+  position: absolute;
+  left: 0;
+  right: 0;
+  z-index: 4;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: var(--spacing-3);
+  width: 100%;
+  padding: var(--spacing-3) var(--spacing-6);
+  background: var(--glass-white-medium);
+  backdrop-filter: blur(var(--glass-blur-xl));
+  -webkit-backdrop-filter: blur(var(--glass-blur-xl));
+  border-bottom: 1px solid var(--glass-border-light);
+  top: calc(var(--app-banner-height) + 5rem);
+  box-sizing: border-box;
 }
 
-.heroCareersLink {
+.careersBannerIcon {
+  flex-shrink: 0;
+  color: var(--color-text-primary);
+  opacity: 0.9;
+}
+
+.careersBannerText {
+  margin: 0;
+  font-size: clamp(0.875rem, 1.5vw + 0.5rem, 1.0625rem);
+  font-weight: var(--font-weight-semibold);
+  color: var(--color-text-primary);
+  line-height: var(--line-height-normal);
+  text-align: center;
+}
+
+.careersBannerButton {
   display: inline-flex;
   align-items: center;
   justify-content: center;
   gap: var(--spacing-2);
-  flex-wrap: wrap;
+  min-height: 44px;
+  min-width: 44px;
+  padding: var(--spacing-2-5) var(--spacing-5);
+  background-color: var(--glass-black-light);
+  backdrop-filter: blur(var(--glass-blur-xl));
+  -webkit-backdrop-filter: blur(var(--glass-blur-xl));
+  border: 1px solid var(--glass-border-white-light);
+  border-radius: var(--radius-full);
   color: var(--color-text-inverse);
-  font-size: clamp(0.75rem, 1.5vw + 0.5rem, 0.9375rem);
-  font-weight: var(--font-weight-medium);
-  line-height: var(--line-height-normal);
+  font-size: var(--font-size-sm);
+  font-weight: var(--font-weight-semibold);
   text-decoration: none;
-  text-shadow: 0 1px 4px var(--shadow-heavy);
-  border-bottom: 1px solid var(--glass-border-white-light);
-  padding-bottom: 2px;
-  transition: color 0.2s var(--ease-in-out), border-color 0.2s var(--ease-in-out);
+  transition: all var(--transition-base) var(--ease-in-out);
+  box-shadow: 0 2px 8px var(--shadow-nav);
 }
 
-.heroCareersLink:hover {
-  color: var(--color-secondary-light);
-  border-color: var(--color-secondary-light);
+.careersBannerButton:hover {
+  background-color: var(--glass-black-medium);
+  border-color: var(--glass-border-white-medium);
+  color: var(--color-text-inverse);
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px var(--shadow-nav-hover);
 }
 
-.heroCareersIcon {
-  flex-shrink: 0;
-  opacity: 0.95;
+.careersBannerButton:active {
+  transform: translateY(0);
+}
+
+.careersBannerButton:focus-visible {
+  outline: 2px solid var(--color-accent-3);
+  outline-offset: 2px;
 }
 
 /* Scroll Indicator */
@@ -220,7 +297,7 @@
   bottom: var(--spacing-8);
   left: 50%;
   transform: translateX(-50%);
-  z-index: 2;
+  z-index: 4;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -247,8 +324,7 @@
   width: 100%;
   max-width: 100%;
   min-height: 100vh;
-  padding: var(--spacing-20) var(--spacing-6);
-  overflow-x: hidden;
+  padding: var(--spacing-20) 0;
   box-sizing: border-box;
   background: linear-gradient(
     135deg,
@@ -266,7 +342,8 @@
   content: "";
   position: absolute;
   inset: 0;
-  background: radial-gradient(
+  background:
+    radial-gradient(
       circle at 20% 30%,
       var(--overlay-secondary) 0%,
       transparent 50%
@@ -289,7 +366,8 @@
   content: "";
   position: absolute;
   inset: 0;
-  background-image: repeating-linear-gradient(
+  background-image:
+    repeating-linear-gradient(
       45deg,
       transparent,
       transparent 2px,
@@ -313,7 +391,8 @@
   position: relative;
   z-index: 2;
   text-align: center;
-  margin-bottom: var(--spacing-4);
+  margin-bottom: 0;
+  padding: 0 var(--spacing-6);
 }
 
 .sectionTitle {
@@ -337,91 +416,87 @@
   font-weight: var(--font-weight-medium);
 }
 
-/* Scroll-Driven Image Stack - 2025 Design */
-.scrollStackContainer {
+/* Pinned scroll stack — viewport stays fixed while images layer on scroll */
+.scrollStackPin {
   position: relative;
   width: 100%;
-  max-width: 1600px;
-  margin: var(--spacing-4) auto 0;
   z-index: 2;
 }
 
-.stackSection {
+.stackViewport {
   position: relative;
   width: 100%;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
+  height: 100vh;
   overflow: hidden;
-  padding: var(--spacing-8) 0;
+  touch-action: pan-y;
 }
 
-.stackImageContainer {
+.stackViewportFixed {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100vh;
+  z-index: 2;
+}
+
+.stackViewportAfter {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 100vh;
+}
+
+.stackLayer {
   position: absolute;
   inset: 0;
   width: 100%;
   height: 100%;
+  will-change: transform;
+}
+
+.stackImageBg {
+  position: absolute;
+  inset: 0;
+  overflow: hidden;
   z-index: 1;
 }
 
-.stackImageWrapper {
-  position: absolute;
-  inset: 0;
-  width: 100%;
-  height: 100%;
+.stackImageBgImg {
+  object-fit: cover;
+  object-position: center;
+  transform: scale(1.12);
 }
 
-.stackImage {
+.stackImageForeground {
+  position: absolute;
+  inset: 0;
+  z-index: 2;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: var(--spacing-4);
+  box-sizing: border-box;
+  pointer-events: none;
+}
+
+.stackImageMain {
   width: 100%;
-  height: 100%;
-  object-fit: cover;
+  max-width: 800px;
+  height: auto;
+  max-height: 100%;
+  object-fit: contain;
   object-position: center;
   display: block;
 }
 
-/* Desktop: Stack image with full height, max 90vh, responsive width, always show full image */
-@media (min-width: 769px) {
-  .stackImageContainer {
-    position: absolute;
-    top: 0;
-    bottom: 0;
-    left: 50%;
-    transform: translateX(-50%);
-    width: auto;
-    height: 100%;
-    max-height: 90vh;
-    z-index: 1;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-  }
-
-  .stackImageWrapper {
-    position: relative;
-    width: auto;
-    height: 100%;
-    max-height: 90vh;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-  }
-
-  .stackImage {
-    width: auto;
-    height: 100%;
-    max-height: 90vh;
-    object-fit: contain;
-    object-position: center;
-    display: block;
-  }
-}
 
 .stackContent {
   position: absolute;
   top: 50%;
   left: 50%;
+  transform: translate(-50%, -50%);
   z-index: 10;
   text-align: center;
   padding: var(--spacing-8);
@@ -430,7 +505,8 @@
   -webkit-backdrop-filter: blur(var(--glass-blur-xl));
   border: 1px solid var(--glass-border-light);
   border-radius: var(--radius-2xl);
-  box-shadow: 0 20px 60px var(--shadow-heavy),
+  box-shadow:
+    0 20px 60px var(--shadow-heavy),
     0 0 0 1px var(--overlay-white-20) inset;
   max-width: 600px;
   width: 90%;
@@ -479,7 +555,8 @@
 .contentCard {
   position: relative;
   max-width: 1200px;
-  margin: 0 auto;
+  width: calc(100% - 2 * var(--spacing-6));
+  margin: var(--spacing-8) auto 0;
   background: var(--glass-white-light);
   backdrop-filter: blur(var(--glass-blur-sm));
   -webkit-backdrop-filter: blur(var(--glass-blur-sm));
@@ -582,7 +659,6 @@
   .cardTitle {
     font-size: var(--font-size-2xl);
   }
-
 }
 
 /* Tablets (768px and below) */
@@ -596,6 +672,19 @@
     padding-bottom: calc(
       3.5rem + var(--spacing-2) + env(safe-area-inset-bottom, 0px)
     );
+  }
+
+  .careersBanner {
+    top: calc(
+      var(--app-banner-height) + 3.5rem + var(--spacing-2) +
+        env(safe-area-inset-top, 0px)
+    );
+    padding: var(--spacing-2) var(--spacing-4);
+    gap: var(--spacing-2);
+  }
+
+  .careersBannerText {
+    font-size: var(--font-size-sm);
   }
 
   .heroContent {
@@ -624,11 +713,16 @@
   }
 
   .gallerySection {
-    padding: var(--spacing-12) var(--spacing-4);
+    padding: var(--spacing-12) 0;
   }
 
-  .scrollStackContainer {
-    height: calc(100vh * 7);
+  .sectionHeader {
+    padding: 0 var(--spacing-4);
+  }
+
+  .contentCard {
+    width: calc(100% - 2 * var(--spacing-4));
+    margin-top: var(--spacing-6);
   }
 
   .stackContent {
@@ -663,15 +757,10 @@
 
 /* Mobile (480px and below) */
 @media (max-width: 480px) {
-
   .primaryButton,
   .secondaryButton {
     padding: var(--spacing-2) var(--spacing-3);
     font-size: var(--font-size-xs);
-  }
-
-  .scrollStackContainer {
-    height: calc(100vh * 7);
   }
 
   .stackContent {
@@ -693,7 +782,16 @@
   }
 
   .gallerySection {
-    padding: var(--spacing-8) var(--spacing-3);
+    padding: var(--spacing-8) 0;
+  }
+
+  .sectionHeader {
+    padding: 0 var(--spacing-3);
+  }
+
+  .contentCard {
+    width: calc(100% - 2 * var(--spacing-3));
+    margin-top: var(--spacing-4);
   }
 
   .contentCard {
@@ -715,9 +813,17 @@
 
 /* Small mobile (360px and below) */
 @media (max-width: 360px) {
-
   .gallerySection {
-    padding: var(--spacing-6) var(--spacing-2);
+    padding: var(--spacing-6) 0;
+  }
+
+  .sectionHeader {
+    padding: 0 var(--spacing-2);
+  }
+
+  .contentCard {
+    width: calc(100% - 2 * var(--spacing-2));
+    margin-top: var(--spacing-4);
   }
 
   .contentCard {
@@ -739,11 +845,6 @@
 
 /* Extra small mobile (320px) */
 @media (max-width: 320px) {
-
-  .scrollStackContainer {
-    height: calc(100vh * 7);
-  }
-
   .stackContent {
     max-width: 95%;
     padding: var(--spacing-4);
@@ -763,7 +864,16 @@
   }
 
   .gallerySection {
-    padding: var(--spacing-4) var(--spacing-2);
+    padding: var(--spacing-4) 0;
+  }
+
+  .sectionHeader {
+    padding: 0 var(--spacing-2);
+  }
+
+  .contentCard {
+    width: calc(100% - 2 * var(--spacing-2));
+    margin-top: var(--spacing-4);
   }
 
   .contentCard {

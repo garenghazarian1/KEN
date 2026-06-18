@@ -247,10 +247,19 @@
       "norm_label": "lucide-react"
     },
     {
-      "label": "next",
+      "label": "mongoose",
       "file_type": "code",
       "source_file": "package.json",
       "source_location": "L16",
+      "id": "ken_package_dependencies_mongoose",
+      "community": 8,
+      "norm_label": "mongoose"
+    },
+    {
+      "label": "next",
+      "file_type": "code",
+      "source_file": "package.json",
+      "source_location": "L17",
       "id": "ken_package_dependencies_next",
       "community": 8,
       "norm_label": "next"
@@ -259,7 +268,7 @@
       "label": "react",
       "file_type": "code",
       "source_file": "package.json",
-      "source_location": "L17",
+      "source_location": "L18",
       "id": "ken_package_dependencies_react",
       "community": 8,
       "norm_label": "react"
@@ -268,7 +277,7 @@
       "label": "react-dom",
       "file_type": "code",
       "source_file": "package.json",
-      "source_location": "L18",
+      "source_location": "L19",
       "id": "ken_package_dependencies_react_dom",
       "community": 8,
       "norm_label": "react-dom"
@@ -277,7 +286,7 @@
       "label": "react-icons",
       "file_type": "code",
       "source_file": "package.json",
-      "source_location": "L19",
+      "source_location": "L20",
       "id": "ken_package_dependencies_react_icons",
       "community": 8,
       "norm_label": "react-icons"
@@ -286,7 +295,7 @@
       "label": "swiper",
       "file_type": "code",
       "source_file": "package.json",
-      "source_location": "L20",
+      "source_location": "L21",
       "id": "ken_package_dependencies_swiper",
       "community": 8,
       "norm_label": "swiper"
@@ -295,7 +304,7 @@
       "label": "devDependencies",
       "file_type": "code",
       "source_file": "package.json",
-      "source_location": "L22",
+      "source_location": "L23",
       "id": "ken_package_devdependencies",
       "community": 8,
       "norm_label": "devdependencies"
@@ -304,7 +313,7 @@
       "label": "eslint",
       "file_type": "code",
       "source_file": "package.json",
-      "source_location": "L23",
+      "source_location": "L24",
       "id": "ken_package_devdependencies_eslint",
       "community": 8,
       "norm_label": "eslint"
@@ -313,7 +322,7 @@
       "label": "eslint-config-next",
       "file_type": "code",
       "source_file": "package.json",
-      "source_location": "L24",
+      "source_location": "L25",
       "id": "ken_package_devdependencies_eslint_config_next",
       "community": 8,
       "norm_label": "eslint-config-next"
@@ -322,7 +331,7 @@
       "label": "postcss",
       "file_type": "code",
       "source_file": "package.json",
-      "source_location": "L25",
+      "source_location": "L26",
       "id": "ken_package_devdependencies_postcss",
       "community": 8,
       "norm_label": "postcss"
@@ -331,7 +340,7 @@
       "label": "tailwindcss",
       "file_type": "code",
       "source_file": "package.json",
-      "source_location": "L26",
+      "source_location": "L27",
       "id": "ken_package_devdependencies_tailwindcss",
       "community": 8,
       "norm_label": "tailwindcss"
@@ -1480,10 +1489,19 @@
       "norm_label": "hero.modern.jsx"
     },
     {
+      "label": "HERO_VIDEO_PROPS",
+      "file_type": "code",
+      "source_file": "src/components/hero/Hero.modern.jsx",
+      "source_location": "L12",
+      "id": "hero_hero_modern_hero_video_props",
+      "community": 33,
+      "norm_label": "hero_video_props"
+    },
+    {
       "label": "images",
       "file_type": "code",
       "source_file": "src/components/hero/Hero.modern.jsx",
-      "source_location": "L11",
+      "source_location": "L20",
       "id": "hero_hero_modern_images",
       "community": 33,
       "norm_label": "images"
@@ -1492,16 +1510,43 @@
       "label": "descriptions",
       "file_type": "code",
       "source_file": "src/components/hero/Hero.modern.jsx",
-      "source_location": "L21",
+      "source_location": "L30",
       "id": "hero_hero_modern_descriptions",
       "community": 33,
       "norm_label": "descriptions"
     },
     {
+      "label": "getStackMetrics()",
+      "file_type": "code",
+      "source_file": "src/components/hero/Hero.modern.jsx",
+      "source_location": "L65",
+      "id": "hero_hero_modern_getstackmetrics",
+      "community": 33,
+      "norm_label": "getstackmetrics()"
+    },
+    {
+      "label": "getLayerMotion()",
+      "file_type": "code",
+      "source_file": "src/components/hero/Hero.modern.jsx",
+      "source_location": "L78",
+      "id": "hero_hero_modern_getlayermotion",
+      "community": 33,
+      "norm_label": "getlayermotion()"
+    },
+    {
+      "label": "GalleryImageStack()",
+      "file_type": "code",
+      "source_file": "src/components/hero/Hero.modern.jsx",
+      "source_location": "L106",
+      "id": "hero_hero_modern_galleryimagestack",
+      "community": 33,
+      "norm_label": "galleryimagestack()"
+    },
+    {
       "label": "HeroModern()",
       "file_type": "code",
       "source_file": "src/components/hero/Hero.modern.jsx",
-      "source_location": "L52",
+      "source_location": "L287",
       "id": "hero_hero_modern_heromodern",
       "community": 33,
       "norm_label": "heromodern()"
@@ -1735,7 +1780,7 @@
       "label": "MobileNavBottom()",
       "file_type": "code",
       "source_file": "src/components/mobileNav/MobileNavBottom.jsx",
-      "source_location": "L18",
+      "source_location": "L17",
       "id": "mobilenav_mobilenavbottom_mobilenavbottom",
       "community": 4,
       "norm_label": "mobilenavbottom()"
@@ -2383,16 +2428,25 @@
       "label": "CATEGORY_ICONS",
       "file_type": "code",
       "source_file": "src/components/serviceMenu/ServiceMenu.jsx",
-      "source_location": "L26",
+      "source_location": "L35",
       "id": "servicemenu_servicemenu_category_icons",
       "community": 87,
       "norm_label": "category_icons"
     },
     {
+      "label": "SERVICE_LAYOUT_OPTIONS",
+      "file_type": "code",
+      "source_file": "src/components/serviceMenu/ServiceMenu.jsx",
+      "source_location": "L44",
+      "id": "servicemenu_servicemenu_service_layout_options",
+      "community": 87,
+      "norm_label": "service_layout_options"
+    },
+    {
       "label": "getCategoryIcon()",
       "file_type": "code",
       "source_file": "src/components/serviceMenu/ServiceMenu.jsx",
-      "source_location": "L35",
+      "source_location": "L50",
       "id": "servicemenu_servicemenu_getcategoryicon",
       "community": 87,
       "norm_label": "getcategoryicon()"
@@ -2401,7 +2455,7 @@
       "label": "formatPrice()",
       "file_type": "code",
       "source_file": "src/components/serviceMenu/ServiceMenu.jsx",
-      "source_location": "L42",
+      "source_location": "L57",
       "id": "servicemenu_servicemenu_formatprice",
       "community": 87,
       "norm_label": "formatprice()"
@@ -2410,7 +2464,7 @@
       "label": "formatDuration()",
       "file_type": "code",
       "source_file": "src/components/serviceMenu/ServiceMenu.jsx",
-      "source_location": "L47",
+      "source_location": "L62",
       "id": "servicemenu_servicemenu_formatduration",
       "community": 87,
       "norm_label": "formatduration()"
@@ -2419,7 +2473,7 @@
       "label": "totalItemCount()",
       "file_type": "code",
       "source_file": "src/components/serviceMenu/ServiceMenu.jsx",
-      "source_location": "L52",
+      "source_location": "L67",
       "id": "servicemenu_servicemenu_totalitemcount",
       "community": 87,
       "norm_label": "totalitemcount()"
@@ -2428,7 +2482,7 @@
       "label": "Highlight()",
       "file_type": "code",
       "source_file": "src/components/serviceMenu/ServiceMenu.jsx",
-      "source_location": "L60",
+      "source_location": "L75",
       "id": "servicemenu_servicemenu_highlight",
       "community": 87,
       "norm_label": "highlight()"
@@ -2437,34 +2491,34 @@
       "label": "filterSections()",
       "file_type": "code",
       "source_file": "src/components/serviceMenu/ServiceMenu.jsx",
-      "source_location": "L76",
+      "source_location": "L91",
       "id": "servicemenu_servicemenu_filtersections",
       "community": 87,
       "norm_label": "filtersections()"
     },
     {
-      "label": "CategoryBlurBg()",
-      "file_type": "code",
-      "source_file": "src/components/serviceMenu/ServiceMenu.jsx",
-      "source_location": "L115",
-      "id": "servicemenu_servicemenu_categoryblurbg",
-      "community": 87,
-      "norm_label": "categoryblurbg()"
-    },
-    {
       "label": "ServiceCard()",
       "file_type": "code",
       "source_file": "src/components/serviceMenu/ServiceMenu.jsx",
-      "source_location": "L134",
+      "source_location": "L130",
       "id": "servicemenu_servicemenu_servicecard",
       "community": 87,
       "norm_label": "servicecard()"
     },
     {
+      "label": "ServicesDisplay()",
+      "file_type": "code",
+      "source_file": "src/components/serviceMenu/ServiceMenu.jsx",
+      "source_location": "L180",
+      "id": "servicemenu_servicemenu_servicesdisplay",
+      "community": 87,
+      "norm_label": "servicesdisplay()"
+    },
+    {
       "label": "SubcategoryAccordion()",
       "file_type": "code",
       "source_file": "src/components/serviceMenu/ServiceMenu.jsx",
-      "source_location": "L176",
+      "source_location": "L238",
       "id": "servicemenu_servicemenu_subcategoryaccordion",
       "community": 87,
       "norm_label": "subcategoryaccordion()"
@@ -2473,16 +2527,34 @@
       "label": "CategoryAccordion()",
       "file_type": "code",
       "source_file": "src/components/serviceMenu/ServiceMenu.jsx",
-      "source_location": "L229",
+      "source_location": "L282",
       "id": "servicemenu_servicemenu_categoryaccordion",
       "community": 87,
       "norm_label": "categoryaccordion()"
     },
     {
+      "label": "WhatsAppIcon()",
+      "file_type": "code",
+      "source_file": "src/components/serviceMenu/ServiceMenu.jsx",
+      "source_location": "L381",
+      "id": "servicemenu_servicemenu_whatsappicon",
+      "community": 87,
+      "norm_label": "whatsappicon()"
+    },
+    {
+      "label": "WhatsAppBanner()",
+      "file_type": "code",
+      "source_file": "src/components/serviceMenu/ServiceMenu.jsx",
+      "source_location": "L397",
+      "id": "servicemenu_servicemenu_whatsappbanner",
+      "community": 87,
+      "norm_label": "whatsappbanner()"
+    },
+    {
       "label": "ServiceMenu()",
       "file_type": "code",
       "source_file": "src/components/serviceMenu/ServiceMenu.jsx",
-      "source_location": "L332",
+      "source_location": "L467",
       "id": "servicemenu_servicemenu_servicemenu",
       "community": 87,
       "norm_label": "servicemenu()"
@@ -2506,10 +2578,19 @@
       "norm_label": "contact"
     },
     {
+      "label": "WHATSAPP_CONTACTS",
+      "file_type": "code",
+      "source_file": "src/config/constants.js",
+      "source_location": "L54",
+      "id": "config_constants_whatsapp_contacts",
+      "community": 4,
+      "norm_label": "whatsapp_contacts"
+    },
+    {
       "label": "SOCIAL_MEDIA",
       "file_type": "code",
       "source_file": "src/config/constants.js",
-      "source_location": "L51",
+      "source_location": "L70",
       "id": "config_constants_social_media",
       "community": 4,
       "norm_label": "social_media"
@@ -2518,7 +2599,7 @@
       "label": "SOCIAL_HANDLES",
       "file_type": "code",
       "source_file": "src/config/constants.js",
-      "source_location": "L68",
+      "source_location": "L87",
       "id": "config_constants_social_handles",
       "community": 4,
       "norm_label": "social_handles"
@@ -2527,7 +2608,7 @@
       "label": "BUSINESS",
       "file_type": "code",
       "source_file": "src/config/constants.js",
-      "source_location": "L85",
+      "source_location": "L104",
       "id": "config_constants_business",
       "community": 4,
       "norm_label": "business"
@@ -2536,7 +2617,7 @@
       "label": "APP_STORES",
       "file_type": "code",
       "source_file": "src/config/constants.js",
-      "source_location": "L98",
+      "source_location": "L117",
       "id": "config_constants_app_stores",
       "community": 4,
       "norm_label": "app_stores"
@@ -2545,7 +2626,7 @@
       "label": "THIRD_PARTY",
       "file_type": "code",
       "source_file": "src/config/constants.js",
-      "source_location": "L106",
+      "source_location": "L125",
       "id": "config_constants_third_party",
       "community": 4,
       "norm_label": "third_party"
@@ -2554,7 +2635,7 @@
       "label": "IMAGES",
       "file_type": "code",
       "source_file": "src/config/constants.js",
-      "source_location": "L118",
+      "source_location": "L137",
       "id": "config_constants_images",
       "community": 4,
       "norm_label": "images"
@@ -2563,7 +2644,7 @@
       "label": "SPECIAL_PERIOD_LOGO",
       "file_type": "code",
       "source_file": "src/config/constants.js",
-      "source_location": "L147",
+      "source_location": "L166",
       "id": "config_constants_special_period_logo",
       "community": 4,
       "norm_label": "special_period_logo"
@@ -2572,7 +2653,7 @@
       "label": "getSpecialPeriodLogo()",
       "file_type": "code",
       "source_file": "src/config/constants.js",
-      "source_location": "L154",
+      "source_location": "L173",
       "id": "config_constants_getspecialperiodlogo",
       "community": 4,
       "norm_label": "getspecialperiodlogo()"
@@ -2581,7 +2662,7 @@
       "label": "formatPhoneForTel()",
       "file_type": "code",
       "source_file": "src/config/constants.js",
-      "source_location": "L164",
+      "source_location": "L183",
       "id": "config_constants_formatphonefortel",
       "community": 4,
       "norm_label": "formatphonefortel()"
@@ -2590,7 +2671,7 @@
       "label": "getTelLink()",
       "file_type": "code",
       "source_file": "src/config/constants.js",
-      "source_location": "L215",
+      "source_location": "L234",
       "id": "config_constants_gettellink",
       "community": 4,
       "norm_label": "gettellink()"
@@ -2599,7 +2680,7 @@
       "label": "isIOSWebView()",
       "file_type": "code",
       "source_file": "src/config/constants.js",
-      "source_location": "L254",
+      "source_location": "L273",
       "id": "config_constants_isioswebview",
       "community": 4,
       "norm_label": "isioswebview()"
@@ -2608,7 +2689,7 @@
       "label": "isAndroidWebView()",
       "file_type": "code",
       "source_file": "src/config/constants.js",
-      "source_location": "L282",
+      "source_location": "L301",
       "id": "config_constants_isandroidwebview",
       "community": 4,
       "norm_label": "isandroidwebview()"
@@ -2617,7 +2698,7 @@
       "label": "handlePhoneClick()",
       "file_type": "code",
       "source_file": "src/config/constants.js",
-      "source_location": "L315",
+      "source_location": "L334",
       "id": "config_constants_handlephoneclick",
       "community": 4,
       "norm_label": "handlephoneclick()"
@@ -2626,7 +2707,7 @@
       "label": "getFullUrl()",
       "file_type": "code",
       "source_file": "src/config/constants.js",
-      "source_location": "L330",
+      "source_location": "L349",
       "id": "config_constants_getfullurl",
       "community": 4,
       "norm_label": "getfullurl()"
@@ -2635,7 +2716,7 @@
       "label": "getSocialMediaArray()",
       "file_type": "code",
       "source_file": "src/config/constants.js",
-      "source_location": "L337",
+      "source_location": "L356",
       "id": "config_constants_getsocialmediaarray",
       "community": 4,
       "norm_label": "getsocialmediaarray()"
@@ -2698,25 +2779,16 @@
       "label": "SERVICE_CATEGORY_IMAGES",
       "file_type": "code",
       "source_file": "src/data/serviceImages.js",
-      "source_location": "L9",
+      "source_location": "L8",
       "id": "data_serviceimages_service_category_images",
       "community": 87,
       "norm_label": "service_category_images"
     },
     {
-      "label": "isMenSection()",
-      "file_type": "code",
-      "source_file": "src/data/serviceImages.js",
-      "source_location": "L39",
-      "id": "data_serviceimages_ismensection",
-      "community": 87,
-      "norm_label": "ismensection()"
-    },
-    {
       "label": "getCategoryImage()",
       "file_type": "code",
       "source_file": "src/data/serviceImages.js",
-      "source_location": "L47",
+      "source_location": "L50",
       "id": "data_serviceimages_getcategoryimage",
       "community": 87,
       "norm_label": "getcategoryimage()"
@@ -2749,10 +2821,64 @@
       "norm_label": "servicecatalog.js"
     },
     {
+      "label": "getModel()",
+      "file_type": "code",
+      "source_file": "src/lib/business/serviceCatalog.js",
+      "source_location": "L8",
+      "id": "business_servicecatalog_getmodel",
+      "community": 88,
+      "norm_label": "getmodel()"
+    },
+    {
+      "label": "BusinessSchema",
+      "file_type": "code",
+      "source_file": "src/lib/business/serviceCatalog.js",
+      "source_location": "L16",
+      "id": "business_servicecatalog_businessschema",
+      "community": 88,
+      "norm_label": "businessschema"
+    },
+    {
+      "label": "BusinessServiceCategorySchema",
+      "file_type": "code",
+      "source_file": "src/lib/business/serviceCatalog.js",
+      "source_location": "L21",
+      "id": "business_servicecatalog_businessservicecategoryschema",
+      "community": 88,
+      "norm_label": "businessservicecategoryschema"
+    },
+    {
+      "label": "BusinessServiceItemSchema",
+      "file_type": "code",
+      "source_file": "src/lib/business/serviceCatalog.js",
+      "source_location": "L36",
+      "id": "business_servicecatalog_businessserviceitemschema",
+      "community": 88,
+      "norm_label": "businessserviceitemschema"
+    },
+    {
+      "label": "BusinessServiceItemCategoryLinkSchema",
+      "file_type": "code",
+      "source_file": "src/lib/business/serviceCatalog.js",
+      "source_location": "L51",
+      "id": "business_servicecatalog_businessserviceitemcategorylinkschema",
+      "community": 88,
+      "norm_label": "businessserviceitemcategorylinkschema"
+    },
+    {
+      "label": "resolveName()",
+      "file_type": "code",
+      "source_file": "src/lib/business/serviceCatalog.js",
+      "source_location": "L62",
+      "id": "business_servicecatalog_resolvename",
+      "community": 88,
+      "norm_label": "resolvename()"
+    },
+    {
       "label": "getServiceCatalog()",
       "file_type": "code",
       "source_file": "src/lib/business/serviceCatalog.js",
-      "source_location": "L11",
+      "source_location": "L71",
       "id": "business_servicecatalog_getservicecatalog",
       "community": 88,
       "norm_label": "getservicecatalog()"
@@ -2761,7 +2887,7 @@
       "label": "sortByOrder()",
       "file_type": "code",
       "source_file": "src/lib/business/serviceCatalog.js",
-      "source_location": "L32",
+      "source_location": "L138",
       "id": "business_servicecatalog_sortbyorder",
       "community": 88,
       "norm_label": "sortbyorder()"
@@ -2770,10 +2896,46 @@
       "label": "buildServiceSections()",
       "file_type": "code",
       "source_file": "src/lib/business/serviceCatalog.js",
-      "source_location": "L38",
+      "source_location": "L144",
       "id": "business_servicecatalog_buildservicesections",
       "community": 88,
       "norm_label": "buildservicesections()"
+    },
+    {
+      "label": "mongoose.js",
+      "file_type": "code",
+      "source_file": "src/lib/db/mongoose.js",
+      "source_location": "L1",
+      "id": "src_lib_db_mongoose_js",
+      "community": 88,
+      "norm_label": "mongoose.js"
+    },
+    {
+      "label": "makeConnector()",
+      "file_type": "code",
+      "source_file": "src/lib/db/mongoose.js",
+      "source_location": "L8",
+      "id": "db_mongoose_makeconnector",
+      "community": 88,
+      "norm_label": "makeconnector()"
+    },
+    {
+      "label": "connectDB",
+      "file_type": "code",
+      "source_file": "src/lib/db/mongoose.js",
+      "source_location": "L43",
+      "id": "db_mongoose_connectdb",
+      "community": 88,
+      "norm_label": "connectdb"
+    },
+    {
+      "label": "connectServicesDB",
+      "file_type": "code",
+      "source_file": "src/lib/db/mongoose.js",
+      "source_location": "L48",
+      "id": "db_mongoose_connectservicesdb",
+      "community": 88,
+      "norm_label": "connectservicesdb"
     },
     {
       "label": "CRITICAL_ISSUES_REPORT.md",
@@ -3681,7 +3843,7 @@
       "source_file": "FOLLOW_PATTERNS.md",
       "source_location": "L621",
       "id": "ken_follow_patterns_accessibility_patterns",
-      "community": 0,
+      "community": 18,
       "norm_label": "accessibility patterns"
     },
     {
@@ -3690,7 +3852,7 @@
       "source_file": "FOLLOW_PATTERNS.md",
       "source_location": "L623",
       "id": "ken_follow_patterns_semantic_html",
-      "community": 0,
+      "community": 18,
       "norm_label": "semantic html"
     },
     {
@@ -3699,7 +3861,7 @@
       "source_file": "FOLLOW_PATTERNS.md",
       "source_location": "L625",
       "id": "ken_follow_patterns_codeblock_33",
-      "community": 0,
+      "community": 18,
       "norm_label": "code:jsx (// use semantic elements)"
     },
     {
@@ -3708,7 +3870,7 @@
       "source_file": "FOLLOW_PATTERNS.md",
       "source_location": "L632",
       "id": "ken_follow_patterns_aria_attributes",
-      "community": 0,
+      "community": 18,
       "norm_label": "aria attributes"
     },
     {
@@ -3717,7 +3879,7 @@
       "source_file": "FOLLOW_PATTERNS.md",
       "source_location": "L634",
       "id": "ken_follow_patterns_codeblock_34",
-      "community": 0,
+      "community": 18,
       "norm_label": "code:jsx (// labels)"
     },
     {
@@ -3726,7 +3888,7 @@
       "source_file": "FOLLOW_PATTERNS.md",
       "source_location": "L655",
       "id": "ken_follow_patterns_form_accessibility",
-      "community": 0,
+      "community": 18,
       "norm_label": "form accessibility"
     },
     {
@@ -3735,7 +3897,7 @@
       "source_file": "FOLLOW_PATTERNS.md",
       "source_location": "L657",
       "id": "ken_follow_patterns_codeblock_35",
-      "community": 0,
+      "community": 18,
       "norm_label": "code:jsx (<div classname={styles.field}>)"
     },
     {
@@ -3744,7 +3906,7 @@
       "source_file": "FOLLOW_PATTERNS.md",
       "source_location": "L677",
       "id": "ken_follow_patterns_focus_states",
-      "community": 0,
+      "community": 18,
       "norm_label": "focus states"
     },
     {
@@ -3753,7 +3915,7 @@
       "source_file": "FOLLOW_PATTERNS.md",
       "source_location": "L679",
       "id": "ken_follow_patterns_codeblock_36",
-      "community": 0,
+      "community": 18,
       "norm_label": "code:css (/* always style focus-visible for keyboard navigation */)"
     },
     {
@@ -3762,7 +3924,7 @@
       "source_file": "FOLLOW_PATTERNS.md",
       "source_location": "L692",
       "id": "ken_follow_patterns_color_contrast",
-      "community": 0,
+      "community": 18,
       "norm_label": "color contrast"
     },
     {
@@ -4932,7 +5094,7 @@
       "source_file": "oldMD/IMPROVEMENT_PLAN.md",
       "source_location": "L275",
       "id": "oldmd_improvement_plan_global_design_system",
-      "community": 18,
+      "community": 5,
       "norm_label": "global design system"
     },
     {
@@ -4941,7 +5103,7 @@
       "source_file": "oldMD/IMPROVEMENT_PLAN.md",
       "source_location": "L277",
       "id": "oldmd_improvement_plan_phase_1_color_system",
-      "community": 18,
+      "community": 5,
       "norm_label": "phase 1: color system"
     },
     {
@@ -4950,7 +5112,7 @@
       "source_file": "oldMD/IMPROVEMENT_PLAN.md",
       "source_location": "L279",
       "id": "oldmd_improvement_plan_current_color_variables_to_be_organized",
-      "community": 18,
+      "community": 5,
       "norm_label": "current color variables (to be organized)"
     },
     {
@@ -4959,7 +5121,7 @@
       "source_file": "oldMD/IMPROVEMENT_PLAN.md",
       "source_location": "L281",
       "id": "oldmd_improvement_plan_codeblock_1",
-      "community": 18,
+      "community": 5,
       "norm_label": "code:css (/* main theme */)"
     },
     {
@@ -4968,7 +5130,7 @@
       "source_file": "oldMD/IMPROVEMENT_PLAN.md",
       "source_location": "L332",
       "id": "oldmd_improvement_plan_proposed_organized_structure",
-      "community": 18,
+      "community": 5,
       "norm_label": "proposed organized structure"
     },
     {
@@ -4977,7 +5139,7 @@
       "source_file": "oldMD/IMPROVEMENT_PLAN.md",
       "source_location": "L334",
       "id": "oldmd_improvement_plan_codeblock_2",
-      "community": 18,
+      "community": 5,
       "norm_label": "code:css (:root {)"
     },
     {
@@ -4986,7 +5148,7 @@
       "source_file": "oldMD/IMPROVEMENT_PLAN.md",
       "source_location": "L497",
       "id": "oldmd_improvement_plan_phase_2_typography_utilities",
-      "community": 18,
+      "community": 5,
       "norm_label": "phase 2: typography utilities"
     },
     {
@@ -4995,7 +5157,7 @@
       "source_file": "oldMD/IMPROVEMENT_PLAN.md",
       "source_location": "L501",
       "id": "oldmd_improvement_plan_codeblock_3",
-      "community": 18,
+      "community": 5,
       "norm_label": "code:css (/* heading styles */)"
     },
     {
@@ -5004,7 +5166,7 @@
       "source_file": "oldMD/IMPROVEMENT_PLAN.md",
       "source_location": "L567",
       "id": "oldmd_improvement_plan_phase_3_spacing_utilities",
-      "community": 18,
+      "community": 5,
       "norm_label": "phase 3: spacing utilities"
     },
     {
@@ -5013,7 +5175,7 @@
       "source_file": "oldMD/IMPROVEMENT_PLAN.md",
       "source_location": "L569",
       "id": "oldmd_improvement_plan_codeblock_4",
-      "community": 18,
+      "community": 5,
       "norm_label": "code:css (/* margin utilities */)"
     },
     {
@@ -5022,7 +5184,7 @@
       "source_file": "oldMD/IMPROVEMENT_PLAN.md",
       "source_location": "L589",
       "id": "oldmd_improvement_plan_phase_4_responsive_mixins",
-      "community": 18,
+      "community": 5,
       "norm_label": "phase 4: responsive mixins"
     },
     {
@@ -5031,7 +5193,7 @@
       "source_file": "oldMD/IMPROVEMENT_PLAN.md",
       "source_location": "L591",
       "id": "oldmd_improvement_plan_codeblock_5",
-      "community": 18,
+      "community": 5,
       "norm_label": "code:css (/* mobile first approach */)"
     },
     {
@@ -6493,6 +6655,24 @@
       "norm_label": "notes"
     },
     {
+      "label": "CategoryBlurBg()",
+      "file_type": "code",
+      "source_file": "src/components/serviceMenu/ServiceMenu.jsx",
+      "source_location": "L115",
+      "community": 87,
+      "norm_label": "categoryblurbg()",
+      "id": "servicemenu_servicemenu_categoryblurbg"
+    },
+    {
+      "label": "isMenSection()",
+      "file_type": "code",
+      "source_file": "src/data/serviceImages.js",
+      "source_location": "L39",
+      "community": 87,
+      "norm_label": "ismensection()",
+      "id": "data_serviceimages_ismensection"
+    },
+    {
       "label": "CategoryBanner()",
       "file_type": "code",
       "source_file": "src/components/serviceMenu/ServiceMenu.jsx",
@@ -6741,6 +6921,16 @@
       "confidence_score": 1.0,
       "source": "ken_package_dependencies",
       "target": "ken_package_dependencies_lucide_react"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "package.json",
+      "source_location": "L16",
+      "weight": 1.0,
+      "source": "ken_package_dependencies",
+      "target": "ken_package_dependencies_mongoose",
+      "confidence_score": 1.0
     },
     {
       "relation": "contains",
@@ -7856,6 +8046,46 @@
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "src/components/hero/Hero.modern.jsx",
+      "source_location": "L106",
+      "weight": 1.0,
+      "source": "src_components_hero_hero_modern_jsx",
+      "target": "hero_hero_modern_galleryimagestack",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "src/components/hero/Hero.modern.jsx",
+      "source_location": "L78",
+      "weight": 1.0,
+      "source": "src_components_hero_hero_modern_jsx",
+      "target": "hero_hero_modern_getlayermotion",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "src/components/hero/Hero.modern.jsx",
+      "source_location": "L65",
+      "weight": 1.0,
+      "source": "src_components_hero_hero_modern_jsx",
+      "target": "hero_hero_modern_getstackmetrics",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "src/components/hero/Hero.modern.jsx",
+      "source_location": "L12",
+      "weight": 1.0,
+      "source": "src_components_hero_hero_modern_jsx",
+      "target": "hero_hero_modern_hero_video_props",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "src/components/hero/Hero.modern.jsx",
       "source_location": "L52",
       "weight": 1.0,
       "confidence_score": 1.0,
@@ -8822,9 +9052,9 @@
       "source_file": "src/components/serviceMenu/ServiceMenu.jsx",
       "source_location": "L115",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "src_components_servicemenu_servicemenu_jsx",
-      "target": "servicemenu_servicemenu_categoryblurbg",
-      "confidence_score": 1.0
+      "target": "servicemenu_servicemenu_categoryblurbg"
     },
     {
       "relation": "contains",
@@ -8880,6 +9110,16 @@
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "src/components/serviceMenu/ServiceMenu.jsx",
+      "source_location": "L44",
+      "weight": 1.0,
+      "source": "src_components_servicemenu_servicemenu_jsx",
+      "target": "servicemenu_servicemenu_service_layout_options",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "src/components/serviceMenu/ServiceMenu.jsx",
       "source_location": "L43",
       "weight": 1.0,
       "confidence_score": 1.0,
@@ -8910,6 +9150,16 @@
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "src/components/serviceMenu/ServiceMenu.jsx",
+      "source_location": "L180",
+      "weight": 1.0,
+      "source": "src_components_servicemenu_servicemenu_jsx",
+      "target": "servicemenu_servicemenu_servicesdisplay",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "src/components/serviceMenu/ServiceMenu.jsx",
       "source_location": "L151",
       "weight": 1.0,
       "confidence_score": 1.0,
@@ -8925,6 +9175,26 @@
       "confidence_score": 1.0,
       "source": "src_components_servicemenu_servicemenu_jsx",
       "target": "servicemenu_servicemenu_totalitemcount"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "src/components/serviceMenu/ServiceMenu.jsx",
+      "source_location": "L397",
+      "weight": 1.0,
+      "source": "src_components_servicemenu_servicemenu_jsx",
+      "target": "servicemenu_servicemenu_whatsappbanner",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "src/components/serviceMenu/ServiceMenu.jsx",
+      "source_location": "L381",
+      "weight": 1.0,
+      "source": "src_components_servicemenu_servicemenu_jsx",
+      "target": "servicemenu_servicemenu_whatsappicon",
+      "confidence_score": 1.0
     },
     {
       "relation": "calls",
@@ -9153,6 +9423,16 @@
       "target": "config_constants_third_party"
     },
     {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "src/config/constants.js",
+      "source_location": "L54",
+      "weight": 1.0,
+      "source": "src_config_constants_js",
+      "target": "config_constants_whatsapp_contacts",
+      "confidence_score": 1.0
+    },
+    {
       "relation": "calls",
       "context": "call",
       "confidence": "EXTRACTED",
@@ -9279,6 +9559,56 @@
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "src/lib/business/serviceCatalog.js",
+      "source_location": "L16",
+      "weight": 1.0,
+      "source": "src_lib_business_servicecatalog_js",
+      "target": "business_servicecatalog_businessschema",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "src/lib/business/serviceCatalog.js",
+      "source_location": "L21",
+      "weight": 1.0,
+      "source": "src_lib_business_servicecatalog_js",
+      "target": "business_servicecatalog_businessservicecategoryschema",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "src/lib/business/serviceCatalog.js",
+      "source_location": "L51",
+      "weight": 1.0,
+      "source": "src_lib_business_servicecatalog_js",
+      "target": "business_servicecatalog_businessserviceitemcategorylinkschema",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "src/lib/business/serviceCatalog.js",
+      "source_location": "L36",
+      "weight": 1.0,
+      "source": "src_lib_business_servicecatalog_js",
+      "target": "business_servicecatalog_businessserviceitemschema",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "src/lib/business/serviceCatalog.js",
+      "source_location": "L8",
+      "weight": 1.0,
+      "source": "src_lib_business_servicecatalog_js",
+      "target": "business_servicecatalog_getmodel",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "src/lib/business/serviceCatalog.js",
       "source_location": "L11",
       "weight": 1.0,
       "confidence_score": 1.0,
@@ -9289,11 +9619,73 @@
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "src/lib/business/serviceCatalog.js",
+      "source_location": "L62",
+      "weight": 1.0,
+      "source": "src_lib_business_servicecatalog_js",
+      "target": "business_servicecatalog_resolvename",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "src/lib/business/serviceCatalog.js",
       "source_location": "L32",
       "weight": 1.0,
       "confidence_score": 1.0,
       "source": "src_lib_business_servicecatalog_js",
       "target": "business_servicecatalog_sortbyorder"
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "source_file": "src/lib/business/serviceCatalog.js",
+      "source_location": "L74",
+      "weight": 1.0,
+      "source": "business_servicecatalog_getservicecatalog",
+      "target": "business_servicecatalog_getmodel",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "INFERRED",
+      "confidence_score": 0.8,
+      "source_file": "src/lib/business/serviceCatalog.js",
+      "source_location": "L72",
+      "weight": 1.0,
+      "source": "business_servicecatalog_getservicecatalog",
+      "target": "db_mongoose_connectservicesdb"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "src/lib/db/mongoose.js",
+      "source_location": "L43",
+      "weight": 1.0,
+      "source": "src_lib_db_mongoose_js",
+      "target": "db_mongoose_connectdb",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "src/lib/db/mongoose.js",
+      "source_location": "L48",
+      "weight": 1.0,
+      "source": "src_lib_db_mongoose_js",
+      "target": "db_mongoose_connectservicesdb",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "src/lib/db/mongoose.js",
+      "source_location": "L8",
+      "weight": 1.0,
+      "source": "src_lib_db_mongoose_js",
+      "target": "db_mongoose_makeconnector",
+      "confidence_score": 1.0
     },
     {
       "relation": "contains",
@@ -13367,5 +13759,5 @@
     }
   ],
   "hyperedges": [],
-  "built_at_commit": "e733aac4c8263761b72ccbaabf8b82358adffd12"
+  "built_at_commit": "cf90a41a2c784997ab8e76920737285598caad5a"
 }

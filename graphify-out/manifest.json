@@ -15,8 +15,8 @@
     "semantic_hash": ""
   },
   "C:\\Users\\garen\\Desktop\\01-WEB-DEV\\KenLight02\\ken\\package.json": {
-    "mtime": 1775990457.7088814,
-    "ast_hash": "53c12ca083aae18756e50be3ea6ca850",
+    "mtime": 1781470471.7340796,
+    "ast_hash": "5c403717c8d8c76c9e1c2b3301b92a74",
     "semantic_hash": ""
   },
   "C:\\Users\\garen\\Desktop\\01-WEB-DEV\\KenLight02\\ken\\postcss.config.mjs": {
@@ -165,8 +165,8 @@
     "semantic_hash": ""
   },
   "C:\\Users\\garen\\Desktop\\01-WEB-DEV\\KenLight02\\ken\\src\\components\\contact\\ContactContent.jsx": {
-    "mtime": 1777287559.9642494,
-    "ast_hash": "4d95e52a748baad08b9e14802b6929ff",
+    "mtime": 1781512288.9676802,
+    "ast_hash": "f2fab562ada2821a172230d3c9800160",
     "semantic_hash": ""
   },
   "C:\\Users\\garen\\Desktop\\01-WEB-DEV\\KenLight02\\ken\\src\\components\\contact\\contactOldtest.jsx": {
@@ -185,8 +185,8 @@
     "semantic_hash": ""
   },
   "C:\\Users\\garen\\Desktop\\01-WEB-DEV\\KenLight02\\ken\\src\\components\\footer\\Footer.modern.jsx": {
-    "mtime": 1781386057.3279312,
-    "ast_hash": "62caccd1f3ffc11a546ecb2b1bca85dd",
+    "mtime": 1781512288.9636912,
+    "ast_hash": "d494e3fcfa89bba5db537f5f6b550641",
     "semantic_hash": ""
   },
   "C:\\Users\\garen\\Desktop\\01-WEB-DEV\\KenLight02\\ken\\src\\components\\hero\\hero-old.jsx": {
@@ -200,8 +200,8 @@
     "semantic_hash": ""
   },
   "C:\\Users\\garen\\Desktop\\01-WEB-DEV\\KenLight02\\ken\\src\\components\\hero\\Hero.modern.jsx": {
-    "mtime": 1777287556.9589522,
-    "ast_hash": "f14648235fafc8623ad6de7f3f8350f2",
+    "mtime": 1781773180.0919218,
+    "ast_hash": "28ae960dc75d235a35679ea14a153c7d",
     "semantic_hash": ""
   },
   "C:\\Users\\garen\\Desktop\\01-WEB-DEV\\KenLight02\\ken\\src\\components\\hooks\\useScrollTrigger.js": {
@@ -260,8 +260,8 @@
     "semantic_hash": ""
   },
   "C:\\Users\\garen\\Desktop\\01-WEB-DEV\\KenLight02\\ken\\src\\components\\mobileNav\\MobileNavBottom.jsx": {
-    "mtime": 1781386059.2089918,
-    "ast_hash": "e432ce1694a552833d449f1aa2d313d5",
+    "mtime": 1781451702.020716,
+    "ast_hash": "661c14f45f279aa36e6dd22449e32acd",
     "semantic_hash": ""
   },
   "C:\\Users\\garen\\Desktop\\01-WEB-DEV\\KenLight02\\ken\\src\\components\\mobileNav\\MobileNavTop.jsx": {
@@ -415,8 +415,8 @@
     "semantic_hash": ""
   },
   "C:\\Users\\garen\\Desktop\\01-WEB-DEV\\KenLight02\\ken\\src\\config\\constants.js": {
-    "mtime": 1781386030.713796,
-    "ast_hash": "a0898dffa857cee670c6cd85cc09865d",
+    "mtime": 1781454205.1185963,
+    "ast_hash": "58a97b72d0c13c57dc1c52e524372219",
     "semantic_hash": ""
   },
   "C:\\Users\\garen\\Desktop\\01-WEB-DEV\\KenLight02\\ken\\src\\data\\drinks.js": {
@@ -1010,18 +1010,18 @@
     "semantic_hash": ""
   },
   "C:\\Users\\garen\\Desktop\\01-WEB-DEV\\KenLight02\\ken\\src\\components\\serviceMenu\\ServiceMenu.jsx": {
-    "mtime": 1781446487.7420154,
-    "ast_hash": "e4d70586ceabd8d828647b1882d59269",
+    "mtime": 1781469371.2890291,
+    "ast_hash": "4d3ddb4bbd1b28ca4ca534a07f86bfb4",
     "semantic_hash": ""
   },
   "C:\\Users\\garen\\Desktop\\01-WEB-DEV\\KenLight02\\ken\\src\\lib\\business\\serviceCatalog.js": {
-    "mtime": 1781386032.9418726,
-    "ast_hash": "ed91611691dd48b0a5c86d15a123a77e",
+    "mtime": 1781471574.617166,
+    "ast_hash": "5fcee8305fd801971db8ac4f6a843313",
     "semantic_hash": ""
   },
   "C:\\Users\\garen\\Desktop\\01-WEB-DEV\\KenLight02\\ken\\src\\data\\serviceImages.js": {
-    "mtime": 1781389621.4713275,
-    "ast_hash": "63a4467f88e8ff080f8880b32af2c334",
+    "mtime": 1781468858.736203,
+    "ast_hash": "2bfac255b863a5321181cf021e201915",
     "semantic_hash": ""
   },
   "C:\\Users\\garen\\Desktop\\01-WEB-DEV\\KenLight02\\ken\\public\\price-catalog\\DSC01075.JPG.jpeg": {
@@ -1127,6 +1127,51 @@
   "C:\\Users\\garen\\Desktop\\01-WEB-DEV\\KenLight02\\ken\\public\\price-catalog\\categories\\solarium.webp": {
     "mtime": 1781389624.4431283,
     "ast_hash": "8f6786eb5003f6bbe7d888ddcaa74b0f",
+    "semantic_hash": ""
+  },
+  "C:\\Users\\garen\\Desktop\\01-WEB-DEV\\KenLight02\\ken\\src\\lib\\db\\mongoose.js": {
+    "mtime": 1781472354.8437934,
+    "ast_hash": "7709d4c1dc749f3a782085a42597f5ad",
+    "semantic_hash": ""
+  },
+  "C:\\Users\\garen\\Desktop\\01-WEB-DEV\\KenLight02\\ken\\public\\price-catalog\\categories\\men-1280.webp": {
+    "mtime": 1781468840.2543314,
+    "ast_hash": "cbcbe0d24fbaeeeee06bab958d64c767",
+    "semantic_hash": ""
+  },
+  "C:\\Users\\garen\\Desktop\\01-WEB-DEV\\KenLight02\\ken\\public\\price-catalog\\categories\\men-1920.webp": {
+    "mtime": 1781468839.8879876,
+    "ast_hash": "a676117f8a986af268680b6165df7d00",
+    "semantic_hash": ""
+  },
+  "C:\\Users\\garen\\Desktop\\01-WEB-DEV\\KenLight02\\ken\\public\\price-catalog\\categories\\men-640.webp": {
+    "mtime": 1781468840.4969475,
+    "ast_hash": "0878551b96d04593b0cd717cedf7b8f8",
+    "semantic_hash": ""
+  },
+  "C:\\Users\\garen\\Desktop\\01-WEB-DEV\\KenLight02\\ken\\public\\price-catalog\\categories\\men.webp": {
+    "mtime": 1781468839.3525908,
+    "ast_hash": "a676117f8a986af268680b6165df7d00",
+    "semantic_hash": ""
+  },
+  "C:\\Users\\garen\\Desktop\\01-WEB-DEV\\KenLight02\\ken\\public\\price-catalog\\categories\\waxing-bleaching-1280.webp": {
+    "mtime": 1781468364.1901581,
+    "ast_hash": "d0820c1fd9fe4ad54326d3750190596d",
+    "semantic_hash": ""
+  },
+  "C:\\Users\\garen\\Desktop\\01-WEB-DEV\\KenLight02\\ken\\public\\price-catalog\\categories\\waxing-bleaching-1920.webp": {
+    "mtime": 1781468363.8389258,
+    "ast_hash": "e8c6a8b900d230a6fd05389d240c13b5",
+    "semantic_hash": ""
+  },
+  "C:\\Users\\garen\\Desktop\\01-WEB-DEV\\KenLight02\\ken\\public\\price-catalog\\categories\\waxing-bleaching-640.webp": {
+    "mtime": 1781468364.434062,
+    "ast_hash": "fa8186f4285845d89f9631db161156c5",
+    "semantic_hash": ""
+  },
+  "C:\\Users\\garen\\Desktop\\01-WEB-DEV\\KenLight02\\ken\\public\\price-catalog\\categories\\waxing-bleaching.webp": {
+    "mtime": 1781468363.40226,
+    "ast_hash": "e8c6a8b900d230a6fd05389d240c13b5",
     "semantic_hash": ""
   }
 }
