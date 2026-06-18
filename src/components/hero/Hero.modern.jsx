@@ -2,7 +2,7 @@
 
 import Image from "next/image";
 import Link from "next/link";
-import { useEffect, useLayoutEffect, useRef, useState } from "react";
+import { useCallback, useEffect, useLayoutEffect, useRef, useState } from "react";
 import { motion } from "framer-motion";
 import { MessageCircle, ArrowRight, Briefcase } from "lucide-react";
 import { BOOKING_URL, CAREERS_URL } from "@/config/constants";
@@ -58,13 +58,20 @@ const descriptions = [
   },
 ];
 
-const STACK_STEP_MOBILE = 0.62;
+const STACK_STEP_MOBILE = 1;
 const STACK_STEP_DESKTOP = 0.48;
+const MOBILE_STACK_MAX_WIDTH = 768;
+const SNAP_IDLE_MS = 140;
+const SWIPE_THRESHOLD = 48;
+const SNAP_ADVANCE_THRESHOLD = 0.28;
+
+function isMobileStack() {
+  return window.innerWidth <= MOBILE_STACK_MAX_WIDTH;
+}
 
 function getStackMetrics() {
   const viewportHeight = window.innerHeight;
-  const stepRatio =
-    window.innerWidth <= 768 ? STACK_STEP_MOBILE : STACK_STEP_DESKTOP;
+  const stepRatio = isMobileStack() ? STACK_STEP_MOBILE : STACK_STEP_DESKTOP;
   const scrollStep = viewportHeight * stepRatio;
   const pinScrollDistance = (images.length - 1) * scrollStep;
   const containerHeight = viewportHeight + pinScrollDistance;
@@ -82,7 +89,7 @@ function easeOutCubic(value) {
   return 1 - (1 - value) ** 3;
 }
 
-function getLayerMotion(index, stackProgress) {
+function getLayerMotion(index, stackProgress, discrete = false) {
   const delta = stackProgress - index;
 
   // Incoming image: eased slide up, foreground stays sharp
@@ -92,8 +99,11 @@ function getLayerMotion(index, stackProgress) {
     return {
       translateY: (1 - easedEnter) * 100,
       bgBlurExtra: 0,
-      contentOpacity:
-        enterProgress > 0.72
+      contentOpacity: discrete
+        ? enterProgress > 0.94
+          ? clamp01((enterProgress - 0.94) / 0.06)
+          : 0
+        : enterProgress > 0.72
           ? clamp01((enterProgress - 0.72) / 0.28)
           : 0,
     };
@@ -112,18 +122,37 @@ function getLayerMotion(index, stackProgress) {
   return {
     translateY: 0,
     bgBlurExtra,
-    contentOpacity: coverAmount < 0.9 ? 1 - coverAmount / 0.9 : 0,
+    contentOpacity: discrete
+      ? coverAmount < 0.06
+        ? 1
+        : clamp01(1 - coverAmount / 0.06)
+      : coverAmount < 0.9
+        ? 1 - coverAmount / 0.9
+        : 0,
   };
 }
 
+function getSnapIndex(rawProgress, currentIndex) {
+  const delta = rawProgress - currentIndex;
+  if (delta > SNAP_ADVANCE_THRESHOLD) {
+    return Math.min(images.length - 1, currentIndex + 1);
+  }
+  if (delta < -SNAP_ADVANCE_THRESHOLD) {
+    return Math.max(0, currentIndex - 1);
+  }
+  return currentIndex;
+}
+
 function applyStackMotion(layerRefs, bgRefs, contentRefs, stackProgress) {
+  const discrete = isMobileStack();
+
   images.forEach((_, index) => {
     const layer = layerRefs.current[index];
     const bg = bgRefs.current[index];
     const content = contentRefs.current[index];
     if (!layer) return;
 
-    const motion = getLayerMotion(index, stackProgress);
+    const motion = getLayerMotion(index, stackProgress, discrete);
     layer.style.transform = `translate3d(0, ${motion.translateY}%, 0)`;
 
     if (bg) {
@@ -145,8 +174,28 @@ function GalleryImageStack() {
   const contentRefs = useRef([]);
   const pinModeRef = useRef("before");
   const containerHeightRef = useRef(0);
+  const activeIndexRef = useRef(0);
+  const touchStartYRef = useRef(0);
+  const snapTimerRef = useRef(null);
   const [pinMode, setPinMode] = useState("before");
   const [containerHeight, setContainerHeight] = useState(0);
+
+  const scrollToIndex = useCallback((index, behavior = "smooth") => {
+    const container = containerRef.current;
+    if (!container) return;
+
+    const { scrollStep } = getStackMetrics();
+    const targetIndex = Math.min(
+      images.length - 1,
+      Math.max(0, index)
+    );
+    const containerTop =
+      window.scrollY + container.getBoundingClientRect().top;
+    const targetTop = containerTop + targetIndex * scrollStep;
+
+    activeIndexRef.current = targetIndex;
+    window.scrollTo({ top: targetTop, behavior });
+  }, []);
 
   useLayoutEffect(() => {
     if (typeof window === "undefined") return;
@@ -158,6 +207,29 @@ function GalleryImageStack() {
 
   useEffect(() => {
     let frame = 0;
+
+    const scheduleSnap = () => {
+      if (!isMobileStack() || pinModeRef.current !== "fixed") return;
+
+      clearTimeout(snapTimerRef.current);
+      snapTimerRef.current = setTimeout(() => {
+        const container = containerRef.current;
+        if (!container || pinModeRef.current !== "fixed") return;
+
+        const { scrollStep, pinScrollDistance } = getStackMetrics();
+        const scrollY = window.scrollY;
+        const containerTop =
+          scrollY + container.getBoundingClientRect().top;
+        const progress = Math.min(
+          pinScrollDistance,
+          Math.max(0, scrollY - containerTop)
+        );
+        const rawProgress = progress / scrollStep;
+        const targetIndex = getSnapIndex(rawProgress, activeIndexRef.current);
+
+        scrollToIndex(targetIndex);
+      }, SNAP_IDLE_MS);
+    };
 
     const updateStack = () => {
       const container = containerRef.current;
@@ -180,6 +252,7 @@ function GalleryImageStack() {
           pinModeRef.current = "before";
           setPinMode("before");
         }
+        activeIndexRef.current = 0;
         applyStackMotion(layerRefs, bgRefs, contentRefs, 0);
         return;
       }
@@ -189,6 +262,7 @@ function GalleryImageStack() {
           pinModeRef.current = "after";
           setPinMode("after");
         }
+        activeIndexRef.current = images.length - 1;
         applyStackMotion(
           layerRefs,
           bgRefs,
@@ -214,6 +288,7 @@ function GalleryImageStack() {
     const onScroll = () => {
       cancelAnimationFrame(frame);
       frame = requestAnimationFrame(updateStack);
+      scheduleSnap();
     };
 
     updateStack();
@@ -222,10 +297,48 @@ function GalleryImageStack() {
 
     return () => {
       cancelAnimationFrame(frame);
+      clearTimeout(snapTimerRef.current);
       window.removeEventListener("scroll", onScroll);
       window.removeEventListener("resize", updateStack);
     };
-  }, []);
+  }, [scrollToIndex]);
+
+  const handleTouchStart = (event) => {
+    touchStartYRef.current = event.touches[0].clientY;
+    clearTimeout(snapTimerRef.current);
+  };
+
+  const handleTouchEnd = (event) => {
+    if (!isMobileStack() || pinModeRef.current !== "fixed") {
+      return;
+    }
+
+    const deltaY =
+      touchStartYRef.current - event.changedTouches[0].clientY;
+
+    if (Math.abs(deltaY) >= SWIPE_THRESHOLD) {
+      if (deltaY > 0) {
+        scrollToIndex(activeIndexRef.current + 1);
+      } else {
+        scrollToIndex(activeIndexRef.current - 1);
+      }
+      return;
+    }
+
+    const container = containerRef.current;
+    if (!container) return;
+
+    const { scrollStep, pinScrollDistance } = getStackMetrics();
+    const scrollY = window.scrollY;
+    const containerTop =
+      scrollY + container.getBoundingClientRect().top;
+    const progress = Math.min(
+      pinScrollDistance,
+      Math.max(0, scrollY - containerTop)
+    );
+    const rawProgress = progress / scrollStep;
+    scrollToIndex(getSnapIndex(rawProgress, activeIndexRef.current));
+  };
 
   const viewportClassName = [
     styles.stackViewport,
@@ -241,7 +354,11 @@ function GalleryImageStack() {
       className={styles.scrollStackPin}
       style={containerHeight ? { height: `${containerHeight}px` } : undefined}
     >
-      <div className={viewportClassName}>
+      <div
+        className={viewportClassName}
+        onTouchStart={handleTouchStart}
+        onTouchEnd={handleTouchEnd}
+      >
         {images.map((image, index) => {
           const description = descriptions[index] || descriptions[0];
 
