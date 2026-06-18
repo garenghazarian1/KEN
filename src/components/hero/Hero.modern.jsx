@@ -2,9 +2,12 @@
 
 import Image from "next/image";
 import Link from "next/link";
-import { useCallback, useEffect, useLayoutEffect, useRef, useState } from "react";
 import { motion } from "framer-motion";
-import { MessageCircle, ArrowRight, Briefcase } from "lucide-react";
+import { MessageCircle, ArrowRight, Briefcase, ChevronDown } from "lucide-react";
+import { Swiper, SwiperSlide } from "swiper/react";
+import { A11y, Keyboard, Mousewheel, Pagination } from "swiper/modules";
+import "swiper/css";
+import "swiper/css/pagination";
 import { BOOKING_URL, CAREERS_URL } from "@/config/constants";
 import styles from "./Hero.modern.module.css";
 
@@ -58,370 +61,93 @@ const descriptions = [
   },
 ];
 
-const STACK_STEP_MOBILE = 1;
-const STACK_STEP_DESKTOP = 0.48;
-const MOBILE_STACK_MAX_WIDTH = 768;
-const SNAP_IDLE_MS = 140;
-const SWIPE_THRESHOLD = 48;
-const SNAP_ADVANCE_THRESHOLD = 0.28;
-
-function isMobileStack() {
-  return window.innerWidth <= MOBILE_STACK_MAX_WIDTH;
-}
-
-function getStackMetrics() {
-  const viewportHeight = window.innerHeight;
-  const stepRatio = isMobileStack() ? STACK_STEP_MOBILE : STACK_STEP_DESKTOP;
-  const scrollStep = viewportHeight * stepRatio;
-  const pinScrollDistance = (images.length - 1) * scrollStep;
-  const containerHeight = viewportHeight + pinScrollDistance;
-
-  return { viewportHeight, scrollStep, pinScrollDistance, containerHeight };
-}
-
 const STACK_BG_BLUR = 24;
 
-function clamp01(value) {
-  return Math.min(1, Math.max(0, value));
-}
+const GALLERY_SWIPER_CONFIG = {
+  direction: "vertical",
+  slidesPerView: 1,
+  speed: 420,
+  resistanceRatio: 0.85,
+  touchRatio: 1,
+  shortSwipes: true,
+  longSwipes: true,
+  longSwipesRatio: 0.2,
+  followFinger: true,
+  preventInteractionOnTransition: false,
+  watchOverflow: true,
+  grabCursor: true,
+  keyboard: {
+    enabled: true,
+    onlyInViewport: true,
+  },
+  mousewheel: {
+    forceToAxis: true,
+    sensitivity: 1,
+    thresholdDelta: 40,
+    thresholdTime: 350,
+    releaseOnEdges: true,
+  },
+  pagination: {
+    clickable: true,
+    dynamicBullets: false,
+  },
+};
 
-function easeOutCubic(value) {
-  return 1 - (1 - value) ** 3;
-}
-
-function getLayerMotion(index, stackProgress, discrete = false) {
-  const delta = stackProgress - index;
-
-  // Incoming image: eased slide up, foreground stays sharp
-  if (delta < 0) {
-    const enterProgress = clamp01(1 + delta);
-    const easedEnter = easeOutCubic(enterProgress);
-    return {
-      translateY: (1 - easedEnter) * 100,
-      bgBlurExtra: 0,
-      contentOpacity: discrete
-        ? enterProgress > 0.94
-          ? clamp01((enterProgress - 0.94) / 0.06)
-          : 0
-        : enterProgress > 0.72
-          ? clamp01((enterProgress - 0.72) / 0.28)
-          : 0,
-    };
-  }
-
-  // Outgoing layer: extra background blur only after mostly covered
-  const coverAmount = clamp01(delta);
-  const blurStart = 0.88;
-  let bgBlurExtra = 0;
-
-  if (coverAmount > blurStart) {
-    const blurProgress = (coverAmount - blurStart) / (1 - blurStart);
-    bgBlurExtra = Math.min(12, blurProgress * 12);
-  }
-
-  return {
-    translateY: 0,
-    bgBlurExtra,
-    contentOpacity: discrete
-      ? coverAmount < 0.06
-        ? 1
-        : clamp01(1 - coverAmount / 0.06)
-      : coverAmount < 0.9
-        ? 1 - coverAmount / 0.9
-        : 0,
-  };
-}
-
-function getSnapIndex(rawProgress, currentIndex) {
-  const delta = rawProgress - currentIndex;
-  if (delta > SNAP_ADVANCE_THRESHOLD) {
-    return Math.min(images.length - 1, currentIndex + 1);
-  }
-  if (delta < -SNAP_ADVANCE_THRESHOLD) {
-    return Math.max(0, currentIndex - 1);
-  }
-  return currentIndex;
-}
-
-function applyStackMotion(layerRefs, bgRefs, contentRefs, stackProgress) {
-  const discrete = isMobileStack();
-
-  images.forEach((_, index) => {
-    const layer = layerRefs.current[index];
-    const bg = bgRefs.current[index];
-    const content = contentRefs.current[index];
-    if (!layer) return;
-
-    const motion = getLayerMotion(index, stackProgress, discrete);
-    layer.style.transform = `translate3d(0, ${motion.translateY}%, 0)`;
-
-    if (bg) {
-      bg.style.filter = `blur(${STACK_BG_BLUR + motion.bgBlurExtra}px)`;
-    }
-
-    if (content) {
-      content.style.opacity = String(motion.contentOpacity);
-      content.style.visibility =
-        motion.contentOpacity > 0.01 ? "visible" : "hidden";
-    }
-  });
-}
-
-function GalleryImageStack() {
-  const containerRef = useRef(null);
-  const layerRefs = useRef([]);
-  const bgRefs = useRef([]);
-  const contentRefs = useRef([]);
-  const pinModeRef = useRef("before");
-  const containerHeightRef = useRef(0);
-  const activeIndexRef = useRef(0);
-  const touchStartYRef = useRef(0);
-  const snapTimerRef = useRef(null);
-  const [pinMode, setPinMode] = useState("before");
-  const [containerHeight, setContainerHeight] = useState(0);
-
-  const scrollToIndex = useCallback((index, behavior = "smooth") => {
-    const container = containerRef.current;
-    if (!container) return;
-
-    const { scrollStep } = getStackMetrics();
-    const targetIndex = Math.min(
-      images.length - 1,
-      Math.max(0, index)
-    );
-    const containerTop =
-      window.scrollY + container.getBoundingClientRect().top;
-    const targetTop = containerTop + targetIndex * scrollStep;
-
-    activeIndexRef.current = targetIndex;
-    window.scrollTo({ top: targetTop, behavior });
-  }, []);
-
-  useLayoutEffect(() => {
-    if (typeof window === "undefined") return;
-    const height = getStackMetrics().containerHeight;
-    containerHeightRef.current = height;
-    setContainerHeight(height);
-    applyStackMotion(layerRefs, bgRefs, contentRefs, 0);
-  }, []);
-
-  useEffect(() => {
-    let frame = 0;
-
-    const scheduleSnap = () => {
-      if (!isMobileStack() || pinModeRef.current !== "fixed") return;
-
-      clearTimeout(snapTimerRef.current);
-      snapTimerRef.current = setTimeout(() => {
-        const container = containerRef.current;
-        if (!container || pinModeRef.current !== "fixed") return;
-
-        const { scrollStep, pinScrollDistance } = getStackMetrics();
-        const scrollY = window.scrollY;
-        const containerTop =
-          scrollY + container.getBoundingClientRect().top;
-        const progress = Math.min(
-          pinScrollDistance,
-          Math.max(0, scrollY - containerTop)
-        );
-        const rawProgress = progress / scrollStep;
-        const targetIndex = getSnapIndex(rawProgress, activeIndexRef.current);
-
-        scrollToIndex(targetIndex);
-      }, SNAP_IDLE_MS);
-    };
-
-    const updateStack = () => {
-      const container = containerRef.current;
-      if (!container) return;
-
-      const { scrollStep, pinScrollDistance, containerHeight: height } =
-        getStackMetrics();
-      const scrollY = window.scrollY;
-      const containerTop =
-        scrollY + container.getBoundingClientRect().top;
-      const pinEnd = containerTop + pinScrollDistance;
-
-      if (height !== containerHeightRef.current) {
-        containerHeightRef.current = height;
-        setContainerHeight(height);
-      }
-
-      if (scrollY < containerTop) {
-        if (pinModeRef.current !== "before") {
-          pinModeRef.current = "before";
-          setPinMode("before");
-        }
-        activeIndexRef.current = 0;
-        applyStackMotion(layerRefs, bgRefs, contentRefs, 0);
-        return;
-      }
-
-      if (scrollY >= pinEnd) {
-        if (pinModeRef.current !== "after") {
-          pinModeRef.current = "after";
-          setPinMode("after");
-        }
-        activeIndexRef.current = images.length - 1;
-        applyStackMotion(
-          layerRefs,
-          bgRefs,
-          contentRefs,
-          images.length - 1
-        );
-        return;
-      }
-
-      if (pinModeRef.current !== "fixed") {
-        pinModeRef.current = "fixed";
-        setPinMode("fixed");
-      }
-
-      const progress = Math.min(
-        pinScrollDistance,
-        Math.max(0, scrollY - containerTop)
-      );
-      const nextProgress = progress / scrollStep;
-      applyStackMotion(layerRefs, bgRefs, contentRefs, nextProgress);
-    };
-
-    const onScroll = () => {
-      cancelAnimationFrame(frame);
-      frame = requestAnimationFrame(updateStack);
-      scheduleSnap();
-    };
-
-    updateStack();
-    window.addEventListener("scroll", onScroll, { passive: true });
-    window.addEventListener("resize", updateStack);
-
-    return () => {
-      cancelAnimationFrame(frame);
-      clearTimeout(snapTimerRef.current);
-      window.removeEventListener("scroll", onScroll);
-      window.removeEventListener("resize", updateStack);
-    };
-  }, [scrollToIndex]);
-
-  const handleTouchStart = (event) => {
-    touchStartYRef.current = event.touches[0].clientY;
-    clearTimeout(snapTimerRef.current);
-  };
-
-  const handleTouchEnd = (event) => {
-    if (!isMobileStack() || pinModeRef.current !== "fixed") {
-      return;
-    }
-
-    const deltaY =
-      touchStartYRef.current - event.changedTouches[0].clientY;
-
-    if (Math.abs(deltaY) >= SWIPE_THRESHOLD) {
-      if (deltaY > 0) {
-        scrollToIndex(activeIndexRef.current + 1);
-      } else {
-        scrollToIndex(activeIndexRef.current - 1);
-      }
-      return;
-    }
-
-    const container = containerRef.current;
-    if (!container) return;
-
-    const { scrollStep, pinScrollDistance } = getStackMetrics();
-    const scrollY = window.scrollY;
-    const containerTop =
-      scrollY + container.getBoundingClientRect().top;
-    const progress = Math.min(
-      pinScrollDistance,
-      Math.max(0, scrollY - containerTop)
-    );
-    const rawProgress = progress / scrollStep;
-    scrollToIndex(getSnapIndex(rawProgress, activeIndexRef.current));
-  };
-
-  const viewportClassName = [
-    styles.stackViewport,
-    pinMode === "fixed" && styles.stackViewportFixed,
-    pinMode === "after" && styles.stackViewportAfter,
-  ]
-    .filter(Boolean)
-    .join(" ");
-
+function GalleryCarousel() {
   return (
-    <div
-      ref={containerRef}
-      className={styles.scrollStackPin}
-      style={containerHeight ? { height: `${containerHeight}px` } : undefined}
-    >
-      <div
-        className={viewportClassName}
-        onTouchStart={handleTouchStart}
-        onTouchEnd={handleTouchEnd}
+    <div className={styles.galleryCarousel}>
+      <Swiper
+        className={styles.gallerySwiper}
+        modules={[Mousewheel, Pagination, Keyboard, A11y]}
+        {...GALLERY_SWIPER_CONFIG}
+        a11y={{
+          prevSlideMessage: "Previous gallery image",
+          nextSlideMessage: "Next gallery image",
+        }}
       >
         {images.map((image, index) => {
           const description = descriptions[index] || descriptions[0];
 
           return (
-            <div
-              key={image}
-              ref={(element) => {
-                layerRefs.current[index] = element;
-              }}
-              className={styles.stackLayer}
-              style={{ zIndex: index + 1 }}
-            >
-              <div
-                ref={(element) => {
-                  bgRefs.current[index] = element;
-                }}
-                className={styles.stackImageBg}
-                style={{
-                  filter: `blur(${STACK_BG_BLUR}px)`,
-                }}
-                aria-hidden
-              >
-                <Image
-                  src={image}
-                  alt=""
-                  fill
-                  className={styles.stackImageBgImg}
-                  sizes="100vw"
-                  loading={index < 2 ? "eager" : "lazy"}
-                  priority={index === 0}
-                />
-              </div>
+            <SwiperSlide key={image} className={styles.gallerySlide}>
+              <div className={styles.gallerySlideInner}>
+                <div
+                  className={styles.stackImageBg}
+                  style={{ filter: `blur(${STACK_BG_BLUR}px)` }}
+                  aria-hidden
+                >
+                  <Image
+                    src={image}
+                    alt=""
+                    fill
+                    className={styles.stackImageBgImg}
+                    sizes="100vw"
+                    loading={index < 2 ? "eager" : "lazy"}
+                    priority={index === 0}
+                  />
+                </div>
 
-              <div className={styles.stackImageForeground}>
-                <Image
-                  src={image}
-                  alt={description.title}
-                  className={styles.stackImageMain}
-                  width={800}
-                  height={800}
-                  loading={index < 2 ? "eager" : "lazy"}
-                  priority={index === 0}
-                />
-              </div>
+                <div className={styles.stackImageForeground}>
+                  <Image
+                    src={image}
+                    alt={description.title}
+                    className={styles.stackImageMain}
+                    width={800}
+                    height={800}
+                    loading={index < 2 ? "eager" : "lazy"}
+                    priority={index === 0}
+                  />
+                </div>
 
-              <div
-                ref={(element) => {
-                  contentRefs.current[index] = element;
-                }}
-                className={styles.stackContent}
-                style={{
-                  opacity: index === 0 ? 1 : 0,
-                  visibility: index === 0 ? "visible" : "hidden",
-                }}
-                aria-hidden={index !== 0}
-              >
-                <h3 className={styles.contentTitle}>{description.title}</h3>
-                <p className={styles.contentSubtitle}>{description.subtitle}</p>
+                <div className={styles.stackContent}>
+                  <h3 className={styles.contentTitle}>{description.title}</h3>
+                  <p className={styles.contentSubtitle}>{description.subtitle}</p>
+                </div>
               </div>
-            </div>
+            </SwiperSlide>
           );
         })}
-      </div>
+      </Swiper>
     </div>
   );
 }
@@ -527,12 +253,16 @@ export default function HeroModern() {
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           transition={{ delay: 1.2, duration: 0.6 }}
+          aria-hidden
         >
+          <span className={styles.scrollLabel}>Scroll</span>
           <motion.div
-            className={styles.scrollDot}
-            animate={{ y: [0, 10, 0] }}
-            transition={{ duration: 1.5, repeat: Infinity, ease: "easeInOut" }}
-          />
+            className={styles.scrollChevron}
+            animate={{ y: [0, 6, 0] }}
+            transition={{ duration: 1.4, repeat: Infinity, ease: "easeInOut" }}
+          >
+            <ChevronDown size={22} strokeWidth={1.5} />
+          </motion.div>
         </motion.div>
       </section>
 
@@ -547,15 +277,15 @@ export default function HeroModern() {
           transition={{ duration: 0.6 }}
         >
           <h2 className={styles.sectionTitle}>
-            <span className={styles.titleMain}>Your Beauty</span>{" "}
-            <span className={styles.titleAccent}>Haven</span>
+            <span className={styles.titleMain}>Our</span>{" "}
+            <span className={styles.titleAccent}>Work</span>
           </h2>
           <p className={styles.sectionSubtitle}>
-            Discover luxury beauty services in the heart of the UAE
+            Browse our services — swipe to explore each look
           </p>
         </motion.div>
 
-        <GalleryImageStack />
+        <GalleryCarousel />
 
         {/* Content Card - Modern Glass Design */}
         <motion.div

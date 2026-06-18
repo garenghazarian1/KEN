@@ -173,25 +173,24 @@
   align-items: center;
   gap: var(--spacing-2);
   padding: var(--spacing-4) var(--spacing-8);
-  background-color: var(--glass-transparent);
+  background-color: var(--color-secondary);
   backdrop-filter: blur(var(--glass-blur-xl));
   -webkit-backdrop-filter: blur(var(--glass-blur-xl));
-  border: 2px solid var(--glass-border-medium);
+  border: 2px solid transparent;
   border-radius: var(--radius-full);
   color: var(--color-text-inverse);
   font-size: var(--font-size-lg);
   font-weight: var(--font-weight-semibold);
   text-decoration: none;
   transition: all var(--transition-base) var(--ease-in-out);
-  box-shadow: 0 4px 12px var(--shadow-light);
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.35);
   min-height: 44px;
 }
 
 .primaryButton:hover {
-  background-color: var(--glass-teal-light);
-  border-color: var(--glass-border-strong);
+  background-color: var(--color-secondary-dark);
   transform: translateY(-2px);
-  box-shadow: 0 6px 16px var(--shadow-medium);
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.45);
 }
 
 .secondaryButton {
@@ -301,15 +300,25 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: var(--spacing-2);
+  gap: var(--spacing-1);
+  color: var(--color-text-inverse);
+  opacity: 0.85;
 }
 
-.scrollDot {
-  width: 6px;
-  height: 6px;
-  background-color: var(--color-text-inverse);
-  border-radius: var(--radius-full);
-  opacity: 0.8;
+.scrollLabel {
+  font-size: var(--font-size-xs);
+  font-weight: var(--font-weight-semibold);
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  text-shadow: 0 1px 4px rgba(0, 0, 0, 0.5);
+}
+
+.scrollChevron {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--color-text-inverse);
+  filter: drop-shadow(0 1px 3px rgba(0, 0, 0, 0.5));
 }
 
 /* ============================================
@@ -362,36 +371,14 @@
   pointer-events: none;
 }
 
-.gallerySection::after {
-  content: "";
-  position: absolute;
-  inset: 0;
-  background-image:
-    repeating-linear-gradient(
-      45deg,
-      transparent,
-      transparent 2px,
-      var(--overlay-white-20) 2px,
-      var(--overlay-white-20) 4px
-    ),
-    repeating-linear-gradient(
-      -45deg,
-      transparent,
-      transparent 2px,
-      var(--overlay-secondary-20) 2px,
-      var(--overlay-secondary-20) 4px
-    );
-  z-index: 0;
-  pointer-events: none;
-  opacity: 0.6;
-}
+/* ::after intentionally removed — crosshatch texture competed with gallery images */
 
 /* Section Header */
 .sectionHeader {
   position: relative;
   z-index: 2;
   text-align: center;
-  margin-bottom: 0;
+  margin-bottom: var(--spacing-8);
   padding: 0 var(--spacing-6);
 }
 
@@ -416,46 +403,73 @@
   font-weight: var(--font-weight-medium);
 }
 
-/* Pinned scroll stack — viewport stays fixed while images layer on scroll */
-.scrollStackPin {
+/* Vertical Swiper gallery — one image per swipe/scroll step */
+.galleryCarousel {
   position: relative;
   width: 100%;
   z-index: 2;
 }
 
-.stackViewport {
-  position: relative;
+.gallerySwiper {
   width: 100%;
   height: 100vh;
-  overflow: hidden;
+  height: 100dvh;
   touch-action: pan-y;
 }
 
-.stackViewportFixed {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100vh;
-  z-index: 2;
+.gallerySwiper :global(.swiper-pagination),
+.gallerySwiper :global(.swiper-pagination-vertical) {
+  right: var(--spacing-4);
+  left: auto;
+  top: 50%;
+  bottom: auto;
+  width: auto;
+  transform: translateY(-50%);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--spacing-2);
 }
 
-.stackViewportAfter {
-  position: absolute;
-  bottom: 0;
-  left: 0;
-  width: 100%;
-  height: 100vh;
+.gallerySwiper :global(.swiper-pagination-bullet),
+.gallerySwiper :global(.swiper-pagination-vertical .swiper-pagination-bullet) {
+  width: 8px;
+  height: 8px;
+  margin: 0;
+  background: #ffffff;
+  opacity: 0.55;
+  border: 1px solid rgba(0, 0, 0, 0.25);
+  transition: opacity 0.2s ease, transform 0.2s ease, background 0.2s ease;
+  outline: none;
 }
 
-.stackLayer {
-  position: absolute;
-  inset: 0;
+.gallerySwiper :global(.swiper-pagination-bullet:hover) {
+  opacity: 0.85;
+}
+
+.gallerySwiper :global(.swiper-pagination-bullet:focus-visible) {
+  outline: 2px solid var(--color-secondary);
+  outline-offset: 2px;
+  opacity: 1;
+}
+
+.gallerySwiper :global(.swiper-pagination-bullet-active) {
+  opacity: 1;
+  background: var(--color-secondary);
+  border-color: transparent;
+  transform: scale(1.35);
+}
+
+.gallerySlide {
+  height: 100%;
+  overflow: hidden;
+}
+
+.gallerySlideInner {
+  position: relative;
   width: 100%;
   height: 100%;
-  will-change: transform;
-  backface-visibility: hidden;
-  contain: layout style paint;
+  overflow: hidden;
 }
 
 .stackImageBg {
@@ -463,7 +477,6 @@
   inset: 0;
   overflow: hidden;
   z-index: 1;
-  will-change: filter;
 }
 
 .stackImageBgImg {
@@ -497,24 +510,23 @@
 
 .stackContent {
   position: absolute;
-  top: 50%;
+  bottom: var(--spacing-10);
   left: 50%;
-  transform: translate(-50%, -50%);
+  transform: translateX(-50%);
   z-index: 10;
   text-align: center;
-  padding: var(--spacing-8);
+  padding: var(--spacing-5) var(--spacing-8);
   background: var(--glass-white-medium);
   backdrop-filter: blur(var(--glass-blur-xl));
   -webkit-backdrop-filter: blur(var(--glass-blur-xl));
   border: 1px solid var(--glass-border-light);
   border-radius: var(--radius-2xl);
   box-shadow:
-    0 20px 60px var(--shadow-heavy),
+    0 8px 32px var(--shadow-heavy),
     0 0 0 1px var(--overlay-white-20) inset;
-  max-width: 600px;
-  width: 90%;
+  max-width: 520px;
+  width: 88%;
   pointer-events: none;
-  will-change: opacity;
 }
 
 .contentIcon {
@@ -525,15 +537,15 @@
 }
 
 .contentTitle {
-  font-size: var(--font-size-4xl);
-  font-weight: var(--font-weight-bold);
+  font-size: var(--font-size-xl);
+  font-weight: var(--font-weight-semibold);
   color: var(--color-text-primary);
-  margin-bottom: var(--spacing-3);
+  margin-bottom: var(--spacing-1);
   line-height: var(--line-height-tight);
 }
 
 .contentSubtitle {
-  font-size: var(--font-size-lg);
+  font-size: var(--font-size-sm);
   color: var(--color-text-secondary);
   font-weight: var(--font-weight-medium);
   line-height: var(--line-height-relaxed);
@@ -720,6 +732,11 @@
     padding: var(--spacing-12) 0;
   }
 
+  .gallerySwiper :global(.swiper-pagination),
+  .gallerySwiper :global(.swiper-pagination-vertical) {
+    right: var(--spacing-3);
+  }
+
   .sectionHeader {
     padding: 0 var(--spacing-4);
   }
@@ -727,23 +744,12 @@
   .contentCard {
     width: calc(100% - 2 * var(--spacing-4));
     margin-top: var(--spacing-6);
+    padding: var(--spacing-6);
   }
 
   .stackContent {
     max-width: 90%;
-    padding: var(--spacing-6);
-  }
-
-  .contentTitle {
-    font-size: var(--font-size-2xl);
-  }
-
-  .contentSubtitle {
-    font-size: var(--font-size-sm);
-  }
-
-  .contentCard {
-    padding: var(--spacing-6);
+    bottom: var(--spacing-6);
   }
 
   .sectionTitle {
@@ -769,20 +775,12 @@
 
   .stackContent {
     max-width: 95%;
-    padding: var(--spacing-4);
-  }
-
-  .contentTitle {
-    font-size: var(--font-size-xl);
-  }
-
-  .contentSubtitle {
-    font-size: var(--font-size-xs);
+    bottom: var(--spacing-5);
+    padding: var(--spacing-4) var(--spacing-5);
   }
 
   .scrollIndicator {
     bottom: var(--spacing-4);
-    font-size: var(--font-size-xs);
   }
 
   .gallerySection {
@@ -796,9 +794,6 @@
   .contentCard {
     width: calc(100% - 2 * var(--spacing-3));
     margin-top: var(--spacing-4);
-  }
-
-  .contentCard {
     padding: var(--spacing-4);
   }
 
@@ -828,9 +823,6 @@
   .contentCard {
     width: calc(100% - 2 * var(--spacing-2));
     margin-top: var(--spacing-4);
-  }
-
-  .contentCard {
     padding: var(--spacing-3);
   }
 
@@ -850,21 +842,13 @@
 /* Extra small mobile (320px) */
 @media (max-width: 320px) {
   .stackContent {
-    max-width: 95%;
-    padding: var(--spacing-4);
-  }
-
-  .contentTitle {
-    font-size: var(--font-size-xl);
-  }
-
-  .contentSubtitle {
-    font-size: var(--font-size-xs);
+    max-width: 96%;
+    bottom: var(--spacing-4);
+    padding: var(--spacing-3) var(--spacing-4);
   }
 
   .scrollIndicator {
-    bottom: var(--spacing-4);
-    font-size: var(--font-size-xs);
+    bottom: var(--spacing-3);
   }
 
   .gallerySection {
@@ -878,9 +862,6 @@
   .contentCard {
     width: calc(100% - 2 * var(--spacing-2));
     margin-top: var(--spacing-4);
-  }
-
-  .contentCard {
     padding: var(--spacing-2);
   }
 
