@@ -3,11 +3,7 @@
 import Image from "next/image";
 import Link from "next/link";
 import { motion } from "framer-motion";
-import { MessageCircle, ArrowRight, Briefcase, ChevronDown } from "lucide-react";
-import { Swiper, SwiperSlide } from "swiper/react";
-import { A11y, Keyboard, Mousewheel, Pagination } from "swiper/modules";
-import "swiper/css";
-import "swiper/css/pagination";
+import { MessageCircle, ArrowRight, Briefcase } from "lucide-react";
 import { BOOKING_URL, CAREERS_URL } from "@/config/constants";
 import styles from "./Hero.modern.module.css";
 
@@ -20,42 +16,39 @@ const HERO_VIDEO_PROPS = {
   preload: "auto",
 };
 
-const images = [
-  "/heroGridImage/hero001.webp",
-  "/heroGridImage/hero002.webp",
-  "/heroGridImage/hero003.webp",
-  "/heroGridImage/hero004.webp",
-  "/heroGridImage/hero007.webp",
-  "/heroGridImage/hero008.webp",
-  "/heroGridImage/hero009.webp",
-];
-
-const descriptions = [
+const slides = [
   {
+    image: "/heroGridImage/hero001.webp",
     title: "Hair Styling Excellence",
     subtitle: "Transform your look with our expert stylists",
   },
   {
+    image: "/heroGridImage/hero002.webp",
     title: "Hair Coloring & Makeup",
     subtitle: "Transform your look with vibrant colors and flawless makeup",
   },
   {
+    image: "/heroGridImage/hero003.webp",
     title: "Facial Treatments",
     subtitle: "Rejuvenate and refresh your skin",
   },
   {
+    image: "/heroGridImage/hero004.webp",
     title: "Complete Makeover",
     subtitle: "Your beauty journey starts here",
   },
   {
+    image: "/heroGridImage/hero007.webp",
     title: "Men's Grooming",
     subtitle: "Professional styling for gentlemen",
   },
   {
+    image: "/heroGridImage/hero008.webp",
     title: "Men's Barbershop",
     subtitle: "Professional haircuts and grooming services",
   },
   {
+    image: "/heroGridImage/hero009.webp",
     title: "Luxury Experience",
     subtitle: "Where beauty meets perfection",
   },
@@ -63,91 +56,94 @@ const descriptions = [
 
 const STACK_BG_BLUR = 24;
 
-const GALLERY_SWIPER_CONFIG = {
-  direction: "vertical",
-  slidesPerView: 1,
-  speed: 420,
-  resistanceRatio: 0.85,
-  touchRatio: 1,
-  shortSwipes: true,
-  longSwipes: true,
-  longSwipesRatio: 0.2,
-  followFinger: true,
-  preventInteractionOnTransition: false,
-  watchOverflow: true,
-  grabCursor: true,
-  keyboard: {
-    enabled: true,
-    onlyInViewport: true,
-  },
-  mousewheel: {
-    forceToAxis: true,
-    sensitivity: 1,
-    thresholdDelta: 40,
-    thresholdTime: 350,
-    releaseOnEdges: true,
-  },
-  pagination: {
-    clickable: true,
-    dynamicBullets: false,
+const galleryItemVariants = {
+  hidden: {},
+  visible: {
+    transition: {
+      staggerChildren: 0.1,
+      delayChildren: 0.05,
+    },
   },
 };
 
-function GalleryCarousel() {
+const imageReveal = {
+  hidden: { opacity: 0, scale: 0.96, y: 24 },
+  visible: {
+    opacity: 1,
+    scale: 1,
+    y: 0,
+    transition: { duration: 0.65, ease: [0.25, 0.46, 0.45, 0.94] },
+  },
+};
+
+const bgReveal = {
+  hidden: { opacity: 1, scale: 1.08 },
+  visible: {
+    opacity: 1,
+    scale: 1,
+    transition: { duration: 0.85, ease: "easeOut" },
+  },
+};
+
+const captionReveal = {
+  hidden: { opacity: 0, y: 16 },
+  visible: {
+    opacity: 1,
+    y: 0,
+    transition: { duration: 0.5, ease: "easeOut" },
+  },
+};
+
+const galleryViewport = { once: true, amount: 0.2 };
+
+function GalleryStack() {
   return (
-    <div className={styles.galleryCarousel}>
-      <Swiper
-        className={styles.gallerySwiper}
-        modules={[Mousewheel, Pagination, Keyboard, A11y]}
-        {...GALLERY_SWIPER_CONFIG}
-        a11y={{
-          prevSlideMessage: "Previous gallery image",
-          nextSlideMessage: "Next gallery image",
-        }}
-      >
-        {images.map((image, index) => {
-          const description = descriptions[index] || descriptions[0];
+    <div className={styles.galleryStack}>
+      {slides.map((slide, index) => (
+        <motion.div
+          key={slide.image}
+          className={styles.galleryItem}
+          initial="hidden"
+          whileInView="visible"
+          viewport={galleryViewport}
+          variants={galleryItemVariants}
+        >
+          <motion.div
+            className={styles.stackImageBg}
+            style={{ filter: `blur(${STACK_BG_BLUR}px)` }}
+            aria-hidden
+            variants={bgReveal}
+          >
+            <Image
+              src={slide.image}
+              alt=""
+              fill
+              className={styles.stackImageBgImg}
+              sizes="(max-width: 800px) 100vw, 800px"
+              loading={index < 2 ? "eager" : "lazy"}
+              priority={index === 0}
+            />
+          </motion.div>
 
-          return (
-            <SwiperSlide key={image} className={styles.gallerySlide}>
-              <div className={styles.gallerySlideInner}>
-                <div
-                  className={styles.stackImageBg}
-                  style={{ filter: `blur(${STACK_BG_BLUR}px)` }}
-                  aria-hidden
-                >
-                  <Image
-                    src={image}
-                    alt=""
-                    fill
-                    className={styles.stackImageBgImg}
-                    sizes="100vw"
-                    loading={index < 2 ? "eager" : "lazy"}
-                    priority={index === 0}
-                  />
-                </div>
+          <motion.div className={styles.stackImageForeground} variants={imageReveal}>
+            <Image
+              src={slide.image}
+              alt={slide.title}
+              className={styles.stackImageMain}
+              width={800}
+              height={800}
+              sizes="(max-width: 800px) 100vw, 800px"
+              loading={index < 2 ? "eager" : "lazy"}
+              priority={index === 0}
+            />
+          </motion.div>
 
-                <div className={styles.stackImageForeground}>
-                  <Image
-                    src={image}
-                    alt={description.title}
-                    className={styles.stackImageMain}
-                    width={800}
-                    height={800}
-                    loading={index < 2 ? "eager" : "lazy"}
-                    priority={index === 0}
-                  />
-                </div>
-
-                <div className={styles.stackContent}>
-                  <h3 className={styles.contentTitle}>{description.title}</h3>
-                  <p className={styles.contentSubtitle}>{description.subtitle}</p>
-                </div>
-              </div>
-            </SwiperSlide>
-          );
-        })}
-      </Swiper>
+          <motion.div className={styles.stackContent} variants={captionReveal}>
+            <h3 className={styles.contentTitle}>{slide.title}</h3>
+            <p className={styles.contentSubtitle}>{slide.subtitle}</p>
+          </motion.div>
+        </motion.div>
+      ))}
     </div>
   );
 }
@@ -155,7 +151,7 @@ function GalleryCarousel() {
 export default function HeroModern() {
   return (
     <>
-      {/* Modern Hero Section — blurred full-bleed + sharp centered video */}
+      {/* Hero Section */}
       <section className={styles.heroSection}>
         <div className={styles.heroMediaBg} aria-hidden>
           <video
@@ -183,11 +179,7 @@ export default function HeroModern() {
           transition={{ delay: 0.3, duration: 0.5 }}
           aria-label="Careers at Ken Beauty Salon"
         >
-          <Briefcase
-            size={18}
-            aria-hidden
-            className={styles.careersBannerIcon}
-          />
+          <Briefcase size={18} aria-hidden className={styles.careersBannerIcon} />
           <p className={styles.careersBannerText}>Are you looking for a job?</p>
           <a href={CAREERS_URL} className={styles.careersBannerButton}>
             <span>Apply here</span>
@@ -195,7 +187,6 @@ export default function HeroModern() {
           </a>
         </motion.aside>
 
-        {/* Hero Content - Centered Modern Layout */}
         <div className={styles.heroContent}>
           <motion.div
             className={styles.contentWrapper}
@@ -203,7 +194,6 @@ export default function HeroModern() {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, ease: "easeOut" }}
           >
-            {/* Main Title */}
             <motion.h1
               className={styles.mainTitle}
               initial={{ opacity: 0, y: 20 }}
@@ -214,7 +204,6 @@ export default function HeroModern() {
               <span className={styles.titleLine2}>Haven</span>
             </motion.h1>
 
-            {/* Subtitle */}
             <motion.p
               className={styles.subtitle}
               initial={{ opacity: 0, y: 20 }}
@@ -224,7 +213,6 @@ export default function HeroModern() {
               Discover luxury beauty services in the heart of the UAE
             </motion.p>
 
-            {/* CTA Buttons */}
             <motion.div
               className={styles.ctaButtons}
               initial={{ opacity: 0, y: 20 }}
@@ -246,29 +234,10 @@ export default function HeroModern() {
             </motion.div>
           </motion.div>
         </div>
-
-        {/* Scroll Indicator */}
-        <motion.div
-          className={styles.scrollIndicator}
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          transition={{ delay: 1.2, duration: 0.6 }}
-          aria-hidden
-        >
-          <span className={styles.scrollLabel}>Scroll</span>
-          <motion.div
-            className={styles.scrollChevron}
-            animate={{ y: [0, 6, 0] }}
-            transition={{ duration: 1.4, repeat: Infinity, ease: "easeInOut" }}
-          >
-            <ChevronDown size={22} strokeWidth={1.5} />
-          </motion.div>
-        </motion.div>
       </section>
 
-      {/* Modern Carousel Gallery Section - 2025 Design */}
+      {/* Gallery Section — stacked images, free scroll */}
       <section className={styles.gallerySection}>
-        {/* Section Header */}
         <motion.div
           className={styles.sectionHeader}
           initial={{ opacity: 0, y: -20 }}
@@ -281,13 +250,13 @@ export default function HeroModern() {
             <span className={styles.titleAccent}>Work</span>
           </h2>
           <p className={styles.sectionSubtitle}>
-            Browse our services — swipe to explore each look
+            Browse our services — scroll to explore each look
           </p>
         </motion.div>
 
-        <GalleryCarousel />
+        <GalleryStack />
 
-        {/* Content Card - Modern Glass Design */}
+        {/* Content Card */}
         <motion.div
           className={styles.contentCard}
           initial={{ opacity: 0, y: 30 }}

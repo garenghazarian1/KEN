@@ -56,7 +56,7 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  padding: var(--spacing-4);
+  padding: 0;
   box-sizing: border-box;
   pointer-events: none;
 }
@@ -64,8 +64,8 @@
 .heroVideoMain {
   width: 100%;
   max-width: 800px;
-  max-height: 100%;
   height: auto;
+  max-height: 100%;
   object-fit: contain;
   object-position: center;
   display: block;
@@ -290,37 +290,6 @@
   outline-offset: 2px;
 }
 
-/* Scroll Indicator */
-.scrollIndicator {
-  position: absolute;
-  bottom: var(--spacing-8);
-  left: 50%;
-  transform: translateX(-50%);
-  z-index: 4;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: var(--spacing-1);
-  color: var(--color-text-inverse);
-  opacity: 0.85;
-}
-
-.scrollLabel {
-  font-size: var(--font-size-xs);
-  font-weight: var(--font-weight-semibold);
-  letter-spacing: 0.12em;
-  text-transform: uppercase;
-  text-shadow: 0 1px 4px rgba(0, 0, 0, 0.5);
-}
-
-.scrollChevron {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  color: var(--color-text-inverse);
-  filter: drop-shadow(0 1px 3px rgba(0, 0, 0, 0.5));
-}
-
 /* ============================================
    MODERN CAROUSEL GALLERY - 2025 DESIGN
    ============================================
@@ -403,73 +372,34 @@
   font-weight: var(--font-weight-medium);
 }
 
-/* Vertical Swiper gallery — one image per swipe/scroll step */
-.galleryCarousel {
+/* Stacked gallery — full-width blur behind centered sharp images */
+.galleryStack {
   position: relative;
   width: 100%;
+  margin: 0;
   z-index: 2;
-}
-
-.gallerySwiper {
-  width: 100%;
-  height: 100vh;
-  height: 100dvh;
-  touch-action: pan-y;
-}
-
-.gallerySwiper :global(.swiper-pagination),
-.gallerySwiper :global(.swiper-pagination-vertical) {
-  right: var(--spacing-4);
-  left: auto;
-  top: 50%;
-  bottom: auto;
-  width: auto;
-  transform: translateY(-50%);
   display: flex;
   flex-direction: column;
-  align-items: center;
-  gap: var(--spacing-2);
+  gap: 0;
 }
 
-.gallerySwiper :global(.swiper-pagination-bullet),
-.gallerySwiper :global(.swiper-pagination-vertical .swiper-pagination-bullet) {
-  width: 8px;
-  height: 8px;
-  margin: 0;
-  background: #ffffff;
-  opacity: 0.55;
-  border: 1px solid rgba(0, 0, 0, 0.25);
-  transition: opacity 0.2s ease, transform 0.2s ease, background 0.2s ease;
-  outline: none;
-}
-
-.gallerySwiper :global(.swiper-pagination-bullet:hover) {
-  opacity: 0.85;
-}
-
-.gallerySwiper :global(.swiper-pagination-bullet:focus-visible) {
-  outline: 2px solid var(--color-secondary);
-  outline-offset: 2px;
-  opacity: 1;
-}
-
-.gallerySwiper :global(.swiper-pagination-bullet-active) {
-  opacity: 1;
-  background: var(--color-secondary);
-  border-color: transparent;
-  transform: scale(1.35);
-}
-
-.gallerySlide {
-  height: 100%;
-  overflow: hidden;
-}
-
-.gallerySlideInner {
+.galleryItem {
   position: relative;
   width: 100%;
-  height: 100%;
+  margin: 0;
+  padding: var(--spacing-2) 0;
   overflow: hidden;
+  isolation: isolate;
+  transform-origin: center center;
+  box-sizing: border-box;
+}
+
+/* GPU layer for animated children */
+.galleryItem,
+.galleryItem .stackImageForeground,
+.galleryItem .stackImageBg,
+.galleryItem .stackContent {
+  will-change: transform, opacity;
 }
 
 .stackImageBg {
@@ -477,45 +407,49 @@
   inset: 0;
   overflow: hidden;
   z-index: 1;
+  transform-origin: center center;
 }
 
+/* Override globals.css `img { width: auto; height: auto }` for fill images */
 .stackImageBgImg {
+  width: 100% !important;
+  height: 100% !important;
   object-fit: cover;
   object-position: center;
   transform: scale(1.12);
 }
 
 .stackImageForeground {
-  position: absolute;
-  inset: 0;
+  position: relative;
   z-index: 2;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  padding: var(--spacing-4);
+  width: 100%;
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 0;
   box-sizing: border-box;
   pointer-events: none;
+  transform-origin: center center;
 }
 
 .stackImageMain {
-  width: 100%;
+  width: 100% !important;
   max-width: 800px;
-  height: auto;
-  max-height: 100%;
+  height: auto !important;
+  display: block;
   object-fit: contain;
   object-position: center;
-  display: block;
 }
-
 
 .stackContent {
   position: absolute;
-  bottom: var(--spacing-10);
-  left: 50%;
-  transform: translateX(-50%);
+  bottom: var(--spacing-4);
+  left: var(--spacing-3);
+  right: var(--spacing-3);
+  margin: 0 auto;
+  max-width: 520px;
   z-index: 10;
   text-align: center;
-  padding: var(--spacing-5) var(--spacing-8);
+  padding: var(--spacing-4) var(--spacing-6);
   background: var(--glass-white-medium);
   backdrop-filter: blur(var(--glass-blur-xl));
   -webkit-backdrop-filter: blur(var(--glass-blur-xl));
@@ -524,9 +458,8 @@
   box-shadow:
     0 8px 32px var(--shadow-heavy),
     0 0 0 1px var(--overlay-white-20) inset;
-  max-width: 520px;
-  width: 88%;
   pointer-events: none;
+  line-height: var(--line-height-normal);
 }
 
 .contentIcon {
@@ -549,22 +482,6 @@
   color: var(--color-text-secondary);
   font-weight: var(--font-weight-medium);
   line-height: var(--line-height-relaxed);
-}
-
-.scrollIndicator {
-  position: absolute;
-  bottom: var(--spacing-8);
-  left: 50%;
-  transform: translateX(-50%);
-  z-index: 3;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: var(--spacing-2);
-  color: var(--color-text-inverse);
-  font-size: var(--font-size-sm);
-  font-weight: var(--font-weight-medium);
-  text-shadow: 0 2px 8px var(--shadow-heavy);
 }
 
 /* Content Card - Modern Glass Design */
@@ -732,11 +649,6 @@
     padding: var(--spacing-12) 0;
   }
 
-  .gallerySwiper :global(.swiper-pagination),
-  .gallerySwiper :global(.swiper-pagination-vertical) {
-    right: var(--spacing-3);
-  }
-
   .sectionHeader {
     padding: 0 var(--spacing-4);
   }
@@ -748,8 +660,9 @@
   }
 
   .stackContent {
-    max-width: 90%;
     bottom: var(--spacing-6);
+    left: var(--spacing-3);
+    right: var(--spacing-3);
   }
 
   .sectionTitle {
@@ -774,13 +687,10 @@
   }
 
   .stackContent {
-    max-width: 95%;
     bottom: var(--spacing-5);
+    left: var(--spacing-3);
+    right: var(--spacing-3);
     padding: var(--spacing-4) var(--spacing-5);
-  }
-
-  .scrollIndicator {
-    bottom: var(--spacing-4);
   }
 
   .gallerySection {
@@ -842,13 +752,10 @@
 /* Extra small mobile (320px) */
 @media (max-width: 320px) {
   .stackContent {
-    max-width: 96%;
     bottom: var(--spacing-4);
+    left: var(--spacing-2);
+    right: var(--spacing-2);
     padding: var(--spacing-3) var(--spacing-4);
-  }
-
-  .scrollIndicator {
-    bottom: var(--spacing-3);
   }
 
   .gallerySection {
