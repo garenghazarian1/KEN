@@ -47,6 +47,28 @@ const SERVICE_LAYOUT_OPTIONS = [
   { id: "grid", label: "Grid", Icon: LayoutGrid },
 ];
 
+function ServiceLayoutSwitcher({ layoutMode, onLayoutModeChange }) {
+  return (
+    <div className={styles.viewSwitcher} aria-label="Service layout">
+      <span className={styles.viewSwitcherLabel}>View</span>
+      {SERVICE_LAYOUT_OPTIONS.map(({ id, label, Icon }) => (
+        <button
+          key={id}
+          type="button"
+          className={`${styles.viewButton} ${
+            layoutMode === id ? styles.viewButtonActive : ""
+          }`}
+          onClick={() => onLayoutModeChange(id)}
+          aria-pressed={layoutMode === id}
+        >
+          <Icon size={15} className={styles.viewButtonIcon} aria-hidden />
+          <span>{label}</span>
+        </button>
+      ))}
+    </div>
+  );
+}
+
 function getCategoryIcon(title) {
   return (
     CATEGORY_ICONS.find(({ match }) => match.test(title))?.Icon ?? Sparkles
@@ -287,6 +309,7 @@ function CategoryAccordion({
   onToggleSub,
   query,
   layoutMode,
+  onLayoutModeChange,
 }) {
   const Icon = getCategoryIcon(section.title);
   const count = totalItemCount(section);
@@ -294,49 +317,54 @@ function CategoryAccordion({
 
   return (
     <motion.section
-      className={styles.categorySection}
+      className={`${styles.categorySection} ${
+        isOpen ? styles.categorySectionExpanded : ""
+      }`}
       initial={{ opacity: 0, y: 30 }}
       animate={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.5, type: "spring", stiffness: 120 }}
     >
-      {/* Image lives inside the trigger — title overlaid on top */}
       <button
         className={styles.categoryTrigger}
         onClick={onToggle}
         aria-expanded={isOpen}
       >
-        {image && (
-          <Image
-            src={image.src}
-            alt=""
-            fill
-            className={styles.categoryImage}
-            sizes="(max-width: 768px) 100vw, 920px"
-            aria-hidden
-          />
+        {image ? (
+          <div className={styles.categoryImageWrap}>
+            <Image
+              src={image.src}
+              alt={image.alt || section.title}
+              fill
+              className={styles.categoryImage}
+              sizes="(max-width: 768px) 50vw, (max-width: 1280px) 33vw, 25vw"
+            />
+          </div>
+        ) : (
+          <div className={styles.categoryImageWrap}>
+            <div className={styles.categoryImageFallback} aria-hidden>
+              <Icon size={40} strokeWidth={1.5} />
+            </div>
+          </div>
         )}
-        <div className={styles.categoryTriggerOverlay} aria-hidden />
-        <div className={styles.categoryGlassBar}>
-          <div className={styles.categoryTriggerLeft}>
-            <motion.div
-              className={styles.categoryIcon}
-              whileHover={{ scale: 1.1 }}
-              transition={{ duration: 0.3 }}
-            >
-              <Icon size={20} strokeWidth={2} />
-            </motion.div>
+
+        <div className={styles.categoryCardContent}>
+          <div className={styles.categoryCardHeader}>
+            <span className={styles.categoryIcon} aria-hidden>
+              <Icon size={18} strokeWidth={2} />
+            </span>
             <h2 className={styles.categoryTitle}>{section.title}</h2>
           </div>
-          <div className={styles.categoryTriggerRight}>
-            <span className={styles.countBadge}>{count} services</span>
-            <motion.span
-              className={styles.chevron}
-              animate={{ rotate: isOpen ? 180 : 0 }}
-              transition={{ duration: 0.3, ease: "easeInOut" }}
-            >
-              <ChevronDown size={18} />
-            </motion.span>
-          </div>
+          <p className={styles.categoryMeta}>
+            {count} service{count !== 1 ? "s" : ""}
+          </p>
+          <motion.span
+            className={styles.chevron}
+            animate={{ rotate: isOpen ? 180 : 0 }}
+            transition={{ duration: 0.3, ease: "easeInOut" }}
+            aria-hidden
+          >
+            <ChevronDown size={18} />
+          </motion.span>
         </div>
       </button>
 
@@ -351,6 +379,10 @@ function CategoryAccordion({
             style={{ overflow: "hidden" }}
           >
             <div className={styles.categoryBody}>
+              <ServiceLayoutSwitcher
+                layoutMode={layoutMode}
+                onLayoutModeChange={onLayoutModeChange}
+              />
               {section.groups?.map((group) => (
                 <SubcategoryAccordion
                   key={group.id}
@@ -573,26 +605,6 @@ export default function ServiceMenu({ sections = [], error = null }) {
         </motion.div>
       )}
 
-      {!error && sections.length > 0 && (
-        <div className={styles.viewSwitcher} aria-label="Service layout">
-          <span className={styles.viewSwitcherLabel}>View</span>
-          {SERVICE_LAYOUT_OPTIONS.map(({ id, label, Icon }) => (
-            <button
-              key={id}
-              type="button"
-              className={`${styles.viewButton} ${
-                layoutMode === id ? styles.viewButtonActive : ""
-              }`}
-              onClick={() => setLayoutMode(id)}
-              aria-pressed={layoutMode === id}
-            >
-              <Icon size={15} className={styles.viewButtonIcon} aria-hidden />
-              <span>{label}</span>
-            </button>
-          ))}
-        </div>
-      )}
-
       {/* ─ WhatsApp booking banner ─ */}
       {!error && sections.length > 0 && <WhatsAppBanner />}
 
@@ -637,6 +649,7 @@ export default function ServiceMenu({ sections = [], error = null }) {
               onToggleSub={toggleSubcategory}
               query={query}
               layoutMode={layoutMode}
+              onLayoutModeChange={setLayoutMode}
             />
           ))}
         </div>
