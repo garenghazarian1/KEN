@@ -193,99 +193,54 @@
   color: var(--color-secondary-dark);
 }
 
-/* ─── Category list ────────────────────────────────────── */
+/* ─── Category card grid ───────────────────────────────── */
 .categoriesGrid {
   position: relative;
   z-index: 1;
-  display: flex;
-  flex-direction: column;
-  gap: var(--spacing-2);
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: var(--spacing-4);
   margin-bottom: var(--spacing-8);
-  max-width: 920px;
+  max-width: 1400px;
   margin-left: auto;
   margin-right: auto;
-  padding: 0;
+  padding: 0 var(--spacing-4);
 }
 
-/* ─── Category accordion ───────────────────────────────── */
+/* ─── Category card ────────────────────────────────────── */
 .categorySection {
-  width: 100%;
-  background: transparent;
-  border: none;
-  border-radius: 0;
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
+  background: var(--glass-white-light);
+  border: 1px solid var(--glass-border-light);
+  border-radius: var(--border-radius-xl, 1rem);
   overflow: hidden;
+  box-shadow: 0 2px 12px var(--overlay-black-05);
   transition:
     border-color 0.2s ease,
     box-shadow 0.2s ease;
 }
 
-.categorySection:has(.categoryTrigger[aria-expanded="true"]) {
-  border-color: transparent;
-  box-shadow: none;
+.categorySection:hover {
+  border-color: color-mix(in srgb, var(--color-secondary) 25%, transparent);
+  box-shadow: 0 6px 20px var(--overlay-black-08);
 }
 
-/* ─── Category trigger — image as background, title on top ─ */
+.categorySectionExpanded {
+  grid-column: 1 / -1;
+  border-color: color-mix(in srgb, var(--color-secondary) 35%, transparent);
+}
+
 .categoryTrigger {
-  position: relative;
-  width: 100%;
   display: flex;
-  align-items: flex-end;
-  justify-content: space-between;
-  gap: var(--spacing-3);
-  padding: var(--spacing-4) 0 0;
+  flex-direction: column;
+  width: 100%;
+  padding: 0;
   background: transparent;
   border: none;
   cursor: pointer;
   text-align: left;
-  min-height: 160px;
-  overflow: hidden;
-  transition: filter 0.2s ease;
-}
-
-.categoryImage {
-  object-fit: cover;
-  object-position: center top;
-  transition: transform 0.5s ease;
-  z-index: 0;
-}
-
-.categorySection:hover .categoryImage {
-  transform: scale(1.04);
-}
-
-/* Dark gradient so the white text is always readable */
-.categoryTriggerOverlay {
-  position: absolute;
-  inset: 0;
-  background: linear-gradient(
-    to top,
-    rgba(0, 0, 0, 0.8) 0%,
-    rgba(0, 0, 0, 0.35) 45%,
-    rgba(0, 0, 0, 0.1) 100%
-  );
-  z-index: 1;
-  pointer-events: none;
-}
-
-/* ─── Glass bar behind category name / controls ─── */
-.categoryGlassBar {
-  position: relative;
-  z-index: 2;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: var(--spacing-3);
-  width: 100%;
-  padding: 0;
-  background: rgba(0, 0, 0, 0.3);
-  backdrop-filter: blur(14px) saturate(1.4);
-  -webkit-backdrop-filter: blur(14px) saturate(1.4);
-  border-top: 1px solid rgba(255, 255, 255, 0.08);
-  box-shadow: 0 2px 12px rgba(0, 0, 0, 0.25);
-}
-
-.categoryTrigger:hover {
-  background: transparent;
 }
 
 .categoryTrigger:focus-visible {
@@ -293,69 +248,99 @@
   outline-offset: -2px;
 }
 
-.categoryTriggerLeft {
+.categoryImageWrap {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 4 / 3;
   display: flex;
   align-items: center;
-  gap: var(--spacing-3);
-  min-width: 0;
-  padding: var(--spacing-3) var(--spacing-4);
+  justify-content: center;
+  background: color-mix(
+    in srgb,
+    var(--color-bg-secondary, var(--color-bg-primary)) 60%,
+    transparent
+  );
+  overflow: hidden;
 }
 
-.categoryTriggerRight {
+.categoryImage {
+  object-fit: contain;
+  object-position: center;
+  transition: transform 0.35s ease;
+}
+
+.categorySection:hover .categoryImage {
+  transform: scale(1.03);
+}
+
+.categoryImageFallback {
   display: flex;
   align-items: center;
-  gap: var(--spacing-3);
-  flex-shrink: 0;
-  padding: var(--spacing-3) var(--spacing-4);
+  justify-content: center;
+  width: 100%;
+  height: 100%;
+  color: var(--color-secondary);
+  opacity: 0.45;
+}
+
+.categoryCardContent {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-1);
+  padding: var(--spacing-4);
+}
+
+.categoryCardHeader {
+  display: flex;
+  align-items: flex-start;
+  gap: var(--spacing-2);
+  min-width: 0;
+  padding-right: var(--spacing-6);
 }
 
 .categoryIcon {
   display: flex;
   align-items: center;
   justify-content: center;
-  width: 36px;
-  height: 36px;
-  background: transparent;
-  border-radius: 0;
-  color: var(--color-secondary-light);
-  box-shadow: none;
+  width: 2rem;
+  height: 2rem;
   flex-shrink: 0;
+  color: var(--color-secondary);
+  background: color-mix(in srgb, var(--color-secondary) 10%, transparent);
+  border-radius: var(--border-radius-md, 0.5rem);
 }
 
 .categoryTitle {
-  color: #fff;
-  font-size: clamp(0.95rem, 2vw, 1.125rem);
+  color: var(--color-text-primary);
+  font-size: clamp(0.95rem, 1.6vw, 1.125rem);
   font-weight: 700;
   margin: 0;
+  line-height: 1.25;
   letter-spacing: -0.02em;
-  white-space: nowrap;
-  overflow: hidden;
-  text-overflow: ellipsis;
-  max-width: 100%;
 }
 
-.countBadge {
-  display: inline-flex;
-  align-items: center;
-  padding: 0;
-  background: transparent;
-  border: none;
-  border-radius: 0;
-  font-size: var(--font-size-xs);
-  font-weight: var(--font-weight-semibold);
-  color: rgba(255, 255, 255, 0.9);
-  white-space: nowrap;
+.categoryMeta {
+  margin: 0;
+  font-size: var(--font-size-sm);
+  font-weight: var(--font-weight-medium);
+  color: var(--color-text-secondary);
+  line-height: 1.4;
 }
 
 .chevron {
+  position: absolute;
+  top: var(--spacing-4);
+  right: var(--spacing-4);
   display: flex;
   align-items: center;
-  color: rgba(255, 255, 255, 0.85);
+  color: var(--color-text-secondary);
 }
 
 /* ─── Category body (expanded content) ────────────────── */
 .categoryBody {
-  padding: var(--spacing-2) 0 var(--spacing-4);
+  padding: 0 var(--spacing-4) var(--spacing-4);
+  border-top: 1px solid var(--glass-border-light);
   display: flex;
   flex-direction: column;
   gap: var(--spacing-4);
@@ -436,15 +421,14 @@
 
 /* ─── Service Layout Switcher ──────────────────────────── */
 .viewSwitcher {
-  position: relative;
-  z-index: 1;
   display: flex;
   align-items: center;
   justify-content: flex-start;
+  flex-wrap: wrap;
   gap: var(--spacing-3);
-  max-width: 920px;
-  margin: 0 auto var(--spacing-6);
-  padding: 0 var(--spacing-4);
+  margin: 0 0 var(--spacing-2);
+  padding: var(--spacing-3) 0;
+  border-bottom: 1px solid var(--glass-border-light);
 }
 
 .viewSwitcherLabel {
@@ -737,10 +721,10 @@
   z-index: 1;
   max-width: 920px;
   margin: 0 auto var(--spacing-6);
-  border: 1.5px solid color-mix(in srgb, #25d366 30%, transparent);
+  border: 1px solid var(--glass-border-light);
   border-radius: var(--border-radius-xl, 16px);
   overflow: hidden;
-  box-shadow: 0 2px 12px color-mix(in srgb, #25d366 10%, transparent);
+  box-shadow: 0 2px 12px var(--overlay-black-05);
 }
 
 .whatsappBannerTrigger {
@@ -749,7 +733,7 @@
   gap: var(--spacing-3);
   width: 100%;
   padding: var(--spacing-3) var(--spacing-4);
-  background: color-mix(in srgb, #25d366 8%, var(--color-bg-primary));
+  background: var(--glass-white-light);
   border: none;
   cursor: pointer;
   text-align: left;
@@ -757,7 +741,7 @@
 }
 
 .whatsappBannerTrigger:hover {
-  background: color-mix(in srgb, #25d366 13%, var(--color-bg-primary));
+  background: color-mix(in srgb, #25d366 6%, var(--glass-white-light));
 }
 
 .whatsappBannerIcon {
@@ -767,7 +751,7 @@
   width: 36px;
   height: 36px;
   border-radius: 50%;
-  background: color-mix(in srgb, #25d366 18%, var(--color-bg-primary));
+  background: color-mix(in srgb, #25d366 16%, var(--glass-white-light));
   color: #25d366;
   flex-shrink: 0;
 }
@@ -792,8 +776,8 @@
   flex-wrap: wrap;
   gap: var(--spacing-3);
   padding: var(--spacing-4) var(--spacing-4);
-  background: color-mix(in srgb, #25d366 5%, var(--color-bg-primary));
-  border-top: 1px solid color-mix(in srgb, #25d366 20%, transparent);
+  background: var(--glass-white-light);
+  border-top: 1px solid var(--glass-border-light);
 }
 
 .whatsappButton {
@@ -902,6 +886,19 @@
 }
 
 /* ─── Responsive ───────────────────────────────────────── */
+@media (min-width: 1024px) {
+  .categoriesGrid {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: var(--spacing-5);
+  }
+}
+
+@media (min-width: 1280px) {
+  .categoriesGrid {
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+  }
+}
+
 @media (max-width: 1024px) {
   .servicesDisplayHorizontal .serviceCard {
     flex-basis: 33.333%;
@@ -917,39 +914,31 @@
     padding: 0 0 var(--spacing-6);
   }
 
-  .searchWrapper,
-  .viewSwitcher {
+  .searchWrapper {
     max-width: 700px;
   }
 
   .categoriesGrid {
     padding: 0 var(--spacing-3);
-    gap: var(--spacing-2);
+    gap: var(--spacing-3);
   }
 
-  .categoryTrigger {
-    padding: var(--spacing-3) var(--spacing-4);
-    min-height: 140px;
+  .categoryCardContent {
+    padding: var(--spacing-3);
+  }
+
+  .chevron {
+    top: var(--spacing-3);
+    right: var(--spacing-3);
   }
 
   .categoryBody {
-    padding: var(--spacing-2) 0 var(--spacing-3);
-  }
-
-  .categoryIcon {
-    width: 32px;
-    height: 32px;
-  }
-
-  .countBadge {
-    display: none;
+    padding: 0 var(--spacing-3) var(--spacing-3);
   }
 
   .viewSwitcher {
-    flex-wrap: wrap;
     column-gap: var(--spacing-3);
     row-gap: var(--spacing-2);
-    margin-bottom: var(--spacing-5);
   }
 
   .servicesDisplayHorizontal .serviceCard {
@@ -986,13 +975,17 @@
     padding: 0 0 var(--spacing-4);
   }
 
-  .categoryTrigger {
-    padding: var(--spacing-3) var(--spacing-3);
-    min-height: 120px;
+  .categoriesGrid {
+    gap: var(--spacing-2);
+    padding: 0 var(--spacing-2);
+  }
+
+  .categoryImageWrap {
+    aspect-ratio: 3 / 2;
   }
 
   .categoryBody {
-    padding: var(--spacing-2) 0 var(--spacing-3);
+    padding: 0 var(--spacing-2) var(--spacing-2);
   }
 
   .servicesDisplayHorizontal .serviceCard {
@@ -1014,10 +1007,5 @@
   .serviceInfo {
     min-height: 8.5rem;
     padding-inline: var(--spacing-4);
-  }
-
-  .categoryIcon {
-    width: 30px;
-    height: 30px;
   }
 }
