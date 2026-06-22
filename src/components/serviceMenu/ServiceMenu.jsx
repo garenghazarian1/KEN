@@ -29,6 +29,7 @@ import {
   WHATSAPP_CONTACTS,
 } from "@/config/constants";
 import { getCategoryImage } from "@/data/serviceImages";
+import { cldTransform } from "@/utils/cloudinary";
 import styles from "./ServiceMenu.module.css";
 
 /* ─── Category icon map ───────────────────────────────────────────── */
@@ -150,8 +151,15 @@ function filterSections(sections, query) {
 
 /* ─── Service card ────────────────────────────────────────────────── */
 function ServiceCard({ item, index, query }) {
-  const hasPrice = item.defaultPrice != null;
+  // Prefer the API's localized, currency-suffixed priceLabel; fall back to raw.
+  const priceText = item.priceLabel ?? formatPrice(item.defaultPrice);
+  const hasPrice = Boolean(priceText);
+  const showCompareAt =
+    item.priceDisplayType === "sale" && Boolean(item.priceCompareAtLabel);
   const hasDuration = item.durationMinutes != null && item.durationMinutes > 0;
+  const cover = item.imageUrls?.[0]
+    ? cldTransform(item.imageUrls[0], "f_auto,q_auto,w_400,h_300,c_fill")
+    : null;
 
   return (
     <motion.article
@@ -162,6 +170,18 @@ function ServiceCard({ item, index, query }) {
       transition={{ duration: 0.25, delay: Math.min(index * 0.02, 0.18) }}
       whileHover={{ y: -3 }}
     >
+      {cover && (
+        <div className={styles.serviceImageWrap}>
+          <Image
+            src={cover}
+            alt={item.name}
+            fill
+            className={styles.serviceImage}
+            sizes="(max-width: 768px) 90vw, (max-width: 1280px) 45vw, 320px"
+            loading="lazy"
+          />
+        </div>
+      )}
       <div className={styles.serviceInfo}>
         <div className={styles.serviceTopRow}>
           <h3 className={styles.serviceName}>
@@ -172,7 +192,12 @@ function ServiceCard({ item, index, query }) {
               {hasPrice && (
                 <span className={styles.metaItem}>
                   <Banknote size={13} className={styles.metaIcon} aria-hidden />
-                  {formatPrice(item.defaultPrice)}
+                  {showCompareAt && (
+                    <span className={styles.metaCompareAt}>
+                      {item.priceCompareAtLabel}
+                    </span>
+                  )}
+                  {priceText}
                 </span>
               )}
               {hasPrice && hasDuration && (
@@ -313,6 +338,9 @@ function CategoryAccordion({
 }) {
   const Icon = getCategoryIcon(section.title);
   const count = totalItemCount(section);
+  const remoteBanner = section.imageUrls?.[0]
+    ? cldTransform(section.imageUrls[0], "f_auto,q_auto,w_640,h_480,c_fill")
+    : null;
   const image = getCategoryImage(section.title);
 
   return (
@@ -329,7 +357,17 @@ function CategoryAccordion({
         onClick={onToggle}
         aria-expanded={isOpen}
       >
-        {image ? (
+        {remoteBanner ? (
+          <div className={styles.categoryImageWrap}>
+            <Image
+              src={remoteBanner}
+              alt={section.title}
+              fill
+              className={styles.categoryImage}
+              sizes="(max-width: 768px) 50vw, (max-width: 1280px) 33vw, 25vw"
+            />
+          </div>
+        ) : image ? (
           <div className={styles.categoryImageWrap}>
             <Image
               src={image.src}

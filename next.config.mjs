@@ -5,7 +5,8 @@ const nextConfig = {
       {
         protocol: "https",
         hostname: "res.cloudinary.com",
-        pathname: "/dzzm7ye56/**", // Adjust this path to match your specific image paths
+        // Admin service-catalog media can come from any Cloudinary cloud.
+        pathname: "/**",
       },
     ],
   },

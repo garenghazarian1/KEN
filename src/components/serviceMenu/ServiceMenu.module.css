@@ -594,6 +594,29 @@
   scroll-snap-align: start;
 }
 
+.serviceImageWrap {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 4 / 3;
+  border-radius: var(--radius-md, 0.5rem);
+  overflow: hidden;
+  background: color-mix(
+    in srgb,
+    var(--color-bg-secondary, var(--color-bg-primary)) 60%,
+    transparent
+  );
+}
+
+.serviceImage {
+  object-fit: cover;
+  object-position: center;
+  transition: transform 0.35s ease;
+}
+
+.serviceCard:hover .serviceImage {
+  transform: scale(1.04);
+}
+
 .serviceCard::before {
   content: "";
   position: absolute;
@@ -691,6 +714,13 @@
   color: var(--color-secondary);
   opacity: 0.9;
   flex-shrink: 0;
+}
+
+.metaCompareAt {
+  text-decoration: line-through;
+  color: var(--color-text-tertiary);
+  font-weight: 600;
+  margin-right: 0.3rem;
 }
 
 .metaDivider {

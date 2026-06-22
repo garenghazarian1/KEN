@@ -1,141 +1,54 @@
-import { connectServicesDB } from "@/lib/db/mongoose";
-import { BUSINESS_SLUG } from "@/config/constants";
+import { ADMIN_PUBLIC_BASE_URL, BUSINESS_SLUG } from "@/config/constants";
+
+/** Catalog data changes infrequently; revalidate hourly. */
+const CATALOG_REVALIDATE_SECONDS = 3600;
 
 /**
- * Get or register a model on a specific connection.
- * Avoids "Cannot overwrite model once compiled" errors across hot-reloads.
+ * Fetch the service catalog from the admin system's read-only public API.
+ *
+ * @param {string} [locale="en"] - `en` or `ar`.
+ * @param {string|null} [branchId=null] - optional Mongo ObjectId to scope to one branch.
+ * @returns {Promise<{ businessSlug: string, total: number, services: Array }>}
  */
-function getModel(conn, name, schema) {
-  return conn.models[name] || conn.model(name, schema);
-}
+export async function getServiceCatalog(locale = "en", branchId = null) {
+  const url = new URL(
+    `${ADMIN_PUBLIC_BASE_URL}/api/public/businesses/${BUSINESS_SLUG}/service-catalog`
+  );
+  url.searchParams.set("locale", locale);
+  if (branchId) url.searchParams.set("branchId", branchId);
 
-import mongoose from "mongoose";
+  const res = await fetch(url.toString(), {
+    next: { revalidate: CATALOG_REVALIDATE_SECONDS },
+  });
 
-const { Schema } = mongoose;
-
-const BusinessSchema = new Schema(
-  { name: String, slug: { type: String, index: true }, isActive: Boolean },
-  { timestamps: true, collection: "businesses" }
-);
-
-const BusinessServiceCategorySchema = new Schema(
-  {
-    businessId: Schema.Types.ObjectId,
-    parentId: { type: Schema.Types.ObjectId, default: null },
-    name: String,
-    nameTranslations: Schema.Types.Mixed,
-    type: { type: String, enum: ["category", "subcategory"] },
-    sortOrder: { type: Number, default: 0 },
-    description: String,
-    descriptionTranslations: Schema.Types.Mixed,
-    branchIds: [Schema.Types.ObjectId],
-  },
-  { timestamps: true, collection: "business_service_categories" }
-);
-
-const BusinessServiceItemSchema = new Schema(
-  {
-    businessId: Schema.Types.ObjectId,
-    name: String,
-    nameTranslations: Schema.Types.Mixed,
-    sortOrder: { type: Number, default: 0 },
-    durationMinutes: Number,
-    defaultPrice: Number,
-    description: String,
-    descriptionTranslations: Schema.Types.Mixed,
-    branchIds: [Schema.Types.ObjectId],
-  },
-  { timestamps: true, collection: "business_service_items" }
-);
-
-const BusinessServiceItemCategoryLinkSchema = new Schema(
-  {
-    businessId: Schema.Types.ObjectId,
-    itemId: Schema.Types.ObjectId,
-    categoryId: Schema.Types.ObjectId,
-    sortOrder: { type: Number, default: 0 },
-  },
-  { timestamps: true, collection: "business_service_item_categories" }
-);
-
-/** Resolve name for the requested locale, fall back to default. */
-function resolveName(nameTranslations, defaultName, locale) {
-  if (!nameTranslations) return defaultName;
-  return nameTranslations[locale] || nameTranslations["en"] || defaultName;
-}
-
-/**
- * Fetch the service catalog directly from MongoDB.
- * @param {string} [locale="en"]
- */
-export async function getServiceCatalog(locale = "en") {
-  const conn = await connectServicesDB();
-
-  const Business = getModel(conn, "Business", BusinessSchema);
-  const BusinessServiceCategory = getModel(conn, "BusinessServiceCategory", BusinessServiceCategorySchema);
-  const BusinessServiceItem = getModel(conn, "BusinessServiceItem", BusinessServiceItemSchema);
-  const BusinessServiceItemCategoryLink = getModel(conn, "BusinessServiceItemCategoryLink", BusinessServiceItemCategoryLinkSchema);
-
-  const business = await Business.findOne({ slug: BUSINESS_SLUG })
-    .select("_id isActive")
-    .lean();
-
-  if (!business || business.isActive === false) {
-    throw new Error("Business not found.");
+  if (!res.ok) {
+    let message = `Failed to load services (${res.status}).`;
+    try {
+      const body = await res.json();
+      if (body?.message) message = body.message;
+    } catch {
+      // Non-JSON error body; keep the generic message.
+    }
+    throw new Error(message);
   }
 
-  const businessId = business._id;
-
-  const [categories, items, links] = await Promise.all([
-    BusinessServiceCategory.find({ businessId })
-      .sort({ sortOrder: 1, name: 1 })
-      .lean(),
-    BusinessServiceItem.find({ businessId })
-      .sort({ sortOrder: 1, name: 1 })
-      .lean(),
-    BusinessServiceItemCategoryLink.find({ businessId })
-      .select("itemId categoryId sortOrder")
-      .lean(),
-  ]);
-
-  // Build categoryIds map: itemId → [categoryId, ...]
-  const categoryIdsByItemId = {};
-  for (const link of links) {
-    const key = link.itemId.toString();
-    if (!categoryIdsByItemId[key]) categoryIdsByItemId[key] = [];
-    categoryIdsByItemId[key].push(link.categoryId.toString());
-  }
-
-  const services = [
-    ...categories.map((c) => ({
-      id: c._id.toString(),
-      parentId: c.parentId ? c.parentId.toString() : null,
-      type: c.type,
-      name: resolveName(c.nameTranslations, c.name, locale),
-      sortOrder: c.sortOrder ?? 0,
-      durationMinutes: null,
-      defaultPrice: null,
-      description: c.description || null,
-      branchIds: c.branchIds?.length ? c.branchIds.map((id) => id.toString()) : null,
-    })),
-    ...items.map((item) => ({
-      id: item._id.toString(),
-      parentId: null,
-      categoryIds: categoryIdsByItemId[item._id.toString()] ?? [],
-      type: "item",
-      name: resolveName(item.nameTranslations, item.name, locale),
-      sortOrder: item.sortOrder ?? 0,
-      durationMinutes: item.durationMinutes ?? null,
-      defaultPrice: item.defaultPrice ?? null,
-      description: item.description || null,
-      branchIds: item.branchIds?.length ? item.branchIds.map((id) => id.toString()) : null,
-    })),
-  ];
-
-  return { services };
+  const data = await res.json();
+  return {
+    businessSlug: data.businessSlug ?? BUSINESS_SLUG,
+    total: data.total ?? data.services?.length ?? 0,
+    services: data.services ?? [],
+  };
 }
 
 const sortByOrder = (a, b) => (a.sortOrder ?? 0) - (b.sortOrder ?? 0);
+
+/** Normalize media fields so the UI can rely on a stable shape. */
+function pickMedia(node) {
+  return {
+    imageUrls: Array.isArray(node.imageUrls) ? node.imageUrls : [],
+    videoUrl: node.videoUrl ?? null,
+  };
+}
 
 /**
  * Group flat catalog nodes into display sections (categories → subcategories → items).
@@ -154,10 +67,14 @@ export function buildServiceSections(services) {
       id: s.id,
       name: s.name,
       defaultPrice: s.defaultPrice,
+      priceLabel: s.priceLabel ?? null,
+      priceCompareAtLabel: s.priceCompareAtLabel ?? null,
+      priceDisplayType: s.priceDisplayType ?? null,
       durationMinutes: s.durationMinutes > 0 ? s.durationMinutes : undefined,
-      description: s.description,
+      description: s.serviceDescription || s.description || null,
       sortOrder: s.sortOrder ?? 0,
       categoryIds: s.categoryIds ?? [],
+      ...pickMedia(s),
     }));
 
   const itemsForFolder = (folderId) =>
@@ -169,6 +86,7 @@ export function buildServiceSections(services) {
 
   return roots
     .map((root) => {
+      const rootMedia = pickMedia(root);
       const subcats = folders
         .filter((f) => f.parentId === root.id)
         .sort(sortByOrder);
@@ -179,6 +97,7 @@ export function buildServiceSections(services) {
             id: sub.id,
             title: sub.name,
             items: itemsForFolder(sub.id),
+            ...pickMedia(sub),
           }))
           .filter((g) => g.items.length > 0);
 
@@ -189,6 +108,7 @@ export function buildServiceSections(services) {
           title: root.name,
           groups: groups.length > 0 ? groups : undefined,
           items: directItems.length > 0 ? directItems : undefined,
+          ...rootMedia,
         };
       }
 
@@ -196,6 +116,7 @@ export function buildServiceSections(services) {
         id: root.id,
         title: root.name,
         items: itemsForFolder(root.id),
+        ...rootMedia,
       };
     })
     .filter(
