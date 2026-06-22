@@ -1,0 +1,49 @@
+---
+description: How this consumer app reads data from the Garen admin system (public read-only API + Cloudinary media). Apply when touching the service catalog, careers, jobs, or any data that originates in the admin system.
+globs:
+  - src/lib/business/**
+  - src/components/serviceMenu/**
+  - src/app/(navPages)/services/**
+  - src/utils/cloudinary.js
+alwaysApply: false
+---
+
+# Admin public API integration
+
+This is a **consumer app**. It does **not** own the service catalog / careers data and
+must **never query the admin MongoDB directly**. Read everything over the admin's
+read-only public HTTP API.
+
+- Base: `ADMIN_PUBLIC_BASE_URL` + `/api/public/...` (see `src/config/constants.js`).
+- Business slug: `BUSINESS_SLUG` (`ken-beauty-salon`).
+- No auth/cookies/API key. CORS is `*`. Pass `locale` (`en`/`ar`) where supported.
+- Errors: `{ code, message, details? }`. Treat 404 `BUSINESS_NOT_FOUND` as "no catalog".
+
+## Implemented endpoints
+
+| Method | Path | Purpose |
+|--------|------|---------|
+| GET | `/api/public/businesses/{slug}/service-catalog` | Catalog + structured pricing |
+| GET | `/api/public/careers/company/{businessSlug}` | Careers board (published jobs) |
+| GET | `/api/public/jobs/{slug}` | Job detail + apply form config |
+| POST | `/api/public/jobs/{slug}/apply` | Submit application (multipart) |
+
+## Service catalog rules
+
+- `getServiceCatalog(locale, branchId?)` in `src/lib/business/serviceCatalog.js`
+  fetches the API (ISR `revalidate: 3600`) and returns `{ businessSlug, total, services }`.
+- Response is a **flat list**; build the tree from `parentId` / `categoryIds`, sort by `sortOrder`.
+- Only `type === "item"` rows are bookable/priced. Items have `parentId: null` and link via `categoryIds[]`.
+- **Prices:** display `priceLabel` verbatim (already localized + currency-suffixed). Raw numeric
+  fields carry **no currency** — don't invent one. For `priceDisplayType === "sale"`, strike
+  through `priceCompareAtLabel`.
+
+## Cloudinary media
+
+- Catalog nodes carry `imageUrls: string[]` (0–10, `imageUrls[0]` is the cover) and `videoUrl: string|null`.
+- URLs are absolute Cloudinary `secure_url`s — use directly in `next/image` / `<video>`. Guard empties.
+- Optimize by URL rewrite via `cldTransform(url, "f_auto,q_auto,w_400,c_fill")` in `src/utils/cloudinary.js`
+  (no SDK). Non-Cloudinary URLs pass through unchanged.
+- `next.config.mjs` allows `res.cloudinary.com` with pathname `/**` so any admin cloud renders.
+
+See `docs/PUBLIC_API_INTEGRATION.md` for the full reference.

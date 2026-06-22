@@ -2,7 +2,7 @@
 
 import Link from "next/link";
 import Image from "next/image";
-import { Calendar, Coffee, Scissors } from "lucide-react";
+import { Calendar, Coffee } from "lucide-react";
 import {
   BOOKING_URL,
   NAVBAR_LOGO_DEFAULT_SRC,
@@ -13,7 +13,11 @@ import styles from "./MobileNavTop.module.css";
 export default function MobileNavTop() {
   return (
     <header className={styles.topBar} role="banner">
-      <Link href="/" className={styles.logoLink} aria-label="Ken Beauty Salon home">
+      <Link
+        href="/"
+        className={styles.logoLink}
+        aria-label="Ken Beauty Salon home"
+      >
         <Image
           src={NAVBAR_LOGO_DEFAULT_SRC}
           alt="Ken Beauty Salon logo"
@@ -36,13 +40,18 @@ export default function MobileNavTop() {
         )}
       </Link>
       <div className={styles.navActions}>
-        <Link href="/services" className={styles.bookButton} aria-label="Services and prices">
-          <Scissors size={18} aria-hidden />
-        </Link>
-        <Link href="/drinks" className={styles.bookButton} aria-label="Drinks menu">
+        <Link
+          href="/drinks"
+          className={styles.bookButton}
+          aria-label="Drinks menu"
+        >
           <Coffee size={18} aria-hidden />
         </Link>
-        <Link href={BOOKING_URL} className={styles.bookButton} aria-label="Book now">
+        <Link
+          href={BOOKING_URL}
+          className={styles.bookButton}
+          aria-label="Book now"
+        >
           <Calendar size={18} aria-hidden />
           <span>Book now</span>
         </Link>

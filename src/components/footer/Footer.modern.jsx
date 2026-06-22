@@ -158,7 +158,11 @@ export default function FooterModern() {
                         className={styles.contactLink}
                         aria-label={`Call ${store.name} landline: ${store.phone}`}
                       >
-                        <Phone size={18} className={styles.contactLinkIcon} aria-hidden="true" />
+                        <Phone
+                          size={18}
+                          className={styles.contactLinkIcon}
+                          aria-hidden="true"
+                        />
                         <span>Landline: {store.phone}</span>
                       </a>
                     )}
@@ -168,14 +172,18 @@ export default function FooterModern() {
                         className={styles.contactLink}
                         aria-label={`Call ${store.name} mobile: ${store.mobile}`}
                       >
-                        <Phone size={18} className={styles.contactLinkIcon} aria-hidden="true" />
+                        <Phone
+                          size={18}
+                          className={styles.contactLinkIcon}
+                          aria-hidden="true"
+                        />
                         <span>Mobile: {store.mobile}</span>
                       </a>
                     )}
                     {store.whatsapp && (
                       <a
                         href={`https://wa.me/${store.whatsapp.replace(/[\s+]/g, "")}?text=${encodeURIComponent(
-                          `Hello ${store.name}, I would like to know more about your services.`
+                          `Hello ${store.name}, I would like to know more about your services.`,
                         )}`}
                         className={styles.contactLink}
                         aria-label={`WhatsApp ${store.name}`}
@@ -194,7 +202,11 @@ export default function FooterModern() {
                   className={styles.contactLink}
                   aria-label="Email us at info@ken-salon.com"
                 >
-                  <Mail size={18} className={styles.contactLinkIcon} aria-hidden="true" />
+                  <Mail
+                    size={18}
+                    className={styles.contactLinkIcon}
+                    aria-hidden="true"
+                  />
                   <span>info@ken-salon.com</span>
                 </a>
               </div>
@@ -215,10 +227,7 @@ export default function FooterModern() {
                   return (
                     <li key={link.title} className={styles.linkListItem}>
                       {link.external ? (
-                        <a
-                          href={link.path}
-                          className={styles.footerLink}
-                        >
+                        <a href={link.path} className={styles.footerLink}>
                           <Icon size={16} className={styles.footerLinkIcon} />
                           <span>{link.title}</span>
                         </a>

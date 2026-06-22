@@ -4,7 +4,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { motion } from "framer-motion";
 import { MessageCircle, ArrowRight, Briefcase } from "lucide-react";
-import { BOOKING_URL, CAREERS_URL } from "@/config/constants";
+import { CAREERS_URL } from "@/config/constants";
 import styles from "./Hero.modern.module.css";
 
 const HERO_VIDEO_SRC = "/hero-vid-01.mp4";
@@ -214,23 +214,23 @@ export default function HeroModern() {
             </motion.p>
 
             <motion.div
-              className={styles.ctaButtons}
+              className={styles.ctaWrapper}
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.8, duration: 0.6 }}
             >
-              <Link href={BOOKING_URL} className={styles.primaryButton}>
-                <span>Book Appointment</span>
-                <ArrowRight size={20} />
-              </Link>
-              <a
-                href="https://wa.me/971503043570?text=Hello%20KEN%20Beauty%20Center%2C%20I%20would%20like%20to%20know%20more%20about%20your%20services."
-                className={styles.secondaryButton}
-                aria-label="Contact us on WhatsApp"
-              >
-                <MessageCircle size={20} />
-                <span>Chat with Us</span>
-              </a>
+              <div className={styles.ctaButtons}>
+                <Link href="/services" className={styles.discoverLink}>
+                  Discover our services
+                </Link>
+                <a
+                  href="https://wa.me/971503043570?text=Hello%20KEN%20Beauty%20Center%2C%20I%20would%20like%20to%20know%20more%20about%20your%20services."
+                  className={styles.secondaryButton}
+                  aria-label="Contact us on WhatsApp"
+                >
+                  <MessageCircle className={styles.waIcon} />
+                </a>
+              </div>
             </motion.div>
           </motion.div>
         </div>

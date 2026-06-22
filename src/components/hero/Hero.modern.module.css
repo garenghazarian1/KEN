@@ -159,32 +159,60 @@
   white-space: nowrap;
 }
 
-/* CTA Buttons */
-.ctaButtons {
-  display: flex;
-  gap: var(--spacing-4);
-  flex-wrap: wrap;
-  justify-content: center;
+/* CTA — single row, all three buttons */
+.ctaWrapper {
   margin-top: var(--spacing-4);
 }
 
+.ctaButtons {
+  display: flex;
+  flex-wrap: nowrap;
+  align-items: center;
+  justify-content: center;
+  gap: clamp(0.375rem, 1.5vw, 1rem);
+}
+
+/* Shared pill base */
+.discoverLink,
 .primaryButton {
   display: flex;
   align-items: center;
-  gap: var(--spacing-2);
-  padding: var(--spacing-4) var(--spacing-8);
+  justify-content: center;
+  white-space: nowrap;
+  border-radius: var(--radius-full);
+  font-size: clamp(0.7rem, 2.8vw, 1rem);
+  font-weight: var(--font-weight-semibold);
+  text-decoration: none;
+  padding: clamp(0.5rem, 1.5vw, 1rem) clamp(0.75rem, 3vw, 2rem);
+  min-height: clamp(36px, 6vw, 52px);
+  transition: all var(--transition-base) var(--ease-in-out);
+}
+
+.discoverLink {
+  background-color: var(--glass-black-light);
+  backdrop-filter: blur(var(--glass-blur-xl));
+  -webkit-backdrop-filter: blur(var(--glass-blur-xl));
+  border: 1px solid var(--glass-border-white-medium);
+  color: var(--color-text-inverse);
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
+}
+
+.discoverLink:hover {
+  background-color: var(--glass-black-medium);
+  border-color: rgba(255, 255, 255, 0.4);
+  color: var(--color-text-inverse);
+  transform: translateY(-2px);
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.4);
+}
+
+.primaryButton {
   background-color: var(--color-secondary);
   backdrop-filter: blur(var(--glass-blur-xl));
   -webkit-backdrop-filter: blur(var(--glass-blur-xl));
   border: 2px solid transparent;
-  border-radius: var(--radius-full);
   color: var(--color-text-inverse);
-  font-size: var(--font-size-lg);
-  font-weight: var(--font-weight-semibold);
-  text-decoration: none;
-  transition: all var(--transition-base) var(--ease-in-out);
   box-shadow: 0 4px 16px rgba(0, 0, 0, 0.35);
-  min-height: 44px;
+  padding: clamp(0.5rem, 1.5vw, 1rem) clamp(1.25rem, 5vw, 2.5rem);
 }
 
 .primaryButton:hover {
@@ -193,27 +221,33 @@
   box-shadow: 0 6px 20px rgba(0, 0, 0, 0.45);
 }
 
+/* WhatsApp icon-only circle — matches button height */
 .secondaryButton {
   display: flex;
   align-items: center;
-  gap: var(--spacing-2);
-  padding: var(--spacing-4) var(--spacing-8);
+  justify-content: center;
+  flex-shrink: 0;
+  width: clamp(36px, 6vw, 52px);
+  height: clamp(36px, 6vw, 52px);
+  padding: 0;
+  border-radius: var(--radius-full);
   background-color: var(--color-whatsapp);
   backdrop-filter: blur(var(--glass-blur-md));
   -webkit-backdrop-filter: blur(var(--glass-blur-md));
-  border-radius: var(--radius-full);
   color: var(--color-text-inverse);
-  font-size: var(--font-size-lg);
-  font-weight: var(--font-weight-semibold);
   text-decoration: none;
   transition: all var(--transition-base) var(--ease-in-out);
   box-shadow: 0 4px 12px var(--color-whatsapp-bg);
-  min-height: 44px;
 }
 
 .secondaryButton:hover {
   transform: translateY(-2px) scale(1.05);
   box-shadow: 0 6px 16px var(--color-whatsapp-bg);
+}
+
+.waIcon {
+  width: clamp(16px, 3vw, 22px);
+  height: clamp(16px, 3vw, 22px);
 }
 
 /* Careers banner — full-width glass strip below navbar */
