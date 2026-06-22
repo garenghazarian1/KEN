@@ -3,7 +3,8 @@
 import Image from "next/image";
 import Link from "next/link";
 import { motion } from "framer-motion";
-import { MessageCircle, ArrowRight, Briefcase } from "lucide-react";
+import { ArrowRight, Briefcase } from "lucide-react";
+import { FaWhatsapp } from "react-icons/fa";
 import { CAREERS_URL } from "@/config/constants";
 import styles from "./Hero.modern.module.css";
 
@@ -228,7 +229,7 @@ export default function HeroModern() {
                   className={styles.secondaryButton}
                   aria-label="Contact us on WhatsApp"
                 >
-                  <MessageCircle className={styles.waIcon} />
+                  <FaWhatsapp size={30} className={styles.waIcon} aria-hidden />
                 </a>
               </div>
             </motion.div>

@@ -325,17 +325,8 @@ function SubcategoryAccordion({ group, isOpen, onToggle, query, layoutMode }) {
   );
 }
 
-/* ─── Category accordion ──────────────────────────────────────────── */
-function CategoryAccordion({
-  section,
-  isOpen,
-  onToggle,
-  openSubcategories,
-  onToggleSub,
-  query,
-  layoutMode,
-  onLayoutModeChange,
-}) {
+/* ─── Category tile (browse grid + picker) ────────────────────────── */
+function CategoryTile({ section, onSelect, compact = false }) {
   const Icon = getCategoryIcon(section.title);
   const count = totalItemCount(section);
   const remoteBanner = section.imageUrls?.[0]
@@ -344,106 +335,172 @@ function CategoryAccordion({
   const image = getCategoryImage(section.title);
 
   return (
-    <motion.section
-      className={`${styles.categorySection} ${
-        isOpen ? styles.categorySectionExpanded : ""
+    <motion.button
+      type="button"
+      className={`${styles.categoryTile} ${
+        compact ? styles.categoryTileCompact : ""
       }`}
-      initial={{ opacity: 0, y: 30 }}
+      onClick={() => onSelect(section.id)}
+      aria-label={`View ${section.title} services`}
+      initial={{ opacity: 0, y: 20 }}
       animate={{ opacity: 1, y: 0 }}
-      transition={{ duration: 0.5, type: "spring", stiffness: 120 }}
+      transition={{ duration: 0.35 }}
+      whileHover={{ y: compact ? 0 : -2 }}
     >
-      <button
-        className={styles.categoryTrigger}
-        onClick={onToggle}
-        aria-expanded={isOpen}
-      >
-        {remoteBanner ? (
-          <div className={styles.categoryImageWrap}>
-            <Image
-              src={remoteBanner}
-              alt={section.title}
-              fill
-              className={styles.categoryImage}
-              sizes="(max-width: 768px) 50vw, (max-width: 1280px) 33vw, 25vw"
-            />
-          </div>
-        ) : image ? (
-          <div className={styles.categoryImageWrap}>
-            <Image
-              src={image.src}
-              alt={image.alt || section.title}
-              fill
-              className={styles.categoryImage}
-              sizes="(max-width: 768px) 50vw, (max-width: 1280px) 33vw, 25vw"
-            />
-          </div>
-        ) : (
-          <div className={styles.categoryImageWrap}>
-            <div className={styles.categoryImageFallback} aria-hidden>
-              <Icon size={40} strokeWidth={1.5} />
-            </div>
-          </div>
-        )}
-
-        <div className={styles.categoryCardContent}>
-          <div className={styles.categoryCardHeader}>
-            <span className={styles.categoryIcon} aria-hidden>
-              <Icon size={18} strokeWidth={2} />
-            </span>
-            <h2 className={styles.categoryTitle}>{section.title}</h2>
-          </div>
-          <p className={styles.categoryMeta}>
-            {count} service{count !== 1 ? "s" : ""}
-          </p>
-          <motion.span
-            className={styles.chevron}
-            animate={{ rotate: isOpen ? 180 : 0 }}
-            transition={{ duration: 0.3, ease: "easeInOut" }}
-            aria-hidden
-          >
-            <ChevronDown size={18} />
-          </motion.span>
+      {remoteBanner ? (
+        <div className={styles.categoryTileImageWrap}>
+          <Image
+            src={remoteBanner}
+            alt=""
+            fill
+            className={styles.categoryTileImage}
+            sizes={
+              compact
+                ? "120px"
+                : "(max-width: 768px) 50vw, (max-width: 1280px) 33vw, 25vw"
+            }
+          />
         </div>
-      </button>
+      ) : image ? (
+        <div className={styles.categoryTileImageWrap}>
+          <Image
+            src={image.src}
+            alt=""
+            fill
+            className={styles.categoryTileImage}
+            sizes={
+              compact
+                ? "120px"
+                : "(max-width: 768px) 50vw, (max-width: 1280px) 33vw, 25vw"
+            }
+          />
+        </div>
+      ) : (
+        <div className={styles.categoryTileImageWrap}>
+          <div className={styles.categoryImageFallback} aria-hidden>
+            <Icon size={compact ? 28 : 40} strokeWidth={1.5} />
+          </div>
+        </div>
+      )}
 
-      <AnimatePresence initial={false}>
-        {isOpen && (
-          <motion.div
-            key="cat-body"
-            initial={{ height: 0, opacity: 0 }}
-            animate={{ height: "auto", opacity: 1 }}
-            exit={{ height: 0, opacity: 0 }}
-            transition={{ duration: 0.35, ease: "easeInOut" }}
-            style={{ overflow: "hidden" }}
-          >
-            <div className={styles.categoryBody}>
-              <ServiceLayoutSwitcher
-                layoutMode={layoutMode}
-                onLayoutModeChange={onLayoutModeChange}
-              />
-              {section.groups?.map((group) => (
-                <SubcategoryAccordion
-                  key={group.id}
-                  group={group}
-                  isOpen={openSubcategories.has(group.id)}
-                  onToggle={() => onToggleSub(group.id)}
-                  query={query}
-                  layoutMode={layoutMode}
-                />
-              ))}
+      <div className={styles.categoryTileContent}>
+        <span className={styles.categoryIcon} aria-hidden>
+          <Icon size={compact ? 16 : 18} strokeWidth={2} />
+        </span>
+        <span className={styles.categoryTileTitle}>{section.title}</span>
+        <span className={styles.categoryTileMeta}>
+          {count} service{count !== 1 ? "s" : ""}
+        </span>
+      </div>
+    </motion.button>
+  );
+}
 
-              {section.items && section.items.length > 0 && (
-                <ServicesDisplay
-                  items={section.items}
-                  query={query}
-                  layoutMode={layoutMode}
-                />
-              )}
-            </div>
-          </motion.div>
+/* ─── Unified category focus view (hero + services, one block) ───── */
+function CategoryFocusView({
+  section,
+  onClose,
+  showClose = true,
+  openSubcategories,
+  onToggleSub,
+  query,
+  layoutMode,
+  onLayoutModeChange,
+  focusRef,
+}) {
+  const Icon = getCategoryIcon(section.title);
+  const count = totalItemCount(section);
+  const remoteBanner = section.imageUrls?.[0]
+    ? cldTransform(section.imageUrls[0], "f_auto,q_auto,w_960,h_480,c_fill")
+    : null;
+  const image = getCategoryImage(section.title);
+
+  return (
+    <motion.article
+      ref={focusRef}
+      className={styles.categoryFocus}
+      initial={{ opacity: 0, y: 16 }}
+      animate={{ opacity: 1, y: 0 }}
+      transition={{ duration: 0.35 }}
+      aria-labelledby={`category-focus-title-${section.id}`}
+    >
+      <header className={styles.categoryFocusHero}>
+        {remoteBanner ? (
+          <Image
+            src={remoteBanner}
+            alt=""
+            fill
+            className={styles.categoryFocusHeroImage}
+            sizes="100vw"
+            priority
+          />
+        ) : image ? (
+          <Image
+            src={image.src}
+            alt=""
+            fill
+            className={styles.categoryFocusHeroImage}
+            sizes="100vw"
+            priority
+          />
+        ) : (
+          <div className={styles.categoryFocusHeroFallback} aria-hidden>
+            <Icon size={56} strokeWidth={1.25} />
+          </div>
         )}
-      </AnimatePresence>
-    </motion.section>
+        <div className={styles.categoryFocusHeroOverlay} aria-hidden />
+        <div className={styles.categoryFocusHeroContent}>
+          <span className={styles.categoryFocusIcon} aria-hidden>
+            <Icon size={22} strokeWidth={2} />
+          </span>
+          <div className={styles.categoryFocusHeading}>
+            <h2
+              id={`category-focus-title-${section.id}`}
+              className={styles.categoryFocusTitle}
+            >
+              {section.title}
+            </h2>
+            <p className={styles.categoryFocusMeta}>
+              {count} service{count !== 1 ? "s" : ""}
+            </p>
+          </div>
+          {showClose && onClose && (
+            <button
+              type="button"
+              className={styles.categoryFocusClose}
+              onClick={onClose}
+              aria-label={`Close ${section.title} and return to categories`}
+            >
+              <X size={20} aria-hidden />
+            </button>
+          )}
+        </div>
+      </header>
+
+      <div className={styles.categoryFocusBody}>
+        <ServiceLayoutSwitcher
+          layoutMode={layoutMode}
+          onLayoutModeChange={onLayoutModeChange}
+        />
+        {section.groups?.map((group) => (
+          <SubcategoryAccordion
+            key={group.id}
+            group={group}
+            isOpen={openSubcategories.has(group.id)}
+            onToggle={() => onToggleSub(group.id)}
+            query={query}
+            layoutMode={layoutMode}
+          />
+        ))}
+        {section.items && section.items.length > 0 && (
+          <ServicesDisplay
+            items={section.items}
+            query={query}
+            layoutMode={layoutMode}
+          />
+        )}
+      </div>
+    </motion.article>
   );
 }
 
@@ -536,9 +593,10 @@ function WhatsAppBanner() {
 /* ─── Main component ──────────────────────────────────────────────── */
 export default function ServiceMenu({ sections = [], error = null }) {
   const [query, setQuery] = useState("");
-  const [openCategories, setOpenCategories] = useState(new Set());
+  const [activeCategoryId, setActiveCategoryId] = useState(null);
   const [openSubcategories, setOpenSubcategories] = useState(new Set());
   const [layoutMode, setLayoutMode] = useState("horizontal");
+  const categoryFocusRef = useRef(null);
 
   /* Filtered list */
   const filtered = useMemo(
@@ -552,24 +610,31 @@ export default function ServiceMenu({ sections = [], error = null }) {
     return filtered.reduce((acc, s) => acc + totalItemCount(s), 0);
   }, [filtered, query]);
 
-  /* Auto-expand sections that have matches */
+  /* Auto-expand subcategories that have search matches */
   useEffect(() => {
     if (!query.trim()) return;
-    const catIds = new Set(filtered.map((s) => s.id));
+    setActiveCategoryId(null);
     const subIds = new Set(
       filtered.flatMap((s) => (s.groups ?? []).map((g) => g.id)),
     );
-    setOpenCategories(catIds);
     setOpenSubcategories(subIds);
   }, [filtered, query]);
 
-  const toggleCategory = useCallback((id) => {
-    setOpenCategories((prev) => {
-      const next = new Set(prev);
-      next.has(id) ? next.delete(id) : next.add(id);
-      return next;
-    });
+  const selectCategory = useCallback((id) => {
+    setActiveCategoryId(id);
   }, []);
+
+  const closeCategory = useCallback(() => {
+    setActiveCategoryId(null);
+  }, []);
+
+  useEffect(() => {
+    if (!activeCategoryId || !categoryFocusRef.current) return;
+    const el = categoryFocusRef.current;
+    requestAnimationFrame(() => {
+      el.scrollIntoView({ behavior: "smooth", block: "start" });
+    });
+  }, [activeCategoryId]);
 
   const toggleSubcategory = useCallback((id) => {
     setOpenSubcategories((prev) => {
@@ -581,9 +646,21 @@ export default function ServiceMenu({ sections = [], error = null }) {
 
   const clearSearch = useCallback(() => {
     setQuery("");
-    setOpenCategories(new Set());
+    setActiveCategoryId(null);
     setOpenSubcategories(new Set());
   }, []);
+
+  const activeSection = useMemo(
+    () => filtered.find((section) => section.id === activeCategoryId) ?? null,
+    [filtered, activeCategoryId],
+  );
+
+  const otherSections = useMemo(
+    () => filtered.filter((section) => section.id !== activeCategoryId),
+    [filtered, activeCategoryId],
+  );
+
+  const isSearching = Boolean(query.trim());
 
   return (
     <div className={styles.container}>
@@ -674,22 +751,63 @@ export default function ServiceMenu({ sections = [], error = null }) {
         </div>
       )}
 
-      {/* ─ Accordion list ─ */}
+      {/* ─ Categories ─ */}
       {!error && filtered.length > 0 && (
-        <div className={styles.categoriesGrid}>
-          {filtered.map((section) => (
-            <CategoryAccordion
-              key={section.id}
-              section={section}
-              isOpen={openCategories.has(section.id)}
-              onToggle={() => toggleCategory(section.id)}
-              openSubcategories={openSubcategories}
-              onToggleSub={toggleSubcategory}
-              query={query}
-              layoutMode={layoutMode}
-              onLayoutModeChange={setLayoutMode}
-            />
-          ))}
+        <div className={styles.categoriesArea}>
+          {isSearching ? (
+            <div className={styles.categorySearchStack}>
+              {filtered.map((section) => (
+                <CategoryFocusView
+                  key={section.id}
+                  section={section}
+                  showClose={false}
+                  openSubcategories={openSubcategories}
+                  onToggleSub={toggleSubcategory}
+                  query={query}
+                  layoutMode={layoutMode}
+                  onLayoutModeChange={setLayoutMode}
+                />
+              ))}
+            </div>
+          ) : activeSection ? (
+            <div className={styles.categoryBrowseFocus}>
+              <CategoryFocusView
+                section={activeSection}
+                onClose={closeCategory}
+                openSubcategories={openSubcategories}
+                onToggleSub={toggleSubcategory}
+                query={query}
+                layoutMode={layoutMode}
+                onLayoutModeChange={setLayoutMode}
+                focusRef={categoryFocusRef}
+              />
+              {otherSections.length > 0 && (
+                <div className={styles.categoryPicker}>
+                  <p className={styles.categoryPickerLabel}>Other categories</p>
+                  <div className={styles.categoryPickerGrid}>
+                    {otherSections.map((section) => (
+                      <CategoryTile
+                        key={section.id}
+                        section={section}
+                        compact
+                        onSelect={selectCategory}
+                      />
+                    ))}
+                  </div>
+                </div>
+              )}
+            </div>
+          ) : (
+            <div className={styles.categoriesGrid}>
+              {filtered.map((section) => (
+                <CategoryTile
+                  key={section.id}
+                  section={section}
+                  onSelect={selectCategory}
+                />
+              ))}
+            </div>
+          )}
         </div>
       )}
 

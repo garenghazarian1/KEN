@@ -193,13 +193,10 @@
   color: var(--color-secondary-dark);
 }
 
-/* ─── Category card grid ───────────────────────────────── */
-.categoriesGrid {
+/* ─── Categories area ──────────────────────────────────── */
+.categoriesArea {
   position: relative;
   z-index: 1;
-  display: grid;
-  grid-template-columns: repeat(2, minmax(0, 1fr));
-  gap: var(--spacing-4);
   margin-bottom: var(--spacing-8);
   max-width: 1400px;
   margin-left: auto;
@@ -207,54 +204,56 @@
   padding: 0 var(--spacing-4);
 }
 
-/* ─── Category card ────────────────────────────────────── */
-.categorySection {
+.categoriesGrid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: var(--spacing-4);
+}
+
+.categoryBrowseFocus,
+.categorySearchStack {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-6);
+}
+
+.categorySearchStack {
+  gap: var(--spacing-5);
+}
+
+/* ─── Browse tile ──────────────────────────────────────── */
+.categoryTile {
   display: flex;
   flex-direction: column;
   min-width: 0;
+  padding: 0;
+  text-align: left;
   background: var(--glass-white-light);
   border: 1px solid var(--glass-border-light);
   border-radius: var(--border-radius-xl, 1rem);
   overflow: hidden;
   box-shadow: 0 2px 12px var(--overlay-black-05);
+  cursor: pointer;
   transition:
     border-color 0.2s ease,
-    box-shadow 0.2s ease;
+    box-shadow 0.2s ease,
+    transform 0.2s ease;
 }
 
-.categorySection:hover {
-  border-color: color-mix(in srgb, var(--color-secondary) 25%, transparent);
-  box-shadow: 0 6px 20px var(--overlay-black-08);
+.categoryTile:hover {
+  border-color: color-mix(in srgb, var(--color-secondary) 30%, transparent);
+  box-shadow: 0 8px 24px var(--overlay-black-08);
 }
 
-.categorySectionExpanded {
-  grid-column: 1 / -1;
-  border-color: color-mix(in srgb, var(--color-secondary) 35%, transparent);
-}
-
-.categoryTrigger {
-  display: flex;
-  flex-direction: column;
-  width: 100%;
-  padding: 0;
-  background: transparent;
-  border: none;
-  cursor: pointer;
-  text-align: left;
-}
-
-.categoryTrigger:focus-visible {
+.categoryTile:focus-visible {
   outline: 2px solid var(--color-secondary);
-  outline-offset: -2px;
+  outline-offset: 2px;
 }
 
-.categoryImageWrap {
+.categoryTileImageWrap {
   position: relative;
   width: 100%;
   aspect-ratio: 4 / 3;
-  display: flex;
-  align-items: center;
-  justify-content: center;
   background: color-mix(
     in srgb,
     var(--color-bg-secondary, var(--color-bg-primary)) 60%,
@@ -263,40 +262,214 @@
   overflow: hidden;
 }
 
-.categoryImage {
-  object-fit: contain;
+.categoryTileImage {
+  object-fit: cover;
   object-position: center;
   transition: transform 0.35s ease;
 }
 
-.categorySection:hover .categoryImage {
-  transform: scale(1.03);
+.categoryTile:hover .categoryTileImage {
+  transform: scale(1.04);
 }
 
-.categoryImageFallback {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  width: 100%;
-  height: 100%;
-  color: var(--color-secondary);
-  opacity: 0.45;
-}
-
-.categoryCardContent {
-  position: relative;
+.categoryTileContent {
   display: flex;
   flex-direction: column;
   gap: var(--spacing-1);
   padding: var(--spacing-4);
 }
 
-.categoryCardHeader {
-  display: flex;
-  align-items: flex-start;
-  gap: var(--spacing-2);
+.categoryTileTitle {
+  color: var(--color-text-primary);
+  font-size: clamp(0.95rem, 1.6vw, 1.125rem);
+  font-weight: 700;
+  line-height: 1.25;
+  letter-spacing: -0.02em;
+}
+
+.categoryTileMeta {
+  font-size: var(--font-size-sm);
+  font-weight: var(--font-weight-medium);
+  color: var(--color-text-secondary);
+}
+
+.categoryTileCompact {
+  flex-direction: row;
+  align-items: center;
+  gap: 0;
+}
+
+.categoryTileCompact .categoryTileImageWrap {
+  width: 5.5rem;
+  min-width: 5.5rem;
+  aspect-ratio: 1;
+  border-radius: 0;
+}
+
+.categoryTileCompact .categoryTileContent {
+  flex: 1;
   min-width: 0;
-  padding-right: var(--spacing-6);
+  padding: var(--spacing-3);
+}
+
+.categoryTileCompact .categoryTileTitle {
+  font-size: var(--font-size-sm);
+}
+
+.categoryTileCompact .categoryTileMeta {
+  font-size: var(--font-size-xs);
+}
+
+/* ─── Focus view — one unified category block ──────────── */
+.categoryFocus {
+  border-radius: var(--border-radius-xl, 1rem);
+  border: 1px solid color-mix(in srgb, var(--color-secondary) 28%, transparent);
+  background: var(--glass-white-light);
+  overflow: hidden;
+  box-shadow: 0 10px 32px var(--overlay-black-08);
+  scroll-margin-top: calc(
+    var(--app-banner-height, 0px) + 3.5rem + var(--spacing-2) + var(--spacing-2) +
+      env(safe-area-inset-top, 0px) + var(--spacing-3)
+  );
+}
+
+.categoryFocusHero {
+  position: relative;
+  min-height: clamp(9rem, 28vw, 14rem);
+  overflow: hidden;
+  isolation: isolate;
+}
+
+.categoryFocusHeroImage {
+  object-fit: cover;
+  object-position: center;
+}
+
+.categoryFocusHeroFallback {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  height: 100%;
+  min-height: inherit;
+  color: var(--color-secondary);
+  opacity: 0.35;
+  background: color-mix(
+    in srgb,
+    var(--color-bg-secondary, var(--color-bg-primary)) 60%,
+    transparent
+  );
+}
+
+.categoryFocusHeroOverlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    180deg,
+    transparent 0%,
+    var(--overlay-black-50) 100%
+  );
+}
+
+.categoryFocusHeroContent {
+  position: absolute;
+  inset: auto 0 0 0;
+  z-index: 1;
+  display: flex;
+  align-items: flex-end;
+  gap: var(--spacing-3);
+  padding: var(--spacing-5);
+}
+
+.categoryFocusIcon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 2.75rem;
+  height: 2.75rem;
+  flex-shrink: 0;
+  color: var(--color-text-inverse);
+  background: color-mix(in srgb, var(--color-secondary) 75%, transparent);
+  border-radius: var(--border-radius-md, 0.5rem);
+  backdrop-filter: blur(var(--glass-blur-md));
+}
+
+.categoryFocusHeading {
+  flex: 1;
+  min-width: 0;
+}
+
+.categoryFocusTitle {
+  margin: 0;
+  color: var(--color-text-inverse);
+  font-size: clamp(1.25rem, 3vw, 1.75rem);
+  font-weight: 700;
+  line-height: 1.15;
+  letter-spacing: -0.02em;
+  text-shadow: 0 2px 8px var(--overlay-black-50);
+}
+
+.categoryFocusMeta {
+  margin: var(--spacing-1) 0 0;
+  color: color-mix(in srgb, var(--color-text-inverse) 88%, transparent);
+  font-size: var(--font-size-sm);
+  font-weight: var(--font-weight-medium);
+}
+
+.categoryFocusClose {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  width: 2.5rem;
+  height: 2.5rem;
+  padding: 0;
+  border: 1px solid color-mix(in srgb, var(--color-text-inverse) 35%, transparent);
+  border-radius: var(--radius-full);
+  background: color-mix(in srgb, var(--overlay-black-50) 40%, transparent);
+  color: var(--color-text-inverse);
+  cursor: pointer;
+  backdrop-filter: blur(var(--glass-blur-md));
+  transition: background 0.2s ease;
+}
+
+.categoryFocusClose:hover {
+  background: color-mix(in srgb, var(--overlay-black-70) 55%, transparent);
+}
+
+.categoryFocusClose:focus-visible {
+  outline: 2px solid var(--color-text-inverse);
+  outline-offset: 2px;
+}
+
+.categoryFocusBody {
+  padding: var(--spacing-4) var(--spacing-5) var(--spacing-5);
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-4);
+}
+
+/* ─── Other categories picker ──────────────────────────── */
+.categoryPicker {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-3);
+}
+
+.categoryPickerLabel {
+  margin: 0;
+  padding: 0 var(--spacing-1);
+  color: var(--color-text-secondary);
+  font-size: var(--font-size-xs);
+  font-weight: 800;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+}
+
+.categoryPickerGrid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: var(--spacing-3);
 }
 
 .categoryIcon {
@@ -311,39 +484,14 @@
   border-radius: var(--border-radius-md, 0.5rem);
 }
 
-.categoryTitle {
-  color: var(--color-text-primary);
-  font-size: clamp(0.95rem, 1.6vw, 1.125rem);
-  font-weight: 700;
-  margin: 0;
-  line-height: 1.25;
-  letter-spacing: -0.02em;
-}
-
-.categoryMeta {
-  margin: 0;
-  font-size: var(--font-size-sm);
-  font-weight: var(--font-weight-medium);
-  color: var(--color-text-secondary);
-  line-height: 1.4;
-}
-
-.chevron {
-  position: absolute;
-  top: var(--spacing-4);
-  right: var(--spacing-4);
+.categoryImageFallback {
   display: flex;
   align-items: center;
-  color: var(--color-text-secondary);
-}
-
-/* ─── Category body (expanded content) ────────────────── */
-.categoryBody {
-  padding: 0 var(--spacing-4) var(--spacing-4);
-  border-top: 1px solid var(--glass-border-light);
-  display: flex;
-  flex-direction: column;
-  gap: var(--spacing-4);
+  justify-content: center;
+  width: 100%;
+  height: 100%;
+  color: var(--color-secondary);
+  opacity: 0.45;
 }
 
 /* ─── Subcategory accordion ────────────────────────────── */
@@ -921,11 +1069,28 @@
     grid-template-columns: repeat(3, minmax(0, 1fr));
     gap: var(--spacing-5);
   }
+
+  .categoryPickerGrid {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
 }
 
 @media (min-width: 1280px) {
   .categoriesGrid {
     grid-template-columns: repeat(4, minmax(0, 1fr));
+  }
+
+  .categoryPickerGrid {
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+  }
+}
+
+@media (min-width: 769px) {
+  .categoryFocus {
+    scroll-margin-top: calc(
+      var(--app-banner-height, 0px) + 5rem + env(safe-area-inset-top, 0px) +
+        var(--spacing-4)
+    );
   }
 }
 
@@ -948,22 +1113,25 @@
     max-width: 700px;
   }
 
-  .categoriesGrid {
+  .categoriesArea {
     padding: 0 var(--spacing-3);
+  }
+
+  .categoriesGrid,
+  .categoryPickerGrid {
     gap: var(--spacing-3);
   }
 
-  .categoryCardContent {
+  .categoryTileContent {
     padding: var(--spacing-3);
   }
 
-  .chevron {
-    top: var(--spacing-3);
-    right: var(--spacing-3);
+  .categoryFocusHeroContent {
+    padding: var(--spacing-4);
   }
 
-  .categoryBody {
-    padding: 0 var(--spacing-3) var(--spacing-3);
+  .categoryFocusBody {
+    padding: var(--spacing-3) var(--spacing-4) var(--spacing-4);
   }
 
   .viewSwitcher {
@@ -1005,17 +1173,21 @@
     padding: 0 0 var(--spacing-4);
   }
 
-  .categoriesGrid {
-    gap: var(--spacing-2);
+  .categoriesArea {
     padding: 0 var(--spacing-2);
   }
 
-  .categoryImageWrap {
+  .categoriesGrid,
+  .categoryPickerGrid {
+    gap: var(--spacing-2);
+  }
+
+  .categoryTileImageWrap {
     aspect-ratio: 3 / 2;
   }
 
-  .categoryBody {
-    padding: 0 var(--spacing-2) var(--spacing-2);
+  .categoryFocusBody {
+    padding: var(--spacing-2) var(--spacing-3) var(--spacing-3);
   }
 
   .servicesDisplayHorizontal .serviceCard {
@@ -1037,5 +1209,12 @@
   .serviceInfo {
     min-height: 8.5rem;
     padding-inline: var(--spacing-4);
+  }
+}
+
+@media (max-width: 400px) {
+  .categoriesGrid,
+  .categoryPickerGrid {
+    grid-template-columns: 1fr;
   }
 }
