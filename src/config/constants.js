@@ -123,6 +123,9 @@ export const APP_STORES = {
 
 // Third-Party Services
 export const THIRD_PARTY = {
+  googleTagManager: {
+    id: "GTM-M3QMMNGZ",
+  },
   tidio: {
     scriptUrl: "//code.tidio.co/wuxjaut5j0iru5lnq6efealcjpqmlyhw.js",
   },
