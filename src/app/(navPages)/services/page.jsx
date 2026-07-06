@@ -5,6 +5,9 @@ import {
   getServiceCatalog,
 } from "@/lib/business/serviceCatalog";
 
+/** Always render with a fresh catalog — admin media can change at any time. */
+export const dynamic = "force-dynamic";
+
 export const metadata = {
   title: `Services & Prices | ${BUSINESS.name} Abu Dhabi`,
   description: `Browse services and prices at ${BUSINESS.name} in Abu Dhabi — hair, nails, facials, solarium, and more.`,
