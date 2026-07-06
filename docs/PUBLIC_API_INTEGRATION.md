@@ -1,6 +1,6 @@
 # Public API Integration (Admin System)
 
-Last updated: 22 June 2026
+Last updated: 6 July 2026
 
 This consumer app (kenbeautysalon.com) reads business data from the **Garen admin
 system** over its **read-only public HTTP API**. We do **not** connect to the admin
@@ -37,7 +37,8 @@ closures, contact.
 `src/lib/business/serviceCatalog.js`:
 
 - `getServiceCatalog(locale = "en", branchId = null)` — fetches the API with
-  `next: { revalidate: 3600 }`, surfaces the API error `message`, and returns
+  `cache: "no-store"` in development and `next: { revalidate: 300 }` in production
+  (5 minutes), surfaces the API error `message`, and returns
   `{ businessSlug, total, services }`.
 - `buildServiceSections(services)` — turns the flat list into
   category → subcategory → item sections for the UI, carrying media + price fields.
@@ -84,6 +85,8 @@ Every node (`category` / `subcategory` / `item`) can carry:
 
 ## History
 
+- **6 July 2026** — Shortened service-catalog cache (5 min prod, no-store in dev) so admin
+  media uploads appear sooner; service cards use Cloudinary `srcSet` for responsive covers.
 - **22 June 2026** — Migrated the service catalog from a direct admin-MongoDB query to the
   public HTTP API; added Cloudinary media rendering (`imageUrls`, `videoUrl`) and `priceLabel`
   support. `connectServicesDB` in `src/lib/db/mongoose.js` is now unused.

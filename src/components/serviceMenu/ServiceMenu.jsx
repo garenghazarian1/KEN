@@ -29,7 +29,7 @@ import {
   WHATSAPP_CONTACTS,
 } from "@/config/constants";
 import { getCategoryImage } from "@/data/serviceImages";
-import { cldTransform } from "@/utils/cloudinary";
+import { cldResponsiveCover, cldTransform } from "@/utils/cloudinary";
 import styles from "./ServiceMenu.module.css";
 
 /* ─── Category icon map ───────────────────────────────────────────── */
@@ -74,6 +74,29 @@ function getCategoryIcon(title) {
   return (
     CATEGORY_ICONS.find(({ match }) => match.test(title))?.Icon ?? Sparkles
   );
+}
+
+/**
+ * Cover for category/subcategory folders: API image first, then static banner.
+ * @param {string} title
+ * @param {string[] | undefined} imageUrls
+ * @param {string} cldOptions
+ * @param {string} [fallbackTitle]
+ */
+function resolveFolderCover(title, imageUrls, cldOptions, fallbackTitle) {
+  const remote = imageUrls?.[0]
+    ? cldTransform(imageUrls[0], cldOptions)
+    : null;
+  if (remote) return { kind: "remote", src: remote };
+
+  const staticMatch =
+    getCategoryImage(title) ??
+    (fallbackTitle ? getCategoryImage(fallbackTitle) : null);
+  if (staticMatch) {
+    return { kind: "static", src: staticMatch.src, alt: staticMatch.alt };
+  }
+
+  return null;
 }
 
 /* ─── Helpers ─────────────────────────────────────────────────────── */
@@ -150,15 +173,21 @@ function filterSections(sections, query) {
 }
 
 /* ─── Service card ────────────────────────────────────────────────── */
-function ServiceCard({ item, index, query }) {
+function ServiceCard({ item, index, query, layoutMode }) {
   // Prefer the API's localized, currency-suffixed priceLabel; fall back to raw.
   const priceText = item.priceLabel ?? formatPrice(item.defaultPrice);
   const hasPrice = Boolean(priceText);
   const showCompareAt =
     item.priceDisplayType === "sale" && Boolean(item.priceCompareAtLabel);
   const hasDuration = item.durationMinutes != null && item.durationMinutes > 0;
+  const isVertical = layoutMode === "vertical";
   const cover = item.imageUrls?.[0]
-    ? cldTransform(item.imageUrls[0], "f_auto,q_auto,w_400,h_300,c_fill")
+    ? cldResponsiveCover(
+        item.imageUrls[0],
+        isVertical ? [120, 160, 240] : [320, 400, 640, 800],
+        isVertical ? "f_auto,q_auto,h_120,c_fill" : "f_auto,q_auto,h_300,c_fill",
+        isVertical ? 160 : 400,
+      )
     : null;
 
   return (
@@ -173,11 +202,16 @@ function ServiceCard({ item, index, query }) {
       {cover && (
         <div className={styles.serviceImageWrap}>
           <Image
-            src={cover}
+            src={cover.src}
+            srcSet={cover.srcSet}
             alt={item.name}
             fill
             className={styles.serviceImage}
-            sizes="(max-width: 768px) 90vw, (max-width: 1280px) 45vw, 320px"
+            sizes={
+              isVertical
+                ? "120px"
+                : "(max-width: 768px) 90vw, (max-width: 1280px) 45vw, 320px"
+            }
             loading="lazy"
           />
         </div>
@@ -274,7 +308,13 @@ function ServicesDisplay({ items, query, layoutMode }) {
 
       <div className={styles.servicesTrack} ref={isHorizontal ? trackRef : null}>
         {items.map((item, i) => (
-          <ServiceCard key={item.id} item={item} index={i} query={query} />
+          <ServiceCard
+            key={item.id}
+            item={item}
+            index={i}
+            query={query}
+            layoutMode={layoutMode}
+          />
         ))}
       </div>
     </div>
@@ -282,7 +322,22 @@ function ServicesDisplay({ items, query, layoutMode }) {
 }
 
 /* ─── Subcategory accordion ───────────────────────────────────────── */
-function SubcategoryAccordion({ group, isOpen, onToggle, query, layoutMode }) {
+function SubcategoryAccordion({
+  group,
+  parentTitle,
+  isOpen,
+  onToggle,
+  query,
+  layoutMode,
+}) {
+  const Icon = getCategoryIcon(group.title);
+  const cover = resolveFolderCover(
+    group.title,
+    group.imageUrls,
+    "f_auto,q_auto,w_120,h_120,c_fill",
+    parentTitle,
+  );
+
   return (
     <div className={styles.subcategoryBlock}>
       <button
@@ -290,7 +345,25 @@ function SubcategoryAccordion({ group, isOpen, onToggle, query, layoutMode }) {
         onClick={onToggle}
         aria-expanded={isOpen}
       >
-        <span className={styles.subcategoryTitleText}>{group.title}</span>
+        <span className={styles.subcategoryLead}>
+          <span className={styles.subcategoryThumbWrap}>
+            {cover ? (
+              <Image
+                src={cover.src}
+                alt={cover.kind === "static" ? cover.alt : ""}
+                fill
+                className={styles.subcategoryThumb}
+                sizes="44px"
+                loading="lazy"
+              />
+            ) : (
+              <span className={styles.subcategoryThumbFallback} aria-hidden>
+                <Icon size={18} strokeWidth={1.75} />
+              </span>
+            )}
+          </span>
+          <span className={styles.subcategoryTitleText}>{group.title}</span>
+        </span>
         <span className={styles.subcategoryMeta}>
           <span className={styles.subCount}>{group.items.length}</span>
           <motion.span
@@ -329,10 +402,11 @@ function SubcategoryAccordion({ group, isOpen, onToggle, query, layoutMode }) {
 function CategoryTile({ section, onSelect, compact = false }) {
   const Icon = getCategoryIcon(section.title);
   const count = totalItemCount(section);
-  const remoteBanner = section.imageUrls?.[0]
-    ? cldTransform(section.imageUrls[0], "f_auto,q_auto,w_640,h_480,c_fill")
-    : null;
-  const image = getCategoryImage(section.title);
+  const cover = resolveFolderCover(
+    section.title,
+    section.imageUrls,
+    "f_auto,q_auto,w_640,h_480,c_fill",
+  );
 
   return (
     <motion.button
@@ -347,25 +421,11 @@ function CategoryTile({ section, onSelect, compact = false }) {
       transition={{ duration: 0.35 }}
       whileHover={{ y: compact ? 0 : -2 }}
     >
-      {remoteBanner ? (
+      {cover ? (
         <div className={styles.categoryTileImageWrap}>
           <Image
-            src={remoteBanner}
-            alt=""
-            fill
-            className={styles.categoryTileImage}
-            sizes={
-              compact
-                ? "120px"
-                : "(max-width: 768px) 50vw, (max-width: 1280px) 33vw, 25vw"
-            }
-          />
-        </div>
-      ) : image ? (
-        <div className={styles.categoryTileImageWrap}>
-          <Image
-            src={image.src}
-            alt=""
+            src={cover.src}
+            alt={cover.kind === "static" ? cover.alt : ""}
             fill
             className={styles.categoryTileImage}
             sizes={
@@ -410,10 +470,11 @@ function CategoryFocusView({
 }) {
   const Icon = getCategoryIcon(section.title);
   const count = totalItemCount(section);
-  const remoteBanner = section.imageUrls?.[0]
-    ? cldTransform(section.imageUrls[0], "f_auto,q_auto,w_960,h_480,c_fill")
-    : null;
-  const image = getCategoryImage(section.title);
+  const cover = resolveFolderCover(
+    section.title,
+    section.imageUrls,
+    "f_auto,q_auto,w_960,h_480,c_fill",
+  );
 
   return (
     <motion.article
@@ -425,19 +486,10 @@ function CategoryFocusView({
       aria-labelledby={`category-focus-title-${section.id}`}
     >
       <header className={styles.categoryFocusHero}>
-        {remoteBanner ? (
+        {cover ? (
           <Image
-            src={remoteBanner}
-            alt=""
-            fill
-            className={styles.categoryFocusHeroImage}
-            sizes="100vw"
-            priority
-          />
-        ) : image ? (
-          <Image
-            src={image.src}
-            alt=""
+            src={cover.src}
+            alt={cover.kind === "static" ? cover.alt : ""}
             fill
             className={styles.categoryFocusHeroImage}
             sizes="100vw"
@@ -486,6 +538,7 @@ function CategoryFocusView({
           <SubcategoryAccordion
             key={group.id}
             group={group}
+            parentTitle={section.title}
             isOpen={openSubcategories.has(group.id)}
             onToggle={() => onToggleSub(group.id)}
             query={query}

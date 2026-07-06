@@ -1,7 +1,7 @@
 import { ADMIN_PUBLIC_BASE_URL, BUSINESS_SLUG } from "@/config/constants";
 
-/** Catalog data changes infrequently; revalidate hourly. */
-const CATALOG_REVALIDATE_SECONDS = 3600;
+/** Catalog media can change in admin; revalidate every 5 minutes in production. */
+const CATALOG_REVALIDATE_SECONDS = 300;
 
 /**
  * Fetch the service catalog from the admin system's read-only public API.
@@ -17,9 +17,12 @@ export async function getServiceCatalog(locale = "en", branchId = null) {
   url.searchParams.set("locale", locale);
   if (branchId) url.searchParams.set("branchId", branchId);
 
-  const res = await fetch(url.toString(), {
-    next: { revalidate: CATALOG_REVALIDATE_SECONDS },
-  });
+  const fetchOptions =
+    process.env.NODE_ENV === "development"
+      ? { cache: "no-store" }
+      : { next: { revalidate: CATALOG_REVALIDATE_SECONDS } };
+
+  const res = await fetch(url.toString(), fetchOptions);
 
   if (!res.ok) {
     let message = `Failed to load services (${res.status}).`;
