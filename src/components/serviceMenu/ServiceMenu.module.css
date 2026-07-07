@@ -263,13 +263,8 @@
 }
 
 .categoryTileImage {
-  object-fit: cover;
+  object-fit: contain;
   object-position: center;
-  transition: transform 0.35s ease;
-}
-
-.categoryTile:hover .categoryTileImage {
-  transform: scale(1.04);
 }
 
 .categoryTileContent {
@@ -328,8 +323,8 @@
   overflow: hidden;
   box-shadow: 0 10px 32px var(--overlay-black-08);
   scroll-margin-top: calc(
-    var(--app-banner-height, 0px) + 3.5rem + var(--spacing-2) + var(--spacing-2) +
-      env(safe-area-inset-top, 0px) + var(--spacing-3)
+    var(--app-banner-height, 0px) + 3.5rem + var(--spacing-2) +
+      var(--spacing-2) + env(safe-area-inset-top, 0px) + var(--spacing-3)
   );
 }
 
@@ -341,7 +336,7 @@
 }
 
 .categoryFocusHeroImage {
-  object-fit: cover;
+  object-fit: contain;
   object-position: center;
 }
 
@@ -424,7 +419,8 @@
   width: 2.5rem;
   height: 2.5rem;
   padding: 0;
-  border: 1px solid color-mix(in srgb, var(--color-text-inverse) 35%, transparent);
+  border: 1px solid
+    color-mix(in srgb, var(--color-text-inverse) 35%, transparent);
   border-radius: var(--radius-full);
   background: color-mix(in srgb, var(--overlay-black-50) 40%, transparent);
   color: var(--color-text-inverse);
@@ -555,7 +551,7 @@
 }
 
 .subcategoryThumb {
-  object-fit: cover;
+  object-fit: contain;
   object-position: center;
 }
 
@@ -817,6 +813,7 @@
   aspect-ratio: 4 / 3;
   border-radius: var(--radius-md, 0.5rem);
   overflow: hidden;
+  isolation: isolate;
   background: color-mix(
     in srgb,
     var(--color-bg-secondary, var(--color-bg-primary)) 60%,
@@ -824,14 +821,73 @@
   );
 }
 
-.serviceImage {
-  object-fit: cover;
-  object-position: center;
-  transition: transform 0.35s ease;
+/* Temu-style glass light sweep — service item images only */
+.serviceImageWrap::after {
+  content: "";
+  position: absolute;
+  top: -55%;
+  left: 0;
+  width: 42%;
+  height: 210%;
+  z-index: 2;
+  pointer-events: none;
+  transform: translateX(-165%) rotate(24deg);
+  background: linear-gradient(
+    90deg,
+    transparent 0%,
+    transparent 30%,
+    var(--overlay-white-06) 38%,
+    var(--overlay-white-40) 46%,
+    var(--color-primary-light) 50%,
+    var(--overlay-secondary-light-20) 54%,
+    var(--glass-border-gold-light) 58%,
+    var(--overlay-white-20) 64%,
+    transparent 74%,
+    transparent 100%
+  );
+  opacity: 0.9;
+  mix-blend-mode: soft-light;
+  filter: blur(0.35px);
+  animation: serviceImageGlassSweep 5.4s ease-in-out infinite;
+  animation-delay: var(--sweep-delay, 0s);
+  will-change: transform;
 }
 
-.serviceCard:hover .serviceImage {
-  transform: scale(1.04);
+@keyframes serviceImageGlassSweep {
+  0%,
+  12% {
+    transform: translateX(-165%) rotate(24deg);
+  }
+
+  30% {
+    transform: translateX(-12%) rotate(24deg);
+  }
+
+  40%,
+  56% {
+    transform: translateX(-12%) rotate(24deg);
+  }
+
+  74% {
+    transform: translateX(165%) rotate(24deg);
+  }
+
+  86%,
+  100% {
+    transform: translateX(165%) rotate(24deg);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .serviceImageWrap::after {
+    animation: none;
+    opacity: 0;
+  }
+}
+
+.serviceImage {
+  object-fit: contain;
+  object-position: center;
 }
 
 .serviceCard::before {

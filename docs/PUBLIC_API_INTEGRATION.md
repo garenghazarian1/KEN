@@ -1,6 +1,6 @@
 # Public API Integration (Admin System)
 
-Last updated: 6 July 2026
+Last updated: 7 July 2026
 
 This consumer app (kenbeautysalon.com) reads business data from the **Garen admin
 system** over its **read-only public HTTP API**. We do **not** connect to the admin
@@ -77,7 +77,9 @@ Every node (`category` / `subcategory` / `item`) can carry:
 
 - URLs are absolute and ready for `next/image` / `<video controls preload="metadata">`. Always guard empties.
 - Optimize by URL rewrite via `cldTransform(url, transform)` in `src/utils/cloudinary.js`
-  (inserts e.g. `f_auto,q_auto,w_400,c_fill` after `/upload/`; no SDK). Non-Cloudinary URLs pass through.
+  (inserts e.g. `f_auto,q_auto,w_400,c_fit` after `/upload/`; no SDK). Use `c_fit` for
+  service media so the full image fits inside its box without crop or stretch. Non-Cloudinary
+  URLs pass through unchanged.
 - `next.config.mjs` → `images.remotePatterns` allows `res.cloudinary.com` pathname `/**`
   so any admin Cloudinary cloud renders. Lock to a specific cloud once confirmed.
 - The URL contains a Cloudinary version segment (`/v123/`), so cache aggressively; combine with row `updatedAt`.

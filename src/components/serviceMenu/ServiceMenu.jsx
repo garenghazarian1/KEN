@@ -29,7 +29,7 @@ import {
   WHATSAPP_CONTACTS,
 } from "@/config/constants";
 import { getCategoryImage } from "@/data/serviceImages";
-import { cldResponsiveCover, cldTransform } from "@/utils/cloudinary";
+import { cldResponsiveFit, cldTransform } from "@/utils/cloudinary";
 import styles from "./ServiceMenu.module.css";
 
 /* ─── Category icon map ───────────────────────────────────────────── */
@@ -182,10 +182,10 @@ function ServiceCard({ item, index, query, layoutMode }) {
   const hasDuration = item.durationMinutes != null && item.durationMinutes > 0;
   const isVertical = layoutMode === "vertical";
   const cover = item.imageUrls?.[0]
-    ? cldResponsiveCover(
+    ? cldResponsiveFit(
         item.imageUrls[0],
         isVertical ? [120, 160, 240] : [320, 400, 640, 800],
-        isVertical ? "f_auto,q_auto,h_120,c_fill" : "f_auto,q_auto,h_300,c_fill",
+        isVertical ? "f_auto,q_auto,h_120,c_fit" : "f_auto,q_auto,h_300,c_fit",
         isVertical ? 160 : 400,
       )
     : null;
@@ -200,7 +200,10 @@ function ServiceCard({ item, index, query, layoutMode }) {
       whileHover={{ y: -3 }}
     >
       {cover && (
-        <div className={styles.serviceImageWrap}>
+        <div
+          className={styles.serviceImageWrap}
+          style={{ "--sweep-delay": `${(index % 7) * 0.55}s` }}
+        >
           <Image
             src={cover.src}
             srcSet={cover.srcSet}
@@ -334,7 +337,7 @@ function SubcategoryAccordion({
   const cover = resolveFolderCover(
     group.title,
     group.imageUrls,
-    "f_auto,q_auto,w_120,h_120,c_fill",
+    "f_auto,q_auto,w_120,h_120,c_fit",
     parentTitle,
   );
 
@@ -405,7 +408,7 @@ function CategoryTile({ section, onSelect, compact = false }) {
   const cover = resolveFolderCover(
     section.title,
     section.imageUrls,
-    "f_auto,q_auto,w_640,h_480,c_fill",
+    "f_auto,q_auto,w_640,h_480,c_fit",
   );
 
   return (
@@ -473,7 +476,7 @@ function CategoryFocusView({
   const cover = resolveFolderCover(
     section.title,
     section.imageUrls,
-    "f_auto,q_auto,w_960,h_480,c_fill",
+    "f_auto,q_auto,w_960,h_480,c_fit",
   );
 
   return (

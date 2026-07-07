@@ -42,7 +42,8 @@ read-only public HTTP API.
 
 - Catalog nodes carry `imageUrls: string[]` (0–10, `imageUrls[0]` is the cover) and `videoUrl: string|null`.
 - URLs are absolute Cloudinary `secure_url`s — use directly in `next/image` / `<video>`. Guard empties.
-- Optimize by URL rewrite via `cldTransform(url, "f_auto,q_auto,w_400,c_fill")` in `src/utils/cloudinary.js`
+- Optimize by URL rewrite via `cldTransform(url, "f_auto,q_auto,w_400,c_fit")` in `src/utils/cloudinary.js`
+  (no SDK). Use `c_fit` for service media — full image inside the box, no crop or stretch.
   (no SDK). Non-Cloudinary URLs pass through unchanged.
 - `next.config.mjs` allows `res.cloudinary.com` with pathname `/**` so any admin cloud renders.
 

@@ -12,7 +12,7 @@ const CLOUDINARY_HOST = "res.cloudinary.com";
  * Insert a transformation segment into a Cloudinary delivery URL.
  *
  * @param {string|null|undefined} url - absolute Cloudinary URL.
- * @param {string} transform - e.g. "f_auto,q_auto,w_400,c_fill".
+ * @param {string} transform - e.g. "f_auto,q_auto,w_400,c_fit".
  * @returns {string|null} transformed URL, original URL, or null.
  */
 export function cldTransform(url, transform) {
@@ -23,15 +23,16 @@ export function cldTransform(url, transform) {
 }
 
 /**
- * Build a responsive Cloudinary cover (src + srcSet) for next/image.
+ * Build a responsive Cloudinary fit (src + srcSet) for next/image.
+ * Uses c_fit so the full image is preserved inside the target box (no crop).
  *
  * @param {string|null|undefined} url
  * @param {number[]} widths
- * @param {string} transform - base transform without width, e.g. "f_auto,q_auto,h_300,c_fill".
+ * @param {string} transform - base transform without width, e.g. "f_auto,q_auto,h_300,c_fit".
  * @param {number} defaultWidth - width used for the primary `src`.
  * @returns {{ src: string; srcSet: string } | null}
  */
-export function cldResponsiveCover(url, widths, transform, defaultWidth) {
+export function cldResponsiveFit(url, widths, transform, defaultWidth) {
   if (!url) return null;
 
   const src = cldTransform(url, `${transform},w_${defaultWidth}`);
