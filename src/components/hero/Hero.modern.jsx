@@ -4,7 +4,6 @@ import Image from "next/image";
 import Link from "next/link";
 import { motion } from "framer-motion";
 import { ArrowRight, Briefcase } from "lucide-react";
-import { FaWhatsapp } from "react-icons/fa";
 import { CAREERS_URL } from "@/config/constants";
 import styles from "./Hero.modern.module.css";
 
@@ -180,11 +179,11 @@ export default function HeroModern() {
           transition={{ delay: 0.3, duration: 0.5 }}
           aria-label="Careers at Ken Beauty Salon"
         >
-          <Briefcase size={18} aria-hidden className={styles.careersBannerIcon} />
+          <Briefcase size={14} aria-hidden className={styles.careersBannerIcon} />
           <p className={styles.careersBannerText}>Are you looking for a job?</p>
           <a href={CAREERS_URL} className={styles.careersBannerButton}>
             <span>Apply here</span>
-            <ArrowRight size={16} aria-hidden />
+            <ArrowRight size={14} aria-hidden />
           </a>
         </motion.aside>
 
@@ -224,13 +223,6 @@ export default function HeroModern() {
                 <Link href="/services" className={styles.discoverLink}>
                   Discover our services
                 </Link>
-                <a
-                  href="https://wa.me/971503043570?text=Hello%20KEN%20Beauty%20Center%2C%20I%20would%20like%20to%20know%20more%20about%20your%20services."
-                  className={styles.secondaryButton}
-                  aria-label="Contact us on WhatsApp"
-                >
-                  <FaWhatsapp size={30} className={styles.waIcon} aria-hidden />
-                </a>
               </div>
             </motion.div>
           </motion.div>

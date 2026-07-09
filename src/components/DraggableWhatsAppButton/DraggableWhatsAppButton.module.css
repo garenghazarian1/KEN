@@ -1,0 +1,53 @@
+.constraints {
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: var(--z-popover);
+}
+
+.button {
+  position: fixed;
+  right: max(1.25rem, env(safe-area-inset-right, 0px));
+  bottom: max(1.25rem, env(safe-area-inset-bottom, 0px));
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 3.25rem;
+  height: 3.25rem;
+  min-width: 3.25rem;
+  min-height: 3.25rem;
+  padding: 0;
+  border-radius: var(--radius-full);
+  background-color: var(--color-whatsapp);
+  color: var(--color-text-inverse);
+  text-decoration: none;
+  box-shadow: 0 4px 12px var(--color-whatsapp-bg);
+  pointer-events: auto;
+  cursor: grab;
+  user-select: none;
+  -webkit-user-select: none;
+  transition: box-shadow var(--transition-base) var(--ease-in-out);
+}
+
+.button:hover {
+  box-shadow: 0 6px 16px var(--color-whatsapp-bg);
+}
+
+.button:active {
+  cursor: grabbing;
+}
+
+.icon {
+  width: 1.75rem;
+  height: 1.75rem;
+  flex-shrink: 0;
+  pointer-events: none;
+}
+
+@media (max-width: 768px) {
+  .button {
+    bottom: calc(
+      3.5rem + var(--spacing-4) + env(safe-area-inset-bottom, 0px)
+    );
+  }
+}

@@ -452,7 +452,10 @@ function CategoryTile({ section, onSelect, compact = false }) {
         </span>
         <span className={styles.categoryTileTitle}>{section.title}</span>
         <span className={styles.categoryTileMeta}>
-          {count} service{count !== 1 ? "s" : ""}
+          <span className={styles.categoryTileCount}>{count}</span>
+          <span className={styles.categoryTileMetaLabel} aria-hidden="true">
+            service{count !== 1 ? "s" : ""}
+          </span>
         </span>
       </div>
     </motion.button>

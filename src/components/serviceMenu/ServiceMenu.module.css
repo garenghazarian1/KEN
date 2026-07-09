@@ -268,24 +268,55 @@
 }
 
 .categoryTileContent {
+  container-type: inline-size;
   display: flex;
-  flex-direction: column;
-  gap: var(--spacing-1);
+  flex-direction: row;
+  align-items: center;
+  gap: var(--spacing-2);
+  min-width: 0;
   padding: var(--spacing-4);
 }
 
 .categoryTileTitle {
+  flex: 1 1 auto;
+  min-width: 0;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
   color: var(--color-text-primary);
-  font-size: clamp(0.95rem, 1.6vw, 1.125rem);
+  font-size: clamp(0.6875rem, 0.45rem + 2.75cqi, 1.125rem);
   font-weight: 700;
   line-height: 1.25;
   letter-spacing: -0.02em;
 }
 
 .categoryTileMeta {
+  display: inline-flex;
+  align-items: baseline;
+  flex-shrink: 0;
+  gap: 0.2em;
+  white-space: nowrap;
   font-size: var(--font-size-sm);
   font-weight: var(--font-weight-medium);
   color: var(--color-text-secondary);
+}
+
+.categoryTileCount {
+  font-weight: var(--font-weight-semibold);
+}
+
+.categoryTileMetaLabel {
+  font-weight: var(--font-weight-medium);
+}
+
+@media (max-width: 600px) {
+  .categoryTileMetaLabel {
+    display: none;
+  }
+
+  .categoryTileTitle {
+    font-size: clamp(0.625rem, 0.3rem + 3.25cqi, 0.9375rem);
+  }
 }
 
 .categoryTileCompact {
@@ -308,7 +339,7 @@
 }
 
 .categoryTileCompact .categoryTileTitle {
-  font-size: var(--font-size-sm);
+  font-size: clamp(0.625rem, 0.35rem + 2.25cqi, var(--font-size-sm));
 }
 
 .categoryTileCompact .categoryTileMeta {

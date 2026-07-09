@@ -1,4 +1,5 @@
 ﻿import Script from "next/script";
+import DraggableWhatsAppButton from "@/components/DraggableWhatsAppButton/DraggableWhatsAppButton";
 import HeroModern from "@/components/hero/Hero.modern";
 import { stores } from "@/data/stores";
 import {
@@ -67,6 +68,7 @@ export default function Home() {
         }}
       />
       <HeroModern />
+      <DraggableWhatsAppButton />
     </main>
   );
 }
