@@ -37,6 +37,10 @@ read-only public HTTP API.
 - **Prices:** display `priceLabel` verbatim (already localized + currency-suffixed). Raw numeric
   fields carry **no currency** — don't invent one. For `priceDisplayType === "sale"`, strike
   through `priceCompareAtLabel`.
+- Long localized price labels must wrap inside their service card. Use the global typography
+  tokens as fluid `clamp()` bounds; do not clip, truncate, or force price labels onto one line.
+  Keep each numeric amount/currency pair together with a non-breaking space while allowing
+  the rest of the localized label to wrap.
 
 ## Cloudinary media
 

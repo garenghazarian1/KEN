@@ -12,7 +12,7 @@
     )
     0 var(--spacing-8);
   min-height: calc(100vh - 10rem);
-  overflow-x: hidden;
+  overflow-x: clip;
   background: var(--color-bg-primary);
   background-image:
     radial-gradient(
@@ -48,10 +48,18 @@
 /* ─── Search bar ────────────────────────────────── */
 .searchWrapper {
   position: relative;
-  z-index: 10;
+  z-index: 20;
   max-width: 920px;
   margin: 0 auto var(--spacing-4);
   padding: 0 var(--spacing-4);
+}
+
+.searchCombobox {
+  position: relative;
+}
+
+.searchCombobox:focus-within {
+  z-index: 40;
 }
 
 .searchBar {
@@ -125,12 +133,213 @@
   color: var(--color-secondary);
 }
 
+/* ─── Search suggestions dropdown ──────────────────────── */
+.suggestionsList {
+  position: absolute;
+  top: calc(100% + var(--spacing-1));
+  left: 0;
+  right: 0;
+  z-index: 30;
+  list-style: none;
+  margin: 0;
+  padding: var(--spacing-2);
+  background: color-mix(
+    in srgb,
+    var(--color-bg-primary) 82%,
+    var(--glass-white-stronger)
+  );
+  backdrop-filter: blur(var(--glass-blur-xl)) saturate(1.15);
+  -webkit-backdrop-filter: blur(var(--glass-blur-xl)) saturate(1.15);
+  border: 1px solid var(--glass-border-medium);
+  border-radius: var(--border-radius-lg, 0.75rem);
+  box-shadow:
+    0 12px 40px var(--overlay-black-15),
+    inset 0 1px 0 var(--glass-border-light);
+  max-height: min(20rem, 50vh);
+  overflow-y: auto;
+  isolation: isolate;
+}
+
+.suggestionItem {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--spacing-3);
+  padding: var(--spacing-3) var(--spacing-4);
+  border-radius: var(--border-radius-md, 0.5rem);
+  cursor: pointer;
+  transition: background 0.15s ease;
+}
+
+.suggestionItem:hover,
+.suggestionItemActive {
+  background: color-mix(
+    in srgb,
+    var(--color-secondary) 14%,
+    var(--color-bg-primary)
+  );
+}
+
+.suggestionTitle {
+  flex: 1;
+  min-width: 0;
+  font-size: var(--font-size-sm);
+  font-weight: var(--font-weight-semibold);
+  color: var(--color-text-primary);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.suggestionBreadcrumb {
+  flex-shrink: 0;
+  font-size: var(--font-size-xs);
+  color: var(--color-text-secondary);
+  white-space: nowrap;
+}
+
+@media (max-width: 480px) {
+  .suggestionItem {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: var(--spacing-1);
+  }
+
+  .suggestionBreadcrumb {
+    white-space: normal;
+  }
+}
+
 .resultsCount {
   text-align: center;
   margin-top: var(--spacing-3);
   font-size: var(--font-size-sm);
   color: var(--color-text-secondary);
   font-weight: var(--font-weight-medium);
+}
+
+/* ─── Flat search results ──────────────────────────────── */
+.searchResultsList {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-2);
+  max-width: 920px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.searchResultRow {
+  display: flex;
+  align-items: flex-start;
+  gap: var(--spacing-4);
+  padding: var(--spacing-4);
+  background: var(--glass-white-light);
+  border: 1px solid var(--glass-border-light);
+  border-radius: var(--border-radius-lg, 0.75rem);
+  box-shadow: 0 2px 8px var(--overlay-black-04);
+  transition:
+    border-color 0.2s ease,
+    box-shadow 0.2s ease;
+}
+
+.searchResultRow:hover {
+  border-color: color-mix(in srgb, var(--color-secondary) 28%, transparent);
+  box-shadow: 0 4px 16px var(--overlay-black-06);
+}
+
+.searchResultThumb {
+  position: relative;
+  width: 4rem;
+  min-width: 4rem;
+  height: 4rem;
+  flex-shrink: 0;
+  border-radius: var(--border-radius-md, 0.5rem);
+  overflow: hidden;
+  background: color-mix(
+    in srgb,
+    var(--color-bg-secondary, var(--color-bg-primary)) 60%,
+    transparent
+  );
+}
+
+.searchResultThumbImage {
+  object-fit: cover;
+  object-position: center;
+}
+
+.searchResultBody {
+  flex: 1;
+  min-width: 0;
+}
+
+.searchResultBreadcrumb {
+  margin: 0 0 var(--spacing-1);
+  font-size: var(--font-size-xs);
+  font-weight: var(--font-weight-medium);
+  color: var(--color-text-secondary);
+  letter-spacing: 0.01em;
+}
+
+.searchResultName {
+  margin: 0;
+  font-size: var(--font-size-base);
+  font-weight: var(--font-weight-semibold);
+  color: var(--color-text-primary);
+  line-height: 1.35;
+}
+
+.searchResultDescription {
+  margin: var(--spacing-1) 0 0;
+  font-size: var(--font-size-sm);
+  color: var(--color-text-secondary);
+  line-height: 1.45;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+.searchResultMeta {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: var(--spacing-2);
+  flex-shrink: 0;
+  text-align: right;
+}
+
+.searchResultMetaItem {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--spacing-1);
+  font-size: var(--font-size-sm);
+  font-weight: var(--font-weight-medium);
+  color: var(--color-text-primary);
+  white-space: nowrap;
+}
+
+@media (max-width: 600px) {
+  .searchResultRow {
+    flex-wrap: wrap;
+    gap: var(--spacing-3);
+  }
+
+  .searchResultMeta {
+    flex-direction: row;
+    flex-wrap: wrap;
+    align-items: center;
+    width: 100%;
+    justify-content: flex-start;
+    text-align: left;
+    padding-left: calc(4rem + var(--spacing-3));
+  }
+
+  .searchResultRow:not(:has(.searchResultThumb)) .searchResultMeta {
+    padding-left: 0;
+  }
 }
 
 /* ─── Highlight ────────────────────────────────────────── */
@@ -351,7 +560,7 @@
   border-radius: var(--border-radius-xl, 1rem);
   border: 1px solid color-mix(in srgb, var(--color-secondary) 28%, transparent);
   background: var(--glass-white-light);
-  overflow: hidden;
+  overflow: clip;
   box-shadow: 0 10px 32px var(--overlay-black-08);
   scroll-margin-top: calc(
     var(--app-banner-height, 0px) + 3.5rem + var(--spacing-2) +
@@ -632,6 +841,14 @@
 
 /* ─── Service Layout Switcher ──────────────────────────── */
 .viewSwitcher {
+  position: sticky;
+  /* Mobile top bar height: 3.5rem + spacing-2 (same as .childrenContainer
+     padding-top in Layout.module.css) */
+  top: calc(
+    var(--app-banner-height, 0px) + 3.5rem + var(--spacing-2) +
+      env(safe-area-inset-top, 0px)
+  );
+  z-index: 8;
   display: flex;
   align-items: center;
   justify-content: flex-start;
@@ -639,6 +856,7 @@
   gap: var(--spacing-3);
   margin: 0 0 var(--spacing-2);
   padding: var(--spacing-3) 0;
+  background: var(--color-bg-primary);
   border-bottom: 1px solid var(--glass-border-light);
 }
 
@@ -941,6 +1159,9 @@
 
 .serviceInfo {
   position: relative;
+  container-type: inline-size;
+  min-width: 0;
+  max-width: 100%;
   min-height: 11rem;
   padding: var(--spacing-6) var(--spacing-5) var(--spacing-4);
   display: flex;
@@ -971,6 +1192,8 @@
   align-items: flex-start;
   justify-content: flex-start;
   gap: var(--spacing-3);
+  min-width: 0;
+  width: 100%;
 }
 
 .servicesDisplayVertical .serviceTopRow {
@@ -980,7 +1203,8 @@
 }
 
 .serviceName {
-  font-size: clamp(1rem, 1.45vw, 1.2rem);
+  max-width: 100%;
+  font-size: clamp(var(--font-size-sm), 0.75rem + 1.5cqi, var(--font-size-xl));
   color: var(--color-text-primary);
   font-weight: 800;
   margin: 0;
@@ -994,32 +1218,58 @@
   flex-wrap: wrap;
   justify-content: flex-start;
   gap: 0.38rem;
+  min-width: 0;
+  max-width: 100%;
   flex-shrink: 0;
   margin-top: 0.05rem;
 }
 
 .metaItem {
   display: inline-flex;
-  align-items: center;
-  gap: 0.18rem;
-  font-size: 0.8rem;
+  align-items: flex-start;
+  gap: 0.42em;
+  min-width: 0;
+  max-width: 100%;
+  font-size: clamp(
+    var(--font-size-xs),
+    0.6875rem + 0.65cqi,
+    var(--font-size-sm)
+  );
   font-weight: 700;
   color: var(--color-text-secondary);
   letter-spacing: 0.01em;
-  white-space: nowrap;
+  line-height: 1.4;
+}
+
+.metaContent {
+  flex: 1 1 auto;
+  min-width: 0;
+  line-height: inherit;
+}
+
+.metaValue {
+  white-space: normal;
+  overflow-wrap: normal;
 }
 
 .metaIcon {
+  width: 1.15em;
+  height: 1.15em;
+  margin-top: 0.125em;
   color: var(--color-secondary);
   opacity: 0.9;
-  flex-shrink: 0;
+  flex: 0 0 auto;
+  stroke-width: 1.9;
 }
 
 .metaCompareAt {
+  display: inline;
   text-decoration: line-through;
   color: var(--color-text-tertiary);
   font-weight: 600;
-  margin-right: 0.3rem;
+  margin-inline-end: 0.4rem;
+  white-space: nowrap;
+  overflow-wrap: normal;
 }
 
 .metaDivider {
@@ -1029,11 +1279,17 @@
 }
 
 .serviceDescription {
-  font-size: var(--font-size-sm);
+  min-width: 0;
+  max-width: min(100%, 18rem);
+  font-size: clamp(
+    var(--font-size-xs),
+    0.6875rem + 0.65cqi,
+    var(--font-size-sm)
+  );
   color: var(--color-text-secondary);
   margin: 0;
   line-height: 1.45;
-  max-width: 18rem;
+  overflow-wrap: anywhere;
 }
 
 .servicesDisplayVertical .serviceDescription {
@@ -1241,6 +1497,13 @@
     scroll-margin-top: calc(
       var(--app-banner-height, 0px) + 5rem + env(safe-area-inset-top, 0px) +
         var(--spacing-4)
+    );
+  }
+
+  .viewSwitcher {
+    top: calc(
+      var(--app-banner-height, 0px) + 5rem +
+        env(safe-area-inset-top, 0px)
     );
   }
 }

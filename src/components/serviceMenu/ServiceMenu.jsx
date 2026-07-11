@@ -29,6 +29,11 @@ import {
   WHATSAPP_CONTACTS,
 } from "@/config/constants";
 import { getCategoryImage } from "@/data/serviceImages";
+import {
+  buildServiceSearchCatalog,
+  searchServices,
+  suggestServiceTitles,
+} from "@/lib/business/serviceSearch";
 import { cldResponsiveFit, cldTransform } from "@/utils/cloudinary";
 import styles from "./ServiceMenu.module.css";
 
@@ -105,6 +110,18 @@ function formatPrice(amount) {
   return `${amount} ${BUSINESS_CURRENCY}`;
 }
 
+function keepAmountWithCurrency(label) {
+  if (!label) return label;
+  const escapedCurrency = BUSINESS_CURRENCY.replace(
+    /[.*+?^${}()|[\]\\]/g,
+    "\\$&",
+  );
+  return label.replace(
+    new RegExp(`(\\d[\\d,.]*)\\s+(${escapedCurrency})`, "gi"),
+    "$1\u00A0$2",
+  );
+}
+
 function formatDuration(minutes) {
   if (minutes == null) return null;
   return `${minutes} min`;
@@ -133,43 +150,149 @@ function Highlight({ text, query }) {
   );
 }
 
-/* ─── Filter logic ────────────────────────────────────────────────── */
-function filterSections(sections, query) {
-  if (!query.trim()) return sections;
-  const q = query.toLowerCase();
-
-  return sections
-    .map((section) => {
-      const filteredItems = section.items?.filter(
-        (item) =>
-          item.name.toLowerCase().includes(q) ||
-          item.description?.toLowerCase().includes(q),
-      );
-
-      const filteredGroups = section.groups
-        ?.map((group) => ({
-          ...group,
-          items: group.items.filter(
-            (item) =>
-              item.name.toLowerCase().includes(q) ||
-              item.description?.toLowerCase().includes(q),
-          ),
-        }))
-        .filter((g) => g.items.length > 0);
-
-      if (
-        (filteredItems?.length ?? 0) === 0 &&
-        (filteredGroups?.length ?? 0) === 0
+/* ─── Flat search result row ──────────────────────────────────────── */
+function SearchResultRow({ result, query, index }) {
+  const { item, categoryTitle, subcategoryTitle } = result;
+  const priceText = item.priceLabel ?? formatPrice(item.defaultPrice);
+  const hasPrice = Boolean(priceText);
+  const showCompareAt =
+    item.priceDisplayType === "sale" && Boolean(item.priceCompareAtLabel);
+  const hasDuration = item.durationMinutes != null && item.durationMinutes > 0;
+  const breadcrumb = subcategoryTitle
+    ? `${categoryTitle} › ${subcategoryTitle}`
+    : categoryTitle;
+  const cover = item.imageUrls?.[0]
+    ? cldResponsiveFit(
+        item.imageUrls[0],
+        [80, 120, 160],
+        "f_auto,q_auto,h_120,c_fit",
+        120,
       )
-        return null;
+    : null;
 
-      return {
-        ...section,
-        items: filteredItems?.length ? filteredItems : undefined,
-        groups: filteredGroups?.length ? filteredGroups : undefined,
-      };
-    })
-    .filter(Boolean);
+  return (
+    <motion.li
+      className={styles.searchResultRow}
+      initial={{ opacity: 0, y: 8 }}
+      animate={{ opacity: 1, y: 0 }}
+      transition={{ duration: 0.2, delay: Math.min(index * 0.025, 0.35) }}
+    >
+      {cover && (
+        <div className={styles.searchResultThumb}>
+          <Image
+            src={cover.src}
+            srcSet={cover.srcSet}
+            alt=""
+            fill
+            className={styles.searchResultThumbImage}
+            sizes="64px"
+            loading="lazy"
+          />
+        </div>
+      )}
+      <div className={styles.searchResultBody}>
+        <p className={styles.searchResultBreadcrumb}>{breadcrumb}</p>
+        <h3 className={styles.searchResultName}>
+          <Highlight text={item.name} query={query} />
+        </h3>
+        {item.description && (
+          <p className={styles.searchResultDescription}>
+            <Highlight text={item.description} query={query} />
+          </p>
+        )}
+      </div>
+      {(hasPrice || hasDuration) && (
+        <div className={styles.searchResultMeta}>
+          {hasPrice && (
+            <span className={styles.searchResultMetaItem}>
+              <Banknote size={15} className={styles.metaIcon} aria-hidden />
+              <span className={styles.metaContent}>
+                {showCompareAt && (
+                  <span className={styles.metaCompareAt}>
+                    {keepAmountWithCurrency(item.priceCompareAtLabel)}
+                  </span>
+                )}
+                <span className={styles.metaValue}>
+                  {keepAmountWithCurrency(priceText)}
+                </span>
+              </span>
+            </span>
+          )}
+          {hasDuration && (
+            <span className={styles.searchResultMetaItem}>
+              <Clock size={15} className={styles.metaIcon} aria-hidden />
+              <span className={styles.metaValue}>
+                {formatDuration(item.durationMinutes)}
+              </span>
+            </span>
+          )}
+        </div>
+      )}
+    </motion.li>
+  );
+}
+
+function SearchResultsList({ results, query }) {
+  return (
+    <ul className={styles.searchResultsList} aria-label="Search results">
+      {results.map((result, index) => (
+        <SearchResultRow
+          key={result.item.id}
+          result={result}
+          query={query}
+          index={index}
+        />
+      ))}
+    </ul>
+  );
+}
+
+const SUGGESTIONS_LIST_ID = "service-search-suggestions";
+
+function SearchSuggestions({
+  suggestions,
+  query,
+  activeIndex,
+  onSelect,
+  onHighlight,
+}) {
+  return (
+    <motion.ul
+      id={SUGGESTIONS_LIST_ID}
+      role="listbox"
+      className={styles.suggestionsList}
+      initial={{ opacity: 0, y: -4 }}
+      animate={{ opacity: 1, y: 0 }}
+      exit={{ opacity: 0, y: -4 }}
+      transition={{ duration: 0.15 }}
+    >
+      {suggestions.map((suggestion, index) => {
+        const breadcrumb = suggestion.subcategoryTitle
+          ? `${suggestion.categoryTitle} › ${suggestion.subcategoryTitle}`
+          : suggestion.categoryTitle;
+
+        return (
+          <li
+            key={suggestion.itemId}
+            id={`${SUGGESTIONS_LIST_ID}-option-${index}`}
+            role="option"
+            aria-selected={index === activeIndex}
+            className={`${styles.suggestionItem} ${
+              index === activeIndex ? styles.suggestionItemActive : ""
+            }`}
+            onMouseDown={(event) => event.preventDefault()}
+            onMouseEnter={() => onHighlight(index)}
+            onClick={() => onSelect(suggestion.title)}
+          >
+            <span className={styles.suggestionTitle}>
+              <Highlight text={suggestion.title} query={query} />
+            </span>
+            <span className={styles.suggestionBreadcrumb}>{breadcrumb}</span>
+          </li>
+        );
+      })}
+    </motion.ul>
+  );
 }
 
 /* ─── Service card ────────────────────────────────────────────────── */
@@ -228,13 +351,17 @@ function ServiceCard({ item, index, query, layoutMode }) {
             <div className={styles.serviceMeta}>
               {hasPrice && (
                 <span className={styles.metaItem}>
-                  <Banknote size={13} className={styles.metaIcon} aria-hidden />
-                  {showCompareAt && (
-                    <span className={styles.metaCompareAt}>
-                      {item.priceCompareAtLabel}
+                  <Banknote size={16} className={styles.metaIcon} aria-hidden />
+                  <span className={styles.metaContent}>
+                    {showCompareAt && (
+                      <span className={styles.metaCompareAt}>
+                        {keepAmountWithCurrency(item.priceCompareAtLabel)}
+                      </span>
+                    )}
+                    <span className={styles.metaValue}>
+                      {keepAmountWithCurrency(priceText)}
                     </span>
-                  )}
-                  {priceText}
+                  </span>
                 </span>
               )}
               {hasPrice && hasDuration && (
@@ -244,8 +371,12 @@ function ServiceCard({ item, index, query, layoutMode }) {
               )}
               {hasDuration && (
                 <span className={styles.metaItem}>
-                  <Clock size={13} className={styles.metaIcon} aria-hidden />
-                  {formatDuration(item.durationMinutes)}
+                  <Clock size={16} className={styles.metaIcon} aria-hidden />
+                  <span className={styles.metaContent}>
+                    <span className={styles.metaValue}>
+                      {formatDuration(item.durationMinutes)}
+                    </span>
+                  </span>
                 </span>
               )}
             </div>
@@ -655,29 +786,78 @@ export default function ServiceMenu({ sections = [], error = null }) {
   const [activeCategoryId, setActiveCategoryId] = useState(null);
   const [openSubcategories, setOpenSubcategories] = useState(new Set());
   const [layoutMode, setLayoutMode] = useState("horizontal");
+  const [isSearchFocused, setIsSearchFocused] = useState(false);
+  const [suggestionsDismissed, setSuggestionsDismissed] = useState(false);
+  const [activeSuggestionIndex, setActiveSuggestionIndex] = useState(-1);
   const categoryFocusRef = useRef(null);
+  const searchInputRef = useRef(null);
 
-  /* Filtered list */
-  const filtered = useMemo(
-    () => filterSections(sections, query),
-    [sections, query],
+  const searchCatalog = useMemo(
+    () => buildServiceSearchCatalog(sections),
+    [sections],
   );
 
-  /* Total result count when searching */
-  const totalResults = useMemo(() => {
-    if (!query.trim()) return null;
-    return filtered.reduce((acc, s) => acc + totalItemCount(s), 0);
-  }, [filtered, query]);
+  const suggestions = useMemo(() => {
+    if (!query.trim() || suggestionsDismissed) return [];
+    return suggestServiceTitles(searchCatalog, query);
+  }, [searchCatalog, query, suggestionsDismissed]);
 
-  /* Auto-expand subcategories that have search matches */
-  useEffect(() => {
-    if (!query.trim()) return;
-    setActiveCategoryId(null);
-    const subIds = new Set(
-      filtered.flatMap((s) => (s.groups ?? []).map((g) => g.id)),
-    );
-    setOpenSubcategories(subIds);
-  }, [filtered, query]);
+  const searchResults = useMemo(() => {
+    if (!query.trim()) return [];
+    return searchServices(searchCatalog, query);
+  }, [searchCatalog, query]);
+
+  const totalResults = query.trim() ? searchResults.length : null;
+
+  const showSuggestions =
+    isSearchFocused &&
+    !suggestionsDismissed &&
+    query.trim().length >= 2 &&
+    suggestions.length > 0;
+
+  const applySuggestion = useCallback((title) => {
+    setQuery(title);
+    setSuggestionsDismissed(true);
+    setActiveSuggestionIndex(-1);
+    searchInputRef.current?.focus();
+  }, []);
+
+  const handleSearchKeyDown = useCallback(
+    (event) => {
+      if (!showSuggestions) return;
+
+      if (event.key === "ArrowDown") {
+        event.preventDefault();
+        setActiveSuggestionIndex((prev) =>
+          prev < suggestions.length - 1 ? prev + 1 : 0,
+        );
+      } else if (event.key === "ArrowUp") {
+        event.preventDefault();
+        setActiveSuggestionIndex((prev) =>
+          prev > 0 ? prev - 1 : suggestions.length - 1,
+        );
+      } else if (event.key === "Enter" && activeSuggestionIndex >= 0) {
+        event.preventDefault();
+        applySuggestion(suggestions[activeSuggestionIndex].title);
+      } else if (event.key === "Escape") {
+        event.preventDefault();
+        setSuggestionsDismissed(true);
+        setActiveSuggestionIndex(-1);
+      }
+    },
+    [
+      showSuggestions,
+      suggestions,
+      activeSuggestionIndex,
+      applySuggestion,
+    ],
+  );
+
+  const handleSearchChange = useCallback((event) => {
+    setQuery(event.target.value);
+    setSuggestionsDismissed(false);
+    setActiveSuggestionIndex(-1);
+  }, []);
 
   const selectCategory = useCallback((id) => {
     setActiveCategoryId(id);
@@ -707,16 +887,24 @@ export default function ServiceMenu({ sections = [], error = null }) {
     setQuery("");
     setActiveCategoryId(null);
     setOpenSubcategories(new Set());
+    setSuggestionsDismissed(false);
+    setActiveSuggestionIndex(-1);
   }, []);
 
+  useEffect(() => {
+    if (query.trim()) {
+      setActiveCategoryId(null);
+    }
+  }, [query]);
+
   const activeSection = useMemo(
-    () => filtered.find((section) => section.id === activeCategoryId) ?? null,
-    [filtered, activeCategoryId],
+    () => sections.find((section) => section.id === activeCategoryId) ?? null,
+    [sections, activeCategoryId],
   );
 
   const otherSections = useMemo(
-    () => filtered.filter((section) => section.id !== activeCategoryId),
-    [filtered, activeCategoryId],
+    () => sections.filter((section) => section.id !== activeCategoryId),
+    [sections, activeCategoryId],
   );
 
   const isSearching = Boolean(query.trim());
@@ -731,29 +919,56 @@ export default function ServiceMenu({ sections = [], error = null }) {
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.45 }}
         >
-          <div className={styles.searchBar}>
-            <Search size={18} className={styles.searchIcon} aria-hidden />
-            <input
-              type="search"
-              className={styles.searchInput}
-              placeholder="Search services, e.g. Manicure, Facial…"
-              value={query}
-              onChange={(e) => setQuery(e.target.value)}
-              aria-label="Search services"
-            />
+          <div className={styles.searchCombobox}>
+            <div className={styles.searchBar}>
+              <Search size={18} className={styles.searchIcon} aria-hidden />
+              <input
+                ref={searchInputRef}
+                type="search"
+                className={styles.searchInput}
+                placeholder="Search services, e.g. Manicure, Facial…"
+                value={query}
+                onChange={handleSearchChange}
+                onFocus={() => setIsSearchFocused(true)}
+                onBlur={() => setIsSearchFocused(false)}
+                onKeyDown={handleSearchKeyDown}
+                aria-label="Search services"
+                aria-autocomplete="list"
+                aria-controls={showSuggestions ? SUGGESTIONS_LIST_ID : undefined}
+                aria-expanded={showSuggestions}
+                aria-activedescendant={
+                  showSuggestions && activeSuggestionIndex >= 0
+                    ? `${SUGGESTIONS_LIST_ID}-option-${activeSuggestionIndex}`
+                    : undefined
+                }
+                role="combobox"
+              />
+              <AnimatePresence>
+                {query && (
+                  <motion.button
+                    className={styles.clearButton}
+                    onClick={clearSearch}
+                    aria-label="Clear search"
+                    initial={{ opacity: 0, scale: 0.8 }}
+                    animate={{ opacity: 1, scale: 1 }}
+                    exit={{ opacity: 0, scale: 0.8 }}
+                    transition={{ duration: 0.15 }}
+                  >
+                    <X size={16} />
+                  </motion.button>
+                )}
+              </AnimatePresence>
+            </div>
+
             <AnimatePresence>
-              {query && (
-                <motion.button
-                  className={styles.clearButton}
-                  onClick={clearSearch}
-                  aria-label="Clear search"
-                  initial={{ opacity: 0, scale: 0.8 }}
-                  animate={{ opacity: 1, scale: 1 }}
-                  exit={{ opacity: 0, scale: 0.8 }}
-                  transition={{ duration: 0.15 }}
-                >
-                  <X size={16} />
-                </motion.button>
+              {showSuggestions && (
+                <SearchSuggestions
+                  suggestions={suggestions}
+                  query={query}
+                  activeIndex={activeSuggestionIndex}
+                  onSelect={applySuggestion}
+                  onHighlight={setActiveSuggestionIndex}
+                />
               )}
             </AnimatePresence>
           </div>
@@ -800,7 +1015,7 @@ export default function ServiceMenu({ sections = [], error = null }) {
       )}
 
       {/* ─ No search results ─ */}
-      {!error && sections.length > 0 && query && filtered.length === 0 && (
+      {!error && sections.length > 0 && isSearching && searchResults.length === 0 && (
         <div className={styles.noResults} role="status">
           <Search size={32} className={styles.noResultsIcon} />
           <p>No services match &ldquo;{query}&rdquo;</p>
@@ -810,24 +1025,11 @@ export default function ServiceMenu({ sections = [], error = null }) {
         </div>
       )}
 
-      {/* ─ Categories ─ */}
-      {!error && filtered.length > 0 && (
+      {/* ─ Categories / search results ─ */}
+      {!error && (isSearching ? searchResults.length > 0 : sections.length > 0) && (
         <div className={styles.categoriesArea}>
           {isSearching ? (
-            <div className={styles.categorySearchStack}>
-              {filtered.map((section) => (
-                <CategoryFocusView
-                  key={section.id}
-                  section={section}
-                  showClose={false}
-                  openSubcategories={openSubcategories}
-                  onToggleSub={toggleSubcategory}
-                  query={query}
-                  layoutMode={layoutMode}
-                  onLayoutModeChange={setLayoutMode}
-                />
-              ))}
-            </div>
+            <SearchResultsList results={searchResults} query={query} />
           ) : activeSection ? (
             <div className={styles.categoryBrowseFocus}>
               <CategoryFocusView
@@ -858,7 +1060,7 @@ export default function ServiceMenu({ sections = [], error = null }) {
             </div>
           ) : (
             <div className={styles.categoriesGrid}>
-              {filtered.map((section) => (
+              {sections.map((section) => (
                 <CategoryTile
                   key={section.id}
                   section={section}

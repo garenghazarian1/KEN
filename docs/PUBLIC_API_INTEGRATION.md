@@ -1,6 +1,6 @@
 # Public API Integration (Admin System)
 
-Last updated: 7 July 2026
+Last updated: 11 July 2026
 
 This consumer app (kenbeautysalon.com) reads business data from the **Garen admin
 system** over its **read-only public HTTP API**. We do **not** connect to the admin
@@ -10,11 +10,11 @@ MongoDB directly.
 
 All in `src/config/constants.js`:
 
-| Constant | Value | Purpose |
-|----------|-------|---------|
-| `ADMIN_PUBLIC_BASE_URL` | `https://beauty-admin-mauve.vercel.app` | Public API origin |
-| `BUSINESS_SLUG` | `ken-beauty-salon` | Our business slug on the admin |
-| `BUSINESS_CURRENCY` | `AED` | Fallback currency label only |
+| Constant                | Value                                   | Purpose                        |
+| ----------------------- | --------------------------------------- | ------------------------------ |
+| `ADMIN_PUBLIC_BASE_URL` | `https://beauty-admin-mauve.vercel.app` | Public API origin              |
+| `BUSINESS_SLUG`         | `ken-beauty-salon`                      | Our business slug on the admin |
+| `BUSINESS_CURRENCY`     | `AED`                                   | Fallback currency label only   |
 
 - No auth, cookies, or API key. CORS is `Access-Control-Allow-Origin: *`.
 - Locales: `en`, `ar`. Pass `locale`; for `ar` render `dir="rtl"`, `lang="ar"`.
@@ -22,12 +22,12 @@ All in `src/config/constants.js`:
 
 ## Endpoints
 
-| Method | Path | Purpose | Used by |
-|--------|------|---------|---------|
-| GET | `/api/public/businesses/{slug}/service-catalog` | Catalog + pricing + media | `getServiceCatalog()` |
-| GET | `/api/public/careers/company/{businessSlug}` | Careers board (published jobs) | (planned in app) |
-| GET | `/api/public/jobs/{slug}` | Job detail + apply form config | (planned in app) |
-| POST | `/api/public/jobs/{slug}/apply` | Submit application (multipart) | (planned in app) |
+| Method | Path                                            | Purpose                        | Used by               |
+| ------ | ----------------------------------------------- | ------------------------------ | --------------------- |
+| GET    | `/api/public/businesses/{slug}/service-catalog` | Catalog + pricing + media      | `getServiceCatalog()` |
+| GET    | `/api/public/careers/company/{businessSlug}`    | Careers board (published jobs) | (planned in app)      |
+| GET    | `/api/public/jobs/{slug}`                       | Job detail + apply form config | (planned in app)      |
+| POST   | `/api/public/jobs/{slug}/apply`                 | Submit application (multipart) | (planned in app)      |
 
 Planned/admin-side-only (do not call until published): branches, branch hours,
 closures, contact.
@@ -64,16 +64,22 @@ Consumed by `src/app/(navPages)/services/page.jsx` → `src/components/serviceMe
 Never invent currency — raw numeric fields (`defaultPrice`, `priceMax`, `compareAtPrice`)
 have no currency code. Prefer `priceLabel`.
 
+Long localized `priceLabel` values must wrap inside their service card. Service-card
+typography uses the global font-size tokens as `clamp()` bounds with container-relative
+sizing so horizontal, grid, and vertical layouts remain readable without clipping.
+Numeric amount/currency pairs such as `550 AED` use a non-breaking space so the amount
+and currency always remain on the same line while the surrounding price note can wrap.
+
 Admin-only fields are never returned: `internalCost`, `defaultCommission`, `commissionEligible`.
 
 ## Cloudinary media
 
 Every node (`category` / `subcategory` / `item`) can carry:
 
-| Field | Type | Meaning |
-|-------|------|---------|
-| `imageUrls` | `string[]` | 0–10 absolute Cloudinary `secure_url`s; `[0]` is the cover. `[]` = none. |
-| `videoUrl` | `string \| null` | One optional promo video (direct `.mp4`). `null` = none. |
+| Field       | Type             | Meaning                                                                  |
+| ----------- | ---------------- | ------------------------------------------------------------------------ |
+| `imageUrls` | `string[]`       | 0–10 absolute Cloudinary `secure_url`s; `[0]` is the cover. `[]` = none. |
+| `videoUrl`  | `string \| null` | One optional promo video (direct `.mp4`). `null` = none.                 |
 
 - URLs are absolute and ready for `next/image` / `<video controls preload="metadata">`. Always guard empties.
 - Optimize by URL rewrite via `cldTransform(url, transform)` in `src/utils/cloudinary.js`
@@ -86,6 +92,9 @@ Every node (`category` / `subcategory` / `item`) can carry:
 
 ## History
 
+- **11 July 2026** — Made service-card names, prices, and descriptions fluid and
+  container-aware; long API price labels wrap within each card while amount/currency
+  pairs remain together.
 - **6 July 2026** — Service catalog fetch is always `cache: "no-store"`; `/services` uses
   `dynamic = "force-dynamic"` so admin media uploads show on the next page load.
 - **22 June 2026** — Migrated the service catalog from a direct admin-MongoDB query to the

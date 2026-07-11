@@ -5,7 +5,9 @@
   width: 100%;
   margin: 0;
   padding: 0;
-  overflow-x: hidden; /* Prevent horizontal overflow */
+  /* clip (not hidden): hidden turns this wrapper into a scroll container,
+     which silently disables position: sticky on all descendants */
+  overflow-x: clip;
 }
 
 /* Desktop nav: visible by default; hidden on mobile */
@@ -23,7 +25,8 @@
   flex-grow: 1;
   width: 100%;
   padding: 0;
-  overflow-x: hidden; /* Prevent horizontal overflow */
+  /* clip (not hidden): keep sticky descendants working (see above) */
+  overflow-x: clip;
 }
 
 /* Mobile: show new top/bottom nav, hide desktop nav, add content padding */
