@@ -1,4 +1,5 @@
 import Image from "next/image";
+import { NAVBAR_LOGO_DEFAULT_SRC } from "@/config/constants";
 import styles from "./Logo.module.css";
 
 export default function Logo() {
@@ -6,7 +7,7 @@ export default function Logo() {
     <div className={styles.flexCenter}>
       <div className={styles.paddedRelative}>
         <Image
-          src="/logo03.png"
+          src={NAVBAR_LOGO_DEFAULT_SRC}
           alt="Ken Beauty Salon logo"
           width={50}
           height={50}

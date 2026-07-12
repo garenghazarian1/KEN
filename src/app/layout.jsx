@@ -14,12 +14,10 @@ import {
   BASE_URL,
   BUSINESS,
   IMAGES,
+  METADATA_FAVICON_ICONS,
   THIRD_PARTY,
   WEB_APP_MANIFEST_URL,
-  getSpecialPeriodLogo,
 } from "@/config/constants";
-
-const specialPeriodActive = getSpecialPeriodLogo() !== null;
 
 export const metadata = {
   metadataBase: new URL(BASE_URL),
@@ -29,23 +27,10 @@ export const metadata = {
   },
   description: BUSINESS.description,
   manifest: WEB_APP_MANIFEST_URL,
-  icons: specialPeriodActive
-    ? {
-        icon: [
-          { url: "/favicon-for-app/favicon.ico", sizes: "48x48" },
-          { url: "/favicon-for-app/favicon.svg", type: "image/svg+xml" },
-          {
-            url: "/favicon-for-app/favicon-96x96.png",
-            sizes: "96x96",
-            type: "image/png",
-          },
-        ],
-        apple: APPLE_TOUCH_ICON_URL,
-      }
-    : {
-        icon: "/favicon.ico",
-        apple: APPLE_TOUCH_ICON_URL,
-      },
+  icons: {
+    icon: METADATA_FAVICON_ICONS,
+    apple: APPLE_TOUCH_ICON_URL,
+  },
   alternates: {
     canonical: "/",
   },

@@ -3,6 +3,7 @@
 import { motion } from "framer-motion";
 import Image from "next/image";
 import { Sparkles } from "lucide-react";
+import { NAVBAR_LOGO_DEFAULT_SRC } from "@/config/constants";
 import styles from "./LoadingSkeleton.modern.module.css";
 
 export default function LoadingSkeletonModern() {
@@ -22,7 +23,7 @@ export default function LoadingSkeletonModern() {
           }}
         >
           <Image
-            src="/logo03.png"
+            src={NAVBAR_LOGO_DEFAULT_SRC}
             alt="Ken Beauty Salon logo"
             width={120}
             height={120}

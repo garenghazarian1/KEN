@@ -1,6 +1,6 @@
 # Public API Integration (Admin System)
 
-Last updated: 11 July 2026
+Last updated: 12 July 2026
 
 This consumer app (kenbeautysalon.com) reads business data from the **Garen admin
 system** over its **read-only public HTTP API**. We do **not** connect to the admin
@@ -43,6 +43,13 @@ closures, contact.
   category → subcategory → item sections for the UI, carrying media + price fields.
 
 Consumed by `src/app/(navPages)/services/page.jsx` → `src/components/serviceMenu/ServiceMenu.jsx`.
+
+Category focus on the services page is persisted in the URL as `?category=<categoryId>`
+and open subcategory accordions as `?sub=<subId1,subId2>` (comma-separated, scoped to
+the active category). Updates use `history.pushState` / `replaceState` (not
+`router.replace`) so `force-dynamic` does not refetch on every interaction. Refresh and
+shared links restore the open category and expanded subcategories when ids still exist
+in the catalog.
 
 ### Tree rules
 

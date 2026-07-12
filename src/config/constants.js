@@ -136,49 +136,56 @@ export const THIRD_PARTY = {
   },
 };
 
+/** Canonical Ken Salon brand mark (source of all generated icons). */
+export const BRAND_LOGO_SRC = "/salon-logo-2026.jpg";
+
 // Image URLs (for metadata, structured data, etc.)
 export const IMAGES = {
-  get logo() {
-    return getSpecialPeriodLogo()
-      ? `${BASE_URL}/specialPeriodLogo/002.png`
-      : `${BASE_URL}/logo01.png`;
-  },
+  logo: `${BASE_URL}${BRAND_LOGO_SRC}`,
   hero: `${BASE_URL}/hero04.jpg`,
-  favicon: `${BASE_URL}/favicon.ico`,
+  get favicon() {
+    return `${BASE_URL}${FAVICON_ROOT_URL}`;
+  },
 };
 
-/** Navbar mark — always shown regardless of special periods. */
-export const NAVBAR_LOGO_DEFAULT_SRC = "/logo03.png";
+/** Navbar / loading mark. */
+export const NAVBAR_LOGO_DEFAULT_SRC = BRAND_LOGO_SRC;
+
+/**
+ * Icon cache-bust revisions — bump all three together when replacing logos.
+ * Full checklist: docs/BRAND_ICONS.md (includes graphify update + deploy).
+ */
+/** Bump when replacing tab / shortcut favicon assets so browsers refetch. */
+export const FAVICON_REVISION = 2;
+
+export const FAVICON_ICO_URL = `/favicon-for-app/favicon.ico?v=${FAVICON_REVISION}`;
+export const FAVICON_SVG_URL = `/favicon-for-app/favicon.svg?v=${FAVICON_REVISION}`;
+export const FAVICON_96_URL = `/favicon-for-app/favicon-96x96.png?v=${FAVICON_REVISION}`;
+/** Root fallback for crawlers and direct /favicon.ico requests. */
+export const FAVICON_ROOT_URL = `/favicon.ico?v=${FAVICON_REVISION}`;
+
+/** Next.js metadata.icons entries for layout.jsx. */
+export const METADATA_FAVICON_ICONS = [
+  { url: FAVICON_ICO_URL, sizes: "48x48" },
+  { url: FAVICON_SVG_URL, type: "image/svg+xml" },
+  { url: FAVICON_96_URL, sizes: "96x96", type: "image/png" },
+];
 
 /** Bump when replacing `public/favicon-for-app/apple-touch-icon.png` so clients refetch. */
-export const APPLE_TOUCH_ICON_REVISION = 1;
+export const APPLE_TOUCH_ICON_REVISION = 2;
 
 /** Safari / iOS Add to Home Screen (`rel="apple-touch-icon"`). */
 export const APPLE_TOUCH_ICON_URL = `/favicon-for-app/apple-touch-icon.png?v=${APPLE_TOUCH_ICON_REVISION}`;
 
 /** Bump when changing PWA manifest fields or launcher PNGs under `public/favicon-for-app/`. */
-export const WEB_APP_MANIFEST_REVISION = 1;
+export const WEB_APP_MANIFEST_REVISION = 2;
 
 /** Web app manifest for Chrome / Android install and launcher icons. */
 export const WEB_APP_MANIFEST_URL = `/favicon-for-app/site.webmanifest?v=${WEB_APP_MANIFEST_REVISION}`;
 
-/**
- * Temporary commemorative logo shown beside the Ken mark.
- * Inclusive calendar dates in Asia/Dubai timezone.
- */
-export const SPECIAL_PERIOD_LOGO = {
-  startDate: "2026-04-11",
-  endDate: "2026-05-11",
-  src: "/specialPeriodLogo/002.png",
-};
-
-/** Returns the special-period logo path during the active window, or null outside it. */
-export function getSpecialPeriodLogo(now = new Date()) {
-  const ymd = now.toLocaleDateString("en-CA", { timeZone: "Asia/Dubai" });
-  const { startDate, endDate, src } = SPECIAL_PERIOD_LOGO;
-  if (ymd >= startDate && ymd <= endDate) return src;
-  return null;
-}
+/** PWA launcher PNG paths (keep in sync with site.webmanifest icon src). */
+export const PWA_ICON_192_URL = `/favicon-for-app/web-app-manifest-192x192.png?v=${WEB_APP_MANIFEST_REVISION}`;
+export const PWA_ICON_512_URL = `/favicon-for-app/web-app-manifest-512x512.png?v=${WEB_APP_MANIFEST_REVISION}`;
 
 // Helper function to format phone number for tel: links
 // Removes spaces, dashes, parentheses, and other formatting

@@ -18,7 +18,6 @@ import {
   CARD_URL,
   CAREERS_URL,
   NAVBAR_LOGO_DEFAULT_SRC,
-  getSpecialPeriodLogo,
 } from "@/config/constants";
 import styles from "./Navbar.modern.module.css";
 
@@ -93,17 +92,6 @@ export default function NavbarModern() {
             style={{ width: "50px", height: "50px", objectFit: "contain" }}
             priority
           />
-          {getSpecialPeriodLogo() && (
-            <Image
-              src={getSpecialPeriodLogo()}
-              alt="Commemorative emblem"
-              width={40}
-              height={40}
-              className={styles.specialLogo}
-              style={{ width: "40px", height: "40px", objectFit: "contain" }}
-              priority
-            />
-          )}
         </Link>
 
         {/* Desktop Navigation */}

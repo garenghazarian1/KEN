@@ -1,6 +1,7 @@
 "use client";
 
 import { useState, useMemo, useEffect, useCallback, useRef } from "react";
+import { useSearchParams } from "next/navigation";
 import Link from "next/link";
 import Image from "next/image";
 import { motion, AnimatePresence } from "framer-motion";
@@ -35,6 +36,13 @@ import {
   suggestServiceTitles,
 } from "@/lib/business/serviceSearch";
 import { cldResponsiveFit, cldTransform } from "@/utils/cloudinary";
+import {
+  SERVICE_CATEGORY_QUERY_KEY,
+  SERVICE_SUBCATEGORIES_QUERY_KEY,
+  resolveOpenSubcategoryIds,
+  resolveServiceCategoryId,
+  syncServiceMenuToUrl,
+} from "@/utils/serviceCategoryUrl";
 import styles from "./ServiceMenu.module.css";
 
 /* ─── Category icon map ───────────────────────────────────────────── */
@@ -473,7 +481,10 @@ function SubcategoryAccordion({
   );
 
   return (
-    <div className={styles.subcategoryBlock}>
+    <div
+      id={`service-subcategory-${group.id}`}
+      className={styles.subcategoryBlock}
+    >
       <button
         className={styles.subcategoryTrigger}
         onClick={onToggle}
@@ -782,15 +793,72 @@ function WhatsAppBanner() {
 
 /* ─── Main component ──────────────────────────────────────────────── */
 export default function ServiceMenu({ sections = [], error = null }) {
+  const searchParams = useSearchParams();
+  const categoryFromUrl = useMemo(
+    () =>
+      resolveServiceCategoryId(
+        searchParams.get(SERVICE_CATEGORY_QUERY_KEY),
+        sections,
+      ),
+    [searchParams, sections],
+  );
+
+  const openSubcategoriesFromUrl = useMemo(
+    () =>
+      resolveOpenSubcategoryIds(
+        searchParams.get(SERVICE_SUBCATEGORIES_QUERY_KEY),
+        sections,
+        categoryFromUrl,
+      ),
+    [searchParams, sections, categoryFromUrl],
+  );
+
   const [query, setQuery] = useState("");
-  const [activeCategoryId, setActiveCategoryId] = useState(null);
-  const [openSubcategories, setOpenSubcategories] = useState(new Set());
+  const [activeCategoryId, setActiveCategoryId] = useState(categoryFromUrl);
+  const [openSubcategories, setOpenSubcategories] = useState(
+    () => new Set(openSubcategoriesFromUrl),
+  );
   const [layoutMode, setLayoutMode] = useState("horizontal");
   const [isSearchFocused, setIsSearchFocused] = useState(false);
   const [suggestionsDismissed, setSuggestionsDismissed] = useState(false);
   const [activeSuggestionIndex, setActiveSuggestionIndex] = useState(-1);
   const categoryFocusRef = useRef(null);
   const searchInputRef = useRef(null);
+  const subcategoryScrollDoneRef = useRef(false);
+
+  useEffect(() => {
+    setActiveCategoryId(categoryFromUrl);
+  }, [categoryFromUrl]);
+
+  useEffect(() => {
+    setOpenSubcategories(new Set(openSubcategoriesFromUrl));
+  }, [openSubcategoriesFromUrl]);
+
+  const syncMenuUrl = useCallback(
+    (categoryId, subcategoryIds, { urlMode = "replace" } = {}) => {
+      syncServiceMenuToUrl(
+        {
+          categoryId,
+          openSubcategoryIds: [...subcategoryIds],
+        },
+        { mode: urlMode },
+      );
+    },
+    [],
+  );
+
+  const setActiveCategory = useCallback(
+    (categoryId, { urlMode = "auto", resetSubs = true } = {}) => {
+      setActiveCategoryId(categoryId);
+      if (resetSubs) {
+        setOpenSubcategories(new Set());
+        syncMenuUrl(categoryId, [], { urlMode });
+        return;
+      }
+      syncMenuUrl(categoryId, openSubcategories, { urlMode });
+    },
+    [openSubcategories, syncMenuUrl],
+  );
 
   const searchCatalog = useMemo(
     () => buildServiceSearchCatalog(sections),
@@ -859,13 +927,20 @@ export default function ServiceMenu({ sections = [], error = null }) {
     setActiveSuggestionIndex(-1);
   }, []);
 
-  const selectCategory = useCallback((id) => {
-    setActiveCategoryId(id);
-  }, []);
+  const selectCategory = useCallback(
+    (id) => {
+      const switchingCategory = activeCategoryId != null && activeCategoryId !== id;
+      setActiveCategory(id, {
+        urlMode: switchingCategory ? "replace" : "auto",
+        resetSubs: switchingCategory || activeCategoryId == null,
+      });
+    },
+    [activeCategoryId, setActiveCategory],
+  );
 
   const closeCategory = useCallback(() => {
-    setActiveCategoryId(null);
-  }, []);
+    setActiveCategory(null, { urlMode: "replace", resetSubs: true });
+  }, [setActiveCategory]);
 
   useEffect(() => {
     if (!activeCategoryId || !categoryFocusRef.current) return;
@@ -875,27 +950,48 @@ export default function ServiceMenu({ sections = [], error = null }) {
     });
   }, [activeCategoryId]);
 
-  const toggleSubcategory = useCallback((id) => {
-    setOpenSubcategories((prev) => {
-      const next = new Set(prev);
-      next.has(id) ? next.delete(id) : next.add(id);
-      return next;
-    });
-  }, []);
+  const toggleSubcategory = useCallback(
+    (id) => {
+      setOpenSubcategories((prev) => {
+        const next = new Set(prev);
+        next.has(id) ? next.delete(id) : next.add(id);
+        syncMenuUrl(activeCategoryId, next, { urlMode: "replace" });
+        return next;
+      });
+    },
+    [activeCategoryId, syncMenuUrl],
+  );
 
   const clearSearch = useCallback(() => {
     setQuery("");
-    setActiveCategoryId(null);
-    setOpenSubcategories(new Set());
+    setActiveCategory(null, { urlMode: "replace", resetSubs: true });
     setSuggestionsDismissed(false);
     setActiveSuggestionIndex(-1);
-  }, []);
+  }, [setActiveCategory]);
 
   useEffect(() => {
     if (query.trim()) {
-      setActiveCategoryId(null);
+      setActiveCategory(null, { urlMode: "replace", resetSubs: true });
     }
-  }, [query]);
+  }, [query, setActiveCategory]);
+
+  useEffect(() => {
+    if (
+      subcategoryScrollDoneRef.current ||
+      !activeCategoryId ||
+      openSubcategoriesFromUrl.length === 0
+    ) {
+      return;
+    }
+
+    subcategoryScrollDoneRef.current = true;
+    const firstOpenSubcategoryId = openSubcategoriesFromUrl[0];
+    requestAnimationFrame(() => {
+      document
+        .getElementById(`service-subcategory-${firstOpenSubcategoryId}`)
+        ?.scrollIntoView({ behavior: "smooth", block: "start" });
+    });
+  }, [activeCategoryId, openSubcategoriesFromUrl]);
 
   const activeSection = useMemo(
     () => sections.find((section) => section.id === activeCategoryId) ?? null,

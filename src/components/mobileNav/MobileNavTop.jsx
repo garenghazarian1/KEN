@@ -3,11 +3,7 @@
 import Link from "next/link";
 import Image from "next/image";
 import { Calendar, Coffee } from "lucide-react";
-import {
-  BOOKING_URL,
-  NAVBAR_LOGO_DEFAULT_SRC,
-  getSpecialPeriodLogo,
-} from "@/config/constants";
+import { BOOKING_URL, NAVBAR_LOGO_DEFAULT_SRC } from "@/config/constants";
 import styles from "./MobileNavTop.module.css";
 
 export default function MobileNavTop() {
@@ -27,17 +23,6 @@ export default function MobileNavTop() {
           style={{ width: "44px", height: "44px", objectFit: "contain" }}
           priority
         />
-        {getSpecialPeriodLogo() && (
-          <Image
-            src={getSpecialPeriodLogo()}
-            alt="Commemorative emblem"
-            width={36}
-            height={36}
-            className={styles.specialLogo}
-            style={{ width: "36px", height: "36px", objectFit: "contain" }}
-            priority
-          />
-        )}
       </Link>
       <div className={styles.navActions}>
         <Link

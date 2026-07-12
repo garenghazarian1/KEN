@@ -1,3 +1,4 @@
+import { Suspense } from "react";
 import ServiceMenu from "@/components/serviceMenu/ServiceMenu";
 import { BUSINESS } from "@/config/constants";
 import {
@@ -40,5 +41,9 @@ export default async function ServicesPage() {
     error = err?.message || "Failed to load services.";
   }
 
-  return <ServiceMenu sections={sections} error={error} />;
+  return (
+    <Suspense fallback={null}>
+      <ServiceMenu sections={sections} error={error} />
+    </Suspense>
+  );
 }
