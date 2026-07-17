@@ -82,6 +82,13 @@ export default function PrivacyPage() {
               <strong>Technical Information:</strong> IP address, browser type, device information,
               and usage data collected through cookies and similar technologies.
             </li>
+            <li>
+              <strong>Website Chat Transcripts:</strong> Messages you exchange with our website
+              assistant, including the optional name you provide and voice messages converted to
+              text. We also store limited technical context such as the page where the chat began
+              and your browser&apos;s user-agent string. Voice recordings themselves are not stored
+              by us.
+            </li>
           </ul>
         </section>
 
@@ -91,6 +98,10 @@ export default function PrivacyPage() {
           <ul>
             <li>Process and manage your appointments and service requests</li>
             <li>Communicate with you about your bookings and our services</li>
+            <li>
+              Generate and improve website-assistant responses, including speech transcription and
+              AI-generated spoken replies
+            </li>
             <li>Improve our website and services</li>
             <li>Send you promotional materials (with your consent)</li>
             <li>Comply with legal obligations</li>
@@ -115,14 +126,28 @@ export default function PrivacyPage() {
             your information only in the following circumstances:
           </p>
           <ul>
-            <li>With service providers who assist us in operating our business</li>
+            <li>
+              With service providers who assist us in operating our business, including OpenAI for
+              assistant text, speech transcription, and AI-generated voice processing, and our
+              database and hosting providers
+            </li>
             <li>When required by law or to protect our rights</li>
             <li>With your explicit consent</li>
           </ul>
         </section>
 
         <section className={styles.section}>
-          <h2>6. Your Rights</h2>
+          <h2>6. Chat Data Retention</h2>
+          <p>
+            Assistant transcripts are retained in our database while needed to operate, support,
+            and improve the assistant. Raw voice recordings are processed transiently and are not
+            retained by us. You may request deletion of your chat data using the contact details
+            below.
+          </p>
+        </section>
+
+        <section className={styles.section}>
+          <h2>7. Your Rights</h2>
           <p>You have the right to:</p>
           <ul>
             <li>Access and receive a copy of your personal data</li>
@@ -134,7 +159,7 @@ export default function PrivacyPage() {
         </section>
 
         <section className={styles.section}>
-          <h2>7. Children&apos;s Privacy</h2>
+          <h2>8. Children&apos;s Privacy</h2>
           <p>
             Our services are not intended for children under the age of 13. We do not knowingly
             collect personal information from children under 13. If you believe we have collected
@@ -143,7 +168,7 @@ export default function PrivacyPage() {
         </section>
 
         <section className={styles.section}>
-          <h2>8. Contact Us</h2>
+          <h2>9. Contact Us</h2>
           <p>
             If you have any questions about this Privacy Policy or wish to exercise your rights,
             please contact us:

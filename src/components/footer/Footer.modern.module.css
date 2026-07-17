@@ -18,8 +18,8 @@
   border-top: 1px solid var(--glass-border-light);
   box-sizing: border-box;
   overflow-x: hidden;
-  /* iOS/Android safe area */
-  padding-bottom: env(safe-area-inset-bottom, 0px);
+  /* Clear site-wide bottom tab bar (token includes safe-area) */
+  padding-bottom: var(--mobile-nav-bottom-height);
 }
 
 .footer::before {
@@ -388,10 +388,12 @@
 /* Cookie Banner */
 .cookieBanner {
   position: fixed;
-  bottom: 0;
+  /* Sit above the fixed site-wide bottom tab bar (height already includes safe-area) */
+  bottom: var(--mobile-nav-bottom-height);
   left: 0;
   right: 0;
-  z-index: 1000;
+  /* Above fixed bottom nav (--z-fixed: 1030) */
+  z-index: var(--z-modal);
   padding: var(--spacing-4);
   background: var(--glass-white-strong);
   backdrop-filter: blur(var(--glass-blur-xl));
@@ -589,7 +591,7 @@
 
   .cookieBanner {
     padding: var(--spacing-3);
-    padding-bottom: calc(var(--spacing-3) + env(safe-area-inset-bottom, 0px));
+    padding-bottom: var(--spacing-3);
     padding-left: max(var(--spacing-3), env(safe-area-inset-left, 0px));
     padding-right: max(var(--spacing-3), env(safe-area-inset-right, 0px));
   }
@@ -613,13 +615,11 @@
   }
 }
 
-/* iOS notch/home indicator safe areas */
+/* Safe-area is already included in --mobile-nav-bottom-height for cookie/footer clearance */
 @supports (padding: env(safe-area-inset-bottom)) {
-  .footer {
-    padding-bottom: env(safe-area-inset-bottom);
-  }
-
-  .cookieBanner {
-    padding-bottom: calc(var(--spacing-4) + env(safe-area-inset-bottom));
+  @media (max-width: 480px) {
+    .cookieBanner {
+      padding-bottom: var(--spacing-3);
+    }
   }
 }

@@ -1,4 +1,4 @@
-/* Mobile app-style top bar: logo + Book now. Visible only on mobile via layout wrapper. */
+/* App-style top bar: logo + Book now. Site-wide standard nav. */
 
 .topBar {
   position: fixed;

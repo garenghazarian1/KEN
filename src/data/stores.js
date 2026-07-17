@@ -33,3 +33,10 @@ export const stores = [
     imageStore: "/Rixos.jpg",
   },
 ];
+
+/** Canonical Google Maps directions/search URL for a store. */
+export function getGoogleMapsUrl(store) {
+  return `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(
+    `${store.name} ${store.street}, ${store.city}, ${store.country || ""}`
+  )}`;
+}

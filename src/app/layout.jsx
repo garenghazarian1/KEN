@@ -1,9 +1,9 @@
 import { lora, inter } from "@/app/ui/fonts";
 import "./globals.css";
-import NavbarModern from "@/components/loading/navbar/Navbar.modern";
 import { MobileNavTop, MobileNavBottom } from "@/components/mobileNav";
 import FooterModern from "@/components/footer/Footer.modern";
 import AppInstallBanner from "@/components/AppInstallBanner/AppInstallBanner";
+import AssistantWidget from "@/components/AssistantWidget/AssistantWidget";
 import ClientLayout from "@/components/ClientLayout";
 // import InitialLoader from "@/components/InitialLoader";
 import styles from "./Layout.module.css";
@@ -83,11 +83,6 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
         <AppInstallBanner />
         <ClientLayout>
           <div className={styles.layoutContainer}>
-            {/* Desktop: show; Mobile: hide */}
-            <div className={styles.desktopNavWrapper}>
-              <NavbarModern />
-            </div>
-            {/* Mobile: show; Desktop: hide */}
             <div className={styles.mobileNavTopWrapper}>
               <MobileNavTop />
             </div>
@@ -98,6 +93,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
             </div>
           </div>
         </ClientLayout>
+        <AssistantWidget />
         <Analytics />
         {/* Tidio chatbot – commented out for now, use later */}
         {/* <Script src={THIRD_PARTY.tidio.scriptUrl} strategy="lazyOnload" /> */}

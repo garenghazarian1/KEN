@@ -4,6 +4,7 @@ globs:
   - src/lib/business/**
   - src/components/serviceMenu/**
   - src/app/(navPages)/services/**
+  - src/lib/assistant/catalogContext.js
   - src/utils/cloudinary.js
 alwaysApply: false
 ---
@@ -31,7 +32,12 @@ read-only public HTTP API.
 ## Service catalog rules
 
 - `getServiceCatalog(locale, branchId?)` in `src/lib/business/serviceCatalog.js`
-  fetches the API (ISR `revalidate: 3600`) and returns `{ businessSlug, total, services }`.
+  fetches the API with `cache: "no-store"` and returns
+  `{ businessSlug, total, services }`. The services page always gets fresh data;
+  the AI assistant builds a locale-specific MiniSearch index and caches it in
+  process for 10 minutes to avoid an admin API request per turn (used by both
+  the text chat route and the realtime voice turn route,
+  `src/app/api/assistant/realtime/turn/route.js`).
 - Response is a **flat list**; build the tree from `parentId` / `categoryIds`, sort by `sortOrder`.
 - Only `type === "item"` rows are bookable/priced. Items have `parentId: null` and link via `categoryIds[]`.
 - **Prices:** display `priceLabel` verbatim (already localized + currency-suffixed). Raw numeric

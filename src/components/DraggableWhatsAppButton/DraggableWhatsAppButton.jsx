@@ -42,7 +42,10 @@ export default function DraggableWhatsAppButton() {
 
   const handleClick = (e) => {
     if (draggedRef.current) {
+      // This click is the tail of a drag gesture — cancel navigation once,
+      // then clear the flag so the next real tap opens WhatsApp.
       e.preventDefault();
+      draggedRef.current = false;
     }
   };
 
@@ -61,6 +64,12 @@ export default function DraggableWhatsAppButton() {
         dragElastic={0.1}
         dragMomentum={false}
         style={{ x: position.x, y: position.y, touchAction: "none" }}
+        onTapStart={() => {
+          // Reset at the start of every press (onDragStart does NOT fire on a
+          // plain tap, so without this the flag stays stuck `true` after a drag
+          // and permanently blocks the click).
+          draggedRef.current = false;
+        }}
         onDragStart={() => {
           draggedRef.current = false;
         }}

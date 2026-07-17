@@ -13,12 +13,8 @@ import {
   ArrowUpRight,
 } from "lucide-react";
 import { CAREERS_URL } from "@/config/constants";
+import { getGoogleMapsUrl } from "@/data/stores";
 import styles from "./Contact.modern.module.css";
-
-const getGoogleMapsUrl = (store) =>
-  `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(
-    `${store.name} ${store.street}, ${store.city}, ${store.country || ""}`
-  )}`;
 
 function shortLocationLabel(name) {
   if (name.includes("Galleria")) return "The Galleria";

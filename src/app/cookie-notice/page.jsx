@@ -1,4 +1,4 @@
-import { BUSINESS } from "@/config/constants";
+import { BUSINESS, CONTACT } from "@/config/constants";
 import styles from "./cookie.module.css";
 
 export const metadata = {
@@ -70,6 +70,18 @@ export default function CookieNotice() {
         </section>
 
         <section className={styles.section}>
+          <h2>Assistant Local Storage</h2>
+          <p>
+            The Ken Beauty Assistant uses browser local storage rather than cookies to remember an
+            anonymous chat session identifier (
+            <code>ken-assistant-session</code>) and whether you enabled spoken replies (
+            <code>ken-assistant-speak</code>). You can remove these values by clearing this
+            site&apos;s stored data in your browser. Clearing them starts a new assistant session
+            and resets the voice preference.
+          </p>
+        </section>
+
+        <section className={styles.section}>
           <h2>Managing Cookies</h2>
           <p>
             You can control and manage cookies through your browser settings.
@@ -106,7 +118,7 @@ export default function CookieNotice() {
           <p>
             If you have any questions about our use of cookies, please contact
             us through our contact page or by email at{" "}
-            <a href="mailto:ken.beauty1@hotmail.com">ken.beauty1@hotmail.com</a>
+            <a href={`mailto:${CONTACT.email}`}>{CONTACT.email}</a>
             .
           </p>
         </section>

@@ -980,7 +980,7 @@ img {
 :root {
   --app-banner-height: 0px;
   /*
-   * Mobile bottom tab bar (icon + label + bar padding).
+   * Site-wide bottom tab bar (icon + label + bar padding).
    * Keep in sync with MobileNavBottom — used by layout + hero clearance.
    */
   --mobile-nav-bottom-height: calc(

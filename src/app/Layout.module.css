@@ -10,15 +10,10 @@
   overflow-x: clip;
 }
 
-/* Desktop nav: visible by default; hidden on mobile */
-.desktopNavWrapper {
-  display: block;
-}
-
-/* Mobile nav wrappers: hidden by default; visible on mobile */
+/* Site-wide top/bottom nav (same pattern on all viewports) */
 .mobileNavTopWrapper,
 .mobileNavBottomWrapper {
-  display: none;
+  display: block;
 }
 
 .childrenContainer {
@@ -27,24 +22,9 @@
   padding: 0;
   /* clip (not hidden): keep sticky descendants working (see above) */
   overflow-x: clip;
-}
-
-/* Mobile: show new top/bottom nav, hide desktop nav, add content padding */
-@media (max-width: 768px) {
-  .desktopNavWrapper {
-    display: none;
-  }
-
-  .mobileNavTopWrapper,
-  .mobileNavBottomWrapper {
-    display: block;
-  }
-
   /* Prevent content from sitting under fixed top and bottom bars */
-  .childrenContainer {
-    padding-top: calc(
-      3.5rem + var(--spacing-2) + env(safe-area-inset-top, 0px)
-    );
-    padding-bottom: var(--mobile-nav-bottom-height);
-  }
+  padding-top: calc(
+    3.5rem + var(--spacing-2) + env(safe-area-inset-top, 0px)
+  );
+  padding-bottom: var(--mobile-nav-bottom-height);
 }
