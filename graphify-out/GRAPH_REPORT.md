@@ -1,16 +1,16 @@
 # Graph Report - ken  (2026-07-17)
 
 ## Corpus Check
-- 131 files · ~709,092 words
+- 131 files · ~709,156 words
 - Verdict: corpus is large enough that graph structure adds value.
 
 ## Summary
-- 955 nodes · 1023 edges · 106 communities (71 shown, 35 thin omitted)
+- 955 nodes · 1024 edges · 99 communities (64 shown, 35 thin omitted)
 - Extraction: 93% EXTRACTED · 7% INFERRED · 0% AMBIGUOUS · INFERRED: 67 edges (avg confidence: 0.81)
 - Token cost: 0 input · 0 output
 
 ## Graph Freshness
-- Built from commit: `1a13fcdb`
+- Built from commit: `33204fcd`
 - Run `git rev-parse HEAD` and compare to check if the graph is stale.
 - Run `graphify update .` after code changes (no API cost).
 
@@ -74,15 +74,10 @@
 - [[_COMMUNITY_Community 65|Community 65]]
 - [[_COMMUNITY_Community 66|Community 66]]
 - [[_COMMUNITY_Community 69|Community 69]]
-- [[_COMMUNITY_Community 70|Community 70]]
 - [[_COMMUNITY_Community 71|Community 71]]
-- [[_COMMUNITY_Community 72|Community 72]]
-- [[_COMMUNITY_Community 73|Community 73]]
-- [[_COMMUNITY_Community 74|Community 74]]
 - [[_COMMUNITY_Community 75|Community 75]]
 - [[_COMMUNITY_Community 76|Community 76]]
 - [[_COMMUNITY_Community 77|Community 77]]
-- [[_COMMUNITY_Community 79|Community 79]]
 - [[_COMMUNITY_Community 80|Community 80]]
 - [[_COMMUNITY_Community 82|Community 82]]
 - [[_COMMUNITY_Community 83|Community 83]]
@@ -94,9 +89,6 @@
 - [[_COMMUNITY_Community 93|Community 93]]
 - [[_COMMUNITY_Community 94|Community 94]]
 - [[_COMMUNITY_Community 95|Community 95]]
-- [[_COMMUNITY_Community 96|Community 96]]
-- [[_COMMUNITY_Community 97|Community 97]]
-- [[_COMMUNITY_Community 98|Community 98]]
 - [[_COMMUNITY_Community 99|Community 99]]
 - [[_COMMUNITY_Community 100|Community 100]]
 
@@ -124,11 +116,11 @@
 - `resolveLocationRequest()` --calls--> `buildDirectionsActions()`  [INFERRED]
   src/lib/assistant/intentGate.js → src/data/assistantFaq.js
 
-## Communities (106 total, 35 thin omitted)
+## Communities (99 total, 35 thin omitted)
 
 ### Community 0 - "Community 0"
-Cohesion: 0.20
-Nodes (10): Accessibility Patterns, ARIA Attributes, code:jsx (// Use semantic elements), code:jsx (// Labels), code:jsx (<div className={styles.field}>), code:css (/* Always style focus-visible for keyboard navigation */), Color Contrast, Focus States (+2 more)
+Cohesion: 0.04
+Nodes (46): Accessibility Patterns, Analytics, Animation, ARIA Attributes, Basic Component Template, Code Organization, code:jsx ("use client"; // Required for client-side features (state, e), code:jsx (import { Phone, Mail, MessageCircle, ArrowRight, MapPin } fr) (+38 more)
 
 ### Community 1 - "Community 1"
 Cohesion: 0.04
@@ -163,8 +155,8 @@ Cohesion: 0.07
 Nodes (28): dependencies, framer-motion, lucide-react, minisearch, mongoose, next, openai, react (+20 more)
 
 ### Community 9 - "Community 9"
-Cohesion: 0.14
-Nodes (14): 2. Mobile-First Responsive Design, 3. Semantic HTML, 5. Animation Performance, 7. Error Handling, 8. Form Validation, Best Practices, code:css (.desktop {), code:css (.component {) (+6 more)
+Cohesion: 0.09
+Nodes (23): 1. Always Use CSS Variables, 2. Mobile-First Responsive Design, 3. Semantic HTML, 4. Proper Image Usage, 5. Animation Performance, 6. Accessibility First, 7. Error Handling, 8. Form Validation (+15 more)
 
 ### Community 10 - "Community 10"
 Cohesion: 0.10
@@ -246,25 +238,9 @@ Nodes (7): Phase 1: Setup & Navbar ✅ **COMPLETED**, Phase 2: Hero Section, Pha
 Cohesion: 0.17
 Nodes (11): Accuracy & escalation rules, API routes, Environment variables, History, Ken AI Assistant (Text + Voice), Known limitations (v1), Models, MongoDB collections (`beauty-admin`) (+3 more)
 
-### Community 70 - "Community 70"
-Cohesion: 0.22
-Nodes (8): Basic Component Template, code:jsx ("use client"; // Required for client-side features (state, e), Component Development Patterns Guide, Component Structure, Component Structure Checklist, Quick Reference Checklist, Resources, Table of Contents
-
 ### Community 71 - "Community 71"
 Cohesion: 0.22
 Nodes (9): Completed Work (Latest Session), ✅ Critical Bug Fixes (BUG-001, BUG-002, BUG-003, BUG-006), ✅ Data Extraction & Centralized Configuration (CODE-001, CODE-002), ✅ Design System Implementation (DS-001 through DS-011), ✅ ErrorBoundary Implementation (BUG-004, BUG-005), ✅ Hero Section Mobile Responsiveness (MOB-001, MOB-002, MOB-003, MOB-004), ✅ Modern Loading Spinner Implementation (PERF-013, PERF-014, CODE-009), ✅ Navbar Mobile Responsiveness (MOB-006, MOB-007, MOB-008) (+1 more)
-
-### Community 72 - "Community 72"
-Cohesion: 0.25
-Nodes (8): Analytics, Animation, Core Framework, Icons, Key Libraries, Styling, Technology Stack, UI Components
-
-### Community 73 - "Community 73"
-Cohesion: 0.29
-Nodes (7): Code Organization, code:jsx (// 1. React and Next.js), code:jsx ("use client";), code:css (/* 1. Container/Base Styles */), Component Organization, CSS Organization, Import Order
-
-### Community 74 - "Community 74"
-Cohesion: 0.29
-Nodes (7): code:block37 (src/), Components, Constants/Config, CSS Files, Example Structure, File Naming Conventions, Page Files
 
 ### Community 75 - "Community 75"
 Cohesion: 0.29
@@ -273,10 +249,6 @@ Nodes (7): code:css (/* Heading Styles */), code:css (/* Margin Utilities */), c
 ### Community 76 - "Community 76"
 Cohesion: 0.43
 Nodes (4): drainReader(), playFromBlob(), playMpegResponse(), playWithMediaSource()
-
-### Community 79 - "Community 79"
-Cohesion: 0.33
-Nodes (6): code:jsx (import { Phone, Mail, MessageCircle, ArrowRight, MapPin } fr), code:jsx (<Phone className={styles.icon} size={20} />), code:jsx (// Decorative icons (no meaning)), Common Icons Used, Icon Patterns, Lucide React Icons (PRIMARY)
 
 ### Community 80 - "Community 80"
 Cohesion: 0.40
@@ -310,18 +282,6 @@ Nodes (8): Cloudinary media, Configuration, Endpoints, History, Pricing (render 
 Cohesion: 0.40
 Nodes (5): File Naming Convention, Key Principles, Migration Strategy, Modern Redesign (Priority: HIGH) 🎨, Overview
 
-### Community 96 - "Community 96"
-Cohesion: 0.67
-Nodes (3): 1. Always Use CSS Variables, code:css (color: #3d2f2d;), code:css (color: var(--color-text-primary);)
-
-### Community 97 - "Community 97"
-Cohesion: 0.67
-Nodes (3): 4. Proper Image Usage, code:jsx (<img src="/image.jpg" alt="image" />), code:jsx (<Image)
-
-### Community 98 - "Community 98"
-Cohesion: 0.67
-Nodes (3): 6. Accessibility First, code:jsx (<IconName />), code:jsx (<IconName aria-hidden="true" />)
-
 ## Knowledge Gaps
 - **468 isolated node(s):** `extends`, `@/*`, `enable`, `disableFilenameBasedTypeAcquisition`, `exclude` (+463 more)
   These have ≤1 connection - possible missing edges or undocumented components.
@@ -330,7 +290,7 @@ Nodes (3): 6. Accessibility First, code:jsx (<IconName />), code:jsx (<IconName 
 ## Suggested Questions
 _Questions this graph is uniquely positioned to answer:_
 
-- **Why does `Image` connect `Community 42` to `Community 4`, `Community 20`, `Community 23`, `Community 25`, `Community 33`, `Community 34`, `Community 37`, `Community 38`, `Community 39`, `Community 53`, `Community 66`, `Community 67`, `Community 68`, `Community 69`, `Community 87`, `Community 94`, `Community 99`, `Community 101`, `Community 102`, `Community 103`, `Community 104`?**
+- **Why does `Image` connect `Community 42` to `Community 4`, `Community 20`, `Community 23`, `Community 25`, `Community 33`, `Community 34`, `Community 37`, `Community 38`, `Community 39`, `Community 41`, `Community 53`, `Community 67`, `Community 68`, `Community 69`, `Community 70`, `Community 72`, `Community 73`, `Community 87`, `Community 94`, `Community 99`, `Community 102`, `Community 104`?**
   _High betweenness centrality (0.075) - this node is a cross-community bridge._
 - **Why does `Ken Beauty Salon - Comprehensive Improvement Plan` connect `Community 5` to `Community 2`, `Community 71`, `Community 7`, `Community 75`, `Community 12`, `Community 13`, `Community 14`, `Community 80`, `Community 82`, `Community 92`?**
   _High betweenness centrality (0.027) - this node is a cross-community bridge._
@@ -338,9 +298,9 @@ _Questions this graph is uniquely positioned to answer:_
   _High betweenness centrality (0.025) - this node is a cross-community bridge._
 - **What connects `extends`, `@/*`, `enable` to the rest of the system?**
   _469 weakly-connected nodes found - possible documentation gaps or missing edges._
+- **Should `Community 0` be split into smaller, more focused modules?**
+  _Cohesion score 0.0425531914893617 - nodes in this community are weakly interconnected._
 - **Should `Community 1` be split into smaller, more focused modules?**
   _Cohesion score 0.0425531914893617 - nodes in this community are weakly interconnected._
 - **Should `Community 2` be split into smaller, more focused modules?**
   _Cohesion score 0.043478260869565216 - nodes in this community are weakly interconnected._
-- **Should `Community 3` be split into smaller, more focused modules?**
-  _Cohesion score 0.058823529411764705 - nodes in this community are weakly interconnected._

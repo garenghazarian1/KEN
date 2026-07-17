@@ -1,5 +1,19 @@
 import { describe, expect, it } from "vitest";
-import { resolveLocationRequest } from "./intentGate.js";
+import { detectEscalation, resolveLocationRequest } from "./intentGate.js";
+
+describe("detectEscalation", () => {
+  it("escalates booking-account credential help without a bare password keyword", () => {
+    expect(detectEscalation("I forgot my password")?.reason).toBe(
+      "booking_account"
+    );
+    expect(detectEscalation("I need to reset my password")?.reason).toBe(
+      "booking_account"
+    );
+    expect(detectEscalation("My password is wrong")?.reason).toBe(
+      "booking_account"
+    );
+  });
+});
 
 describe("resolveLocationRequest", () => {
   it("returns both exact addresses and directions for a general request", () => {
