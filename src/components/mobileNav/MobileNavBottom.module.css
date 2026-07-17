@@ -6,7 +6,8 @@
   left: 0;
   right: 0;
   width: 100%;
-  min-height: 3.5rem;
+  height: var(--mobile-nav-bottom-height);
+  min-height: var(--mobile-nav-bottom-height);
   padding-top: var(--spacing-2);
   padding-bottom: calc(var(--spacing-2) + env(safe-area-inset-bottom, 0px));
   padding-left: max(var(--spacing-2), env(safe-area-inset-left, 0));
@@ -19,6 +20,7 @@
   backdrop-filter: blur(var(--glass-blur-md));
   -webkit-backdrop-filter: blur(var(--glass-blur-md));
   box-shadow: 0 -2px 8px var(--shadow-very-light);
+  box-sizing: border-box;
 }
 
 .navList {
@@ -44,11 +46,13 @@
   justify-content: center;
   gap: var(--spacing-1);
   width: 100%;
-  min-height: 44px;
+  min-height: 0;
   min-width: 44px;
-  padding: var(--spacing-1) var(--spacing-2);
+  height: 100%;
+  padding: 0 var(--spacing-2);
   font-size: var(--font-size-xs);
   font-weight: var(--font-weight-medium);
+  line-height: 1;
   color: var(--color-text-secondary);
   text-decoration: none;
   border-radius: var(--radius-md);
@@ -95,4 +99,5 @@
   overflow: hidden;
   text-overflow: ellipsis;
   max-width: 100%;
+  line-height: 1;
 }

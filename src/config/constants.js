@@ -148,8 +148,8 @@ export const IMAGES = {
   },
 };
 
-/** Navbar / loading mark. */
-export const NAVBAR_LOGO_DEFAULT_SRC = BRAND_LOGO_SRC;
+/** Navbar / loading mark (transparent PNG). */
+export const NAVBAR_LOGO_DEFAULT_SRC = "/logo03.png";
 
 /**
  * Icon cache-bust revisions — bump all three together when replacing logos.

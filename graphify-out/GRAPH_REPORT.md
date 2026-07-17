@@ -1,16 +1,16 @@
-# Graph Report - ken  (2026-07-12)
+# Graph Report - ken  (2026-07-17)
 
 ## Corpus Check
-- 105 files · ~687,318 words
+- 105 files · ~687,533 words
 - Verdict: corpus is large enough that graph structure adds value.
 
 ## Summary
-- 832 nodes · 852 edges · 86 communities (59 shown, 27 thin omitted)
+- 834 nodes · 854 edges · 84 communities (53 shown, 31 thin omitted)
 - Extraction: 98% EXTRACTED · 2% INFERRED · 0% AMBIGUOUS · INFERRED: 21 edges (avg confidence: 0.82)
 - Token cost: 0 input · 0 output
 
 ## Graph Freshness
-- Built from commit: `1c7c2ef3`
+- Built from commit: `f2444aa1`
 - Run `git rev-parse HEAD` and compare to check if the graph is stale.
 - Run `graphify update .` after code changes (no API cost).
 
@@ -57,6 +57,7 @@
 - [[_COMMUNITY_Community 41|Community 41]]
 - [[_COMMUNITY_Community 42|Community 42]]
 - [[_COMMUNITY_Community 43|Community 43]]
+- [[_COMMUNITY_Community 44|Community 44]]
 - [[_COMMUNITY_Community 45|Community 45]]
 - [[_COMMUNITY_Community 46|Community 46]]
 - [[_COMMUNITY_Community 47|Community 47]]
@@ -64,11 +65,13 @@
 - [[_COMMUNITY_Community 49|Community 49]]
 - [[_COMMUNITY_Community 50|Community 50]]
 - [[_COMMUNITY_Community 51|Community 51]]
+- [[_COMMUNITY_Community 53|Community 53]]
 - [[_COMMUNITY_Community 54|Community 54]]
 - [[_COMMUNITY_Community 58|Community 58]]
 - [[_COMMUNITY_Community 59|Community 59]]
 - [[_COMMUNITY_Community 62|Community 62]]
 - [[_COMMUNITY_Community 63|Community 63]]
+- [[_COMMUNITY_Community 66|Community 66]]
 - [[_COMMUNITY_Community 77|Community 77]]
 - [[_COMMUNITY_Community 83|Community 83]]
 - [[_COMMUNITY_Community 87|Community 87]]
@@ -100,7 +103,7 @@
 - `ServicesPage()` --calls--> `buildServiceSections()`  [INFERRED]
   src/app/(navPages)/services/page.jsx → src/lib/business/serviceCatalog.js
 
-## Communities (86 total, 27 thin omitted)
+## Communities (84 total, 31 thin omitted)
 
 ### Community 0 - "Community 0"
 Cohesion: 0.04
@@ -124,7 +127,7 @@ Nodes (21): APP_STORES, BUSINESS, CONTACT, formatPhoneForTel(), getSpecialPeriod
 
 ### Community 5 - "Community 5"
 Cohesion: 0.05
-Nodes (41): Accessibility, App Install Banner Testing (from TESTING_APP_BANNER), Changelog Snapshot (from CHANGELOG), Code Quality, Completed Work (Latest Session), Component Testing, ✅ Critical Bug Fixes (BUG-001, BUG-002, BUG-003, BUG-006), ✅ Data Extraction & Centralized Configuration (CODE-001, CODE-002) (+33 more)
+Nodes (41): Accessibility, App Install Banner Testing (from TESTING_APP_BANNER), Changelog Snapshot (from CHANGELOG), Code Quality, code:css (/* Main Theme */), code:css (:root {), code:css (/* Heading Styles */), code:css (/* Margin Utilities */) (+33 more)
 
 ### Community 6 - "Community 6"
 Cohesion: 0.07
@@ -182,10 +185,6 @@ Nodes (14): astHash(), containsEdges, fileNodes, graph, graphPath, inferredCalls
 Cohesion: 0.12
 Nodes (15): 1. Replace the master image, 2. Regenerate all icon sizes, 3. Bump cache-bust revisions, 4. Deploy, 5. Update graphify, 6. Verify, Brand logo & favicon maintenance, Checklist — every icon change (+7 more)
 
-### Community 20 - "Community 20"
-Cohesion: 0.11
-Nodes (3): tocItems, celebImages, engagementContent
-
 ### Community 21 - "Community 21"
 Cohesion: 0.22
 Nodes (8): compilerOptions, paths, exclude, @/*, typeAcquisition, disableFilenameBasedTypeAcquisition, enable, exclude
@@ -212,7 +211,7 @@ Nodes (8): int, Path, build_square(), main(), Generates the full favicon / PWA i
 
 ### Community 62 - "Community 62"
 Cohesion: 0.17
-Nodes (12): code:css (/* Main Theme */), code:css (:root {), code:css (/* Heading Styles */), code:css (/* Margin Utilities */), code:css (/* Mobile First Approach */), Current Color Variables (to be organized), Global Design System, Phase 1: Color System (+4 more)
+Nodes (12): File Naming Convention, Key Principles, Migration Strategy, Modern Redesign (Priority: HIGH) 🎨, Overview, Phase 1: Setup & Navbar ✅ **COMPLETED**, Phase 2: Hero Section, Phase 3: Footer (+4 more)
 
 ### Community 83 - "Community 83"
 Cohesion: 0.25
@@ -235,21 +234,21 @@ Cohesion: 0.22
 Nodes (8): Cloudinary media, Configuration, Endpoints, History, Pricing (render order), Public API Integration (Admin System), Service catalog, Tree rules
 
 ## Knowledge Gaps
-- **432 isolated node(s):** `extends`, `@/*`, `enable`, `disableFilenameBasedTypeAcquisition`, `exclude` (+427 more)
+- **433 isolated node(s):** `extends`, `@/*`, `enable`, `disableFilenameBasedTypeAcquisition`, `exclude` (+428 more)
   These have ≤1 connection - possible missing edges or undocumented components.
-- **27 thin communities (<3 nodes) omitted from report** — run `graphify query` to explore isolated nodes.
+- **31 thin communities (<3 nodes) omitted from report** — run `graphify query` to explore isolated nodes.
 
 ## Suggested Questions
 _Questions this graph is uniquely positioned to answer:_
 
-- **Why does `Image` connect `Community 42` to `Community 4`, `Community 20`, `Community 23`, `Community 25`, `Community 33`, `Community 34`, `Community 37`, `Community 38`, `Community 39`, `Community 44`, `Community 53`, `Community 54`, `Community 65`, `Community 66`, `Community 69`, `Community 70`, `Community 71`, `Community 73`, `Community 74`, `Community 75`, `Community 76`, `Community 87`?**
+- **Why does `Image` connect `Community 42` to `Community 4`, `Community 20`, `Community 23`, `Community 25`, `Community 33`, `Community 34`, `Community 37`, `Community 38`, `Community 39`, `Community 53`, `Community 54`, `Community 65`, `Community 66`, `Community 67`, `Community 68`, `Community 69`, `Community 70`, `Community 71`, `Community 87`?**
   _High betweenness centrality (0.058) - this node is a cross-community bridge._
 - **Why does `Ken Beauty Salon - Comprehensive Improvement Plan` connect `Community 5` to `Community 2`, `Community 7`, `Community 12`, `Community 13`, `Community 14`, `Community 62`?**
   _High betweenness centrality (0.035) - this node is a cross-community bridge._
 - **Why does `Component Development Patterns Guide` connect `Community 0` to `Community 9`, `Community 11`, `Community 17`, `Community 6`?**
   _High betweenness centrality (0.020) - this node is a cross-community bridge._
 - **What connects `extends`, `@/*`, `enable` to the rest of the system?**
-  _433 weakly-connected nodes found - possible documentation gaps or missing edges._
+  _434 weakly-connected nodes found - possible documentation gaps or missing edges._
 - **Should `Community 0` be split into smaller, more focused modules?**
   _Cohesion score 0.0425531914893617 - nodes in this community are weakly interconnected._
 - **Should `Community 1` be split into smaller, more focused modules?**

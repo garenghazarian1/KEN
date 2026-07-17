@@ -592,25 +592,30 @@
 
 /* Responsive Design */
 
-/* ~660px and below: smaller hero text so it doesn't overflow */
+/* ~660px and below: compact title/subtitle — CTA stays the focus */
 @media (max-width: 660px) {
   .mainTitle {
-    font-size: clamp(1rem, 5vw + 0.4rem, 1.875rem);
+    font-size: clamp(0.95rem, 4vw + 0.35rem, 1.5rem);
+    line-height: 1.15;
   }
 
   .subtitle {
-    font-size: clamp(0.6rem, 2.6vw + 0.2rem, 0.9rem);
+    font-size: clamp(0.55rem, 2.2vw + 0.15rem, 0.8rem);
+    line-height: 1.25;
+    opacity: 0.88;
   }
 }
 
-/* 470px and below: even smaller so hero text fits on narrow screens */
+/* 470px and below: even tighter so Discover CTA leads */
 @media (max-width: 470px) {
   .mainTitle {
-    font-size: clamp(0.875rem, 5.5vw + 0.2rem, 1.25rem);
+    font-size: clamp(0.8rem, 4.5vw + 0.15rem, 1.1rem);
+    line-height: 1.1;
   }
 
   .subtitle {
-    font-size: clamp(0.55rem, 2.8vw + 0.1rem, 0.75rem);
+    font-size: clamp(0.5rem, 2.4vw + 0.08rem, 0.7rem);
+    line-height: 1.2;
   }
 }
 
@@ -634,22 +639,35 @@
   }
 }
 
+/* Desktop / tablet landscape: lift CTA into the video lower third */
+@media (min-width: 769px) {
+  .heroSection {
+    padding-bottom: clamp(5rem, 12vh, 9rem);
+  }
+
+  .heroContent {
+    padding-bottom: var(--spacing-4);
+  }
+}
+
 /* Tablets (768px and below) */
 @media (max-width: 768px) {
   /* Cancel layout top padding on mobile so hero goes edge-to-edge under the nav */
   .heroSection {
+    /* dvh = visible viewport; 100vh overshoots on mobile and tucks CTA under the nav */
+    height: 100vh;
+    height: 100dvh;
     margin-top: calc(
       -1 * (3.5rem + var(--spacing-2) + env(safe-area-inset-top, 0px))
     );
-    /* Keep title, subtitle and buttons above the fixed bottom navbar */
-    padding-bottom: calc(
-      3.5rem + var(--spacing-2) + env(safe-area-inset-bottom, 0px)
-    );
+    /* Same token as MobileNavBottom — flush above the tab bar */
+    padding-bottom: var(--mobile-nav-bottom-height);
   }
 
+  /* Flush under MobileNavTop: 44px controls + vertical padding + safe area */
   .careersBanner {
     top: calc(
-      var(--app-banner-height) + 3.5rem + var(--spacing-2) +
+      var(--app-banner-height) + 2.75rem + (2 * var(--spacing-2)) +
         env(safe-area-inset-top, 0px)
     );
     padding: var(--spacing-1) var(--spacing-3);
@@ -660,19 +678,26 @@
     font-size: var(--font-size-xs);
   }
 
+  /* No side/bottom inset — Discover bar goes edge-to-edge above bottom nav */
   .heroContent {
-    padding: var(--spacing-4);
+    max-width: none;
+    padding: var(--spacing-3) 0 0;
   }
 
   .contentWrapper {
-    gap: var(--spacing-4);
+    max-width: none;
+    width: 100%;
+    gap: var(--spacing-1);
   }
 
-  /* Hero .mainTitle and .subtitle use base + 660px/470px clamps above – no override here */
+  .mainTitle,
+  .subtitle {
+    padding: 0 var(--spacing-4);
+  }
 
   .ctaWrapper {
     width: 100%;
-    margin-top: var(--spacing-2);
+    margin-top: var(--spacing-3);
   }
 
   .ctaButtons {
@@ -680,7 +705,7 @@
     flex-wrap: nowrap;
     width: 100%;
     max-width: none;
-    gap: var(--spacing-3);
+    gap: 0;
   }
 
   .discoverLink,
@@ -690,6 +715,19 @@
     font-size: var(--font-size-lg);
     min-height: 3.5rem;
     padding: var(--spacing-4) var(--spacing-5);
+    border-radius: 0;
+  }
+
+  .discoverLink {
+    border-left: none;
+    border-right: none;
+    border-bottom: none;
+    box-shadow: none;
+  }
+
+  .discoverLink:hover {
+    transform: none;
+    box-shadow: none;
   }
 
   .secondaryButton {
@@ -745,6 +783,7 @@
     font-size: var(--font-size-base);
     min-height: 3.25rem;
     padding: var(--spacing-3) var(--spacing-4);
+    border-radius: 0;
   }
 
   .secondaryButton {

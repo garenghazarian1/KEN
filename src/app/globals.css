@@ -979,6 +979,13 @@ img {
 /* App Install Banner - Adjust layout when banner is visible */
 :root {
   --app-banner-height: 0px;
+  /*
+   * Mobile bottom tab bar (icon + label + bar padding).
+   * Keep in sync with MobileNavBottom — used by layout + hero clearance.
+   */
+  --mobile-nav-bottom-height: calc(
+    4.25rem + env(safe-area-inset-bottom, 0px)
+  );
 }
 
 body.app-banner-visible {

@@ -115,7 +115,7 @@
       "label": "nextConfig",
       "file_type": "code",
       "source_file": "next.config.mjs",
-      "source_location": "L2",
+      "source_location": "L3",
       "id": "ken_next_config_nextconfig",
       "community": 63,
       "norm_label": "nextconfig"
@@ -1573,16 +1573,34 @@
       "label": "getGoogleMapsUrl()",
       "file_type": "code",
       "source_file": "src/components/contact/ContactContent.jsx",
-      "source_location": "L16",
+      "source_location": "L18",
       "id": "contact_contactcontent_getgooglemapsurl",
       "community": 53,
       "norm_label": "getgooglemapsurl()"
     },
     {
+      "label": "shortLocationLabel()",
+      "file_type": "code",
+      "source_file": "src/components/contact/ContactContent.jsx",
+      "source_location": "L23",
+      "id": "contact_contactcontent_shortlocationlabel",
+      "community": 53,
+      "norm_label": "shortlocationlabel()"
+    },
+    {
+      "label": "fadeUp",
+      "file_type": "code",
+      "source_file": "src/components/contact/ContactContent.jsx",
+      "source_location": "L29",
+      "id": "contact_contactcontent_fadeup",
+      "community": 53,
+      "norm_label": "fadeup"
+    },
+    {
       "label": "ContactContent()",
       "file_type": "code",
       "source_file": "src/components/contact/ContactContent.jsx",
-      "source_location": "L21",
+      "source_location": "L38",
       "id": "contact_contactcontent_contactcontent",
       "community": 53,
       "norm_label": "contactcontent()"
@@ -2133,7 +2151,7 @@
       "source_file": "src/components/portfolio/aPageOne/PageOne.jsx",
       "source_location": "L1",
       "id": "src_components_portfolio_apageone_pageone_jsx",
-      "community": 20,
+      "community": 42,
       "norm_label": "pageone.jsx"
     },
     {
@@ -2142,7 +2160,7 @@
       "source_file": "src/components/portfolio/aPageOne/PageOne.jsx",
       "source_location": "L6",
       "id": "apageone_pageone_pageone",
-      "community": 20,
+      "community": 42,
       "norm_label": "pageone()"
     },
     {
@@ -2151,7 +2169,7 @@
       "source_file": "src/components/portfolio/bPageTwo/PageTwo.jsx",
       "source_location": "L1",
       "id": "src_components_portfolio_bpagetwo_pagetwo_jsx",
-      "community": 20,
+      "community": 44,
       "norm_label": "pagetwo.jsx"
     },
     {
@@ -2160,7 +2178,7 @@
       "source_file": "src/components/portfolio/bPageTwo/PageTwo.jsx",
       "source_location": "L5",
       "id": "bpagetwo_pagetwo_tocitems",
-      "community": 20,
+      "community": 44,
       "norm_label": "tocitems"
     },
     {
@@ -2169,7 +2187,7 @@
       "source_file": "src/components/portfolio/bPageTwo/PageTwo.jsx",
       "source_location": "L20",
       "id": "bpagetwo_pagetwo_pagetwo",
-      "community": 20,
+      "community": 44,
       "norm_label": "pagetwo()"
     },
     {
@@ -2196,7 +2214,7 @@
       "source_file": "src/components/portfolio/dPageFour/PageFour.jsx",
       "source_location": "L1",
       "id": "src_components_portfolio_dpagefour_pagefour_jsx",
-      "community": 65,
+      "community": 42,
       "norm_label": "pagefour.jsx"
     },
     {
@@ -2205,7 +2223,7 @@
       "source_file": "src/components/portfolio/dPageFour/PageFour.jsx",
       "source_location": "L6",
       "id": "dpagefour_pagefour_pagefour",
-      "community": 65,
+      "community": 42,
       "norm_label": "pagefour()"
     },
     {
@@ -2241,7 +2259,7 @@
       "source_file": "src/components/portfolio/fPageSix/PageSix.jsx",
       "source_location": "L1",
       "id": "src_components_portfolio_fpagesix_pagesix_jsx",
-      "community": 42,
+      "community": 66,
       "norm_label": "pagesix.jsx"
     },
     {
@@ -2250,7 +2268,7 @@
       "source_file": "src/components/portfolio/fPageSix/PageSix.jsx",
       "source_location": "L6",
       "id": "fpagesix_pagesix_sections",
-      "community": 42,
+      "community": 66,
       "norm_label": "sections"
     },
     {
@@ -2259,7 +2277,7 @@
       "source_file": "src/components/portfolio/fPageSix/PageSix.jsx",
       "source_location": "L17",
       "id": "fpagesix_pagesix_pagesix",
-      "community": 42,
+      "community": 66,
       "norm_label": "pagesix()"
     },
     {
@@ -2304,7 +2322,7 @@
       "source_file": "src/components/portfolio/iPageNine/PageNine.jsx",
       "source_location": "L1",
       "id": "src_components_portfolio_ipagenine_pagenine_jsx",
-      "community": 70,
+      "community": 20,
       "norm_label": "pagenine.jsx"
     },
     {
@@ -2313,7 +2331,7 @@
       "source_file": "src/components/portfolio/iPageNine/PageNine.jsx",
       "source_location": "L6",
       "id": "ipagenine_pagenine_pagenine",
-      "community": 70,
+      "community": 20,
       "norm_label": "pagenine()"
     },
     {
@@ -2349,7 +2367,7 @@
       "source_file": "src/components/portfolio/kPageEleven/PageEleven.jsx",
       "source_location": "L1",
       "id": "src_components_portfolio_kpageeleven_pageeleven_jsx",
-      "community": 66,
+      "community": 42,
       "norm_label": "pageeleven.jsx"
     },
     {
@@ -2358,7 +2376,7 @@
       "source_file": "src/components/portfolio/kPageEleven/PageEleven.jsx",
       "source_location": "L6",
       "id": "kpageeleven_pageeleven_pageeleven",
-      "community": 66,
+      "community": 42,
       "norm_label": "pageeleven()"
     },
     {
@@ -2394,7 +2412,7 @@
       "source_file": "src/components/portfolio/mPageThirteen/PageThirteen.jsx",
       "source_location": "L1",
       "id": "src_components_portfolio_mpagethirteen_pagethirteen_jsx",
-      "community": 42,
+      "community": 65,
       "norm_label": "pagethirteen.jsx"
     },
     {
@@ -2403,7 +2421,7 @@
       "source_file": "src/components/portfolio/mPageThirteen/PageThirteen.jsx",
       "source_location": "L6",
       "id": "mpagethirteen_pagethirteen_pagethirteen",
-      "community": 42,
+      "community": 65,
       "norm_label": "pagethirteen()"
     },
     {
@@ -2412,7 +2430,7 @@
       "source_file": "src/components/portfolio/nPageFourteen/PageFourteen.jsx",
       "source_location": "L1",
       "id": "src_components_portfolio_npagefourteen_pagefourteen_jsx",
-      "community": 71,
+      "community": 42,
       "norm_label": "pagefourteen.jsx"
     },
     {
@@ -2421,7 +2439,7 @@
       "source_file": "src/components/portfolio/nPageFourteen/PageFourteen.jsx",
       "source_location": "L6",
       "id": "npagefourteen_pagefourteen_pagefourteen",
-      "community": 71,
+      "community": 42,
       "norm_label": "pagefourteen()"
     },
     {
@@ -2430,7 +2448,7 @@
       "source_file": "src/components/portfolio/oPageFifteen/PageFifteen.jsx",
       "source_location": "L1",
       "id": "src_components_portfolio_opagefifteen_pagefifteen_jsx",
-      "community": 42,
+      "community": 71,
       "norm_label": "pagefifteen.jsx"
     },
     {
@@ -2439,7 +2457,7 @@
       "source_file": "src/components/portfolio/oPageFifteen/PageFifteen.jsx",
       "source_location": "L6",
       "id": "opagefifteen_pagefifteen_pagefifteen",
-      "community": 42,
+      "community": 71,
       "norm_label": "pagefifteen()"
     },
     {
@@ -2448,7 +2466,7 @@
       "source_file": "src/components/portfolio/pPageSixteen/PageSixteen.jsx",
       "source_location": "L1",
       "id": "src_components_portfolio_ppagesixteen_pagesixteen_jsx",
-      "community": 42,
+      "community": 67,
       "norm_label": "pagesixteen.jsx"
     },
     {
@@ -2457,7 +2475,7 @@
       "source_file": "src/components/portfolio/pPageSixteen/PageSixteen.jsx",
       "source_location": "L6",
       "id": "ppagesixteen_pagesixteen_pagesixteen",
-      "community": 42,
+      "community": 67,
       "norm_label": "pagesixteen()"
     },
     {
@@ -2493,7 +2511,7 @@
       "source_file": "src/components/portfolio/rPageEighteen/PageEighteen.jsx",
       "source_location": "L1",
       "id": "src_components_portfolio_rpageeighteen_pageeighteen_jsx",
-      "community": 20,
+      "community": 42,
       "norm_label": "pageeighteen.jsx"
     },
     {
@@ -2502,7 +2520,7 @@
       "source_file": "src/components/portfolio/rPageEighteen/PageEighteen.jsx",
       "source_location": "L6",
       "id": "rpageeighteen_pageeighteen_pageeighteen",
-      "community": 20,
+      "community": 42,
       "norm_label": "pageeighteen()"
     },
     {
@@ -2538,7 +2556,7 @@
       "source_file": "src/components/portfolio/tPageTwenty/PageTwenty.jsx",
       "source_location": "L1",
       "id": "src_components_portfolio_tpagetwenty_pagetwenty_jsx",
-      "community": 73,
+      "community": 68,
       "norm_label": "pagetwenty.jsx"
     },
     {
@@ -2547,7 +2565,7 @@
       "source_file": "src/components/portfolio/tPageTwenty/PageTwenty.jsx",
       "source_location": "L6",
       "id": "tpagetwenty_pagetwenty_pagetwenty",
-      "community": 73,
+      "community": 68,
       "norm_label": "pagetwenty()"
     },
     {
@@ -2583,7 +2601,7 @@
       "source_file": "src/components/portfolio/uPageTwentyTwo/PageTwentyTwo.jsx",
       "source_location": "L1",
       "id": "src_components_portfolio_upagetwentytwo_pagetwentytwo_jsx",
-      "community": 44,
+      "community": 20,
       "norm_label": "pagetwentytwo.jsx"
     },
     {
@@ -2592,7 +2610,7 @@
       "source_file": "src/components/portfolio/uPageTwentyTwo/PageTwentyTwo.jsx",
       "source_location": "L6",
       "id": "upagetwentytwo_pagetwentytwo_pagetwentytwo",
-      "community": 44,
+      "community": 20,
       "norm_label": "pagetwentytwo()"
     },
     {
@@ -2628,7 +2646,7 @@
       "source_file": "src/components/portfolio/wPageTwentyFour/PageTwentyFour.jsx",
       "source_location": "L1",
       "id": "src_components_portfolio_wpagetwentyfour_pagetwentyfour_jsx",
-      "community": 74,
+      "community": 20,
       "norm_label": "pagetwentyfour.jsx"
     },
     {
@@ -2637,7 +2655,7 @@
       "source_file": "src/components/portfolio/wPageTwentyFour/PageTwentyFour.jsx",
       "source_location": "L6",
       "id": "wpagetwentyfour_pagetwentyfour_pagetwentyfour",
-      "community": 74,
+      "community": 20,
       "norm_label": "pagetwentyfour()"
     },
     {
@@ -2673,7 +2691,7 @@
       "source_file": "src/components/portfolio/yPageTwentySix/PageTwentySix.jsx",
       "source_location": "L1",
       "id": "src_components_portfolio_ypagetwentysix_pagetwentysix_jsx",
-      "community": 75,
+      "community": 20,
       "norm_label": "pagetwentysix.jsx"
     },
     {
@@ -2682,7 +2700,7 @@
       "source_file": "src/components/portfolio/yPageTwentySix/PageTwentySix.jsx",
       "source_location": "L6",
       "id": "ypagetwentysix_pagetwentysix_pagetwentysix",
-      "community": 75,
+      "community": 20,
       "norm_label": "pagetwentysix()"
     },
     {
@@ -2691,7 +2709,7 @@
       "source_file": "src/components/portfolio/zPageTwentySeven/PageTwentySeven.jsx",
       "source_location": "L1",
       "id": "src_components_portfolio_zpagetwentyseven_pagetwentyseven_jsx",
-      "community": 76,
+      "community": 70,
       "norm_label": "pagetwentyseven.jsx"
     },
     {
@@ -2700,7 +2718,7 @@
       "source_file": "src/components/portfolio/zPageTwentySeven/PageTwentySeven.jsx",
       "source_location": "L6",
       "id": "zpagetwentyseven_pagetwentyseven_pagetwentyseven",
-      "community": 76,
+      "community": 70,
       "norm_label": "pagetwentyseven()"
     },
     {
@@ -5733,7 +5751,7 @@
       "source_file": "oldMD/IMPROVEMENT_PLAN.md",
       "source_location": "L275",
       "id": "oldmd_improvement_plan_global_design_system",
-      "community": 62,
+      "community": 5,
       "norm_label": "global design system"
     },
     {
@@ -5742,7 +5760,7 @@
       "source_file": "oldMD/IMPROVEMENT_PLAN.md",
       "source_location": "L277",
       "id": "oldmd_improvement_plan_phase_1_color_system",
-      "community": 62,
+      "community": 5,
       "norm_label": "phase 1: color system"
     },
     {
@@ -5751,7 +5769,7 @@
       "source_file": "oldMD/IMPROVEMENT_PLAN.md",
       "source_location": "L279",
       "id": "oldmd_improvement_plan_current_color_variables_to_be_organized",
-      "community": 62,
+      "community": 5,
       "norm_label": "current color variables (to be organized)"
     },
     {
@@ -5760,7 +5778,7 @@
       "source_file": "oldMD/IMPROVEMENT_PLAN.md",
       "source_location": "L281",
       "id": "oldmd_improvement_plan_codeblock_1",
-      "community": 62,
+      "community": 5,
       "norm_label": "code:css (/* main theme */)"
     },
     {
@@ -5769,7 +5787,7 @@
       "source_file": "oldMD/IMPROVEMENT_PLAN.md",
       "source_location": "L332",
       "id": "oldmd_improvement_plan_proposed_organized_structure",
-      "community": 62,
+      "community": 5,
       "norm_label": "proposed organized structure"
     },
     {
@@ -5778,7 +5796,7 @@
       "source_file": "oldMD/IMPROVEMENT_PLAN.md",
       "source_location": "L334",
       "id": "oldmd_improvement_plan_codeblock_2",
-      "community": 62,
+      "community": 5,
       "norm_label": "code:css (:root {)"
     },
     {
@@ -5787,7 +5805,7 @@
       "source_file": "oldMD/IMPROVEMENT_PLAN.md",
       "source_location": "L497",
       "id": "oldmd_improvement_plan_phase_2_typography_utilities",
-      "community": 62,
+      "community": 5,
       "norm_label": "phase 2: typography utilities"
     },
     {
@@ -5796,7 +5814,7 @@
       "source_file": "oldMD/IMPROVEMENT_PLAN.md",
       "source_location": "L501",
       "id": "oldmd_improvement_plan_codeblock_3",
-      "community": 62,
+      "community": 5,
       "norm_label": "code:css (/* heading styles */)"
     },
     {
@@ -5805,7 +5823,7 @@
       "source_file": "oldMD/IMPROVEMENT_PLAN.md",
       "source_location": "L567",
       "id": "oldmd_improvement_plan_phase_3_spacing_utilities",
-      "community": 62,
+      "community": 5,
       "norm_label": "phase 3: spacing utilities"
     },
     {
@@ -5814,7 +5832,7 @@
       "source_file": "oldMD/IMPROVEMENT_PLAN.md",
       "source_location": "L569",
       "id": "oldmd_improvement_plan_codeblock_4",
-      "community": 62,
+      "community": 5,
       "norm_label": "code:css (/* margin utilities */)"
     },
     {
@@ -5823,7 +5841,7 @@
       "source_file": "oldMD/IMPROVEMENT_PLAN.md",
       "source_location": "L589",
       "id": "oldmd_improvement_plan_phase_4_responsive_mixins",
-      "community": 62,
+      "community": 5,
       "norm_label": "phase 4: responsive mixins"
     },
     {
@@ -5832,7 +5850,7 @@
       "source_file": "oldMD/IMPROVEMENT_PLAN.md",
       "source_location": "L591",
       "id": "oldmd_improvement_plan_codeblock_5",
-      "community": 62,
+      "community": 5,
       "norm_label": "code:css (/* mobile first approach */)"
     },
     {
@@ -6480,7 +6498,7 @@
       "source_file": "oldMD/IMPROVEMENT_PLAN.md",
       "source_location": "L1354",
       "id": "oldmd_improvement_plan_modern_redesign_priority_high",
-      "community": 5,
+      "community": 62,
       "norm_label": "modern redesign (priority: high) \ud83c\udfa8"
     },
     {
@@ -6489,7 +6507,7 @@
       "source_file": "oldMD/IMPROVEMENT_PLAN.md",
       "source_location": "L1356",
       "id": "oldmd_improvement_plan_overview",
-      "community": 5,
+      "community": 62,
       "norm_label": "overview"
     },
     {
@@ -6498,7 +6516,7 @@
       "source_file": "oldMD/IMPROVEMENT_PLAN.md",
       "source_location": "L1360",
       "id": "oldmd_improvement_plan_key_principles",
-      "community": 5,
+      "community": 62,
       "norm_label": "key principles"
     },
     {
@@ -6507,7 +6525,7 @@
       "source_file": "oldMD/IMPROVEMENT_PLAN.md",
       "source_location": "L1370",
       "id": "oldmd_improvement_plan_redesign_tasks",
-      "community": 5,
+      "community": 62,
       "norm_label": "redesign tasks"
     },
     {
@@ -6516,7 +6534,7 @@
       "source_file": "oldMD/IMPROVEMENT_PLAN.md",
       "source_location": "L1372",
       "id": "oldmd_improvement_plan_phase_1_setup_navbar_completed",
-      "community": 5,
+      "community": 62,
       "norm_label": "phase 1: setup & navbar \u2705 **completed**"
     },
     {
@@ -6525,7 +6543,7 @@
       "source_file": "oldMD/IMPROVEMENT_PLAN.md",
       "source_location": "L1381",
       "id": "oldmd_improvement_plan_phase_2_hero_section",
-      "community": 5,
+      "community": 62,
       "norm_label": "phase 2: hero section"
     },
     {
@@ -6534,7 +6552,7 @@
       "source_file": "oldMD/IMPROVEMENT_PLAN.md",
       "source_location": "L1389",
       "id": "oldmd_improvement_plan_phase_3_footer",
-      "community": 5,
+      "community": 62,
       "norm_label": "phase 3: footer"
     },
     {
@@ -6543,7 +6561,7 @@
       "source_file": "oldMD/IMPROVEMENT_PLAN.md",
       "source_location": "L1396",
       "id": "oldmd_improvement_plan_phase_4_portfolio_components",
-      "community": 5,
+      "community": 62,
       "norm_label": "phase 4: portfolio components"
     },
     {
@@ -6552,7 +6570,7 @@
       "source_file": "oldMD/IMPROVEMENT_PLAN.md",
       "source_location": "L1403",
       "id": "oldmd_improvement_plan_phase_5_contact_other_pages",
-      "community": 5,
+      "community": 62,
       "norm_label": "phase 5: contact & other pages"
     },
     {
@@ -6561,7 +6579,7 @@
       "source_file": "oldMD/IMPROVEMENT_PLAN.md",
       "source_location": "L1410",
       "id": "oldmd_improvement_plan_phase_6_final_polish",
-      "community": 5,
+      "community": 62,
       "norm_label": "phase 6: final polish"
     },
     {
@@ -6570,7 +6588,7 @@
       "source_file": "oldMD/IMPROVEMENT_PLAN.md",
       "source_location": "L1418",
       "id": "oldmd_improvement_plan_file_naming_convention",
-      "community": 5,
+      "community": 62,
       "norm_label": "file naming convention"
     },
     {
@@ -6579,7 +6597,7 @@
       "source_file": "oldMD/IMPROVEMENT_PLAN.md",
       "source_location": "L1424",
       "id": "oldmd_improvement_plan_migration_strategy",
-      "community": 5,
+      "community": 62,
       "norm_label": "migration strategy"
     },
     {
@@ -7298,9 +7316,9 @@
       "file_type": "code",
       "source_file": "src/config/constants.js",
       "source_location": "L152",
-      "id": "config_constants_navbar_logo_default_src",
       "community": 46,
-      "norm_label": "navbar_logo_default_src"
+      "norm_label": "navbar_logo_default_src",
+      "id": "config_constants_navbar_logo_default_src"
     },
     {
       "label": "SPECIAL_PERIOD_LOGO",
@@ -9441,11 +9459,31 @@
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "src/components/contact/ContactContent.jsx",
+      "source_location": "L29",
+      "weight": 1.0,
+      "source": "src_components_contact_contactcontent_jsx",
+      "target": "contact_contactcontent_fadeup",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "src/components/contact/ContactContent.jsx",
       "source_location": "L16",
       "weight": 1,
       "confidence_score": 1,
       "source": "src_components_contact_contactcontent_jsx",
       "target": "contact_contactcontent_getgooglemapsurl"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "src/components/contact/ContactContent.jsx",
+      "source_location": "L21",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "src_components_contact_contactcontent_jsx",
+      "target": "contact_contactcontent_shortlocationlabel"
     },
     {
       "relation": "contains",
@@ -11349,9 +11387,9 @@
       "source_file": "src/config/constants.js",
       "source_location": "L168",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "src_config_constants_js",
-      "target": "config_constants_metadata_favicon_icons",
-      "confidence_score": 1.0
+      "target": "config_constants_metadata_favicon_icons"
     },
     {
       "relation": "contains",
@@ -13778,9 +13816,9 @@
       "source_file": "docs/BRAND_ICONS.md",
       "source_location": "L1",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "docs_brand_icons_md",
-      "target": "docs_brand_icons_brand_logo_favicon_maintenance",
-      "confidence_score": 1.0
+      "target": "docs_brand_icons_brand_logo_favicon_maintenance"
     },
     {
       "relation": "contains",
@@ -13788,9 +13826,9 @@
       "source_file": "docs/BRAND_ICONS.md",
       "source_location": "L16",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "docs_brand_icons_brand_logo_favicon_maintenance",
-      "target": "docs_brand_icons_checklist_every_icon_change",
-      "confidence_score": 1.0
+      "target": "docs_brand_icons_checklist_every_icon_change"
     },
     {
       "relation": "contains",
@@ -13798,9 +13836,9 @@
       "source_file": "docs/BRAND_ICONS.md",
       "source_location": "L96",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "docs_brand_icons_brand_logo_favicon_maintenance",
-      "target": "docs_brand_icons_code_map",
-      "confidence_score": 1.0
+      "target": "docs_brand_icons_code_map"
     },
     {
       "relation": "contains",
@@ -13808,9 +13846,9 @@
       "source_file": "docs/BRAND_ICONS.md",
       "source_location": "L105",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "docs_brand_icons_brand_logo_favicon_maintenance",
-      "target": "docs_brand_icons_out_of_scope_unchanged_by_this_flow",
-      "confidence_score": 1.0
+      "target": "docs_brand_icons_out_of_scope_unchanged_by_this_flow"
     },
     {
       "relation": "contains",
@@ -13818,9 +13856,9 @@
       "source_file": "docs/BRAND_ICONS.md",
       "source_location": "L8",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "docs_brand_icons_brand_logo_favicon_maintenance",
-      "target": "docs_brand_icons_source_asset",
-      "confidence_score": 1.0
+      "target": "docs_brand_icons_source_asset"
     },
     {
       "relation": "contains",
@@ -13828,9 +13866,9 @@
       "source_file": "docs/BRAND_ICONS.md",
       "source_location": "L86",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "docs_brand_icons_brand_logo_favicon_maintenance",
-      "target": "docs_brand_icons_what_updates_automatically_vs_manually",
-      "confidence_score": 1.0
+      "target": "docs_brand_icons_what_updates_automatically_vs_manually"
     },
     {
       "relation": "contains",
@@ -13838,9 +13876,9 @@
       "source_file": "docs/BRAND_ICONS.md",
       "source_location": "L20",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "docs_brand_icons_checklist_every_icon_change",
-      "target": "docs_brand_icons_1_replace_the_master_image",
-      "confidence_score": 1.0
+      "target": "docs_brand_icons_1_replace_the_master_image"
     },
     {
       "relation": "contains",
@@ -13848,9 +13886,9 @@
       "source_file": "docs/BRAND_ICONS.md",
       "source_location": "L25",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "docs_brand_icons_checklist_every_icon_change",
-      "target": "docs_brand_icons_2_regenerate_all_icon_sizes",
-      "confidence_score": 1.0
+      "target": "docs_brand_icons_2_regenerate_all_icon_sizes"
     },
     {
       "relation": "contains",
@@ -13858,9 +13896,9 @@
       "source_file": "docs/BRAND_ICONS.md",
       "source_location": "L43",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "docs_brand_icons_checklist_every_icon_change",
-      "target": "docs_brand_icons_3_bump_cache_bust_revisions",
-      "confidence_score": 1.0
+      "target": "docs_brand_icons_3_bump_cache_bust_revisions"
     },
     {
       "relation": "contains",
@@ -13868,9 +13906,9 @@
       "source_file": "docs/BRAND_ICONS.md",
       "source_location": "L61",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "docs_brand_icons_checklist_every_icon_change",
-      "target": "docs_brand_icons_4_deploy",
-      "confidence_score": 1.0
+      "target": "docs_brand_icons_4_deploy"
     },
     {
       "relation": "contains",
@@ -13878,9 +13916,9 @@
       "source_file": "docs/BRAND_ICONS.md",
       "source_location": "L65",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "docs_brand_icons_checklist_every_icon_change",
-      "target": "docs_brand_icons_5_update_graphify",
-      "confidence_score": 1.0
+      "target": "docs_brand_icons_5_update_graphify"
     },
     {
       "relation": "contains",
@@ -13888,9 +13926,9 @@
       "source_file": "docs/BRAND_ICONS.md",
       "source_location": "L75",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "docs_brand_icons_checklist_every_icon_change",
-      "target": "docs_brand_icons_6_verify",
-      "confidence_score": 1.0
+      "target": "docs_brand_icons_6_verify"
     },
     {
       "relation": "contains",
@@ -13898,9 +13936,9 @@
       "source_file": "docs/BRAND_ICONS.md",
       "source_location": "L27",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "docs_brand_icons_2_regenerate_all_icon_sizes",
-      "target": "docs_brand_icons_codeblock_1",
-      "confidence_score": 1.0
+      "target": "docs_brand_icons_codeblock_1"
     },
     {
       "relation": "contains",
@@ -13908,9 +13946,9 @@
       "source_file": "docs/BRAND_ICONS.md",
       "source_location": "L69",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "docs_brand_icons_5_update_graphify",
-      "target": "docs_brand_icons_codeblock_2",
-      "confidence_score": 1.0
+      "target": "docs_brand_icons_codeblock_2"
     },
     {
       "relation": "contains",
@@ -13918,9 +13956,9 @@
       "source_file": "docs/BRAND_ICONS.md",
       "source_location": "L79",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "docs_brand_icons_6_verify",
-      "target": "docs_brand_icons_codeblock_3",
-      "confidence_score": 1.0
+      "target": "docs_brand_icons_codeblock_3"
     },
     {
       "relation": "contains",
@@ -16144,5 +16182,5 @@
     }
   ],
   "hyperedges": [],
-  "built_at_commit": "1c7c2ef37b41c1128c95adf2db2ba8e221388c50"
+  "built_at_commit": "f2444aa1c5d511dcd87e455c8b24024c902c74b1"
 }

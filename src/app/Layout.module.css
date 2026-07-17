@@ -45,8 +45,6 @@
     padding-top: calc(
       3.5rem + var(--spacing-2) + env(safe-area-inset-top, 0px)
     );
-    padding-bottom: calc(
-      3.5rem + var(--spacing-2) + env(safe-area-inset-bottom, 0px)
-    );
+    padding-bottom: var(--mobile-nav-bottom-height);
   }
 }

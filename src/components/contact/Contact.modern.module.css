@@ -1,241 +1,576 @@
-/* Clean minimal contact page */
+/* Contact — warm salon atmosphere, info-first, no double top padding */
 
 .page {
-  padding: calc(var(--app-banner-height) + 6rem) var(--spacing-4)
-    var(--spacing-12);
-  max-width: 1200px;
+  position: relative;
+  isolation: isolate;
+  /*
+   * Mobile: Layout.module.css already pads for the fixed top bar.
+   * Do NOT add another navbar-height here — that created the half-page gap.
+   */
+  padding: var(--spacing-3) 0 var(--spacing-8);
+  min-height: 60vh;
+  overflow-x: clip;
+  background: var(--color-bg-primary);
+}
+
+.atmosphere {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
+  background-image:
+    radial-gradient(
+      ellipse 80% 50% at 0% 0%,
+      var(--overlay-secondary-10) 0%,
+      transparent 55%
+    ),
+    radial-gradient(
+      ellipse 70% 45% at 100% 20%,
+      var(--overlay-primary-tint-40) 0%,
+      transparent 50%
+    ),
+    linear-gradient(
+      180deg,
+      var(--color-bg-secondary) 0%,
+      var(--color-bg-primary) 42%,
+      var(--color-bg-primary) 100%
+    );
+  opacity: 0.95;
+}
+
+.inner {
+  position: relative;
+  z-index: 1;
+  max-width: 980px;
   margin: 0 auto;
+  padding: 0 var(--spacing-4);
 }
 
 /* Header */
 .header {
   text-align: center;
-  margin-bottom: var(--spacing-12);
+  margin-bottom: var(--spacing-5);
+}
+
+.eyebrow {
+  display: inline-block;
+  margin: 0 0 var(--spacing-2);
+  font-family: var(--font-primary);
+  font-size: var(--font-size-xs);
+  font-weight: var(--font-weight-semibold);
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--color-secondary-dark);
 }
 
 .title {
-  font-size: clamp(2rem, 5vw, 3.5rem);
-  font-weight: 700;
+  margin: 0 0 var(--spacing-2);
+  font-family: var(--font-secondary);
+  font-size: clamp(1.75rem, 5.5vw, 2.75rem);
+  font-weight: 600;
+  line-height: 1.15;
   color: var(--color-text-primary);
-  margin-bottom: var(--spacing-2);
+  letter-spacing: -0.02em;
 }
 
 .subtitle {
-  font-size: var(--font-size-lg);
-  color: var(--color-text-secondary);
-}
-
-/* Careers CTA */
-.careersCta {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: var(--spacing-6);
-  flex-wrap: wrap;
-  max-width: 900px;
-  margin: 0 auto var(--spacing-12);
-  padding: var(--spacing-6) var(--spacing-8);
-  background: var(--color-bg-card);
-  border-radius: 16px;
-  box-shadow: 0 4px 20px var(--overlay-black-08);
-}
-
-.careersText {
-  flex: 1;
-  min-width: 240px;
-}
-
-.careersTitle {
-  font-size: var(--font-size-xl);
-  font-weight: 600;
-  color: var(--color-text-primary);
-  margin-bottom: var(--spacing-1);
-}
-
-.careersDescription {
+  margin: 0 auto;
+  max-width: 28rem;
   font-size: var(--font-size-sm);
+  line-height: 1.55;
   color: var(--color-text-secondary);
-  margin: 0;
 }
 
-.careersBtn {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  gap: var(--spacing-2);
-  padding: var(--spacing-3) var(--spacing-5);
-  background: var(--color-secondary);
-  color: var(--color-text-inverse);
-  border-radius: 10px;
-  font-size: var(--font-size-base);
-  font-weight: 600;
-  text-decoration: none;
-  transition: background 0.2s;
-  white-space: nowrap;
-}
-
-.careersBtn:hover {
-  background: var(--color-secondary-dark);
-}
-
-/* Locations Grid */
+/* Locations */
 .locations {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
-  gap: var(--spacing-8);
-  margin-bottom: var(--spacing-16);
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-4);
+  margin-bottom: var(--spacing-6);
 }
 
 .location {
-  background: var(--color-bg-card);
-  border-radius: 16px;
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+  padding: 0;
   overflow: hidden;
-  box-shadow: 0 4px 20px var(--overlay-black-08);
+  background: var(--glass-white-light);
+  backdrop-filter: blur(var(--glass-blur-xl)) saturate(1.15);
+  -webkit-backdrop-filter: blur(var(--glass-blur-xl)) saturate(1.15);
+  border-radius: var(--radius-xl);
+  border: 1px solid var(--glass-border-light);
+  box-shadow:
+    0 2px 12px var(--overlay-black-05),
+    inset 0 1px 0 var(--glass-border-light);
+  isolation: isolate;
+  transition:
+    transform 0.25s ease,
+    box-shadow 0.25s ease,
+    border-color 0.25s ease;
+}
+
+@media (hover: hover) {
+  .location:hover {
+    transform: translateY(-2px);
+    border-color: color-mix(in srgb, var(--color-secondary) 30%, transparent);
+    box-shadow:
+      0 8px 24px var(--overlay-black-08),
+      inset 0 1px 0 var(--glass-border-light);
+  }
+
+  .location:hover .locationImage {
+    transform: scale(1.03);
+  }
+}
+
+/* Short landscape strip — venues read better wide, not as tall side thumbs */
+.locationMedia {
+  position: relative;
+  width: 100%;
+  height: 4.5rem;
+  flex-shrink: 0;
+  overflow: hidden;
+  background: color-mix(
+    in srgb,
+    var(--color-bg-secondary) 60%,
+    transparent
+  );
+  isolation: isolate;
+}
+
+/* Mirror / glass light sweep — same language as services */
+.locationMedia::after {
+  content: "";
+  position: absolute;
+  top: -55%;
+  left: 0;
+  width: 42%;
+  height: 210%;
+  z-index: 2;
+  pointer-events: none;
+  transform: translateX(-165%) rotate(24deg);
+  background: linear-gradient(
+    90deg,
+    transparent 0%,
+    transparent 30%,
+    var(--overlay-white-06) 38%,
+    var(--overlay-white-40) 46%,
+    var(--color-primary-light) 50%,
+    var(--overlay-secondary-light-20) 54%,
+    var(--glass-border-gold-light) 58%,
+    var(--overlay-white-20) 64%,
+    transparent 74%,
+    transparent 100%
+  );
+  opacity: 0.9;
+  mix-blend-mode: soft-light;
+  filter: blur(0.35px);
+  animation: contactImageGlassSweep 5.4s ease-in-out infinite;
+  will-change: transform;
+}
+
+.location:nth-child(2) .locationMedia::after {
+  animation-delay: 1.2s;
+}
+
+@keyframes contactImageGlassSweep {
+  0%,
+  12% {
+    transform: translateX(-165%) rotate(24deg);
+  }
+
+  30% {
+    transform: translateX(-12%) rotate(24deg);
+  }
+
+  40%,
+  56% {
+    transform: translateX(-12%) rotate(24deg);
+  }
+
+  74% {
+    transform: translateX(165%) rotate(24deg);
+  }
+
+  86%,
+  100% {
+    transform: translateX(165%) rotate(24deg);
+  }
 }
 
 .locationImage {
   width: 100%;
-  height: 200px;
+  height: 100%;
   object-fit: cover;
+  object-position: center 40%;
+  display: block;
+  transition: transform 0.45s ease;
+}
+
+.locationIndex {
+  position: absolute;
+  left: 0.65rem;
+  bottom: 0.45rem;
+  z-index: 3;
+  font-family: var(--font-secondary);
+  font-size: 0.7rem;
+  font-weight: 600;
+  letter-spacing: 0.06em;
+  color: var(--color-text-inverse);
+  text-shadow: 0 1px 6px var(--overlay-black-50);
+  opacity: 0.95;
 }
 
 .locationInfo {
-  padding: var(--spacing-6);
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-2);
+  padding: var(--spacing-3) var(--spacing-3) var(--spacing-3);
 }
 
 .locationName {
-  font-size: var(--font-size-xl);
+  margin: 0;
+  font-family: var(--font-secondary);
+  font-size: clamp(1.1rem, 3vw, 1.35rem);
   font-weight: 600;
+  line-height: 1.2;
   color: var(--color-text-primary);
-  margin-bottom: var(--spacing-1);
 }
 
 .locationAddress {
-  font-size: var(--font-size-sm);
+  display: flex;
+  align-items: flex-start;
+  gap: 0.4rem;
+  margin: 0;
+  font-size: var(--font-size-xs);
+  line-height: 1.45;
   color: var(--color-text-secondary);
-  margin-bottom: var(--spacing-5);
 }
 
-/* Contact List */
-.contactList {
-  display: flex;
-  flex-direction: column;
-  gap: var(--spacing-3);
+.locationAddress svg {
+  flex-shrink: 0;
+  margin-top: 0.12rem;
+  color: var(--color-secondary);
 }
 
-.contactItem {
+.primaryActions {
   display: flex;
+  flex-wrap: wrap;
+  gap: 0.45rem;
+}
+
+.actionPrimary,
+.actionWhatsapp {
+  display: inline-flex;
   align-items: center;
-  gap: var(--spacing-3);
-  padding: var(--spacing-3) var(--spacing-4);
-  background: var(--color-bg-primary);
-  border-radius: 10px;
-  color: var(--color-text-primary);
+  gap: 0.4rem;
+  padding: 0.5rem 0.75rem;
+  border-radius: var(--radius-full);
+  font-size: var(--font-size-xs);
+  font-weight: var(--font-weight-semibold);
   text-decoration: none;
-  font-size: var(--font-size-sm);
-  transition: background 0.2s;
+  line-height: 1.2;
+  transition:
+    background 0.2s ease,
+    transform 0.2s ease;
 }
 
-.contactItem:hover {
-  background: var(--color-primary);
+.actionPrimary {
+  background: var(--color-bg-dark);
+  color: var(--color-text-inverse);
 }
 
-.contactItem.whatsapp {
+.actionPrimary:hover {
+  background: var(--color-secondary-dark);
+}
+
+.actionWhatsapp {
   background: var(--color-whatsapp);
   color: var(--color-text-inverse);
 }
 
-.contactItem.whatsapp:hover {
+.actionWhatsapp:hover {
   background: var(--color-whatsapp-hover);
 }
 
-/* Form Section */
+.secondaryActions {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.65rem 1rem;
+  padding-top: 0.15rem;
+  border-top: 1px solid var(--glass-border-light);
+  margin-top: 0.15rem;
+}
+
+.actionLink {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  font-size: var(--font-size-xs);
+  color: var(--color-text-secondary);
+  text-decoration: none;
+  transition: color 0.15s ease;
+}
+
+.actionLink:hover {
+  color: var(--color-secondary-dark);
+}
+
+/* Form */
 .formSection {
-  max-width: 600px;
-  margin: 0 auto;
-  background: var(--color-bg-card);
-  padding: var(--spacing-8);
-  border-radius: 16px;
-  box-shadow: 0 4px 20px var(--overlay-black-08);
+  margin-bottom: var(--spacing-5);
+  padding: var(--spacing-5) var(--spacing-4);
+  background: var(--glass-white-light);
+  backdrop-filter: blur(var(--glass-blur-xl)) saturate(1.15);
+  -webkit-backdrop-filter: blur(var(--glass-blur-xl)) saturate(1.15);
+  border-radius: var(--radius-xl);
+  border: 1px solid var(--glass-border-light);
+  box-shadow:
+    0 2px 12px var(--overlay-black-05),
+    inset 0 1px 0 var(--glass-border-light);
+  isolation: isolate;
+}
+
+.formIntro {
+  text-align: center;
+  margin-bottom: var(--spacing-4);
 }
 
 .formTitle {
-  font-size: var(--font-size-2xl);
+  margin: 0 0 var(--spacing-1);
+  font-family: var(--font-secondary);
+  font-size: clamp(1.25rem, 3vw, 1.6rem);
   font-weight: 600;
   color: var(--color-text-primary);
-  margin-bottom: var(--spacing-6);
-  text-align: center;
+}
+
+.formHint {
+  margin: 0;
+  font-size: var(--font-size-xs);
+  color: var(--color-text-secondary);
 }
 
 .form {
   display: flex;
   flex-direction: column;
-  gap: var(--spacing-4);
+  gap: var(--spacing-3);
+}
+
+.formRow {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: var(--spacing-3);
+}
+
+.field {
+  display: flex;
+  flex-direction: column;
+  gap: 0.35rem;
+}
+
+.fieldLabel {
+  font-size: var(--font-size-xs);
+  font-weight: var(--font-weight-semibold);
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  color: var(--color-text-secondary);
 }
 
 .input,
 .textarea {
   width: 100%;
-  padding: var(--spacing-4);
-  border: 1px solid var(--overlay-black-12);
-  border-radius: 10px;
-  font-size: var(--font-size-base);
-  background: var(--color-bg-primary);
+  padding: 0.75rem 0.9rem;
+  border: 1px solid var(--glass-border-medium);
+  border-radius: var(--radius-md);
+  font-size: var(--font-size-sm);
+  font-family: inherit;
+  background: var(--glass-white-medium);
+  backdrop-filter: blur(var(--glass-blur-sm));
+  -webkit-backdrop-filter: blur(var(--glass-blur-sm));
   color: var(--color-text-primary);
-  transition: border-color 0.2s;
+  transition:
+    border-color 0.15s ease,
+    box-shadow 0.15s ease;
 }
 
 .input:focus,
 .textarea:focus {
   outline: none;
   border-color: var(--color-secondary);
+  box-shadow: 0 0 0 3px var(--overlay-secondary-10);
 }
 
 .textarea {
   resize: vertical;
-  min-height: 120px;
+  min-height: 5.5rem;
 }
 
 .submitBtn {
-  display: flex;
+  display: inline-flex;
   align-items: center;
   justify-content: center;
   gap: var(--spacing-2);
-  padding: var(--spacing-4);
+  align-self: stretch;
+  margin-top: var(--spacing-1);
+  padding: 0.85rem 1.25rem;
   background: var(--color-secondary);
   color: var(--color-text-inverse);
   border: none;
-  border-radius: 10px;
-  font-size: var(--font-size-base);
-  font-weight: 600;
+  border-radius: var(--radius-full);
+  font-size: var(--font-size-sm);
+  font-weight: var(--font-weight-semibold);
   cursor: pointer;
-  transition: background 0.2s;
+  transition:
+    background 0.2s ease,
+    transform 0.2s ease;
 }
 
 .submitBtn:hover {
   background: var(--color-secondary-dark);
 }
 
-/* Mobile */
-@media (max-width: 640px) {
-  .page {
-    padding: calc(var(--app-banner-height) + 5rem) var(--spacing-4)
-      var(--spacing-8);
+.submitBtn:active {
+  transform: scale(0.98);
+}
+
+/* Careers */
+.careersCta {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--spacing-3);
+  flex-wrap: wrap;
+  padding: var(--spacing-4);
+  border-radius: var(--radius-xl);
+  background: linear-gradient(
+    135deg,
+    var(--color-bg-dark) 0%,
+    var(--color-secondary-dark) 100%
+  );
+  color: var(--color-text-inverse);
+  box-shadow: 0 12px 28px var(--overlay-black-08);
+}
+
+.careersText {
+  flex: 1;
+  min-width: 0;
+}
+
+.careersTitle {
+  margin: 0 0 0.2rem;
+  font-family: var(--font-secondary);
+  font-size: var(--font-size-lg);
+  font-weight: 600;
+  color: var(--color-text-inverse);
+}
+
+.careersDescription {
+  margin: 0;
+  font-size: var(--font-size-xs);
+  line-height: 1.45;
+  color: var(--color-text-inverse);
+  opacity: 0.85;
+}
+
+.careersBtn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.45rem;
+  padding: 0.65rem 1rem;
+  background: var(--color-bg-card);
+  color: var(--color-bg-dark);
+  border-radius: var(--radius-full);
+  font-size: var(--font-size-sm);
+  font-weight: var(--font-weight-semibold);
+  text-decoration: none;
+  white-space: nowrap;
+  transition:
+    transform 0.2s ease,
+    background 0.2s ease;
+}
+
+.careersBtn:hover {
+  transform: translateY(-1px);
+  background: var(--color-bg-secondary);
+}
+
+/* Tablet+ — two location columns */
+@media (min-width: 700px) {
+  .inner {
+    padding: 0 var(--spacing-6);
   }
 
   .locations {
-    grid-template-columns: 1fr;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: var(--spacing-4);
+  }
+
+  .locationMedia {
+    height: 5rem;
+  }
+
+  .locationInfo {
+    padding: var(--spacing-4);
+  }
+
+  .locationAddress {
+    font-size: var(--font-size-sm);
+  }
+
+  .actionPrimary,
+  .actionWhatsapp {
+    font-size: var(--font-size-sm);
+    padding: 0.55rem 0.85rem;
+  }
+
+  .formRow {
+    grid-template-columns: 1fr 1fr;
   }
 
   .formSection {
     padding: var(--spacing-6);
   }
 
+  .submitBtn {
+    align-self: flex-start;
+    min-width: 12rem;
+  }
+}
+
+/*
+ * Desktop only: clear the fixed desktop navbar.
+ * (Mobile clearance lives in Layout.module.css — do not duplicate.)
+ */
+@media (min-width: 769px) {
+  .page {
+    padding: calc(var(--app-banner-height) + 5.75rem) 0 var(--spacing-12);
+  }
+}
+
+@media (min-width: 900px) {
+  .locationMedia {
+    height: 5.5rem;
+  }
+}
+
+@media (max-width: 400px) {
+  .locationMedia {
+    height: 3.75rem;
+  }
+
+  .locationInfo {
+    padding: var(--spacing-2-5);
+  }
+
   .careersCta {
     flex-direction: column;
     align-items: stretch;
     text-align: center;
-    padding: var(--spacing-6);
   }
 
   .careersBtn {
