@@ -3,9 +3,10 @@ export const ASSISTANT_WELCOME = {
   title: "Ken Beauty Assistant",
   greeting:
     "Welcome to Ken Beauty Salon! I can help with services, prices, and our locations.",
-  namePrompt: "What's your name? (optional)",
+  namePrompt: "Your name (optional)",
   nameLabel: "Your name (optional)",
-  startLabel: "Start chat",
+  nameSaveLabel: "Save",
+  nameDismissLabel: "Dismiss name prompt",
   disclaimer:
     "AI assistant; spoken replies use an AI-generated voice. For bookings, payments, and account issues our team helps you directly on WhatsApp or by phone.",
 };

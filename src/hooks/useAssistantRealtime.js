@@ -128,6 +128,7 @@ export default function useAssistantRealtime(options) {
     if (audioElRef.current) {
       audioElRef.current.pause();
       audioElRef.current.srcObject = null;
+      audioElRef.current.remove();
       audioElRef.current = null;
     }
     activeRef.current = false;
@@ -372,7 +373,13 @@ export default function useAssistantRealtime(options) {
   );
 
   const start = useCallback(async () => {
-    if (activeRef.current || !voiceSupported()) return;
+    if (activeRef.current) return;
+    if (!voiceSupported()) {
+      optionsRef.current.onError?.(
+        "Voice isn’t supported in this browser. You can keep typing your question here."
+      );
+      return;
+    }
     activeRef.current = true;
     setStatusSafe("connecting");
 
@@ -403,8 +410,15 @@ export default function useAssistantRealtime(options) {
       const pc = new RTCPeerConnection();
       pcRef.current = pc;
 
-      const audioEl = new Audio();
+      // iOS Safari / WKWebView: remote WebRTC audio needs playsInline and a
+      // document-attached <audio> element; new Audio() alone often stays silent.
+      const audioEl = document.createElement("audio");
       audioEl.autoplay = true;
+      audioEl.playsInline = true;
+      audioEl.setAttribute("playsinline", "");
+      audioEl.setAttribute("webkit-playsinline", "");
+      audioEl.style.display = "none";
+      document.body.appendChild(audioEl);
       audioElRef.current = audioEl;
       pc.ontrack = (e) => {
         audioEl.srcObject = e.streams[0];

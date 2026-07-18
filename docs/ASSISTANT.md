@@ -1,10 +1,11 @@
 # Ken AI Assistant (Text + Voice)
 
-Last updated: 17 July 2026
+Last updated: 18 July 2026
 
-Catalog-grounded website assistant: floating widget, optional guest name, text +
-voice input, MongoDB transcript persistence, and hard escalation to WhatsApp /
-phone for everything controlled by the third-party booking system (Zenoti).
+Catalog-grounded website assistant: floating widget, optional guest name
+(dismissible strip on chat), text + voice input, MongoDB transcript
+persistence, and hard escalation to WhatsApp / phone for everything controlled
+by the third-party booking system (Zenoti).
 
 ## Environment variables
 
@@ -34,6 +35,7 @@ All three must also be set in Vercel project env vars before deploy.
 | Method | Path                              | Purpose                                                              |
 | ------ | --------------------------------- | -------------------------------------------------------------------- |
 | POST   | `/api/assistant/session`          | Start a **fresh** conversation (closes previous open one); no hydration |
+| PATCH  | `/api/assistant/session`          | Set optional `guestName` on an owned open conversation                 |
 | POST   | `/api/assistant/session/end`      | Close an owned conversation (`user_end` / `idle_timeout` / `panel_closed` / `connection_lost`) |
 | POST   | `/api/assistant/chat`             | JSON text or multipart audio → transcript → gate → **SSE reply**     |
 | POST   | `/api/assistant/handoff`          | Mark conversation `handed_off`; return WhatsApp/call CTAs            |
@@ -148,10 +150,19 @@ CTAs.
 - `src/components/AssistantWidget/` — launcher fixed bottom-left (WhatsApp
   button owns bottom-right), panel lazy-loaded via `next/dynamic` on first open.
 - Mounted once in `src/app/layout.jsx`.
-- Flow: welcome → optional name (skippable) → chat with quick chips
-  (services / locations / how to book / talk to the salon), text input, the
-  animated **Talk orb** for the live voice conversation, and session id in
-  localStorage (`ken-assistant-session`).
+- Flow: opening the panel starts a session immediately and shows chat (greeting
+  + quick chips). Optional name is a small dismissible strip above the
+  transcript — it never blocks chatting. Save updates `guestName` via PATCH;
+  dismiss persists in `localStorage` (`ken-assistant-name-dismissed`). Session
+  id lives in `localStorage` (`ken-assistant-session`).
+- The **Talk** orb is always shown in the composer (including App Store /
+  Play Store WebViews). If mic/WebRTC APIs are missing, tapping Talk shows a
+  clear in-panel message instead of hiding the control. Live voice still needs
+  native mic permission in WKWebView (`NSMicrophoneUsageDescription` + media
+  capture grant) — website changes alone cannot unlock that.
+- Talk orb CSS strips iOS default button chrome (`appearance: none`) so Safari
+  does not draw a square around the circle. Site `Permissions-Policy` allows
+  `microphone=(self)`.
 - Text and voice modes are exclusive. Sending typed text ends the live
   mic/WebRTC call before the text request starts; its response streams into a
   persistent text bubble and never plays audio. Closing the panel stops voice.
@@ -161,8 +172,8 @@ CTAs.
   appears at turn completion (with a listening placeholder while speaking),
   and assistant captions stream with the audio. A completed-transcript event
   and `response.done` both provide fallbacks when token deltas are unavailable.
-- After the two-stage inactivity goodbye the panel resets to the welcome step,
-  so the next open starts a brand-new conversation.
+- After the two-stage inactivity goodbye the panel resets the conversation,
+  so the next open starts a brand-new session.
 
 ## Tests
 
@@ -175,6 +186,9 @@ CTAs.
 
 ## Known limitations (v1)
 
+- App Store / Play Store WebViews: Talk is visible, but live voice only works
+  after the native shell grants microphone capture. Until then guests see an
+  in-panel message and can keep typing.
 - Rate limiter (`src/lib/assistant/rateLimit.js`) is in-memory per serverless
   instance — approximate on Vercel despite combined IP/session buckets. Move to
   a shared Redis-backed limiter before high-traffic promotion.
@@ -188,6 +202,9 @@ CTAs.
 
 ## History
 
+- **18 July 2026** — Talk button always visible (WebView no longer hides it);
+  iOS Safari square chrome fixed via `appearance: none`; Realtime playback uses
+  a DOM-attached `playsInline` audio element; `Permissions-Policy` allows mic.
 - **17 July 2026** — Address/directions answers now resolve deterministically
   from the Contact page's canonical `stores.js` data in both text and Realtime
   voice flows. Exact addresses are clickable Google Maps links and replies add

@@ -18,7 +18,8 @@ const nextConfig = {
         headers: [
           {
             key: "Permissions-Policy",
-            value: "unload=()",
+            // Explicit mic allow for Safari / embedded WebViews; unload stays blocked.
+            value: "microphone=(self), unload=()",
           },
         ],
       },

@@ -1,4 +1,5 @@
 import { NextResponse } from "next/server";
+import mongoose from "mongoose";
 import { getAssistantModels } from "@/lib/assistant/models";
 import { allowAssistantRequest } from "@/lib/assistant/rateLimit";
 import { normalizeSessionId } from "@/lib/assistant/validation";
@@ -84,6 +85,87 @@ export async function POST(request) {
     console.error("assistant/session error:", err);
     return NextResponse.json(
       { code: "SERVER_ERROR", message: "Could not start the conversation." },
+      { status: 500 }
+    );
+  }
+}
+
+/**
+ * PATCH /api/assistant/session
+ * Set optional guestName on an owned open conversation without restarting chat.
+ * Body: { conversationId, sessionId, guestName: string }
+ */
+export async function PATCH(request) {
+  let body;
+  try {
+    body = await request.json();
+  } catch {
+    return NextResponse.json(
+      { code: "BAD_REQUEST", message: "Invalid JSON body." },
+      { status: 400 }
+    );
+  }
+
+  const conversationId = String(body.conversationId || "");
+  const sessionId = normalizeSessionId(body.sessionId);
+  const guestName = normalizeGuestName(body.guestName);
+
+  if (!conversationId || !sessionId) {
+    return NextResponse.json(
+      { code: "BAD_REQUEST", message: "conversationId and sessionId are required." },
+      { status: 400 }
+    );
+  }
+  if (!mongoose.isValidObjectId(conversationId)) {
+    return NextResponse.json(
+      { code: "BAD_REQUEST", message: "Invalid conversationId." },
+      { status: 400 }
+    );
+  }
+  if (!guestName) {
+    return NextResponse.json(
+      { code: "BAD_REQUEST", message: "guestName is required." },
+      { status: 400 }
+    );
+  }
+
+  if (
+    !allowAssistantRequest(request, "session_name", sessionId, {
+      sessionLimit: 10,
+      ipLimit: 30,
+    })
+  ) {
+    return NextResponse.json(
+      { code: "RATE_LIMITED", message: "Too many requests. Please wait a moment." },
+      { status: 429 }
+    );
+  }
+
+  try {
+    const { AssistantConversation } = await getAssistantModels();
+    const conversation = await AssistantConversation.findOneAndUpdate(
+      {
+        _id: conversationId,
+        businessSlug: BUSINESS_SLUG,
+        sessionId,
+        status: { $in: ["open", "handed_off"] },
+      },
+      { $set: { guestName } },
+      { new: true }
+    );
+
+    if (!conversation) {
+      return NextResponse.json(
+        { code: "NOT_FOUND", message: "Conversation not found." },
+        { status: 404 }
+      );
+    }
+
+    return NextResponse.json({ guestName: conversation.guestName });
+  } catch (err) {
+    console.error("assistant/session PATCH error:", err);
+    return NextResponse.json(
+      { code: "SERVER_ERROR", message: "Could not update the name." },
       { status: 500 }
     );
   }

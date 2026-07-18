@@ -16,15 +16,41 @@ import {
   ASSISTANT_QUICK_CHIPS,
   ASSISTANT_WELCOME,
 } from "@/data/assistantUi";
-import { ASSISTANT_AVATAR_SRC } from "@/config/constants";
+import {
+  ASSISTANT_AVATAR_SRC,
+  isAndroidWebView,
+  isIOSWebView,
+} from "@/config/constants";
 import { linkifyToNodes } from "@/utils/linkifyText";
 import useAssistantRealtime, {
   voiceSupported as detectVoiceSupport,
 } from "@/hooks/useAssistantRealtime";
 import styles from "./AssistantWidget.module.css";
 
+const VOICE_UNSUPPORTED_IN_APP =
+  "Voice isn’t available in the app yet (microphone permission). You can keep typing your question here.";
+const VOICE_UNSUPPORTED_BROWSER =
+  "Voice isn’t supported in this browser. You can keep typing your question here.";
+
 const SESSION_KEY = "ken-assistant-session";
+const NAME_DISMISS_KEY = "ken-assistant-name-dismissed";
 let localMessageSequence = 0;
+
+function isNamePromptDismissed() {
+  try {
+    return localStorage.getItem(NAME_DISMISS_KEY) === "1";
+  } catch {
+    return false;
+  }
+}
+
+function persistNamePromptDismissed() {
+  try {
+    localStorage.setItem(NAME_DISMISS_KEY, "1");
+  } catch {
+    // ignore quota / private mode
+  }
+}
 
 function createClientMessage(role, content, extra = {}) {
   localMessageSequence += 1;
@@ -101,18 +127,17 @@ async function readAssistantSse(response, handlers) {
 }
 
 export default function AssistantPanel({ isOpen, onClose }) {
-  const [step, setStep] = useState("welcome"); // welcome | chat
   const [nameInput, setNameInput] = useState("");
+  const [showNamePrompt, setShowNamePrompt] = useState(false);
   const [conversationId, setConversationId] = useState(null);
   const [messages, setMessages] = useState([]);
   const [input, setInput] = useState("");
   const [sending, setSending] = useState(false);
-  const [voiceAvailable, setVoiceAvailable] = useState(true);
   const [error, setError] = useState(null);
 
   const sessionIdRef = useRef(null);
+  const conversationIdRef = useRef(null);
   const listRef = useRef(null);
-  const nameInputRef = useRef(null);
   const textInputRef = useRef(null);
 
   const requestInFlightRef = useRef(false);
@@ -123,8 +148,12 @@ export default function AssistantPanel({ isOpen, onClose }) {
 
   useEffect(() => {
     sessionIdRef.current = getSessionId();
-    setVoiceAvailable(detectVoiceSupport());
+    setShowNamePrompt(!isNamePromptDismissed());
   }, []);
+
+  useEffect(() => {
+    conversationIdRef.current = conversationId;
+  }, [conversationId]);
 
   useEffect(() => {
     listRef.current?.scrollTo({ top: listRef.current.scrollHeight, behavior: "smooth" });
@@ -133,18 +162,19 @@ export default function AssistantPanel({ isOpen, onClose }) {
   useEffect(() => {
     if (!isOpen) return;
     const frame = requestAnimationFrame(() => {
-      if (step === "welcome") nameInputRef.current?.focus();
-      else textInputRef.current?.focus();
+      textInputRef.current?.focus();
     });
     return () => cancelAnimationFrame(frame);
-  }, [isOpen, step]);
+  }, [isOpen, conversationId]);
 
-  const resetToWelcome = useCallback(() => {
-    setStep("welcome");
+  const resetConversation = useCallback(() => {
     setMessages([]);
     setConversationId(null);
+    conversationIdRef.current = null;
     setInput("");
     setError(null);
+    setNameInput("");
+    setShowNamePrompt(!isNamePromptDismissed());
     voiceUserBubblesRef.current = new Map();
     voiceAssistantBubblesRef.current = new Map();
   }, []);
@@ -252,7 +282,7 @@ export default function AssistantPanel({ isOpen, onClose }) {
       );
     },
     onAutoClosed: () => {
-      resetToWelcome();
+      resetConversation();
       onClose();
     },
     onEnded: () => {
@@ -293,36 +323,88 @@ export default function AssistantPanel({ isOpen, onClose }) {
       ending: "Ending…",
     }[voice.status] || "";
 
-  const startChat = async () => {
-    if (requestInFlightRef.current) return;
+  const ensureSession = useCallback(async () => {
+    if (requestInFlightRef.current || conversationIdRef.current) return;
+    if (!sessionIdRef.current) {
+      sessionIdRef.current = getSessionId();
+    }
     requestInFlightRef.current = true;
     setError(null);
-    setSending(true);
+    setMessages((prev) =>
+      prev.length === 0
+        ? [createClientMessage("assistant", ASSISTANT_WELCOME.greeting, { actions: [] })]
+        : prev
+    );
     try {
       const res = await fetch("/api/assistant/session", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({
           sessionId: sessionIdRef.current,
-          guestName: nameInput.trim() || undefined,
           path: window.location.pathname,
         }),
       });
       const data = await res.json();
       if (!res.ok) throw new Error(data.message || "Could not start the chat.");
 
+      conversationIdRef.current = data.conversationId;
       setConversationId(data.conversationId);
-      // Sessions always start fresh — greet, never hydrate old transcripts.
-      const hello = data.guestName
-        ? `Hi ${data.guestName}! ${ASSISTANT_WELCOME.greeting}`
-        : ASSISTANT_WELCOME.greeting;
-      setMessages([createClientMessage("assistant", hello, { actions: [] })]);
-      setStep("chat");
     } catch (err) {
       setError(err.message || "Could not start the chat. Please try again.");
+      setMessages([]);
     } finally {
       requestInFlightRef.current = false;
-      setSending(false);
+    }
+  }, []);
+
+  useEffect(() => {
+    if (!isOpen || conversationId) return;
+    ensureSession();
+  }, [isOpen, conversationId, ensureSession]);
+
+  const dismissNamePrompt = useCallback(() => {
+    setShowNamePrompt(false);
+    persistNamePromptDismissed();
+  }, []);
+
+  const saveGuestName = async () => {
+    const trimmed = nameInput.trim();
+    if (!trimmed) {
+      dismissNamePrompt();
+      return;
+    }
+    if (!conversationIdRef.current) return;
+
+    try {
+      const res = await fetch("/api/assistant/session", {
+        method: "PATCH",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          conversationId: conversationIdRef.current,
+          sessionId: sessionIdRef.current,
+          guestName: trimmed,
+        }),
+      });
+      const data = await res.json();
+      if (!res.ok) throw new Error(data.message || "Could not save your name.");
+
+      const saved = data.guestName || trimmed;
+      setMessages((prev) => {
+        if (prev.length === 0) return prev;
+        const [first, ...rest] = prev;
+        if (first.role !== "assistant") return prev;
+        return [
+          {
+            ...first,
+            content: `Hi ${saved}! ${ASSISTANT_WELCOME.greeting}`,
+          },
+          ...rest,
+        ];
+      });
+      setNameInput("");
+      dismissNamePrompt();
+    } catch (err) {
+      setError(err.message || "Could not save your name. Please try again.");
     }
   };
 
@@ -525,6 +607,14 @@ export default function AssistantPanel({ isOpen, onClose }) {
 
   const startVoice = () => {
     setError(null);
+    if (!detectVoiceSupport()) {
+      setError(
+        isIOSWebView() || isAndroidWebView()
+          ? VOICE_UNSUPPORTED_IN_APP
+          : VOICE_UNSUPPORTED_BROWSER
+      );
+      return;
+    }
     voiceUserBubblesRef.current = new Map();
     voiceAssistantBubblesRef.current = new Map();
     voice.start();
@@ -544,69 +634,6 @@ export default function AssistantPanel({ isOpen, onClose }) {
     if (voiceActiveRef.current) voice.stop("panel_closed");
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [isOpen]);
-
-  if (step === "welcome") {
-    return (
-      <div
-        className={styles.panel}
-        onKeyDown={(event) => event.key === "Escape" && closePanel()}
-      >
-        <header className={styles.header}>
-          <div className={styles.headerIdentity}>
-            <Image
-              src={ASSISTANT_AVATAR_SRC}
-              alt=""
-              width={36}
-              height={36}
-              className={styles.headerFace}
-            />
-            <span className={styles.headerTitle}>{ASSISTANT_WELCOME.title}</span>
-          </div>
-          <button
-            type="button"
-            className={styles.headerButton}
-            onClick={closePanel}
-            aria-label="Close assistant"
-            title="Close"
-          >
-            <X size={16} aria-hidden="true" />
-          </button>
-        </header>
-        <div className={styles.welcome}>
-          <p className={styles.welcomeText}>{ASSISTANT_WELCOME.greeting}</p>
-          <label className={styles.nameLabel} htmlFor="assistant-name">
-            {ASSISTANT_WELCOME.nameLabel}
-          </label>
-          <input
-            id="assistant-name"
-            ref={nameInputRef}
-            type="text"
-            className={styles.nameInput}
-            value={nameInput}
-            maxLength={80}
-            disabled={sending}
-            onChange={(e) => setNameInput(e.target.value)}
-            onKeyDown={(e) => e.key === "Enter" && startChat()}
-            placeholder={ASSISTANT_WELCOME.namePrompt}
-          />
-          <button
-            type="button"
-            className={styles.startButton}
-            onClick={startChat}
-            disabled={sending}
-          >
-            {sending ? "Starting…" : ASSISTANT_WELCOME.startLabel}
-          </button>
-          <p className={styles.disclaimer}>{ASSISTANT_WELCOME.disclaimer}</p>
-          {error && (
-            <p className={styles.error} role="alert">
-              {error}
-            </p>
-          )}
-        </div>
-      </div>
-    );
-  }
 
   return (
     <div
@@ -637,6 +664,50 @@ export default function AssistantPanel({ isOpen, onClose }) {
         </button>
         </div>
       </header>
+
+      {showNamePrompt && (
+        <div className={styles.namePrompt}>
+          <label className={styles.namePromptLabel} htmlFor="assistant-name">
+            {ASSISTANT_WELCOME.nameLabel}
+          </label>
+          <div className={styles.namePromptRow}>
+            <input
+              id="assistant-name"
+              type="text"
+              className={styles.namePromptInput}
+              value={nameInput}
+              maxLength={80}
+              disabled={!conversationId}
+              onChange={(e) => setNameInput(e.target.value)}
+              onKeyDown={(e) => {
+                if (e.key === "Enter") {
+                  e.preventDefault();
+                  saveGuestName();
+                }
+              }}
+              placeholder={ASSISTANT_WELCOME.namePrompt}
+              aria-label={ASSISTANT_WELCOME.nameLabel}
+            />
+            <button
+              type="button"
+              className={styles.namePromptSave}
+              onClick={saveGuestName}
+              disabled={!conversationId || !nameInput.trim()}
+            >
+              {ASSISTANT_WELCOME.nameSaveLabel}
+            </button>
+            <button
+              type="button"
+              className={styles.namePromptDismiss}
+              onClick={dismissNamePrompt}
+              aria-label={ASSISTANT_WELCOME.nameDismissLabel}
+              title={ASSISTANT_WELCOME.nameDismissLabel}
+            >
+              <X size={14} aria-hidden="true" />
+            </button>
+          </div>
+        </div>
+      )}
 
       <div
         className={styles.messages}
@@ -771,41 +842,39 @@ export default function AssistantPanel({ isOpen, onClose }) {
             sendText(input);
           }}
         >
-          {voiceAvailable && (
-            <button
-              type="button"
-              className={`${styles.voiceOrb} ${
-                voice.active ? styles.voiceOrbLive : ""
-              } ${voice.status === "speaking" ? styles.voiceOrbSpeaking : ""}`}
-              onClick={voice.active ? endVoice : startVoice}
-              disabled={voice.status === "connecting" || voice.status === "ending"}
-              aria-pressed={voice.active}
-              aria-label={
-                voice.active
-                  ? "End voice conversation"
-                  : "Start voice conversation"
-              }
-              title={
-                voice.active
-                  ? "End voice conversation"
-                  : "Start voice conversation"
-              }
-            >
-              <span className={styles.voiceAura} aria-hidden="true" />
-              <span className={styles.voiceBlob} aria-hidden="true">
-                <span className={styles.voiceBlobLayer} />
-                <span
-                  className={`${styles.voiceBlobLayer} ${styles.voiceBlobLayerTwo}`}
-                />
-                <span
-                  className={`${styles.voiceBlobLayer} ${styles.voiceBlobLayerThree}`}
-                />
-              </span>
-              <span className={styles.voiceLiveLabel} aria-hidden="true">
-                {voice.active ? "End" : "Talk"}
-              </span>
-            </button>
-          )}
+          <button
+            type="button"
+            className={`${styles.voiceOrb} ${
+              voice.active ? styles.voiceOrbLive : ""
+            } ${voice.status === "speaking" ? styles.voiceOrbSpeaking : ""}`}
+            onClick={voice.active ? endVoice : startVoice}
+            disabled={voice.status === "connecting" || voice.status === "ending"}
+            aria-pressed={voice.active}
+            aria-label={
+              voice.active
+                ? "End voice conversation"
+                : "Start voice conversation"
+            }
+            title={
+              voice.active
+                ? "End voice conversation"
+                : "Start voice conversation"
+            }
+          >
+            <span className={styles.voiceAura} aria-hidden="true" />
+            <span className={styles.voiceBlob} aria-hidden="true">
+              <span className={styles.voiceBlobLayer} />
+              <span
+                className={`${styles.voiceBlobLayer} ${styles.voiceBlobLayerTwo}`}
+              />
+              <span
+                className={`${styles.voiceBlobLayer} ${styles.voiceBlobLayerThree}`}
+              />
+            </span>
+            <span className={styles.voiceLiveLabel} aria-hidden="true">
+              {voice.active ? "End" : "Talk"}
+            </span>
+          </button>
           <input
             type="text"
             ref={textInputRef}
