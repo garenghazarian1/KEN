@@ -11,7 +11,6 @@ import {
   Coffee,
   CreditCard,
   Briefcase,
-  Scissors,
 } from "lucide-react";
 import {
   BOOKING_URL,
@@ -19,6 +18,7 @@ import {
   CAREERS_URL,
   NAVBAR_LOGO_DEFAULT_SRC,
 } from "@/config/constants";
+import ServicesMegaMenu from "./ServicesMegaMenu/ServicesMegaMenu";
 import styles from "./Navbar.modern.module.css";
 
 const navLinks = [
@@ -27,8 +27,7 @@ const navLinks = [
   { title: "About Us", path: "/about" },
   { title: "Contact", path: "/contact" },
   { title: "Gallery", path: "/gallery" },
-  { title: "Services", path: "/services" },
-  // { title: "Drinks", path: "/drinks" }, // Commented out - keeping only in footer
+  // Services uses ServicesMegaMenu (drill-down drawer) instead of a plain link
 ];
 
 export default function NavbarModern() {
@@ -101,6 +100,7 @@ export default function NavbarModern() {
               {link.title}
             </Link>
           ))}
+          <ServicesMegaMenu variant="desktop" />
         </div>
 
         {/* Drinks (icon only) + Book Now (icon + text) - Desktop */}
@@ -222,6 +222,13 @@ export default function NavbarModern() {
                 animate={{ opacity: 1, x: 0 }}
                 transition={{ delay: navLinks.length * 0.1 }}
               >
+                <ServicesMegaMenu variant="mobile" onNavigate={closeMenu} />
+              </motion.div>
+              <motion.div
+                initial={{ opacity: 0, x: -20 }}
+                animate={{ opacity: 1, x: 0 }}
+                transition={{ delay: (navLinks.length + 1) * 0.1 }}
+              >
                 <a
                   href={CARD_URL}
                   className={styles.mobileBookButton}
@@ -235,7 +242,7 @@ export default function NavbarModern() {
               <motion.div
                 initial={{ opacity: 0, x: -20 }}
                 animate={{ opacity: 1, x: 0 }}
-                transition={{ delay: (navLinks.length + 1) * 0.1 }}
+                transition={{ delay: (navLinks.length + 2) * 0.1 }}
               >
                 <Link
                   href="/drinks"

@@ -200,8 +200,8 @@
     "semantic_hash": ""
   },
   "C:\\Users\\garen\\Desktop\\01-WEB-DEV\\KenLight02\\ken\\src\\components\\hero\\Hero.modern.jsx": {
-    "mtime": 1783583335.250846,
-    "ast_hash": "7da3afee7ad0ea7c51538f72e85f769a",
+    "mtime": 1784485804.203775,
+    "ast_hash": "ff4c5cfd63f5df72135b50bcda315a6b",
     "semantic_hash": ""
   },
   "C:\\Users\\garen\\Desktop\\01-WEB-DEV\\KenLight02\\ken\\src\\components\\hooks\\useScrollTrigger.js": {
@@ -230,8 +230,8 @@
     "semantic_hash": ""
   },
   "C:\\Users\\garen\\Desktop\\01-WEB-DEV\\KenLight02\\ken\\src\\components\\loading\\navbar\\Navbar.modern.jsx": {
-    "mtime": 1783880576.157475,
-    "ast_hash": "d65e80153569532e8280fbea1f96869e",
+    "mtime": 1784493197.643129,
+    "ast_hash": "4b958d4e935e3854e6d8eea51c2aa05b",
     "semantic_hash": ""
   },
   "C:\\Users\\garen\\Desktop\\01-WEB-DEV\\KenLight02\\ken\\src\\components\\loading\\navbar\\HamburgerButton\\HamburgerButton.jsx": {
@@ -265,8 +265,8 @@
     "semantic_hash": ""
   },
   "C:\\Users\\garen\\Desktop\\01-WEB-DEV\\KenLight02\\ken\\src\\components\\mobileNav\\MobileNavTop.jsx": {
-    "mtime": 1783880576.157475,
-    "ast_hash": "c34ce823068b14a7dca04b8c4e027f01",
+    "mtime": 1784492793.7672987,
+    "ast_hash": "9610b4c838edf225c765ede26cb17a11",
     "semantic_hash": ""
   },
   "C:\\Users\\garen\\Desktop\\01-WEB-DEV\\KenLight02\\ken\\src\\components\\notFound\\NotFounded.jsx": {
@@ -1185,8 +1185,8 @@
     "semantic_hash": ""
   },
   "C:\\Users\\garen\\Desktop\\01-WEB-DEV\\KenLight02\\ken\\docs\\PUBLIC_API_INTEGRATION.md": {
-    "mtime": 1783880576.157475,
-    "ast_hash": "e35b93d1e08ad05917b735f2fb478726",
+    "mtime": 1784493896.4738512,
+    "ast_hash": "39ded42a4a8764eed1d18a66879b4138",
     "semantic_hash": ""
   },
   "C:\\Users\\garen\\Desktop\\01-WEB-DEV\\KenLight02\\ken\\scripts\\graphify-services-update.mjs": {
@@ -1275,8 +1275,8 @@
     "semantic_hash": ""
   },
   "C:\\Users\\garen\\Desktop\\01-WEB-DEV\\KenLight02\\ken\\src\\components\\AssistantWidget\\AssistantPanel.jsx": {
-    "mtime": 1784371966.7843118,
-    "ast_hash": "d620ae3fa6e16778f6bb93456f9bd0da",
+    "mtime": 1784455435.3032045,
+    "ast_hash": "855af79cc4d4c2cfeab21535d4b356db",
     "semantic_hash": ""
   },
   "C:\\Users\\garen\\Desktop\\01-WEB-DEV\\KenLight02\\ken\\src\\components\\AssistantWidget\\AssistantWidget.jsx": {
@@ -1285,13 +1285,13 @@
     "semantic_hash": ""
   },
   "C:\\Users\\garen\\Desktop\\01-WEB-DEV\\KenLight02\\ken\\src\\data\\assistantFaq.js": {
-    "mtime": 1784305703.3033369,
-    "ast_hash": "5dbf40a0be00d62708d9d155d3105ed2",
+    "mtime": 1784455423.9666266,
+    "ast_hash": "2fd38aa15a23f3226e0105c1b7311fdd",
     "semantic_hash": ""
   },
   "C:\\Users\\garen\\Desktop\\01-WEB-DEV\\KenLight02\\ken\\src\\data\\assistantUi.js": {
-    "mtime": 1784446252.5575404,
-    "ast_hash": "e1141aa714450d1191d6bbc1b8377dfd",
+    "mtime": 1784455409.8471768,
+    "ast_hash": "c81d00ed7bff967127142dde20aa5be3",
     "semantic_hash": ""
   },
   "C:\\Users\\garen\\Desktop\\01-WEB-DEV\\KenLight02\\ken\\src\\hooks\\useAssistantRealtime.js": {
@@ -1300,8 +1300,8 @@
     "semantic_hash": ""
   },
   "C:\\Users\\garen\\Desktop\\01-WEB-DEV\\KenLight02\\ken\\src\\lib\\assistant\\catalogContext.js": {
-    "mtime": 1784288825.1303203,
-    "ast_hash": "5779e3401b304513abc95b0517b9c974",
+    "mtime": 1784455411.983585,
+    "ast_hash": "b1463a13a4eb42c338a3ff2002156391",
     "semantic_hash": ""
   },
   "C:\\Users\\garen\\Desktop\\01-WEB-DEV\\KenLight02\\ken\\src\\lib\\assistant\\intentGate.js": {
@@ -1310,8 +1310,8 @@
     "semantic_hash": ""
   },
   "C:\\Users\\garen\\Desktop\\01-WEB-DEV\\KenLight02\\ken\\src\\lib\\assistant\\intentGate.test.js": {
-    "mtime": 1784305716.6993995,
-    "ast_hash": "e5b588c5438b4e83cca4df929100f4b2",
+    "mtime": 1784455428.5989783,
+    "ast_hash": "3caf769320e687355091e03f73c81be4",
     "semantic_hash": ""
   },
   "C:\\Users\\garen\\Desktop\\01-WEB-DEV\\KenLight02\\ken\\src\\lib\\assistant\\models.js": {
@@ -1355,8 +1355,8 @@
     "semantic_hash": ""
   },
   "C:\\Users\\garen\\Desktop\\01-WEB-DEV\\KenLight02\\ken\\docs\\ASSISTANT.md": {
-    "mtime": 1784445873.4169922,
-    "ast_hash": "6aaa2f3f2d12b4195a90728305657569",
+    "mtime": 1784455431.4650104,
+    "ast_hash": "40e1b208ba36d2dc3ba48ba6889d6c6a",
     "semantic_hash": ""
   },
   "C:\\Users\\garen\\Desktop\\01-WEB-DEV\\KenLight02\\ken\\public\\assistant\\ken-assistant-avatar.png": {
@@ -1412,6 +1412,16 @@
   "C:\\Users\\garen\\Desktop\\01-WEB-DEV\\KenLight02\\ken\\public\\favicon-for-app\\web-app-manifest-512x512-v3.png": {
     "mtime": 1784455138.8009405,
     "ast_hash": "7ffbfb8ac29563c5d99957995effe8a3",
+    "semantic_hash": ""
+  },
+  "C:\\Users\\garen\\Desktop\\01-WEB-DEV\\KenLight02\\ken\\src\\app\\api\\services\\catalog\\route.js": {
+    "mtime": 1784493888.5030797,
+    "ast_hash": "3b59f8697a22167af38c6931fc570bbd",
+    "semantic_hash": ""
+  },
+  "C:\\Users\\garen\\Desktop\\01-WEB-DEV\\KenLight02\\ken\\src\\components\\loading\\navbar\\ServicesMegaMenu\\ServicesMegaMenu.jsx": {
+    "mtime": 1784493890.7310991,
+    "ast_hash": "e4b6bcebded72746684b8be93248a707",
     "semantic_hash": ""
   }
 }

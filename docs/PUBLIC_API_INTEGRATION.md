@@ -1,6 +1,6 @@
 # Public API Integration (Admin System)
 
-Last updated: 12 July 2026
+Last updated: 19 July 2026
 
 This consumer app (kenbeautysalon.com) reads business data from the **Garen admin
 system** over its **read-only public HTTP API**. We do **not** connect to the admin
@@ -42,7 +42,21 @@ closures, contact.
 - `buildServiceSections(services)` — turns the flat list into
   category → subcategory → item sections for the UI, carrying media + price fields.
 
-Consumed by `src/app/(navPages)/services/page.jsx` → `src/components/serviceMenu/ServiceMenu.jsx`.
+Consumed by:
+
+- `src/app/(navPages)/services/page.jsx` → `src/components/serviceMenu/ServiceMenu.jsx`
+- `GET /api/services/catalog` (app route) → slim sections for
+  `src/components/loading/navbar/ServicesMegaMenu/ServicesMegaMenu.jsx`
+
+### Navbar services viewer (drill-down drawer)
+
+`Services` in the live top bar (`MobileNavTop`) opens a **full-height drill-down
+drawer** portaled to `document.body` (so the top bar’s `backdrop-filter` cannot
+trap it). Level 0 lists all categories; tapping a category shows subcategories
+(or services if none); tapping a subcategory lists services. Back / Escape step
+up a level. Rows deep-link to `/services?category=…&sub=…`. Catalog loads on
+first open via `/api/services/catalog` (includes first image URL per node).
+Rows show thumbs via Cloudinary transform + static category fallbacks.
 
 Category focus on the services page is persisted in the URL as `?category=<categoryId>`
 and open subcategory accordions as `?sub=<subId1,subId2>` (comma-separated, scoped to
