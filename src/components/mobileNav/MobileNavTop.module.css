@@ -1,4 +1,4 @@
-/* App-style top bar: logo + Book now. Site-wide standard nav. */
+/* App-style top bar: logo + quiet action links (unistyle with bottom nav). */
 
 .topBar {
   position: fixed;
@@ -43,46 +43,70 @@
 .navActions {
   display: flex;
   align-items: center;
-  gap: var(--spacing-2);
+  gap: var(--spacing-1);
 }
 
-/* Match desktop navbar Book Now button (Navbar.modern) */
-.bookButton {
+/* Match MobileNavBottom .link — quiet icon + label */
+.actionLink {
   display: flex;
+  flex-direction: column;
   align-items: center;
   justify-content: center;
-  gap: var(--spacing-2);
+  gap: var(--spacing-1);
   min-height: 44px;
   min-width: 44px;
-  padding: var(--spacing-2-5) var(--spacing-4);
-  font-size: var(--font-size-sm);
-  font-weight: var(--font-weight-semibold);
-  background-color: var(--glass-black-light);
-  color: var(--color-text-inverse);
-  border: 1px solid var(--glass-border-white-light);
-  border-radius: var(--radius-full);
+  padding: 0 var(--spacing-2);
+  font-size: var(--font-size-xs);
+  font-weight: var(--font-weight-medium);
+  line-height: 1;
+  color: var(--color-text-secondary);
   text-decoration: none;
-  backdrop-filter: blur(var(--glass-blur-xl));
-  -webkit-backdrop-filter: blur(var(--glass-blur-xl));
-  transition: all var(--transition-base) var(--ease-in-out);
-  box-shadow: 0 2px 8px var(--shadow-nav);
+  border-radius: var(--radius-md);
+  transition:
+    color var(--transition-base) var(--ease-in-out),
+    background-color var(--transition-base) var(--ease-in-out);
 }
 
-.bookButton:hover {
-  background-color: var(--glass-black-medium);
-  backdrop-filter: blur(var(--glass-blur-xl));
-  -webkit-backdrop-filter: blur(var(--glass-blur-xl));
-  border-color: var(--glass-border-white-medium);
-  color: var(--color-text-inverse);
-  transform: translateY(-2px);
-  box-shadow: 0 4px 12px var(--shadow-nav-hover);
+.actionLink:hover {
+  color: var(--color-text-primary);
+  background-color: var(--overlay-black-04);
 }
 
-.bookButton:active {
-  transform: translateY(0);
-}
-
-.bookButton:focus-visible {
+.actionLink:focus-visible {
   outline: 2px solid var(--color-accent-3);
   outline-offset: 2px;
+}
+
+.actionLink[aria-current="page"] {
+  color: var(--color-bg-dark);
+  font-weight: var(--font-weight-semibold);
+}
+
+.actionLink[aria-current="page"] .icon {
+  color: var(--color-bg-dark);
+}
+
+.icon {
+  flex-shrink: 0;
+  color: var(--color-text-secondary);
+  transition: color var(--transition-base) var(--ease-in-out);
+}
+
+.actionLink:hover .icon {
+  color: var(--color-text-primary);
+}
+
+.label {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  max-width: 100%;
+  line-height: 1;
+}
+
+/* Book — same layout as other actions (icon on top), no fill, a bit wider */
+.bookLink {
+  min-width: 4.5rem;
+  padding: 0 var(--spacing-3);
+  font-weight: var(--font-weight-semibold);
 }

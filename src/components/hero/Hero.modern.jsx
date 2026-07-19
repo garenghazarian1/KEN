@@ -3,8 +3,7 @@
 import Image from "next/image";
 import Link from "next/link";
 import { motion } from "framer-motion";
-import { ArrowRight, Briefcase } from "lucide-react";
-import { CAREERS_URL } from "@/config/constants";
+import { ArrowRight } from "lucide-react";
 import styles from "./Hero.modern.module.css";
 
 const HERO_VIDEO_SRC = "/hero-vid-01.mp4";
@@ -171,21 +170,6 @@ export default function HeroModern() {
         </div>
 
         <div className={styles.heroOverlay} />
-
-        <motion.aside
-          className={styles.careersBanner}
-          initial={{ opacity: 0, y: -8 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ delay: 0.3, duration: 0.5 }}
-          aria-label="Careers at Ken Beauty Salon"
-        >
-          <Briefcase size={14} aria-hidden className={styles.careersBannerIcon} />
-          <p className={styles.careersBannerText}>Are you looking for a job?</p>
-          <a href={CAREERS_URL} className={styles.careersBannerButton}>
-            <span>Apply here</span>
-            <ArrowRight size={14} aria-hidden />
-          </a>
-        </motion.aside>
 
         <div className={styles.heroContent}>
           <motion.div
