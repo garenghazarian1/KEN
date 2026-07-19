@@ -72,7 +72,7 @@ export default function CookieNotice() {
         <section className={styles.section}>
           <h2>Assistant Local Storage</h2>
           <p>
-            The Ken Beauty Assistant uses browser local storage rather than cookies to remember an
+            Ani (the Ken Beauty Assistant) uses browser local storage rather than cookies to remember an
             anonymous chat session identifier (
             <code>ken-assistant-session</code>) and whether you enabled spoken replies (
             <code>ken-assistant-speak</code>). You can remove these values by clearing this

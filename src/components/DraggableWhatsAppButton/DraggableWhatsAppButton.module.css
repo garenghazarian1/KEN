@@ -1,3 +1,6 @@
+/* Full-viewport drag bounds. Button is absolute inside this box so
+   Framer's dragConstraints={ref} can keep it on-screen (fixed+fixed breaks that). */
+
 .constraints {
   position: fixed;
   inset: 0;
@@ -6,11 +9,9 @@
 }
 
 .button {
-  position: fixed;
-  right: max(1.25rem, env(safe-area-inset-right, 0px));
-  bottom: calc(
-    var(--mobile-nav-bottom-height, 3.5rem) + var(--spacing-4)
-  );
+  position: absolute;
+  right: max(var(--spacing-5), env(safe-area-inset-right, 0px));
+  bottom: calc(var(--mobile-nav-bottom-height) + var(--spacing-4));
   display: flex;
   align-items: center;
   justify-content: center;
@@ -45,4 +46,3 @@
   flex-shrink: 0;
   pointer-events: none;
 }
-

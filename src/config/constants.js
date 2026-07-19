@@ -139,9 +139,9 @@ export const THIRD_PARTY = {
 /** Canonical Ken Salon brand mark (source of all generated icons). */
 export const BRAND_LOGO_SRC = "/salon-logo-2026.jpg";
 
-/** AI assistant face avatar (UAE woman portrait — AI look, no hijab). */
-export const ASSISTANT_AVATAR_SRC = "/assistant/ken-assistant-avatar.webp?v=2";
-export const ASSISTANT_AVATAR_FALLBACK_SRC = "/assistant/ken-assistant-avatar.png?v=2";
+/** AI assistant face avatar — Ani (beauty-center model portrait). */
+export const ASSISTANT_AVATAR_SRC = "/assistant/ken-assistant-avatar.webp?v=3";
+export const ASSISTANT_AVATAR_FALLBACK_SRC = "/assistant/ken-assistant-avatar.png?v=3";
 
 // Image URLs (for metadata, structured data, etc.)
 export const IMAGES = {

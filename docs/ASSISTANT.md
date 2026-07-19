@@ -1,11 +1,18 @@
-# Ken AI Assistant (Text + Voice)
+# Ken AI Assistant — Ani (Text + Voice)
 
-Last updated: 18 July 2026
+Last updated: 19 July 2026
 
-Catalog-grounded website assistant: floating widget, optional guest name
-(dismissible strip on chat), text + voice input, MongoDB transcript
-persistence, and hard escalation to WhatsApp / phone for everything controlled
-by the third-party booking system (Zenoti).
+Catalog-grounded website assistant **Ani**: floating widget with model-style
+avatar, optional guest name (dismissible strip on chat), text + voice input,
+MongoDB transcript persistence, and hard escalation to WhatsApp / phone for
+everything controlled by the third-party booking system (Zenoti).
+
+Persona display name and greeting live in `src/data/assistantUi.js`; system
+prompt identity is in `src/lib/assistant/prompt.js`. Avatar assets:
+`public/assistant/ken-assistant-avatar.webp` (+ `.png` fallback), paths in
+`src/config/constants.js`. On each page load, three marketing tips rotate
+above the launcher (`ASSISTANT_LAUNCHER_TIPS`, 3 s each, once per load)
+then stop; opening the chat ends the sequence early.
 
 ## Environment variables
 
@@ -149,6 +156,7 @@ CTAs.
 
 - `src/components/AssistantWidget/` — launcher fixed bottom-left (WhatsApp
   button owns bottom-right), panel lazy-loaded via `next/dynamic` on first open.
+  One-time tip bubble above the face button (3 marketing lines × 3 s).
 - Mounted once in `src/app/layout.jsx`.
 - Flow: opening the panel starts a session immediately and shows chat (greeting
   + quick chips). Optional name is a small dismissible strip above the

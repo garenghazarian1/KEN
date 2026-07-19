@@ -12,17 +12,301 @@
   display: flex;
   flex-direction: column;
   align-items: flex-start;
-  gap: 0.75rem;
+  gap: 0.875rem;
+}
+
+/* —— AI tip bubble —— */
+
+.launcherTip {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 0.35rem;
+  max-width: min(15.5rem, calc(100vw - 5.5rem));
+  margin: 0;
+  padding: 0.7rem 0.95rem 0.8rem;
+  border: 1px solid var(--glass-border-gold-light);
+  border-radius: var(--radius-xl);
+  background: var(--glass-white-medium);
+  color: var(--color-text-primary);
+  font-family: var(--font-primary);
+  font-size: var(--font-size-xs);
+  font-weight: var(--font-weight-medium);
+  line-height: 1.4;
+  letter-spacing: 0.015em;
+  text-align: start;
+  cursor: pointer;
+  appearance: none;
+  -webkit-appearance: none;
+  backdrop-filter: blur(var(--glass-blur-xl)) saturate(1.35);
+  -webkit-backdrop-filter: blur(var(--glass-blur-xl)) saturate(1.35);
+  box-shadow:
+    0 0.5rem 1.75rem color-mix(in srgb, var(--color-secondary) 28%, transparent),
+    0 0 0 1px var(--glass-border-white-medium) inset,
+    0 1px 0 var(--glass-border-white-light) inset;
+  animation: launcherTipIn 0.55s cubic-bezier(0.22, 1, 0.36, 1);
+  overflow: visible;
+  isolation: isolate;
+  transition:
+    opacity 0.38s ease,
+    transform 0.38s ease,
+    filter 0.38s ease,
+    border-color 0.2s ease,
+    box-shadow 0.2s ease;
+}
+
+.launcherTipExit {
+  opacity: 0;
+  transform: translateY(0.35rem) scale(0.97);
+  filter: blur(4px);
+  pointer-events: none;
+}
+
+/* Animated glass layers */
+.launcherTipGlass {
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  overflow: hidden;
+  pointer-events: none;
+  z-index: 0;
+}
+
+.launcherTipGlass::before {
+  content: "";
+  position: absolute;
+  inset: -40%;
+  background:
+    radial-gradient(
+      circle at 20% 30%,
+      color-mix(in srgb, var(--color-primary) 45%, transparent) 0%,
+      transparent 42%
+    ),
+    radial-gradient(
+      circle at 80% 70%,
+      color-mix(in srgb, var(--color-accent-1) 38%, transparent) 0%,
+      transparent 46%
+    ),
+    radial-gradient(
+      circle at 50% 100%,
+      color-mix(in srgb, var(--color-secondary) 28%, transparent) 0%,
+      transparent 50%
+    );
+  animation: launcherTipGlassDrift 7s ease-in-out infinite;
+  opacity: 0.85;
+}
+
+.launcherTipGlass::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    115deg,
+    transparent 0%,
+    var(--glass-white-strong) 38%,
+    color-mix(in srgb, var(--color-primary-light) 35%, transparent) 50%,
+    transparent 72%
+  );
+  background-size: 240% 100%;
+  animation: launcherTipSheen 3.2s ease-in-out infinite;
+  opacity: 0.7;
+  mix-blend-mode: soft-light;
+}
+
+.launcherTip::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  background: linear-gradient(
+    160deg,
+    var(--glass-white-strong) 0%,
+    transparent 42%,
+    color-mix(in srgb, var(--color-primary) 22%, transparent) 100%
+  );
+  pointer-events: none;
+  z-index: 0;
+  opacity: 0.9;
+}
+
+.launcherTip::after {
+  content: "";
+  position: absolute;
+  left: 1.35rem;
+  bottom: -0.38rem;
+  width: 0.7rem;
+  height: 0.7rem;
+  background: var(--glass-white-medium);
+  backdrop-filter: blur(var(--glass-blur-md));
+  -webkit-backdrop-filter: blur(var(--glass-blur-md));
+  border-right: 1px solid var(--glass-border-gold-light);
+  border-bottom: 1px solid var(--glass-border-gold-light);
+  transform: rotate(45deg);
+  z-index: 0;
+  box-shadow: 0 0 0 1px var(--glass-border-white-light) inset;
+}
+
+.launcherTipBadge {
+  position: relative;
+  z-index: 1;
+  display: inline-block;
+  padding: 0.2rem 0.5rem;
+  border-radius: var(--radius-full);
+  background: color-mix(in srgb, var(--color-bg-dark) 78%, transparent);
+  backdrop-filter: blur(var(--glass-blur-sm));
+  -webkit-backdrop-filter: blur(var(--glass-blur-sm));
+  color: var(--color-text-inverse);
+  font-size: 0.625rem;
+  font-weight: var(--font-weight-semibold);
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  line-height: 1;
+  border: 1px solid var(--glass-border-white-medium);
+}
+
+.launcherTipText {
+  position: relative;
+  z-index: 1;
+  display: block;
+  min-height: 2.7em;
+  font-size: 0.8125rem;
+  font-weight: var(--font-weight-medium);
+  color: var(--color-text-primary);
+  text-shadow: 0 1px 0 var(--glass-border-white-light);
+}
+
+.launcherTipCursor {
+  display: inline-block;
+  width: 0.08em;
+  height: 1em;
+  margin-inline-start: 0.08em;
+  vertical-align: -0.12em;
+  background: color-mix(in srgb, var(--color-accent-1) 85%, var(--color-text-primary));
+  border-radius: 1px;
+  box-shadow: 0 0 0.45rem color-mix(in srgb, var(--color-accent-1) 55%, transparent);
+  animation: launcherTipCursorBlink 0.85s step-end infinite;
+}
+
+.launcherTip:hover {
+  border-color: var(--glass-border-gold-medium);
+  box-shadow:
+    0 0.65rem 2rem color-mix(in srgb, var(--color-secondary) 36%, transparent),
+    0 0 0 1px var(--glass-border-white-medium) inset;
+  transform: translateY(-1px);
+}
+
+.launcherTip:focus-visible {
+  outline: 2px solid var(--color-accent-1);
+  outline-offset: 3px;
+}
+
+@keyframes launcherTipIn {
+  from {
+    opacity: 0;
+    transform: translateY(0.45rem) scale(0.96);
+    filter: blur(6px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+    filter: blur(0);
+  }
+}
+
+@keyframes launcherTipSheen {
+  0%,
+  100% {
+    background-position: 130% 0;
+  }
+  50% {
+    background-position: -30% 0;
+  }
+}
+
+@keyframes launcherTipGlassDrift {
+  0%,
+  100% {
+    transform: translate(0, 0) rotate(0deg) scale(1);
+  }
+  33% {
+    transform: translate(6%, -4%) rotate(4deg) scale(1.06);
+  }
+  66% {
+    transform: translate(-5%, 5%) rotate(-3deg) scale(1.03);
+  }
+}
+
+@keyframes launcherTipCursorBlink {
+  0%,
+  100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0;
+  }
+}
+
+/* —— AI launcher orb —— */
+
+.launcherShell {
+  position: relative;
+  width: 3.75rem;
+  height: 3.75rem;
+  flex-shrink: 0;
+}
+
+.launcherGlow {
+  position: absolute;
+  inset: -0.55rem;
+  border-radius: var(--radius-full);
+  background: radial-gradient(
+    circle,
+    color-mix(in srgb, var(--color-accent-1) 45%, transparent) 0%,
+    color-mix(in srgb, var(--color-secondary) 18%, transparent) 48%,
+    transparent 72%
+  );
+  animation: launcherGlowPulse 3.2s ease-in-out infinite;
+  pointer-events: none;
+  z-index: 0;
+}
+
+.launcherRing {
+  position: absolute;
+  inset: -0.2rem;
+  border-radius: var(--radius-full);
+  background: conic-gradient(
+    from 210deg,
+    var(--color-primary-light),
+    var(--color-accent-1),
+    var(--color-secondary-dark),
+    var(--color-primary),
+    var(--color-accent-1),
+    var(--color-primary-light)
+  );
+  animation: launcherRingSpin 10s linear infinite;
+  pointer-events: none;
+  z-index: 1;
+  -webkit-mask: radial-gradient(farthest-side, transparent calc(100% - 2.5px), #000 calc(100% - 2px));
+  mask: radial-gradient(farthest-side, transparent calc(100% - 2.5px), #000 calc(100% - 2px));
+}
+
+.launcherShellOpen .launcherGlow,
+.launcherShellOpen .launcherRing {
+  animation: none;
+  opacity: 0.35;
 }
 
 .launcher {
+  position: relative;
+  z-index: 2;
   display: flex;
   align-items: center;
   justify-content: center;
-  width: 3.75rem;
-  height: 3.75rem;
+  width: 100%;
+  height: 100%;
   padding: 0;
-  border: 2px solid var(--color-bg-card);
+  border: 2px solid color-mix(in srgb, var(--color-bg-card) 90%, var(--color-accent-1));
   border-radius: var(--radius-full);
   background: var(--color-bg-dark);
   color: var(--color-text-inverse);
@@ -30,8 +314,10 @@
   overflow: hidden;
   appearance: none;
   -webkit-appearance: none;
-  box-shadow: 0 0.375rem 1.25rem var(--shadow-medium);
-  transition: transform 0.2s ease, box-shadow 0.2s ease;
+  box-shadow:
+    0 0.4rem 1.1rem color-mix(in srgb, var(--color-bg-dark) 45%, transparent),
+    0 0 0 0.2rem color-mix(in srgb, var(--color-bg-card) 55%, transparent);
+  transition: transform 0.25s ease, box-shadow 0.25s ease;
 }
 
 .launcherFace {
@@ -47,17 +333,41 @@
   justify-content: center;
   width: 100%;
   height: 100%;
-  background: var(--color-bg-dark);
+  background: linear-gradient(
+    145deg,
+    var(--color-bg-dark) 0%,
+    color-mix(in srgb, var(--color-secondary-dark) 70%, var(--color-bg-dark)) 100%
+  );
 }
 
 .launcher:hover {
-  transform: scale(1.06);
-  box-shadow: 0 0.5rem 1.5rem var(--shadow-heavy);
+  transform: scale(1.05);
+  box-shadow:
+    0 0.55rem 1.4rem color-mix(in srgb, var(--color-bg-dark) 50%, transparent),
+    0 0 0 0.25rem color-mix(in srgb, var(--color-accent-1) 28%, transparent);
 }
 
 .launcher:focus-visible {
   outline: 2px solid var(--color-accent-1);
-  outline-offset: 2px;
+  outline-offset: 4px;
+}
+
+@keyframes launcherGlowPulse {
+  0%,
+  100% {
+    opacity: 0.55;
+    transform: scale(0.96);
+  }
+  50% {
+    opacity: 1;
+    transform: scale(1.06);
+  }
+}
+
+@keyframes launcherRingSpin {
+  to {
+    transform: rotate(360deg);
+  }
 }
 
 .panelWrapper {
@@ -777,6 +1087,26 @@
 }
 
 @media (prefers-reduced-motion: reduce) {
+  .launcherTip,
+  .launcherTip::before,
+  .launcherTipGlass::before,
+  .launcherTipGlass::after,
+  .launcherTipCursor,
+  .launcherGlow,
+  .launcherRing {
+    animation: none;
+  }
+
+  .launcherTip {
+    transition: none;
+  }
+
+  .launcherTipExit {
+    opacity: 0;
+    filter: none;
+    transform: none;
+  }
+
   .voiceAura,
   .voiceBlob,
   .voiceBlobLayer,
