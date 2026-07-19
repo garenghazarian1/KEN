@@ -1,5 +1,10 @@
 import { describe, expect, it } from "vitest";
-import { detectEscalation, resolveLocationRequest } from "./intentGate.js";
+import {
+  detectEscalation,
+  matchFaqEntries,
+  resolveLocationRequest,
+} from "./intentGate.js";
+import { drinksMenu } from "@/data/drinks";
 
 describe("detectEscalation", () => {
   it("escalates booking-account credential help without a bare password keyword", () => {
@@ -11,6 +16,33 @@ describe("detectEscalation", () => {
     );
     expect(detectEscalation("My password is wrong")?.reason).toBe(
       "booking_account"
+    );
+  });
+});
+
+describe("matchFaqEntries", () => {
+  it("grounds drink questions from the drinks menu data", () => {
+    const entries = matchFaqEntries("What drinks do you have?");
+    expect(entries.some((e) => e.id === "drinks")).toBe(true);
+    const drinks = entries.find((e) => e.id === "drinks");
+    expect(drinks.answer).toContain("complimentary");
+    expect(drinks.answer).toContain(drinksMenu.hotDrinks[0]);
+    expect(drinks.answer).toContain("https://www.kenbeautysalon.com/drinks");
+  });
+
+  it("grounds founder / about questions with Vicken Ghazarian", () => {
+    const entries = matchFaqEntries("Who is the founder? Is it Ken or Viken?");
+    expect(entries.some((e) => e.id === "about_founder")).toBe(true);
+    const about = entries.find((e) => e.id === "about_founder");
+    expect(about.answer).toContain("Vicken Ghazarian");
+    expect(about.answer).toContain("https://www.kenbeautysalon.com/about");
+  });
+
+  it("grounds gallery questions with the gallery URL", () => {
+    const entries = matchFaqEntries("Do you have a photo gallery?");
+    expect(entries.some((e) => e.id === "gallery")).toBe(true);
+    expect(entries.find((e) => e.id === "gallery").answer).toContain(
+      "https://www.kenbeautysalon.com/gallery"
     );
   });
 });

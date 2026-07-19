@@ -157,14 +157,16 @@ export const NAVBAR_LOGO_DEFAULT_SRC = "/logo03.png";
 
 /**
  * Icon cache-bust revisions — bump all three together when replacing logos.
+ * Prefer renaming files (`*-vN`) when Google Search still shows a stale favicon;
+ * `?v=` alone is often ignored by Google's favicon cache.
  * Full checklist: docs/BRAND_ICONS.md (includes graphify update + deploy).
  */
 /** Bump when replacing tab / shortcut favicon assets so browsers refetch. */
-export const FAVICON_REVISION = 2;
+export const FAVICON_REVISION = 3;
 
-export const FAVICON_ICO_URL = `/favicon-for-app/favicon.ico?v=${FAVICON_REVISION}`;
-export const FAVICON_SVG_URL = `/favicon-for-app/favicon.svg?v=${FAVICON_REVISION}`;
-export const FAVICON_96_URL = `/favicon-for-app/favicon-96x96.png?v=${FAVICON_REVISION}`;
+export const FAVICON_ICO_URL = `/favicon-for-app/favicon-v3.ico?v=${FAVICON_REVISION}`;
+export const FAVICON_SVG_URL = `/favicon-for-app/favicon-v3.svg?v=${FAVICON_REVISION}`;
+export const FAVICON_96_URL = `/favicon-for-app/favicon-96x96-v3.png?v=${FAVICON_REVISION}`;
 /** Root fallback for crawlers and direct /favicon.ico requests. */
 export const FAVICON_ROOT_URL = `/favicon.ico?v=${FAVICON_REVISION}`;
 
@@ -175,21 +177,21 @@ export const METADATA_FAVICON_ICONS = [
   { url: FAVICON_96_URL, sizes: "96x96", type: "image/png" },
 ];
 
-/** Bump when replacing `public/favicon-for-app/apple-touch-icon.png` so clients refetch. */
-export const APPLE_TOUCH_ICON_REVISION = 2;
+/** Bump when replacing apple-touch icon under `public/favicon-for-app/`. */
+export const APPLE_TOUCH_ICON_REVISION = 3;
 
 /** Safari / iOS Add to Home Screen (`rel="apple-touch-icon"`). */
-export const APPLE_TOUCH_ICON_URL = `/favicon-for-app/apple-touch-icon.png?v=${APPLE_TOUCH_ICON_REVISION}`;
+export const APPLE_TOUCH_ICON_URL = `/favicon-for-app/apple-touch-icon-v3.png?v=${APPLE_TOUCH_ICON_REVISION}`;
 
 /** Bump when changing PWA manifest fields or launcher PNGs under `public/favicon-for-app/`. */
-export const WEB_APP_MANIFEST_REVISION = 2;
+export const WEB_APP_MANIFEST_REVISION = 3;
 
 /** Web app manifest for Chrome / Android install and launcher icons. */
-export const WEB_APP_MANIFEST_URL = `/favicon-for-app/site.webmanifest?v=${WEB_APP_MANIFEST_REVISION}`;
+export const WEB_APP_MANIFEST_URL = `/favicon-for-app/site-v3.webmanifest?v=${WEB_APP_MANIFEST_REVISION}`;
 
-/** PWA launcher PNG paths (keep in sync with site.webmanifest icon src). */
-export const PWA_ICON_192_URL = `/favicon-for-app/web-app-manifest-192x192.png?v=${WEB_APP_MANIFEST_REVISION}`;
-export const PWA_ICON_512_URL = `/favicon-for-app/web-app-manifest-512x512.png?v=${WEB_APP_MANIFEST_REVISION}`;
+/** PWA launcher PNG paths (keep in sync with site-v3.webmanifest icon src). */
+export const PWA_ICON_192_URL = `/favicon-for-app/web-app-manifest-192x192-v3.png?v=${WEB_APP_MANIFEST_REVISION}`;
+export const PWA_ICON_512_URL = `/favicon-for-app/web-app-manifest-512x512-v3.png?v=${WEB_APP_MANIFEST_REVISION}`;
 
 // Helper function to format phone number for tel: links
 // Removes spaces, dashes, parentheses, and other formatting

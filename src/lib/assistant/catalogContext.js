@@ -22,6 +22,10 @@ const CATALOG_TTL_MS = 10 * 60 * 1000;
 const OVERVIEW_RE =
   /\b(service|services|offer|offers|treatment|treatments|menu|what do you|catalog|price list|pricelist)\b/i;
 
+/** Drink questions should use FAQ grounding, not the service-catalog overview. */
+const DRINKS_QUERY_RE =
+  /\b(drink|drinks|beverage|beverages|coffee|tea|mojito|cappuccino|latte|espresso|juice)\b/i;
+
 const localeCaches = new Map();
 
 async function loadCatalog(locale) {
@@ -105,7 +109,7 @@ export async function buildCatalogContext(query, limit = 8) {
     const parts = [];
     const sources = [];
 
-    if (OVERVIEW_RE.test(query || "")) {
+    if (OVERVIEW_RE.test(query || "") && !DRINKS_QUERY_RE.test(query || "")) {
       const overview = formatCategoryOverview(sections);
       if (overview) {
         parts.push(overview);

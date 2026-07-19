@@ -6,20 +6,22 @@ Usage (from the ken/ directory):
     python scripts/generate-brand-icons.py
 
 Outputs (all overwritten in place):
-  public/favicon.ico                                  16+32+48 multi-size ICO
-  public/favicon-for-app/favicon.ico                  48x48 ICO
-  public/favicon-for-app/favicon-96x96.png
-  public/favicon-for-app/icon1.png                    96x96 (legacy duplicate)
-  public/favicon-for-app/apple-touch-icon.png         180x180
-  public/favicon-for-app/apple-icon.png               180x180 (kept in sync)
-  public/favicon-for-app/web-app-manifest-192x192.png
-  public/favicon-for-app/web-app-manifest-512x512.png
-  public/favicon-for-app/favicon.svg                  SVG wrapper embedding 512 PNG
-  public/favicon-for-app/icon0.svg                    same (legacy duplicate)
+  public/favicon.ico                                       16+32+48 multi-size ICO
+  public/favicon-for-app/favicon-v3.ico                    48x48 ICO
+  public/favicon-for-app/favicon-96x96-v3.png
+  public/favicon-for-app/icon1-v3.png                      96x96 (legacy duplicate)
+  public/favicon-for-app/apple-touch-icon-v3.png           180x180
+  public/favicon-for-app/apple-icon-v3.png                 180x180 (kept in sync)
+  public/favicon-for-app/web-app-manifest-192x192-v3.png
+  public/favicon-for-app/web-app-manifest-512x512-v3.png
+  public/favicon-for-app/favicon-v3.svg                    SVG wrapper embedding 512 PNG
+  public/favicon-for-app/icon0-v3.svg                      same (legacy duplicate)
 
 After replacing icons, bump in src/config/constants.js:
   FAVICON_REVISION, APPLE_TOUCH_ICON_REVISION, WEB_APP_MANIFEST_REVISION
-  and the matching ?v= on site.webmanifest / manifest.json icon src paths.
+  and the matching ?v= / *-vN filenames on site-v3.webmanifest / manifest-v3.json.
+  When Google Search still shows a stale favicon, rename files to a new *-vN stem
+  (not only bump ?v=) so crawlers fetch a brand-new URL.
 """
 
 import base64
@@ -79,15 +81,15 @@ def main() -> None:
     APP_DIR.mkdir(parents=True, exist_ok=True)
 
     save_ico(PUBLIC / "favicon.ico", [16, 32, 48])
-    save_ico(APP_DIR / "favicon.ico", [48])
-    save_png(APP_DIR / "favicon-96x96.png", 96)
-    save_png(APP_DIR / "icon1.png", 96)
-    save_png(APP_DIR / "apple-touch-icon.png", 180)
-    save_png(APP_DIR / "apple-icon.png", 180)
-    save_png(APP_DIR / "web-app-manifest-192x192.png", 192)
-    save_png(APP_DIR / "web-app-manifest-512x512.png", 512)
-    save_svg_wrapper(APP_DIR / "favicon.svg")
-    save_svg_wrapper(APP_DIR / "icon0.svg")
+    save_ico(APP_DIR / "favicon-v3.ico", [48])
+    save_png(APP_DIR / "favicon-96x96-v3.png", 96)
+    save_png(APP_DIR / "icon1-v3.png", 96)
+    save_png(APP_DIR / "apple-touch-icon-v3.png", 180)
+    save_png(APP_DIR / "apple-icon-v3.png", 180)
+    save_png(APP_DIR / "web-app-manifest-192x192-v3.png", 192)
+    save_png(APP_DIR / "web-app-manifest-512x512-v3.png", 512)
+    save_svg_wrapper(APP_DIR / "favicon-v3.svg")
+    save_svg_wrapper(APP_DIR / "icon0-v3.svg")
 
     print("done")
 

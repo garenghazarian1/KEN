@@ -157,10 +157,28 @@
       "norm_label": "private"
     },
     {
-      "label": "scripts",
+      "label": "engines",
       "file_type": "code",
       "source_file": "package.json",
       "source_location": "L5",
+      "id": "ken_package_engines",
+      "community": 8,
+      "norm_label": "engines"
+    },
+    {
+      "label": "node",
+      "file_type": "code",
+      "source_file": "package.json",
+      "source_location": "L6",
+      "id": "ken_package_engines_node",
+      "community": 8,
+      "norm_label": "node"
+    },
+    {
+      "label": "scripts",
+      "file_type": "code",
+      "source_file": "package.json",
+      "source_location": "L8",
       "id": "ken_package_scripts",
       "community": 8,
       "norm_label": "scripts"
@@ -169,7 +187,7 @@
       "label": "dev",
       "file_type": "code",
       "source_file": "package.json",
-      "source_location": "L6",
+      "source_location": "L9",
       "id": "ken_package_scripts_dev",
       "community": 8,
       "norm_label": "dev"
@@ -178,7 +196,7 @@
       "label": "build",
       "file_type": "code",
       "source_file": "package.json",
-      "source_location": "L7",
+      "source_location": "L10",
       "id": "ken_package_scripts_build",
       "community": 8,
       "norm_label": "build"
@@ -187,7 +205,7 @@
       "label": "start",
       "file_type": "code",
       "source_file": "package.json",
-      "source_location": "L8",
+      "source_location": "L11",
       "id": "ken_package_scripts_start",
       "community": 8,
       "norm_label": "start"
@@ -196,7 +214,7 @@
       "label": "lint",
       "file_type": "code",
       "source_file": "package.json",
-      "source_location": "L9",
+      "source_location": "L12",
       "id": "ken_package_scripts_lint",
       "community": 8,
       "norm_label": "lint"
@@ -205,7 +223,7 @@
       "label": "test:run",
       "file_type": "code",
       "source_file": "package.json",
-      "source_location": "L10",
+      "source_location": "L13",
       "id": "ken_package_scripts_test_run",
       "community": 8,
       "norm_label": "test:run"
@@ -214,7 +232,7 @@
       "label": "verify:head",
       "file_type": "code",
       "source_file": "package.json",
-      "source_location": "L11",
+      "source_location": "L14",
       "id": "ken_package_scripts_verify_head",
       "community": 8,
       "norm_label": "verify:head"
@@ -223,7 +241,7 @@
       "label": "dependencies",
       "file_type": "code",
       "source_file": "package.json",
-      "source_location": "L13",
+      "source_location": "L16",
       "id": "ken_package_dependencies",
       "community": 8,
       "norm_label": "dependencies"
@@ -232,7 +250,7 @@
       "label": "@vercel/analytics",
       "file_type": "code",
       "source_file": "package.json",
-      "source_location": "L14",
+      "source_location": "L17",
       "id": "ken_package_dependencies_vercel_analytics",
       "community": 8,
       "norm_label": "@vercel/analytics"
@@ -241,7 +259,7 @@
       "label": "framer-motion",
       "file_type": "code",
       "source_file": "package.json",
-      "source_location": "L15",
+      "source_location": "L18",
       "id": "ken_package_dependencies_framer_motion",
       "community": 8,
       "norm_label": "framer-motion"
@@ -250,7 +268,7 @@
       "label": "lucide-react",
       "file_type": "code",
       "source_file": "package.json",
-      "source_location": "L16",
+      "source_location": "L19",
       "id": "ken_package_dependencies_lucide_react",
       "community": 8,
       "norm_label": "lucide-react"
@@ -259,7 +277,7 @@
       "label": "minisearch",
       "file_type": "code",
       "source_file": "package.json",
-      "source_location": "L17",
+      "source_location": "L20",
       "id": "ken_package_dependencies_minisearch",
       "community": 8,
       "norm_label": "minisearch"
@@ -268,7 +286,7 @@
       "label": "mongoose",
       "file_type": "code",
       "source_file": "package.json",
-      "source_location": "L18",
+      "source_location": "L21",
       "id": "ken_package_dependencies_mongoose",
       "community": 8,
       "norm_label": "mongoose"
@@ -277,7 +295,7 @@
       "label": "next",
       "file_type": "code",
       "source_file": "package.json",
-      "source_location": "L19",
+      "source_location": "L22",
       "id": "ken_package_dependencies_next",
       "community": 8,
       "norm_label": "next"
@@ -286,7 +304,7 @@
       "label": "openai",
       "file_type": "code",
       "source_file": "package.json",
-      "source_location": "L20",
+      "source_location": "L23",
       "id": "ken_package_dependencies_openai",
       "community": 8,
       "norm_label": "openai"
@@ -295,7 +313,7 @@
       "label": "react",
       "file_type": "code",
       "source_file": "package.json",
-      "source_location": "L21",
+      "source_location": "L24",
       "id": "ken_package_dependencies_react",
       "community": 8,
       "norm_label": "react"
@@ -304,7 +322,7 @@
       "label": "react-dom",
       "file_type": "code",
       "source_file": "package.json",
-      "source_location": "L22",
+      "source_location": "L25",
       "id": "ken_package_dependencies_react_dom",
       "community": 8,
       "norm_label": "react-dom"
@@ -313,7 +331,7 @@
       "label": "react-icons",
       "file_type": "code",
       "source_file": "package.json",
-      "source_location": "L23",
+      "source_location": "L26",
       "id": "ken_package_dependencies_react_icons",
       "community": 8,
       "norm_label": "react-icons"
@@ -322,7 +340,7 @@
       "label": "swiper",
       "file_type": "code",
       "source_file": "package.json",
-      "source_location": "L24",
+      "source_location": "L27",
       "id": "ken_package_dependencies_swiper",
       "community": 8,
       "norm_label": "swiper"
@@ -331,7 +349,7 @@
       "label": "devDependencies",
       "file_type": "code",
       "source_file": "package.json",
-      "source_location": "L26",
+      "source_location": "L29",
       "id": "ken_package_devdependencies",
       "community": 8,
       "norm_label": "devdependencies"
@@ -340,7 +358,7 @@
       "label": "eslint",
       "file_type": "code",
       "source_file": "package.json",
-      "source_location": "L27",
+      "source_location": "L30",
       "id": "ken_package_devdependencies_eslint",
       "community": 8,
       "norm_label": "eslint"
@@ -349,7 +367,7 @@
       "label": "eslint-config-next",
       "file_type": "code",
       "source_file": "package.json",
-      "source_location": "L28",
+      "source_location": "L31",
       "id": "ken_package_devdependencies_eslint_config_next",
       "community": 8,
       "norm_label": "eslint-config-next"
@@ -358,7 +376,7 @@
       "label": "postcss",
       "file_type": "code",
       "source_file": "package.json",
-      "source_location": "L29",
+      "source_location": "L32",
       "id": "ken_package_devdependencies_postcss",
       "community": 8,
       "norm_label": "postcss"
@@ -367,7 +385,7 @@
       "label": "tailwindcss",
       "file_type": "code",
       "source_file": "package.json",
-      "source_location": "L30",
+      "source_location": "L33",
       "id": "ken_package_devdependencies_tailwindcss",
       "community": 8,
       "norm_label": "tailwindcss"
@@ -376,7 +394,7 @@
       "label": "vitest",
       "file_type": "code",
       "source_file": "package.json",
-      "source_location": "L31",
+      "source_location": "L34",
       "id": "ken_package_devdependencies_vitest",
       "community": 8,
       "norm_label": "vitest"
@@ -535,6 +553,123 @@
       "norm_label": "version"
     },
     {
+      "label": "manifest-v3.json",
+      "file_type": "code",
+      "source_file": "public/favicon-for-app/manifest-v3.json",
+      "source_location": "L1",
+      "id": "public_favicon_for_app_manifest_v3_json",
+      "community": 38,
+      "norm_label": "manifest-v3.json"
+    },
+    {
+      "label": "id",
+      "file_type": "code",
+      "source_file": "public/favicon-for-app/manifest-v3.json",
+      "source_location": "L2",
+      "id": "favicon_for_app_manifest_v3_id",
+      "community": 38,
+      "norm_label": "id"
+    },
+    {
+      "label": "name",
+      "file_type": "code",
+      "source_file": "public/favicon-for-app/manifest-v3.json",
+      "source_location": "L3",
+      "id": "favicon_for_app_manifest_v3_name",
+      "community": 38,
+      "norm_label": "name"
+    },
+    {
+      "label": "short_name",
+      "file_type": "code",
+      "source_file": "public/favicon-for-app/manifest-v3.json",
+      "source_location": "L4",
+      "id": "favicon_for_app_manifest_v3_short_name",
+      "community": 38,
+      "norm_label": "short_name"
+    },
+    {
+      "label": "description",
+      "file_type": "code",
+      "source_file": "public/favicon-for-app/manifest-v3.json",
+      "source_location": "L5",
+      "id": "favicon_for_app_manifest_v3_description",
+      "community": 38,
+      "norm_label": "description"
+    },
+    {
+      "label": "lang",
+      "file_type": "code",
+      "source_file": "public/favicon-for-app/manifest-v3.json",
+      "source_location": "L6",
+      "id": "favicon_for_app_manifest_v3_lang",
+      "community": 38,
+      "norm_label": "lang"
+    },
+    {
+      "label": "start_url",
+      "file_type": "code",
+      "source_file": "public/favicon-for-app/manifest-v3.json",
+      "source_location": "L7",
+      "id": "favicon_for_app_manifest_v3_start_url",
+      "community": 38,
+      "norm_label": "start_url"
+    },
+    {
+      "label": "scope",
+      "file_type": "code",
+      "source_file": "public/favicon-for-app/manifest-v3.json",
+      "source_location": "L8",
+      "id": "favicon_for_app_manifest_v3_scope",
+      "community": 38,
+      "norm_label": "scope"
+    },
+    {
+      "label": "display",
+      "file_type": "code",
+      "source_file": "public/favicon-for-app/manifest-v3.json",
+      "source_location": "L9",
+      "id": "favicon_for_app_manifest_v3_display",
+      "community": 38,
+      "norm_label": "display"
+    },
+    {
+      "label": "orientation",
+      "file_type": "code",
+      "source_file": "public/favicon-for-app/manifest-v3.json",
+      "source_location": "L10",
+      "id": "favicon_for_app_manifest_v3_orientation",
+      "community": 38,
+      "norm_label": "orientation"
+    },
+    {
+      "label": "icons",
+      "file_type": "code",
+      "source_file": "public/favicon-for-app/manifest-v3.json",
+      "source_location": "L11",
+      "id": "favicon_for_app_manifest_v3_icons",
+      "community": 38,
+      "norm_label": "icons"
+    },
+    {
+      "label": "theme_color",
+      "file_type": "code",
+      "source_file": "public/favicon-for-app/manifest-v3.json",
+      "source_location": "L25",
+      "id": "favicon_for_app_manifest_v3_theme_color",
+      "community": 38,
+      "norm_label": "theme_color"
+    },
+    {
+      "label": "background_color",
+      "file_type": "code",
+      "source_file": "public/favicon-for-app/manifest-v3.json",
+      "source_location": "L26",
+      "id": "favicon_for_app_manifest_v3_background_color",
+      "community": 38,
+      "norm_label": "background_color"
+    },
+    {
       "label": "manifest.json",
       "file_type": "code",
       "source_file": "public/favicon-for-app/manifest.json",
@@ -664,7 +799,7 @@
       "label": "build_square()",
       "file_type": "code",
       "source_file": "scripts/generate-brand-icons.py",
-      "source_location": "L41",
+      "source_location": "L43",
       "id": "scripts_generate_brand_icons_build_square",
       "community": 37,
       "norm_label": "build_square()"
@@ -673,7 +808,7 @@
       "label": "int",
       "file_type": "code",
       "source_file": "scripts/generate-brand-icons.py",
-      "source_location": "L41",
+      "source_location": "L43",
       "id": "int",
       "community": 37,
       "norm_label": "int"
@@ -682,7 +817,7 @@
       "label": "Image",
       "file_type": "code",
       "source_file": "scripts/generate-brand-icons.py",
-      "source_location": "L41",
+      "source_location": "L43",
       "id": "image",
       "community": 42,
       "norm_label": "image"
@@ -691,7 +826,7 @@
       "label": "save_png()",
       "file_type": "code",
       "source_file": "scripts/generate-brand-icons.py",
-      "source_location": "L51",
+      "source_location": "L53",
       "id": "scripts_generate_brand_icons_save_png",
       "community": 37,
       "norm_label": "save_png()"
@@ -700,7 +835,7 @@
       "label": "Path",
       "file_type": "code",
       "source_file": "scripts/generate-brand-icons.py",
-      "source_location": "L51",
+      "source_location": "L53",
       "id": "path",
       "community": 37,
       "norm_label": "path"
@@ -709,7 +844,7 @@
       "label": "save_ico()",
       "file_type": "code",
       "source_file": "scripts/generate-brand-icons.py",
-      "source_location": "L56",
+      "source_location": "L58",
       "id": "scripts_generate_brand_icons_save_ico",
       "community": 37,
       "norm_label": "save_ico()"
@@ -718,7 +853,7 @@
       "label": "save_svg_wrapper()",
       "file_type": "code",
       "source_file": "scripts/generate-brand-icons.py",
-      "source_location": "L62",
+      "source_location": "L64",
       "id": "scripts_generate_brand_icons_save_svg_wrapper",
       "community": 37,
       "norm_label": "save_svg_wrapper()"
@@ -727,7 +862,7 @@
       "label": "main()",
       "file_type": "code",
       "source_file": "scripts/generate-brand-icons.py",
-      "source_location": "L76",
+      "source_location": "L78",
       "id": "scripts_generate_brand_icons_main",
       "community": 37,
       "norm_label": "main()"
@@ -1384,7 +1519,7 @@
       "label": "normalizeGuestName()",
       "file_type": "code",
       "source_file": "src/app/api/assistant/session/route.js",
-      "source_location": "L9",
+      "source_location": "L10",
       "id": "session_route_normalizeguestname",
       "community": 40,
       "norm_label": "normalizeguestname()"
@@ -1393,10 +1528,19 @@
       "label": "POST()",
       "file_type": "code",
       "source_file": "src/app/api/assistant/session/route.js",
-      "source_location": "L26",
+      "source_location": "L27",
       "id": "src_app_api_assistant_session_route_js_session_route_post",
       "community": 40,
       "norm_label": "post()"
+    },
+    {
+      "label": "PATCH()",
+      "file_type": "code",
+      "source_file": "src/app/api/assistant/session/route.js",
+      "source_location": "L98",
+      "id": "session_route_patch",
+      "community": 40,
+      "norm_label": "patch()"
     },
     {
       "label": "route.js",
@@ -1840,10 +1984,28 @@
       "norm_label": "assistantpanel.jsx"
     },
     {
+      "label": "isNamePromptDismissed()",
+      "file_type": "code",
+      "source_file": "src/components/AssistantWidget/AssistantPanel.jsx",
+      "source_location": "L39",
+      "id": "assistantwidget_assistantpanel_isnamepromptdismissed",
+      "community": 69,
+      "norm_label": "isnamepromptdismissed()"
+    },
+    {
+      "label": "persistNamePromptDismissed()",
+      "file_type": "code",
+      "source_file": "src/components/AssistantWidget/AssistantPanel.jsx",
+      "source_location": "L47",
+      "id": "assistantwidget_assistantpanel_persistnamepromptdismissed",
+      "community": 69,
+      "norm_label": "persistnamepromptdismissed()"
+    },
+    {
       "label": "createClientMessage()",
       "file_type": "code",
       "source_file": "src/components/AssistantWidget/AssistantPanel.jsx",
-      "source_location": "L29",
+      "source_location": "L55",
       "id": "assistantwidget_assistantpanel_createclientmessage",
       "community": 69,
       "norm_label": "createclientmessage()"
@@ -1852,7 +2014,7 @@
       "label": "getSessionId()",
       "file_type": "code",
       "source_file": "src/components/AssistantWidget/AssistantPanel.jsx",
-      "source_location": "L40",
+      "source_location": "L66",
       "id": "assistantwidget_assistantpanel_getsessionid",
       "community": 69,
       "norm_label": "getsessionid()"
@@ -1861,7 +2023,7 @@
       "label": "actionIcon()",
       "file_type": "code",
       "source_file": "src/components/AssistantWidget/AssistantPanel.jsx",
-      "source_location": "L60",
+      "source_location": "L86",
       "id": "assistantwidget_assistantpanel_actionicon",
       "community": 69,
       "norm_label": "actionicon()"
@@ -1870,7 +2032,7 @@
       "label": "readAssistantSse()",
       "file_type": "code",
       "source_file": "src/components/AssistantWidget/AssistantPanel.jsx",
-      "source_location": "L67",
+      "source_location": "L93",
       "id": "assistantwidget_assistantpanel_readassistantsse",
       "community": 69,
       "norm_label": "readassistantsse()"
@@ -1879,7 +2041,7 @@
       "label": "AssistantPanel()",
       "file_type": "code",
       "source_file": "src/components/AssistantWidget/AssistantPanel.jsx",
-      "source_location": "L103",
+      "source_location": "L129",
       "id": "assistantwidget_assistantpanel_assistantpanel",
       "community": 69,
       "norm_label": "assistantpanel()"
@@ -1897,7 +2059,7 @@
       "label": "AssistantPanel",
       "file_type": "code",
       "source_file": "src/components/AssistantWidget/AssistantWidget.jsx",
-      "source_location": "L11",
+      "source_location": "L15",
       "id": "assistantwidget_assistantwidget_assistantpanel",
       "community": 94,
       "norm_label": "assistantpanel"
@@ -1906,7 +2068,7 @@
       "label": "AssistantWidget()",
       "file_type": "code",
       "source_file": "src/components/AssistantWidget/AssistantWidget.jsx",
-      "source_location": "L15",
+      "source_location": "L22",
       "id": "assistantwidget_assistantwidget_assistantwidget",
       "community": 94,
       "norm_label": "assistantwidget()"
@@ -2002,10 +2164,37 @@
       "norm_label": "draggablewhatsappbutton.jsx"
     },
     {
-      "label": "DraggableWhatsAppButton()",
+      "label": "readSavedPosition()",
       "file_type": "code",
       "source_file": "src/components/DraggableWhatsAppButton/DraggableWhatsAppButton.jsx",
       "source_location": "L12",
+      "id": "draggablewhatsappbutton_draggablewhatsappbutton_readsavedposition",
+      "community": 91,
+      "norm_label": "readsavedposition()"
+    },
+    {
+      "label": "persistPosition()",
+      "file_type": "code",
+      "source_file": "src/components/DraggableWhatsAppButton/DraggableWhatsAppButton.jsx",
+      "source_location": "L31",
+      "id": "draggablewhatsappbutton_draggablewhatsappbutton_persistposition",
+      "community": 91,
+      "norm_label": "persistposition()"
+    },
+    {
+      "label": "clampIntoConstraints()",
+      "file_type": "code",
+      "source_file": "src/components/DraggableWhatsAppButton/DraggableWhatsAppButton.jsx",
+      "source_location": "L43",
+      "id": "draggablewhatsappbutton_draggablewhatsappbutton_clampintoconstraints",
+      "community": 91,
+      "norm_label": "clampintoconstraints()"
+    },
+    {
+      "label": "DraggableWhatsAppButton()",
+      "file_type": "code",
+      "source_file": "src/components/DraggableWhatsAppButton/DraggableWhatsAppButton.jsx",
+      "source_location": "L58",
       "id": "draggablewhatsappbutton_draggablewhatsappbutton_draggablewhatsappbutton",
       "community": 91,
       "norm_label": "draggablewhatsappbutton()"
@@ -2574,7 +2763,7 @@
       "source_file": "src/components/portfolio/ePageFive/PageFive.jsx",
       "source_location": "L1",
       "id": "src_components_portfolio_epagefive_pagefive_jsx",
-      "community": 38,
+      "community": 42,
       "norm_label": "pagefive.jsx"
     },
     {
@@ -2583,7 +2772,7 @@
       "source_file": "src/components/portfolio/ePageFive/PageFive.jsx",
       "source_location": "L11",
       "id": "epagefive_pagefive_sections",
-      "community": 38,
+      "community": 42,
       "norm_label": "sections"
     },
     {
@@ -2592,7 +2781,7 @@
       "source_file": "src/components/portfolio/ePageFive/PageFive.jsx",
       "source_location": "L34",
       "id": "epagefive_pagefive_pagefive",
-      "community": 38,
+      "community": 42,
       "norm_label": "pagefive()"
     },
     {
@@ -2628,7 +2817,7 @@
       "source_file": "src/components/portfolio/gPageSeven/PageSeven.jsx",
       "source_location": "L1",
       "id": "src_components_portfolio_gpageseven_pageseven_jsx",
-      "community": 42,
+      "community": 20,
       "norm_label": "pageseven.jsx"
     },
     {
@@ -2637,7 +2826,7 @@
       "source_file": "src/components/portfolio/gPageSeven/PageSeven.jsx",
       "source_location": "L6",
       "id": "gpageseven_pageseven_pageseven",
-      "community": 42,
+      "community": 20,
       "norm_label": "pageseven()"
     },
     {
@@ -2898,7 +3087,7 @@
       "source_file": "src/components/portfolio/tPageTwenty/PageTwenty.jsx",
       "source_location": "L1",
       "id": "src_components_portfolio_tpagetwenty_pagetwenty_jsx",
-      "community": 42,
+      "community": 74,
       "norm_label": "pagetwenty.jsx"
     },
     {
@@ -2907,7 +3096,7 @@
       "source_file": "src/components/portfolio/tPageTwenty/PageTwenty.jsx",
       "source_location": "L6",
       "id": "tpagetwenty_pagetwenty_pagetwenty",
-      "community": 42,
+      "community": 74,
       "norm_label": "pagetwenty()"
     },
     {
@@ -2943,7 +3132,7 @@
       "source_file": "src/components/portfolio/uPageTwentyTwo/PageTwentyTwo.jsx",
       "source_location": "L1",
       "id": "src_components_portfolio_upagetwentytwo_pagetwentytwo_jsx",
-      "community": 20,
+      "community": 42,
       "norm_label": "pagetwentytwo.jsx"
     },
     {
@@ -2952,7 +3141,7 @@
       "source_file": "src/components/portfolio/uPageTwentyTwo/PageTwentyTwo.jsx",
       "source_location": "L6",
       "id": "upagetwentytwo_pagetwentytwo_pagetwentytwo",
-      "community": 20,
+      "community": 42,
       "norm_label": "pagetwentytwo()"
     },
     {
@@ -3346,7 +3535,7 @@
       "label": "METADATA_FAVICON_ICONS",
       "file_type": "code",
       "source_file": "src/config/constants.js",
-      "source_location": "L172",
+      "source_location": "L174",
       "id": "config_constants_metadata_favicon_icons",
       "community": 4,
       "norm_label": "metadata_favicon_icons"
@@ -3355,7 +3544,7 @@
       "label": "formatPhoneForTel()",
       "file_type": "code",
       "source_file": "src/config/constants.js",
-      "source_location": "L197",
+      "source_location": "L199",
       "id": "config_constants_formatphonefortel",
       "community": 4,
       "norm_label": "formatphonefortel()"
@@ -3364,7 +3553,7 @@
       "label": "getTelLink()",
       "file_type": "code",
       "source_file": "src/config/constants.js",
-      "source_location": "L218",
+      "source_location": "L220",
       "id": "config_constants_gettellink",
       "community": 4,
       "norm_label": "gettellink()"
@@ -3373,7 +3562,7 @@
       "label": "isIOSWebView()",
       "file_type": "code",
       "source_file": "src/config/constants.js",
-      "source_location": "L226",
+      "source_location": "L228",
       "id": "config_constants_isioswebview",
       "community": 4,
       "norm_label": "isioswebview()"
@@ -3382,7 +3571,7 @@
       "label": "isAndroidWebView()",
       "file_type": "code",
       "source_file": "src/config/constants.js",
-      "source_location": "L239",
+      "source_location": "L241",
       "id": "config_constants_isandroidwebview",
       "community": 4,
       "norm_label": "isandroidwebview()"
@@ -3391,7 +3580,7 @@
       "label": "handlePhoneClick()",
       "file_type": "code",
       "source_file": "src/config/constants.js",
-      "source_location": "L257",
+      "source_location": "L259",
       "id": "config_constants_handlephoneclick",
       "community": 4,
       "norm_label": "handlephoneclick()"
@@ -3400,7 +3589,7 @@
       "label": "getFullUrl()",
       "file_type": "code",
       "source_file": "src/config/constants.js",
-      "source_location": "L272",
+      "source_location": "L274",
       "id": "config_constants_getfullurl",
       "community": 4,
       "norm_label": "getfullurl()"
@@ -3409,7 +3598,7 @@
       "label": "getSocialMediaArray()",
       "file_type": "code",
       "source_file": "src/config/constants.js",
-      "source_location": "L279",
+      "source_location": "L281",
       "id": "config_constants_getsocialmediaarray",
       "community": 4,
       "norm_label": "getsocialmediaarray()"
@@ -3508,10 +3697,19 @@
       "label": "ASSISTANT_QUICK_CHIPS",
       "file_type": "code",
       "source_file": "src/data/assistantUi.js",
-      "source_location": "L13",
+      "source_location": "L14",
       "id": "data_assistantui_assistant_quick_chips",
       "community": 95,
       "norm_label": "assistant_quick_chips"
+    },
+    {
+      "label": "ASSISTANT_LAUNCHER_TIPS",
+      "file_type": "code",
+      "source_file": "src/data/assistantUi.js",
+      "source_location": "L24",
+      "id": "data_assistantui_assistant_launcher_tips",
+      "community": 95,
+      "norm_label": "assistant_launcher_tips"
     },
     {
       "label": "drinks.js",
@@ -6115,19 +6313,19 @@
       "norm_label": "assistant.md"
     },
     {
-      "label": "Ken AI Assistant (Text + Voice)",
+      "label": "Ken AI Assistant \u2014 Ani (Text + Voice)",
       "file_type": "document",
       "source_file": "docs/ASSISTANT.md",
       "source_location": "L1",
-      "id": "docs_assistant_ken_ai_assistant_text_voice",
+      "id": "docs_assistant_ken_ai_assistant_ani_text_voice",
       "community": 65,
-      "norm_label": "ken ai assistant (text + voice)"
+      "norm_label": "ken ai assistant \u2014 ani (text + voice)"
     },
     {
       "label": "Environment variables",
       "file_type": "document",
       "source_file": "docs/ASSISTANT.md",
-      "source_location": "L9",
+      "source_location": "L17",
       "id": "docs_assistant_environment_variables",
       "community": 65,
       "norm_label": "environment variables"
@@ -6136,7 +6334,7 @@
       "label": "Models",
       "file_type": "document",
       "source_file": "docs/ASSISTANT.md",
-      "source_location": "L19",
+      "source_location": "L27",
       "id": "docs_assistant_models",
       "community": 65,
       "norm_label": "models"
@@ -6145,7 +6343,7 @@
       "label": "API routes",
       "file_type": "document",
       "source_file": "docs/ASSISTANT.md",
-      "source_location": "L32",
+      "source_location": "L40",
       "id": "docs_assistant_api_routes",
       "community": 65,
       "norm_label": "api routes"
@@ -6154,7 +6352,7 @@
       "label": "Voice conversation lifecycle",
       "file_type": "document",
       "source_file": "docs/ASSISTANT.md",
-      "source_location": "L64",
+      "source_location": "L73",
       "id": "docs_assistant_voice_conversation_lifecycle",
       "community": 65,
       "norm_label": "voice conversation lifecycle"
@@ -6163,7 +6361,7 @@
       "label": "MongoDB collections (`beauty-admin`)",
       "file_type": "document",
       "source_file": "docs/ASSISTANT.md",
-      "source_location": "L95",
+      "source_location": "L104",
       "id": "docs_assistant_mongodb_collections_beauty_admin",
       "community": 65,
       "norm_label": "mongodb collections (`beauty-admin`)"
@@ -6172,7 +6370,7 @@
       "label": "Accuracy & escalation rules",
       "file_type": "document",
       "source_file": "docs/ASSISTANT.md",
-      "source_location": "L124",
+      "source_location": "L133",
       "id": "docs_assistant_accuracy_escalation_rules",
       "community": 65,
       "norm_label": "accuracy & escalation rules"
@@ -6181,7 +6379,7 @@
       "label": "UI",
       "file_type": "document",
       "source_file": "docs/ASSISTANT.md",
-      "source_location": "L146",
+      "source_location": "L155",
       "id": "docs_assistant_ui",
       "community": 65,
       "norm_label": "ui"
@@ -6190,7 +6388,7 @@
       "label": "Tests",
       "file_type": "document",
       "source_file": "docs/ASSISTANT.md",
-      "source_location": "L167",
+      "source_location": "L186",
       "id": "docs_assistant_tests",
       "community": 65,
       "norm_label": "tests"
@@ -6199,7 +6397,7 @@
       "label": "Known limitations (v1)",
       "file_type": "document",
       "source_file": "docs/ASSISTANT.md",
-      "source_location": "L176",
+      "source_location": "L195",
       "id": "docs_assistant_known_limitations_v1",
       "community": 65,
       "norm_label": "known limitations (v1)"
@@ -6208,7 +6406,7 @@
       "label": "History",
       "file_type": "document",
       "source_file": "docs/ASSISTANT.md",
-      "source_location": "L189",
+      "source_location": "L211",
       "id": "docs_assistant_history",
       "community": 65,
       "norm_label": "history"
@@ -6277,19 +6475,19 @@
       "norm_label": "code:bash (python scripts/generate-brand-icons.py)"
     },
     {
-      "label": "3. Bump cache-bust revisions",
+      "label": "3. Bump cache-bust revisions (and rename if Google is stale)",
       "file_type": "document",
       "source_file": "docs/BRAND_ICONS.md",
       "source_location": "L43",
-      "id": "docs_brand_icons_3_bump_cache_bust_revisions",
+      "id": "docs_brand_icons_3_bump_cache_bust_revisions_and_rename_if_google_is_stale",
       "community": 19,
-      "norm_label": "3. bump cache-bust revisions"
+      "norm_label": "3. bump cache-bust revisions (and rename if google is stale)"
     },
     {
       "label": "4. Deploy",
       "file_type": "document",
       "source_file": "docs/BRAND_ICONS.md",
-      "source_location": "L61",
+      "source_location": "L66",
       "id": "docs_brand_icons_4_deploy",
       "community": 19,
       "norm_label": "4. deploy"
@@ -6298,7 +6496,7 @@
       "label": "5. Update graphify",
       "file_type": "document",
       "source_file": "docs/BRAND_ICONS.md",
-      "source_location": "L65",
+      "source_location": "L70",
       "id": "docs_brand_icons_5_update_graphify",
       "community": 19,
       "norm_label": "5. update graphify"
@@ -6307,7 +6505,7 @@
       "label": "code:bash (graphify update .)",
       "file_type": "document",
       "source_file": "docs/BRAND_ICONS.md",
-      "source_location": "L69",
+      "source_location": "L74",
       "id": "docs_brand_icons_codeblock_2",
       "community": 19,
       "norm_label": "code:bash (graphify update .)"
@@ -6316,7 +6514,7 @@
       "label": "6. Verify",
       "file_type": "document",
       "source_file": "docs/BRAND_ICONS.md",
-      "source_location": "L75",
+      "source_location": "L80",
       "id": "docs_brand_icons_6_verify",
       "community": 19,
       "norm_label": "6. verify"
@@ -6325,7 +6523,7 @@
       "label": "code:bash (npm run verify:head)",
       "file_type": "document",
       "source_file": "docs/BRAND_ICONS.md",
-      "source_location": "L79",
+      "source_location": "L84",
       "id": "docs_brand_icons_codeblock_3",
       "community": 19,
       "norm_label": "code:bash (npm run verify:head)"
@@ -6334,7 +6532,7 @@
       "label": "What updates automatically vs manually",
       "file_type": "document",
       "source_file": "docs/BRAND_ICONS.md",
-      "source_location": "L86",
+      "source_location": "L91",
       "id": "docs_brand_icons_what_updates_automatically_vs_manually",
       "community": 19,
       "norm_label": "what updates automatically vs manually"
@@ -6343,7 +6541,7 @@
       "label": "Code map",
       "file_type": "document",
       "source_file": "docs/BRAND_ICONS.md",
-      "source_location": "L96",
+      "source_location": "L102",
       "id": "docs_brand_icons_code_map",
       "community": 19,
       "norm_label": "code map"
@@ -6352,7 +6550,7 @@
       "label": "Out of scope (unchanged by this flow)",
       "file_type": "document",
       "source_file": "docs/BRAND_ICONS.md",
-      "source_location": "L105",
+      "source_location": "L111",
       "id": "docs_brand_icons_out_of_scope_unchanged_by_this_flow",
       "community": 19,
       "norm_label": "out of scope (unchanged by this flow)"
@@ -8392,6 +8590,24 @@
       "norm_label": "notes"
     },
     {
+      "label": "Ken AI Assistant (Text + Voice)",
+      "file_type": "document",
+      "source_file": "docs/ASSISTANT.md",
+      "source_location": "L1",
+      "community": 65,
+      "norm_label": "ken ai assistant (text + voice)",
+      "id": "docs_assistant_ken_ai_assistant_text_voice"
+    },
+    {
+      "label": "3. Bump cache-bust revisions",
+      "file_type": "document",
+      "source_file": "docs/BRAND_ICONS.md",
+      "source_location": "L43",
+      "community": 19,
+      "norm_label": "3. bump cache-bust revisions",
+      "id": "docs_brand_icons_3_bump_cache_bust_revisions"
+    },
+    {
       "label": "getGoogleMapsUrl()",
       "file_type": "code",
       "source_file": "src/components/contact/ContactContent.jsx",
@@ -8724,6 +8940,16 @@
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "package.json",
+      "source_location": "L5",
+      "weight": 1.0,
+      "source": "package_json",
+      "target": "ken_package_engines",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "package.json",
       "source_location": "L2",
       "weight": 1,
       "confidence_score": 1,
@@ -8759,6 +8985,16 @@
       "confidence_score": 1,
       "source": "package_json",
       "target": "ken_package_version"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "package.json",
+      "source_location": "L6",
+      "weight": 1.0,
+      "source": "ken_package_engines",
+      "target": "ken_package_engines_node",
+      "confidence_score": 1.0
     },
     {
       "relation": "contains",
@@ -9089,6 +9325,126 @@
       "confidence_score": 1,
       "source": "public_well_known_appspecific_com_chrome_devtools_json",
       "target": "appspecific_com_chrome_devtools_version"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "public/favicon-for-app/manifest-v3.json",
+      "source_location": "L26",
+      "weight": 1.0,
+      "source": "public_favicon_for_app_manifest_v3_json",
+      "target": "favicon_for_app_manifest_v3_background_color",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "public/favicon-for-app/manifest-v3.json",
+      "source_location": "L5",
+      "weight": 1.0,
+      "source": "public_favicon_for_app_manifest_v3_json",
+      "target": "favicon_for_app_manifest_v3_description",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "public/favicon-for-app/manifest-v3.json",
+      "source_location": "L9",
+      "weight": 1.0,
+      "source": "public_favicon_for_app_manifest_v3_json",
+      "target": "favicon_for_app_manifest_v3_display",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "public/favicon-for-app/manifest-v3.json",
+      "source_location": "L11",
+      "weight": 1.0,
+      "source": "public_favicon_for_app_manifest_v3_json",
+      "target": "favicon_for_app_manifest_v3_icons",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "public/favicon-for-app/manifest-v3.json",
+      "source_location": "L2",
+      "weight": 1.0,
+      "source": "public_favicon_for_app_manifest_v3_json",
+      "target": "favicon_for_app_manifest_v3_id",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "public/favicon-for-app/manifest-v3.json",
+      "source_location": "L6",
+      "weight": 1.0,
+      "source": "public_favicon_for_app_manifest_v3_json",
+      "target": "favicon_for_app_manifest_v3_lang",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "public/favicon-for-app/manifest-v3.json",
+      "source_location": "L3",
+      "weight": 1.0,
+      "source": "public_favicon_for_app_manifest_v3_json",
+      "target": "favicon_for_app_manifest_v3_name",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "public/favicon-for-app/manifest-v3.json",
+      "source_location": "L10",
+      "weight": 1.0,
+      "source": "public_favicon_for_app_manifest_v3_json",
+      "target": "favicon_for_app_manifest_v3_orientation",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "public/favicon-for-app/manifest-v3.json",
+      "source_location": "L8",
+      "weight": 1.0,
+      "source": "public_favicon_for_app_manifest_v3_json",
+      "target": "favicon_for_app_manifest_v3_scope",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "public/favicon-for-app/manifest-v3.json",
+      "source_location": "L4",
+      "weight": 1.0,
+      "source": "public_favicon_for_app_manifest_v3_json",
+      "target": "favicon_for_app_manifest_v3_short_name",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "public/favicon-for-app/manifest-v3.json",
+      "source_location": "L7",
+      "weight": 1.0,
+      "source": "public_favicon_for_app_manifest_v3_json",
+      "target": "favicon_for_app_manifest_v3_start_url",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "public/favicon-for-app/manifest-v3.json",
+      "source_location": "L25",
+      "weight": 1.0,
+      "source": "public_favicon_for_app_manifest_v3_json",
+      "target": "favicon_for_app_manifest_v3_theme_color",
+      "confidence_score": 1.0
     },
     {
       "relation": "contains",
@@ -10772,11 +11128,32 @@
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "src/app/api/assistant/session/route.js",
+      "source_location": "L98",
+      "weight": 1.0,
+      "source": "src_app_api_assistant_session_route_js",
+      "target": "session_route_patch",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "src/app/api/assistant/session/route.js",
       "source_location": "L26",
       "weight": 1.0,
       "confidence_score": 1.0,
       "source": "src_app_api_assistant_session_route_js",
       "target": "src_app_api_assistant_session_route_js_session_route_post"
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "source_file": "src/app/api/assistant/session/route.js",
+      "source_location": "L111",
+      "weight": 1.0,
+      "source": "session_route_patch",
+      "target": "session_route_normalizeguestname",
+      "confidence_score": 1.0
     },
     {
       "relation": "calls",
@@ -10820,6 +11197,39 @@
       "source_location": "L37",
       "weight": 1.0,
       "source": "src_app_api_assistant_session_route_js_session_route_post",
+      "target": "assistant_validation_normalizesessionid"
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "INFERRED",
+      "confidence_score": 0.8,
+      "source_file": "src/app/api/assistant/session/route.js",
+      "source_location": "L145",
+      "weight": 1.0,
+      "source": "session_route_patch",
+      "target": "assistant_models_getassistantmodels"
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "INFERRED",
+      "confidence_score": 0.8,
+      "source_file": "src/app/api/assistant/session/route.js",
+      "source_location": "L133",
+      "weight": 1.0,
+      "source": "session_route_patch",
+      "target": "assistant_ratelimit_allowassistantrequest"
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "INFERRED",
+      "confidence_score": 0.8,
+      "source_file": "src/app/api/assistant/session/route.js",
+      "source_location": "L110",
+      "weight": 1.0,
+      "source": "session_route_patch",
       "target": "assistant_validation_normalizesessionid"
     },
     {
@@ -11305,6 +11715,26 @@
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "src/components/AssistantWidget/AssistantPanel.jsx",
+      "source_location": "L39",
+      "weight": 1.0,
+      "source": "src_components_assistantwidget_assistantpanel_jsx",
+      "target": "assistantwidget_assistantpanel_isnamepromptdismissed",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "src/components/AssistantWidget/AssistantPanel.jsx",
+      "source_location": "L47",
+      "weight": 1.0,
+      "source": "src_components_assistantwidget_assistantpanel_jsx",
+      "target": "assistantwidget_assistantpanel_persistnamepromptdismissed",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "src/components/AssistantWidget/AssistantPanel.jsx",
       "source_location": "L67",
       "weight": 1.0,
       "confidence_score": 1.0,
@@ -11481,11 +11911,41 @@
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "src/components/DraggableWhatsAppButton/DraggableWhatsAppButton.jsx",
+      "source_location": "L43",
+      "weight": 1.0,
+      "source": "src_components_draggablewhatsappbutton_draggablewhatsappbutton_jsx",
+      "target": "draggablewhatsappbutton_draggablewhatsappbutton_clampintoconstraints",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "src/components/DraggableWhatsAppButton/DraggableWhatsAppButton.jsx",
       "source_location": "L12",
       "weight": 1.0,
       "confidence_score": 1.0,
       "source": "src_components_draggablewhatsappbutton_draggablewhatsappbutton_jsx",
       "target": "draggablewhatsappbutton_draggablewhatsappbutton_draggablewhatsappbutton"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "src/components/DraggableWhatsAppButton/DraggableWhatsAppButton.jsx",
+      "source_location": "L31",
+      "weight": 1.0,
+      "source": "src_components_draggablewhatsappbutton_draggablewhatsappbutton_jsx",
+      "target": "draggablewhatsappbutton_draggablewhatsappbutton_persistposition",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "src/components/DraggableWhatsAppButton/DraggableWhatsAppButton.jsx",
+      "source_location": "L12",
+      "weight": 1.0,
+      "source": "src_components_draggablewhatsappbutton_draggablewhatsappbutton_jsx",
+      "target": "draggablewhatsappbutton_draggablewhatsappbutton_readsavedposition",
+      "confidence_score": 1.0
     },
     {
       "relation": "contains",
@@ -13456,6 +13916,16 @@
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "src/data/assistantUi.js",
+      "source_location": "L24",
+      "weight": 1.0,
+      "source": "src_data_assistantui_js",
+      "target": "data_assistantui_assistant_launcher_tips",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "src/data/assistantUi.js",
       "source_location": "L13",
       "weight": 1.0,
       "confidence_score": 1.0,
@@ -13840,9 +14310,9 @@
       "source_file": "src/lib/assistant/intentGate.test.js",
       "source_location": "L2",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "src_lib_assistant_intentgate_test_js",
-      "target": "assistant_intentgate_detectescalation",
-      "confidence_score": 1.0
+      "target": "assistant_intentgate_detectescalation"
     },
     {
       "relation": "imports",
@@ -16570,6 +17040,16 @@
       "source_file": "docs/ASSISTANT.md",
       "source_location": "L1",
       "weight": 1.0,
+      "source": "docs_assistant_md",
+      "target": "docs_assistant_ken_ai_assistant_ani_text_voice",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "docs/ASSISTANT.md",
+      "source_location": "L1",
+      "weight": 1.0,
       "confidence_score": 1.0,
       "source": "docs_assistant_md",
       "target": "docs_assistant_ken_ai_assistant_text_voice"
@@ -16578,21 +17058,101 @@
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "docs/ASSISTANT.md",
-      "source_location": "L124",
+      "source_location": "L133",
       "weight": 1.0,
-      "confidence_score": 1.0,
-      "source": "docs_assistant_ken_ai_assistant_text_voice",
-      "target": "docs_assistant_accuracy_escalation_rules"
+      "source": "docs_assistant_ken_ai_assistant_ani_text_voice",
+      "target": "docs_assistant_accuracy_escalation_rules",
+      "confidence_score": 1.0
     },
     {
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "docs/ASSISTANT.md",
-      "source_location": "L32",
+      "source_location": "L40",
       "weight": 1.0,
-      "confidence_score": 1.0,
-      "source": "docs_assistant_ken_ai_assistant_text_voice",
-      "target": "docs_assistant_api_routes"
+      "source": "docs_assistant_ken_ai_assistant_ani_text_voice",
+      "target": "docs_assistant_api_routes",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "docs/ASSISTANT.md",
+      "source_location": "L17",
+      "weight": 1.0,
+      "source": "docs_assistant_ken_ai_assistant_ani_text_voice",
+      "target": "docs_assistant_environment_variables",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "docs/ASSISTANT.md",
+      "source_location": "L211",
+      "weight": 1.0,
+      "source": "docs_assistant_ken_ai_assistant_ani_text_voice",
+      "target": "docs_assistant_history",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "docs/ASSISTANT.md",
+      "source_location": "L195",
+      "weight": 1.0,
+      "source": "docs_assistant_ken_ai_assistant_ani_text_voice",
+      "target": "docs_assistant_known_limitations_v1",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "docs/ASSISTANT.md",
+      "source_location": "L27",
+      "weight": 1.0,
+      "source": "docs_assistant_ken_ai_assistant_ani_text_voice",
+      "target": "docs_assistant_models",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "docs/ASSISTANT.md",
+      "source_location": "L104",
+      "weight": 1.0,
+      "source": "docs_assistant_ken_ai_assistant_ani_text_voice",
+      "target": "docs_assistant_mongodb_collections_beauty_admin",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "docs/ASSISTANT.md",
+      "source_location": "L186",
+      "weight": 1.0,
+      "source": "docs_assistant_ken_ai_assistant_ani_text_voice",
+      "target": "docs_assistant_tests",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "docs/ASSISTANT.md",
+      "source_location": "L155",
+      "weight": 1.0,
+      "source": "docs_assistant_ken_ai_assistant_ani_text_voice",
+      "target": "docs_assistant_ui",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "docs/ASSISTANT.md",
+      "source_location": "L73",
+      "weight": 1.0,
+      "source": "docs_assistant_ken_ai_assistant_ani_text_voice",
+      "target": "docs_assistant_voice_conversation_lifecycle",
+      "confidence_score": 1.0
     },
     {
       "relation": "contains",
@@ -16608,31 +17168,31 @@
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "docs/ASSISTANT.md",
-      "source_location": "L189",
-      "weight": 1.0,
-      "confidence_score": 1.0,
-      "source": "docs_assistant_ken_ai_assistant_text_voice",
-      "target": "docs_assistant_history"
-    },
-    {
-      "relation": "contains",
-      "confidence": "EXTRACTED",
-      "source_file": "docs/ASSISTANT.md",
-      "source_location": "L176",
-      "weight": 1.0,
-      "confidence_score": 1.0,
-      "source": "docs_assistant_ken_ai_assistant_text_voice",
-      "target": "docs_assistant_known_limitations_v1"
-    },
-    {
-      "relation": "contains",
-      "confidence": "EXTRACTED",
-      "source_file": "docs/ASSISTANT.md",
       "source_location": "L19",
       "weight": 1.0,
       "confidence_score": 1.0,
       "source": "docs_assistant_ken_ai_assistant_text_voice",
       "target": "docs_assistant_models"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "docs/ASSISTANT.md",
+      "source_location": "L32",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "docs_assistant_ken_ai_assistant_text_voice",
+      "target": "docs_assistant_api_routes"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "docs/ASSISTANT.md",
+      "source_location": "L64",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "docs_assistant_ken_ai_assistant_text_voice",
+      "target": "docs_assistant_voice_conversation_lifecycle"
     },
     {
       "relation": "contains",
@@ -16648,11 +17208,11 @@
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "docs/ASSISTANT.md",
-      "source_location": "L167",
+      "source_location": "L124",
       "weight": 1.0,
       "confidence_score": 1.0,
       "source": "docs_assistant_ken_ai_assistant_text_voice",
-      "target": "docs_assistant_tests"
+      "target": "docs_assistant_accuracy_escalation_rules"
     },
     {
       "relation": "contains",
@@ -16668,11 +17228,31 @@
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "docs/ASSISTANT.md",
-      "source_location": "L64",
+      "source_location": "L167",
       "weight": 1.0,
       "confidence_score": 1.0,
       "source": "docs_assistant_ken_ai_assistant_text_voice",
-      "target": "docs_assistant_voice_conversation_lifecycle"
+      "target": "docs_assistant_tests"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "docs/ASSISTANT.md",
+      "source_location": "L176",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "docs_assistant_ken_ai_assistant_text_voice",
+      "target": "docs_assistant_known_limitations_v1"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "docs/ASSISTANT.md",
+      "source_location": "L189",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "docs_assistant_ken_ai_assistant_text_voice",
+      "target": "docs_assistant_history"
     },
     {
       "relation": "contains",
@@ -16763,6 +17343,16 @@
       "confidence_score": 1.0,
       "source": "docs_brand_icons_checklist_every_icon_change",
       "target": "docs_brand_icons_3_bump_cache_bust_revisions"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "docs/BRAND_ICONS.md",
+      "source_location": "L43",
+      "weight": 1.0,
+      "source": "docs_brand_icons_checklist_every_icon_change",
+      "target": "docs_brand_icons_3_bump_cache_bust_revisions_and_rename_if_google_is_stale",
+      "confidence_score": 1.0
     },
     {
       "relation": "contains",
@@ -19046,5 +19636,5 @@
     }
   ],
   "hyperedges": [],
-  "built_at_commit": "33204fcd6e06364f8f8445c496f7c418dbb1d130"
+  "built_at_commit": "1aaf897fdd695429fdcb755e3a90f1e5edd73ecb"
 }

@@ -889,7 +889,7 @@ export default function AssistantPanel({ isOpen, onClose }) {
             placeholder={
               voice.active
                 ? "Speak, or type here…"
-                : "Ask about services, prices, locations…"
+                : "Ask about services, drinks, locations…"
             }
             aria-label="Message"
             disabled={sending}

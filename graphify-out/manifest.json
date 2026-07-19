@@ -10,13 +10,13 @@
     "semantic_hash": ""
   },
   "C:\\Users\\garen\\Desktop\\01-WEB-DEV\\KenLight02\\ken\\next.config.mjs": {
-    "mtime": 1783881761.837646,
-    "ast_hash": "3e55a49a41f570da136e00ab374e72c5",
+    "mtime": 1784371952.353883,
+    "ast_hash": "5daf173bee985d861ff857a1129416d3",
     "semantic_hash": ""
   },
   "C:\\Users\\garen\\Desktop\\01-WEB-DEV\\KenLight02\\ken\\package.json": {
-    "mtime": 1784299887.4413488,
-    "ast_hash": "3c28a4bdc05ff198326cb7979874a6ab",
+    "mtime": 1784308893.7183685,
+    "ast_hash": "fc981d42f155484aacd626646c11eef0",
     "semantic_hash": ""
   },
   "C:\\Users\\garen\\Desktop\\01-WEB-DEV\\KenLight02\\ken\\postcss.config.mjs": {
@@ -45,8 +45,8 @@
     "semantic_hash": ""
   },
   "C:\\Users\\garen\\Desktop\\01-WEB-DEV\\KenLight02\\ken\\public\\favicon-for-app\\manifest.json": {
-    "mtime": 1783880743.423785,
-    "ast_hash": "96e950e87cd35614e28d155bf4b1b041",
+    "mtime": 1784455173.421032,
+    "ast_hash": "47e157774cb782d8dc0ea598fb51c061",
     "semantic_hash": ""
   },
   "C:\\Users\\garen\\Desktop\\01-WEB-DEV\\KenLight02\\ken\\scripts\\verify-head.mjs": {
@@ -105,8 +105,8 @@
     "semantic_hash": ""
   },
   "C:\\Users\\garen\\Desktop\\01-WEB-DEV\\KenLight02\\ken\\src\\app\\cookie-notice\\page.jsx": {
-    "mtime": 1784288857.617146,
-    "ast_hash": "b17ed4364af912f1e0ddb7613f4b91da",
+    "mtime": 1784445873.3990314,
+    "ast_hash": "a38784e7cb9758a9330992351c618b46",
     "semantic_hash": ""
   },
   "C:\\Users\\garen\\Desktop\\01-WEB-DEV\\KenLight02\\ken\\src\\app\\deleteAccount\\page.jsx": {
@@ -415,8 +415,8 @@
     "semantic_hash": ""
   },
   "C:\\Users\\garen\\Desktop\\01-WEB-DEV\\KenLight02\\ken\\src\\config\\constants.js": {
-    "mtime": 1784298797.7973015,
-    "ast_hash": "fafead17205025115c8b150ad9fb89cd",
+    "mtime": 1784455158.9365306,
+    "ast_hash": "4c716f244c36ba05613a7a9fdf856d9b",
     "semantic_hash": ""
   },
   "C:\\Users\\garen\\Desktop\\01-WEB-DEV\\KenLight02\\ken\\src\\data\\drinks.js": {
@@ -1195,8 +1195,8 @@
     "semantic_hash": ""
   },
   "C:\\Users\\garen\\Desktop\\01-WEB-DEV\\KenLight02\\ken\\src\\components\\DraggableWhatsAppButton\\DraggableWhatsAppButton.jsx": {
-    "mtime": 1784298775.3896587,
-    "ast_hash": "8864df5f1dc480d0a407c162b1794474",
+    "mtime": 1784446132.74396,
+    "ast_hash": "d4c54ff273e2de2179c0c6d5e81ee5de",
     "semantic_hash": ""
   },
   "C:\\Users\\garen\\Desktop\\01-WEB-DEV\\KenLight02\\ken\\src\\utils\\cloudinary.js": {
@@ -1210,8 +1210,8 @@
     "semantic_hash": ""
   },
   "C:\\Users\\garen\\Desktop\\01-WEB-DEV\\KenLight02\\ken\\scripts\\generate-brand-icons.py": {
-    "mtime": 1783880747.8003526,
-    "ast_hash": "349919a48f78911bda9663e7b3b4ce2f",
+    "mtime": 1784455164.7669408,
+    "ast_hash": "79ea2e6fd2aef085582023e4fbb1e235",
     "semantic_hash": ""
   },
   "C:\\Users\\garen\\Desktop\\01-WEB-DEV\\KenLight02\\ken\\public\\salon-logo-2026.jpg": {
@@ -1220,8 +1220,8 @@
     "semantic_hash": ""
   },
   "C:\\Users\\garen\\Desktop\\01-WEB-DEV\\KenLight02\\ken\\docs\\BRAND_ICONS.md": {
-    "mtime": 1783880883.822795,
-    "ast_hash": "0dd876b43bf7b6300948ce0b2f228b23",
+    "mtime": 1784455165.0589705,
+    "ast_hash": "8f18fc42995eade16aa1357fa739093a",
     "semantic_hash": ""
   },
   "C:\\Users\\garen\\Desktop\\01-WEB-DEV\\KenLight02\\ken\\.tmp-fav-check\\live-96.png": {
@@ -1260,8 +1260,8 @@
     "semantic_hash": ""
   },
   "C:\\Users\\garen\\Desktop\\01-WEB-DEV\\KenLight02\\ken\\src\\app\\api\\assistant\\session\\route.js": {
-    "mtime": 1784299718.142867,
-    "ast_hash": "829900088f40a776cf87e4c39e6f196d",
+    "mtime": 1784371598.5835347,
+    "ast_hash": "89454b517377efd3288973350eeceae1",
     "semantic_hash": ""
   },
   "C:\\Users\\garen\\Desktop\\01-WEB-DEV\\KenLight02\\ken\\src\\app\\api\\assistant\\session\\end\\route.js": {
@@ -1275,13 +1275,13 @@
     "semantic_hash": ""
   },
   "C:\\Users\\garen\\Desktop\\01-WEB-DEV\\KenLight02\\ken\\src\\components\\AssistantWidget\\AssistantPanel.jsx": {
-    "mtime": 1784304783.5709653,
-    "ast_hash": "95ca702584fd474c82cbc42b5faced21",
+    "mtime": 1784371966.7843118,
+    "ast_hash": "d620ae3fa6e16778f6bb93456f9bd0da",
     "semantic_hash": ""
   },
   "C:\\Users\\garen\\Desktop\\01-WEB-DEV\\KenLight02\\ken\\src\\components\\AssistantWidget\\AssistantWidget.jsx": {
-    "mtime": 1784288767.2645,
-    "ast_hash": "3a266443dd80695a86e85bd14bb56790",
+    "mtime": 1784446279.9151523,
+    "ast_hash": "89a710a4bbe1100f00cac326e23e3453",
     "semantic_hash": ""
   },
   "C:\\Users\\garen\\Desktop\\01-WEB-DEV\\KenLight02\\ken\\src\\data\\assistantFaq.js": {
@@ -1290,13 +1290,13 @@
     "semantic_hash": ""
   },
   "C:\\Users\\garen\\Desktop\\01-WEB-DEV\\KenLight02\\ken\\src\\data\\assistantUi.js": {
-    "mtime": 1784288657.1010954,
-    "ast_hash": "8fff3fdd2a751e770019f5bdc96b16d6",
+    "mtime": 1784446252.5575404,
+    "ast_hash": "e1141aa714450d1191d6bbc1b8377dfd",
     "semantic_hash": ""
   },
   "C:\\Users\\garen\\Desktop\\01-WEB-DEV\\KenLight02\\ken\\src\\hooks\\useAssistantRealtime.js": {
-    "mtime": 1784305149.7472942,
-    "ast_hash": "ecbedf78e9089fc48992dc7c9851762f",
+    "mtime": 1784371974.0286326,
+    "ast_hash": "8da988b296ed62287380bb998356bb62",
     "semantic_hash": ""
   },
   "C:\\Users\\garen\\Desktop\\01-WEB-DEV\\KenLight02\\ken\\src\\lib\\assistant\\catalogContext.js": {
@@ -1320,8 +1320,8 @@
     "semantic_hash": ""
   },
   "C:\\Users\\garen\\Desktop\\01-WEB-DEV\\KenLight02\\ken\\src\\lib\\assistant\\prompt.js": {
-    "mtime": 1784305708.7856743,
-    "ast_hash": "355b391460e0ea858a271cd7ecd672bf",
+    "mtime": 1784445873.3435588,
+    "ast_hash": "2a3754280bb1ea5ff8a1969cae0737d2",
     "semantic_hash": ""
   },
   "C:\\Users\\garen\\Desktop\\01-WEB-DEV\\KenLight02\\ken\\src\\lib\\assistant\\rateLimit.js": {
@@ -1355,18 +1355,63 @@
     "semantic_hash": ""
   },
   "C:\\Users\\garen\\Desktop\\01-WEB-DEV\\KenLight02\\ken\\docs\\ASSISTANT.md": {
-    "mtime": 1784305221.4338176,
-    "ast_hash": "fc92c3c4471649eadcaf72c6ed2060b0",
+    "mtime": 1784445873.4169922,
+    "ast_hash": "6aaa2f3f2d12b4195a90728305657569",
     "semantic_hash": ""
   },
   "C:\\Users\\garen\\Desktop\\01-WEB-DEV\\KenLight02\\ken\\public\\assistant\\ken-assistant-avatar.png": {
-    "mtime": 1784287456.28,
-    "ast_hash": "91b6bb735f9fcdca90de6c0bc7f7d195",
+    "mtime": 1784444603.1071901,
+    "ast_hash": "accb1bf2d607f96a8ce774f1ffe2bd7f",
     "semantic_hash": ""
   },
   "C:\\Users\\garen\\Desktop\\01-WEB-DEV\\KenLight02\\ken\\public\\assistant\\ken-assistant-avatar.webp": {
-    "mtime": 1784287456.259,
-    "ast_hash": "8faa8c4f6787bc949030d872eaf2bda3",
+    "mtime": 1784444603.184864,
+    "ast_hash": "642b81cb0ecff562c547f00806b808fc",
+    "semantic_hash": ""
+  },
+  "C:\\Users\\garen\\Desktop\\01-WEB-DEV\\KenLight02\\ken\\public\\favicon-for-app\\manifest-v3.json": {
+    "mtime": 1784455152.366667,
+    "ast_hash": "47e157774cb782d8dc0ea598fb51c061",
+    "semantic_hash": ""
+  },
+  "C:\\Users\\garen\\Desktop\\01-WEB-DEV\\KenLight02\\ken\\public\\favicon-for-app\\apple-icon-v3.png": {
+    "mtime": 1784455138.7351682,
+    "ast_hash": "0d620e4af424aca08b921ece99ada634",
+    "semantic_hash": ""
+  },
+  "C:\\Users\\garen\\Desktop\\01-WEB-DEV\\KenLight02\\ken\\public\\favicon-for-app\\apple-touch-icon-v3.png": {
+    "mtime": 1784455138.7035873,
+    "ast_hash": "0d620e4af424aca08b921ece99ada634",
+    "semantic_hash": ""
+  },
+  "C:\\Users\\garen\\Desktop\\01-WEB-DEV\\KenLight02\\ken\\public\\favicon-for-app\\favicon-96x96-v3.png": {
+    "mtime": 1784455138.6716495,
+    "ast_hash": "e7d88fbd7945dd012aa8f3ba5831c953",
+    "semantic_hash": ""
+  },
+  "C:\\Users\\garen\\Desktop\\01-WEB-DEV\\KenLight02\\ken\\public\\favicon-for-app\\favicon-v3.svg": {
+    "mtime": 1784455138.64112,
+    "ast_hash": "cb9eaa153ac7fb5d7eb466f810411960",
+    "semantic_hash": ""
+  },
+  "C:\\Users\\garen\\Desktop\\01-WEB-DEV\\KenLight02\\ken\\public\\favicon-for-app\\icon0-v3.svg": {
+    "mtime": 1784455138.8778846,
+    "ast_hash": "cb9eaa153ac7fb5d7eb466f810411960",
+    "semantic_hash": ""
+  },
+  "C:\\Users\\garen\\Desktop\\01-WEB-DEV\\KenLight02\\ken\\public\\favicon-for-app\\icon1-v3.png": {
+    "mtime": 1784455138.8446355,
+    "ast_hash": "e7d88fbd7945dd012aa8f3ba5831c953",
+    "semantic_hash": ""
+  },
+  "C:\\Users\\garen\\Desktop\\01-WEB-DEV\\KenLight02\\ken\\public\\favicon-for-app\\web-app-manifest-192x192-v3.png": {
+    "mtime": 1784455138.7672994,
+    "ast_hash": "4ecba0d2c9258b1df3c01f8ee9a2734f",
+    "semantic_hash": ""
+  },
+  "C:\\Users\\garen\\Desktop\\01-WEB-DEV\\KenLight02\\ken\\public\\favicon-for-app\\web-app-manifest-512x512-v3.png": {
+    "mtime": 1784455138.8009405,
+    "ast_hash": "7ffbfb8ac29563c5d99957995effe8a3",
     "semantic_hash": ""
   }
 }

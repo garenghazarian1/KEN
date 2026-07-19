@@ -1,16 +1,16 @@
-# Graph Report - ken  (2026-07-17)
+# Graph Report - ken  (2026-07-19)
 
 ## Corpus Check
-- 131 files · ~709,156 words
+- 132 files · ~717,106 words
 - Verdict: corpus is large enough that graph structure adds value.
 
 ## Summary
-- 955 nodes · 1024 edges · 99 communities (64 shown, 35 thin omitted)
-- Extraction: 93% EXTRACTED · 7% INFERRED · 0% AMBIGUOUS · INFERRED: 67 edges (avg confidence: 0.81)
+- 979 nodes · 1061 edges · 100 communities (67 shown, 33 thin omitted)
+- Extraction: 93% EXTRACTED · 7% INFERRED · 0% AMBIGUOUS · INFERRED: 70 edges (avg confidence: 0.81)
 - Token cost: 0 input · 0 output
 
 ## Graph Freshness
-- Built from commit: `33204fcd`
+- Built from commit: `1aaf897f`
 - Run `git rev-parse HEAD` and compare to check if the graph is stale.
 - Run `graphify update .` after code changes (no API cost).
 
@@ -99,10 +99,10 @@
 4. `App Improvements Needed` - 14 edges
 5. `POST()` - 12 edges
 6. `Google Lighthouse Audit Report - Contact Page` - 12 edges
-7. `Ken AI Assistant (Text + Voice)` - 11 edges
-8. `POST()` - 10 edges
-9. `getAssistantModels()` - 10 edges
-10. `allowAssistantRequest()` - 10 edges
+7. `getAssistantModels()` - 11 edges
+8. `allowAssistantRequest()` - 11 edges
+9. `Ken AI Assistant — Ani (Text + Voice)` - 11 edges
+10. `Ken AI Assistant (Text + Voice)` - 11 edges
 
 ## Surprising Connections (you probably didn't know these)
 - `POST()` --calls--> `buildCatalogContext()`  [INFERRED]
@@ -116,7 +116,7 @@
 - `resolveLocationRequest()` --calls--> `buildDirectionsActions()`  [INFERRED]
   src/lib/assistant/intentGate.js → src/data/assistantFaq.js
 
-## Communities (99 total, 35 thin omitted)
+## Communities (100 total, 33 thin omitted)
 
 ### Community 0 - "Community 0"
 Cohesion: 0.04
@@ -151,8 +151,8 @@ Cohesion: 0.08
 Nodes (24): 10. **Hardcoded Data** ✅ **RESOLVED**, 11. **Inconsistent Naming**, 12. **Unused Environment Variable**, 13. **Poor Alt Text**, 14. **Missing ARIA Labels**, 15. **Missing Semantic HTML**, 16. **Missing OpenGraph Images**, 17. **Hardcoded URLs** (+16 more)
 
 ### Community 8 - "Community 8"
-Cohesion: 0.07
-Nodes (28): dependencies, framer-motion, lucide-react, minisearch, mongoose, next, openai, react (+20 more)
+Cohesion: 0.06
+Nodes (30): dependencies, framer-motion, lucide-react, minisearch, mongoose, next, openai, react (+22 more)
 
 ### Community 9 - "Community 9"
 Cohesion: 0.09
@@ -196,7 +196,7 @@ Nodes (14): astHash(), containsEdges, fileNodes, graph, graphPath, inferredCalls
 
 ### Community 19 - "Community 19"
 Cohesion: 0.12
-Nodes (15): 1. Replace the master image, 2. Regenerate all icon sizes, 3. Bump cache-bust revisions, 4. Deploy, 5. Update graphify, 6. Verify, Brand logo & favicon maintenance, Checklist — every icon change (+7 more)
+Nodes (16): 1. Replace the master image, 2. Regenerate all icon sizes, 3. Bump cache-bust revisions, 3. Bump cache-bust revisions (and rename if Google is stale), 4. Deploy, 5. Update graphify, 6. Verify, Brand logo & favicon maintenance (+8 more)
 
 ### Community 21 - "Community 21"
 Cohesion: 0.22
@@ -222,9 +222,13 @@ Nodes (9): bgReveal, captionReveal, descriptions, galleryItemVariants, galleryVi
 Cohesion: 0.53
 Nodes (8): int, Path, build_square(), main(), Generates the full favicon / PWA icon suite from public/salon-logo-2026.jpg., save_ico(), save_png(), save_svg_wrapper()
 
+### Community 38 - "Community 38"
+Cohesion: 0.15
+Nodes (12): background_color, description, display, icons, id, lang, name, orientation (+4 more)
+
 ### Community 40 - "Community 40"
 Cohesion: 0.06
-Nodes (39): COMPILED_INTENTS, detectEscalation(), matchFaqEntries(), resolveLocationRequest(), result, WHATSAPP_MESSAGES, conversationSchema, getAssistantModels() (+31 more)
+Nodes (40): COMPILED_INTENTS, detectEscalation(), matchFaqEntries(), resolveLocationRequest(), result, WHATSAPP_MESSAGES, conversationSchema, getAssistantModels() (+32 more)
 
 ### Community 54 - "Community 54"
 Cohesion: 0.19
@@ -235,8 +239,8 @@ Cohesion: 0.29
 Nodes (7): Phase 1: Setup & Navbar ✅ **COMPLETED**, Phase 2: Hero Section, Phase 3: Footer, Phase 4: Portfolio Components, Phase 5: Contact & Other Pages, Phase 6: Final Polish, Redesign Tasks
 
 ### Community 65 - "Community 65"
-Cohesion: 0.17
-Nodes (11): Accuracy & escalation rules, API routes, Environment variables, History, Ken AI Assistant (Text + Voice), Known limitations (v1), Models, MongoDB collections (`beauty-admin`) (+3 more)
+Cohesion: 0.28
+Nodes (12): Accuracy & escalation rules, API routes, Environment variables, History, Ken AI Assistant — Ani (Text + Voice), Ken AI Assistant (Text + Voice), Known limitations (v1), Models (+4 more)
 
 ### Community 71 - "Community 71"
 Cohesion: 0.22
@@ -282,22 +286,26 @@ Nodes (8): Cloudinary media, Configuration, Endpoints, History, Pricing (render 
 Cohesion: 0.40
 Nodes (5): File Naming Convention, Key Principles, Migration Strategy, Modern Redesign (Priority: HIGH) 🎨, Overview
 
+### Community 95 - "Community 95"
+Cohesion: 0.50
+Nodes (3): ASSISTANT_LAUNCHER_TIPS, ASSISTANT_QUICK_CHIPS, ASSISTANT_WELCOME
+
 ## Knowledge Gaps
-- **468 isolated node(s):** `extends`, `@/*`, `enable`, `disableFilenameBasedTypeAcquisition`, `exclude` (+463 more)
+- **473 isolated node(s):** `extends`, `@/*`, `enable`, `disableFilenameBasedTypeAcquisition`, `exclude` (+468 more)
   These have ≤1 connection - possible missing edges or undocumented components.
-- **35 thin communities (<3 nodes) omitted from report** — run `graphify query` to explore isolated nodes.
+- **33 thin communities (<3 nodes) omitted from report** — run `graphify query` to explore isolated nodes.
 
 ## Suggested Questions
 _Questions this graph is uniquely positioned to answer:_
 
-- **Why does `Image` connect `Community 42` to `Community 4`, `Community 20`, `Community 23`, `Community 25`, `Community 33`, `Community 34`, `Community 37`, `Community 38`, `Community 39`, `Community 41`, `Community 53`, `Community 67`, `Community 68`, `Community 69`, `Community 70`, `Community 72`, `Community 73`, `Community 87`, `Community 94`, `Community 99`, `Community 102`, `Community 104`?**
-  _High betweenness centrality (0.075) - this node is a cross-community bridge._
+- **Why does `Image` connect `Community 42` to `Community 4`, `Community 20`, `Community 23`, `Community 25`, `Community 33`, `Community 34`, `Community 37`, `Community 39`, `Community 41`, `Community 53`, `Community 67`, `Community 68`, `Community 69`, `Community 70`, `Community 72`, `Community 73`, `Community 74`, `Community 87`, `Community 94`, `Community 99`, `Community 102`, `Community 104`?**
+  _High betweenness centrality (0.073) - this node is a cross-community bridge._
 - **Why does `Ken Beauty Salon - Comprehensive Improvement Plan` connect `Community 5` to `Community 2`, `Community 71`, `Community 7`, `Community 75`, `Community 12`, `Community 13`, `Community 14`, `Community 80`, `Community 82`, `Community 92`?**
-  _High betweenness centrality (0.027) - this node is a cross-community bridge._
+  _High betweenness centrality (0.026) - this node is a cross-community bridge._
 - **Why does `ServiceMenu()` connect `Community 88` to `Community 87`?**
-  _High betweenness centrality (0.025) - this node is a cross-community bridge._
+  _High betweenness centrality (0.024) - this node is a cross-community bridge._
 - **What connects `extends`, `@/*`, `enable` to the rest of the system?**
-  _469 weakly-connected nodes found - possible documentation gaps or missing edges._
+  _474 weakly-connected nodes found - possible documentation gaps or missing edges._
 - **Should `Community 0` be split into smaller, more focused modules?**
   _Cohesion score 0.0425531914893617 - nodes in this community are weakly interconnected._
 - **Should `Community 1` be split into smaller, more focused modules?**

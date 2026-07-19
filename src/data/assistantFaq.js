@@ -9,6 +9,7 @@
  */
 
 import {
+  BASE_URL,
   BOOKING_URL,
   CARD_URL,
   CAREERS_URL,
@@ -16,7 +17,22 @@ import {
   WHATSAPP_CONTACTS,
   APP_STORES,
 } from "@/config/constants";
+import { drinksMenu } from "@/data/drinks";
 import { getGoogleMapsUrl, stores } from "@/data/stores";
+
+const DRINKS_PAGE_URL = `${BASE_URL}/drinks`;
+const ABOUT_PAGE_URL = `${BASE_URL}/about`;
+const GALLERY_PAGE_URL = `${BASE_URL}/gallery`;
+
+function formatDrinksFaqAnswer() {
+  return `All beverages at Ken Beauty Salon are complimentary during your visit and available at both branches. Full menu: ${DRINKS_PAGE_URL}.
+
+Hot drinks: ${drinksMenu.hotDrinks.join(", ")}.
+Cold drinks: ${drinksMenu.coldDrinks.join(", ")}.
+Add-ons: ${drinksMenu.addOns.join(", ")}.
+
+When guests ask what drinks you have, summarize briefly (hot / cold / add-ons) and mention they are complimentary; offer the drinks page link for the full list. Do not invent drinks outside this list.`;
+}
 
 /** Action button types the widget understands. */
 export const ACTION_TYPES = {
@@ -208,6 +224,74 @@ export const ASSISTANT_FAQ = [
     questions: ["hour", "open", "close", "time", "when", "working"],
     answer:
       "Opening hours can vary by branch and season, so please confirm with the branch directly on WhatsApp or by phone before your visit.",
+    actions: [],
+  },
+  {
+    id: "drinks",
+    questions: [
+      "drink",
+      "drinks",
+      "beverage",
+      "beverages",
+      "coffee",
+      "tea",
+      "mojito",
+      "cappuccino",
+      "latte",
+      "espresso",
+      "hot chocolate",
+      "juice",
+      "complimentary drink",
+      "مشروب",
+      "مشروبات",
+      "قهوة",
+      "شاي",
+      "موخيتو",
+    ],
+    answer: formatDrinksFaqAnswer(),
+    actions: [],
+  },
+  {
+    id: "about_founder",
+    questions: [
+      "about us",
+      "about the salon",
+      "about ken",
+      "founder",
+      "who founded",
+      "who is ken",
+      "who owns",
+      "vicken",
+      "viken",
+      "ghazarian",
+      "salon story",
+      "salon history",
+      "owner",
+      "behind ken",
+      "من هو كين",
+      "مؤسس",
+      "فين",
+      "فيكن",
+    ],
+    answer: `Ken Beauty Salon (also known as Ken Salon) was founded by Vicken Ghazarian — guests often know him as Ken. He is a hair artist and Schwarzkopf Academy ambassador in the GCC. The salon has two premier locations in Abu Dhabi and focuses on luxury beauty and barber services with personalized VIP care. Full story and portfolio: ${ABOUT_PAGE_URL}. Spelling note: use "Vicken Ghazarian" (as on the About page); "Ken" is the brand / familiar name.`,
+    actions: [],
+  },
+  {
+    id: "gallery",
+    questions: [
+      "gallery",
+      "photos",
+      "photo",
+      "pictures",
+      "picture",
+      "images",
+      "portfolio photos",
+      "before after",
+      "معرض",
+      "صور",
+      "صورة",
+    ],
+    answer: `Our Gallery shows real salon work across hair, makeup, nails, barber, and facial looks. Browse it at ${GALLERY_PAGE_URL}. For the founder story and brand portfolio, see the About page at ${ABOUT_PAGE_URL}.`,
     actions: [],
   },
 ];

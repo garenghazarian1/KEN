@@ -135,8 +135,11 @@ CTAs.
 1. Prices/services come only from the live catalog
    (`src/lib/assistant/catalogContext.js`), cached in-memory ~10 minutes with
    MiniSearch ranking. English and Arabic queries load the corresponding live
-   catalog locale. Price labels are quoted verbatim.
-2. Curated FAQ + approved copy: `src/data/assistantFaq.js`.
+   catalog locale. Price labels are quoted verbatim. Drink-menu questions skip
+   the service-catalog overview so they do not drown FAQ drink grounding.
+2. Curated FAQ + approved copy: `src/data/assistantFaq.js` — includes
+   complimentary **drinks** (from `src/data/drinks.js`), **About / founder**
+   (Vicken Ghazarian / Ken), and **Gallery** page pointers.
 3. **Deterministic locations** (`resolveLocationRequest`): address/directions
    questions bypass model phrasing and use `src/data/stores.js`, the same source
    as the Contact page. Replies include exact full addresses; the shared
@@ -210,6 +213,9 @@ CTAs.
 
 ## History
 
+- **19 July 2026** — Grounded Ani on complimentary drinks (`drinks.js`), About /
+  founder (Vicken Ghazarian / Ken), and Gallery URLs; greeting + quick chip
+  updated; drink queries no longer pull the service-catalog overview.
 - **18 July 2026** — Talk button always visible (WebView no longer hides it);
   iOS Safari square chrome fixed via `appearance: none`; Realtime playback uses
   a DOM-attached `playsInline` audio element; `Permissions-Policy` allows mic.

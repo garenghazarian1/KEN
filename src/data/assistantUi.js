@@ -2,7 +2,7 @@
 export const ASSISTANT_WELCOME = {
   title: "Ani",
   greeting:
-    "Hi, I'm Ani from Ken Beauty Salon! I can help with services, prices, and our locations.",
+    "Hi, I'm Ani from Ken Beauty Salon! I can help with services, prices, complimentary drinks, our story, and locations.",
   namePrompt: "Your name (optional)",
   nameLabel: "Your name (optional)",
   nameSaveLabel: "Save",
@@ -13,9 +13,9 @@ export const ASSISTANT_WELCOME = {
 
 export const ASSISTANT_QUICK_CHIPS = [
   "What services do you offer?",
+  "What drinks do you have?",
   "Where are you located?",
   "How do I book?",
-  "Talk to the salon",
 ];
 
 /** One-time launcher teaser tips (each shown once for ASSISTANT_LAUNCHER_TIP_MS). */
