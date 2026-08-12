@@ -9,6 +9,7 @@ import {
   IMAGES,
   getSocialMediaArray,
 } from "@/config/constants";
+import { getActiveCampaign } from "@/lib/business/campaigns";
 import styles from "./mainPage.module.css";
 export const metadata = {
   title: BUSINESS.fullName,
@@ -57,6 +58,8 @@ const localBusinessJsonLd = {
 };
 
 export default function Home() {
+  const campaign = getActiveCampaign();
+
   return (
     <main className={styles.main}>
       <Script
@@ -67,7 +70,7 @@ export default function Home() {
           __html: JSON.stringify(localBusinessJsonLd),
         }}
       />
-      <HeroModern />
+      <HeroModern campaign={campaign} />
       <DraggableWhatsAppButton />
     </main>
   );

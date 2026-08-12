@@ -4,6 +4,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { motion } from "framer-motion";
 import { ArrowRight } from "lucide-react";
+import OfferPromo from "@/components/campaign/OfferPromo";
 import styles from "./Hero.modern.module.css";
 
 const HERO_VIDEO_SRC = "/hero-vid-01.mp4";
@@ -147,7 +148,7 @@ function GalleryStack() {
   );
 }
 
-export default function HeroModern() {
+export default function HeroModern({ campaign = null }) {
   return (
     <>
       {/* Hero Section */}
@@ -170,6 +171,8 @@ export default function HeroModern() {
         </div>
 
         <div className={styles.heroOverlay} />
+
+        {campaign ? <OfferPromo campaign={campaign} /> : null}
 
         <div className={styles.heroContent}>
           <motion.div

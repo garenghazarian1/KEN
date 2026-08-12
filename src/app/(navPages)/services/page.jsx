@@ -1,6 +1,8 @@
 import { Suspense } from "react";
+import OfferPromo from "@/components/campaign/OfferPromo";
 import ServiceMenu from "@/components/serviceMenu/ServiceMenu";
 import { BUSINESS } from "@/config/constants";
+import { getActiveCampaign } from "@/lib/business/campaigns";
 import {
   buildServiceSections,
   getServiceCatalog,
@@ -41,9 +43,14 @@ export default async function ServicesPage() {
     error = err?.message || "Failed to load services.";
   }
 
+  const campaign = getActiveCampaign();
+
   return (
-    <Suspense fallback={null}>
-      <ServiceMenu sections={sections} error={error} />
-    </Suspense>
+    <>
+      {campaign ? <OfferPromo campaign={campaign} variant="page" /> : null}
+      <Suspense fallback={null}>
+        <ServiceMenu sections={sections} error={error} />
+      </Suspense>
+    </>
   );
 }

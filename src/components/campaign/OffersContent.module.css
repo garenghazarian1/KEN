@@ -1,0 +1,322 @@
+.page {
+  position: relative;
+  min-height: calc(100vh - 10rem);
+  max-width: 1400px;
+  margin: 0 auto;
+  /* Layout already clears the fixed top bar — only breathing room here */
+  padding: var(--spacing-4) var(--spacing-4) var(--spacing-12);
+  overflow-x: hidden;
+  background: var(--color-bg-primary);
+  background-image: radial-gradient(
+      circle at 12% 12%,
+      var(--campaign-tint-20) 0%,
+      transparent 42%
+    ),
+    radial-gradient(
+      circle at 88% 80%,
+      var(--campaign-tint-10) 0%,
+      transparent 45%
+    );
+}
+
+/* Compact offer-first banner */
+.banner {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--spacing-1);
+  text-align: center;
+  margin-bottom: var(--spacing-4);
+}
+
+.badge {
+  display: inline-flex;
+  margin: 0;
+  padding: var(--spacing-1) var(--spacing-3);
+  border-radius: var(--radius-full);
+  border: 1px solid var(--campaign-border-medium);
+  background: var(--campaign-tint-10);
+  font-size: var(--font-size-xs);
+  font-weight: var(--font-weight-semibold);
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--color-text-primary);
+}
+
+.discountLine {
+  display: flex;
+  align-items: baseline;
+  gap: var(--spacing-2);
+  margin: 0;
+}
+
+.discount {
+  font-size: clamp(3.5rem, 18vw, 6rem);
+  font-weight: var(--font-weight-bold);
+  line-height: 0.9;
+  letter-spacing: -0.04em;
+  background: linear-gradient(
+    135deg,
+    var(--campaign-mauve-400) 0%,
+    var(--campaign-mauve-600) 45%,
+    var(--campaign-mauve-500) 100%
+  );
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.off {
+  font-size: clamp(1.25rem, 5vw, 2rem);
+  font-weight: var(--font-weight-bold);
+  color: var(--color-text-primary);
+}
+
+.bannerTitle {
+  margin: 0;
+  font-size: var(--font-size-base);
+  font-weight: var(--font-weight-semibold);
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  color: var(--color-text-secondary);
+}
+
+/* Packages — the first thing that matters */
+.packages {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: var(--spacing-5);
+  margin-bottom: var(--spacing-8);
+}
+
+.card {
+  padding: var(--spacing-5);
+  border-radius: var(--radius-2xl);
+  border: 1px solid var(--campaign-border-light);
+  background: var(--glass-white-light);
+  backdrop-filter: blur(var(--glass-blur-xl));
+  -webkit-backdrop-filter: blur(var(--glass-blur-xl));
+  box-shadow: inset 0 1px 0 var(--glass-border-white-medium);
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-3);
+}
+
+.cardTop {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--spacing-3);
+  min-width: 0;
+}
+
+.cardTitle {
+  margin: 0;
+  min-width: 0;
+  font-size: var(--font-size-lg);
+  font-weight: var(--font-weight-bold);
+  color: var(--color-text-primary);
+}
+
+.savePill {
+  flex: 0 0 auto;
+  padding: var(--spacing-1) var(--spacing-2);
+  border-radius: var(--radius-full);
+  background: linear-gradient(
+    135deg,
+    var(--campaign-mauve-400),
+    var(--campaign-mauve-600)
+  );
+  color: var(--color-text-inverse);
+  font-size: var(--font-size-xs);
+  font-weight: var(--font-weight-bold);
+  letter-spacing: 0.02em;
+}
+
+.priceRow {
+  display: flex;
+  align-items: baseline;
+  flex-wrap: wrap;
+  gap: var(--spacing-2) var(--spacing-3);
+}
+
+.promoPrice {
+  font-size: clamp(1.75rem, 6vw, 2.25rem);
+  font-weight: var(--font-weight-bold);
+  line-height: 1;
+  color: var(--campaign-mauve-500);
+}
+
+.originalPrice {
+  font-size: var(--font-size-sm);
+  color: var(--color-text-secondary);
+  opacity: 0.7;
+}
+
+.saveText {
+  font-size: var(--font-size-xs);
+  font-weight: var(--font-weight-semibold);
+  color: var(--campaign-mauve-600);
+}
+
+.inclusions {
+  margin: 0;
+  padding-inline-start: 1.1rem;
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-1);
+  color: var(--color-text-secondary);
+  font-size: var(--font-size-sm);
+  line-height: 1.4;
+}
+
+.bookBtn {
+  margin-top: auto;
+  min-height: 3rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: var(--radius-full);
+  background: linear-gradient(
+    135deg,
+    var(--campaign-mauve-400) 0%,
+    var(--campaign-mauve-600) 100%
+  );
+  border: 1px solid var(--campaign-border-strong);
+  color: var(--color-text-inverse);
+  font-size: var(--font-size-base);
+  font-weight: var(--font-weight-bold);
+  text-decoration: none;
+  transition: all var(--transition-base) var(--ease-in-out);
+}
+
+.bookBtn:hover {
+  background: linear-gradient(
+    135deg,
+    var(--campaign-mauve-500) 0%,
+    var(--campaign-mauve-600) 100%
+  );
+  transform: translateY(-1px);
+}
+
+/* Weekly offer */
+.weekly {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-5);
+  padding: var(--spacing-5);
+  border-radius: var(--radius-2xl);
+  border: 1px solid var(--campaign-border-medium);
+  background: linear-gradient(
+    135deg,
+    var(--campaign-tint-20),
+    var(--glass-white-light)
+  );
+  backdrop-filter: blur(var(--glass-blur-xl));
+  -webkit-backdrop-filter: blur(var(--glass-blur-xl));
+  margin-bottom: var(--spacing-6);
+}
+
+.weeklyPercent {
+  flex: 0 0 auto;
+  font-size: clamp(2rem, 8vw, 3rem);
+  font-weight: var(--font-weight-bold);
+  line-height: 1;
+  color: var(--campaign-mauve-500);
+}
+
+.weeklyBody {
+  min-width: 0;
+}
+
+.weeklyTitle {
+  margin: 0 0 var(--spacing-1);
+  font-size: var(--font-size-lg);
+  color: var(--color-text-primary);
+}
+
+.weeklyDesc {
+  margin: 0 0 var(--spacing-1);
+  font-size: var(--font-size-base);
+  font-weight: var(--font-weight-semibold);
+  color: var(--campaign-mauve-600);
+}
+
+.weeklyMeta {
+  margin: 0;
+  font-size: var(--font-size-xs);
+  color: var(--color-text-secondary);
+}
+
+.footNote {
+  margin: 0 0 var(--spacing-4);
+  text-align: center;
+  font-size: var(--font-size-sm);
+  color: var(--color-text-secondary);
+}
+
+.secondaryLink {
+  display: block;
+  width: fit-content;
+  margin: 0 auto;
+  padding: var(--spacing-3) var(--spacing-6);
+  border-radius: var(--radius-full);
+  border: 1px solid var(--glass-border-medium);
+  background: var(--glass-white-light);
+  color: var(--color-text-primary);
+  font-size: var(--font-size-base);
+  font-weight: var(--font-weight-semibold);
+  text-decoration: none;
+  transition: all var(--transition-base) var(--ease-in-out);
+}
+
+.secondaryLink:hover {
+  border-color: var(--glass-border-strong);
+}
+
+/* Empty / expired state */
+.emptyHeader {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--spacing-4);
+  text-align: center;
+  padding: var(--spacing-12) 0;
+}
+
+.emptyTitle {
+  margin: 0;
+  font-size: clamp(1.5rem, 5vw, 2.25rem);
+  color: var(--color-text-primary);
+}
+
+@media (max-width: 900px) {
+  .packages {
+    grid-template-columns: 1fr;
+    gap: var(--spacing-4);
+  }
+}
+
+@media (max-width: 480px) {
+  .page {
+    padding: var(--spacing-3) var(--spacing-3) var(--spacing-10);
+  }
+
+  .banner {
+    margin-bottom: var(--spacing-4);
+  }
+
+  .card {
+    padding: var(--spacing-4);
+    gap: var(--spacing-2);
+  }
+
+  .inclusions {
+    font-size: var(--font-size-xs);
+  }
+
+  .weekly {
+    gap: var(--spacing-3);
+    padding: var(--spacing-4);
+  }
+}
