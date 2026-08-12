@@ -45,6 +45,14 @@ describe("matchFaqEntries", () => {
       "https://www.kenbeautysalon.com/gallery"
     );
   });
+
+  it("grounds August offer questions to campaign_offers FAQ", () => {
+    const entries = matchFaqEntries("What August packages do you have?");
+    expect(entries.some((e) => e.id === "campaign_offers")).toBe(true);
+    const campaign = entries.find((e) => e.id === "campaign_offers");
+    expect(campaign.answer).toContain("ACTIVE CAMPAIGN");
+    expect(campaign.answer).toContain("/offers");
+  });
 });
 
 describe("resolveLocationRequest", () => {

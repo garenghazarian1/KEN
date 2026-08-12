@@ -6,6 +6,8 @@
  * are cached in module scope for CATALOG_TTL_MS.
  *
  * The admin public API catalog is the ONLY source of truth for services/prices.
+ * Guest phrasing is expanded via synonyms + optional LLM keywords before search
+ * (`catalogQueryExpand.js`) so "barber cut" can still hit "Men's Haircut".
  */
 
 import {
@@ -16,6 +18,8 @@ import {
   buildServiceSearchCatalog,
   searchServices,
 } from "@/lib/business/serviceSearch";
+import { isCampaignQuery } from "@/lib/assistant/campaignContext";
+import { expandCatalogQueryForSearch } from "@/lib/assistant/catalogQueryExpand";
 
 const CATALOG_TTL_MS = 10 * 60 * 1000;
 
@@ -97,19 +101,46 @@ function formatCategoryOverview(sections) {
 }
 
 /**
+ * Merge MiniSearch results from the raw guest query and the expanded keywords.
+ * Higher score wins when the same service appears twice.
+ * @param {Array} a
+ * @param {Array} b
+ * @param {number} limit
+ */
+function mergeHits(a, b, limit) {
+  const byId = new Map();
+  for (const hit of [...a, ...b]) {
+    const id = hit.item?.id;
+    if (!id) continue;
+    const prev = byId.get(id);
+    if (!prev || (hit.score ?? 0) > (prev.score ?? 0)) {
+      byId.set(id, hit);
+    }
+  }
+  return [...byId.values()]
+    .sort((x, y) => (y.score ?? 0) - (x.score ?? 0))
+    .slice(0, limit);
+}
+
+/**
  * Search the catalog and return a compact plain-text context block.
- * Returns { context: string, sources: string[] }.
+ * Returns { context: string, sources: string[], available: boolean }.
  * @param {string} query
  * @param {number} [limit=8]
+ * @param {{ skipLlm?: boolean }} [options]
  */
-export async function buildCatalogContext(query, limit = 8) {
+export async function buildCatalogContext(query, limit = 8, options = {}) {
   try {
     const locale = /[\u0600-\u06ff]/.test(query || "") ? "ar" : "en";
     const { search, sections } = await getCachedCatalog(locale);
     const parts = [];
     const sources = [];
 
-    if (OVERVIEW_RE.test(query || "") && !DRINKS_QUERY_RE.test(query || "")) {
+    if (
+      OVERVIEW_RE.test(query || "") &&
+      !DRINKS_QUERY_RE.test(query || "") &&
+      !isCampaignQuery(query || "")
+    ) {
       const overview = formatCategoryOverview(sections);
       if (overview) {
         parts.push(overview);
@@ -117,12 +148,24 @@ export async function buildCatalogContext(query, limit = 8) {
       }
     }
 
-    const hits = searchServices(search, query, limit);
+    const expanded = await expandCatalogQueryForSearch(query || "", {
+      skipLlm: options.skipLlm === true,
+    });
+    const directHits = searchServices(search, query || "", limit);
+    const expandedHits =
+      expanded.searchQuery && expanded.searchQuery !== (query || "").trim()
+        ? searchServices(search, expanded.searchQuery, limit)
+        : [];
+    const hits = mergeHits(directHits, expandedHits, limit);
+
     if (hits.length) {
       parts.push(
         `Matching services from the live Ken Beauty Salon catalog (prices are exact — quote priceLabel verbatim):\n${hits.map(formatItem).join("\n")}`
       );
       sources.push(...hits.map((h) => `catalog:${h.item.id}`));
+      if (expanded.usedLlm || expanded.matchedRuleIds.length) {
+        sources.push("catalog:query_expand");
+      }
     }
 
     return { context: parts.join("\n\n"), sources, available: true };

@@ -7,7 +7,7 @@ import { X } from "lucide-react";
 import { ASSISTANT_AVATAR_SRC } from "@/config/constants";
 import {
   ASSISTANT_LAUNCHER_TIP_MS,
-  ASSISTANT_LAUNCHER_TIPS,
+  getAssistantLauncherTips,
 } from "@/data/assistantUi";
 import styles from "./AssistantWidget.module.css";
 
@@ -27,6 +27,9 @@ export default function AssistantWidget() {
   const [tipPhase, setTipPhase] = useState("idle"); // idle | typing | hold | exit
   const launcherRef = useRef(null);
   const tipsDoneRef = useRef(false);
+  const tipsRef = useRef(null);
+  if (!tipsRef.current) tipsRef.current = getAssistantLauncherTips();
+  const launcherTips = tipsRef.current;
 
   useEffect(() => {
     let step = 0;
@@ -42,7 +45,7 @@ export default function AssistantWidget() {
       setTipPhase("exit");
       window.clearTimeout(exitTimer);
       exitTimer = window.setTimeout(() => {
-        if (step >= ASSISTANT_LAUNCHER_TIPS.length) {
+        if (step >= launcherTips.length) {
           tipsDoneRef.current = true;
           setTipIndex(null);
           window.clearInterval(id);
@@ -56,7 +59,7 @@ export default function AssistantWidget() {
       window.clearInterval(id);
       window.clearTimeout(exitTimer);
     };
-  }, []);
+  }, [launcherTips.length]);
 
   useEffect(() => {
     if (!open || tipsDoneRef.current) return;
@@ -74,7 +77,7 @@ export default function AssistantWidget() {
     }
     if (open) return;
 
-    const full = ASSISTANT_LAUNCHER_TIPS[tipIndex] ?? "";
+    const full = launcherTips[tipIndex] ?? "";
     const reduceMotion =
       typeof window !== "undefined" &&
       window.matchMedia("(prefers-reduced-motion: reduce)").matches;
@@ -98,7 +101,7 @@ export default function AssistantWidget() {
     }, TIP_CHAR_MS);
 
     return () => window.clearInterval(id);
-  }, [tipIndex, open]);
+  }, [tipIndex, open, launcherTips]);
 
   const toggle = () => {
     setOpen((prev) => {
@@ -114,7 +117,7 @@ export default function AssistantWidget() {
   };
 
   const tipFull =
-    tipIndex !== null ? ASSISTANT_LAUNCHER_TIPS[tipIndex] : null;
+    tipIndex !== null ? launcherTips[tipIndex] : null;
   const showTip = tipFull !== null;
 
   return (

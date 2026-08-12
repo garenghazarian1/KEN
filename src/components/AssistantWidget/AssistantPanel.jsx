@@ -13,8 +13,8 @@ import {
 } from "lucide-react";
 import Image from "next/image";
 import {
-  ASSISTANT_QUICK_CHIPS,
   ASSISTANT_WELCOME,
+  getAssistantQuickChips,
 } from "@/data/assistantUi";
 import {
   ASSISTANT_AVATAR_SRC,
@@ -788,7 +788,7 @@ export default function AssistantPanel({ isOpen, onClose }) {
 
       {messages.length <= 1 && (
         <div className={styles.chips}>
-          {ASSISTANT_QUICK_CHIPS.map((chip) => (
+          {getAssistantQuickChips().map((chip) => (
             <button
               key={chip}
               type="button"

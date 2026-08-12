@@ -1,0 +1,13 @@
+---
+description: Keep website offers and Ani assistant in sync via campaigns.js SSoT
+alwaysApply: true
+---
+
+# Campaign sync
+
+- **Single source of truth:** `src/data/campaigns.js` (+ helpers in `src/lib/business/campaigns.js`).
+- **Never** hardcode promo package prices in FAQ answers, the system prompt, or UI copy — read from campaign data.
+- **Authority split:** campaign packages / Hot Tuesday → campaigns.js; ordinary services → live admin catalog (`catalogContext.js`).
+- When changing a campaign, update `campaigns.js` only; assistant grounding (`campaignContext.js`) and `/offers` / `OfferPromo` pick it up automatically.
+- After campaign edits, run `npm run test:run` (campaign + campaignContext tests).
+- See `docs/CAMPAIGNS.md`.

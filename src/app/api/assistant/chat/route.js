@@ -8,6 +8,7 @@ import {
   resolveLocationRequest,
 } from "@/lib/assistant/intentGate";
 import { buildCatalogContext } from "@/lib/assistant/catalogContext";
+import { buildCampaignContext } from "@/lib/assistant/campaignContext";
 import { buildSystemPrompt } from "@/lib/assistant/prompt";
 import { allowAssistantRequest } from "@/lib/assistant/rateLimit";
 import { normalizeSessionId } from "@/lib/assistant/validation";
@@ -254,8 +255,9 @@ export async function POST(request) {
       );
     }
 
-    const [catalog, faqEntries] = await Promise.all([
+    const [catalog, campaign, faqEntries] = await Promise.all([
       buildCatalogContext(retrievalQuery),
+      Promise.resolve(buildCampaignContext(retrievalQuery)),
       Promise.resolve(matchFaqEntries(retrievalQuery)),
     ]);
 
@@ -266,6 +268,7 @@ export async function POST(request) {
           guestName: conversation.guestName,
           catalogContext: catalog.context,
           catalogAvailable: catalog.available,
+          campaignContext: campaign.context,
           faqEntries,
         }),
       },
@@ -289,6 +292,7 @@ export async function POST(request) {
 
     const sources = [
       ...catalog.sources,
+      ...campaign.sources,
       ...faqEntries.map((f) => `faq:${f.id}`),
     ];
 

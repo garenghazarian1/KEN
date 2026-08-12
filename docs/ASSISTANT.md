@@ -1,6 +1,6 @@
 # Ken AI Assistant — Ani (Text + Voice)
 
-Last updated: 19 July 2026
+Last updated: 12 August 2026
 
 Catalog-grounded website assistant **Ani**: floating widget with model-style
 avatar, optional guest name (dismissible strip on chat), text + voice input,
@@ -10,9 +10,10 @@ everything controlled by the third-party booking system (Zenoti).
 Persona display name and greeting live in `src/data/assistantUi.js`; system
 prompt identity is in `src/lib/assistant/prompt.js`. Avatar assets:
 `public/assistant/ken-assistant-avatar.webp` (+ `.png` fallback), paths in
-`src/config/constants.js`. On each page load, three marketing tips rotate
-above the launcher (`ASSISTANT_LAUNCHER_TIPS`, 3 s each, once per load)
-then stop; opening the chat ends the sequence early.
+`src/config/constants.js`. On each page load, launcher tips rotate above the
+launcher (`getAssistantLauncherTips()`, ~4.2 s each, once per load) then stop;
+opening the chat ends the sequence early. When a campaign is active, tips and
+quick chips include an August-offers prompt.
 
 ## Environment variables
 
@@ -135,24 +136,35 @@ CTAs.
 1. Prices/services come only from the live catalog
    (`src/lib/assistant/catalogContext.js`), cached in-memory ~10 minutes with
    MiniSearch ranking. English and Arabic queries load the corresponding live
-   catalog locale. Price labels are quoted verbatim. Drink-menu questions skip
-   the service-catalog overview so they do not drown FAQ drink grounding.
-2. Curated FAQ + approved copy: `src/data/assistantFaq.js` — includes
+   catalog locale. Price labels are quoted verbatim. Guest phrasing is expanded
+   before search (`catalogQueryExpand.js`: synonym rules + optional
+   `gpt-4.1-mini` keyword rewrite) so questions like “barber cut” still retrieve
+   catalog rows such as “Men’s Haircut” — the model still must not invent prices.
+   Drink-menu and **active campaign** questions skip the service-catalog overview
+   so they do not drown FAQ / campaign grounding.
+2. **Active campaigns** (`src/lib/assistant/campaignContext.js` +
+   `src/data/campaigns.js`): promotional packages, package inclusions, promo
+   prices, and Hot Tuesday rules. Injected into the system prompt the same way
+   as catalog context (text chat + Realtime turn). See `docs/CAMPAIGNS.md`.
+3. Curated FAQ + approved copy: `src/data/assistantFaq.js` — includes
    complimentary **drinks** (from `src/data/drinks.js`), **About / founder**
-   (Vicken Ghazarian / Ken), and **Gallery** page pointers.
-3. **Deterministic locations** (`resolveLocationRequest`): address/directions
+   (Vicken Ghazarian / Ken), **Gallery** page pointers, and a
+   `campaign_offers` pointer that defers to ACTIVE CAMPAIGN context.
+4. **Deterministic locations** (`resolveLocationRequest`): address/directions
    questions bypass model phrasing and use `src/data/stores.js`, the same source
    as the Contact page. Replies include exact full addresses; the shared
    linkifier makes each address a Google Maps link and the API returns explicit
    Directions action buttons. Recent user turns preserve short follow-ups such
    as “Galleria” / “galeria”.
-4. **Hard gate** (`src/lib/assistant/intentGate.js`): payments/refunds/billing,
+5. **Hard gate** (`src/lib/assistant/intentGate.js`): payments/refunds/billing,
    Zenoti account/login/registration, cancel/reschedule/no-show/deposit, and
    "book me for..." requests never reach the LLM. They get a fixed template +
    WhatsApp/call/Book Now CTAs and mark the conversation `handed_off`.
-5. System prompt (`src/lib/assistant/prompt.js`) forbids invented prices,
-   hours, policies, and any claim of booking/cancelling/refunding.
-6. Retrieval includes the last three user turns so follow-ups such as “How
+6. System prompt (`src/lib/assistant/prompt.js`) forbids invented prices,
+   hours, policies, and any claim of booking/cancelling/refunding. Campaign
+   packages override only for promo packages; ordinary services stay on the
+   catalog.
+7. Retrieval includes the last three user turns so follow-ups such as “How
    much is it?” remain grounded in the previously mentioned service.
 
 ## UI
@@ -194,6 +206,10 @@ CTAs.
 - `src/lib/assistant/intentGate.test.js` covers exact two-branch addresses,
   Galleria follow-up resolution, Google Maps actions, and non-location branch
   questions. `vitest.config.mjs` maps the app's existing `@/` import alias.
+- `src/lib/assistant/campaignContext.test.js` + `src/lib/business/campaigns.test.js`
+  cover active-window detection and offer-query grounding (EN + AR).
+- `src/lib/assistant/catalogQueryExpand.test.js` covers synonym expansion
+  (barber cut → men/haircut) and LLM keyword rewrite parsing.
 
 ## Known limitations (v1)
 
@@ -213,6 +229,12 @@ CTAs.
 
 ## History
 
+- **12 August 2026** — Catalog search understands guest phrasing via synonym
+  rules + optional LLM keyword rewrite (`catalogQueryExpand.js`) before
+  MiniSearch; prices still only from catalog hits.
+- **12 August 2026** — Grounded Ani on active promotional campaigns
+  (`campaigns.js` → `campaignContext.js`), same injection path as catalog
+  context; FAQ `campaign_offers`; dynamic offer chip/tip when campaign active.
 - **19 July 2026** — Grounded Ani on complimentary drinks (`drinks.js`), About /
   founder (Vicken Ghazarian / Ken), and Gallery URLs; greeting + quick chip
   updated; drink queries no longer pull the service-catalog overview.
