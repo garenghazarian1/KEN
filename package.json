@@ -11,6 +11,7 @@
     "start": "next start",
     "lint": "next lint",
     "test:run": "vitest run",
+    "e2e": "playwright test",
     "verify:head": "node scripts/verify-head.mjs"
   },
   "dependencies": {
@@ -27,6 +28,7 @@
     "swiper": "^11.1.14"
   },
   "devDependencies": {
+    "@playwright/test": "^1.55.0",
     "eslint": "^8",
     "eslint-config-next": "14.2.13",
     "postcss": "^8",

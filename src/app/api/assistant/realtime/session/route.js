@@ -70,7 +70,11 @@ export async function POST(request) {
 
     if (!conversation) {
       await AssistantConversation.updateMany(
-        { businessSlug: BUSINESS_SLUG, sessionId, status: "open" },
+        {
+          businessSlug: BUSINESS_SLUG,
+          sessionId,
+          status: { $in: ["open", "idle"] },
+        },
         { $set: { status: "closed", closedReason: "superseded" } }
       );
       conversation = await AssistantConversation.create({

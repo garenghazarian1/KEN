@@ -3,6 +3,7 @@ import mongoose from "mongoose";
 import { getAssistantModels } from "@/lib/assistant/models";
 import { allowAssistantRequest } from "@/lib/assistant/rateLimit";
 import { normalizeSessionId } from "@/lib/assistant/validation";
+import { touchConversationActivity } from "@/lib/assistant/touchConversationActivity";
 import { buildWhatsAppActions, buildCallActions } from "@/data/assistantFaq";
 
 const HANDOFF_REPLY =
@@ -65,10 +66,15 @@ export async function POST(request) {
         { status: 404 }
       );
     }
+    if (!touchConversationActivity(conversation).ok) {
+      return NextResponse.json(
+        { code: "CONVERSATION_CLOSED", message: "This conversation has ended." },
+        { status: 409 }
+      );
+    }
 
     conversation.status = "handed_off";
     conversation.handoffReason = "user_request";
-    conversation.lastMessageAt = new Date();
     await conversation.save();
 
     await AssistantMessage.create({

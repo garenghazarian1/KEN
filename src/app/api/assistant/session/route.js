@@ -3,6 +3,7 @@ import mongoose from "mongoose";
 import { getAssistantModels } from "@/lib/assistant/models";
 import { allowAssistantRequest } from "@/lib/assistant/rateLimit";
 import { normalizeSessionId } from "@/lib/assistant/validation";
+import { touchConversationActivity } from "@/lib/assistant/touchConversationActivity";
 import { BUSINESS_SLUG } from "@/config/constants";
 
 export const maxDuration = 15;
@@ -62,7 +63,11 @@ export async function POST(request) {
 
     // Every new assistant session starts a fresh conversation.
     await AssistantConversation.updateMany(
-      { businessSlug: BUSINESS_SLUG, sessionId, status: "open" },
+      {
+        businessSlug: BUSINESS_SLUG,
+        sessionId,
+        status: { $in: ["open", "idle"] },
+      },
       { $set: { status: "closed", closedReason: "superseded" } }
     );
 
@@ -143,16 +148,12 @@ export async function PATCH(request) {
 
   try {
     const { AssistantConversation } = await getAssistantModels();
-    const conversation = await AssistantConversation.findOneAndUpdate(
-      {
-        _id: conversationId,
-        businessSlug: BUSINESS_SLUG,
-        sessionId,
-        status: { $in: ["open", "handed_off"] },
-      },
-      { $set: { guestName } },
-      { new: true }
-    );
+    const conversation = await AssistantConversation.findOne({
+      _id: conversationId,
+      businessSlug: BUSINESS_SLUG,
+      sessionId,
+      status: { $in: ["open", "idle", "handed_off"] },
+    });
 
     if (!conversation) {
       return NextResponse.json(
@@ -160,6 +161,10 @@ export async function PATCH(request) {
         { status: 404 }
       );
     }
+
+    touchConversationActivity(conversation);
+    conversation.guestName = guestName;
+    await conversation.save();
 
     return NextResponse.json({ guestName: conversation.guestName });
   } catch (err) {

@@ -9,6 +9,7 @@ import {
   Phone,
   CalendarCheck,
   ExternalLink,
+  Square,
   X,
 } from "lucide-react";
 import Image from "next/image";
@@ -25,6 +26,7 @@ import { linkifyToNodes } from "@/utils/linkifyText";
 import useAssistantRealtime, {
   voiceSupported as detectVoiceSupport,
 } from "@/hooks/useAssistantRealtime";
+import { shouldAdoptAssistantSession } from "@/lib/assistant/shouldAdoptAssistantSession";
 import styles from "./AssistantWidget.module.css";
 
 const VOICE_UNSUPPORTED_IN_APP =
@@ -141,6 +143,9 @@ export default function AssistantPanel({ isOpen, onClose }) {
   const textInputRef = useRef(null);
 
   const requestInFlightRef = useRef(false);
+  const isOpenRef = useRef(isOpen);
+  const sessionGenerationRef = useRef(0);
+  isOpenRef.current = isOpen;
 
   // Live-caption bubbles for the realtime voice conversation.
   const voiceUserBubblesRef = useRef(new Map()); // itemId -> local message id
@@ -178,6 +183,28 @@ export default function AssistantPanel({ isOpen, onClose }) {
     voiceUserBubblesRef.current = new Map();
     voiceAssistantBubblesRef.current = new Map();
   }, []);
+
+  const endOwnedConversation = useCallback(
+    (reason) => {
+      sessionGenerationRef.current += 1;
+      const conversationId = conversationIdRef.current;
+      const sessionId = sessionIdRef.current;
+      if (conversationId && sessionId) {
+        fetch("/api/assistant/session/end", {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({
+            sessionId,
+            conversationId,
+            reason,
+          }),
+          keepalive: true,
+        }).catch(() => {});
+      }
+      resetConversation();
+    },
+    [resetConversation]
+  );
 
   const voice = useAssistantRealtime({
     conversationId,
@@ -328,6 +355,7 @@ export default function AssistantPanel({ isOpen, onClose }) {
     if (!sessionIdRef.current) {
       sessionIdRef.current = getSessionId();
     }
+    const generation = sessionGenerationRef.current;
     requestInFlightRef.current = true;
     setError(null);
     setMessages((prev) =>
@@ -346,6 +374,30 @@ export default function AssistantPanel({ isOpen, onClose }) {
       });
       const data = await res.json();
       if (!res.ok) throw new Error(data.message || "Could not start the chat.");
+
+      // Panel close can finish before this response. Adopting the id would
+      // leave an `open` Mongo row with no UI owner (never posted /session/end).
+      if (
+        !shouldAdoptAssistantSession({
+          panelOpen: isOpenRef.current,
+          startedGeneration: generation,
+          currentGeneration: sessionGenerationRef.current,
+        })
+      ) {
+        if (data.conversationId && sessionIdRef.current) {
+          fetch("/api/assistant/session/end", {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify({
+              sessionId: sessionIdRef.current,
+              conversationId: data.conversationId,
+              reason: "panel_closed",
+            }),
+            keepalive: true,
+          }).catch(() => {});
+        }
+        return;
+      }
 
       conversationIdRef.current = data.conversationId;
       setConversationId(data.conversationId);
@@ -622,18 +674,27 @@ export default function AssistantPanel({ isOpen, onClose }) {
 
   const endVoice = () => {
     voice.stop("user_end");
+    endOwnedConversation("user_end");
+  };
+
+  const endChat = () => {
+    if (voiceActiveRef.current) voice.stop("user_end");
+    endOwnedConversation("user_end");
   };
 
   const closePanel = () => {
     if (voiceActiveRef.current) voice.stop("panel_closed");
+    endOwnedConversation("panel_closed");
     onClose();
   };
 
   useEffect(() => {
     if (isOpen) return;
     if (voiceActiveRef.current) voice.stop("panel_closed");
+    endOwnedConversation("panel_closed");
+    // `voice` omitted on purpose: hook identity changes must not re-close.
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [isOpen]);
+  }, [isOpen, conversationId, endOwnedConversation]);
 
   return (
     <div
@@ -653,15 +714,26 @@ export default function AssistantPanel({ isOpen, onClose }) {
           <span className={styles.headerTitle}>{ASSISTANT_WELCOME.title}</span>
         </div>
         <div className={styles.headerButtons}>
-        <button
-          type="button"
-          className={styles.headerButton}
-          onClick={closePanel}
-          aria-label="Close assistant"
-          title="Close"
-        >
-          <X size={16} aria-hidden="true" />
-        </button>
+          {conversationId && (
+            <button
+              type="button"
+              className={styles.headerButton}
+              onClick={endChat}
+              aria-label={ASSISTANT_WELCOME.endChatAriaLabel}
+              title={ASSISTANT_WELCOME.endChatLabel}
+            >
+              <Square size={14} aria-hidden="true" fill="currentColor" />
+            </button>
+          )}
+          <button
+            type="button"
+            className={styles.headerButton}
+            onClick={closePanel}
+            aria-label="Close assistant"
+            title="Close"
+          >
+            <X size={16} aria-hidden="true" />
+          </button>
         </div>
       </header>
 

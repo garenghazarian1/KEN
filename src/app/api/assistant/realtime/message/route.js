@@ -3,6 +3,7 @@ import mongoose from "mongoose";
 import { getAssistantModels } from "@/lib/assistant/models";
 import { allowAssistantRequest } from "@/lib/assistant/rateLimit";
 import { normalizeSessionId } from "@/lib/assistant/validation";
+import { reopenOnCustomerActivity } from "@/lib/assistant/assistantLifecycle";
 
 export const maxDuration = 15;
 
@@ -57,9 +58,12 @@ export async function POST(request) {
     const conversation = await AssistantConversation.findOne({
       _id: conversationId,
       sessionId,
-    }).select("_id");
+    });
     if (!conversation) {
       return errorJson("NOT_FOUND", "Conversation not found.", 404);
+    }
+    if (conversation.status === "closed") {
+      return errorJson("CONVERSATION_CLOSED", "This conversation has ended.", 409);
     }
 
     const assistantMessage = await AssistantMessage.create({
@@ -71,7 +75,12 @@ export async function POST(request) {
     });
     await AssistantConversation.updateOne(
       { _id: conversation._id },
-      { $set: { lastMessageAt: new Date() } }
+      {
+        $set: {
+          lastMessageAt: new Date(),
+          status: reopenOnCustomerActivity(conversation.status),
+        },
+      }
     );
 
     return NextResponse.json({

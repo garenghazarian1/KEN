@@ -1,6 +1,6 @@
 # Ken AI Assistant — Ani (Text + Voice)
 
-Last updated: 12 August 2026
+Last updated: 4 September 2026
 
 Catalog-grounded website assistant **Ani**: floating widget with model-style
 avatar, optional guest name (dismissible strip on chat), text + voice input,
@@ -22,8 +22,9 @@ quick chips include an August-offers prompt.
 | `OPENAI_API_KEY`  | Server-only. Chat + transcription + TTS. Never `NEXT_PUBLIC` |
 | `MONGODB_URI`     | Existing cluster URI (already used by `connectDB`)     |
 | `SERVICES_MONGODB_DB_NAME` | `beauty-admin` (assistant collections live in the admin platform DB) |
+| `CRON_SECRET`     | Bearer token for `GET /api/cron/assistant-cleanup` (Vercel Cron sends `Authorization: Bearer …`) |
 
-All three must also be set in Vercel project env vars before deploy.
+All four must also be set in Vercel project env vars before deploy.
 
 ## Models
 
@@ -42,8 +43,8 @@ All three must also be set in Vercel project env vars before deploy.
 
 | Method | Path                              | Purpose                                                              |
 | ------ | --------------------------------- | -------------------------------------------------------------------- |
-| POST   | `/api/assistant/session`          | Start a **fresh** conversation (closes previous open one); no hydration |
-| PATCH  | `/api/assistant/session`          | Set optional `guestName` on an owned open conversation                 |
+| POST   | `/api/assistant/session`          | Start a **fresh** conversation (closes previous open/idle); no hydration |
+| PATCH  | `/api/assistant/session`          | Set optional `guestName` on an owned open/idle/`handed_off` conversation |
 | POST   | `/api/assistant/session/end`      | Close an owned conversation (`user_end` / `idle_timeout` / `panel_closed` / `connection_lost`) |
 | POST   | `/api/assistant/chat`             | JSON text or multipart audio → transcript → gate → **SSE reply**     |
 | POST   | `/api/assistant/handoff`          | Mark conversation `handed_off`; return WhatsApp/call CTAs            |
@@ -51,6 +52,7 @@ All three must also be set in Vercel project env vars before deploy.
 | POST   | `/api/assistant/realtime/session` | Mint short-lived Realtime **client secret** (10 min) + conversation  |
 | POST   | `/api/assistant/realtime/turn`    | Persist final user voice transcript; hard gate; return grounded instructions |
 | POST   | `/api/assistant/realtime/message` | Persist a completed assistant voice transcript                       |
+| GET    | `/api/cron/assistant-cleanup`     | Every 15 min: mark idle (15 min) then close (24 h) for this business |
 
 `/api/assistant/chat` success responses use `text/event-stream` with events:
 
@@ -62,14 +64,41 @@ All three must also be set in Vercel project env vars before deploy.
 Validation / rate-limit failures still return JSON `{ code, message }`.
 
 Error shape: `{ code, message }` (`BAD_REQUEST`, `RATE_LIMITED`, `NOT_FOUND`,
-`TRANSCRIPTION_FAILED`, `TTS_FAILED`, `REALTIME_FAILED`, `NOT_CONFIGURED`,
-`SERVER_ERROR`).
+`CONVERSATION_CLOSED`, `TRANSCRIPTION_FAILED`, `TTS_FAILED`, `REALTIME_FAILED`,
+`NOT_CONFIGURED`, `SERVER_ERROR`).
 
 `/speak` requires the owning `sessionId`, `conversationId`, and
 `assistantMessageId`; it does not accept arbitrary text. Assistant routes apply
 both per-session and per-IP in-memory limits and declare explicit Vercel
 execution durations. The real OpenAI API key never reaches the browser — the
 voice client connects with an ephemeral client secret only.
+
+## Conversation close lifecycle
+
+Cheer-ported inactivity rules live in `src/lib/assistant/assistantLifecycle.js`
++ `assistantRetention.js` (15 min idle, 24 h close). Cron:
+`vercel.json` → `GET /api/cron/assistant-cleanup` every 15 minutes, scoped by
+`BUSINESS_SLUG`. `handed_off` is skipped by cron. Guest activity on an `idle`
+row reopens it to `open` and bumps `lastMessageAt`. Writes to `closed` return
+`409 CONVERSATION_CLOSED`.
+
+| Event | Mongo |
+| ----- | ----- |
+| Panel close / Escape | `closed` (`panel_closed`) |
+| Header **End chat** or Talk orb **End** | `closed` (`user_end`) |
+| Voice 15 s + 15 s silence goodbye | `closed` (`idle_timeout`) |
+| Fresh session for same browser sessionId | prior `open`/`idle` → `closed` (`superseded`) |
+| Cron after 15 min no messages | `open` → `idle` |
+| Cron after 24 h no messages | `open`/`idle` → `closed` (`inactivity`) |
+
+Switching voice → text (`switch_to_text`) and WebRTC `connection_lost` tear
+down the mic only — they do **not** close Mongo (guest may keep typing; cron
+covers abandoned sessions).
+
+The panel stays open after an explicit End; `ensureSession` starts a new row.
+Closing the panel resets client state so the next open is also a new session.
+Reopening continues the same thread only while the panel stays open and the
+row is still `open` or `idle`.
 
 ## Voice conversation lifecycle
 
@@ -94,10 +123,10 @@ idle-close state machine: `src/lib/assistant/voiceLifecycle.js` (unit tested).
    spoken check-in ("anything else?"); 15 s more without speech, typing, or
    interaction → spoken goodbye, conversation marked `closed`
    (`closedReason: idle_timeout`), WebRTC torn down, panel closes and resets.
-7. Explicit **End** and **Mute** controls; ending the call posts
-   `/api/assistant/session/end`. Closing the panel stops the mic without
-   closing the conversation. Denied mic / unsupported WebRTC / connection
-   failure fall back to text with a visible message.
+7. Explicit **End chat** (header), Talk orb **End**, and **Mute**; ending posts
+   `/api/assistant/session/end` with `user_end`. Closing the panel stops the
+   mic and closes the conversation (`panel_closed`). Denied mic / unsupported
+   WebRTC / connection failure fall back to text with a visible message.
 
 Status states shown in the composer: Connecting, Listening, Thinking,
 Speaking, Muted, Ending (animated dot, `prefers-reduced-motion` respected).
@@ -111,8 +140,8 @@ Every conversation is stamped with `businessSlug` (`BUSINESS_SLUG` =
 admin UI filter by it — the collections are multi-tenant.
 
 - `assistant_conversations` — `businessSlug`, `sessionId`, optional
-  `guestName`, `status` (`open` / `handed_off` / `closed`), `handoffReason`,
-  `closedReason`, `lastMessageAt`, light metadata.
+  `guestName`, `status` (`open` / `idle` / `handed_off` / `closed`),
+  `handoffReason`, `closedReason`, `lastMessageAt`, light metadata.
 - `assistant_messages` — `conversationId`, `role`, `content` (text only),
   `inputModality` (`text` / `voice`), `sources[]`, `model`, `escalationReason`.
 
@@ -123,13 +152,13 @@ Compound indexes cover open-session lookup, status/last-message listing, and
 conversation history.
 
 Every new assistant session **starts fresh**: starting the widget (or the
-voice call without a live conversation) closes the previous open conversation
-(`closedReason: superseded`) and creates a new one. Old transcripts are never
-hydrated into the UI.
+voice call without a live conversation) closes the previous open/idle
+conversation (`closedReason: superseded`) and creates a new one. Old
+transcripts are never hydrated into the UI.
 
 `handed_off` is an operational flag, not a hard chat lock: the open panel may
 still answer unrelated catalog/location questions after showing human-contact
-CTAs.
+CTAs. Cron inactivity does not change `handed_off` rows.
 
 ## Accuracy & escalation rules
 
@@ -188,7 +217,11 @@ CTAs.
   `microphone=(self)`.
 - Text and voice modes are exclusive. Sending typed text ends the live
   mic/WebRTC call before the text request starts; its response streams into a
-  persistent text bubble and never plays audio. Closing the panel stops voice.
+  persistent text bubble and never plays audio. Closing the panel stops voice
+  and closes the Mongo conversation (`panel_closed`).
+- Header **End chat** (square control) ends the conversation for text and
+  voice (`user_end`) without closing the panel; a new session starts if the
+  guest keeps chatting.
 - The two transports keep independent message ids/state (`source: "text"` or
   `"voice"`) but reuse the same accessible message-list presentation. Voice
   captions come only from Realtime transcription events: the guest transcript
@@ -203,6 +236,15 @@ CTAs.
 - `npm run test:run` (Vitest) — `src/lib/assistant/voiceLifecycle.test.js`
   covers the two-stage close: check-in at 15 s, goodbye 15 s after the
   check-in turn, activity resets, single-close guarantee, and disposal.
+- `src/lib/assistant/assistantLifecycle.test.js` covers cron idle/close
+  transitions, handed_off skip, explicit close reasons, and idle reopen.
+- `assistantRetention.test.js`, `touchConversationActivity.test.js`,
+  `shouldAdoptAssistantSession.test.js`, and
+  `applyAssistantCleanupBatch.test.js` cover thresholds, idle reopen,
+  the in-flight session race, and cron batch writes.
+- Route tests: `session/end/route.test.js`, `cron/assistant-cleanup/route.test.js`.
+- `npm run e2e` (Playwright) — `e2e/assistant-close.spec.js` covers panel
+  close, launcher close, End chat, and reopen creating a new session.
 - `src/lib/assistant/intentGate.test.js` covers exact two-branch addresses,
   Galleria follow-up resolution, Google Maps actions, and non-location branch
   questions. `vitest.config.mjs` maps the app's existing `@/` import alias.
@@ -222,13 +264,19 @@ CTAs.
 - English-first UI copy; the model replies in the guest's language.
 - Transcripts are viewable in the admin app under AI Assistant Chats
   (business-scoped); raw data lives in `beauty-admin.assistant_*`.
-- No retention job yet; decide a transcript retention window (e.g. 180 days)
-  and add a TTL index if required.
-- graphify CLI is not installed in the dev environment, so `graphify update .`
-  was not run for these files.
+- Admin UI currently maps unknown statuses to “Closed”, so `idle` may look
+  closed in the list until admin labels are updated. `closedReason:
+  inactivity` shows as the raw string until admin i18n adds a label.
+- Transcript retention purge (180 days) is owned by the admin app cron — Ken
+  does not set `expireAt` / TTL indexes on assistant collections.
+- graphify CLI may be unavailable in some environments; run
+  `python -m graphify update .` when present.
 
 ## History
 
+- **4 September 2026** — Ported Cheer-style close lifecycle: panel close and
+  End chat post `/session/end`; cron idle (15 min) / close (24 h); `idle`
+  status + `inactivity` reason; keep voice 15 s idle and `superseded`.
 - **12 August 2026** — Catalog search understands guest phrasing via synonym
   rules + optional LLM keyword rewrite (`catalogQueryExpand.js`) before
   MiniSearch; prices still only from catalog hits.

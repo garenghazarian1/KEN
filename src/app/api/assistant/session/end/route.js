@@ -3,6 +3,7 @@ import mongoose from "mongoose";
 import { getAssistantModels } from "@/lib/assistant/models";
 import { allowAssistantRequest } from "@/lib/assistant/rateLimit";
 import { normalizeSessionId } from "@/lib/assistant/validation";
+import { closeConversationExplicitly } from "@/lib/assistant/assistantLifecycle";
 
 export const maxDuration = 15;
 
@@ -50,9 +51,15 @@ export async function POST(request) {
 
   try {
     const { AssistantConversation } = await getAssistantModels();
+    const transition = closeConversationExplicitly(reason);
     await AssistantConversation.updateOne(
       { _id: conversationId, sessionId, status: { $ne: "closed" } },
-      { $set: { status: "closed", closedReason: reason } }
+      {
+        $set: {
+          status: transition.status,
+          closedReason: transition.closedReason,
+        },
+      }
     );
     return NextResponse.json({ ok: true });
   } catch (err) {

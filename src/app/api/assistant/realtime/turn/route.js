@@ -11,6 +11,7 @@ import { buildCampaignContext } from "@/lib/assistant/campaignContext";
 import { buildVoiceSystemPrompt } from "@/lib/assistant/prompt";
 import { allowAssistantRequest } from "@/lib/assistant/rateLimit";
 import { normalizeSessionId } from "@/lib/assistant/validation";
+import { touchConversationActivity } from "@/lib/assistant/touchConversationActivity";
 
 export const maxDuration = 15;
 
@@ -73,6 +74,10 @@ export async function POST(request) {
     if (!conversation) {
       return errorJson("NOT_FOUND", "Conversation not found.", 404);
     }
+    if (!touchConversationActivity(conversation).ok) {
+      return errorJson("CONVERSATION_CLOSED", "This conversation has ended.", 409);
+    }
+    await conversation.save();
 
     await AssistantMessage.create({
       conversationId: conversation._id,

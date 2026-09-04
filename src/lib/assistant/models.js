@@ -33,7 +33,7 @@ const conversationSchema = new Schema(
     },
     status: {
       type: String,
-      enum: ["open", "handed_off", "closed"],
+      enum: ["open", "idle", "handed_off", "closed"],
       default: "open",
     },
     handoffReason: { type: String, default: null },

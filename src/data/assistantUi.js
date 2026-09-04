@@ -10,6 +10,8 @@ export const ASSISTANT_WELCOME = {
   nameLabel: "Your name (optional)",
   nameSaveLabel: "Save",
   nameDismissLabel: "Dismiss name prompt",
+  endChatLabel: "End chat",
+  endChatAriaLabel: "End chat",
   disclaimer:
     "Ani is an AI assistant; spoken replies use an AI-generated voice. For bookings, payments, and account issues our team helps you directly on WhatsApp or by phone.",
 };
