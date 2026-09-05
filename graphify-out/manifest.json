@@ -1180,13 +1180,13 @@
     "semantic_hash": ""
   },
   "C:\\Users\\garen\\Desktop\\01-WEB-DEV\\KenLight02\\ken\\src\\lib\\business\\serviceSearch.js": {
-    "mtime": 1783813611.8298764,
-    "ast_hash": "f7e0af98b05a3e37867d99f115f5c345",
+    "mtime": 1788637571.6176476,
+    "ast_hash": "682643f704f977d4e18b46a979dc91f8",
     "semantic_hash": ""
   },
   "C:\\Users\\garen\\Desktop\\01-WEB-DEV\\KenLight02\\ken\\docs\\PUBLIC_API_INTEGRATION.md": {
-    "mtime": 1784493896.4738512,
-    "ast_hash": "39ded42a4a8764eed1d18a66879b4138",
+    "mtime": 1788637585.1398947,
+    "ast_hash": "28abf639cccf61db07edd1f5d9da4f18",
     "semantic_hash": ""
   },
   "C:\\Users\\garen\\Desktop\\01-WEB-DEV\\KenLight02\\ken\\scripts\\graphify-services-update.mjs": {
@@ -1557,6 +1557,16 @@
   "C:\\Users\\garen\\Desktop\\01-WEB-DEV\\KenLight02\\ken\\src\\lib\\assistant\\touchConversationActivity.test.js": {
     "mtime": 1788513876.988239,
     "ast_hash": "82d5e9bafade6997061609accee28fc5",
+    "semantic_hash": ""
+  },
+  "C:\\Users\\garen\\Desktop\\01-WEB-DEV\\KenLight02\\ken\\e2e\\services-search-dedupe.spec.js": {
+    "mtime": 1788637917.6811981,
+    "ast_hash": "9f7f6a696483c74bbebfdf068ee68393",
+    "semantic_hash": ""
+  },
+  "C:\\Users\\garen\\Desktop\\01-WEB-DEV\\KenLight02\\ken\\src\\lib\\business\\serviceSearch.test.js": {
+    "mtime": 1788637575.706645,
+    "ast_hash": "1ba62fc9eb54bb16cefd5cec782e08f1",
     "semantic_hash": ""
   }
 }

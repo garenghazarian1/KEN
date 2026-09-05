@@ -12,6 +12,7 @@ export function buildServiceSearchCatalog(sections) {
 
   for (const section of sections) {
     const registerItem = (item, subcategoryTitle = null, subcategoryId = null) => {
+      if (!item?.id || itemMap.has(item.id)) return;
       docs.push({
         id: item.id,
         name: item.name,

@@ -1,6 +1,6 @@
 # Public API Integration (Admin System)
 
-Last updated: 19 July 2026
+Last updated: 5 September 2026
 
 This consumer app (kenbeautysalon.com) reads business data from the **Garen admin
 system** over its **read-only public HTTP API**. We do **not** connect to the admin
@@ -41,6 +41,10 @@ closures, contact.
   surfaces the API error `message`, and returns `{ businessSlug, total, services }`.
 - `buildServiceSections(services)` — turns the flat list into
   category → subcategory → item sections for the UI, carrying media + price fields.
+  A service with multiple `categoryIds` is listed under each matching folder.
+- `buildServiceSearchCatalog(sections)` (`serviceSearch.js`) — MiniSearch index
+  used by `/services` and Ani. Dedupes by `item.id` (first occurrence) so a
+  multi-linked service is searchable once; the menu tree is unchanged.
 
 Consumed by:
 
@@ -113,6 +117,8 @@ Every node (`category` / `subcategory` / `item`) can carry:
 
 ## History
 
+- **5 September 2026** — MiniSearch catalog dedupes by service id so items
+  linked to multiple folders no longer crash `/services` (`duplicate ID`).
 - **11 July 2026** — Made service-card names, prices, and descriptions fluid and
   container-aware; long API price labels wrap within each card while amount/currency
   pairs remain together.

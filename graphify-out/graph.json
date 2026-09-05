@@ -607,6 +607,51 @@
       "norm_label": "sessions"
     },
     {
+      "label": "services-search-dedupe.spec.js",
+      "file_type": "code",
+      "source_file": "e2e/services-search-dedupe.spec.js",
+      "source_location": "L1",
+      "id": "e2e_services_search_dedupe_spec_js",
+      "community": 89,
+      "norm_label": "services-search-dedupe.spec.js"
+    },
+    {
+      "label": "pageErrors",
+      "file_type": "code",
+      "source_file": "e2e/services-search-dedupe.spec.js",
+      "source_location": "L6",
+      "id": "e2e_services_search_dedupe_spec_pageerrors",
+      "community": 89,
+      "norm_label": "pageerrors"
+    },
+    {
+      "label": "search",
+      "file_type": "code",
+      "source_file": "e2e/services-search-dedupe.spec.js",
+      "source_location": "L10",
+      "id": "e2e_services_search_dedupe_spec_search",
+      "community": 89,
+      "norm_label": "search"
+    },
+    {
+      "label": "duplicate",
+      "file_type": "code",
+      "source_file": "e2e/services-search-dedupe.spec.js",
+      "source_location": "L13",
+      "id": "e2e_services_search_dedupe_spec_duplicate",
+      "community": 89,
+      "norm_label": "duplicate"
+    },
+    {
+      "label": "accept",
+      "file_type": "code",
+      "source_file": "e2e/services-search-dedupe.spec.js",
+      "source_location": "L16",
+      "id": "e2e_services_search_dedupe_spec_accept",
+      "community": 89,
+      "norm_label": "accept"
+    },
+    {
       "label": "sw.js",
       "file_type": "code",
       "source_file": "public/sw.js",
@@ -2250,7 +2295,7 @@
       "source_file": "src/components/AssistantWidget/AssistantPanel.jsx",
       "source_location": "L1",
       "id": "src_components_assistantwidget_assistantpanel_jsx",
-      "community": 69,
+      "community": 31,
       "norm_label": "assistantpanel.jsx"
     },
     {
@@ -2259,7 +2304,7 @@
       "source_file": "src/components/AssistantWidget/AssistantPanel.jsx",
       "source_location": "L41",
       "id": "assistantwidget_assistantpanel_isnamepromptdismissed",
-      "community": 69,
+      "community": 31,
       "norm_label": "isnamepromptdismissed()"
     },
     {
@@ -2268,7 +2313,7 @@
       "source_file": "src/components/AssistantWidget/AssistantPanel.jsx",
       "source_location": "L49",
       "id": "assistantwidget_assistantpanel_persistnamepromptdismissed",
-      "community": 69,
+      "community": 31,
       "norm_label": "persistnamepromptdismissed()"
     },
     {
@@ -2277,7 +2322,7 @@
       "source_file": "src/components/AssistantWidget/AssistantPanel.jsx",
       "source_location": "L57",
       "id": "assistantwidget_assistantpanel_createclientmessage",
-      "community": 69,
+      "community": 31,
       "norm_label": "createclientmessage()"
     },
     {
@@ -2286,7 +2331,7 @@
       "source_file": "src/components/AssistantWidget/AssistantPanel.jsx",
       "source_location": "L68",
       "id": "assistantwidget_assistantpanel_getsessionid",
-      "community": 69,
+      "community": 31,
       "norm_label": "getsessionid()"
     },
     {
@@ -2295,7 +2340,7 @@
       "source_file": "src/components/AssistantWidget/AssistantPanel.jsx",
       "source_location": "L88",
       "id": "assistantwidget_assistantpanel_actionicon",
-      "community": 69,
+      "community": 31,
       "norm_label": "actionicon()"
     },
     {
@@ -2304,7 +2349,7 @@
       "source_file": "src/components/AssistantWidget/AssistantPanel.jsx",
       "source_location": "L95",
       "id": "assistantwidget_assistantpanel_readassistantsse",
-      "community": 69,
+      "community": 31,
       "norm_label": "readassistantsse()"
     },
     {
@@ -2313,7 +2358,7 @@
       "source_file": "src/components/AssistantWidget/AssistantPanel.jsx",
       "source_location": "L131",
       "id": "assistantwidget_assistantpanel_assistantpanel",
-      "community": 69,
+      "community": 31,
       "norm_label": "assistantpanel()"
     },
     {
@@ -3465,7 +3510,7 @@
       "source_file": "src/components/portfolio/tPageTwenty/PageTwenty.jsx",
       "source_location": "L1",
       "id": "src_components_portfolio_tpagetwenty_pagetwenty_jsx",
-      "community": 42,
+      "community": 120,
       "norm_label": "pagetwenty.jsx"
     },
     {
@@ -3474,7 +3519,7 @@
       "source_file": "src/components/portfolio/tPageTwenty/PageTwenty.jsx",
       "source_location": "L6",
       "id": "tpagetwenty_pagetwenty_pagetwenty",
-      "community": 42,
+      "community": 120,
       "norm_label": "pagetwenty()"
     },
     {
@@ -3510,7 +3555,7 @@
       "source_file": "src/components/portfolio/uPageTwentyTwo/PageTwentyTwo.jsx",
       "source_location": "L1",
       "id": "src_components_portfolio_upagetwentytwo_pagetwentytwo_jsx",
-      "community": 120,
+      "community": 42,
       "norm_label": "pagetwentytwo.jsx"
     },
     {
@@ -3519,7 +3564,7 @@
       "source_file": "src/components/portfolio/uPageTwentyTwo/PageTwentyTwo.jsx",
       "source_location": "L6",
       "id": "upagetwentytwo_pagetwentytwo_pagetwentytwo",
-      "community": 120,
+      "community": 42,
       "norm_label": "pagetwentytwo()"
     },
     {
@@ -4239,7 +4284,7 @@
       "source_file": "src/hooks/useAssistantRealtime.js",
       "source_location": "L1",
       "id": "src_hooks_useassistantrealtime_js",
-      "community": 69,
+      "community": 31,
       "norm_label": "useassistantrealtime.js"
     },
     {
@@ -4248,7 +4293,7 @@
       "source_file": "src/hooks/useAssistantRealtime.js",
       "source_location": "L29",
       "id": "hooks_useassistantrealtime_voicesupported",
-      "community": 69,
+      "community": 31,
       "norm_label": "voicesupported()"
     },
     {
@@ -4257,7 +4302,7 @@
       "source_file": "src/hooks/useAssistantRealtime.js",
       "source_location": "L37",
       "id": "hooks_useassistantrealtime_extractresponsetranscript",
-      "community": 69,
+      "community": 31,
       "norm_label": "extractresponsetranscript()"
     },
     {
@@ -4266,7 +4311,7 @@
       "source_file": "src/hooks/useAssistantRealtime.js",
       "source_location": "L63",
       "id": "hooks_useassistantrealtime_useassistantrealtime",
-      "community": 69,
+      "community": 31,
       "norm_label": "useassistantrealtime()"
     },
     {
@@ -5227,7 +5272,7 @@
       "label": "searchServices()",
       "file_type": "code",
       "source_file": "src/lib/business/serviceSearch.js",
-      "source_location": "L64",
+      "source_location": "L65",
       "id": "business_servicesearch_searchservices",
       "community": 88,
       "norm_label": "searchservices()"
@@ -5236,10 +5281,73 @@
       "label": "suggestServiceTitles()",
       "file_type": "code",
       "source_file": "src/lib/business/serviceSearch.js",
-      "source_location": "L86",
+      "source_location": "L87",
       "id": "business_servicesearch_suggestservicetitles",
       "community": 88,
       "norm_label": "suggestservicetitles()"
+    },
+    {
+      "label": "serviceSearch.test.js",
+      "file_type": "code",
+      "source_file": "src/lib/business/serviceSearch.test.js",
+      "source_location": "L1",
+      "id": "src_lib_business_servicesearch_test_js",
+      "community": 88,
+      "norm_label": "servicesearch.test.js"
+    },
+    {
+      "label": "SHARED_ITEM",
+      "file_type": "code",
+      "source_file": "src/lib/business/serviceSearch.test.js",
+      "source_location": "L8",
+      "id": "business_servicesearch_test_shared_item",
+      "community": 88,
+      "norm_label": "shared_item"
+    },
+    {
+      "label": "sections",
+      "file_type": "code",
+      "source_file": "src/lib/business/serviceSearch.test.js",
+      "source_location": "L16",
+      "id": "business_servicesearch_test_sections",
+      "community": 88,
+      "norm_label": "sections"
+    },
+    {
+      "label": "catalog",
+      "file_type": "code",
+      "source_file": "src/lib/business/serviceSearch.test.js",
+      "source_location": "L31",
+      "id": "business_servicesearch_test_catalog",
+      "community": 88,
+      "norm_label": "catalog"
+    },
+    {
+      "label": "hits",
+      "file_type": "code",
+      "source_file": "src/lib/business/serviceSearch.test.js",
+      "source_location": "L35",
+      "id": "business_servicesearch_test_hits",
+      "community": 88,
+      "norm_label": "hits"
+    },
+    {
+      "label": "services",
+      "file_type": "code",
+      "source_file": "src/lib/business/serviceSearch.test.js",
+      "source_location": "L69",
+      "id": "business_servicesearch_test_services",
+      "community": 88,
+      "norm_label": "services"
+    },
+    {
+      "label": "appearances",
+      "file_type": "code",
+      "source_file": "src/lib/business/serviceSearch.test.js",
+      "source_location": "L102",
+      "id": "business_servicesearch_test_appearances",
+      "community": 88,
+      "norm_label": "appearances"
     },
     {
       "label": "mongoose.js",
@@ -7684,7 +7792,7 @@
       "label": "Navbar services viewer (drill-down drawer)",
       "file_type": "document",
       "source_file": "docs/PUBLIC_API_INTEGRATION.md",
-      "source_location": "L51",
+      "source_location": "L55",
       "id": "docs_public_api_integration_navbar_services_viewer_drill_down_drawer",
       "community": 90,
       "norm_label": "navbar services viewer (drill-down drawer)"
@@ -7693,7 +7801,7 @@
       "label": "Tree rules",
       "file_type": "document",
       "source_file": "docs/PUBLIC_API_INTEGRATION.md",
-      "source_location": "L68",
+      "source_location": "L72",
       "id": "docs_public_api_integration_tree_rules",
       "community": 90,
       "norm_label": "tree rules"
@@ -7702,7 +7810,7 @@
       "label": "Pricing (render order)",
       "file_type": "document",
       "source_file": "docs/PUBLIC_API_INTEGRATION.md",
-      "source_location": "L75",
+      "source_location": "L79",
       "id": "docs_public_api_integration_pricing_render_order",
       "community": 90,
       "norm_label": "pricing (render order)"
@@ -7711,7 +7819,7 @@
       "label": "Cloudinary media",
       "file_type": "document",
       "source_file": "docs/PUBLIC_API_INTEGRATION.md",
-      "source_location": "L96",
+      "source_location": "L100",
       "id": "docs_public_api_integration_cloudinary_media",
       "community": 90,
       "norm_label": "cloudinary media"
@@ -7720,7 +7828,7 @@
       "label": "History",
       "file_type": "document",
       "source_file": "docs/PUBLIC_API_INTEGRATION.md",
-      "source_location": "L114",
+      "source_location": "L118",
       "id": "docs_public_api_integration_history",
       "community": 90,
       "norm_label": "history"
@@ -8127,7 +8235,7 @@
       "source_file": "oldMD/IMPROVEMENT_PLAN.md",
       "source_location": "L277",
       "id": "oldmd_improvement_plan_phase_1_color_system",
-      "community": 89,
+      "community": 75,
       "norm_label": "phase 1: color system"
     },
     {
@@ -8136,7 +8244,7 @@
       "source_file": "oldMD/IMPROVEMENT_PLAN.md",
       "source_location": "L279",
       "id": "oldmd_improvement_plan_current_color_variables_to_be_organized",
-      "community": 89,
+      "community": 75,
       "norm_label": "current color variables (to be organized)"
     },
     {
@@ -8145,7 +8253,7 @@
       "source_file": "oldMD/IMPROVEMENT_PLAN.md",
       "source_location": "L281",
       "id": "oldmd_improvement_plan_codeblock_1",
-      "community": 89,
+      "community": 75,
       "norm_label": "code:css (/* main theme */)"
     },
     {
@@ -8154,7 +8262,7 @@
       "source_file": "oldMD/IMPROVEMENT_PLAN.md",
       "source_location": "L332",
       "id": "oldmd_improvement_plan_proposed_organized_structure",
-      "community": 89,
+      "community": 75,
       "norm_label": "proposed organized structure"
     },
     {
@@ -8163,7 +8271,7 @@
       "source_file": "oldMD/IMPROVEMENT_PLAN.md",
       "source_location": "L334",
       "id": "oldmd_improvement_plan_codeblock_2",
-      "community": 89,
+      "community": 75,
       "norm_label": "code:css (:root {)"
     },
     {
@@ -8748,7 +8856,7 @@
       "source_file": "oldMD/IMPROVEMENT_PLAN.md",
       "source_location": "L1177",
       "id": "oldmd_improvement_plan_mobile_responsiveness_priority_high",
-      "community": 12,
+      "community": 69,
       "norm_label": "mobile responsiveness (priority: high)"
     },
     {
@@ -8757,7 +8865,7 @@
       "source_file": "oldMD/IMPROVEMENT_PLAN.md",
       "source_location": "L1179",
       "id": "oldmd_improvement_plan_hero_section_completed",
-      "community": 12,
+      "community": 69,
       "norm_label": "hero section \u2705 **completed**"
     },
     {
@@ -8766,7 +8874,7 @@
       "source_file": "oldMD/IMPROVEMENT_PLAN.md",
       "source_location": "L1187",
       "id": "oldmd_improvement_plan_navbar_completed",
-      "community": 12,
+      "community": 69,
       "norm_label": "navbar \u2705 **completed**"
     },
     {
@@ -8775,7 +8883,7 @@
       "source_file": "oldMD/IMPROVEMENT_PLAN.md",
       "source_location": "L1194",
       "id": "oldmd_improvement_plan_portfolio_components_1194",
-      "community": 12,
+      "community": 69,
       "norm_label": "portfolio components"
     },
     {
@@ -8784,7 +8892,7 @@
       "source_file": "oldMD/IMPROVEMENT_PLAN.md",
       "source_location": "L1229",
       "id": "oldmd_improvement_plan_contact_page_1229",
-      "community": 12,
+      "community": 69,
       "norm_label": "contact page"
     },
     {
@@ -8793,7 +8901,7 @@
       "source_file": "oldMD/IMPROVEMENT_PLAN.md",
       "source_location": "L1236",
       "id": "oldmd_improvement_plan_footer_1236",
-      "community": 12,
+      "community": 69,
       "norm_label": "footer"
     },
     {
@@ -8802,7 +8910,7 @@
       "source_file": "oldMD/IMPROVEMENT_PLAN.md",
       "source_location": "L1243",
       "id": "oldmd_improvement_plan_gallery_page_1243",
-      "community": 12,
+      "community": 69,
       "norm_label": "gallery page"
     },
     {
@@ -10129,9 +10237,9 @@
       "source_file": "package.json",
       "source_location": "L14",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "ken_package_scripts",
-      "target": "ken_package_scripts_e2e",
-      "confidence_score": 1.0
+      "target": "ken_package_scripts_e2e"
     },
     {
       "relation": "contains",
@@ -10309,9 +10417,9 @@
       "source_file": "package.json",
       "source_location": "L31",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "ken_package_devdependencies",
-      "target": "ken_package_devdependencies_playwright_test",
-      "confidence_score": 1.0
+      "target": "ken_package_devdependencies_playwright_test"
     },
     {
       "relation": "contains",
@@ -10449,9 +10557,9 @@
       "source_file": "e2e/assistant-close.spec.js",
       "source_location": "L3",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "e2e_assistant_close_spec_js",
-      "target": "e2e_assistant_close_spec_collectjsonposts",
-      "confidence_score": 1.0
+      "target": "e2e_assistant_close_spec_collectjsonposts"
     },
     {
       "relation": "contains",
@@ -10459,9 +10567,9 @@
       "source_file": "e2e/assistant-close.spec.js",
       "source_location": "L78",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "e2e_assistant_close_spec_js",
-      "target": "e2e_assistant_close_spec_ends",
-      "confidence_score": 1.0
+      "target": "e2e_assistant_close_spec_ends"
     },
     {
       "relation": "contains",
@@ -10469,9 +10577,9 @@
       "source_file": "e2e/assistant-close.spec.js",
       "source_location": "L23",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "e2e_assistant_close_spec_js",
-      "target": "e2e_assistant_close_spec_openassistant",
-      "confidence_score": 1.0
+      "target": "e2e_assistant_close_spec_openassistant"
     },
     {
       "relation": "contains",
@@ -10479,8 +10587,48 @@
       "source_file": "e2e/assistant-close.spec.js",
       "source_location": "L69",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "e2e_assistant_close_spec_js",
-      "target": "e2e_assistant_close_spec_sessions",
+      "target": "e2e_assistant_close_spec_sessions"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "e2e/services-search-dedupe.spec.js",
+      "source_location": "L16",
+      "weight": 1.0,
+      "source": "e2e_services_search_dedupe_spec_js",
+      "target": "e2e_services_search_dedupe_spec_accept",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "e2e/services-search-dedupe.spec.js",
+      "source_location": "L13",
+      "weight": 1.0,
+      "source": "e2e_services_search_dedupe_spec_js",
+      "target": "e2e_services_search_dedupe_spec_duplicate",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "e2e/services-search-dedupe.spec.js",
+      "source_location": "L6",
+      "weight": 1.0,
+      "source": "e2e_services_search_dedupe_spec_js",
+      "target": "e2e_services_search_dedupe_spec_pageerrors",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "e2e/services-search-dedupe.spec.js",
+      "source_location": "L10",
+      "weight": 1.0,
+      "source": "e2e_services_search_dedupe_spec_js",
+      "target": "e2e_services_search_dedupe_spec_search",
       "confidence_score": 1.0
     },
     {
@@ -12673,9 +12821,9 @@
       "source_file": "src/app/api/assistant/session/end/route.test.js",
       "source_location": "L16",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "src_app_api_assistant_session_end_route_test_js",
-      "target": "end_route_test_conversation_id",
-      "confidence_score": 1.0
+      "target": "end_route_test_conversation_id"
     },
     {
       "relation": "contains",
@@ -12683,9 +12831,9 @@
       "source_file": "src/app/api/assistant/session/end/route.test.js",
       "source_location": "L49",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "src_app_api_assistant_session_end_route_test_js",
-      "target": "end_route_test_updateone",
-      "confidence_score": 1.0
+      "target": "end_route_test_updateone"
     },
     {
       "relation": "contains",
@@ -12779,9 +12927,9 @@
       "source_file": "src/app/api/cron/assistant-cleanup/route.test.js",
       "source_location": "L45",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "src_app_api_cron_assistant_cleanup_route_test_js",
-      "target": "assistant_cleanup_route_test_find",
-      "confidence_score": 1.0
+      "target": "assistant_cleanup_route_test_find"
     },
     {
       "relation": "contains",
@@ -12789,9 +12937,9 @@
       "source_file": "src/app/api/cron/assistant-cleanup/route.test.js",
       "source_location": "L42",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "src_app_api_cron_assistant_cleanup_route_test_js",
-      "target": "assistant_cleanup_route_test_lean",
-      "confidence_score": 1.0
+      "target": "assistant_cleanup_route_test_lean"
     },
     {
       "relation": "contains",
@@ -12799,9 +12947,9 @@
       "source_file": "src/app/api/cron/assistant-cleanup/route.test.js",
       "source_location": "L43",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "src_app_api_cron_assistant_cleanup_route_test_js",
-      "target": "assistant_cleanup_route_test_limit",
-      "confidence_score": 1.0
+      "target": "assistant_cleanup_route_test_limit"
     },
     {
       "relation": "contains",
@@ -12809,9 +12957,9 @@
       "source_file": "src/app/api/cron/assistant-cleanup/route.test.js",
       "source_location": "L44",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "src_app_api_cron_assistant_cleanup_route_test_js",
-      "target": "assistant_cleanup_route_test_select",
-      "confidence_score": 1.0
+      "target": "assistant_cleanup_route_test_select"
     },
     {
       "relation": "contains",
@@ -12819,9 +12967,9 @@
       "source_file": "src/app/api/cron/assistant-cleanup/route.test.js",
       "source_location": "L41",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "src_app_api_cron_assistant_cleanup_route_test_js",
-      "target": "assistant_cleanup_route_test_updateone",
-      "confidence_score": 1.0
+      "target": "assistant_cleanup_route_test_updateone"
     },
     {
       "relation": "contains",
@@ -15985,9 +16133,9 @@
       "source_file": "src/lib/assistant/applyAssistantCleanupBatch.js",
       "source_location": "L14",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "src_lib_assistant_applyassistantcleanupbatch_js",
-      "target": "assistant_applyassistantcleanupbatch_applyassistantcleanupbatch",
-      "confidence_score": 1.0
+      "target": "assistant_applyassistantcleanupbatch_applyassistantcleanupbatch"
     },
     {
       "relation": "imports",
@@ -15996,9 +16144,9 @@
       "source_file": "src/lib/assistant/applyAssistantCleanupBatch.js",
       "source_location": "L1",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "src_lib_assistant_applyassistantcleanupbatch_js",
-      "target": "assistant_assistantlifecycle_nextlifecyclestate",
-      "confidence_score": 1.0
+      "target": "assistant_assistantlifecycle_nextlifecyclestate"
     },
     {
       "relation": "imports_from",
@@ -16007,9 +16155,9 @@
       "source_file": "src/lib/assistant/applyAssistantCleanupBatch.js",
       "source_location": "L1",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "src_lib_assistant_applyassistantcleanupbatch_js",
-      "target": "src_lib_assistant_assistantlifecycle_js",
-      "confidence_score": 1.0
+      "target": "src_lib_assistant_assistantlifecycle_js"
     },
     {
       "relation": "imports_from",
@@ -16018,9 +16166,9 @@
       "source_file": "src/lib/assistant/applyAssistantCleanupBatch.test.js",
       "source_location": "L2",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "src_lib_assistant_applyassistantcleanupbatch_test_js",
-      "target": "src_lib_assistant_applyassistantcleanupbatch_js",
-      "confidence_score": 1.0
+      "target": "src_lib_assistant_applyassistantcleanupbatch_js"
     },
     {
       "relation": "calls",
@@ -16040,9 +16188,9 @@
       "source_file": "src/lib/assistant/applyAssistantCleanupBatch.test.js",
       "source_location": "L2",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "src_lib_assistant_applyassistantcleanupbatch_test_js",
-      "target": "assistant_applyassistantcleanupbatch_applyassistantcleanupbatch",
-      "confidence_score": 1.0
+      "target": "assistant_applyassistantcleanupbatch_applyassistantcleanupbatch"
     },
     {
       "relation": "contains",
@@ -16050,9 +16198,9 @@
       "source_file": "src/lib/assistant/applyAssistantCleanupBatch.test.js",
       "source_location": "L13",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "src_lib_assistant_applyassistantcleanupbatch_test_js",
-      "target": "assistant_applyassistantcleanupbatch_test_conversations",
-      "confidence_score": 1.0
+      "target": "assistant_applyassistantcleanupbatch_test_conversations"
     },
     {
       "relation": "contains",
@@ -16060,9 +16208,9 @@
       "source_file": "src/lib/assistant/applyAssistantCleanupBatch.test.js",
       "source_location": "L9",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "src_lib_assistant_applyassistantcleanupbatch_test_js",
-      "target": "assistant_applyassistantcleanupbatch_test_now",
-      "confidence_score": 1.0
+      "target": "assistant_applyassistantcleanupbatch_test_now"
     },
     {
       "relation": "contains",
@@ -16070,9 +16218,9 @@
       "source_file": "src/lib/assistant/applyAssistantCleanupBatch.test.js",
       "source_location": "L12",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "src_lib_assistant_applyassistantcleanupbatch_test_js",
-      "target": "assistant_applyassistantcleanupbatch_test_updateone",
-      "confidence_score": 1.0
+      "target": "assistant_applyassistantcleanupbatch_test_updateone"
     },
     {
       "relation": "imports_from",
@@ -16081,9 +16229,9 @@
       "source_file": "src/lib/assistant/applyAssistantCleanupBatch.test.js",
       "source_location": "L3",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "src_lib_assistant_applyassistantcleanupbatch_test_js",
-      "target": "src_lib_assistant_assistantretention_js",
-      "confidence_score": 1.0
+      "target": "src_lib_assistant_assistantretention_js"
     },
     {
       "relation": "contains",
@@ -16315,9 +16463,9 @@
       "source_file": "src/lib/assistant/assistantRetention.test.js",
       "source_location": "L2",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "src_lib_assistant_assistantretention_test_js",
-      "target": "src_lib_assistant_assistantretention_js",
-      "confidence_score": 1.0
+      "target": "src_lib_assistant_assistantretention_js"
     },
     {
       "relation": "imports",
@@ -16326,9 +16474,9 @@
       "source_file": "src/lib/assistant/assistantRetention.test.js",
       "source_location": "L2",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "src_lib_assistant_assistantretention_test_js",
-      "target": "assistant_assistantretention_ispastidlethreshold",
-      "confidence_score": 1.0
+      "target": "assistant_assistantretention_ispastidlethreshold"
     },
     {
       "relation": "imports",
@@ -16337,9 +16485,9 @@
       "source_file": "src/lib/assistant/assistantRetention.test.js",
       "source_location": "L2",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "src_lib_assistant_assistantretention_test_js",
-      "target": "assistant_assistantretention_ispastclosethreshold",
-      "confidence_score": 1.0
+      "target": "assistant_assistantretention_ispastclosethreshold"
     },
     {
       "relation": "contains",
@@ -16347,9 +16495,9 @@
       "source_file": "src/lib/assistant/assistantRetention.test.js",
       "source_location": "L10",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "src_lib_assistant_assistantretention_test_js",
-      "target": "assistant_assistantretention_test_now",
-      "confidence_score": 1.0
+      "target": "assistant_assistantretention_test_now"
     },
     {
       "relation": "contains",
@@ -17159,9 +17307,9 @@
       "source_file": "src/lib/assistant/shouldAdoptAssistantSession.js",
       "source_location": "L15",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "src_lib_assistant_shouldadoptassistantsession_js",
-      "target": "assistant_shouldadoptassistantsession_shouldadoptassistantsession",
-      "confidence_score": 1.0
+      "target": "assistant_shouldadoptassistantsession_shouldadoptassistantsession"
     },
     {
       "relation": "imports_from",
@@ -17170,9 +17318,9 @@
       "source_file": "src/lib/assistant/shouldAdoptAssistantSession.test.js",
       "source_location": "L2",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "src_lib_assistant_shouldadoptassistantsession_test_js",
-      "target": "src_lib_assistant_shouldadoptassistantsession_js",
-      "confidence_score": 1.0
+      "target": "src_lib_assistant_shouldadoptassistantsession_js"
     },
     {
       "relation": "imports",
@@ -17181,9 +17329,9 @@
       "source_file": "src/lib/assistant/shouldAdoptAssistantSession.test.js",
       "source_location": "L2",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "src_lib_assistant_shouldadoptassistantsession_test_js",
-      "target": "assistant_shouldadoptassistantsession_shouldadoptassistantsession",
-      "confidence_score": 1.0
+      "target": "assistant_shouldadoptassistantsession_shouldadoptassistantsession"
     },
     {
       "relation": "contains",
@@ -17202,9 +17350,9 @@
       "source_file": "src/lib/assistant/touchConversationActivity.test.js",
       "source_location": "L2",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "src_lib_assistant_touchconversationactivity_test_js",
-      "target": "src_lib_assistant_touchconversationactivity_js",
-      "confidence_score": 1.0
+      "target": "src_lib_assistant_touchconversationactivity_js"
     },
     {
       "relation": "imports",
@@ -17213,9 +17361,9 @@
       "source_file": "src/lib/assistant/touchConversationActivity.test.js",
       "source_location": "L2",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "src_lib_assistant_touchconversationactivity_test_js",
-      "target": "assistant_touchconversationactivity_touchconversationactivity",
-      "confidence_score": 1.0
+      "target": "assistant_touchconversationactivity_touchconversationactivity"
     },
     {
       "relation": "contains",
@@ -17223,9 +17371,9 @@
       "source_file": "src/lib/assistant/touchConversationActivity.test.js",
       "source_location": "L19",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "src_lib_assistant_touchconversationactivity_test_js",
-      "target": "assistant_touchconversationactivity_test_conversation",
-      "confidence_score": 1.0
+      "target": "assistant_touchconversationactivity_test_conversation"
     },
     {
       "relation": "contains",
@@ -17233,9 +17381,9 @@
       "source_file": "src/lib/assistant/touchConversationActivity.test.js",
       "source_location": "L35",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "src_lib_assistant_touchconversationactivity_test_js",
-      "target": "assistant_touchconversationactivity_test_handedoff",
-      "confidence_score": 1.0
+      "target": "assistant_touchconversationactivity_test_handedoff"
     },
     {
       "relation": "contains",
@@ -17243,9 +17391,9 @@
       "source_file": "src/lib/assistant/touchConversationActivity.test.js",
       "source_location": "L5",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "src_lib_assistant_touchconversationactivity_test_js",
-      "target": "assistant_touchconversationactivity_test_now",
-      "confidence_score": 1.0
+      "target": "assistant_touchconversationactivity_test_now"
     },
     {
       "relation": "contains",
@@ -17253,9 +17401,9 @@
       "source_file": "src/lib/assistant/touchConversationActivity.test.js",
       "source_location": "L30",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "src_lib_assistant_touchconversationactivity_test_js",
-      "target": "assistant_touchconversationactivity_test_open",
-      "confidence_score": 1.0
+      "target": "assistant_touchconversationactivity_test_open"
     },
     {
       "relation": "contains",
@@ -17263,9 +17411,9 @@
       "source_file": "src/lib/assistant/touchConversationActivity.test.js",
       "source_location": "L23",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "src_lib_assistant_touchconversationactivity_test_js",
-      "target": "assistant_touchconversationactivity_test_result",
-      "confidence_score": 1.0
+      "target": "assistant_touchconversationactivity_test_result"
     },
     {
       "relation": "contains",
@@ -17557,6 +17705,17 @@
       "target": "business_servicecatalog_sortbyorder"
     },
     {
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "src/lib/business/serviceSearch.test.js",
+      "source_location": "L2",
+      "weight": 1.0,
+      "source": "src_lib_business_servicesearch_test_js",
+      "target": "src_lib_business_servicecatalog_js",
+      "confidence_score": 1.0
+    },
+    {
       "relation": "calls",
       "context": "call",
       "confidence": "EXTRACTED",
@@ -17577,6 +17736,17 @@
       "weight": 1,
       "source": "business_servicecatalog_getservicecatalog",
       "target": "db_mongoose_connectservicesdb"
+    },
+    {
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "src/lib/business/serviceSearch.test.js",
+      "source_location": "L2",
+      "weight": 1.0,
+      "source": "src_lib_business_servicesearch_test_js",
+      "target": "business_servicecatalog_buildservicesections",
+      "confidence_score": 1.0
     },
     {
       "relation": "contains",
@@ -17607,6 +17777,99 @@
       "confidence_score": 1,
       "source": "src_lib_business_servicesearch_js",
       "target": "business_servicesearch_suggestservicetitles"
+    },
+    {
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "src/lib/business/serviceSearch.test.js",
+      "source_location": "L3",
+      "weight": 1.0,
+      "source": "src_lib_business_servicesearch_test_js",
+      "target": "src_lib_business_servicesearch_js",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "src/lib/business/serviceSearch.test.js",
+      "source_location": "L3",
+      "weight": 1.0,
+      "source": "src_lib_business_servicesearch_test_js",
+      "target": "business_servicesearch_buildservicesearchcatalog",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "src/lib/business/serviceSearch.test.js",
+      "source_location": "L3",
+      "weight": 1.0,
+      "source": "src_lib_business_servicesearch_test_js",
+      "target": "business_servicesearch_searchservices",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "src/lib/business/serviceSearch.test.js",
+      "source_location": "L102",
+      "weight": 1.0,
+      "source": "src_lib_business_servicesearch_test_js",
+      "target": "business_servicesearch_test_appearances",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "src/lib/business/serviceSearch.test.js",
+      "source_location": "L108",
+      "weight": 1.0,
+      "source": "src_lib_business_servicesearch_test_js",
+      "target": "business_servicesearch_test_catalog",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "src/lib/business/serviceSearch.test.js",
+      "source_location": "L35",
+      "weight": 1.0,
+      "source": "src_lib_business_servicesearch_test_js",
+      "target": "business_servicesearch_test_hits",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "src/lib/business/serviceSearch.test.js",
+      "source_location": "L101",
+      "weight": 1.0,
+      "source": "src_lib_business_servicesearch_test_js",
+      "target": "business_servicesearch_test_sections",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "src/lib/business/serviceSearch.test.js",
+      "source_location": "L69",
+      "weight": 1.0,
+      "source": "src_lib_business_servicesearch_test_js",
+      "target": "business_servicesearch_test_services",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "src/lib/business/serviceSearch.test.js",
+      "source_location": "L8",
+      "weight": 1.0,
+      "source": "src_lib_business_servicesearch_test_js",
+      "target": "business_servicesearch_test_shared_item",
+      "confidence_score": 1.0
     },
     {
       "relation": "contains",
@@ -22662,5 +22925,5 @@
     }
   ],
   "hyperedges": [],
-  "built_at_commit": "73a756a2c858fa29b92d5026ce05569ac82bb480"
+  "built_at_commit": "cb94b9aa14c603502bb6abfd51d4c159a2d3e40b"
 }
