@@ -27,7 +27,7 @@ const navLinks = [
   { title: "About Us", path: "/about" },
   { title: "Contact", path: "/contact" },
   { title: "Gallery", path: "/gallery" },
-  // Services uses ServicesMegaMenu (drill-down drawer) instead of a plain link
+  // Services uses ServicesMegaMenu (nested accordion / desktop mega panel)
 ];
 
 export default function NavbarModern() {

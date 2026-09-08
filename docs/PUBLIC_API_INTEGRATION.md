@@ -1,6 +1,6 @@
 # Public API Integration (Admin System)
 
-Last updated: 5 September 2026
+Last updated: 8 September 2026
 
 This consumer app (kenbeautysalon.com) reads business data from the **Garen admin
 system** over its **read-only public HTTP API**. We do **not** connect to the admin
@@ -52,15 +52,21 @@ Consumed by:
 - `GET /api/services/catalog` (app route) → slim sections for
   `src/components/loading/navbar/ServicesMegaMenu/ServicesMegaMenu.jsx`
 
-### Navbar services viewer (drill-down drawer)
+### Navbar services viewer (nested accordion)
 
-`Services` in the live top bar (`MobileNavTop`) opens a **full-height drill-down
-drawer** portaled to `document.body` (so the top bar’s `backdrop-filter` cannot
-trap it). Level 0 lists all categories; tapping a category shows subcategories
-(or services if none); tapping a subcategory lists services. Back / Escape step
-up a level. Rows deep-link to `/services?category=…&sub=…`. Catalog loads on
-first open via `/api/services/catalog` (includes first image URL per node).
-Rows show thumbs via Cloudinary transform + static category fallbacks.
+`Services` in the live top bar (`MobileNavTop`) opens a **full-height nested
+accordion drawer** portaled to `document.body` (so the top bar’s `backdrop-filter`
+cannot trap it). Categories stay on screen and expand in place; subcategories
+expand under their parent. There is no Back / drill-down level. Escape closes
+the drawer. Desktop `Navbar.modern` uses the same catalog in a **mega panel**
+(category rail + nested pane), not a full-screen sheet. Rows deep-link to
+`/services?category=…&sub=…`. Catalog loads on first open via `/api/services/catalog`
+(includes first image URL per node). Hover on the desktop trigger prefetches the
+catalog. Rows show thumbs via Cloudinary `c_fit` transform + static category
+fallbacks. The open category or subcategory becomes a **centered selected
+block**; its children stay a left-aligned list. Opening a row only pushes it
+up (never down). Services linked only to the parent category appear as a
+collapsed **Other** row.
 
 Category focus on the services page is persisted in the URL as `?category=<categoryId>`
 and open subcategory accordions as `?sub=<subId1,subId2>` (comma-separated, scoped to
@@ -117,6 +123,9 @@ Every node (`category` / `subcategory` / `item`) can carry:
 
 ## History
 
+- **8 September 2026** — Navbar Services menu is a nested accordion (expand in
+  place) on the top-bar drawer; desktop uses a category-rail mega panel. No
+  drill-down Back. Thumbnails use `c_fit`.
 - **5 September 2026** — MiniSearch catalog dedupes by service id so items
   linked to multiple folders no longer crash `/services` (`duplicate ID`).
 - **11 July 2026** — Made service-card names, prices, and descriptions fluid and
