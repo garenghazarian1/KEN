@@ -13,6 +13,10 @@ import {
   ArrowUpRight,
 } from "lucide-react";
 import { CAREERS_URL } from "@/config/constants";
+import {
+  buildWhatsAppUrl,
+  trackWhatsAppClick,
+} from "@/lib/adsAttribution";
 import { getGoogleMapsUrl } from "@/data/stores";
 import styles from "./Contact.modern.module.css";
 
@@ -125,8 +129,19 @@ export default function ContactContent({ stores }) {
                     <span>{store.mobile}</span>
                   </a>
                   <a
-                    href={`https://wa.me/${store.whatsapp.replace(/[\s+]/g, "")}?text=${encodeURIComponent("Hi, I'd like to book an appointment.")}`}
+                    href={buildWhatsAppUrl({
+                      number: store.whatsapp.replace(/[\s+]/g, ""),
+                      message: "Hi, I'd like to book an appointment.",
+                    })}
                     className={styles.actionWhatsapp}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    onClick={() =>
+                      trackWhatsAppClick({
+                        branch: shortLocationLabel(store.name),
+                        number: store.whatsapp.replace(/[\s+]/g, ""),
+                      })
+                    }
                   >
                     <MessageCircle size={16} aria-hidden="true" />
                     <span>WhatsApp</span>

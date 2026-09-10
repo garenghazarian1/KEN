@@ -4,6 +4,10 @@ import { useEffect, useRef, useState } from "react";
 import { motion } from "framer-motion";
 import { FaWhatsapp } from "react-icons/fa";
 import { CONTACT } from "@/config/constants";
+import {
+  buildWhatsAppUrl,
+  trackWhatsAppClick,
+} from "@/lib/adsAttribution";
 import styles from "./DraggableWhatsAppButton.module.css";
 
 const STORAGE_KEY = "ken-whatsapp-position";
@@ -61,6 +65,9 @@ export default function DraggableWhatsAppButton() {
   const draggedRef = useRef(false);
   const [position, setPosition] = useState({ x: 0, y: 0 });
   const [mounted, setMounted] = useState(false);
+  const [whatsappHref, setWhatsappHref] = useState(() =>
+    CONTACT.whatsapp.url()
+  );
 
   const applyClamped = (pos) => {
     const clamped = clampIntoConstraints(
@@ -76,6 +83,12 @@ export default function DraggableWhatsAppButton() {
   useEffect(() => {
     setMounted(true);
     setPosition(readSavedPosition());
+    setWhatsappHref(
+      buildWhatsAppUrl({
+        number: CONTACT.whatsapp.number,
+        message: CONTACT.whatsapp.message,
+      })
+    );
   }, []);
 
   // After first paint (and on resize), pull any saved off-screen offset back in.
@@ -116,6 +129,23 @@ export default function DraggableWhatsAppButton() {
       // then clear the flag so the next real tap opens WhatsApp.
       e.preventDefault();
       draggedRef.current = false;
+      return;
+    }
+
+    trackWhatsAppClick({
+      branch: "floating",
+      number: CONTACT.whatsapp.number,
+    });
+
+    // Refresh href in case attribution arrived after first paint
+    const nextHref = buildWhatsAppUrl({
+      number: CONTACT.whatsapp.number,
+      message: CONTACT.whatsapp.message,
+    });
+    if (nextHref !== whatsappHref) {
+      e.preventDefault();
+      setWhatsappHref(nextHref);
+      window.open(nextHref, "_blank", "noopener,noreferrer");
     }
   };
 
@@ -127,9 +157,11 @@ export default function DraggableWhatsAppButton() {
     <div ref={constraintsRef} className={styles.constraints}>
       <motion.a
         ref={buttonRef}
-        href={CONTACT.whatsapp.url()}
+        href={whatsappHref}
         className={styles.button}
         aria-label="Contact us on WhatsApp"
+        target="_blank"
+        rel="noopener noreferrer"
         drag
         dragConstraints={constraintsRef}
         dragElastic={0}
