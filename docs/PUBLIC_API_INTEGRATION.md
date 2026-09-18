@@ -1,6 +1,6 @@
 # Public API Integration (Admin System)
 
-Last updated: 8 September 2026
+Last updated: 18 September 2026
 
 This consumer app (kenbeautysalon.com) reads business data from the **Garen admin
 system** over its **read-only public HTTP API**. We do **not** connect to the admin
@@ -74,6 +74,13 @@ the active category). Updates use `history.pushState` / `replaceState` (not
 `router.replace`) so `force-dynamic` does not refetch on every interaction. Refresh and
 shared links restore the open category and expanded subcategories when ids still exist
 in the catalog.
+
+### Navbar contact sheet
+
+`Contact` in `MobileNavBottom` opens a **full-width number sheet** in that same
+between-navs band (not `/contact`). Landline, mobile, and WhatsApp come from
+`src/data/stores.js`. A secondary “Visit contact page” link goes to `/contact`.
+Escape, the Contact tab, or another bottom-nav item closes the sheet.
 
 ### Tree rules
 

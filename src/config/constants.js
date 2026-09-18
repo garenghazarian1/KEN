@@ -30,7 +30,7 @@ export const CAREERS_URL =
 
 // Contact Information
 export const CONTACT = {
-  primaryPhone: "+971 2 621 8802", // Galleria landline
+  primaryPhone: "+971 2 621 8808", // Galleria landline
   primaryMobile: "+971 50 304 3570", // Galleria mobile/WhatsApp
   email: "info@ken-salon.com",
   whatsapp: {

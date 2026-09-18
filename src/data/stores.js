@@ -13,7 +13,7 @@ export const stores = [
     city: "Abu Dhabi",
     zipCode: "00000",
     country: "United Arab Emirates",
-    phone: "+971 2 621 8802",
+    phone: "+971 2 621 8808",
     mobile: "+971 50 304 3570",
     whatsapp: "+971 50 304 3570",
     email: "info@ken-salon.com",

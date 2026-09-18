@@ -38,7 +38,7 @@ export default function Imprint() {
           <div className={styles.infoBlock}>
             <p>
               <strong>Phone:</strong>{" "}
-              <a href={`tel:${CONTACT.primaryMobile.replace(/\s/g, "")}`}>
+              <a href={`tel:${CONTACT.primaryPhone.replace(/\s/g, "")}`}>
                 {CONTACT.primaryPhone}
               </a>
             </p>
