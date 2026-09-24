@@ -720,7 +720,7 @@ export default function ServicesMegaMenu({
           <span>Services</span>
         ) : (
           <>
-            <Scissors size={22} className={styles.topbarIcon} aria-hidden />
+            <Scissors size={22} strokeWidth={1} className={styles.topbarIcon} aria-hidden />
             <span className={styles.topbarLabel}>Services</span>
           </>
         )}

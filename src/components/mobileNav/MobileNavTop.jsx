@@ -11,16 +11,23 @@ import {
 } from "@/config/constants";
 import ServicesMegaMenu from "@/components/loading/navbar/ServicesMegaMenu/ServicesMegaMenu";
 import styles from "./MobileNavTop.module.css";
+import { useHideNavOnScroll } from "./useHideNavOnScroll";
 
 export default function MobileNavTop() {
   const pathname = usePathname();
+  const hidden = useHideNavOnScroll();
   const drinksActive =
     pathname === "/drinks" || pathname.startsWith("/drinks/");
   const servicesActive =
     pathname === "/services" || pathname.startsWith("/services/");
 
   return (
-    <header className={styles.topBar} role="banner">
+    <header
+      className={styles.topBar}
+      role="banner"
+      data-hidden={hidden ? "true" : "false"}
+      {...(hidden ? { inert: "" } : {})}
+    >
       <nav
         className={styles.navList}
         aria-label="Primary actions"
@@ -52,7 +59,7 @@ export default function MobileNavTop() {
             aria-label="Drinks menu"
             aria-current={drinksActive ? "page" : undefined}
           >
-            <Coffee size={22} className={styles.icon} aria-hidden />
+            <Coffee size={22} strokeWidth={1} className={styles.icon} aria-hidden />
             <span className={styles.label}>Drinks</span>
           </Link>
         </div>
@@ -62,7 +69,7 @@ export default function MobileNavTop() {
             className={styles.actionLink}
             aria-label="Jobs"
           >
-            <Briefcase size={22} className={styles.icon} aria-hidden />
+            <Briefcase size={22} strokeWidth={1} className={styles.icon} aria-hidden />
             <span className={styles.label}>Jobs</span>
           </a>
         </div>
@@ -72,7 +79,7 @@ export default function MobileNavTop() {
             className={styles.actionLink}
             aria-label="Book now"
           >
-            <Calendar size={22} className={styles.icon} aria-hidden />
+            <Calendar size={22} strokeWidth={1} className={styles.icon} aria-hidden />
             <span className={styles.label}>Book now</span>
           </a>
         </div>

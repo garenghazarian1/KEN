@@ -3,17 +3,19 @@
 import Image from "next/image";
 import Link from "next/link";
 import { motion } from "framer-motion";
-import { ArrowRight } from "lucide-react";
 import OfferPromo from "@/components/campaign/OfferPromo";
 import styles from "./Hero.modern.module.css";
 
 const HERO_VIDEO_SRC = "/hero-vid-01.mp4";
+const HERO_VIDEO_POSTER = "/hero-vid-01-poster.jpg";
 const HERO_VIDEO_PROPS = {
   autoPlay: true,
   muted: true,
   loop: true,
   playsInline: true,
   preload: "auto",
+  poster: HERO_VIDEO_POSTER,
+  fetchPriority: "high",
 };
 
 const slides = [
@@ -54,95 +56,42 @@ const slides = [
   },
 ];
 
-const STACK_BG_BLUR = 24;
-
-const galleryItemVariants = {
-  hidden: {},
-  visible: {
-    transition: {
-      staggerChildren: 0.1,
-      delayChildren: 0.05,
-    },
-  },
-};
-
-const imageReveal = {
-  hidden: { opacity: 0, scale: 0.96, y: 24 },
-  visible: {
-    opacity: 1,
-    scale: 1,
-    y: 0,
-    transition: { duration: 0.65, ease: [0.25, 0.46, 0.45, 0.94] },
-  },
-};
-
-const bgReveal = {
-  hidden: { opacity: 1, scale: 1.08 },
-  visible: {
-    opacity: 1,
-    scale: 1,
-    transition: { duration: 0.85, ease: "easeOut" },
-  },
-};
-
-const captionReveal = {
-  hidden: { opacity: 0, y: 16 },
+const rise = {
+  hidden: { opacity: 0, y: 32 },
   visible: {
     opacity: 1,
     y: 0,
-    transition: { duration: 0.5, ease: "easeOut" },
+    transition: { duration: 0.6, ease: [0.22, 1, 0.36, 1] },
   },
 };
-
-const galleryViewport = { once: true, amount: 0.2 };
 
 function GalleryStack() {
   return (
     <div className={styles.galleryStack}>
-      {slides.map((slide, index) => (
-        <motion.div
+      {slides.map((slide) => (
+        <motion.article
           key={slide.image}
           className={styles.galleryItem}
           initial="hidden"
           whileInView="visible"
-          viewport={galleryViewport}
-          variants={galleryItemVariants}
+          viewport={{ once: true, amount: 0.28 }}
+          variants={rise}
         >
-          <motion.div
-            className={styles.stackImageBg}
-            style={{ filter: `blur(${STACK_BG_BLUR}px)` }}
-            aria-hidden
-            variants={bgReveal}
-          >
-            <Image
-              src={slide.image}
-              alt=""
-              fill
-              className={styles.stackImageBgImg}
-              sizes="(max-width: 800px) 100vw, 800px"
-              loading={index < 2 ? "eager" : "lazy"}
-              priority={index === 0}
-            />
-          </motion.div>
-
-          <motion.div className={styles.stackImageForeground} variants={imageReveal}>
+          <div className={styles.itemMedia}>
             <Image
               src={slide.image}
               alt={slide.title}
-              className={styles.stackImageMain}
-              width={800}
-              height={800}
-              sizes="(max-width: 800px) 100vw, 800px"
-              loading={index < 2 ? "eager" : "lazy"}
-              priority={index === 0}
+              className={styles.itemImage}
+              fill
+              sizes="(max-width: 800px) 100vw, 50vw"
+              loading="lazy"
             />
-          </motion.div>
-
-          <motion.div className={styles.stackContent} variants={captionReveal}>
+          </div>
+          <div className={styles.itemCopy}>
             <h3 className={styles.contentTitle}>{slide.title}</h3>
             <p className={styles.contentSubtitle}>{slide.subtitle}</p>
-          </motion.div>
-        </motion.div>
+          </div>
+        </motion.article>
       ))}
     </div>
   );
@@ -153,66 +102,36 @@ export default function HeroModern({ campaign = null }) {
     <>
       {/* Hero Section */}
       <section className={styles.heroSection}>
-        <div className={styles.heroMediaBg} aria-hidden>
+        <div className={styles.media}>
           <video
             src={HERO_VIDEO_SRC}
-            className={styles.heroVideoBg}
-            {...HERO_VIDEO_PROPS}
-          />
-          <div className={styles.heroBgOverlay} />
-        </div>
-
-        <div className={styles.heroMediaForeground} aria-hidden>
-          <video
-            src={HERO_VIDEO_SRC}
-            className={styles.heroVideoMain}
+            className={styles.heroVideo}
+            data-hero-video=""
             {...HERO_VIDEO_PROPS}
           />
         </div>
-
-        <div className={styles.heroOverlay} />
 
         {campaign ? <OfferPromo campaign={campaign} /> : null}
 
-        <div className={styles.heroContent}>
-          <motion.div
-            className={styles.contentWrapper}
-            initial={{ opacity: 0, y: 30 }}
+        <div className={styles.copy}>
+          <motion.h1
+            className={styles.mainTitle}
+            initial={{ opacity: 0, y: 16 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, ease: "easeOut" }}
+            transition={{ duration: 0.6 }}
           >
-            <motion.h1
-              className={styles.mainTitle}
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: 0.4, duration: 0.6 }}
-            >
-              <span className={styles.titleLine1}>Your Beauty</span>
-              <span className={styles.titleLine2}>Haven</span>
-            </motion.h1>
+            <span className={styles.titleLine1}>Your Beauty</span>
+            <span className={styles.titleLine2}>Haven</span>
+          </motion.h1>
+          <p className={styles.subtitle}>
+            Discover luxury beauty services in the heart of the UAE
+          </p>
+        </div>
 
-            <motion.p
-              className={styles.subtitle}
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: 0.6, duration: 0.6 }}
-            >
-              Discover luxury beauty services in the heart of the UAE
-            </motion.p>
-
-            <motion.div
-              className={styles.ctaWrapper}
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: 0.8, duration: 0.6 }}
-            >
-              <div className={styles.ctaButtons}>
-                <Link href="/services" className={styles.discoverLink}>
-                  Discover our services
-                </Link>
-              </div>
-            </motion.div>
-          </motion.div>
+        <div className={styles.ctaBar}>
+          <Link href="/services" className={styles.discoverLink}>
+            Discover our services
+          </Link>
         </div>
       </section>
 
@@ -238,16 +157,16 @@ export default function HeroModern({ campaign = null }) {
 
         {/* Content Card */}
         <motion.div
-          className={styles.contentCard}
-          initial={{ opacity: 0, y: 30 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.8, delay: 0.3 }}
+          className={styles.welcome}
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true, amount: 0.3 }}
+          variants={rise}
         >
-          <div className={styles.cardContent}>
+          <div className={styles.copy}>
             <h2 className={styles.cardTitle}>Welcome to Excellence</h2>
             <div className={styles.cardText}>
-              <p className={styles.cardTextParagraph}>
+              <p>
                 Visit our luxurious salon in the heart of the UAE to discover a
                 world where brilliance and beauty meet. Our team of specialists
                 is committed to providing a wide range of services, including
@@ -262,9 +181,10 @@ export default function HeroModern({ campaign = null }) {
                 healthy and brilliant.
               </p>
             </div>
-            <Link href="/services" className={styles.cardButton}>
-              <span>Explore Services</span>
-              <ArrowRight size={18} />
+          </div>
+          <div className={styles.ctaBar}>
+            <Link href="/services" className={styles.discoverLink}>
+              Explore Services
             </Link>
           </div>
         </motion.div>

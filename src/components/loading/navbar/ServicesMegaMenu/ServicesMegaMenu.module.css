@@ -98,19 +98,9 @@
   font-weight: var(--font-weight-semibold);
 }
 
-.topbarTriggerActive .topbarIcon {
-  color: var(--color-bg-dark);
-}
-
 .topbarIcon {
   flex-shrink: 0;
-  color: var(--color-text-secondary);
-  transition: color var(--transition-base) var(--ease-in-out);
-}
-
-.topbarTrigger:hover .topbarIcon,
-.topbarTriggerOpen .topbarIcon {
-  color: var(--color-text-primary);
+  color: var(--color-bg-black);
 }
 
 .topbarLabel {

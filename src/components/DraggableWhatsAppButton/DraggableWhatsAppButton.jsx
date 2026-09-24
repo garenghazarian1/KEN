@@ -9,6 +9,7 @@ import {
   trackWhatsAppClick,
 } from "@/lib/adsAttribution";
 import styles from "./DraggableWhatsAppButton.module.css";
+import { useAfterHeroVideo } from "@/components/hero/useAfterHeroVideo";
 
 const STORAGE_KEY = "ken-whatsapp-position";
 const DRAG_THRESHOLD = 8;
@@ -65,6 +66,7 @@ export default function DraggableWhatsAppButton() {
   const draggedRef = useRef(false);
   const [position, setPosition] = useState({ x: 0, y: 0 });
   const [mounted, setMounted] = useState(false);
+  const videoFirst = useAfterHeroVideo();
   const [whatsappHref, setWhatsappHref] = useState(() =>
     CONTACT.whatsapp.url()
   );
@@ -149,7 +151,7 @@ export default function DraggableWhatsAppButton() {
     }
   };
 
-  if (!mounted) {
+  if (!mounted || !videoFirst) {
     return null;
   }
 

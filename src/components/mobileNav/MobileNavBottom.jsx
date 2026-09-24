@@ -22,6 +22,7 @@ import {
   trackWhatsAppClick,
 } from "@/lib/adsAttribution";
 import styles from "./MobileNavBottom.module.css";
+import { useHideNavOnScroll } from "./useHideNavOnScroll";
 
 const mobileNavLinks = [
   { label: "Home", path: "/", icon: Home },
@@ -45,6 +46,7 @@ export default function MobileNavBottom() {
   const wasOpenRef = useRef(false);
   const [open, setOpen] = useState(false);
   const [mounted, setMounted] = useState(false);
+  const hidden = useHideNavOnScroll() && !open;
 
   useEffect(() => {
     setMounted(true);
@@ -90,6 +92,8 @@ export default function MobileNavBottom() {
       className={styles.bottomBar}
       role="navigation"
       aria-label="Main navigation"
+      data-hidden={hidden ? "true" : "false"}
+      {...(hidden ? { inert: "" } : {})}
     >
       <ul className={styles.navList}>
         {mobileNavLinks.map(({ label, path, icon: Icon, external, opensSheet }) => {
@@ -110,12 +114,12 @@ export default function MobileNavBottom() {
                   aria-current={isActive && !open ? "page" : undefined}
                   onClick={() => setOpen((current) => !current)}
                 >
-                  <Icon size={22} className={styles.icon} aria-hidden />
+                  <Icon size={22} strokeWidth={1} className={styles.icon} aria-hidden />
                   <span className={styles.label}>{label}</span>
                 </button>
               ) : external ? (
                 <a href={path} className={styles.link} onClick={closeSheet}>
-                  <Icon size={22} className={styles.icon} aria-hidden />
+                  <Icon size={22} strokeWidth={1} className={styles.icon} aria-hidden />
                   <span className={styles.label}>{label}</span>
                 </a>
               ) : (
@@ -125,7 +129,7 @@ export default function MobileNavBottom() {
                   aria-current={isActive ? "page" : undefined}
                   onClick={closeSheet}
                 >
-                  <Icon size={22} className={styles.icon} aria-hidden />
+                  <Icon size={22} strokeWidth={1} className={styles.icon} aria-hidden />
                   <span className={styles.label}>{label}</span>
                 </Link>
               )}

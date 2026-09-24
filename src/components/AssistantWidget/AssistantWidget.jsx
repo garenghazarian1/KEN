@@ -10,6 +10,7 @@ import {
   getAssistantLauncherTips,
 } from "@/data/assistantUi";
 import styles from "./AssistantWidget.module.css";
+import { useAfterHeroVideo } from "@/components/hero/useAfterHeroVideo";
 
 /** Panel is lazy-loaded on first open to keep First Load JS small. */
 const AssistantPanel = dynamic(() => import("./AssistantPanel"), {
@@ -26,12 +27,14 @@ export default function AssistantWidget() {
   const [typedTip, setTypedTip] = useState("");
   const [tipPhase, setTipPhase] = useState("idle"); // idle | typing | hold | exit
   const launcherRef = useRef(null);
+  const videoFirst = useAfterHeroVideo();
   const tipsDoneRef = useRef(false);
   const tipsRef = useRef(null);
   if (!tipsRef.current) tipsRef.current = getAssistantLauncherTips();
   const launcherTips = tipsRef.current;
 
   useEffect(() => {
+    if (!videoFirst) return undefined;
     let step = 0;
     let exitTimer = 0;
     setTipIndex(0);
@@ -59,7 +62,7 @@ export default function AssistantWidget() {
       window.clearInterval(id);
       window.clearTimeout(exitTimer);
     };
-  }, [launcherTips.length]);
+  }, [launcherTips.length, videoFirst]);
 
   useEffect(() => {
     if (!open || tipsDoneRef.current) return;
@@ -119,6 +122,8 @@ export default function AssistantWidget() {
   const tipFull =
     tipIndex !== null ? launcherTips[tipIndex] : null;
   const showTip = tipFull !== null;
+
+  if (!videoFirst) return null;
 
   return (
     <div className={styles.root}>
