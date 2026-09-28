@@ -22,6 +22,8 @@ import {
   WHATSAPP_CONTACTS,
 } from "@/config/constants";
 import { getCategoryImage } from "@/data/serviceImages";
+import { buildWhatsAppUrl, trackWhatsAppClick } from "@/lib/adsAttribution";
+import { recordOutbound } from "@/lib/leads/trackLead";
 import {
   buildServiceSearchCatalog,
   searchServices,
@@ -238,11 +240,37 @@ function PriceLabel({ item }) {
   );
 }
 
+function bookingMessage(branch, services) {
+  const lines = services.map((service) => `- ${service.name}`).join("\n");
+  return `Hello KEN Beauty Center (${branch})\nI would like to book:\n${lines}`;
+}
+
+function plainWhatsAppUrl(number, message) {
+  return `https://wa.me/${number}?text=${encodeURIComponent(message)}`;
+}
+
+function BookAdd({ item, added, onToggleBook }) {
+  if (!onToggleBook) return null;
+  return (
+    <button
+      type="button"
+      className={styles.addService}
+      aria-pressed={added}
+      aria-label={added ? `Remove ${item.name}` : `Add ${item.name}`}
+      onClick={() => onToggleBook(item)}
+    >
+      {added ? "Added" : "Add"}
+    </button>
+  );
+}
+
 function ServiceLine({
   item,
   query,
   onSelect,
+  onToggleBook,
   selected = false,
+  added = false,
   expandable = false,
   imageSrc = null,
 }) {
@@ -278,26 +306,34 @@ function ServiceLine({
     </>
   );
 
+  const add = (
+    <BookAdd item={item} added={added} onToggleBook={onToggleBook} />
+  );
+
   if (expandable) {
     return (
       <div className={lineClass}>
-        <button
-          type="button"
-          className={styles.serviceToggle}
-          aria-expanded={selected}
-          onClick={onSelect}
-        >
-          <FitName className={nameClass} text={item.name}>
-            <Highlight text={item.name} query={query} />
-          </FitName>
-          <ChevronDown
-            size={16}
-            aria-hidden
-            className={`${dropChevronClass} ${
-              selected ? styles.chevronOpen : styles.chevron
-            }`}
-          />
-        </button>
+        <div className={styles.serviceHead}>
+          <button
+            type="button"
+            className={styles.serviceToggle}
+            data-service-toggle=""
+            aria-expanded={selected}
+            onClick={onSelect}
+          >
+            <FitName className={nameClass} text={item.name}>
+              <Highlight text={item.name} query={query} />
+            </FitName>
+            <ChevronDown
+              size={16}
+              aria-hidden
+              className={`${dropChevronClass} ${
+                selected ? styles.chevronOpen : styles.chevron
+              }`}
+            />
+          </button>
+          {add}
+        </div>
         <DropPanel open={selected}>
           <div className={styles.serviceDetails}>
             {panelSrc ? (
@@ -334,23 +370,37 @@ function ServiceLine({
     </>
   );
 
-  if (!onSelect) {
-    return <div className={lineClass}>{body}</div>;
-  }
-
   return (
-    <button
-      type="button"
-      className={lineClass}
-      aria-pressed={selected}
-      onClick={onSelect}
-    >
-      {body}
-    </button>
+    <div className={lineClass}>
+      <div className={styles.serviceHead}>
+        {onSelect ? (
+          <button
+            type="button"
+            className={styles.serviceSelect}
+            data-service-toggle=""
+            aria-pressed={selected}
+            onClick={onSelect}
+          >
+            {body}
+          </button>
+        ) : (
+          <div className={styles.serviceSelect}>{body}</div>
+        )}
+        {add}
+      </div>
+    </div>
   );
 }
 
-function SearchResultRow({ result, query, expandable, selected, onSelect }) {
+function SearchResultRow({
+  result,
+  query,
+  expandable,
+  selected,
+  added,
+  onSelect,
+  onToggleBook,
+}) {
   const { item, categoryTitle, subcategoryTitle } = result;
   const breadcrumb = subcategoryTitle
     ? `${categoryTitle} · ${subcategoryTitle}`
@@ -364,14 +414,16 @@ function SearchResultRow({ result, query, expandable, selected, onSelect }) {
         query={query}
         expandable={expandable}
         selected={selected}
+        added={added}
         imageSrc={remotePreview(item.imageUrls)}
         onSelect={onSelect}
+        onToggleBook={onToggleBook}
       />
     </li>
   );
 }
 
-function SearchResultsList({ results, query, expandable }) {
+function SearchResultsList({ results, query, expandable, bookedIds, onToggleBook }) {
   const [openId, setOpenId] = useState(null);
 
   useEffect(() => {
@@ -387,6 +439,8 @@ function SearchResultsList({ results, query, expandable }) {
           query={query}
           expandable={expandable}
           selected={openId === result.item.id}
+          added={bookedIds.has(result.item.id)}
+          onToggleBook={onToggleBook}
           onSelect={
             expandable
               ? () =>
@@ -457,6 +511,8 @@ function PriceColumn({
   onToggle,
   query,
   onSelectItem,
+  onToggleBook,
+  bookedIds,
   onHoverColumn,
   onHoverColumnEnd,
   selectedId,
@@ -486,10 +542,12 @@ function PriceColumn({
             query={query}
             expandable={!isWide}
             selected={item.id === selectedId}
+            added={bookedIds.has(item.id)}
             imageSrc={servicePreviewSrc(item, column, section)}
             onSelect={
               onSelectItem ? () => onSelectItem(item, column) : undefined
             }
+            onToggleBook={onToggleBook}
           />
         </li>
       ))}
@@ -561,6 +619,8 @@ function CategoryBoard({
   isWide,
   serviceId,
   onServiceChange,
+  bookedIds,
+  onToggleBook,
 }) {
   const navHidden = useHideNavOnScroll();
   const columns = useMemo(
@@ -808,6 +868,8 @@ function CategoryBoard({
                 isOpen={openSubcategories.has(column.id)}
                 onToggle={onToggleSubcategory}
                 query={query}
+                bookedIds={bookedIds}
+                onToggleBook={onToggleBook}
                 selectedId={picked?.id ?? null}
                 chapterSrc={
                   column.id === openColumn?.id
@@ -845,72 +907,71 @@ function WhatsAppIcon({ size = 22 }) {
   );
 }
 
-function WhatsAppBanner() {
-  const [isOpen, setIsOpen] = useState(false);
+function WhatsAppBookBar({ services }) {
+  const navHidden = useHideNavOnScroll();
+  const serviceKey = services.map((service) => service.id).join("\n");
+  const [hrefByNumber, setHrefByNumber] = useState(null);
 
-  if (!WHATSAPP_CONTACTS || WHATSAPP_CONTACTS.length === 0) return null;
+  useEffect(() => {
+    const next = {};
+    for (const contact of WHATSAPP_CONTACTS) {
+      next[contact.number] = buildWhatsAppUrl({
+        number: contact.number,
+        message: bookingMessage(contact.shortLabel, services),
+      });
+    }
+    setHrefByNumber(next);
+  }, [serviceKey, services]);
+
+  if (!services.length || !WHATSAPP_CONTACTS.length) return null;
+
+  const countLabel = `${services.length} ${services.length === 1 ? "service" : "services"}`;
 
   return (
-    <motion.div
-      className={styles.whatsappBanner}
-      initial={{ opacity: 0, y: 20 }}
-      animate={{ opacity: 1, y: 0 }}
-      transition={{ duration: 0.5, delay: 0.1 }}
+    <div
+      className={styles.bookBar}
+      data-nav-hidden={navHidden ? "true" : "false"}
+      role="region"
+      aria-label="Send selected services on WhatsApp"
     >
-      <button
-        type="button"
-        className={styles.whatsappBannerTrigger}
-        onClick={() => setIsOpen((prev) => !prev)}
-        aria-expanded={isOpen}
-      >
-        <span className={styles.whatsappBannerIcon}>
-          <WhatsAppIcon size={22} />
-        </span>
-        <span className={styles.whatsappBannerTitle}>Book via WhatsApp</span>
-        <motion.span
-          className={styles.whatsappChevron}
-          animate={{ rotate: isOpen ? 180 : 0 }}
-          transition={{ duration: 0.25 }}
-        >
-          <ChevronDown size={16} aria-hidden />
-        </motion.span>
-      </button>
-
-      <AnimatePresence initial={false}>
-        {isOpen && (
-          <motion.div
-            key="wa-body"
-            initial={{ height: 0, opacity: 0 }}
-            animate={{ height: "auto", opacity: 1 }}
-            exit={{ height: 0, opacity: 0 }}
-            transition={{ duration: 0.28, ease: "easeInOut" }}
-            style={{ overflow: "hidden" }}
-          >
-            <div className={styles.whatsappButtonsRow}>
-              {WHATSAPP_CONTACTS.map((contact) => {
-                const url = `https://wa.me/${contact.number}?text=${encodeURIComponent(contact.message)}`;
-                return (
-                  <a
-                    key={contact.number}
-                    href={url}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className={styles.whatsappButton}
-                  >
-                    <span className={styles.whatsappButtonIconWrap} aria-hidden>
-                      <WhatsAppIcon size={20} />
-                    </span>
-                    <span className={styles.whatsappButtonText}>
-                      {contact.label}
-                    </span>
-                  </a>
-                );
-              })}
-            </div>
-          </motion.div>
-        )}
-      </AnimatePresence>
-    </motion.div>
+      <p className={styles.bookCount} aria-live="polite">
+        <WhatsAppIcon size={18} />
+        {countLabel}
+      </p>
+      <div className={styles.bookBranches}>
+        {WHATSAPP_CONTACTS.map((contact) => {
+          const message = bookingMessage(contact.shortLabel, services);
+          const href =
+            hrefByNumber?.[contact.number] ??
+            plainWhatsAppUrl(contact.number, message);
+          return (
+            <a
+              key={contact.number}
+              href={href}
+              target="_blank"
+              rel="noopener noreferrer"
+              className={styles.bookBranch}
+              aria-label={`Send to ${contact.shortLabel} on WhatsApp`}
+              onClick={() => {
+                trackWhatsAppClick({
+                  branch: contact.shortLabel,
+                  number: contact.number,
+                });
+                recordOutbound(href, {
+                  branch: contact.shortLabel === "Rixos" ? "rixos" : "galleria",
+                  services: services.map((service) => ({
+                    id: service.id,
+                    name: service.name,
+                  })),
+                });
+              }}
+            >
+              {contact.shortLabel}
+            </a>
+          );
+        })}
+      </div>
+    </div>
   );
 }
 
@@ -959,6 +1020,7 @@ export default function ServiceMenu({ sections = [], error = null }) {
     ),
   );
   const [isWide, setIsWide] = useState(false);
+  const [booked, setBooked] = useState([]);
   const [isSearchFocused, setIsSearchFocused] = useState(false);
   const [suggestionsDismissed, setSuggestionsDismissed] = useState(false);
   const [activeSuggestionIndex, setActiveSuggestionIndex] = useState(-1);
@@ -1169,10 +1231,27 @@ export default function ServiceMenu({ sections = [], error = null }) {
     [sections, activeCategoryId],
   );
 
+  const bookedIds = useMemo(
+    () => new Set(booked.map((service) => service.id)),
+    [booked],
+  );
+
+  const toggleBook = useCallback((item) => {
+    setBooked((current) => {
+      if (current.some((service) => service.id === item.id)) {
+        return current.filter((service) => service.id !== item.id);
+      }
+      return [...current, { id: item.id, name: item.name }];
+    });
+  }, []);
+
   const isSearching = Boolean(query.trim());
 
   return (
-    <div className={styles.container}>
+    <div
+      className={styles.container}
+      data-booking={booked.length > 0 ? "true" : "false"}
+    >
       {!error && sections.length > 0 && (
         <motion.div
           className={styles.searchWrapper}
@@ -1255,8 +1334,6 @@ export default function ServiceMenu({ sections = [], error = null }) {
         </motion.div>
       )}
 
-      {!error && sections.length > 0 && <WhatsAppBanner />}
-
       {error && (
         <div className={styles.errorState} role="alert">
           <p>{error}</p>
@@ -1289,6 +1366,8 @@ export default function ServiceMenu({ sections = [], error = null }) {
               results={searchResults}
               query={query}
               expandable={!isWide}
+              bookedIds={bookedIds}
+              onToggleBook={toggleBook}
             />
           ) : (
             <CategoryBoard
@@ -1301,10 +1380,14 @@ export default function ServiceMenu({ sections = [], error = null }) {
               isWide={isWide}
               serviceId={serviceFromUrl}
               onServiceChange={linkService}
+              bookedIds={bookedIds}
+              onToggleBook={toggleBook}
             />
           )}
         </div>
       )}
+
+      <WhatsAppBookBar services={booked} />
 
       <motion.div
         className={styles.footerNote}

@@ -21,6 +21,8 @@ import {
   buildWhatsAppUrl,
   trackWhatsAppClick,
 } from "@/lib/adsAttribution";
+import { branchKey } from "@/lib/leads/leadRecord";
+import { recordOutbound } from "@/lib/leads/trackLead";
 import styles from "./MobileNavBottom.module.css";
 import { useHideNavOnScroll } from "./useHideNavOnScroll";
 
@@ -182,6 +184,11 @@ export default function MobileNavBottom() {
                       <a
                         href={getTelLink(store.phone)}
                         className={styles.numberRow}
+                        onClick={() =>
+                          recordOutbound(getTelLink(store.phone), {
+                            branch: branchKey(store.name),
+                          })
+                        }
                       >
                         <Phone size={18} aria-hidden />
                         <span className={styles.numberMeta}>
@@ -192,6 +199,11 @@ export default function MobileNavBottom() {
                       <a
                         href={getTelLink(store.mobile)}
                         className={styles.numberRow}
+                        onClick={() =>
+                          recordOutbound(getTelLink(store.mobile), {
+                            branch: branchKey(store.name),
+                          })
+                        }
                       >
                         <Phone size={18} aria-hidden />
                         <span className={styles.numberMeta}>
@@ -207,12 +219,15 @@ export default function MobileNavBottom() {
                         className={styles.whatsappRow}
                         target="_blank"
                         rel="noopener noreferrer"
-                        onClick={() =>
+                        onClick={() => {
                           trackWhatsAppClick({
                             branch: label,
                             number: whatsappDigits,
-                          })
-                        }
+                          });
+                          recordOutbound(`https://wa.me/${whatsappDigits}`, {
+                            branch: branchKey(store.name),
+                          });
+                        }}
                       >
                         <MessageCircle size={18} aria-hidden />
                         <span>WhatsApp {label}</span>

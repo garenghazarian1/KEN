@@ -4,6 +4,7 @@
  */
 
 import { getGoogleMapsUrl, stores } from "@/data/stores";
+import { recordOutbound } from "@/lib/leads/trackLead";
 import {
   BOOKING_URL,
   CARD_URL,
@@ -209,6 +210,11 @@ export function linkifyToNodes(text, linkClassName) {
         target={isExternal ? "_blank" : undefined}
         rel={isExternal ? "noopener noreferrer" : undefined}
         aria-label={isExternal ? `${m.label} (opens in a new tab)` : undefined}
+        onClick={() =>
+          recordOutbound(m.href, {
+            gtm: m.href.includes("wa.me"),
+          })
+        }
       >
         {m.label}
       </a>

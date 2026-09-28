@@ -54,12 +54,14 @@ export const CONTACT = {
 export const WHATSAPP_CONTACTS = [
   {
     label: "Galleria Al Maryah Island",
+    shortLabel: "Galleria",
     number: "971503043570",
     formatted: "+971 50 304 3570",
     message: "Hello KEN Beauty Center (Galleria), I would like to book a service.",
   },
   {
     label: "Rixos Hotel Marina",
+    shortLabel: "Rixos",
     number: "971555570029",
     formatted: "+971 55 557 0029",
     message: "Hello KEN Beauty Center (Rixos), I would like to book a service.",

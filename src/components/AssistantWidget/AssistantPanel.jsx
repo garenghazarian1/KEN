@@ -23,6 +23,7 @@ import {
   isIOSWebView,
 } from "@/config/constants";
 import { linkifyToNodes } from "@/utils/linkifyText";
+import { recordOutbound } from "@/lib/leads/trackLead";
 import useAssistantRealtime, {
   voiceSupported as detectVoiceSupport,
 } from "@/hooks/useAssistantRealtime";
@@ -831,6 +832,12 @@ export default function AssistantPanel({ isOpen, onClose }) {
                       action.type === "call"
                         ? action.label
                         : `${action.label} (opens in a new tab)`
+                    }
+                    onClick={() =>
+                      recordOutbound(action.url, {
+                        gtm: action.type === "whatsapp",
+                        gtmBranch: action.label,
+                      })
                     }
                   >
                     {actionIcon(action.type)}

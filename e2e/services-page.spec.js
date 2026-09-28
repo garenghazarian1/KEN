@@ -33,9 +33,12 @@ test("desktop services page is one priced lookbook", async ({ page }) => {
   const categorySrc = await preview.getAttribute("src");
   await page.getByRole("heading", { level: 3, name: "Hair Color" }).hover();
   await expect.poll(async () => preview.getAttribute("src")).not.toBe(categorySrc);
-  await page.getByRole("button", { name: /Ken Haircut/ }).hover();
+  const haircut = page
+    .locator("[data-service-toggle]")
+    .filter({ hasText: "Ken Haircut" });
+  await haircut.hover();
   await expect.poll(async () => preview.getAttribute("src")).toBe(categorySrc);
-  await page.getByRole("button", { name: /Ken Haircut/ }).click();
+  await haircut.click();
   await expect.poll(async () => preview.getAttribute("src")).not.toBe(categorySrc);
   await categories.getByRole("button").first().hover();
   await expect.poll(async () => preview.getAttribute("src")).toBe(categorySrc);
@@ -67,14 +70,15 @@ test("phone services page opens one service at a time", async ({ page }) => {
   ).toHaveAttribute("aria-expanded", "false");
   await expect(photo).toHaveCount(1);
 
-  const service = nextGroup.getByRole("button").nth(1);
+  const serviceToggles = nextGroup.locator("[data-service-toggle]");
+  const service = serviceToggles.nth(0);
   await expect(service).not.toContainText("AED");
   await service.click();
   await expect(service).toHaveAttribute("aria-expanded", "true");
   await expect(nextGroup.getByText(/AED/).locator("visible=true").first()).toBeVisible();
   await expect(photo).toHaveCount(2);
 
-  const other = nextGroup.getByRole("button").nth(2);
+  const other = serviceToggles.nth(1);
   await other.click();
   await expect(service).toHaveAttribute("aria-expanded", "false");
   await expect(other).toHaveAttribute("aria-expanded", "true");
@@ -98,4 +102,30 @@ test("menu link opens the priced category", async ({ page }) => {
   await expect(page).toHaveURL(/\/services\?/);
   await expect(page.getByText(/AED/).first()).toBeVisible();
   await expect(page.locator('img[sizes="40vw"]')).toHaveCount(1);
+});
+
+test("added services open WhatsApp with those names", async ({ page }) => {
+  await page.setViewportSize({ width: 390, height: 844 });
+  await page.goto("/services");
+  await acceptCookies(page);
+
+  await expect(page.getByRole("list", { name: "Service categories" })).toBeVisible({
+    timeout: 20_000,
+  });
+
+  const add = page.getByRole("button", { name: /^Add / }).first();
+  const label = await add.getAttribute("aria-label");
+  const serviceName = label.replace(/^Add /, "");
+  await add.click();
+  const added = page.getByRole("button", { name: `Remove ${serviceName}` });
+  await expect(added).toHaveAttribute("aria-pressed", "true");
+
+  const galleria = page.getByRole("link", { name: "Send to Galleria on WhatsApp" });
+  await expect(galleria).toBeVisible();
+  const href = await galleria.getAttribute("href");
+  expect(decodeURIComponent(href)).toContain(serviceName);
+  expect(href).toContain("https://wa.me/971503043570");
+
+  await added.click();
+  await expect(galleria).toHaveCount(0);
 });

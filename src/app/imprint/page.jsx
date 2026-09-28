@@ -1,5 +1,6 @@
 import { BUSINESS, CONTACT } from "@/config/constants";
 import { stores } from "@/data/stores";
+import LeadLink from "@/components/leadLink/LeadLink";
 import styles from "./imprint.module.css";
 
 export const metadata = {
@@ -38,23 +39,29 @@ export default function Imprint() {
           <div className={styles.infoBlock}>
             <p>
               <strong>Phone:</strong>{" "}
-              <a href={`tel:${CONTACT.primaryPhone.replace(/\s/g, "")}`}>
+              <LeadLink
+                href={`tel:${CONTACT.primaryPhone.replace(/\s/g, "")}`}
+                branch="galleria"
+              >
                 {CONTACT.primaryPhone}
-              </a>
+              </LeadLink>
             </p>
             <p>
               <strong>Mobile:</strong>{" "}
-              <a href={`tel:${CONTACT.primaryMobile.replace(/\s/g, "")}`}>
+              <LeadLink
+                href={`tel:${CONTACT.primaryMobile.replace(/\s/g, "")}`}
+                branch="galleria"
+              >
                 {CONTACT.primaryMobile}
-              </a>
+              </LeadLink>
             </p>
             <p>
               <strong>Email:</strong>{" "}
-              <a
+              <LeadLink
                 href={`mailto:${CONTACT.email}?subject=Inquiry about ${BUSINESS.name}&body=Hello, I would like to know more about your services.`}
               >
                 {CONTACT.email}
-              </a>
+              </LeadLink>
             </p>
           </div>
         </section>

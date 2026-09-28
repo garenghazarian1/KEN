@@ -34,6 +34,8 @@ import {
   APP_STORES,
 } from "@/config/constants";
 import { stores } from "@/data/stores";
+import { branchKey } from "@/lib/leads/leadRecord";
+import { recordOutbound } from "@/lib/leads/trackLead";
 import styles from "./Footer.modern.module.css";
 
 export default function FooterModern() {
@@ -157,6 +159,11 @@ export default function FooterModern() {
                         href={`tel:${store.phone.replace(/\s/g, "")}`}
                         className={styles.contactLink}
                         aria-label={`Call ${store.name} landline: ${store.phone}`}
+                        onClick={() =>
+                          recordOutbound(`tel:${store.phone.replace(/\s/g, "")}`, {
+                            branch: branchKey(store.name),
+                          })
+                        }
                       >
                         <Phone
                           size={18}
@@ -171,6 +178,11 @@ export default function FooterModern() {
                         href={`tel:${store.mobile.replace(/\s/g, "")}`}
                         className={styles.contactLink}
                         aria-label={`Call ${store.name} mobile: ${store.mobile}`}
+                        onClick={() =>
+                          recordOutbound(`tel:${store.mobile.replace(/\s/g, "")}`, {
+                            branch: branchKey(store.name),
+                          })
+                        }
                       >
                         <Phone
                           size={18}
@@ -187,6 +199,16 @@ export default function FooterModern() {
                         )}`}
                         className={styles.contactLink}
                         aria-label={`WhatsApp ${store.name}`}
+                        onClick={() =>
+                          recordOutbound(
+                            `https://wa.me/${store.whatsapp.replace(/[\s+]/g, "")}`,
+                            {
+                              branch: branchKey(store.name),
+                              gtm: true,
+                              gtmBranch: store.name,
+                            },
+                          )
+                        }
                       >
                         <MessageCircle
                           size={18}
@@ -201,6 +223,7 @@ export default function FooterModern() {
                   href={`mailto:info@ken-salon.com?subject=Inquiry about ${BUSINESS.name}&body=Hello, I would like to know more about your services.`}
                   className={styles.contactLink}
                   aria-label="Email us at info@ken-salon.com"
+                  onClick={() => recordOutbound("mailto:info@ken-salon.com")}
                 >
                   <Mail
                     size={18}

@@ -489,16 +489,19 @@
 
 .categoryButton:focus-visible,
 .columnToggle:focus-visible,
-button.serviceLine:focus-visible,
-.serviceToggle:focus-visible {
+.serviceSelect:focus-visible,
+.serviceToggle:focus-visible,
+.addService:focus-visible,
+.bookBranch:focus-visible {
   outline: 1px solid var(--color-secondary);
   outline-offset: 2px;
 }
 
 .categoryButton:disabled,
 .columnToggle:disabled,
-button.serviceLine:disabled,
-.serviceToggle:disabled {
+.serviceSelect:disabled,
+.serviceToggle:disabled,
+.addService:disabled {
   color: var(--color-text-tertiary);
   border-bottom-color: transparent;
   cursor: not-allowed;
@@ -583,17 +586,39 @@ button.serviceLine:disabled,
   text-align: start;
 }
 
-button.serviceLine {
-  width: 100%;
-  cursor: pointer;
-}
-
 .serviceLineSelected {
   background: var(--overlay-secondary-10);
 }
 
+.serviceHead {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-2);
+  width: 100%;
+  min-width: 0;
+}
+
 .serviceLine:has(.serviceToggle) {
   padding: 0;
+}
+
+.serviceHead .serviceToggle,
+.serviceSelect {
+  flex: 1 1 auto;
+  min-width: 0;
+}
+
+button.serviceSelect {
+  appearance: none;
+  display: block;
+  width: 100%;
+  padding: 0;
+  border: none;
+  background: transparent;
+  color: inherit;
+  font: inherit;
+  text-align: start;
+  cursor: pointer;
 }
 
 .serviceToggle {
@@ -622,8 +647,8 @@ button.serviceLine {
   margin-inline-start: 0;
 }
 
-.serviceLine:active .serviceName,
-.serviceLine:active .servicePrice,
+.serviceSelect:active .serviceName,
+.serviceSelect:active .servicePrice,
 .serviceToggle:active .serviceName,
 .serviceLineSelected .serviceName,
 .serviceLineSelected .servicePrice {
@@ -631,21 +656,52 @@ button.serviceLine {
   font-weight: var(--font-weight-medium);
 }
 
-.serviceLine:active .serviceName::before,
+.serviceSelect:active .serviceName::before,
 .serviceToggle:active .serviceName::before,
 .serviceLineSelected .serviceName::before {
   transform: scale(1.6);
 }
 
-button.serviceLine:disabled .serviceName,
-button.serviceLine:disabled .servicePrice,
+.serviceSelect:disabled .serviceName,
+.serviceSelect:disabled .servicePrice,
 .serviceToggle:disabled .serviceName {
   color: var(--color-text-tertiary);
   font-weight: var(--font-weight-light);
 }
 
-button.serviceLine:disabled .serviceName::before {
+.serviceSelect:disabled .serviceName::before {
   transform: none;
+}
+
+.addService {
+  appearance: none;
+  flex: 0 0 auto;
+  min-height: 2.75rem;
+  padding: 0 var(--spacing-3);
+  border: 1px solid var(--glass-border-light);
+  border-radius: 999px;
+  background: transparent;
+  color: var(--color-text-secondary);
+  font: inherit;
+  font-size: var(--font-size-xs);
+  letter-spacing: 0.06em;
+  line-height: 1;
+  text-transform: uppercase;
+  cursor: pointer;
+}
+
+.addService:active,
+.addService[aria-pressed="true"] {
+  color: var(--color-text-primary);
+  border-color: var(--color-text-primary);
+  background: var(--overlay-secondary-10);
+}
+
+.addService:disabled {
+  color: var(--color-text-tertiary);
+  border-color: var(--glass-border-light);
+  background: transparent;
+  cursor: not-allowed;
 }
 
 .serviceMain {
@@ -689,16 +745,25 @@ button.serviceLine:disabled .serviceName::before {
     border-bottom-color: var(--color-text-primary);
   }
 
-  .serviceLine:hover .serviceName,
-  .serviceLine:hover .servicePrice,
+  .serviceSelect:hover .serviceName,
+  .serviceSelect:hover .servicePrice,
   .serviceToggle:hover .serviceName {
     color: var(--color-text-primary);
     font-weight: var(--font-weight-medium);
   }
 
-  .serviceLine:hover .serviceName::before,
+  .serviceSelect:hover .serviceName::before,
   .serviceToggle:hover .serviceName::before {
     transform: scale(1.6);
+  }
+
+  .addService:hover {
+    color: var(--color-text-primary);
+    border-color: var(--color-text-primary);
+  }
+
+  .bookBranch:hover {
+    background: var(--color-whatsapp-hover);
   }
 }
 
@@ -839,128 +904,82 @@ button.serviceLine:disabled .serviceName::before {
   }
 }
 
-/* ─── WhatsApp booking banner ──────────────────────────── */
-.whatsappBanner {
-  position: relative;
-  z-index: 1;
-  max-width: 920px;
-  margin: 0 auto var(--spacing-6);
-  border: 1px solid var(--glass-border-light);
-  border-radius: var(--border-radius-xl, 16px);
-  overflow: hidden;
-  box-shadow: 0 2px 12px var(--overlay-black-05);
-}
-
-.whatsappBannerTrigger {
+/* ─── WhatsApp booking bar ─────────────────────────────── */
+.bookBar {
+  position: fixed;
+  z-index: var(--z-sticky);
+  left: 0;
+  right: 0;
+  bottom: var(--mobile-nav-bottom-height);
   display: flex;
   align-items: center;
+  justify-content: space-between;
   gap: var(--spacing-3);
-  width: 100%;
-  padding: var(--spacing-3) var(--spacing-4);
-  background: var(--glass-white-light);
-  border: none;
-  cursor: pointer;
-  text-align: left;
-  transition: background 0.2s ease;
-}
-
-.whatsappBannerTrigger:hover {
-  background: color-mix(in srgb, #25d366 6%, var(--glass-white-light));
-}
-
-.whatsappBannerIcon {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  width: 36px;
-  height: 36px;
-  border-radius: 50%;
-  background: color-mix(in srgb, #25d366 16%, var(--glass-white-light));
-  color: #25d366;
-  flex-shrink: 0;
-}
-
-.whatsappBannerTitle {
-  flex: 1;
-  font-size: var(--font-size-base, 0.95rem);
-  font-weight: var(--font-weight-normal);
-  color: var(--color-text-primary);
-  line-height: 1;
-}
-
-.whatsappChevron {
-  display: flex;
-  align-items: center;
-  color: #25d366;
-  flex-shrink: 0;
-}
-
-.whatsappButtonsRow {
-  display: flex;
-  flex-wrap: wrap;
-  gap: var(--spacing-3);
-  padding: var(--spacing-4) var(--spacing-4);
-  background: var(--glass-white-light);
+  padding: var(--spacing-2) max(4.75rem, env(safe-area-inset-right, 0px))
+    var(--spacing-2) max(4.75rem, env(safe-area-inset-left, 0px));
+  background: var(--glass-white-strong);
   border-top: 1px solid var(--glass-border-light);
+  backdrop-filter: blur(var(--glass-blur-md));
+  -webkit-backdrop-filter: blur(var(--glass-blur-md));
+  transition: bottom 0.28s ease;
 }
 
-.whatsappButton {
-  display: inline-flex;
-  flex-direction: row;
+.bookBar[data-nav-hidden="true"] {
+  bottom: 0;
+  padding-bottom: calc(var(--spacing-2) + env(safe-area-inset-bottom, 0px));
+}
+
+.bookCount {
+  display: flex;
   align-items: center;
   gap: var(--spacing-2);
-  padding: var(--spacing-2) var(--spacing-4);
-  background: #25d366;
-  color: #fff;
+  margin: 0;
+  min-width: 0;
+  color: var(--color-text-primary);
+  font-size: var(--font-size-sm);
+  line-height: 1.2;
+  white-space: nowrap;
+}
+
+.bookCount svg {
+  flex-shrink: 0;
+  color: var(--color-whatsapp);
+}
+
+.bookBranches {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: flex-end;
+  gap: var(--spacing-2);
+}
+
+.bookBranch {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 2.75rem;
+  padding: 0 var(--spacing-3);
   border-radius: 999px;
+  background: var(--color-whatsapp);
+  color: var(--color-text-inverse);
+  font-size: var(--font-size-sm);
+  font-weight: var(--font-weight-semibold);
+  line-height: 1;
   text-decoration: none;
   white-space: nowrap;
-  transition:
-    background 0.2s ease,
-    transform 0.15s ease,
-    box-shadow 0.2s ease;
-  box-shadow: 0 2px 8px color-mix(in srgb, #25d366 40%, transparent);
 }
 
-.whatsappButton:hover {
-  background: #1da851;
-  transform: translateY(-1px);
-  box-shadow: 0 4px 14px color-mix(in srgb, #25d366 50%, transparent);
+.bookBranch:active {
+  background: var(--color-whatsapp-hover);
 }
 
-.whatsappButton:active {
-  transform: translateY(0);
+.container[data-booking="true"] {
+  padding-bottom: calc(var(--spacing-16) + var(--spacing-8) + 3.5rem);
 }
 
-.whatsappButtonIconWrap {
-  display: flex;
-  align-items: center;
-  flex-shrink: 0;
-}
-
-.whatsappButtonText {
-  font-weight: var(--font-weight-semibold, 600);
-  font-size: var(--font-size-sm, 0.875rem);
-  line-height: 1;
-}
-
-@media (max-width: 768px) {
-  .whatsappBanner {
-    margin: 0 var(--spacing-3) var(--spacing-5);
-  }
-
-  .whatsappButtonsRow {
-    flex-direction: column;
-  }
-
-  .whatsappButton {
-    width: 100%;
-  }
-}
-
-@media (max-width: 480px) {
-  .whatsappBanner {
-    margin: 0 var(--spacing-2) var(--spacing-4);
+@media (max-width: 1023px) {
+  .container[data-booking="true"] {
+    padding-bottom: calc(var(--spacing-16) + var(--spacing-12) + 3.5rem);
   }
 }
 

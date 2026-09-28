@@ -18,6 +18,8 @@ import {
   trackWhatsAppClick,
 } from "@/lib/adsAttribution";
 import { getGoogleMapsUrl } from "@/data/stores";
+import { branchKey } from "@/lib/leads/leadRecord";
+import { recordOutbound } from "@/lib/leads/trackLead";
 import styles from "./Contact.modern.module.css";
 
 function shortLocationLabel(name) {
@@ -54,6 +56,7 @@ export default function ContactContent({ stores }) {
     const body = encodeURIComponent(
       `Name: ${formData.name}\nEmail: ${formData.email}\n\nMessage:\n${formData.message}`
     );
+    recordOutbound("mailto:info@ken-salon.com");
     window.location.href = `mailto:info@ken-salon.com?subject=${subject}&body=${body}`;
   };
 
@@ -117,6 +120,11 @@ export default function ContactContent({ stores }) {
                   <a
                     href={`tel:${store.phone.replace(/\s/g, "")}`}
                     className={styles.actionPrimary}
+                    onClick={() =>
+                      recordOutbound(`tel:${store.phone.replace(/\s/g, "")}`, {
+                        branch: branchKey(store.name),
+                      })
+                    }
                   >
                     <Phone size={16} aria-hidden="true" />
                     <span>{store.phone}</span>
@@ -124,6 +132,11 @@ export default function ContactContent({ stores }) {
                   <a
                     href={`tel:${store.mobile.replace(/\s/g, "")}`}
                     className={styles.actionPrimary}
+                    onClick={() =>
+                      recordOutbound(`tel:${store.mobile.replace(/\s/g, "")}`, {
+                        branch: branchKey(store.name),
+                      })
+                    }
                   >
                     <Phone size={16} aria-hidden="true" />
                     <span>{store.mobile}</span>
@@ -136,12 +149,16 @@ export default function ContactContent({ stores }) {
                     className={styles.actionWhatsapp}
                     target="_blank"
                     rel="noopener noreferrer"
-                    onClick={() =>
+                    onClick={() => {
+                      const number = store.whatsapp.replace(/[\s+]/g, "");
                       trackWhatsAppClick({
                         branch: shortLocationLabel(store.name),
-                        number: store.whatsapp.replace(/[\s+]/g, ""),
-                      })
-                    }
+                        number,
+                      });
+                      recordOutbound(`https://wa.me/${number}`, {
+                        branch: branchKey(store.name),
+                      });
+                    }}
                   >
                     <MessageCircle size={16} aria-hidden="true" />
                     <span>WhatsApp</span>
@@ -152,6 +169,7 @@ export default function ContactContent({ stores }) {
                   <a
                     href={`mailto:${store.email}`}
                     className={styles.actionLink}
+                    onClick={() => recordOutbound(`mailto:${store.email}`)}
                   >
                     <Mail size={14} aria-hidden="true" />
                     <span>{store.email}</span>
@@ -161,6 +179,11 @@ export default function ContactContent({ stores }) {
                     className={styles.actionLink}
                     target="_blank"
                     rel="noopener noreferrer"
+                    onClick={() =>
+                      recordOutbound(getGoogleMapsUrl(store), {
+                        branch: branchKey(store.name),
+                      })
+                    }
                   >
                     <MapPin size={14} aria-hidden="true" />
                     <span>Directions</span>

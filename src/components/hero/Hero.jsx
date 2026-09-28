@@ -4,6 +4,7 @@ import styles from "./Hero.module.css";
 import { FaWhatsapp } from "react-icons/fa";
 import Image from "next/image";
 import { useState, useEffect } from "react";
+import { recordOutbound } from "@/lib/leads/trackLead";
 
 const imagesSet = [
   [
@@ -91,6 +92,13 @@ export default function Hero() {
             href="https://wa.me/971503043570?text=Hello%20KEN%20Beauty%20Center%2C%20I%20would%20like%20to%20know%20more%20about%20your%20services."
             className={styles.whatsappButton}
             aria-label="Contact us on WhatsApp"
+            onClick={() =>
+              recordOutbound("https://wa.me/971503043570", {
+                branch: "galleria",
+                gtm: true,
+                gtmBranch: "Galleria",
+              })
+            }
           >
             <FaWhatsapp size={32} />
           </a>

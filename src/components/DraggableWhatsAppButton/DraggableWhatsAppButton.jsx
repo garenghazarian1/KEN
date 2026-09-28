@@ -8,6 +8,7 @@ import {
   buildWhatsAppUrl,
   trackWhatsAppClick,
 } from "@/lib/adsAttribution";
+import { recordOutbound } from "@/lib/leads/trackLead";
 import styles from "./DraggableWhatsAppButton.module.css";
 import { useAfterHeroVideo } from "@/components/hero/useAfterHeroVideo";
 
@@ -137,6 +138,9 @@ export default function DraggableWhatsAppButton() {
     trackWhatsAppClick({
       branch: "floating",
       number: CONTACT.whatsapp.number,
+    });
+    recordOutbound(`https://wa.me/${CONTACT.whatsapp.number}`, {
+      branch: "galleria",
     });
 
     // Refresh href in case attribution arrived after first paint

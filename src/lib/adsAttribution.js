@@ -10,6 +10,53 @@ const TTL_MS = 90 * 24 * 60 * 60 * 1000; // 90 days
 
 const PARAM_KEYS = ["gclid", "gbraid", "wbraid"];
 
+/** Real Google click ids are long. Test values such as TEST123 are not. */
+export function productionClickId(value) {
+  const text = String(value || "").trim();
+  if (!/^[A-Za-z0-9._-]{20,200}$/.test(text)) return null;
+  if (/^test/i.test(text)) return null;
+  return text;
+}
+
+function usableAttribution(parsed) {
+  if (!parsed || typeof parsed !== "object") return null;
+  const next = { ...parsed };
+  let dropped = false;
+
+  for (const key of PARAM_KEYS) {
+    if (!next[key]) continue;
+    const clean = productionClickId(next[key]);
+    if (!clean) {
+      delete next[key];
+      dropped = true;
+    } else {
+      next[key] = clean;
+    }
+  }
+
+  if (dropped) persistUsable(next);
+  if (!next.gclid && !next.gbraid && !next.wbraid) return null;
+  return next;
+}
+
+function persistUsable(next) {
+  if (!canUseDom()) return;
+  if (!next.gclid && !next.gbraid && !next.wbraid) {
+    try {
+      window.localStorage.removeItem(STORAGE_KEY);
+    } catch {
+      // Ignore quota / private mode
+    }
+    try {
+      document.cookie = `${COOKIE_NAME}=; Max-Age=0; Path=/; SameSite=Lax`;
+    } catch {
+      // Ignore cookie failures
+    }
+    return;
+  }
+  writeStored(next);
+}
+
 function canUseDom() {
   return typeof window !== "undefined" && typeof document !== "undefined";
 }
@@ -25,7 +72,7 @@ function readStored() {
       window.localStorage.removeItem(STORAGE_KEY);
       return null;
     }
-    return parsed;
+    return usableAttribution(parsed);
   } catch {
     return null;
   }
@@ -64,9 +111,9 @@ export function captureAdsAttributionFromUrl() {
     let changed = false;
 
     for (const key of PARAM_KEYS) {
-      const value = params.get(key);
-      if (value && value.trim()) {
-        next[key] = value.trim();
+      const value = productionClickId(params.get(key));
+      if (value) {
+        next[key] = value;
         changed = true;
       }
     }

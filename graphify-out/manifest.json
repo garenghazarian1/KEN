@@ -115,8 +115,8 @@
     "semantic_hash": ""
   },
   "C:\\Users\\garen\\Desktop\\01-WEB-DEV\\KenLight02\\ken\\src\\app\\imprint\\page.jsx": {
-    "mtime": 1789722475.374487,
-    "ast_hash": "91a3ce6eab9fe656c41340661c5b53be",
+    "mtime": 1790638763.2118769,
+    "ast_hash": "105e615329f6f1fde47fa5942c18bbba",
     "semantic_hash": ""
   },
   "C:\\Users\\garen\\Desktop\\01-WEB-DEV\\KenLight02\\ken\\src\\app\\privacy\\page.jsx": {
@@ -165,8 +165,8 @@
     "semantic_hash": ""
   },
   "C:\\Users\\garen\\Desktop\\01-WEB-DEV\\KenLight02\\ken\\src\\components\\contact\\ContactContent.jsx": {
-    "mtime": 1789073569.2778916,
-    "ast_hash": "d964e69850847842780aa067d0a5e237",
+    "mtime": 1790638763.2552536,
+    "ast_hash": "651bb3f14d494c54989a289b51428435",
     "semantic_hash": ""
   },
   "C:\\Users\\garen\\Desktop\\01-WEB-DEV\\KenLight02\\ken\\src\\components\\contact\\contactOldtest.jsx": {
@@ -185,8 +185,8 @@
     "semantic_hash": ""
   },
   "C:\\Users\\garen\\Desktop\\01-WEB-DEV\\KenLight02\\ken\\src\\components\\footer\\Footer.modern.jsx": {
-    "mtime": 1786542442.5376492,
-    "ast_hash": "1a2f3cee4a6fab80a5a94bd2b116a52e",
+    "mtime": 1790638763.210555,
+    "ast_hash": "b723fbefc29414a6e6f5825846c38613",
     "semantic_hash": ""
   },
   "C:\\Users\\garen\\Desktop\\01-WEB-DEV\\KenLight02\\ken\\src\\components\\hero\\hero-old.jsx": {
@@ -195,8 +195,8 @@
     "semantic_hash": ""
   },
   "C:\\Users\\garen\\Desktop\\01-WEB-DEV\\KenLight02\\ken\\src\\components\\hero\\Hero.jsx": {
-    "mtime": 1777287588.675651,
-    "ast_hash": "311008777aa701a426f959f8f3ca1d19",
+    "mtime": 1790638763.2118769,
+    "ast_hash": "5bc9fd957fc251a74f86e50931ac4a54",
     "semantic_hash": ""
   },
   "C:\\Users\\garen\\Desktop\\01-WEB-DEV\\KenLight02\\ken\\src\\components\\hero\\Hero.modern.jsx": {
@@ -260,8 +260,8 @@
     "semantic_hash": ""
   },
   "C:\\Users\\garen\\Desktop\\01-WEB-DEV\\KenLight02\\ken\\src\\components\\mobileNav\\MobileNavBottom.jsx": {
-    "mtime": 1790257275.5644243,
-    "ast_hash": "10ef050f929a4a48b7593d5987f644d4",
+    "mtime": 1790638763.2118769,
+    "ast_hash": "929c8fda9b94c491d638c440c0922712",
     "semantic_hash": ""
   },
   "C:\\Users\\garen\\Desktop\\01-WEB-DEV\\KenLight02\\ken\\src\\components\\mobileNav\\MobileNavTop.jsx": {
@@ -415,8 +415,8 @@
     "semantic_hash": ""
   },
   "C:\\Users\\garen\\Desktop\\01-WEB-DEV\\KenLight02\\ken\\src\\config\\constants.js": {
-    "mtime": 1789722473.4972768,
-    "ast_hash": "847f10c2bc3ebade77ac141bb90682d5",
+    "mtime": 1790638763.2118769,
+    "ast_hash": "224f38ec6872fec440fadce74ba35076",
     "semantic_hash": ""
   },
   "C:\\Users\\garen\\Desktop\\01-WEB-DEV\\KenLight02\\ken\\src\\data\\drinks.js": {
@@ -435,8 +435,8 @@
     "semantic_hash": ""
   },
   "C:\\Users\\garen\\Desktop\\01-WEB-DEV\\KenLight02\\ken\\FOLLOW_PATTERNS.md": {
-    "mtime": 1790633355.140151,
-    "ast_hash": "5e18fafe27594608eb69b462649a2bbd",
+    "mtime": 1790638763.2118769,
+    "ast_hash": "2796fb7867ff1be5e5a9774930461a92",
     "semantic_hash": ""
   },
   "C:\\Users\\garen\\Desktop\\01-WEB-DEV\\KenLight02\\ken\\IMPROVEMENTS_NEEDED.md": {
@@ -1010,8 +1010,8 @@
     "semantic_hash": ""
   },
   "C:\\Users\\garen\\Desktop\\01-WEB-DEV\\KenLight02\\ken\\src\\components\\serviceMenu\\ServiceMenu.jsx": {
-    "mtime": 1790634542.4796436,
-    "ast_hash": "8a86fca02280e88a1c88a8726101227a",
+    "mtime": 1790638763.247271,
+    "ast_hash": "86799ff22b3643be9dbf2140c3052514",
     "semantic_hash": ""
   },
   "C:\\Users\\garen\\Desktop\\01-WEB-DEV\\KenLight02\\ken\\src\\lib\\business\\serviceCatalog.js": {
@@ -1195,8 +1195,8 @@
     "semantic_hash": ""
   },
   "C:\\Users\\garen\\Desktop\\01-WEB-DEV\\KenLight02\\ken\\src\\components\\DraggableWhatsAppButton\\DraggableWhatsAppButton.jsx": {
-    "mtime": 1790259650.4125874,
-    "ast_hash": "20d1122ca8f7857fa47169bfc3483dff",
+    "mtime": 1790638763.210555,
+    "ast_hash": "202a96023a209ced2c59038b83e48ea9",
     "semantic_hash": ""
   },
   "C:\\Users\\garen\\Desktop\\01-WEB-DEV\\KenLight02\\ken\\src\\utils\\cloudinary.js": {
@@ -1275,8 +1275,8 @@
     "semantic_hash": ""
   },
   "C:\\Users\\garen\\Desktop\\01-WEB-DEV\\KenLight02\\ken\\src\\components\\AssistantWidget\\AssistantPanel.jsx": {
-    "mtime": 1788513946.7277193,
-    "ast_hash": "dbfa0adbb508938a1625e937dbafe70d",
+    "mtime": 1790638763.2118769,
+    "ast_hash": "adcfc4fb1903a4ce92dcb03c9624d639",
     "semantic_hash": ""
   },
   "C:\\Users\\garen\\Desktop\\01-WEB-DEV\\KenLight02\\ken\\src\\components\\AssistantWidget\\AssistantWidget.jsx": {
@@ -1345,8 +1345,8 @@
     "semantic_hash": ""
   },
   "C:\\Users\\garen\\Desktop\\01-WEB-DEV\\KenLight02\\ken\\src\\utils\\linkifyText.jsx": {
-    "mtime": 1784305097.0707483,
-    "ast_hash": "0d3ee22d75319a7f7e8bdc5322505e8a",
+    "mtime": 1790638763.210555,
+    "ast_hash": "2fadd35c201a4ec87a96285268b405e5",
     "semantic_hash": ""
   },
   "C:\\Users\\garen\\Desktop\\01-WEB-DEV\\KenLight02\\ken\\src\\utils\\playMpegStream.js": {
@@ -1590,8 +1590,8 @@
     "semantic_hash": ""
   },
   "C:\\Users\\garen\\Desktop\\01-WEB-DEV\\KenLight02\\ken\\src\\lib\\adsAttribution.js": {
-    "mtime": 1789073567.1728435,
-    "ast_hash": "61387aec798c90e9a2cc02dec3c33094",
+    "mtime": 1790639013.7973204,
+    "ast_hash": "dd68fc6ed0f35b57ecf28c9e675326df",
     "semantic_hash": ""
   },
   "C:\\Users\\garen\\Desktop\\01-WEB-DEV\\KenLight02\\ken\\src\\utils\\scrollChildToContainerTop.js": {
@@ -1620,8 +1620,8 @@
     "semantic_hash": ""
   },
   "C:\\Users\\garen\\Desktop\\01-WEB-DEV\\KenLight02\\ken\\e2e\\services-page.spec.js": {
-    "mtime": 1790629644.43334,
-    "ast_hash": "a5471f7b47e29ab8979adc134000f46b",
+    "mtime": 1790638763.2118769,
+    "ast_hash": "b9526cb998ef61d3a5997e91eb78288b",
     "semantic_hash": ""
   },
   "C:\\Users\\garen\\Desktop\\01-WEB-DEV\\KenLight02\\ken\\src\\components\\dropPanel\\DropPanel.jsx": {
@@ -1632,6 +1632,41 @@
   "C:\\Users\\garen\\Desktop\\01-WEB-DEV\\KenLight02\\ken\\src\\components\\fitName\\FitName.jsx": {
     "mtime": 1790630841.5117676,
     "ast_hash": "6e85712e35b50fa5b561e9612775e13b",
+    "semantic_hash": ""
+  },
+  "C:\\Users\\garen\\Desktop\\01-WEB-DEV\\KenLight02\\ken\\src\\app\\api\\leads\\route.js": {
+    "mtime": 1790638763.2118769,
+    "ast_hash": "d2a36a6d153751f69795d8e50bd6820e",
+    "semantic_hash": ""
+  },
+  "C:\\Users\\garen\\Desktop\\01-WEB-DEV\\KenLight02\\ken\\src\\components\\leadLink\\LeadLink.jsx": {
+    "mtime": 1790638763.247271,
+    "ast_hash": "608c1cca6fa54d64c4fc0b2bf63fe655",
+    "semantic_hash": ""
+  },
+  "C:\\Users\\garen\\Desktop\\01-WEB-DEV\\KenLight02\\ken\\src\\lib\\leads\\leadEvent.js": {
+    "mtime": 1790638763.2118769,
+    "ast_hash": "e7085bc7f2baf6863044902086b5515f",
+    "semantic_hash": ""
+  },
+  "C:\\Users\\garen\\Desktop\\01-WEB-DEV\\KenLight02\\ken\\src\\lib\\leads\\leadRecord.js": {
+    "mtime": 1790638763.2118769,
+    "ast_hash": "623980446de40792c40c3dcedec30f4b",
+    "semantic_hash": ""
+  },
+  "C:\\Users\\garen\\Desktop\\01-WEB-DEV\\KenLight02\\ken\\src\\lib\\leads\\leadRecord.test.js": {
+    "mtime": 1790638763.1982837,
+    "ast_hash": "f2c7eac06a9fdf38f0d6aa5a7a9c7167",
+    "semantic_hash": ""
+  },
+  "C:\\Users\\garen\\Desktop\\01-WEB-DEV\\KenLight02\\ken\\src\\lib\\leads\\trackLead.js": {
+    "mtime": 1790638763.210555,
+    "ast_hash": "5965cf59d4d46b1edea6583ed740d4c2",
+    "semantic_hash": ""
+  },
+  "C:\\Users\\garen\\Desktop\\01-WEB-DEV\\KenLight02\\ken\\src\\lib\\adsAttribution.test.js": {
+    "mtime": 1790639013.4408114,
+    "ast_hash": "e2fce435297f62ad1e24dc78e1706197",
     "semantic_hash": ""
   }
 }
