@@ -1,5 +1,7 @@
 # Component Development Patterns Guide
 
+Last updated: 28 September 2026
+
 This document outlines the patterns, libraries, and conventions used in the Ken Beauty Salon project. Follow these patterns when creating new components to ensure consistency, maintainability, and best practices.
 
 ---
@@ -240,7 +242,13 @@ var(--spacing-20)  /* 80px */
 
 #### Typography Variables
 
+Body text uses `--font-primary` (Inter). Headings use `--font-secondary` (Lora) at `--font-weight-normal`, the same regular weight as the home titles. Both are set in `globals.css`. `next/font` exposes the files as `--font-inter` and `--font-lora` on `<html>`.
+
 ```css
+/* Font Families */
+var(--font-primary)    /* Inter — body */
+var(--font-secondary)  /* Lora — titles */
+
 /* Font Sizes */
 var(--font-size-xs)    /* 12px */
 var(--font-size-sm)    /* 14px */

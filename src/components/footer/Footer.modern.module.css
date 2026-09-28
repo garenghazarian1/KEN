@@ -63,7 +63,7 @@
 
 .sectionTitle {
   font-size: var(--font-size-2xl);
-  font-weight: var(--font-weight-bold);
+  font-weight: var(--font-weight-normal);
   color: var(--color-text-primary);
   margin-bottom: var(--spacing-2);
   line-height: var(--line-height-tight);
@@ -78,7 +78,7 @@
 
 .sectionSubtitle {
   font-size: var(--font-size-lg);
-  font-weight: var(--font-weight-semibold);
+  font-weight: var(--font-weight-normal);
   color: var(--color-text-primary);
   margin-bottom: var(--spacing-3);
 }
@@ -202,7 +202,7 @@
 
 .locationName {
   font-size: var(--font-size-base);
-  font-weight: var(--font-weight-semibold);
+  font-weight: var(--font-weight-normal);
   color: var(--color-text-primary);
   margin-bottom: var(--spacing-2);
 }
@@ -427,7 +427,7 @@
 
 .cookieTextTitle {
   font-size: var(--font-size-lg);
-  font-weight: var(--font-weight-semibold);
+  font-weight: var(--font-weight-normal);
   color: var(--color-text-primary);
   margin-bottom: var(--spacing-2);
 }

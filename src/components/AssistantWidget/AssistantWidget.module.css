@@ -422,7 +422,7 @@
 
 .headerTitle {
   font-size: 0.9375rem;
-  font-weight: 600;
+  font-weight: var(--font-weight-normal);
 }
 
 .headerIdentity {
@@ -512,7 +512,7 @@
   background: var(--color-bg-dark);
   color: var(--color-text-inverse);
   font-size: 0.75rem;
-  font-weight: 600;
+  font-weight: var(--font-weight-normal);
   cursor: pointer;
 }
 

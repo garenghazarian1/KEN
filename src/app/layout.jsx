@@ -58,7 +58,7 @@ export const metadata = {
 
 export default function RootLayout({ children }) {
   return (
-    <html lang="en" className={`${inter.className} ${lora.className}`}>
+    <html lang="en" className={`${inter.variable} ${lora.variable}`}>
       <head>
         {/* Google Tag Manager */}
         <Script id="gtm-init" strategy="afterInteractive">

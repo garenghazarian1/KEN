@@ -607,6 +607,78 @@
       "norm_label": "sessions"
     },
     {
+      "label": "services-nav-accordion.spec.js",
+      "file_type": "code",
+      "source_file": "e2e/services-nav-accordion.spec.js",
+      "source_location": "L1",
+      "id": "e2e_services_nav_accordion_spec_js",
+      "community": 70,
+      "norm_label": "services-nav-accordion.spec.js"
+    },
+    {
+      "label": "accept",
+      "file_type": "code",
+      "source_file": "e2e/services-nav-accordion.spec.js",
+      "source_location": "L8",
+      "id": "e2e_services_nav_accordion_spec_accept",
+      "community": 70,
+      "norm_label": "accept"
+    },
+    {
+      "label": "dialog",
+      "file_type": "code",
+      "source_file": "e2e/services-nav-accordion.spec.js",
+      "source_location": "L13",
+      "id": "e2e_services_nav_accordion_spec_dialog",
+      "community": 70,
+      "norm_label": "dialog"
+    },
+    {
+      "label": "categories",
+      "file_type": "code",
+      "source_file": "e2e/services-nav-accordion.spec.js",
+      "source_location": "L17",
+      "id": "e2e_services_nav_accordion_spec_categories",
+      "community": 70,
+      "norm_label": "categories"
+    },
+    {
+      "label": "firstCategory",
+      "file_type": "code",
+      "source_file": "e2e/services-nav-accordion.spec.js",
+      "source_location": "L20",
+      "id": "e2e_services_nav_accordion_spec_firstcategory",
+      "community": 70,
+      "norm_label": "firstcategory"
+    },
+    {
+      "label": "nested",
+      "file_type": "code",
+      "source_file": "e2e/services-nav-accordion.spec.js",
+      "source_location": "L28",
+      "id": "e2e_services_nav_accordion_spec_nested",
+      "community": 70,
+      "norm_label": "nested"
+    },
+    {
+      "label": "subList",
+      "file_type": "code",
+      "source_file": "e2e/services-nav-accordion.spec.js",
+      "source_location": "L31",
+      "id": "e2e_services_nav_accordion_spec_sublist",
+      "community": 70,
+      "norm_label": "sublist"
+    },
+    {
+      "label": "firstSub",
+      "file_type": "code",
+      "source_file": "e2e/services-nav-accordion.spec.js",
+      "source_location": "L33",
+      "id": "e2e_services_nav_accordion_spec_firstsub",
+      "community": 70,
+      "norm_label": "firstsub"
+    },
+    {
       "label": "services-search-dedupe.spec.js",
       "file_type": "code",
       "source_file": "e2e/services-search-dedupe.spec.js",
@@ -2131,7 +2203,7 @@
       "label": "abril",
       "file_type": "code",
       "source_file": "src/app/ui/fonts.jsx",
-      "source_location": "L12",
+      "source_location": "L16",
       "id": "ui_fonts_abril",
       "community": 24,
       "norm_label": "abril"
@@ -2140,7 +2212,7 @@
       "label": "sevillana",
       "file_type": "code",
       "source_file": "src/app/ui/fonts.jsx",
-      "source_location": "L13",
+      "source_location": "L17",
       "id": "ui_fonts_sevillana",
       "community": 24,
       "norm_label": "sevillana"
@@ -2149,7 +2221,7 @@
       "label": "bad",
       "file_type": "code",
       "source_file": "src/app/ui/fonts.jsx",
-      "source_location": "L14",
+      "source_location": "L18",
       "id": "ui_fonts_bad",
       "community": 24,
       "norm_label": "bad"
@@ -2158,7 +2230,7 @@
       "label": "pt",
       "file_type": "code",
       "source_file": "src/app/ui/fonts.jsx",
-      "source_location": "L15",
+      "source_location": "L19",
       "id": "ui_fonts_pt",
       "community": 24,
       "norm_label": "pt"
@@ -2167,7 +2239,7 @@
       "label": "gv",
       "file_type": "code",
       "source_file": "src/app/ui/fonts.jsx",
-      "source_location": "L16",
+      "source_location": "L20",
       "id": "ui_fonts_gv",
       "community": 24,
       "norm_label": "gv"
@@ -2176,10 +2248,28 @@
       "label": "lora",
       "file_type": "code",
       "source_file": "src/app/ui/fonts.jsx",
-      "source_location": "L17",
+      "source_location": "L21",
       "id": "ui_fonts_lora",
       "community": 24,
       "norm_label": "lora"
+    },
+    {
+      "label": "AdsAttributionCapture.jsx",
+      "file_type": "code",
+      "source_file": "src/components/AdsAttributionCapture.jsx",
+      "source_location": "L1",
+      "id": "src_components_adsattributioncapture_jsx",
+      "community": 22,
+      "norm_label": "adsattributioncapture.jsx"
+    },
+    {
+      "label": "AdsAttributionCapture()",
+      "file_type": "code",
+      "source_file": "src/components/AdsAttributionCapture.jsx",
+      "source_location": "L10",
+      "id": "components_adsattributioncapture_adsattributioncapture",
+      "community": 22,
+      "norm_label": "adsattributioncapture()"
     },
     {
       "label": "ClientLayout.jsx",
@@ -2194,7 +2284,7 @@
       "label": "ClientLayout()",
       "file_type": "code",
       "source_file": "src/components/ClientLayout.jsx",
-      "source_location": "L5",
+      "source_location": "L6",
       "id": "components_clientlayout_clientlayout",
       "community": 22,
       "norm_label": "clientlayout()"
@@ -2295,7 +2385,7 @@
       "source_file": "src/components/AssistantWidget/AssistantPanel.jsx",
       "source_location": "L1",
       "id": "src_components_assistantwidget_assistantpanel_jsx",
-      "community": 31,
+      "community": 67,
       "norm_label": "assistantpanel.jsx"
     },
     {
@@ -2304,7 +2394,7 @@
       "source_file": "src/components/AssistantWidget/AssistantPanel.jsx",
       "source_location": "L41",
       "id": "assistantwidget_assistantpanel_isnamepromptdismissed",
-      "community": 31,
+      "community": 67,
       "norm_label": "isnamepromptdismissed()"
     },
     {
@@ -2313,7 +2403,7 @@
       "source_file": "src/components/AssistantWidget/AssistantPanel.jsx",
       "source_location": "L49",
       "id": "assistantwidget_assistantpanel_persistnamepromptdismissed",
-      "community": 31,
+      "community": 67,
       "norm_label": "persistnamepromptdismissed()"
     },
     {
@@ -2322,7 +2412,7 @@
       "source_file": "src/components/AssistantWidget/AssistantPanel.jsx",
       "source_location": "L57",
       "id": "assistantwidget_assistantpanel_createclientmessage",
-      "community": 31,
+      "community": 67,
       "norm_label": "createclientmessage()"
     },
     {
@@ -2331,7 +2421,7 @@
       "source_file": "src/components/AssistantWidget/AssistantPanel.jsx",
       "source_location": "L68",
       "id": "assistantwidget_assistantpanel_getsessionid",
-      "community": 31,
+      "community": 67,
       "norm_label": "getsessionid()"
     },
     {
@@ -2340,7 +2430,7 @@
       "source_file": "src/components/AssistantWidget/AssistantPanel.jsx",
       "source_location": "L88",
       "id": "assistantwidget_assistantpanel_actionicon",
-      "community": 31,
+      "community": 67,
       "norm_label": "actionicon()"
     },
     {
@@ -2349,7 +2439,7 @@
       "source_file": "src/components/AssistantWidget/AssistantPanel.jsx",
       "source_location": "L95",
       "id": "assistantwidget_assistantpanel_readassistantsse",
-      "community": 31,
+      "community": 67,
       "norm_label": "readassistantsse()"
     },
     {
@@ -2358,7 +2448,7 @@
       "source_file": "src/components/AssistantWidget/AssistantPanel.jsx",
       "source_location": "L131",
       "id": "assistantwidget_assistantpanel_assistantpanel",
-      "community": 31,
+      "community": 67,
       "norm_label": "assistantpanel()"
     },
     {
@@ -2374,7 +2464,7 @@
       "label": "AssistantPanel",
       "file_type": "code",
       "source_file": "src/components/AssistantWidget/AssistantWidget.jsx",
-      "source_location": "L15",
+      "source_location": "L16",
       "id": "assistantwidget_assistantwidget_assistantpanel",
       "community": 31,
       "norm_label": "assistantpanel"
@@ -2383,7 +2473,7 @@
       "label": "AssistantWidget()",
       "file_type": "code",
       "source_file": "src/components/AssistantWidget/AssistantWidget.jsx",
-      "source_location": "L22",
+      "source_location": "L23",
       "id": "assistantwidget_assistantwidget_assistantwidget",
       "community": 31,
       "norm_label": "assistantwidget()"
@@ -2455,7 +2545,7 @@
       "label": "shortLocationLabel()",
       "file_type": "code",
       "source_file": "src/components/contact/ContactContent.jsx",
-      "source_location": "L19",
+      "source_location": "L23",
       "id": "contact_contactcontent_shortlocationlabel",
       "community": 53,
       "norm_label": "shortlocationlabel()"
@@ -2464,7 +2554,7 @@
       "label": "fadeUp",
       "file_type": "code",
       "source_file": "src/components/contact/ContactContent.jsx",
-      "source_location": "L25",
+      "source_location": "L29",
       "id": "contact_contactcontent_fadeup",
       "community": 53,
       "norm_label": "fadeup"
@@ -2473,7 +2563,7 @@
       "label": "ContactContent()",
       "file_type": "code",
       "source_file": "src/components/contact/ContactContent.jsx",
-      "source_location": "L34",
+      "source_location": "L38",
       "id": "contact_contactcontent_contactcontent",
       "community": 53,
       "norm_label": "contactcontent()"
@@ -2529,43 +2619,43 @@
       "source_file": "src/components/DraggableWhatsAppButton/DraggableWhatsAppButton.jsx",
       "source_location": "L1",
       "id": "src_components_draggablewhatsappbutton_draggablewhatsappbutton_jsx",
-      "community": 91,
+      "community": 31,
       "norm_label": "draggablewhatsappbutton.jsx"
     },
     {
       "label": "readSavedPosition()",
       "file_type": "code",
       "source_file": "src/components/DraggableWhatsAppButton/DraggableWhatsAppButton.jsx",
-      "source_location": "L12",
+      "source_location": "L17",
       "id": "draggablewhatsappbutton_draggablewhatsappbutton_readsavedposition",
-      "community": 91,
+      "community": 31,
       "norm_label": "readsavedposition()"
     },
     {
       "label": "persistPosition()",
       "file_type": "code",
       "source_file": "src/components/DraggableWhatsAppButton/DraggableWhatsAppButton.jsx",
-      "source_location": "L31",
+      "source_location": "L36",
       "id": "draggablewhatsappbutton_draggablewhatsappbutton_persistposition",
-      "community": 91,
+      "community": 31,
       "norm_label": "persistposition()"
     },
     {
       "label": "clampIntoConstraints()",
       "file_type": "code",
       "source_file": "src/components/DraggableWhatsAppButton/DraggableWhatsAppButton.jsx",
-      "source_location": "L43",
+      "source_location": "L48",
       "id": "draggablewhatsappbutton_draggablewhatsappbutton_clampintoconstraints",
-      "community": 91,
+      "community": 31,
       "norm_label": "clampintoconstraints()"
     },
     {
       "label": "DraggableWhatsAppButton()",
       "file_type": "code",
       "source_file": "src/components/DraggableWhatsAppButton/DraggableWhatsAppButton.jsx",
-      "source_location": "L58",
+      "source_location": "L63",
       "id": "draggablewhatsappbutton_draggablewhatsappbutton_draggablewhatsappbutton",
-      "community": 91,
+      "community": 31,
       "norm_label": "draggablewhatsappbutton()"
     },
     {
@@ -2689,61 +2779,25 @@
       "label": "slides",
       "file_type": "code",
       "source_file": "src/components/hero/Hero.modern.jsx",
-      "source_location": "L19",
+      "source_location": "L21",
       "id": "hero_hero_modern_slides",
       "community": 33,
       "norm_label": "slides"
     },
     {
-      "label": "galleryItemVariants",
+      "label": "rise",
       "file_type": "code",
       "source_file": "src/components/hero/Hero.modern.jsx",
       "source_location": "L59",
-      "id": "hero_hero_modern_galleryitemvariants",
+      "id": "hero_hero_modern_rise",
       "community": 33,
-      "norm_label": "galleryitemvariants"
-    },
-    {
-      "label": "imageReveal",
-      "file_type": "code",
-      "source_file": "src/components/hero/Hero.modern.jsx",
-      "source_location": "L69",
-      "id": "hero_hero_modern_imagereveal",
-      "community": 33,
-      "norm_label": "imagereveal"
-    },
-    {
-      "label": "bgReveal",
-      "file_type": "code",
-      "source_file": "src/components/hero/Hero.modern.jsx",
-      "source_location": "L79",
-      "id": "hero_hero_modern_bgreveal",
-      "community": 33,
-      "norm_label": "bgreveal"
-    },
-    {
-      "label": "captionReveal",
-      "file_type": "code",
-      "source_file": "src/components/hero/Hero.modern.jsx",
-      "source_location": "L88",
-      "id": "hero_hero_modern_captionreveal",
-      "community": 33,
-      "norm_label": "captionreveal"
-    },
-    {
-      "label": "galleryViewport",
-      "file_type": "code",
-      "source_file": "src/components/hero/Hero.modern.jsx",
-      "source_location": "L97",
-      "id": "hero_hero_modern_galleryviewport",
-      "community": 33,
-      "norm_label": "galleryviewport"
+      "norm_label": "rise"
     },
     {
       "label": "GalleryStack()",
       "file_type": "code",
       "source_file": "src/components/hero/Hero.modern.jsx",
-      "source_location": "L99",
+      "source_location": "L68",
       "id": "hero_hero_modern_gallerystack",
       "community": 33,
       "norm_label": "gallerystack()"
@@ -2752,10 +2806,28 @@
       "label": "HeroModern()",
       "file_type": "code",
       "source_file": "src/components/hero/Hero.modern.jsx",
-      "source_location": "L151",
+      "source_location": "L100",
       "id": "hero_hero_modern_heromodern",
       "community": 33,
       "norm_label": "heromodern()"
+    },
+    {
+      "label": "useAfterHeroVideo.js",
+      "file_type": "code",
+      "source_file": "src/components/hero/useAfterHeroVideo.js",
+      "source_location": "L1",
+      "id": "src_components_hero_useafterherovideo_js",
+      "community": 31,
+      "norm_label": "useafterherovideo.js"
+    },
+    {
+      "label": "useAfterHeroVideo()",
+      "file_type": "code",
+      "source_file": "src/components/hero/useAfterHeroVideo.js",
+      "source_location": "L6",
+      "id": "hero_useafterherovideo_useafterherovideo",
+      "community": 31,
+      "norm_label": "useafterherovideo()"
     },
     {
       "label": "useScrollTrigger.js",
@@ -2862,7 +2934,7 @@
       "source_file": "src/components/loading/navbar/Navbar.modern.jsx",
       "source_location": "L1",
       "id": "src_components_loading_navbar_navbar_modern_jsx",
-      "community": 4,
+      "community": 66,
       "norm_label": "navbar.modern.jsx"
     },
     {
@@ -2871,7 +2943,7 @@
       "source_file": "src/components/loading/navbar/Navbar.modern.jsx",
       "source_location": "L24",
       "id": "navbar_navbar_modern_navlinks",
-      "community": 4,
+      "community": 66,
       "norm_label": "navlinks"
     },
     {
@@ -2880,7 +2952,7 @@
       "source_file": "src/components/loading/navbar/Navbar.modern.jsx",
       "source_location": "L33",
       "id": "navbar_navbar_modern_navbarmodern",
-      "community": 4,
+      "community": 66,
       "norm_label": "navbarmodern()"
     },
     {
@@ -2961,52 +3033,133 @@
       "source_file": "src/components/loading/navbar/ServicesMegaMenu/ServicesMegaMenu.jsx",
       "source_location": "L1",
       "id": "src_components_loading_navbar_servicesmegamenu_servicesmegamenu_jsx",
-      "community": 87,
+      "community": 43,
       "norm_label": "servicesmegamenu.jsx"
     },
     {
       "label": "sectionHasGroups()",
       "file_type": "code",
       "source_file": "src/components/loading/navbar/ServicesMegaMenu/ServicesMegaMenu.jsx",
-      "source_location": "L15",
+      "source_location": "L16",
       "id": "servicesmegamenu_servicesmegamenu_sectionhasgroups",
-      "community": 87,
+      "community": 43,
       "norm_label": "sectionhasgroups()"
+    },
+    {
+      "label": "directGroupId()",
+      "file_type": "code",
+      "source_file": "src/components/loading/navbar/ServicesMegaMenu/ServicesMegaMenu.jsx",
+      "source_location": "L20",
+      "id": "servicesmegamenu_servicesmegamenu_directgroupid",
+      "community": 43,
+      "norm_label": "directgroupid()"
+    },
+    {
+      "label": "accordionGroups()",
+      "file_type": "code",
+      "source_file": "src/components/loading/navbar/ServicesMegaMenu/ServicesMegaMenu.jsx",
+      "source_location": "L25",
+      "id": "servicesmegamenu_servicesmegamenu_accordiongroups",
+      "community": 43,
+      "norm_label": "accordiongroups()"
     },
     {
       "label": "totalCount()",
       "file_type": "code",
       "source_file": "src/components/loading/navbar/ServicesMegaMenu/ServicesMegaMenu.jsx",
-      "source_location": "L19",
+      "source_location": "L39",
       "id": "servicesmegamenu_servicesmegamenu_totalcount",
-      "community": 87,
+      "community": 43,
       "norm_label": "totalcount()"
     },
     {
       "label": "resolveThumb()",
       "file_type": "code",
       "source_file": "src/components/loading/navbar/ServicesMegaMenu/ServicesMegaMenu.jsx",
-      "source_location": "L31",
+      "source_location": "L51",
       "id": "servicesmegamenu_servicesmegamenu_resolvethumb",
-      "community": 87,
+      "community": 43,
       "norm_label": "resolvethumb()"
     },
     {
       "label": "RowThumb()",
       "file_type": "code",
       "source_file": "src/components/loading/navbar/ServicesMegaMenu/ServicesMegaMenu.jsx",
-      "source_location": "L48",
+      "source_location": "L68",
       "id": "servicesmegamenu_servicesmegamenu_rowthumb",
-      "community": 87,
+      "community": 43,
       "norm_label": "rowthumb()"
+    },
+    {
+      "label": "ServiceRow()",
+      "file_type": "code",
+      "source_file": "src/components/loading/navbar/ServicesMegaMenu/ServicesMegaMenu.jsx",
+      "source_location": "L93",
+      "id": "servicesmegamenu_servicesmegamenu_servicerow",
+      "community": 43,
+      "norm_label": "servicerow()"
+    },
+    {
+      "label": "ServiceList()",
+      "file_type": "code",
+      "source_file": "src/components/loading/navbar/ServicesMegaMenu/ServicesMegaMenu.jsx",
+      "source_location": "L111",
+      "id": "servicesmegamenu_servicesmegamenu_servicelist",
+      "community": 43,
+      "norm_label": "servicelist()"
+    },
+    {
+      "label": "usePinOpenRow()",
+      "file_type": "code",
+      "source_file": "src/components/loading/navbar/ServicesMegaMenu/ServicesMegaMenu.jsx",
+      "source_location": "L133",
+      "id": "servicesmegamenu_servicesmegamenu_usepinopenrow",
+      "community": 43,
+      "norm_label": "usepinopenrow()"
+    },
+    {
+      "label": "GroupAccordionList()",
+      "file_type": "code",
+      "source_file": "src/components/loading/navbar/ServicesMegaMenu/ServicesMegaMenu.jsx",
+      "source_location": "L164",
+      "id": "servicesmegamenu_servicesmegamenu_groupaccordionlist",
+      "community": 43,
+      "norm_label": "groupaccordionlist()"
+    },
+    {
+      "label": "CatalogAccordion()",
+      "file_type": "code",
+      "source_file": "src/components/loading/navbar/ServicesMegaMenu/ServicesMegaMenu.jsx",
+      "source_location": "L229",
+      "id": "servicesmegamenu_servicesmegamenu_catalogaccordion",
+      "community": 43,
+      "norm_label": "catalogaccordion()"
+    },
+    {
+      "label": "DesktopMegaPanel()",
+      "file_type": "code",
+      "source_file": "src/components/loading/navbar/ServicesMegaMenu/ServicesMegaMenu.jsx",
+      "source_location": "L307",
+      "id": "servicesmegamenu_servicesmegamenu_desktopmegapanel",
+      "community": 43,
+      "norm_label": "desktopmegapanel()"
+    },
+    {
+      "label": "CatalogStatus()",
+      "file_type": "code",
+      "source_file": "src/components/loading/navbar/ServicesMegaMenu/ServicesMegaMenu.jsx",
+      "source_location": "L386",
+      "id": "servicesmegamenu_servicesmegamenu_catalogstatus",
+      "community": 43,
+      "norm_label": "catalogstatus()"
     },
     {
       "label": "ServicesMegaMenu()",
       "file_type": "code",
       "source_file": "src/components/loading/navbar/ServicesMegaMenu/ServicesMegaMenu.jsx",
-      "source_location": "L74",
+      "source_location": "L407",
       "id": "servicesmegamenu_servicesmegamenu_servicesmegamenu",
-      "community": 87,
+      "community": 43,
       "norm_label": "servicesmegamenu()"
     },
     {
@@ -3015,7 +3168,7 @@
       "source_file": "src/components/mobileNav/index.js",
       "source_location": "L1",
       "id": "src_components_mobilenav_index_js",
-      "community": 4,
+      "community": 66,
       "norm_label": "index.js"
     },
     {
@@ -3024,25 +3177,34 @@
       "source_file": "src/components/mobileNav/MobileNavBottom.jsx",
       "source_location": "L1",
       "id": "src_components_mobilenav_mobilenavbottom_jsx",
-      "community": 4,
+      "community": 66,
       "norm_label": "mobilenavbottom.jsx"
     },
     {
       "label": "mobileNavLinks",
       "file_type": "code",
       "source_file": "src/components/mobileNav/MobileNavBottom.jsx",
-      "source_location": "L9",
+      "source_location": "L27",
       "id": "mobilenav_mobilenavbottom_mobilenavlinks",
-      "community": 4,
+      "community": 66,
       "norm_label": "mobilenavlinks"
+    },
+    {
+      "label": "branchLabel()",
+      "file_type": "code",
+      "source_file": "src/components/mobileNav/MobileNavBottom.jsx",
+      "source_location": "L35",
+      "id": "mobilenav_mobilenavbottom_branchlabel",
+      "community": 66,
+      "norm_label": "branchlabel()"
     },
     {
       "label": "MobileNavBottom()",
       "file_type": "code",
       "source_file": "src/components/mobileNav/MobileNavBottom.jsx",
-      "source_location": "L17",
+      "source_location": "L41",
       "id": "mobilenav_mobilenavbottom_mobilenavbottom",
-      "community": 4,
+      "community": 66,
       "norm_label": "mobilenavbottom()"
     },
     {
@@ -3051,17 +3213,35 @@
       "source_file": "src/components/mobileNav/MobileNavTop.jsx",
       "source_location": "L1",
       "id": "src_components_mobilenav_mobilenavtop_jsx",
-      "community": 4,
+      "community": 66,
       "norm_label": "mobilenavtop.jsx"
     },
     {
       "label": "MobileNavTop()",
       "file_type": "code",
       "source_file": "src/components/mobileNav/MobileNavTop.jsx",
-      "source_location": "L15",
+      "source_location": "L16",
       "id": "mobilenav_mobilenavtop_mobilenavtop",
-      "community": 4,
+      "community": 66,
       "norm_label": "mobilenavtop()"
+    },
+    {
+      "label": "useHideNavOnScroll.js",
+      "file_type": "code",
+      "source_file": "src/components/mobileNav/useHideNavOnScroll.js",
+      "source_location": "L1",
+      "id": "src_components_mobilenav_usehidenavonscroll_js",
+      "community": 66,
+      "norm_label": "usehidenavonscroll.js"
+    },
+    {
+      "label": "useHideNavOnScroll()",
+      "file_type": "code",
+      "source_file": "src/components/mobileNav/useHideNavOnScroll.js",
+      "source_location": "L7",
+      "id": "mobilenav_usehidenavonscroll_usehidenavonscroll",
+      "community": 66,
+      "norm_label": "usehidenavonscroll()"
     },
     {
       "label": "NotFounded.jsx",
@@ -3123,7 +3303,7 @@
       "source_file": "src/components/portfolio/bPageTwo/PageTwo.jsx",
       "source_location": "L1",
       "id": "src_components_portfolio_bpagetwo_pagetwo_jsx",
-      "community": 20,
+      "community": 111,
       "norm_label": "pagetwo.jsx"
     },
     {
@@ -3132,7 +3312,7 @@
       "source_file": "src/components/portfolio/bPageTwo/PageTwo.jsx",
       "source_location": "L5",
       "id": "bpagetwo_pagetwo_tocitems",
-      "community": 20,
+      "community": 111,
       "norm_label": "tocitems"
     },
     {
@@ -3141,7 +3321,7 @@
       "source_file": "src/components/portfolio/bPageTwo/PageTwo.jsx",
       "source_location": "L20",
       "id": "bpagetwo_pagetwo_pagetwo",
-      "community": 20,
+      "community": 111,
       "norm_label": "pagetwo()"
     },
     {
@@ -3168,7 +3348,7 @@
       "source_file": "src/components/portfolio/dPageFour/PageFour.jsx",
       "source_location": "L1",
       "id": "src_components_portfolio_dpagefour_pagefour_jsx",
-      "community": 110,
+      "community": 20,
       "norm_label": "pagefour.jsx"
     },
     {
@@ -3177,7 +3357,7 @@
       "source_file": "src/components/portfolio/dPageFour/PageFour.jsx",
       "source_location": "L6",
       "id": "dpagefour_pagefour_pagefour",
-      "community": 110,
+      "community": 20,
       "norm_label": "pagefour()"
     },
     {
@@ -3213,7 +3393,7 @@
       "source_file": "src/components/portfolio/fPageSix/PageSix.jsx",
       "source_location": "L1",
       "id": "src_components_portfolio_fpagesix_pagesix_jsx",
-      "community": 20,
+      "community": 112,
       "norm_label": "pagesix.jsx"
     },
     {
@@ -3222,7 +3402,7 @@
       "source_file": "src/components/portfolio/fPageSix/PageSix.jsx",
       "source_location": "L6",
       "id": "fpagesix_pagesix_sections",
-      "community": 20,
+      "community": 112,
       "norm_label": "sections"
     },
     {
@@ -3231,7 +3411,7 @@
       "source_file": "src/components/portfolio/fPageSix/PageSix.jsx",
       "source_location": "L17",
       "id": "fpagesix_pagesix_pagesix",
-      "community": 20,
+      "community": 112,
       "norm_label": "pagesix()"
     },
     {
@@ -3240,7 +3420,7 @@
       "source_file": "src/components/portfolio/gPageSeven/PageSeven.jsx",
       "source_location": "L1",
       "id": "src_components_portfolio_gpageseven_pageseven_jsx",
-      "community": 111,
+      "community": 42,
       "norm_label": "pageseven.jsx"
     },
     {
@@ -3249,7 +3429,7 @@
       "source_file": "src/components/portfolio/gPageSeven/PageSeven.jsx",
       "source_location": "L6",
       "id": "gpageseven_pageseven_pageseven",
-      "community": 111,
+      "community": 42,
       "norm_label": "pageseven()"
     },
     {
@@ -3276,7 +3456,7 @@
       "source_file": "src/components/portfolio/iPageNine/PageNine.jsx",
       "source_location": "L1",
       "id": "src_components_portfolio_ipagenine_pagenine_jsx",
-      "community": 70,
+      "community": 42,
       "norm_label": "pagenine.jsx"
     },
     {
@@ -3285,7 +3465,7 @@
       "source_file": "src/components/portfolio/iPageNine/PageNine.jsx",
       "source_location": "L6",
       "id": "ipagenine_pagenine_pagenine",
-      "community": 70,
+      "community": 42,
       "norm_label": "pagenine()"
     },
     {
@@ -3321,7 +3501,7 @@
       "source_file": "src/components/portfolio/kPageEleven/PageEleven.jsx",
       "source_location": "L1",
       "id": "src_components_portfolio_kpageeleven_pageeleven_jsx",
-      "community": 42,
+      "community": 115,
       "norm_label": "pageeleven.jsx"
     },
     {
@@ -3330,7 +3510,7 @@
       "source_file": "src/components/portfolio/kPageEleven/PageEleven.jsx",
       "source_location": "L6",
       "id": "kpageeleven_pageeleven_pageeleven",
-      "community": 42,
+      "community": 115,
       "norm_label": "pageeleven()"
     },
     {
@@ -3339,7 +3519,7 @@
       "source_file": "src/components/portfolio/lPageTwelve/PageTwelve.jsx",
       "source_location": "L1",
       "id": "src_components_portfolio_lpagetwelve_pagetwelve_jsx",
-      "community": 66,
+      "community": 20,
       "norm_label": "pagetwelve.jsx"
     },
     {
@@ -3348,7 +3528,7 @@
       "source_file": "src/components/portfolio/lPageTwelve/PageTwelve.jsx",
       "source_location": "L5",
       "id": "lpagetwelve_pagetwelve_paragraphs",
-      "community": 66,
+      "community": 20,
       "norm_label": "paragraphs"
     },
     {
@@ -3357,7 +3537,7 @@
       "source_file": "src/components/portfolio/lPageTwelve/PageTwelve.jsx",
       "source_location": "L12",
       "id": "lpagetwelve_pagetwelve_pagetwelve",
-      "community": 66,
+      "community": 20,
       "norm_label": "pagetwelve()"
     },
     {
@@ -3366,7 +3546,7 @@
       "source_file": "src/components/portfolio/mPageThirteen/PageThirteen.jsx",
       "source_location": "L1",
       "id": "src_components_portfolio_mpagethirteen_pagethirteen_jsx",
-      "community": 20,
+      "community": 42,
       "norm_label": "pagethirteen.jsx"
     },
     {
@@ -3375,7 +3555,7 @@
       "source_file": "src/components/portfolio/mPageThirteen/PageThirteen.jsx",
       "source_location": "L6",
       "id": "mpagethirteen_pagethirteen_pagethirteen",
-      "community": 20,
+      "community": 42,
       "norm_label": "pagethirteen()"
     },
     {
@@ -3384,7 +3564,7 @@
       "source_file": "src/components/portfolio/nPageFourteen/PageFourteen.jsx",
       "source_location": "L1",
       "id": "src_components_portfolio_npagefourteen_pagefourteen_jsx",
-      "community": 112,
+      "community": 42,
       "norm_label": "pagefourteen.jsx"
     },
     {
@@ -3393,7 +3573,7 @@
       "source_file": "src/components/portfolio/nPageFourteen/PageFourteen.jsx",
       "source_location": "L6",
       "id": "npagefourteen_pagefourteen_pagefourteen",
-      "community": 112,
+      "community": 42,
       "norm_label": "pagefourteen()"
     },
     {
@@ -3402,7 +3582,7 @@
       "source_file": "src/components/portfolio/oPageFifteen/PageFifteen.jsx",
       "source_location": "L1",
       "id": "src_components_portfolio_opagefifteen_pagefifteen_jsx",
-      "community": 42,
+      "community": 20,
       "norm_label": "pagefifteen.jsx"
     },
     {
@@ -3411,7 +3591,7 @@
       "source_file": "src/components/portfolio/oPageFifteen/PageFifteen.jsx",
       "source_location": "L6",
       "id": "opagefifteen_pagefifteen_pagefifteen",
-      "community": 42,
+      "community": 20,
       "norm_label": "pagefifteen()"
     },
     {
@@ -3420,7 +3600,7 @@
       "source_file": "src/components/portfolio/pPageSixteen/PageSixteen.jsx",
       "source_location": "L1",
       "id": "src_components_portfolio_ppagesixteen_pagesixteen_jsx",
-      "community": 67,
+      "community": 20,
       "norm_label": "pagesixteen.jsx"
     },
     {
@@ -3429,7 +3609,7 @@
       "source_file": "src/components/portfolio/pPageSixteen/PageSixteen.jsx",
       "source_location": "L6",
       "id": "ppagesixteen_pagesixteen_pagesixteen",
-      "community": 67,
+      "community": 20,
       "norm_label": "pagesixteen()"
     },
     {
@@ -3465,7 +3645,7 @@
       "source_file": "src/components/portfolio/rPageEighteen/PageEighteen.jsx",
       "source_location": "L1",
       "id": "src_components_portfolio_rpageeighteen_pageeighteen_jsx",
-      "community": 42,
+      "community": 122,
       "norm_label": "pageeighteen.jsx"
     },
     {
@@ -3474,7 +3654,7 @@
       "source_file": "src/components/portfolio/rPageEighteen/PageEighteen.jsx",
       "source_location": "L6",
       "id": "rpageeighteen_pageeighteen_pageeighteen",
-      "community": 42,
+      "community": 122,
       "norm_label": "pageeighteen()"
     },
     {
@@ -3483,7 +3663,7 @@
       "source_file": "src/components/portfolio/sPageNineteen/PageNineteen.jsx",
       "source_location": "L1",
       "id": "src_components_portfolio_spagenineteen_pagenineteen_jsx",
-      "community": 43,
+      "community": 20,
       "norm_label": "pagenineteen.jsx"
     },
     {
@@ -3492,7 +3672,7 @@
       "source_file": "src/components/portfolio/sPageNineteen/PageNineteen.jsx",
       "source_location": "L6",
       "id": "spagenineteen_pagenineteen_services",
-      "community": 43,
+      "community": 20,
       "norm_label": "services"
     },
     {
@@ -3501,7 +3681,7 @@
       "source_file": "src/components/portfolio/sPageNineteen/PageNineteen.jsx",
       "source_location": "L21",
       "id": "spagenineteen_pagenineteen_pagenineteen",
-      "community": 43,
+      "community": 20,
       "norm_label": "pagenineteen()"
     },
     {
@@ -3555,7 +3735,7 @@
       "source_file": "src/components/portfolio/uPageTwentyTwo/PageTwentyTwo.jsx",
       "source_location": "L1",
       "id": "src_components_portfolio_upagetwentytwo_pagetwentytwo_jsx",
-      "community": 42,
+      "community": 123,
       "norm_label": "pagetwentytwo.jsx"
     },
     {
@@ -3564,7 +3744,7 @@
       "source_file": "src/components/portfolio/uPageTwentyTwo/PageTwentyTwo.jsx",
       "source_location": "L6",
       "id": "upagetwentytwo_pagetwentytwo_pagetwentytwo",
-      "community": 42,
+      "community": 123,
       "norm_label": "pagetwentytwo()"
     },
     {
@@ -3663,7 +3843,7 @@
       "source_file": "src/components/portfolio/zPageTwentySeven/PageTwentySeven.jsx",
       "source_location": "L1",
       "id": "src_components_portfolio_zpagetwentyseven_pagetwentyseven_jsx",
-      "community": 115,
+      "community": 42,
       "norm_label": "pagetwentyseven.jsx"
     },
     {
@@ -3672,7 +3852,7 @@
       "source_file": "src/components/portfolio/zPageTwentySeven/PageTwentySeven.jsx",
       "source_location": "L6",
       "id": "zpagetwentyseven_pagetwentyseven_pagetwentyseven",
-      "community": 115,
+      "community": 42,
       "norm_label": "pagetwentyseven()"
     },
     {
@@ -4284,7 +4464,7 @@
       "source_file": "src/hooks/useAssistantRealtime.js",
       "source_location": "L1",
       "id": "src_hooks_useassistantrealtime_js",
-      "community": 31,
+      "community": 67,
       "norm_label": "useassistantrealtime.js"
     },
     {
@@ -4293,7 +4473,7 @@
       "source_file": "src/hooks/useAssistantRealtime.js",
       "source_location": "L29",
       "id": "hooks_useassistantrealtime_voicesupported",
-      "community": 31,
+      "community": 67,
       "norm_label": "voicesupported()"
     },
     {
@@ -4302,7 +4482,7 @@
       "source_file": "src/hooks/useAssistantRealtime.js",
       "source_location": "L37",
       "id": "hooks_useassistantrealtime_extractresponsetranscript",
-      "community": 31,
+      "community": 67,
       "norm_label": "extractresponsetranscript()"
     },
     {
@@ -4311,8 +4491,107 @@
       "source_file": "src/hooks/useAssistantRealtime.js",
       "source_location": "L63",
       "id": "hooks_useassistantrealtime_useassistantrealtime",
-      "community": 31,
+      "community": 67,
       "norm_label": "useassistantrealtime()"
+    },
+    {
+      "label": "adsAttribution.js",
+      "file_type": "code",
+      "source_file": "src/lib/adsAttribution.js",
+      "source_location": "L1",
+      "id": "src_lib_adsattribution_js",
+      "community": 69,
+      "norm_label": "adsattribution.js"
+    },
+    {
+      "label": "PARAM_KEYS",
+      "file_type": "code",
+      "source_file": "src/lib/adsAttribution.js",
+      "source_location": "L11",
+      "id": "lib_adsattribution_param_keys",
+      "community": 69,
+      "norm_label": "param_keys"
+    },
+    {
+      "label": "canUseDom()",
+      "file_type": "code",
+      "source_file": "src/lib/adsAttribution.js",
+      "source_location": "L13",
+      "id": "lib_adsattribution_canusedom",
+      "community": 69,
+      "norm_label": "canusedom()"
+    },
+    {
+      "label": "readStored()",
+      "file_type": "code",
+      "source_file": "src/lib/adsAttribution.js",
+      "source_location": "L17",
+      "id": "lib_adsattribution_readstored",
+      "community": 69,
+      "norm_label": "readstored()"
+    },
+    {
+      "label": "writeStored()",
+      "file_type": "code",
+      "source_file": "src/lib/adsAttribution.js",
+      "source_location": "L34",
+      "id": "lib_adsattribution_writestored",
+      "community": 69,
+      "norm_label": "writestored()"
+    },
+    {
+      "label": "captureAdsAttributionFromUrl()",
+      "file_type": "code",
+      "source_file": "src/lib/adsAttribution.js",
+      "source_location": "L58",
+      "id": "lib_adsattribution_captureadsattributionfromurl",
+      "community": 69,
+      "norm_label": "captureadsattributionfromurl()"
+    },
+    {
+      "label": "getAdsAttribution()",
+      "file_type": "code",
+      "source_file": "src/lib/adsAttribution.js",
+      "source_location": "L88",
+      "id": "lib_adsattribution_getadsattribution",
+      "community": 69,
+      "norm_label": "getadsattribution()"
+    },
+    {
+      "label": "getAttributionRef()",
+      "file_type": "code",
+      "source_file": "src/lib/adsAttribution.js",
+      "source_location": "L93",
+      "id": "lib_adsattribution_getattributionref",
+      "community": 69,
+      "norm_label": "getattributionref()"
+    },
+    {
+      "label": "withAttributionMessage()",
+      "file_type": "code",
+      "source_file": "src/lib/adsAttribution.js",
+      "source_location": "L102",
+      "id": "lib_adsattribution_withattributionmessage",
+      "community": 69,
+      "norm_label": "withattributionmessage()"
+    },
+    {
+      "label": "buildWhatsAppUrl()",
+      "file_type": "code",
+      "source_file": "src/lib/adsAttribution.js",
+      "source_location": "L115",
+      "id": "lib_adsattribution_buildwhatsappurl",
+      "community": 69,
+      "norm_label": "buildwhatsappurl()"
+    },
+    {
+      "label": "trackWhatsAppClick()",
+      "file_type": "code",
+      "source_file": "src/lib/adsAttribution.js",
+      "source_location": "L124",
+      "id": "lib_adsattribution_trackwhatsappclick",
+      "community": 69,
+      "norm_label": "trackwhatsappclick()"
     },
     {
       "label": "applyAssistantCleanupBatch.js",
@@ -5611,6 +5890,78 @@
       "norm_label": "plaympegresponse()"
     },
     {
+      "label": "scrollChildToContainerTop.js",
+      "file_type": "code",
+      "source_file": "src/utils/scrollChildToContainerTop.js",
+      "source_location": "L1",
+      "id": "src_utils_scrollchildtocontainertop_js",
+      "community": 91,
+      "norm_label": "scrollchildtocontainertop.js"
+    },
+    {
+      "label": "getScrollTopToAlign()",
+      "file_type": "code",
+      "source_file": "src/utils/scrollChildToContainerTop.js",
+      "source_location": "L16",
+      "id": "utils_scrollchildtocontainertop_getscrolltoptoalign",
+      "community": 91,
+      "norm_label": "getscrolltoptoalign()"
+    },
+    {
+      "label": "easeOutCubic()",
+      "file_type": "code",
+      "source_file": "src/utils/scrollChildToContainerTop.js",
+      "source_location": "L24",
+      "id": "utils_scrollchildtocontainertop_easeoutcubic",
+      "community": 91,
+      "norm_label": "easeoutcubic()"
+    },
+    {
+      "label": "scrollChildToContainerTop()",
+      "file_type": "code",
+      "source_file": "src/utils/scrollChildToContainerTop.js",
+      "source_location": "L35",
+      "id": "utils_scrollchildtocontainertop_scrollchildtocontainertop",
+      "community": 91,
+      "norm_label": "scrollchildtocontainertop()"
+    },
+    {
+      "label": "scrollChildToContainerTop.test.js",
+      "file_type": "code",
+      "source_file": "src/utils/scrollChildToContainerTop.test.js",
+      "source_location": "L1",
+      "id": "src_utils_scrollchildtocontainertop_test_js",
+      "community": 91,
+      "norm_label": "scrollchildtocontainertop.test.js"
+    },
+    {
+      "label": "fakeBox()",
+      "file_type": "code",
+      "source_file": "src/utils/scrollChildToContainerTop.test.js",
+      "source_location": "L4",
+      "id": "utils_scrollchildtocontainertop_test_fakebox",
+      "community": 91,
+      "norm_label": "fakebox()"
+    },
+    {
+      "label": "container",
+      "file_type": "code",
+      "source_file": "src/utils/scrollChildToContainerTop.test.js",
+      "source_location": "L15",
+      "id": "utils_scrollchildtocontainertop_test_container",
+      "community": 91,
+      "norm_label": "container"
+    },
+    {
+      "label": "child",
+      "file_type": "code",
+      "source_file": "src/utils/scrollChildToContainerTop.test.js",
+      "source_location": "L16",
+      "id": "utils_scrollchildtocontainertop_test_child",
+      "community": 91,
+      "norm_label": "child"
+    },
+    {
       "label": "serviceCategoryUrl.js",
       "file_type": "code",
       "source_file": "src/utils/serviceCategoryUrl.js",
@@ -5652,7 +6003,7 @@
       "source_file": "src/utils/serviceCategoryUrl.js",
       "source_location": "L54",
       "id": "utils_servicecategoryurl_buildservicescategorypath",
-      "community": 87,
+      "community": 43,
       "norm_label": "buildservicescategorypath()"
     },
     {
@@ -5884,7 +6235,7 @@
       "label": "Table of Contents",
       "file_type": "document",
       "source_file": "FOLLOW_PATTERNS.md",
-      "source_location": "L7",
+      "source_location": "L9",
       "id": "ken_follow_patterns_table_of_contents",
       "community": 68,
       "norm_label": "table of contents"
@@ -5893,7 +6244,7 @@
       "label": "Technology Stack",
       "file_type": "document",
       "source_file": "FOLLOW_PATTERNS.md",
-      "source_location": "L22",
+      "source_location": "L24",
       "id": "ken_follow_patterns_technology_stack",
       "community": 73,
       "norm_label": "technology stack"
@@ -5902,7 +6253,7 @@
       "label": "Core Framework",
       "file_type": "document",
       "source_file": "FOLLOW_PATTERNS.md",
-      "source_location": "L24",
+      "source_location": "L26",
       "id": "ken_follow_patterns_core_framework",
       "community": 73,
       "norm_label": "core framework"
@@ -5911,7 +6262,7 @@
       "label": "Key Libraries",
       "file_type": "document",
       "source_file": "FOLLOW_PATTERNS.md",
-      "source_location": "L30",
+      "source_location": "L32",
       "id": "ken_follow_patterns_key_libraries",
       "community": 73,
       "norm_label": "key libraries"
@@ -5920,7 +6271,7 @@
       "label": "Animation",
       "file_type": "document",
       "source_file": "FOLLOW_PATTERNS.md",
-      "source_location": "L32",
+      "source_location": "L34",
       "id": "ken_follow_patterns_animation",
       "community": 73,
       "norm_label": "animation"
@@ -5929,7 +6280,7 @@
       "label": "Icons",
       "file_type": "document",
       "source_file": "FOLLOW_PATTERNS.md",
-      "source_location": "L37",
+      "source_location": "L39",
       "id": "ken_follow_patterns_icons",
       "community": 73,
       "norm_label": "icons"
@@ -5938,7 +6289,7 @@
       "label": "UI Components",
       "file_type": "document",
       "source_file": "FOLLOW_PATTERNS.md",
-      "source_location": "L42",
+      "source_location": "L44",
       "id": "ken_follow_patterns_ui_components",
       "community": 73,
       "norm_label": "ui components"
@@ -5947,7 +6298,7 @@
       "label": "Analytics",
       "file_type": "document",
       "source_file": "FOLLOW_PATTERNS.md",
-      "source_location": "L46",
+      "source_location": "L48",
       "id": "ken_follow_patterns_analytics",
       "community": 73,
       "norm_label": "analytics"
@@ -5956,7 +6307,7 @@
       "label": "Styling",
       "file_type": "document",
       "source_file": "FOLLOW_PATTERNS.md",
-      "source_location": "L50",
+      "source_location": "L52",
       "id": "ken_follow_patterns_styling",
       "community": 73,
       "norm_label": "styling"
@@ -5965,7 +6316,7 @@
       "label": "Component Structure",
       "file_type": "document",
       "source_file": "FOLLOW_PATTERNS.md",
-      "source_location": "L58",
+      "source_location": "L60",
       "id": "ken_follow_patterns_component_structure",
       "community": 68,
       "norm_label": "component structure"
@@ -5974,7 +6325,7 @@
       "label": "Basic Component Template",
       "file_type": "document",
       "source_file": "FOLLOW_PATTERNS.md",
-      "source_location": "L60",
+      "source_location": "L62",
       "id": "ken_follow_patterns_basic_component_template",
       "community": 68,
       "norm_label": "basic component template"
@@ -5983,7 +6334,7 @@
       "label": "code:jsx (\"use client\"; // Required for client-side features (state, e)",
       "file_type": "document",
       "source_file": "FOLLOW_PATTERNS.md",
-      "source_location": "L62",
+      "source_location": "L64",
       "id": "ken_follow_patterns_codeblock_1",
       "community": 68,
       "norm_label": "code:jsx (\"use client\"; // required for client-side features (state, e)"
@@ -5992,7 +6343,7 @@
       "label": "Component Structure Checklist",
       "file_type": "document",
       "source_file": "FOLLOW_PATTERNS.md",
-      "source_location": "L94",
+      "source_location": "L96",
       "id": "ken_follow_patterns_component_structure_checklist",
       "community": 68,
       "norm_label": "component structure checklist"
@@ -6001,7 +6352,7 @@
       "label": "Styling Patterns",
       "file_type": "document",
       "source_file": "FOLLOW_PATTERNS.md",
-      "source_location": "L109",
+      "source_location": "L111",
       "id": "ken_follow_patterns_styling_patterns",
       "community": 6,
       "norm_label": "styling patterns"
@@ -6010,7 +6361,7 @@
       "label": "CSS Modules",
       "file_type": "document",
       "source_file": "FOLLOW_PATTERNS.md",
-      "source_location": "L111",
+      "source_location": "L113",
       "id": "ken_follow_patterns_css_modules",
       "community": 6,
       "norm_label": "css modules"
@@ -6019,7 +6370,7 @@
       "label": "code:jsx (import styles from \"./ComponentName.modern.module.css\";)",
       "file_type": "document",
       "source_file": "FOLLOW_PATTERNS.md",
-      "source_location": "L117",
+      "source_location": "L119",
       "id": "ken_follow_patterns_codeblock_2",
       "community": 6,
       "norm_label": "code:jsx (import styles from \"./componentname.modern.module.css\";)"
@@ -6028,7 +6379,7 @@
       "label": "code:jsx (<div className={styles.container}>)",
       "file_type": "document",
       "source_file": "FOLLOW_PATTERNS.md",
-      "source_location": "L123",
+      "source_location": "L125",
       "id": "ken_follow_patterns_codeblock_3",
       "community": 6,
       "norm_label": "code:jsx (<div classname={styles.container}>)"
@@ -6037,7 +6388,7 @@
       "label": "code:css (/* BAD - Nested selector */)",
       "file_type": "document",
       "source_file": "FOLLOW_PATTERNS.md",
-      "source_location": "L133",
+      "source_location": "L135",
       "id": "ken_follow_patterns_codeblock_4",
       "community": 6,
       "norm_label": "code:css (/* bad - nested selector */)"
@@ -6046,7 +6397,7 @@
       "label": "code:jsx (/* BAD - No class on child elements */)",
       "file_type": "document",
       "source_file": "FOLLOW_PATTERNS.md",
-      "source_location": "L144",
+      "source_location": "L146",
       "id": "ken_follow_patterns_codeblock_5",
       "community": 6,
       "norm_label": "code:jsx (/* bad - no class on child elements */)"
@@ -6055,7 +6406,7 @@
       "label": "code:css (/* GOOD - Direct class names */)",
       "file_type": "document",
       "source_file": "FOLLOW_PATTERNS.md",
-      "source_location": "L154",
+      "source_location": "L156",
       "id": "ken_follow_patterns_codeblock_6",
       "community": 6,
       "norm_label": "code:css (/* good - direct class names */)"
@@ -6064,7 +6415,7 @@
       "label": "code:jsx (/* GOOD - Each element has its unique class */)",
       "file_type": "document",
       "source_file": "FOLLOW_PATTERNS.md",
-      "source_location": "L169",
+      "source_location": "L171",
       "id": "ken_follow_patterns_codeblock_7",
       "community": 6,
       "norm_label": "code:jsx (/* good - each element has its unique class */)"
@@ -6073,7 +6424,7 @@
       "label": "CSS Variables (Global Design System)",
       "file_type": "document",
       "source_file": "FOLLOW_PATTERNS.md",
-      "source_location": "L186",
+      "source_location": "L188",
       "id": "ken_follow_patterns_css_variables_global_design_system",
       "community": 6,
       "norm_label": "css variables (global design system)"
@@ -6082,7 +6433,7 @@
       "label": "Color Variables",
       "file_type": "document",
       "source_file": "FOLLOW_PATTERNS.md",
-      "source_location": "L192",
+      "source_location": "L194",
       "id": "ken_follow_patterns_color_variables",
       "community": 6,
       "norm_label": "color variables"
@@ -6091,7 +6442,7 @@
       "label": "code:css (/* Primary Colors */)",
       "file_type": "document",
       "source_file": "FOLLOW_PATTERNS.md",
-      "source_location": "L194",
+      "source_location": "L196",
       "id": "ken_follow_patterns_codeblock_8",
       "community": 6,
       "norm_label": "code:css (/* primary colors */)"
@@ -6100,7 +6451,7 @@
       "label": "Spacing Variables",
       "file_type": "document",
       "source_file": "FOLLOW_PATTERNS.md",
-      "source_location": "L225",
+      "source_location": "L227",
       "id": "ken_follow_patterns_spacing_variables",
       "community": 6,
       "norm_label": "spacing variables"
@@ -6109,7 +6460,7 @@
       "label": "code:css (var(--spacing-1)   /* 4px */)",
       "file_type": "document",
       "source_file": "FOLLOW_PATTERNS.md",
-      "source_location": "L227",
+      "source_location": "L229",
       "id": "ken_follow_patterns_codeblock_9",
       "community": 6,
       "norm_label": "code:css (var(--spacing-1)   /* 4px */)"
@@ -6118,25 +6469,25 @@
       "label": "Typography Variables",
       "file_type": "document",
       "source_file": "FOLLOW_PATTERNS.md",
-      "source_location": "L241",
+      "source_location": "L243",
       "id": "ken_follow_patterns_typography_variables",
       "community": 6,
       "norm_label": "typography variables"
     },
     {
-      "label": "code:css (/* Font Sizes */)",
+      "label": "code:css (/* Font Families */)",
       "file_type": "document",
       "source_file": "FOLLOW_PATTERNS.md",
-      "source_location": "L243",
+      "source_location": "L247",
       "id": "ken_follow_patterns_codeblock_10",
       "community": 6,
-      "norm_label": "code:css (/* font sizes */)"
+      "norm_label": "code:css (/* font families */)"
     },
     {
       "label": "Border Radius Variables",
       "file_type": "document",
       "source_file": "FOLLOW_PATTERNS.md",
-      "source_location": "L270",
+      "source_location": "L278",
       "id": "ken_follow_patterns_border_radius_variables",
       "community": 6,
       "norm_label": "border radius variables"
@@ -6145,7 +6496,7 @@
       "label": "code:css (var(--radius-sm)    /* 4px */)",
       "file_type": "document",
       "source_file": "FOLLOW_PATTERNS.md",
-      "source_location": "L272",
+      "source_location": "L280",
       "id": "ken_follow_patterns_codeblock_11",
       "community": 6,
       "norm_label": "code:css (var(--radius-sm)    /* 4px */)"
@@ -6154,7 +6505,7 @@
       "label": "Glass Effect Variables",
       "file_type": "document",
       "source_file": "FOLLOW_PATTERNS.md",
-      "source_location": "L281",
+      "source_location": "L289",
       "id": "ken_follow_patterns_glass_effect_variables",
       "community": 6,
       "norm_label": "glass effect variables"
@@ -6163,7 +6514,7 @@
       "label": "code:css (/* Glass Backgrounds */)",
       "file_type": "document",
       "source_file": "FOLLOW_PATTERNS.md",
-      "source_location": "L283",
+      "source_location": "L291",
       "id": "ken_follow_patterns_codeblock_12",
       "community": 6,
       "norm_label": "code:css (/* glass backgrounds */)"
@@ -6172,7 +6523,7 @@
       "label": "Shadow Variables",
       "file_type": "document",
       "source_file": "FOLLOW_PATTERNS.md",
-      "source_location": "L304",
+      "source_location": "L312",
       "id": "ken_follow_patterns_shadow_variables",
       "community": 6,
       "norm_label": "shadow variables"
@@ -6181,7 +6532,7 @@
       "label": "code:css (var(--shadow-light))",
       "file_type": "document",
       "source_file": "FOLLOW_PATTERNS.md",
-      "source_location": "L306",
+      "source_location": "L314",
       "id": "ken_follow_patterns_codeblock_13",
       "community": 6,
       "norm_label": "code:css (var(--shadow-light))"
@@ -6190,7 +6541,7 @@
       "label": "Overlay Variables",
       "file_type": "document",
       "source_file": "FOLLOW_PATTERNS.md",
-      "source_location": "L316",
+      "source_location": "L324",
       "id": "ken_follow_patterns_overlay_variables",
       "community": 6,
       "norm_label": "overlay variables"
@@ -6199,7 +6550,7 @@
       "label": "code:css (var(--overlay-white-65))",
       "file_type": "document",
       "source_file": "FOLLOW_PATTERNS.md",
-      "source_location": "L318",
+      "source_location": "L326",
       "id": "ken_follow_patterns_codeblock_14",
       "community": 6,
       "norm_label": "code:css (var(--overlay-white-65))"
@@ -6208,7 +6559,7 @@
       "label": "Responsive Design Pattern",
       "file_type": "document",
       "source_file": "FOLLOW_PATTERNS.md",
-      "source_location": "L329",
+      "source_location": "L337",
       "id": "ken_follow_patterns_responsive_design_pattern",
       "community": 6,
       "norm_label": "responsive design pattern"
@@ -6217,7 +6568,7 @@
       "label": "code:css (/* Mobile First Approach */)",
       "file_type": "document",
       "source_file": "FOLLOW_PATTERNS.md",
-      "source_location": "L331",
+      "source_location": "L339",
       "id": "ken_follow_patterns_codeblock_15",
       "community": 6,
       "norm_label": "code:css (/* mobile first approach */)"
@@ -6226,7 +6577,7 @@
       "label": "Mobile Padding Pattern (Account for Fixed Navbar)",
       "file_type": "document",
       "source_file": "FOLLOW_PATTERNS.md",
-      "source_location": "L363",
+      "source_location": "L371",
       "id": "ken_follow_patterns_mobile_padding_pattern_account_for_fixed_navbar",
       "community": 6,
       "norm_label": "mobile padding pattern (account for fixed navbar)"
@@ -6235,7 +6586,7 @@
       "label": "code:css (.page {)",
       "file_type": "document",
       "source_file": "FOLLOW_PATTERNS.md",
-      "source_location": "L365",
+      "source_location": "L373",
       "id": "ken_follow_patterns_codeblock_16",
       "community": 6,
       "norm_label": "code:css (.page {)"
@@ -6244,7 +6595,7 @@
       "label": "Animation Patterns",
       "file_type": "document",
       "source_file": "FOLLOW_PATTERNS.md",
-      "source_location": "L384",
+      "source_location": "L392",
       "id": "ken_follow_patterns_animation_patterns",
       "community": 11,
       "norm_label": "animation patterns"
@@ -6253,7 +6604,7 @@
       "label": "Framer Motion Basics",
       "file_type": "document",
       "source_file": "FOLLOW_PATTERNS.md",
-      "source_location": "L386",
+      "source_location": "L394",
       "id": "ken_follow_patterns_framer_motion_basics",
       "community": 11,
       "norm_label": "framer motion basics"
@@ -6262,7 +6613,7 @@
       "label": "code:jsx (import { motion, AnimatePresence } from \"framer-motion\";)",
       "file_type": "document",
       "source_file": "FOLLOW_PATTERNS.md",
-      "source_location": "L390",
+      "source_location": "L398",
       "id": "ken_follow_patterns_codeblock_17",
       "community": 11,
       "norm_label": "code:jsx (import { motion, animatepresence } from \"framer-motion\";)"
@@ -6271,7 +6622,7 @@
       "label": "Common Animation Patterns",
       "file_type": "document",
       "source_file": "FOLLOW_PATTERNS.md",
-      "source_location": "L394",
+      "source_location": "L402",
       "id": "ken_follow_patterns_common_animation_patterns",
       "community": 11,
       "norm_label": "common animation patterns"
@@ -6280,7 +6631,7 @@
       "label": "1. Fade In Animation",
       "file_type": "document",
       "source_file": "FOLLOW_PATTERNS.md",
-      "source_location": "L396",
+      "source_location": "L404",
       "id": "ken_follow_patterns_1_fade_in_animation",
       "community": 11,
       "norm_label": "1. fade in animation"
@@ -6289,7 +6640,7 @@
       "label": "code:jsx (<motion.div)",
       "file_type": "document",
       "source_file": "FOLLOW_PATTERNS.md",
-      "source_location": "L398",
+      "source_location": "L406",
       "id": "ken_follow_patterns_codeblock_18",
       "community": 11,
       "norm_label": "code:jsx (<motion.div)"
@@ -6298,7 +6649,7 @@
       "label": "2. Slide Up Animation",
       "file_type": "document",
       "source_file": "FOLLOW_PATTERNS.md",
-      "source_location": "L408",
+      "source_location": "L416",
       "id": "ken_follow_patterns_2_slide_up_animation",
       "community": 11,
       "norm_label": "2. slide up animation"
@@ -6307,7 +6658,7 @@
       "label": "code:jsx (<motion.div)",
       "file_type": "document",
       "source_file": "FOLLOW_PATTERNS.md",
-      "source_location": "L410",
+      "source_location": "L418",
       "id": "ken_follow_patterns_codeblock_19",
       "community": 11,
       "norm_label": "code:jsx (<motion.div)"
@@ -6316,7 +6667,7 @@
       "label": "3. Staggered Children Animation",
       "file_type": "document",
       "source_file": "FOLLOW_PATTERNS.md",
-      "source_location": "L420",
+      "source_location": "L428",
       "id": "ken_follow_patterns_3_staggered_children_animation",
       "community": 11,
       "norm_label": "3. staggered children animation"
@@ -6325,7 +6676,7 @@
       "label": "code:jsx (<motion.div)",
       "file_type": "document",
       "source_file": "FOLLOW_PATTERNS.md",
-      "source_location": "L422",
+      "source_location": "L430",
       "id": "ken_follow_patterns_codeblock_20",
       "community": 11,
       "norm_label": "code:jsx (<motion.div)"
@@ -6334,7 +6685,7 @@
       "label": "4. Scroll-Triggered Animation",
       "file_type": "document",
       "source_file": "FOLLOW_PATTERNS.md",
-      "source_location": "L443",
+      "source_location": "L451",
       "id": "ken_follow_patterns_4_scroll_triggered_animation",
       "community": 11,
       "norm_label": "4. scroll-triggered animation"
@@ -6343,7 +6694,7 @@
       "label": "code:jsx (<motion.div)",
       "file_type": "document",
       "source_file": "FOLLOW_PATTERNS.md",
-      "source_location": "L445",
+      "source_location": "L453",
       "id": "ken_follow_patterns_codeblock_21",
       "community": 11,
       "norm_label": "code:jsx (<motion.div)"
@@ -6352,7 +6703,7 @@
       "label": "5. Hover Animation",
       "file_type": "document",
       "source_file": "FOLLOW_PATTERNS.md",
-      "source_location": "L456",
+      "source_location": "L464",
       "id": "ken_follow_patterns_5_hover_animation",
       "community": 11,
       "norm_label": "5. hover animation"
@@ -6361,7 +6712,7 @@
       "label": "code:jsx (<motion.div)",
       "file_type": "document",
       "source_file": "FOLLOW_PATTERNS.md",
-      "source_location": "L458",
+      "source_location": "L466",
       "id": "ken_follow_patterns_codeblock_22",
       "community": 11,
       "norm_label": "code:jsx (<motion.div)"
@@ -6370,7 +6721,7 @@
       "label": "6. Page Entrance Animation",
       "file_type": "document",
       "source_file": "FOLLOW_PATTERNS.md",
-      "source_location": "L468",
+      "source_location": "L476",
       "id": "ken_follow_patterns_6_page_entrance_animation",
       "community": 11,
       "norm_label": "6. page entrance animation"
@@ -6379,7 +6730,7 @@
       "label": "code:jsx (<motion.div)",
       "file_type": "document",
       "source_file": "FOLLOW_PATTERNS.md",
-      "source_location": "L470",
+      "source_location": "L478",
       "id": "ken_follow_patterns_codeblock_23",
       "community": 11,
       "norm_label": "code:jsx (<motion.div)"
@@ -6388,7 +6739,7 @@
       "label": "Animation Timing",
       "file_type": "document",
       "source_file": "FOLLOW_PATTERNS.md",
-      "source_location": "L481",
+      "source_location": "L489",
       "id": "ken_follow_patterns_animation_timing",
       "community": 11,
       "norm_label": "animation timing"
@@ -6397,7 +6748,7 @@
       "label": "Easing Functions",
       "file_type": "document",
       "source_file": "FOLLOW_PATTERNS.md",
-      "source_location": "L487",
+      "source_location": "L495",
       "id": "ken_follow_patterns_easing_functions",
       "community": 11,
       "norm_label": "easing functions"
@@ -6406,7 +6757,7 @@
       "label": "code:jsx (// Standard easing)",
       "file_type": "document",
       "source_file": "FOLLOW_PATTERNS.md",
-      "source_location": "L489",
+      "source_location": "L497",
       "id": "ken_follow_patterns_codeblock_24",
       "community": 11,
       "norm_label": "code:jsx (// standard easing)"
@@ -6415,7 +6766,7 @@
       "label": "Icon Patterns",
       "file_type": "document",
       "source_file": "FOLLOW_PATTERNS.md",
-      "source_location": "L504",
+      "source_location": "L512",
       "id": "ken_follow_patterns_icon_patterns",
       "community": 96,
       "norm_label": "icon patterns"
@@ -6424,7 +6775,7 @@
       "label": "Lucide React Icons (PRIMARY)",
       "file_type": "document",
       "source_file": "FOLLOW_PATTERNS.md",
-      "source_location": "L506",
+      "source_location": "L514",
       "id": "ken_follow_patterns_lucide_react_icons_primary",
       "community": 96,
       "norm_label": "lucide react icons (primary)"
@@ -6433,7 +6784,7 @@
       "label": "code:jsx (import { Phone, Mail, MessageCircle, ArrowRight, MapPin } fr)",
       "file_type": "document",
       "source_file": "FOLLOW_PATTERNS.md",
-      "source_location": "L510",
+      "source_location": "L518",
       "id": "ken_follow_patterns_codeblock_25",
       "community": 96,
       "norm_label": "code:jsx (import { phone, mail, messagecircle, arrowright, mappin } fr)"
@@ -6442,7 +6793,7 @@
       "label": "code:jsx (<Phone className={styles.icon} size={20} />)",
       "file_type": "document",
       "source_file": "FOLLOW_PATTERNS.md",
-      "source_location": "L516",
+      "source_location": "L524",
       "id": "ken_follow_patterns_codeblock_26",
       "community": 96,
       "norm_label": "code:jsx (<phone classname={styles.icon} size={20} />)"
@@ -6451,7 +6802,7 @@
       "label": "code:jsx (// Decorative icons (no meaning))",
       "file_type": "document",
       "source_file": "FOLLOW_PATTERNS.md",
-      "source_location": "L529",
+      "source_location": "L537",
       "id": "ken_follow_patterns_codeblock_27",
       "community": 96,
       "norm_label": "code:jsx (// decorative icons (no meaning))"
@@ -6460,7 +6811,7 @@
       "label": "Common Icons Used",
       "file_type": "document",
       "source_file": "FOLLOW_PATTERNS.md",
-      "source_location": "L537",
+      "source_location": "L545",
       "id": "ken_follow_patterns_common_icons_used",
       "community": 96,
       "norm_label": "common icons used"
@@ -6469,7 +6820,7 @@
       "label": "Image Optimization",
       "file_type": "document",
       "source_file": "FOLLOW_PATTERNS.md",
-      "source_location": "L547",
+      "source_location": "L555",
       "id": "ken_follow_patterns_image_optimization",
       "community": 103,
       "norm_label": "image optimization"
@@ -6478,7 +6829,7 @@
       "label": "Next.js Image Component",
       "file_type": "document",
       "source_file": "FOLLOW_PATTERNS.md",
-      "source_location": "L549",
+      "source_location": "L557",
       "id": "ken_follow_patterns_next_js_image_component",
       "community": 103,
       "norm_label": "next.js image component"
@@ -6487,7 +6838,7 @@
       "label": "code:jsx (import Image from \"next/image\";)",
       "file_type": "document",
       "source_file": "FOLLOW_PATTERNS.md",
-      "source_location": "L553",
+      "source_location": "L561",
       "id": "ken_follow_patterns_codeblock_28",
       "community": 103,
       "norm_label": "code:jsx (import image from \"next/image\";)"
@@ -6496,7 +6847,7 @@
       "label": "code:jsx (<Image)",
       "file_type": "document",
       "source_file": "FOLLOW_PATTERNS.md",
-      "source_location": "L559",
+      "source_location": "L567",
       "id": "ken_follow_patterns_codeblock_29",
       "community": 103,
       "norm_label": "code:jsx (<image)"
@@ -6505,7 +6856,7 @@
       "label": "Image Optimization Patterns",
       "file_type": "document",
       "source_file": "FOLLOW_PATTERNS.md",
-      "source_location": "L569",
+      "source_location": "L577",
       "id": "ken_follow_patterns_image_optimization_patterns",
       "community": 17,
       "norm_label": "image optimization patterns"
@@ -6514,7 +6865,7 @@
       "label": "1. Priority Loading (Above the fold)",
       "file_type": "document",
       "source_file": "FOLLOW_PATTERNS.md",
-      "source_location": "L571",
+      "source_location": "L579",
       "id": "ken_follow_patterns_1_priority_loading_above_the_fold",
       "community": 17,
       "norm_label": "1. priority loading (above the fold)"
@@ -6523,7 +6874,7 @@
       "label": "code:jsx (<Image)",
       "file_type": "document",
       "source_file": "FOLLOW_PATTERNS.md",
-      "source_location": "L573",
+      "source_location": "L581",
       "id": "ken_follow_patterns_codeblock_30",
       "community": 17,
       "norm_label": "code:jsx (<image)"
@@ -6532,7 +6883,7 @@
       "label": "2. Lazy Loading (Below the fold)",
       "file_type": "document",
       "source_file": "FOLLOW_PATTERNS.md",
-      "source_location": "L585",
+      "source_location": "L593",
       "id": "ken_follow_patterns_2_lazy_loading_below_the_fold",
       "community": 17,
       "norm_label": "2. lazy loading (below the fold)"
@@ -6541,7 +6892,7 @@
       "label": "code:jsx (<Image)",
       "file_type": "document",
       "source_file": "FOLLOW_PATTERNS.md",
-      "source_location": "L587",
+      "source_location": "L595",
       "id": "ken_follow_patterns_codeblock_31",
       "community": 17,
       "norm_label": "code:jsx (<image)"
@@ -6550,7 +6901,7 @@
       "label": "3. Responsive Sizes",
       "file_type": "document",
       "source_file": "FOLLOW_PATTERNS.md",
-      "source_location": "L598",
+      "source_location": "L606",
       "id": "ken_follow_patterns_3_responsive_sizes",
       "community": 17,
       "norm_label": "3. responsive sizes"
@@ -6559,7 +6910,7 @@
       "label": "code:jsx (<Image)",
       "file_type": "document",
       "source_file": "FOLLOW_PATTERNS.md",
-      "source_location": "L600",
+      "source_location": "L608",
       "id": "ken_follow_patterns_codeblock_32",
       "community": 17,
       "norm_label": "code:jsx (<image)"
@@ -6568,7 +6919,7 @@
       "label": "Image Best Practices",
       "file_type": "document",
       "source_file": "FOLLOW_PATTERNS.md",
-      "source_location": "L610",
+      "source_location": "L618",
       "id": "ken_follow_patterns_image_best_practices",
       "community": 103,
       "norm_label": "image best practices"
@@ -6577,7 +6928,7 @@
       "label": "Accessibility Patterns",
       "file_type": "document",
       "source_file": "FOLLOW_PATTERNS.md",
-      "source_location": "L621",
+      "source_location": "L629",
       "id": "ken_follow_patterns_accessibility_patterns",
       "community": 0,
       "norm_label": "accessibility patterns"
@@ -6586,7 +6937,7 @@
       "label": "Semantic HTML",
       "file_type": "document",
       "source_file": "FOLLOW_PATTERNS.md",
-      "source_location": "L623",
+      "source_location": "L631",
       "id": "ken_follow_patterns_semantic_html",
       "community": 0,
       "norm_label": "semantic html"
@@ -6595,7 +6946,7 @@
       "label": "code:jsx (// Use semantic elements)",
       "file_type": "document",
       "source_file": "FOLLOW_PATTERNS.md",
-      "source_location": "L625",
+      "source_location": "L633",
       "id": "ken_follow_patterns_codeblock_33",
       "community": 0,
       "norm_label": "code:jsx (// use semantic elements)"
@@ -6604,7 +6955,7 @@
       "label": "ARIA Attributes",
       "file_type": "document",
       "source_file": "FOLLOW_PATTERNS.md",
-      "source_location": "L632",
+      "source_location": "L640",
       "id": "ken_follow_patterns_aria_attributes",
       "community": 0,
       "norm_label": "aria attributes"
@@ -6613,7 +6964,7 @@
       "label": "code:jsx (// Labels)",
       "file_type": "document",
       "source_file": "FOLLOW_PATTERNS.md",
-      "source_location": "L634",
+      "source_location": "L642",
       "id": "ken_follow_patterns_codeblock_34",
       "community": 0,
       "norm_label": "code:jsx (// labels)"
@@ -6622,7 +6973,7 @@
       "label": "Form Accessibility",
       "file_type": "document",
       "source_file": "FOLLOW_PATTERNS.md",
-      "source_location": "L655",
+      "source_location": "L663",
       "id": "ken_follow_patterns_form_accessibility",
       "community": 0,
       "norm_label": "form accessibility"
@@ -6631,7 +6982,7 @@
       "label": "code:jsx (<div className={styles.field}>)",
       "file_type": "document",
       "source_file": "FOLLOW_PATTERNS.md",
-      "source_location": "L657",
+      "source_location": "L665",
       "id": "ken_follow_patterns_codeblock_35",
       "community": 0,
       "norm_label": "code:jsx (<div classname={styles.field}>)"
@@ -6640,7 +6991,7 @@
       "label": "Focus States",
       "file_type": "document",
       "source_file": "FOLLOW_PATTERNS.md",
-      "source_location": "L677",
+      "source_location": "L685",
       "id": "ken_follow_patterns_focus_states",
       "community": 0,
       "norm_label": "focus states"
@@ -6649,7 +7000,7 @@
       "label": "code:css (/* Always style focus-visible for keyboard navigation */)",
       "file_type": "document",
       "source_file": "FOLLOW_PATTERNS.md",
-      "source_location": "L679",
+      "source_location": "L687",
       "id": "ken_follow_patterns_codeblock_36",
       "community": 0,
       "norm_label": "code:css (/* always style focus-visible for keyboard navigation */)"
@@ -6658,7 +7009,7 @@
       "label": "Color Contrast",
       "file_type": "document",
       "source_file": "FOLLOW_PATTERNS.md",
-      "source_location": "L692",
+      "source_location": "L700",
       "id": "ken_follow_patterns_color_contrast",
       "community": 0,
       "norm_label": "color contrast"
@@ -6667,7 +7018,7 @@
       "label": "File Naming Conventions",
       "file_type": "document",
       "source_file": "FOLLOW_PATTERNS.md",
-      "source_location": "L701",
+      "source_location": "L709",
       "id": "ken_follow_patterns_file_naming_conventions",
       "community": 79,
       "norm_label": "file naming conventions"
@@ -6676,7 +7027,7 @@
       "label": "Components",
       "file_type": "document",
       "source_file": "FOLLOW_PATTERNS.md",
-      "source_location": "L703",
+      "source_location": "L711",
       "id": "ken_follow_patterns_components",
       "community": 79,
       "norm_label": "components"
@@ -6685,7 +7036,7 @@
       "label": "CSS Files",
       "file_type": "document",
       "source_file": "FOLLOW_PATTERNS.md",
-      "source_location": "L708",
+      "source_location": "L716",
       "id": "ken_follow_patterns_css_files",
       "community": 79,
       "norm_label": "css files"
@@ -6694,7 +7045,7 @@
       "label": "Page Files",
       "file_type": "document",
       "source_file": "FOLLOW_PATTERNS.md",
-      "source_location": "L713",
+      "source_location": "L721",
       "id": "ken_follow_patterns_page_files",
       "community": 79,
       "norm_label": "page files"
@@ -6703,7 +7054,7 @@
       "label": "Constants/Config",
       "file_type": "document",
       "source_file": "FOLLOW_PATTERNS.md",
-      "source_location": "L718",
+      "source_location": "L726",
       "id": "ken_follow_patterns_constants_config",
       "community": 79,
       "norm_label": "constants/config"
@@ -6712,7 +7063,7 @@
       "label": "Example Structure",
       "file_type": "document",
       "source_file": "FOLLOW_PATTERNS.md",
-      "source_location": "L723",
+      "source_location": "L731",
       "id": "ken_follow_patterns_example_structure",
       "community": 79,
       "norm_label": "example structure"
@@ -6721,7 +7072,7 @@
       "label": "code:block37 (src/)",
       "file_type": "document",
       "source_file": "FOLLOW_PATTERNS.md",
-      "source_location": "L725",
+      "source_location": "L733",
       "id": "ken_follow_patterns_codeblock_37",
       "community": 79,
       "norm_label": "code:block37 (src/)"
@@ -6730,7 +7081,7 @@
       "label": "Code Organization",
       "file_type": "document",
       "source_file": "FOLLOW_PATTERNS.md",
-      "source_location": "L748",
+      "source_location": "L756",
       "id": "ken_follow_patterns_code_organization",
       "community": 74,
       "norm_label": "code organization"
@@ -6739,7 +7090,7 @@
       "label": "Import Order",
       "file_type": "document",
       "source_file": "FOLLOW_PATTERNS.md",
-      "source_location": "L750",
+      "source_location": "L758",
       "id": "ken_follow_patterns_import_order",
       "community": 74,
       "norm_label": "import order"
@@ -6748,7 +7099,7 @@
       "label": "code:jsx (// 1. React and Next.js)",
       "file_type": "document",
       "source_file": "FOLLOW_PATTERNS.md",
-      "source_location": "L752",
+      "source_location": "L760",
       "id": "ken_follow_patterns_codeblock_38",
       "community": 74,
       "norm_label": "code:jsx (// 1. react and next.js)"
@@ -6757,7 +7108,7 @@
       "label": "Component Organization",
       "file_type": "document",
       "source_file": "FOLLOW_PATTERNS.md",
-      "source_location": "L770",
+      "source_location": "L778",
       "id": "ken_follow_patterns_component_organization",
       "community": 74,
       "norm_label": "component organization"
@@ -6766,7 +7117,7 @@
       "label": "code:jsx (\"use client\";)",
       "file_type": "document",
       "source_file": "FOLLOW_PATTERNS.md",
-      "source_location": "L772",
+      "source_location": "L780",
       "id": "ken_follow_patterns_codeblock_39",
       "community": 74,
       "norm_label": "code:jsx (\"use client\";)"
@@ -6775,7 +7126,7 @@
       "label": "CSS Organization",
       "file_type": "document",
       "source_file": "FOLLOW_PATTERNS.md",
-      "source_location": "L804",
+      "source_location": "L812",
       "id": "ken_follow_patterns_css_organization",
       "community": 74,
       "norm_label": "css organization"
@@ -6784,7 +7135,7 @@
       "label": "code:css (/* 1. Container/Base Styles */)",
       "file_type": "document",
       "source_file": "FOLLOW_PATTERNS.md",
-      "source_location": "L806",
+      "source_location": "L814",
       "id": "ken_follow_patterns_codeblock_40",
       "community": 74,
       "norm_label": "code:css (/* 1. container/base styles */)"
@@ -6793,7 +7144,7 @@
       "label": "Best Practices",
       "file_type": "document",
       "source_file": "FOLLOW_PATTERNS.md",
-      "source_location": "L850",
+      "source_location": "L858",
       "id": "ken_follow_patterns_best_practices",
       "community": 9,
       "norm_label": "best practices"
@@ -6802,7 +7153,7 @@
       "label": "1. Always Use CSS Variables",
       "file_type": "document",
       "source_file": "FOLLOW_PATTERNS.md",
-      "source_location": "L852",
+      "source_location": "L860",
       "id": "ken_follow_patterns_1_always_use_css_variables",
       "community": 9,
       "norm_label": "1. always use css variables"
@@ -6811,7 +7162,7 @@
       "label": "code:css (color: #3d2f2d;)",
       "file_type": "document",
       "source_file": "FOLLOW_PATTERNS.md",
-      "source_location": "L856",
+      "source_location": "L864",
       "id": "ken_follow_patterns_codeblock_41",
       "community": 9,
       "norm_label": "code:css (color: #3d2f2d;)"
@@ -6820,7 +7171,7 @@
       "label": "code:css (color: var(--color-text-primary);)",
       "file_type": "document",
       "source_file": "FOLLOW_PATTERNS.md",
-      "source_location": "L864",
+      "source_location": "L872",
       "id": "ken_follow_patterns_codeblock_42",
       "community": 9,
       "norm_label": "code:css (color: var(--color-text-primary);)"
@@ -6829,7 +7180,7 @@
       "label": "2. Mobile-First Responsive Design",
       "file_type": "document",
       "source_file": "FOLLOW_PATTERNS.md",
-      "source_location": "L870",
+      "source_location": "L878",
       "id": "ken_follow_patterns_2_mobile_first_responsive_design",
       "community": 9,
       "norm_label": "2. mobile-first responsive design"
@@ -6838,7 +7189,7 @@
       "label": "code:css (.desktop {)",
       "file_type": "document",
       "source_file": "FOLLOW_PATTERNS.md",
-      "source_location": "L874",
+      "source_location": "L882",
       "id": "ken_follow_patterns_codeblock_43",
       "community": 9,
       "norm_label": "code:css (.desktop {)"
@@ -6847,7 +7198,7 @@
       "label": "code:css (.component {)",
       "file_type": "document",
       "source_file": "FOLLOW_PATTERNS.md",
-      "source_location": "L887",
+      "source_location": "L895",
       "id": "ken_follow_patterns_codeblock_44",
       "community": 9,
       "norm_label": "code:css (.component {)"
@@ -6856,7 +7207,7 @@
       "label": "3. Semantic HTML",
       "file_type": "document",
       "source_file": "FOLLOW_PATTERNS.md",
-      "source_location": "L901",
+      "source_location": "L909",
       "id": "ken_follow_patterns_3_semantic_html",
       "community": 9,
       "norm_label": "3. semantic html"
@@ -6865,7 +7216,7 @@
       "label": "code:jsx (<div onClick={handleClick}>Click me</div>)",
       "file_type": "document",
       "source_file": "FOLLOW_PATTERNS.md",
-      "source_location": "L905",
+      "source_location": "L913",
       "id": "ken_follow_patterns_codeblock_45",
       "community": 9,
       "norm_label": "code:jsx (<div onclick={handleclick}>click me</div>)"
@@ -6874,7 +7225,7 @@
       "label": "code:jsx (<button onClick={handleClick} className={styles.button}>)",
       "file_type": "document",
       "source_file": "FOLLOW_PATTERNS.md",
-      "source_location": "L911",
+      "source_location": "L919",
       "id": "ken_follow_patterns_codeblock_46",
       "community": 9,
       "norm_label": "code:jsx (<button onclick={handleclick} classname={styles.button}>)"
@@ -6883,7 +7234,7 @@
       "label": "4. Proper Image Usage",
       "file_type": "document",
       "source_file": "FOLLOW_PATTERNS.md",
-      "source_location": "L917",
+      "source_location": "L925",
       "id": "ken_follow_patterns_4_proper_image_usage",
       "community": 9,
       "norm_label": "4. proper image usage"
@@ -6892,7 +7243,7 @@
       "label": "code:jsx (<img src=\"/image.jpg\" alt=\"image\" />)",
       "file_type": "document",
       "source_file": "FOLLOW_PATTERNS.md",
-      "source_location": "L921",
+      "source_location": "L929",
       "id": "ken_follow_patterns_codeblock_47",
       "community": 9,
       "norm_label": "code:jsx (<img src=\"/image.jpg\" alt=\"image\" />)"
@@ -6901,7 +7252,7 @@
       "label": "code:jsx (<Image)",
       "file_type": "document",
       "source_file": "FOLLOW_PATTERNS.md",
-      "source_location": "L927",
+      "source_location": "L935",
       "id": "ken_follow_patterns_codeblock_48",
       "community": 9,
       "norm_label": "code:jsx (<image)"
@@ -6910,7 +7261,7 @@
       "label": "5. Animation Performance",
       "file_type": "document",
       "source_file": "FOLLOW_PATTERNS.md",
-      "source_location": "L937",
+      "source_location": "L945",
       "id": "ken_follow_patterns_5_animation_performance",
       "community": 9,
       "norm_label": "5. animation performance"
@@ -6919,7 +7270,7 @@
       "label": "code:jsx (<motion.div)",
       "file_type": "document",
       "source_file": "FOLLOW_PATTERNS.md",
-      "source_location": "L941",
+      "source_location": "L949",
       "id": "ken_follow_patterns_codeblock_49",
       "community": 9,
       "norm_label": "code:jsx (<motion.div)"
@@ -6928,7 +7279,7 @@
       "label": "code:jsx (<motion.div)",
       "file_type": "document",
       "source_file": "FOLLOW_PATTERNS.md",
-      "source_location": "L950",
+      "source_location": "L958",
       "id": "ken_follow_patterns_codeblock_50",
       "community": 9,
       "norm_label": "code:jsx (<motion.div)"
@@ -6937,7 +7288,7 @@
       "label": "6. Accessibility First",
       "file_type": "document",
       "source_file": "FOLLOW_PATTERNS.md",
-      "source_location": "L958",
+      "source_location": "L966",
       "id": "ken_follow_patterns_6_accessibility_first",
       "community": 9,
       "norm_label": "6. accessibility first"
@@ -6946,7 +7297,7 @@
       "label": "code:jsx (<IconName />)",
       "file_type": "document",
       "source_file": "FOLLOW_PATTERNS.md",
-      "source_location": "L962",
+      "source_location": "L970",
       "id": "ken_follow_patterns_codeblock_51",
       "community": 9,
       "norm_label": "code:jsx (<iconname />)"
@@ -6955,7 +7306,7 @@
       "label": "code:jsx (<IconName aria-hidden=\"true\" />)",
       "file_type": "document",
       "source_file": "FOLLOW_PATTERNS.md",
-      "source_location": "L969",
+      "source_location": "L977",
       "id": "ken_follow_patterns_codeblock_52",
       "community": 9,
       "norm_label": "code:jsx (<iconname aria-hidden=\"true\" />)"
@@ -6964,7 +7315,7 @@
       "label": "7. Error Handling",
       "file_type": "document",
       "source_file": "FOLLOW_PATTERNS.md",
-      "source_location": "L978",
+      "source_location": "L986",
       "id": "ken_follow_patterns_7_error_handling",
       "community": 9,
       "norm_label": "7. error handling"
@@ -6973,7 +7324,7 @@
       "label": "code:jsx (// Always handle errors gracefully)",
       "file_type": "document",
       "source_file": "FOLLOW_PATTERNS.md",
-      "source_location": "L980",
+      "source_location": "L988",
       "id": "ken_follow_patterns_codeblock_53",
       "community": 9,
       "norm_label": "code:jsx (// always handle errors gracefully)"
@@ -6982,7 +7333,7 @@
       "label": "8. Form Validation",
       "file_type": "document",
       "source_file": "FOLLOW_PATTERNS.md",
-      "source_location": "L999",
+      "source_location": "L1007",
       "id": "ken_follow_patterns_8_form_validation",
       "community": 9,
       "norm_label": "8. form validation"
@@ -6991,7 +7342,7 @@
       "label": "code:jsx (// Client-side validation)",
       "file_type": "document",
       "source_file": "FOLLOW_PATTERNS.md",
-      "source_location": "L1001",
+      "source_location": "L1009",
       "id": "ken_follow_patterns_codeblock_54",
       "community": 9,
       "norm_label": "code:jsx (// client-side validation)"
@@ -7000,7 +7351,7 @@
       "label": "Quick Reference Checklist",
       "file_type": "document",
       "source_file": "FOLLOW_PATTERNS.md",
-      "source_location": "L1018",
+      "source_location": "L1026",
       "id": "ken_follow_patterns_quick_reference_checklist",
       "community": 68,
       "norm_label": "quick reference checklist"
@@ -7009,7 +7360,7 @@
       "label": "Resources",
       "file_type": "document",
       "source_file": "FOLLOW_PATTERNS.md",
-      "source_location": "L1039",
+      "source_location": "L1047",
       "id": "ken_follow_patterns_resources",
       "community": 68,
       "norm_label": "resources"
@@ -7789,19 +8140,28 @@
       "norm_label": "service catalog"
     },
     {
-      "label": "Navbar services viewer (drill-down drawer)",
+      "label": "Navbar services viewer (nested accordion)",
       "file_type": "document",
       "source_file": "docs/PUBLIC_API_INTEGRATION.md",
       "source_location": "L55",
-      "id": "docs_public_api_integration_navbar_services_viewer_drill_down_drawer",
+      "id": "docs_public_api_integration_navbar_services_viewer_nested_accordion",
       "community": 90,
-      "norm_label": "navbar services viewer (drill-down drawer)"
+      "norm_label": "navbar services viewer (nested accordion)"
+    },
+    {
+      "label": "Navbar contact sheet",
+      "file_type": "document",
+      "source_file": "docs/PUBLIC_API_INTEGRATION.md",
+      "source_location": "L78",
+      "id": "docs_public_api_integration_navbar_contact_sheet",
+      "community": 90,
+      "norm_label": "navbar contact sheet"
     },
     {
       "label": "Tree rules",
       "file_type": "document",
       "source_file": "docs/PUBLIC_API_INTEGRATION.md",
-      "source_location": "L72",
+      "source_location": "L85",
       "id": "docs_public_api_integration_tree_rules",
       "community": 90,
       "norm_label": "tree rules"
@@ -7810,7 +8170,7 @@
       "label": "Pricing (render order)",
       "file_type": "document",
       "source_file": "docs/PUBLIC_API_INTEGRATION.md",
-      "source_location": "L79",
+      "source_location": "L92",
       "id": "docs_public_api_integration_pricing_render_order",
       "community": 90,
       "norm_label": "pricing (render order)"
@@ -7819,7 +8179,7 @@
       "label": "Cloudinary media",
       "file_type": "document",
       "source_file": "docs/PUBLIC_API_INTEGRATION.md",
-      "source_location": "L100",
+      "source_location": "L113",
       "id": "docs_public_api_integration_cloudinary_media",
       "community": 90,
       "norm_label": "cloudinary media"
@@ -7828,7 +8188,7 @@
       "label": "History",
       "file_type": "document",
       "source_file": "docs/PUBLIC_API_INTEGRATION.md",
-      "source_location": "L118",
+      "source_location": "L131",
       "id": "docs_public_api_integration_history",
       "community": 90,
       "norm_label": "history"
@@ -8163,7 +8523,7 @@
       "source_file": "oldMD/IMPROVEMENT_PLAN.md",
       "source_location": "L233",
       "id": "oldmd_improvement_plan_mobile_specific_issues",
-      "community": 13,
+      "community": 110,
       "norm_label": "mobile-specific issues"
     },
     {
@@ -8172,7 +8532,7 @@
       "source_file": "oldMD/IMPROVEMENT_PLAN.md",
       "source_location": "L235",
       "id": "oldmd_improvement_plan_hero_section",
-      "community": 13,
+      "community": 110,
       "norm_label": "hero section"
     },
     {
@@ -8181,7 +8541,7 @@
       "source_file": "oldMD/IMPROVEMENT_PLAN.md",
       "source_location": "L242",
       "id": "oldmd_improvement_plan_navbar",
-      "community": 13,
+      "community": 110,
       "norm_label": "navbar"
     },
     {
@@ -8190,7 +8550,7 @@
       "source_file": "oldMD/IMPROVEMENT_PLAN.md",
       "source_location": "L248",
       "id": "oldmd_improvement_plan_portfolio_components",
-      "community": 13,
+      "community": 110,
       "norm_label": "portfolio components"
     },
     {
@@ -8199,7 +8559,7 @@
       "source_file": "oldMD/IMPROVEMENT_PLAN.md",
       "source_location": "L256",
       "id": "oldmd_improvement_plan_contact_page",
-      "community": 13,
+      "community": 110,
       "norm_label": "contact page"
     },
     {
@@ -8208,7 +8568,7 @@
       "source_file": "oldMD/IMPROVEMENT_PLAN.md",
       "source_location": "L262",
       "id": "oldmd_improvement_plan_footer",
-      "community": 13,
+      "community": 110,
       "norm_label": "footer"
     },
     {
@@ -8217,7 +8577,7 @@
       "source_file": "oldMD/IMPROVEMENT_PLAN.md",
       "source_location": "L268",
       "id": "oldmd_improvement_plan_gallery_page",
-      "community": 13,
+      "community": 110,
       "norm_label": "gallery page"
     },
     {
@@ -8856,7 +9216,7 @@
       "source_file": "oldMD/IMPROVEMENT_PLAN.md",
       "source_location": "L1177",
       "id": "oldmd_improvement_plan_mobile_responsiveness_priority_high",
-      "community": 69,
+      "community": 12,
       "norm_label": "mobile responsiveness (priority: high)"
     },
     {
@@ -8865,7 +9225,7 @@
       "source_file": "oldMD/IMPROVEMENT_PLAN.md",
       "source_location": "L1179",
       "id": "oldmd_improvement_plan_hero_section_completed",
-      "community": 69,
+      "community": 12,
       "norm_label": "hero section \u2705 **completed**"
     },
     {
@@ -8874,7 +9234,7 @@
       "source_file": "oldMD/IMPROVEMENT_PLAN.md",
       "source_location": "L1187",
       "id": "oldmd_improvement_plan_navbar_completed",
-      "community": 69,
+      "community": 12,
       "norm_label": "navbar \u2705 **completed**"
     },
     {
@@ -8883,7 +9243,7 @@
       "source_file": "oldMD/IMPROVEMENT_PLAN.md",
       "source_location": "L1194",
       "id": "oldmd_improvement_plan_portfolio_components_1194",
-      "community": 69,
+      "community": 12,
       "norm_label": "portfolio components"
     },
     {
@@ -8892,7 +9252,7 @@
       "source_file": "oldMD/IMPROVEMENT_PLAN.md",
       "source_location": "L1229",
       "id": "oldmd_improvement_plan_contact_page_1229",
-      "community": 69,
+      "community": 12,
       "norm_label": "contact page"
     },
     {
@@ -8901,7 +9261,7 @@
       "source_file": "oldMD/IMPROVEMENT_PLAN.md",
       "source_location": "L1236",
       "id": "oldmd_improvement_plan_footer_1236",
-      "community": 69,
+      "community": 12,
       "norm_label": "footer"
     },
     {
@@ -8910,7 +9270,7 @@
       "source_file": "oldMD/IMPROVEMENT_PLAN.md",
       "source_location": "L1243",
       "id": "oldmd_improvement_plan_gallery_page_1243",
-      "community": 69,
+      "community": 12,
       "norm_label": "gallery page"
     },
     {
@@ -9805,6 +10165,60 @@
       "norm_label": "assistant_launcher_tips"
     },
     {
+      "label": "galleryItemVariants",
+      "file_type": "code",
+      "source_file": "src/components/hero/Hero.modern.jsx",
+      "source_location": "L59",
+      "community": 33,
+      "norm_label": "galleryitemvariants",
+      "id": "hero_hero_modern_galleryitemvariants"
+    },
+    {
+      "label": "imageReveal",
+      "file_type": "code",
+      "source_file": "src/components/hero/Hero.modern.jsx",
+      "source_location": "L69",
+      "community": 33,
+      "norm_label": "imagereveal",
+      "id": "hero_hero_modern_imagereveal"
+    },
+    {
+      "label": "bgReveal",
+      "file_type": "code",
+      "source_file": "src/components/hero/Hero.modern.jsx",
+      "source_location": "L79",
+      "community": 33,
+      "norm_label": "bgreveal",
+      "id": "hero_hero_modern_bgreveal"
+    },
+    {
+      "label": "captionReveal",
+      "file_type": "code",
+      "source_file": "src/components/hero/Hero.modern.jsx",
+      "source_location": "L88",
+      "community": 33,
+      "norm_label": "captionreveal",
+      "id": "hero_hero_modern_captionreveal"
+    },
+    {
+      "label": "galleryViewport",
+      "file_type": "code",
+      "source_file": "src/components/hero/Hero.modern.jsx",
+      "source_location": "L97",
+      "community": 33,
+      "norm_label": "galleryviewport",
+      "id": "hero_hero_modern_galleryviewport"
+    },
+    {
+      "label": "Navbar services viewer (drill-down drawer)",
+      "file_type": "document",
+      "source_file": "docs/PUBLIC_API_INTEGRATION.md",
+      "source_location": "L55",
+      "community": 90,
+      "norm_label": "navbar services viewer (drill-down drawer)",
+      "id": "docs_public_api_integration_navbar_services_viewer_drill_down_drawer"
+    },
+    {
       "label": "Ken AI Assistant (Text + Voice)",
       "file_type": "document",
       "source_file": "docs/ASSISTANT.md",
@@ -9854,7 +10268,7 @@
       "file_type": "code",
       "source_file": "src/config/constants.js",
       "source_location": "L176",
-      "community": 4,
+      "community": 66,
       "norm_label": "getspecialperiodlogo()",
       "id": "config_constants_getspecialperiodlogo"
     },
@@ -10594,12 +11008,82 @@
     {
       "relation": "contains",
       "confidence": "EXTRACTED",
+      "source_file": "e2e/services-nav-accordion.spec.js",
+      "source_location": "L8",
+      "weight": 1.0,
+      "source": "e2e_services_nav_accordion_spec_js",
+      "target": "e2e_services_nav_accordion_spec_accept",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "e2e/services-nav-accordion.spec.js",
+      "source_location": "L17",
+      "weight": 1.0,
+      "source": "e2e_services_nav_accordion_spec_js",
+      "target": "e2e_services_nav_accordion_spec_categories",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "e2e/services-nav-accordion.spec.js",
+      "source_location": "L13",
+      "weight": 1.0,
+      "source": "e2e_services_nav_accordion_spec_js",
+      "target": "e2e_services_nav_accordion_spec_dialog",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "e2e/services-nav-accordion.spec.js",
+      "source_location": "L20",
+      "weight": 1.0,
+      "source": "e2e_services_nav_accordion_spec_js",
+      "target": "e2e_services_nav_accordion_spec_firstcategory",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "e2e/services-nav-accordion.spec.js",
+      "source_location": "L33",
+      "weight": 1.0,
+      "source": "e2e_services_nav_accordion_spec_js",
+      "target": "e2e_services_nav_accordion_spec_firstsub",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "e2e/services-nav-accordion.spec.js",
+      "source_location": "L28",
+      "weight": 1.0,
+      "source": "e2e_services_nav_accordion_spec_js",
+      "target": "e2e_services_nav_accordion_spec_nested",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "e2e/services-nav-accordion.spec.js",
+      "source_location": "L31",
+      "weight": 1.0,
+      "source": "e2e_services_nav_accordion_spec_js",
+      "target": "e2e_services_nav_accordion_spec_sublist",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
       "source_file": "e2e/services-search-dedupe.spec.js",
       "source_location": "L16",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "e2e_services_search_dedupe_spec_js",
-      "target": "e2e_services_search_dedupe_spec_accept",
-      "confidence_score": 1.0
+      "target": "e2e_services_search_dedupe_spec_accept"
     },
     {
       "relation": "contains",
@@ -10607,9 +11091,9 @@
       "source_file": "e2e/services-search-dedupe.spec.js",
       "source_location": "L13",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "e2e_services_search_dedupe_spec_js",
-      "target": "e2e_services_search_dedupe_spec_duplicate",
-      "confidence_score": 1.0
+      "target": "e2e_services_search_dedupe_spec_duplicate"
     },
     {
       "relation": "contains",
@@ -10617,9 +11101,9 @@
       "source_file": "e2e/services-search-dedupe.spec.js",
       "source_location": "L6",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "e2e_services_search_dedupe_spec_js",
-      "target": "e2e_services_search_dedupe_spec_pageerrors",
-      "confidence_score": 1.0
+      "target": "e2e_services_search_dedupe_spec_pageerrors"
     },
     {
       "relation": "contains",
@@ -10627,9 +11111,9 @@
       "source_file": "e2e/services-search-dedupe.spec.js",
       "source_location": "L10",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "e2e_services_search_dedupe_spec_js",
-      "target": "e2e_services_search_dedupe_spec_search",
-      "confidence_score": 1.0
+      "target": "e2e_services_search_dedupe_spec_search"
     },
     {
       "relation": "contains",
@@ -11213,6 +11697,17 @@
       "confidence_score": 1.0,
       "source": "src_components_loading_navbar_servicesmegamenu_servicesmegamenu_jsx",
       "target": "image"
+    },
+    {
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "src/components/mobileNav/MobileNavBottom.jsx",
+      "source_location": "L6",
+      "weight": 1.0,
+      "source": "src_components_mobilenav_mobilenavbottom_jsx",
+      "target": "image",
+      "confidence_score": 1.0
     },
     {
       "relation": "imports_from",
@@ -13278,6 +13773,27 @@
     {
       "relation": "contains",
       "confidence": "EXTRACTED",
+      "source_file": "src/components/AdsAttributionCapture.jsx",
+      "source_location": "L10",
+      "weight": 1.0,
+      "source": "src_components_adsattributioncapture_jsx",
+      "target": "components_adsattributioncapture_adsattributioncapture",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "src/components/ClientLayout.jsx",
+      "source_location": "L4",
+      "weight": 1.0,
+      "source": "src_components_clientlayout_jsx",
+      "target": "src_components_adsattributioncapture_jsx",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
       "source_file": "src/components/ClientLayout.jsx",
       "source_location": "L5",
       "weight": 1,
@@ -13499,6 +14015,17 @@
       "weight": 1.0,
       "source": "assistantwidget_assistantwidget_assistantwidget",
       "target": "data_assistantui_getassistantlaunchertips"
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "INFERRED",
+      "confidence_score": 0.8,
+      "source_file": "src/components/AssistantWidget/AssistantWidget.jsx",
+      "source_location": "L30",
+      "weight": 1.0,
+      "source": "assistantwidget_assistantwidget_assistantwidget",
+      "target": "hero_useafterherovideo_useafterherovideo"
     },
     {
       "relation": "contains",
@@ -13760,6 +14287,17 @@
       "target": "draggablewhatsappbutton_draggablewhatsappbutton_readsavedposition"
     },
     {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "INFERRED",
+      "confidence_score": 0.8,
+      "source_file": "src/components/DraggableWhatsAppButton/DraggableWhatsAppButton.jsx",
+      "source_location": "L69",
+      "weight": 1.0,
+      "source": "draggablewhatsappbutton_draggablewhatsappbutton_draggablewhatsappbutton",
+      "target": "hero_useafterherovideo_useafterherovideo"
+    },
+    {
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "src/components/drinksMenu/DrinksMenu.jsx",
@@ -13953,11 +14491,31 @@
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "src/components/hero/Hero.modern.jsx",
+      "source_location": "L59",
+      "weight": 1.0,
+      "source": "src_components_hero_hero_modern_jsx",
+      "target": "hero_hero_modern_rise",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "src/components/hero/Hero.modern.jsx",
       "source_location": "L19",
       "weight": 1.0,
       "confidence_score": 1.0,
       "source": "src_components_hero_hero_modern_jsx",
       "target": "hero_hero_modern_slides"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "src/components/hero/useAfterHeroVideo.js",
+      "source_location": "L6",
+      "weight": 1.0,
+      "source": "src_components_hero_useafterherovideo_js",
+      "target": "hero_useafterherovideo_useafterherovideo",
+      "confidence_score": 1.0
     },
     {
       "relation": "contains",
@@ -14138,6 +14696,66 @@
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "src/components/loading/navbar/ServicesMegaMenu/ServicesMegaMenu.jsx",
+      "source_location": "L25",
+      "weight": 1.0,
+      "source": "src_components_loading_navbar_servicesmegamenu_servicesmegamenu_jsx",
+      "target": "servicesmegamenu_servicesmegamenu_accordiongroups",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "src/components/loading/navbar/ServicesMegaMenu/ServicesMegaMenu.jsx",
+      "source_location": "L229",
+      "weight": 1.0,
+      "source": "src_components_loading_navbar_servicesmegamenu_servicesmegamenu_jsx",
+      "target": "servicesmegamenu_servicesmegamenu_catalogaccordion",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "src/components/loading/navbar/ServicesMegaMenu/ServicesMegaMenu.jsx",
+      "source_location": "L386",
+      "weight": 1.0,
+      "source": "src_components_loading_navbar_servicesmegamenu_servicesmegamenu_jsx",
+      "target": "servicesmegamenu_servicesmegamenu_catalogstatus",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "src/components/loading/navbar/ServicesMegaMenu/ServicesMegaMenu.jsx",
+      "source_location": "L307",
+      "weight": 1.0,
+      "source": "src_components_loading_navbar_servicesmegamenu_servicesmegamenu_jsx",
+      "target": "servicesmegamenu_servicesmegamenu_desktopmegapanel",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "src/components/loading/navbar/ServicesMegaMenu/ServicesMegaMenu.jsx",
+      "source_location": "L20",
+      "weight": 1.0,
+      "source": "src_components_loading_navbar_servicesmegamenu_servicesmegamenu_jsx",
+      "target": "servicesmegamenu_servicesmegamenu_directgroupid",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "src/components/loading/navbar/ServicesMegaMenu/ServicesMegaMenu.jsx",
+      "source_location": "L164",
+      "weight": 1.0,
+      "source": "src_components_loading_navbar_servicesmegamenu_servicesmegamenu_jsx",
+      "target": "servicesmegamenu_servicesmegamenu_groupaccordionlist",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "src/components/loading/navbar/ServicesMegaMenu/ServicesMegaMenu.jsx",
       "source_location": "L31",
       "weight": 1.0,
       "confidence_score": 1.0,
@@ -14168,6 +14786,26 @@
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "src/components/loading/navbar/ServicesMegaMenu/ServicesMegaMenu.jsx",
+      "source_location": "L111",
+      "weight": 1.0,
+      "source": "src_components_loading_navbar_servicesmegamenu_servicesmegamenu_jsx",
+      "target": "servicesmegamenu_servicesmegamenu_servicelist",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "src/components/loading/navbar/ServicesMegaMenu/ServicesMegaMenu.jsx",
+      "source_location": "L93",
+      "weight": 1.0,
+      "source": "src_components_loading_navbar_servicesmegamenu_servicesmegamenu_jsx",
+      "target": "servicesmegamenu_servicesmegamenu_servicerow",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "src/components/loading/navbar/ServicesMegaMenu/ServicesMegaMenu.jsx",
       "source_location": "L74",
       "weight": 1.0,
       "confidence_score": 1.0,
@@ -14185,6 +14823,27 @@
       "target": "servicesmegamenu_servicesmegamenu_totalcount"
     },
     {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "src/components/loading/navbar/ServicesMegaMenu/ServicesMegaMenu.jsx",
+      "source_location": "L133",
+      "weight": 1.0,
+      "source": "src_components_loading_navbar_servicesmegamenu_servicesmegamenu_jsx",
+      "target": "servicesmegamenu_servicesmegamenu_usepinopenrow",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "source_file": "src/components/loading/navbar/ServicesMegaMenu/ServicesMegaMenu.jsx",
+      "source_location": "L355",
+      "weight": 1.0,
+      "source": "servicesmegamenu_servicesmegamenu_desktopmegapanel",
+      "target": "servicesmegamenu_servicesmegamenu_sectionhasgroups",
+      "confidence_score": 1.0
+    },
+    {
       "relation": "calls",
       "context": "call",
       "confidence": "EXTRACTED",
@@ -14194,6 +14853,39 @@
       "confidence_score": 1.0,
       "source": "servicesmegamenu_servicesmegamenu_servicesmegamenu",
       "target": "servicesmegamenu_servicesmegamenu_sectionhasgroups"
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "source_file": "src/components/loading/navbar/ServicesMegaMenu/ServicesMegaMenu.jsx",
+      "source_location": "L31",
+      "weight": 1.0,
+      "source": "servicesmegamenu_servicesmegamenu_accordiongroups",
+      "target": "servicesmegamenu_servicesmegamenu_directgroupid",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "source_file": "src/components/loading/navbar/ServicesMegaMenu/ServicesMegaMenu.jsx",
+      "source_location": "L171",
+      "weight": 1.0,
+      "source": "servicesmegamenu_servicesmegamenu_groupaccordionlist",
+      "target": "servicesmegamenu_servicesmegamenu_accordiongroups",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "source_file": "src/components/loading/navbar/ServicesMegaMenu/ServicesMegaMenu.jsx",
+      "source_location": "L321",
+      "weight": 1.0,
+      "source": "servicesmegamenu_servicesmegamenu_desktopmegapanel",
+      "target": "servicesmegamenu_servicesmegamenu_totalcount",
+      "confidence_score": 1.0
     },
     {
       "relation": "calls",
@@ -14234,6 +14926,39 @@
       "confidence": "INFERRED",
       "confidence_score": 0.8,
       "source_file": "src/components/loading/navbar/ServicesMegaMenu/ServicesMegaMenu.jsx",
+      "source_location": "L96",
+      "weight": 1.0,
+      "source": "servicesmegamenu_servicesmegamenu_servicerow",
+      "target": "utils_servicecategoryurl_buildservicescategorypath"
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "source_file": "src/components/loading/navbar/ServicesMegaMenu/ServicesMegaMenu.jsx",
+      "source_location": "L239",
+      "weight": 1.0,
+      "source": "servicesmegamenu_servicesmegamenu_catalogaccordion",
+      "target": "servicesmegamenu_servicesmegamenu_usepinopenrow",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "source_file": "src/components/loading/navbar/ServicesMegaMenu/ServicesMegaMenu.jsx",
+      "source_location": "L316",
+      "weight": 1.0,
+      "source": "servicesmegamenu_servicesmegamenu_desktopmegapanel",
+      "target": "servicesmegamenu_servicesmegamenu_usepinopenrow",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "INFERRED",
+      "confidence_score": 0.8,
+      "source_file": "src/components/loading/navbar/ServicesMegaMenu/ServicesMegaMenu.jsx",
       "source_location": "L392",
       "weight": 1.0,
       "source": "servicesmegamenu_servicesmegamenu_servicesmegamenu",
@@ -14265,6 +14990,16 @@
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "src/components/mobileNav/MobileNavBottom.jsx",
+      "source_location": "L35",
+      "weight": 1.0,
+      "source": "src_components_mobilenav_mobilenavbottom_jsx",
+      "target": "mobilenav_mobilenavbottom_branchlabel",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "src/components/mobileNav/MobileNavBottom.jsx",
       "source_location": "L17",
       "weight": 1,
       "confidence_score": 1,
@@ -14282,6 +15017,39 @@
       "target": "mobilenav_mobilenavbottom_mobilenavlinks"
     },
     {
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "src/components/mobileNav/MobileNavBottom.jsx",
+      "source_location": "L25",
+      "weight": 1.0,
+      "source": "src_components_mobilenav_mobilenavbottom_jsx",
+      "target": "mobilenav_usehidenavonscroll_usehidenavonscroll",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "src/components/mobileNav/MobileNavBottom.jsx",
+      "source_location": "L25",
+      "weight": 1.0,
+      "source": "src_components_mobilenav_mobilenavbottom_jsx",
+      "target": "src_components_mobilenav_usehidenavonscroll_js",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "src/components/mobileNav/MobileNavBottom.jsx",
+      "source_location": "L49",
+      "weight": 1.0,
+      "source": "mobilenav_mobilenavbottom_mobilenavbottom",
+      "target": "mobilenav_usehidenavonscroll_usehidenavonscroll"
+    },
+    {
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "src/components/mobileNav/MobileNavTop.jsx",
@@ -14290,6 +15058,28 @@
       "confidence_score": 1,
       "source": "src_components_mobilenav_mobilenavtop_jsx",
       "target": "mobilenav_mobilenavtop_mobilenavtop"
+    },
+    {
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "src/components/mobileNav/MobileNavTop.jsx",
+      "source_location": "L14",
+      "weight": 1.0,
+      "source": "src_components_mobilenav_mobilenavtop_jsx",
+      "target": "mobilenav_usehidenavonscroll_usehidenavonscroll",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "src/components/mobileNav/MobileNavTop.jsx",
+      "source_location": "L14",
+      "weight": 1.0,
+      "source": "src_components_mobilenav_mobilenavtop_jsx",
+      "target": "src_components_mobilenav_usehidenavonscroll_js",
+      "confidence_score": 1.0
     },
     {
       "relation": "calls",
@@ -14301,6 +15091,27 @@
       "weight": 1,
       "source": "mobilenav_mobilenavtop_mobilenavtop",
       "target": "config_constants_getspecialperiodlogo"
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "src/components/mobileNav/MobileNavTop.jsx",
+      "source_location": "L18",
+      "weight": 1.0,
+      "source": "mobilenav_mobilenavtop_mobilenavtop",
+      "target": "mobilenav_usehidenavonscroll_usehidenavonscroll"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "src/components/mobileNav/useHideNavOnScroll.js",
+      "source_location": "L7",
+      "weight": 1.0,
+      "source": "src_components_mobilenav_usehidenavonscroll_js",
+      "target": "mobilenav_usehidenavonscroll_usehidenavonscroll",
+      "confidence_score": 1.0
     },
     {
       "relation": "contains",
@@ -16130,6 +16941,238 @@
     {
       "relation": "contains",
       "confidence": "EXTRACTED",
+      "source_file": "src/lib/adsAttribution.js",
+      "source_location": "L115",
+      "weight": 1.0,
+      "source": "src_lib_adsattribution_js",
+      "target": "lib_adsattribution_buildwhatsappurl",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "src/lib/adsAttribution.js",
+      "source_location": "L13",
+      "weight": 1.0,
+      "source": "src_lib_adsattribution_js",
+      "target": "lib_adsattribution_canusedom",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "src/lib/adsAttribution.js",
+      "source_location": "L58",
+      "weight": 1.0,
+      "source": "src_lib_adsattribution_js",
+      "target": "lib_adsattribution_captureadsattributionfromurl",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "src/lib/adsAttribution.js",
+      "source_location": "L88",
+      "weight": 1.0,
+      "source": "src_lib_adsattribution_js",
+      "target": "lib_adsattribution_getadsattribution",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "src/lib/adsAttribution.js",
+      "source_location": "L93",
+      "weight": 1.0,
+      "source": "src_lib_adsattribution_js",
+      "target": "lib_adsattribution_getattributionref",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "src/lib/adsAttribution.js",
+      "source_location": "L11",
+      "weight": 1.0,
+      "source": "src_lib_adsattribution_js",
+      "target": "lib_adsattribution_param_keys",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "src/lib/adsAttribution.js",
+      "source_location": "L17",
+      "weight": 1.0,
+      "source": "src_lib_adsattribution_js",
+      "target": "lib_adsattribution_readstored",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "src/lib/adsAttribution.js",
+      "source_location": "L124",
+      "weight": 1.0,
+      "source": "src_lib_adsattribution_js",
+      "target": "lib_adsattribution_trackwhatsappclick",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "src/lib/adsAttribution.js",
+      "source_location": "L102",
+      "weight": 1.0,
+      "source": "src_lib_adsattribution_js",
+      "target": "lib_adsattribution_withattributionmessage",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "src/lib/adsAttribution.js",
+      "source_location": "L34",
+      "weight": 1.0,
+      "source": "src_lib_adsattribution_js",
+      "target": "lib_adsattribution_writestored",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "source_file": "src/lib/adsAttribution.js",
+      "source_location": "L59",
+      "weight": 1.0,
+      "source": "lib_adsattribution_captureadsattributionfromurl",
+      "target": "lib_adsattribution_canusedom",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "source_file": "src/lib/adsAttribution.js",
+      "source_location": "L18",
+      "weight": 1.0,
+      "source": "lib_adsattribution_readstored",
+      "target": "lib_adsattribution_canusedom",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "source_file": "src/lib/adsAttribution.js",
+      "source_location": "L125",
+      "weight": 1.0,
+      "source": "lib_adsattribution_trackwhatsappclick",
+      "target": "lib_adsattribution_canusedom",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "source_file": "src/lib/adsAttribution.js",
+      "source_location": "L35",
+      "weight": 1.0,
+      "source": "lib_adsattribution_writestored",
+      "target": "lib_adsattribution_canusedom",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "source_file": "src/lib/adsAttribution.js",
+      "source_location": "L63",
+      "weight": 1.0,
+      "source": "lib_adsattribution_captureadsattributionfromurl",
+      "target": "lib_adsattribution_readstored",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "source_file": "src/lib/adsAttribution.js",
+      "source_location": "L89",
+      "weight": 1.0,
+      "source": "lib_adsattribution_getadsattribution",
+      "target": "lib_adsattribution_readstored",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "source_file": "src/lib/adsAttribution.js",
+      "source_location": "L78",
+      "weight": 1.0,
+      "source": "lib_adsattribution_captureadsattributionfromurl",
+      "target": "lib_adsattribution_writestored",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "source_file": "src/lib/adsAttribution.js",
+      "source_location": "L59",
+      "weight": 1.0,
+      "source": "lib_adsattribution_captureadsattributionfromurl",
+      "target": "lib_adsattribution_getadsattribution",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "source_file": "src/lib/adsAttribution.js",
+      "source_location": "L94",
+      "weight": 1.0,
+      "source": "lib_adsattribution_getattributionref",
+      "target": "lib_adsattribution_getadsattribution",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "source_file": "src/lib/adsAttribution.js",
+      "source_location": "L126",
+      "weight": 1.0,
+      "source": "lib_adsattribution_trackwhatsappclick",
+      "target": "lib_adsattribution_getadsattribution",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "source_file": "src/lib/adsAttribution.js",
+      "source_location": "L103",
+      "weight": 1.0,
+      "source": "lib_adsattribution_withattributionmessage",
+      "target": "lib_adsattribution_getattributionref",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "source_file": "src/lib/adsAttribution.js",
+      "source_location": "L117",
+      "weight": 1.0,
+      "source": "lib_adsattribution_buildwhatsappurl",
+      "target": "lib_adsattribution_withattributionmessage",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
       "source_file": "src/lib/assistant/applyAssistantCleanupBatch.js",
       "source_location": "L14",
       "weight": 1.0,
@@ -17711,9 +18754,9 @@
       "source_file": "src/lib/business/serviceSearch.test.js",
       "source_location": "L2",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "src_lib_business_servicesearch_test_js",
-      "target": "src_lib_business_servicecatalog_js",
-      "confidence_score": 1.0
+      "target": "src_lib_business_servicecatalog_js"
     },
     {
       "relation": "calls",
@@ -17744,9 +18787,9 @@
       "source_file": "src/lib/business/serviceSearch.test.js",
       "source_location": "L2",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "src_lib_business_servicesearch_test_js",
-      "target": "business_servicecatalog_buildservicesections",
-      "confidence_score": 1.0
+      "target": "business_servicecatalog_buildservicesections"
     },
     {
       "relation": "contains",
@@ -17785,9 +18828,9 @@
       "source_file": "src/lib/business/serviceSearch.test.js",
       "source_location": "L3",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "src_lib_business_servicesearch_test_js",
-      "target": "src_lib_business_servicesearch_js",
-      "confidence_score": 1.0
+      "target": "src_lib_business_servicesearch_js"
     },
     {
       "relation": "imports",
@@ -17796,9 +18839,9 @@
       "source_file": "src/lib/business/serviceSearch.test.js",
       "source_location": "L3",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "src_lib_business_servicesearch_test_js",
-      "target": "business_servicesearch_buildservicesearchcatalog",
-      "confidence_score": 1.0
+      "target": "business_servicesearch_buildservicesearchcatalog"
     },
     {
       "relation": "imports",
@@ -17807,9 +18850,9 @@
       "source_file": "src/lib/business/serviceSearch.test.js",
       "source_location": "L3",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "src_lib_business_servicesearch_test_js",
-      "target": "business_servicesearch_searchservices",
-      "confidence_score": 1.0
+      "target": "business_servicesearch_searchservices"
     },
     {
       "relation": "contains",
@@ -17817,9 +18860,9 @@
       "source_file": "src/lib/business/serviceSearch.test.js",
       "source_location": "L102",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "src_lib_business_servicesearch_test_js",
-      "target": "business_servicesearch_test_appearances",
-      "confidence_score": 1.0
+      "target": "business_servicesearch_test_appearances"
     },
     {
       "relation": "contains",
@@ -17827,9 +18870,9 @@
       "source_file": "src/lib/business/serviceSearch.test.js",
       "source_location": "L108",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "src_lib_business_servicesearch_test_js",
-      "target": "business_servicesearch_test_catalog",
-      "confidence_score": 1.0
+      "target": "business_servicesearch_test_catalog"
     },
     {
       "relation": "contains",
@@ -17837,9 +18880,9 @@
       "source_file": "src/lib/business/serviceSearch.test.js",
       "source_location": "L35",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "src_lib_business_servicesearch_test_js",
-      "target": "business_servicesearch_test_hits",
-      "confidence_score": 1.0
+      "target": "business_servicesearch_test_hits"
     },
     {
       "relation": "contains",
@@ -17847,9 +18890,9 @@
       "source_file": "src/lib/business/serviceSearch.test.js",
       "source_location": "L101",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "src_lib_business_servicesearch_test_js",
-      "target": "business_servicesearch_test_sections",
-      "confidence_score": 1.0
+      "target": "business_servicesearch_test_sections"
     },
     {
       "relation": "contains",
@@ -17857,9 +18900,9 @@
       "source_file": "src/lib/business/serviceSearch.test.js",
       "source_location": "L69",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "src_lib_business_servicesearch_test_js",
-      "target": "business_servicesearch_test_services",
-      "confidence_score": 1.0
+      "target": "business_servicesearch_test_services"
     },
     {
       "relation": "contains",
@@ -17867,9 +18910,9 @@
       "source_file": "src/lib/business/serviceSearch.test.js",
       "source_location": "L8",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "src_lib_business_servicesearch_test_js",
-      "target": "business_servicesearch_test_shared_item",
-      "confidence_score": 1.0
+      "target": "business_servicesearch_test_shared_item"
     },
     {
       "relation": "contains",
@@ -18230,6 +19273,99 @@
       "confidence_score": 1.0,
       "source": "utils_plaympegstream_plaympegresponse",
       "target": "utils_plaympegstream_playwithmediasource"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "src/utils/scrollChildToContainerTop.js",
+      "source_location": "L24",
+      "weight": 1.0,
+      "source": "src_utils_scrollchildtocontainertop_js",
+      "target": "utils_scrollchildtocontainertop_easeoutcubic",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "src/utils/scrollChildToContainerTop.js",
+      "source_location": "L16",
+      "weight": 1.0,
+      "source": "src_utils_scrollchildtocontainertop_js",
+      "target": "utils_scrollchildtocontainertop_getscrolltoptoalign",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "src/utils/scrollChildToContainerTop.js",
+      "source_location": "L35",
+      "weight": 1.0,
+      "source": "src_utils_scrollchildtocontainertop_js",
+      "target": "utils_scrollchildtocontainertop_scrollchildtocontainertop",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "src/utils/scrollChildToContainerTop.test.js",
+      "source_location": "L2",
+      "weight": 1.0,
+      "source": "src_utils_scrollchildtocontainertop_test_js",
+      "target": "src_utils_scrollchildtocontainertop_js",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "src/utils/scrollChildToContainerTop.test.js",
+      "source_location": "L2",
+      "weight": 1.0,
+      "source": "src_utils_scrollchildtocontainertop_test_js",
+      "target": "utils_scrollchildtocontainertop_getscrolltoptoalign",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "source_file": "src/utils/scrollChildToContainerTop.js",
+      "source_location": "L46",
+      "weight": 1.0,
+      "source": "utils_scrollchildtocontainertop_scrollchildtocontainertop",
+      "target": "utils_scrollchildtocontainertop_getscrolltoptoalign",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "src/utils/scrollChildToContainerTop.test.js",
+      "source_location": "L28",
+      "weight": 1.0,
+      "source": "src_utils_scrollchildtocontainertop_test_js",
+      "target": "utils_scrollchildtocontainertop_test_child",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "src/utils/scrollChildToContainerTop.test.js",
+      "source_location": "L27",
+      "weight": 1.0,
+      "source": "src_utils_scrollchildtocontainertop_test_js",
+      "target": "utils_scrollchildtocontainertop_test_container",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "src/utils/scrollChildToContainerTop.test.js",
+      "source_location": "L4",
+      "weight": 1.0,
+      "source": "src_utils_scrollchildtocontainertop_test_js",
+      "target": "utils_scrollchildtocontainertop_test_fakebox",
+      "confidence_score": 1.0
     },
     {
       "relation": "contains",
@@ -20757,11 +21893,31 @@
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "docs/PUBLIC_API_INTEGRATION.md",
+      "source_location": "L78",
+      "weight": 1.0,
+      "source": "docs_public_api_integration_service_catalog",
+      "target": "docs_public_api_integration_navbar_contact_sheet",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "docs/PUBLIC_API_INTEGRATION.md",
       "source_location": "L51",
       "weight": 1.0,
       "confidence_score": 1.0,
       "source": "docs_public_api_integration_service_catalog",
       "target": "docs_public_api_integration_navbar_services_viewer_drill_down_drawer"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "docs/PUBLIC_API_INTEGRATION.md",
+      "source_location": "L55",
+      "weight": 1.0,
+      "source": "docs_public_api_integration_service_catalog",
+      "target": "docs_public_api_integration_navbar_services_viewer_nested_accordion",
+      "confidence_score": 1.0
     },
     {
       "relation": "contains",
@@ -22925,5 +24081,5 @@
     }
   ],
   "hyperedges": [],
-  "built_at_commit": "cb94b9aa14c603502bb6abfd51d4c159a2d3e40b"
+  "built_at_commit": "0edc562cb028d7f2c3bdaf84512d31260cfc31b5"
 }

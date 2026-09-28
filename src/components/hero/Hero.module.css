@@ -174,7 +174,7 @@
 
 .mainTitle {
   font-size: var(--font-size-4xl);
-  font-weight: var(--font-weight-bold);
+  font-weight: var(--font-weight-normal);
   color: var(--main-title-color);
   line-height: var(--line-height-tight);
 }

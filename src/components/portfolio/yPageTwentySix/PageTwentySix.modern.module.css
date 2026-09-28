@@ -38,6 +38,7 @@
 }
 
 .titleTop {
+  font-family: var(--font-secondary);
   font-size: clamp(2rem, 4vw, 3rem);
   font-weight: 300;
   color: var(--color-text-primary);
@@ -45,8 +46,9 @@
 }
 
 .titleBottom {
+  font-family: var(--font-secondary);
   font-size: clamp(1.75rem, 3.5vw, 2.5rem);
-  font-weight: 700;
+  font-weight: var(--font-weight-normal);
   font-style: italic;
   color: var(--color-secondary);
   margin-top: -0.25rem;

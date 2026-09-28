@@ -10,7 +10,7 @@
   max-width: 1400px;
   margin: 0 auto;
   padding: var(--spacing-8) var(--spacing-6);
-  padding-top: calc(5rem + var(--spacing-8)); /* Account for navbar height */
+  padding-top: clamp(0.382rem, 1vw, 0.618rem);
   min-height: calc(100vh - 10rem);
   overflow-x: hidden;
   background: var(--color-bg-primary);
@@ -48,101 +48,43 @@
   position: relative;
   z-index: 1;
   text-align: center;
-  margin-bottom: var(--spacing-16);
-  padding: var(--spacing-8) 0;
+  margin-bottom: 1.618rem;
+  padding: 0;
 }
 
-/* Badge */
-.headerBadge {
-  display: inline-flex;
-  align-items: center;
-  gap: var(--spacing-2);
-  padding: var(--spacing-2) var(--spacing-5);
-  background: var(--glass-white-light);
-  backdrop-filter: blur(var(--glass-blur-md));
-  -webkit-backdrop-filter: blur(var(--glass-blur-md));
-  border: 1px solid var(--glass-border-light);
-  border-radius: var(--radius-full);
-  margin-bottom: var(--spacing-6);
-  box-shadow: 0 4px 12px var(--overlay-black-05);
-}
-
-.badgeIcon {
-  color: var(--color-secondary);
-  flex-shrink: 0;
-}
-
-.badgeText {
-  font-size: var(--font-size-sm);
-  font-weight: var(--font-weight-semibold);
-  color: var(--color-text-primary);
-  letter-spacing: 0.05em;
-  text-transform: uppercase;
-}
-
-/* Title - Modern 2025 Design */
 .title {
   display: flex;
   flex-direction: column;
   align-items: center;
   gap: 0;
-  margin: 0 0 var(--spacing-6) 0;
-  line-height: 0.9;
-  letter-spacing: -0.04em;
+  margin: 0 0 0.618rem;
+  line-height: 1.128;
+  letter-spacing: -0.02em;
+}
+
+.titleLine1,
+.titleLine2 {
+  font-size: clamp(2.058rem, 4vw, 2.618rem);
+  font-weight: var(--font-weight-normal);
+  display: block;
 }
 
 .titleLine1 {
-  font-size: clamp(3.5rem, 10vw, 7rem);
-  font-weight: 800;
   color: var(--color-text-primary);
-  display: block;
-  margin-bottom: -0.05em;
 }
 
 .titleLine2 {
-  font-size: clamp(3.5rem, 10vw, 7rem);
-  font-weight: 800;
-  background: linear-gradient(
-    135deg,
-    var(--color-secondary) 0%,
-    var(--color-secondary-light) 50%,
-    var(--color-secondary-dark) 100%
-  );
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  background-clip: text;
-  display: block;
-  position: relative;
+  color: var(--color-secondary);
 }
 
-.titleLine2::after {
-  content: "";
-  position: absolute;
-  bottom: 0.1em;
-  left: 0;
-  right: 0;
-  height: 0.08em;
-  background: linear-gradient(
-    90deg,
-    transparent 0%,
-    var(--color-secondary) 20%,
-    var(--color-secondary-light) 50%,
-    var(--color-secondary) 80%,
-    transparent 100%
-  );
-  opacity: 0.3;
-  border-radius: var(--radius-full);
-}
-
-/* Subtitle - Modern Typography */
 .subtitle {
-  font-size: clamp(1.125rem, 2.5vw, 1.375rem);
+  font-size: 0.886rem;
   color: var(--color-text-secondary);
   font-weight: var(--font-weight-normal);
-  max-width: 700px;
+  max-width: 36rem;
   margin: 0 auto;
-  line-height: 1.7;
-  letter-spacing: -0.01em;
+  line-height: 1.618;
+  letter-spacing: -0.011em;
 }
 
 .subtitleAccent {
@@ -207,8 +149,8 @@
 }
 
 .categoryTitle {
-  font-size: clamp(1.5rem, 4vw, 2rem);
-  font-weight: 800;
+  font-size: 1.128rem;
+  font-weight: var(--font-weight-normal);
   color: var(--color-text-primary);
   margin: 0;
   letter-spacing: -0.02em;
@@ -368,7 +310,7 @@
 .drinkName {
   font-size: var(--font-size-base);
   color: var(--color-text-primary);
-  font-weight: var(--font-weight-semibold);
+  font-weight: var(--font-weight-normal);
   text-align: center;
   margin: 0;
   line-height: 1.4;
@@ -425,11 +367,11 @@
 @media (max-width: 768px) {
   .container {
     padding: var(--spacing-6) var(--spacing-4);
-    padding-top: calc(5rem + var(--spacing-6));
+    padding-top: 0.5rem;
   }
 
   .header {
-    margin-bottom: var(--spacing-8);
+    margin-bottom: 1.618rem;
   }
 
   .categoriesGrid {
@@ -495,11 +437,16 @@
 @media (max-width: 480px) {
   .container {
     padding: var(--spacing-4) var(--spacing-3);
-    padding-top: calc(5rem + var(--spacing-4));
+    padding-top: 0.382rem;
   }
 
   .header {
-    margin-bottom: var(--spacing-8);
+    margin-bottom: 1rem;
+  }
+
+  .titleLine1,
+  .titleLine2 {
+    font-size: 2.058rem;
   }
 
   .categoriesGrid {

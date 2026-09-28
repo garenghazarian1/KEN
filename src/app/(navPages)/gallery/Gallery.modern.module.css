@@ -137,7 +137,7 @@
 
 .title {
   font-size: clamp(3rem, 10vw, 6rem);
-  font-weight: var(--font-weight-bold);
+  font-weight: var(--font-weight-normal);
   line-height: var(--line-height-tight);
   margin: 0;
   letter-spacing: -0.03em;
@@ -506,7 +506,7 @@
 
 .sectionTitle {
   font-size: clamp(var(--font-size-2xl), 5vw, var(--font-size-4xl));
-  font-weight: var(--font-weight-bold);
+  font-weight: var(--font-weight-normal);
   color: var(--color-text-primary);
   margin: 0;
   line-height: var(--line-height-tight);
@@ -633,7 +633,7 @@
 
 .lightboxInfoTitle {
   font-size: clamp(var(--font-size-2xl), 4vw, var(--font-size-4xl));
-  font-weight: var(--font-weight-bold);
+  font-weight: var(--font-weight-normal);
   margin: 0 0 var(--spacing-2);
   color: var(--color-text-inverse);
 }

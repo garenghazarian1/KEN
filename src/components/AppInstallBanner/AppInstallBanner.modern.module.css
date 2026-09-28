@@ -66,7 +66,7 @@
 
 .textContentTitle {
   font-size: var(--font-size-lg);
-  font-weight: var(--font-weight-semibold);
+  font-weight: var(--font-weight-normal);
   color: var(--color-text-hover); /* High contrast dark text - WCAG AAA */
   margin: 0 0 var(--spacing-1) 0;
   line-height: var(--line-height-tight);

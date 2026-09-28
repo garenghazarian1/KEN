@@ -11,7 +11,7 @@
   }
   .header {
     font-size: 48px; 
-    font-weight: bold;
+    font-weight: var(--font-weight-normal);
     color: var(--color-text-heading-dark); 
   }
   .subHeader {

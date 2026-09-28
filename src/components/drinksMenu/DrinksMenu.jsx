@@ -22,57 +22,18 @@ export default function DrinksMenu() {
 
   return (
     <div className={styles.container}>
-      <motion.div
-        className={styles.header}
-        initial={{ opacity: 0, y: 30 }}
-        animate={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.8, ease: "easeOut" }}
-      >
-        <motion.div
-          className={styles.headerBadge}
-          initial={{ opacity: 0, scale: 0.8 }}
-          animate={{ opacity: 1, scale: 1 }}
-          transition={{ duration: 0.6, delay: 0.2, type: "spring" }}
-        >
-          <Sparkles size={16} className={styles.badgeIcon} />
-          <span className={styles.badgeText}>Complimentary</span>
-        </motion.div>
-        <motion.h1
-          className={styles.title}
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8, delay: 0.3 }}
-        >
-          <motion.span
-            className={styles.titleLine1}
-            initial={{ opacity: 0, x: -30 }}
-            animate={{ opacity: 1, x: 0 }}
-            transition={{ duration: 0.8, delay: 0.4 }}
-          >
-            Beverage
-          </motion.span>
-          <motion.span
-            className={styles.titleLine2}
-            initial={{ opacity: 0, x: 30 }}
-            animate={{ opacity: 1, x: 0 }}
-            transition={{ duration: 0.8, delay: 0.5 }}
-          >
-            Menu
-          </motion.span>
-        </motion.h1>
-        <motion.p
-          className={styles.subtitle}
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8, delay: 0.6 }}
-        >
-          Curated selection of premium drinks
-          <br />
+      <header className={styles.header}>
+        <h1 className={styles.title}>
+          <span className={styles.titleLine1}>Beverage</span>
+          <span className={styles.titleLine2}>Menu</span>
+        </h1>
+        <p className={styles.subtitle}>
+          Curated selection of premium drinks,{" "}
           <span className={styles.subtitleAccent}>
             complimentary during your visit
           </span>
-        </motion.p>
-      </motion.div>
+        </p>
+      </header>
 
       {/* Categories Grid */}
       <div className={styles.categoriesGrid}>
@@ -150,8 +111,8 @@ export default function DrinksMenu() {
                             width={300}
                             height={300}
                             className={styles.drinkImage}
-                            priority={drinkIndex < 4}
-                            loading={drinkIndex < 4 ? undefined : "lazy"}
+                            unoptimized
+                            loading="eager"
                           />
                         </motion.div>
                       ) : (

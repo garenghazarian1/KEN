@@ -184,7 +184,7 @@
   flex: 1;
   min-width: 0;
   font-size: var(--font-size-sm);
-  font-weight: var(--font-weight-semibold);
+  font-weight: var(--font-weight-normal);
   color: var(--color-text-primary);
   white-space: nowrap;
   overflow: hidden;
@@ -286,7 +286,7 @@
 .searchResultName {
   margin: 0;
   font-size: var(--font-size-base);
-  font-weight: var(--font-weight-semibold);
+  font-weight: var(--font-weight-normal);
   color: var(--color-text-primary);
   line-height: 1.35;
 }
@@ -494,7 +494,7 @@
   text-overflow: ellipsis;
   color: var(--color-text-primary);
   font-size: clamp(0.6875rem, 0.45rem + 2.75cqi, 1.125rem);
-  font-weight: 700;
+  font-weight: var(--font-weight-normal);
   line-height: 1.25;
   letter-spacing: -0.02em;
 }
@@ -638,7 +638,7 @@
   margin: 0;
   color: var(--color-text-inverse);
   font-size: clamp(1.25rem, 3vw, 1.75rem);
-  font-weight: 700;
+  font-weight: var(--font-weight-normal);
   line-height: 1.15;
   letter-spacing: -0.02em;
   text-shadow: 0 2px 8px var(--overlay-black-50);
@@ -807,7 +807,7 @@
 
 .subcategoryTitleText {
   font-size: var(--font-size-base);
-  font-weight: var(--font-weight-semibold);
+  font-weight: var(--font-weight-normal);
   color: color-mix(
     in srgb,
     var(--color-text-primary) 82%,
@@ -1206,7 +1206,7 @@
   max-width: 100%;
   font-size: clamp(var(--font-size-sm), 0.75rem + 1.5cqi, var(--font-size-xl));
   color: var(--color-text-primary);
-  font-weight: 800;
+  font-weight: var(--font-weight-normal);
   margin: 0;
   line-height: 1.18;
   letter-spacing: -0.035em;
@@ -1344,7 +1344,7 @@
 .whatsappBannerTitle {
   flex: 1;
   font-size: var(--font-size-base, 0.95rem);
-  font-weight: var(--font-weight-semibold, 600);
+  font-weight: var(--font-weight-normal);
   color: var(--color-text-primary);
   line-height: 1;
 }

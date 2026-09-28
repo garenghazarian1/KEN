@@ -40,7 +40,7 @@
 
 .headerAccent {
   display: block;
-  font-weight: 700;
+  font-weight: var(--font-weight-normal);
   font-style: italic;
   color: var(--color-secondary);
   font-size: 0.9em;

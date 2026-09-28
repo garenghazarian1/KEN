@@ -55,7 +55,7 @@
 
 .adTitle {
   font-size: 1.5rem;
-  font-weight: 700;
+  font-weight: var(--font-weight-normal);
   color: var(--color-text-inverse);
   margin-bottom: 0.75rem;
   letter-spacing: -0.02em;
@@ -114,7 +114,7 @@
 
 .titleAccent {
   color: var(--color-secondary);
-  font-weight: 600;
+  font-weight: var(--font-weight-normal);
   font-style: italic;
 }
 
@@ -172,7 +172,7 @@
 
 .serviceHeader {
   font-size: 1.3rem;
-  font-weight: 600;
+  font-weight: var(--font-weight-normal);
   color: var(--color-text-inverse);
   margin-bottom: 0.75rem;
   padding-right: 3rem;

@@ -21,7 +21,7 @@
 
 .nameAccent {
   color: var(--color-secondary);
-  font-weight: 600;
+  font-weight: var(--font-weight-normal);
 }
 
 .content {

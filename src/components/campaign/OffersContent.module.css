@@ -75,7 +75,7 @@
 .bannerTitle {
   margin: 0;
   font-size: var(--font-size-base);
-  font-weight: var(--font-weight-semibold);
+  font-weight: var(--font-weight-normal);
   letter-spacing: 0.04em;
   text-transform: uppercase;
   color: var(--color-text-secondary);
@@ -114,7 +114,7 @@
   margin: 0;
   min-width: 0;
   font-size: var(--font-size-lg);
-  font-weight: var(--font-weight-bold);
+  font-weight: var(--font-weight-normal);
   color: var(--color-text-primary);
 }
 
