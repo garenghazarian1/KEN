@@ -1,337 +1,286 @@
 "use client";
 
-import { useCallback, useEffect, useId, useLayoutEffect, useRef, useState } from "react";
+import { useCallback, useEffect, useId, useLayoutEffect, useMemo, useRef, useState } from "react";
 import { createPortal } from "react-dom";
 import Link from "next/link";
 import Image from "next/image";
-import { ChevronDown, Scissors, Sparkles, X } from "lucide-react";
+import { Scissors, X } from "lucide-react";
 import { getCategoryImage } from "@/data/serviceImages";
 import { cldTransform } from "@/utils/cloudinary";
 import { buildServicesCategoryPath } from "@/utils/serviceCategoryUrl";
-import { scrollChildToContainerTop } from "@/utils/scrollChildToContainerTop";
 import styles from "./ServicesMegaMenu.module.css";
 
-const THUMB_TRANSFORM = "f_auto,q_auto,w_120,h_120,c_fit";
+const PREVIEW_TRANSFORM = "f_auto,q_auto,w_960,h_960,c_fill,g_auto";
+const DESKTOP_SERVICE_LIMIT = 4;
+const DESKTOP_MEDIA_QUERY = "(min-width: 1024px)";
+const ARABIC_TEXT = /[\u0600-\u06FF]/;
 
-function sectionHasGroups(section) {
-  return Boolean(section?.groups?.length);
+function hasArabic(text) {
+  return ARABIC_TEXT.test(text ?? "");
+}
+
+/**
+ * Category or subcategory image only. Missing art stays a token panel.
+ * @param {{ title?: string, name?: string, imageUrl?: string | null } | null | undefined} node
+ * @param {string} [fallbackTitle]
+ */
+function resolvePreview(node, fallbackTitle) {
+  const title = node?.title ?? node?.name ?? fallbackTitle ?? "";
+  const remote = node?.imageUrl
+    ? cldTransform(node.imageUrl, PREVIEW_TRANSFORM)
+    : null;
+  if (remote) return { src: remote, alt: "", title };
+
+  const staticMatch =
+    getCategoryImage(title) ??
+    (fallbackTitle ? getCategoryImage(fallbackTitle) : null);
+  if (staticMatch) {
+    return { src: staticMatch.src, alt: "", title };
+  }
+
+  return { src: null, alt: "", title };
+}
+
+/** Subcategory columns, plus parent-only services under the category name. */
+function desktopColumns(section) {
+  const columns = (section.groups ?? [])
+    .filter((group) => group.items?.length)
+    .map((group) => ({
+      id: group.id,
+      title: group.title,
+      items: group.items,
+      imageUrl: group.imageUrl ?? null,
+      groupId: group.id,
+    }));
+
+  if (section.items?.length) {
+    columns.push({
+      id: directGroupId(section.id),
+      title: section.title,
+      items: section.items,
+      imageUrl: section.imageUrl ?? null,
+      groupId: null,
+    });
+  }
+
+  return columns;
+}
+
+function columnPreview(column, section) {
+  const category = resolvePreview(section, section.title);
+  const own = resolvePreview(
+    { title: column.title, imageUrl: column.imageUrl },
+    section.title,
+  );
+  return {
+    src: own.src ?? category.src,
+    alt: "",
+    title: column.title,
+  };
+}
+
+function servicePreview(item, column, section) {
+  const remote = item.imageUrl
+    ? cldTransform(item.imageUrl, PREVIEW_TRANSFORM)
+    : null;
+  const columnBase = columnPreview(column, section);
+  return {
+    src: remote ?? columnBase.src,
+    alt: "",
+    title: item.name,
+  };
 }
 
 function directGroupId(sectionId) {
   return `${sectionId}__direct`;
 }
 
-/** Subcategories plus a collapsed "Other" row for services linked only to the category. */
-function accordionGroups(section) {
-  const groups = section.groups ?? [];
-  if (!groups.length || !section.items?.length) return groups;
-  return [
-    ...groups,
-    {
-      id: directGroupId(section.id),
-      title: "Other",
-      items: section.items,
-      imageUrl: section.imageUrl ?? null,
-    },
-  ];
-}
-
-function totalCount(section) {
-  const direct = section.items?.length ?? 0;
-  const nested =
-    section.groups?.reduce((sum, group) => sum + group.items.length, 0) ?? 0;
-  return direct + nested;
-}
-
-/**
- * Resolve thumb: API image → static category banner → icon fallback.
- * @param {{ title?: string, name?: string, imageUrl?: string | null }} node
- * @param {string} [fallbackTitle]
- */
-function resolveThumb(node, fallbackTitle) {
-  const title = node.title ?? node.name ?? "";
-  const remote = node.imageUrl
-    ? cldTransform(node.imageUrl, THUMB_TRANSFORM)
-    : null;
-  if (remote) return { kind: "remote", src: remote };
-
-  const staticMatch =
-    getCategoryImage(title) ??
-    (fallbackTitle ? getCategoryImage(fallbackTitle) : null);
-  if (staticMatch) {
-    return { kind: "static", src: staticMatch.src, alt: staticMatch.alt };
-  }
-
-  return null;
-}
-
-function RowThumb({ node, fallbackTitle, size = "md" }) {
-  const cover = resolveThumb(node, fallbackTitle);
-
-  return (
-    <span
-      className={`${styles.thumb} ${size === "sm" ? styles.thumbSm : ""}`}
-      aria-hidden={!cover}
-    >
-      {cover ? (
-        <Image
-          src={cover.src}
-          alt={cover.kind === "static" ? cover.alt : ""}
-          fill
-          className={styles.thumbImage}
-          sizes={size === "sm" ? "68px" : "80px"}
-        />
-      ) : (
-        <span className={styles.thumbFallback}>
-          <Sparkles size={size === "sm" ? 14 : 18} strokeWidth={1.75} />
-        </span>
-      )}
-    </span>
-  );
-}
-
-function ServiceRow({ item, categoryId, groupId, fallbackTitle, onNavigate }) {
-  return (
-    <Link
-      href={buildServicesCategoryPath(categoryId, groupId ? [groupId] : [])}
-      className={`${styles.row} ${styles.rowService}`}
-      onClick={onNavigate}
-    >
-      <RowThumb node={item} fallbackTitle={fallbackTitle} />
-      <span className={styles.rowText}>
-        <span className={styles.rowTitle}>{item.name}</span>
-        {item.priceLabel ? (
-          <span className={styles.rowMeta}>{item.priceLabel}</span>
-        ) : null}
-      </span>
-    </Link>
-  );
-}
-
-function ServiceList({ items, categoryId, groupId, fallbackTitle, onNavigate }) {
-  if (!items?.length) {
-    return <p className={styles.emptyNested}>No services in this group.</p>;
-  }
-
-  return (
-    <ul className={styles.nestedList} aria-label="Services">
-      {items.map((item) => (
-        <li key={item.id}>
-          <ServiceRow
-            item={item}
-            categoryId={categoryId}
-            groupId={groupId}
-            fallbackTitle={fallbackTitle}
-            onNavigate={onNavigate}
-          />
-        </li>
-      ))}
-    </ul>
-  );
-}
-
-function usePinOpenRow(containerRef, openId) {
-  const rowEls = useRef(new Map());
-
-  const bindRow = useCallback(
-    (id) => (node) => {
-      if (!id) return;
-      if (node) rowEls.current.set(id, node);
-      else rowEls.current.delete(id);
-    },
-    [],
-  );
-
-  useLayoutEffect(() => {
-    if (!openId) return undefined;
-    const container = containerRef?.current;
-    const row = rowEls.current.get(openId);
-    if (!container || !row) return undefined;
-
-    let cancel = () => {};
-    const raf = requestAnimationFrame(() => {
-      cancel = scrollChildToContainerTop(container, row, { duration: 620 });
-    });
-    return () => {
-      cancelAnimationFrame(raf);
-      cancel();
-    };
-  }, [openId, containerRef]);
-
-  return bindRow;
-}
-
-function GroupAccordionList({
-  section,
-  openSubcategoryId,
-  onToggleSubcategory,
-  onNavigate,
-  bindRow,
-}) {
-  const groups = accordionGroups(section);
-
-  return (
-    <ul className={styles.nestedList} aria-label="Subcategories">
-      {groups.map((group) => {
-        const groupOpen = openSubcategoryId === group.id;
-        const pathGroupId =
-          group.id === directGroupId(section.id) ? undefined : group.id;
-        return (
-          <li key={group.id}>
-            <button
-              ref={bindRow?.(group.id)}
-              type="button"
-              className={`${styles.row} ${styles.rowGroup} ${
-                groupOpen ? `${styles.rowOpen} ${styles.rowCentered}` : ""
-              }`}
-              aria-expanded={groupOpen}
-              aria-controls={`nav-services-sub-${group.id}`}
-              onClick={() => onToggleSubcategory(group.id)}
-            >
-              <RowThumb
-                node={group}
-                fallbackTitle={section.title}
-                size="sm"
-              />
-              <span className={styles.rowText}>
-                <span className={styles.rowTitle}>{group.title}</span>
-                <span className={styles.rowHint}>
-                  {group.items.length} service
-                  {group.items.length === 1 ? "" : "s"}
-                </span>
-              </span>
-              <ChevronDown
-                size={16}
-                className={`${styles.rowChevron} ${
-                  groupOpen ? styles.chevronOpen : ""
-                }`}
-                aria-hidden
-              />
-            </button>
-            {groupOpen && (
-              <div id={`nav-services-sub-${group.id}`}>
-                <ServiceList
-                  items={group.items}
-                  categoryId={section.id}
-                  groupId={pathGroupId}
-                  fallbackTitle={group.title}
-                  onNavigate={onNavigate}
-                />
-              </div>
-            )}
-          </li>
-        );
-      })}
-    </ul>
-  );
-}
-
-function CatalogAccordion({
-  sections,
-  openCategoryId,
-  openSubcategoryId,
-  onToggleCategory,
-  onToggleSubcategory,
-  onNavigate,
-  scrollParentRef,
-}) {
-  const pinId = openSubcategoryId || openCategoryId;
-  const bindRow = usePinOpenRow(scrollParentRef, pinId);
-
-  return (
-    <ul className={styles.list} aria-label="Service categories">
-      {sections.map((section) => {
-        const isOpen = openCategoryId === section.id;
-        const count = totalCount(section);
-        const hasGroups = sectionHasGroups(section);
-
-        return (
-          <li key={section.id}>
-            <button
-              ref={bindRow(section.id)}
-              type="button"
-              className={`${styles.row} ${
-                isOpen ? `${styles.rowOpen} ${styles.rowCentered}` : ""
-              }`}
-              aria-expanded={isOpen}
-              aria-controls={`nav-services-cat-${section.id}`}
-              onClick={() => onToggleCategory(section.id)}
-            >
-              <RowThumb node={section} />
-              <span className={styles.rowText}>
-                <span className={styles.rowTitle}>{section.title}</span>
-                <span className={styles.rowHint}>
-                  {count} service{count === 1 ? "" : "s"}
-                </span>
-              </span>
-              <ChevronDown
-                size={18}
-                className={`${styles.rowChevron} ${
-                  isOpen ? styles.chevronOpen : ""
-                }`}
-                aria-hidden
-              />
-            </button>
-
-            {isOpen && (
-              <div id={`nav-services-cat-${section.id}`}>
-                {hasGroups ? (
-                  <GroupAccordionList
-                    section={section}
-                    openSubcategoryId={openSubcategoryId}
-                    onToggleSubcategory={onToggleSubcategory}
-                    onNavigate={onNavigate}
-                    bindRow={bindRow}
-                  />
-                ) : null}
-                {!hasGroups && section.items?.length ? (
-                  <ServiceList
-                    items={section.items}
-                    categoryId={section.id}
-                    fallbackTitle={section.title}
-                    onNavigate={onNavigate}
-                  />
-                ) : null}
-                {!hasGroups && !section.items?.length && (
-                  <p className={styles.emptyNested}>No services in this group.</p>
-                )}
-              </div>
-            )}
-          </li>
-        );
-      })}
-    </ul>
-  );
-}
-
-function DesktopMegaPanel({
+function MobileLookbook({
   sections,
   activeCategoryId,
   openSubcategoryId,
   onSelectCategory,
   onToggleSubcategory,
   onNavigate,
-  scrollParentRef,
 }) {
-  const bindRow = usePinOpenRow(scrollParentRef, openSubcategoryId);
   const activeSection =
     sections.find((section) => section.id === activeCategoryId) ??
     sections[0] ??
     null;
-  const paneCount = activeSection ? totalCount(activeSection) : 0;
+  const columns = activeSection ? desktopColumns(activeSection) : [];
+  const activeColumn =
+    columns.find((column) => column.id === openSubcategoryId) ?? null;
+  const preview = !activeSection
+    ? { src: null, alt: "", title: "" }
+    : activeColumn
+      ? columnPreview(activeColumn, activeSection)
+      : resolvePreview(activeSection, activeSection.title);
+
+  if (!activeSection) {
+    return <p className={styles.status}>Choose a category</p>;
+  }
 
   return (
-    <div className={styles.mega}>
-      <ul className={styles.megaRail} aria-label="Service categories">
+    <div className={styles.phoneSheet}>
+      <ul className={styles.phoneCategories} aria-label="Service categories">
+        {sections.map((section) => {
+          const isActive = activeSection.id === section.id;
+          return (
+            <li key={section.id} className={styles.phoneCategoryItem}>
+              <button
+                type="button"
+                className={`${styles.phoneCategory} ${
+                  isActive ? styles.phoneCategoryActive : ""
+                } ${hasArabic(section.title) ? styles.megaQuietScript : ""}`}
+                aria-current={isActive ? "true" : undefined}
+                onClick={() => onSelectCategory(section.id)}
+              >
+                {section.title}
+              </button>
+            </li>
+          );
+        })}
+      </ul>
+
+      <div className={styles.phoneMedia}>
+        <div
+          className={
+            preview.src ? styles.phoneFrame : styles.phoneFrameFallback
+          }
+        >
+          {preview.src ? (
+            <>
+              <Image
+                key={preview.src}
+                src={preview.src}
+                alt=""
+                fill
+                className={styles.phoneImage}
+                sizes="100vw"
+              />
+              <div className={styles.phoneScrim} aria-hidden />
+            </>
+          ) : (
+            <p
+              className={`${styles.phoneFallbackTitle} ${
+                hasArabic(preview.title) ? styles.megaQuietScript : ""
+              }`}
+            >
+              {preview.title}
+            </p>
+          )}
+          <Link
+            href={buildServicesCategoryPath(activeSection.id)}
+            className={styles.phoneView}
+            onClick={onNavigate}
+          >
+            View services
+          </Link>
+        </div>
+      </div>
+
+      {columns.length ? (
+        <ul className={styles.phoneGroups} aria-label="Subcategories">
+          {columns.map((column) => {
+            const isOpen = activeColumn?.id === column.id;
+            const href = buildServicesCategoryPath(
+              activeSection.id,
+              column.groupId ? [column.groupId] : [],
+            );
+            const shown = column.items.slice(0, DESKTOP_SERVICE_LIMIT);
+            return (
+              <li key={column.id}>
+                <button
+                  type="button"
+                  className={`${styles.phoneGroup} ${
+                    isOpen ? styles.phoneGroupOpen : ""
+                  } ${hasArabic(column.title) ? styles.megaQuietScript : ""}`}
+                  aria-expanded={isOpen}
+                  onClick={() => onToggleSubcategory(column.id)}
+                >
+                  {column.title}
+                </button>
+                {isOpen ? (
+                  <ul className={styles.phoneServices} aria-label={column.title}>
+                    {shown.map((item) => (
+                      <li key={item.id}>
+                        <Link
+                          href={href}
+                          className={styles.phoneService}
+                          onClick={onNavigate}
+                        >
+                          {item.name}
+                        </Link>
+                      </li>
+                    ))}
+                    <li>
+                      <Link
+                        href={href}
+                        className={styles.phoneViewAll}
+                        onClick={onNavigate}
+                      >
+                        View all
+                      </Link>
+                    </li>
+                  </ul>
+                ) : null}
+              </li>
+            );
+          })}
+        </ul>
+      ) : (
+        <p className={styles.emptyNested}>No services in this group.</p>
+      )}
+    </div>
+  );
+}
+
+function DesktopMegaPanel({
+  sections,
+  activeCategoryId,
+  onSelectCategory,
+  onNavigate,
+}) {
+  const activeSection =
+    sections.find((section) => section.id === activeCategoryId) ??
+    sections[0] ??
+    null;
+  const columns = activeSection ? desktopColumns(activeSection) : [];
+  const fallbackPreview = useMemo(
+    () =>
+      activeSection
+        ? resolvePreview(activeSection, activeSection.title)
+        : { src: null, alt: "", title: "" },
+    [activeSection],
+  );
+  const [preview, setPreview] = useState(fallbackPreview);
+
+  useEffect(() => {
+    setPreview(fallbackPreview);
+  }, [fallbackPreview]);
+
+  const showColumn = (column) => {
+    if (!activeSection) return;
+    setPreview(columnPreview(column, activeSection));
+  };
+
+  const showService = (column, item) => {
+    if (!activeSection) return;
+    setPreview(servicePreview(item, column, activeSection));
+  };
+
+  return (
+    <div className={styles.megaShell}>
+      <ul className={styles.megaCategories} aria-label="Service categories">
         {sections.map((section) => {
           const isActive = activeSection?.id === section.id;
           return (
             <li key={section.id}>
               <button
                 type="button"
-                className={`${styles.megaRailItem} ${
-                  isActive ? styles.megaRailActive : ""
-                }`}
+                className={`${styles.megaCategory} ${
+                  isActive ? styles.megaCategoryActive : ""
+                } ${hasArabic(section.title) ? styles.megaQuietScript : ""}`}
                 aria-current={isActive ? "true" : undefined}
                 onMouseEnter={() => onSelectCategory(section.id)}
                 onFocus={() => onSelectCategory(section.id)}
@@ -343,42 +292,130 @@ function DesktopMegaPanel({
           );
         })}
       </ul>
-      <div className={styles.megaPane} ref={scrollParentRef}>
-        {activeSection ? (
-          <>
-            <div className={styles.megaPaneHead}>
-              <h3 className={styles.megaPaneTitle}>{activeSection.title}</h3>
-              <span className={styles.rowHint}>
-                {paneCount} service{paneCount === 1 ? "" : "s"}
-              </span>
+
+      {activeSection ? (
+        <div className={styles.mega}>
+          <div className={styles.megaMedia}>
+            <div
+              className={
+                preview.src ? styles.megaFrame : styles.megaFrameFallback
+              }
+            >
+              {preview.src ? (
+                <>
+                  <Image
+                    key={preview.src}
+                    src={preview.src}
+                    alt={preview.alt}
+                    fill
+                    className={styles.megaImage}
+                    sizes="(max-width: 1440px) 38vw, 520px"
+                  />
+                  <div className={styles.megaScrim} aria-hidden />
+                </>
+              ) : null}
+              <div className={styles.megaCopy}>
+                {preview.src ? null : (
+                  <p
+                    className={`${styles.megaMediaTitle} ${
+                      hasArabic(preview.title) ? styles.megaQuietScript : ""
+                    }`}
+                  >
+                    {preview.title}
+                  </p>
+                )}
+                <Link
+                  href={buildServicesCategoryPath(activeSection.id)}
+                  className={styles.megaView}
+                  onClick={onNavigate}
+                >
+                  View services
+                </Link>
+              </div>
             </div>
-            {sectionHasGroups(activeSection) ? (
-              <GroupAccordionList
-                section={activeSection}
-                openSubcategoryId={openSubcategoryId}
-                onToggleSubcategory={onToggleSubcategory}
-                onNavigate={onNavigate}
-                bindRow={bindRow}
-              />
-            ) : null}
-            {!sectionHasGroups(activeSection) &&
-            activeSection.items?.length ? (
-              <ServiceList
-                items={activeSection.items}
-                categoryId={activeSection.id}
-                fallbackTitle={activeSection.title}
-                onNavigate={onNavigate}
-              />
-            ) : null}
-            {!sectionHasGroups(activeSection) &&
-              !activeSection.items?.length && (
-                <p className={styles.emptyNested}>No services in this group.</p>
-              )}
-          </>
-        ) : (
-          <p className={styles.status}>Choose a category</p>
-        )}
-      </div>
+          </div>
+
+          {columns.length ? (
+            <div className={styles.megaColumns}>
+              {columns.map((column) => {
+                const href = buildServicesCategoryPath(
+                  activeSection.id,
+                  column.groupId ? [column.groupId] : [],
+                );
+                const shown = column.items.slice(0, DESKTOP_SERVICE_LIMIT);
+                return (
+                  <div
+                    key={column.id}
+                    className={styles.megaColumn}
+                    onPointerEnter={() => showColumn(column)}
+                    onPointerLeave={() => setPreview(fallbackPreview)}
+                    onBlurCapture={(event) => {
+                      const next = event.relatedTarget;
+                      if (next instanceof Node && event.currentTarget.contains(next)) {
+                        return;
+                      }
+                      setPreview(fallbackPreview);
+                    }}
+                  >
+                    <Link
+                      href={href}
+                      className={`${styles.megaColumnTitle} ${
+                        hasArabic(column.title) ? styles.megaQuietScript : ""
+                      }`}
+                      onClick={onNavigate}
+                      onFocus={() => showColumn(column)}
+                    >
+                      {column.title}
+                    </Link>
+                    <ul className={styles.megaServiceList} aria-label={column.title}>
+                      {shown.map((item) => (
+                        <li key={item.id}>
+                          <Link
+                            href={href}
+                            className={styles.megaService}
+                            onClick={onNavigate}
+                            onPointerEnter={() => showService(column, item)}
+                            onPointerLeave={(event) => {
+                              const next = event.relatedTarget;
+                              const columnEl = event.currentTarget.closest(
+                                `.${styles.megaColumn}`,
+                              );
+                              if (!(next instanceof Node) || !columnEl?.contains(next)) {
+                                return;
+                              }
+                              if (
+                                next instanceof Element &&
+                                next.closest(`.${styles.megaService}`)
+                              ) {
+                                return;
+                              }
+                              showColumn(column);
+                            }}
+                            onFocus={() => showService(column, item)}
+                          >
+                            <span>{item.name}</span>
+                          </Link>
+                        </li>
+                      ))}
+                    </ul>
+                    <Link
+                      href={href}
+                      className={styles.megaViewAll}
+                      onClick={onNavigate}
+                    >
+                      View all
+                    </Link>
+                  </div>
+                );
+              })}
+            </div>
+          ) : (
+            <p className={styles.emptyNested}>No services in this group.</p>
+          )}
+        </div>
+      ) : (
+        <p className={styles.status}>Choose a category</p>
+      )}
     </div>
   );
 }
@@ -413,7 +450,6 @@ export default function ServicesMegaMenu({
   const loadRef = useRef("idle");
   const triggerRef = useRef(null);
   const panelRef = useRef(null);
-  const listScrollRef = useRef(null);
   const [mounted, setMounted] = useState(false);
   const [open, setOpen] = useState(false);
   const [sections, setSections] = useState([]);
@@ -422,16 +458,19 @@ export default function ServicesMegaMenu({
   const [activeCategoryId, setActiveCategoryId] = useState(null);
   const [activeSubcategoryId, setActiveSubcategoryId] = useState(null);
   const [panelCoords, setPanelCoords] = useState(null);
+  const [isWide, setIsWide] = useState(false);
 
-  const isDesktop = variant === "desktop";
-  const isDrawer = variant !== "desktop";
+  useLayoutEffect(() => {
+    const media = window.matchMedia(DESKTOP_MEDIA_QUERY);
+    const apply = () => setIsWide(media.matches);
+    apply();
+    media.addEventListener("change", apply);
+    return () => media.removeEventListener("change", apply);
+  }, []);
+
+  const useEditorial = variant === "desktop" || (variant !== "mobile" && isWide);
+  const isDrawer = !useEditorial;
   const ready = loadState === "ready" && sections.length > 0;
-
-  const activeSection =
-    sections.find((section) => section.id === activeCategoryId) ?? null;
-  const activeGroup =
-    activeSection?.groups?.find((group) => group.id === activeSubcategoryId) ??
-    null;
 
   useEffect(() => {
     setMounted(true);
@@ -481,10 +520,6 @@ export default function ServicesMegaMenu({
     });
   }, [ensureCatalog, resetTree]);
 
-  const toggleCategory = useCallback((categoryId) => {
-    setActiveCategoryId((prev) => (prev === categoryId ? null : categoryId));
-  }, []);
-
   const selectCategory = useCallback((categoryId) => {
     setActiveCategoryId(categoryId);
   }, []);
@@ -498,11 +533,16 @@ export default function ServicesMegaMenu({
   }, [activeCategoryId]);
 
   useEffect(() => {
-    if (!open || !isDesktop || !sections.length) return;
+    setOpen(false);
+    resetTree();
+  }, [useEditorial, resetTree]);
+
+  useEffect(() => {
+    if (!open || !sections.length) return;
     if (!activeCategoryId) {
       setActiveCategoryId(sections[0].id);
     }
-  }, [open, isDesktop, sections, activeCategoryId]);
+  }, [open, sections, activeCategoryId]);
 
   useEffect(() => {
     if (!open) return undefined;
@@ -525,7 +565,7 @@ export default function ServicesMegaMenu({
   }, [open, close, isDrawer]);
 
   useEffect(() => {
-    if (!open || !isDesktop) return undefined;
+    if (!open || !useEditorial) return undefined;
 
     const onPointerDown = (event) => {
       if (triggerRef.current?.contains(event.target)) return;
@@ -535,10 +575,10 @@ export default function ServicesMegaMenu({
 
     document.addEventListener("mousedown", onPointerDown);
     return () => document.removeEventListener("mousedown", onPointerDown);
-  }, [open, isDesktop, close]);
+  }, [open, useEditorial, close]);
 
   useEffect(() => {
-    if (!open || !isDesktop) {
+    if (!open || !useEditorial) {
       setPanelCoords(null);
       return undefined;
     }
@@ -546,17 +586,19 @@ export default function ServicesMegaMenu({
     const update = () => {
       const el = triggerRef.current;
       if (!el) return;
-      const rect = el.getBoundingClientRect();
-      const width = Math.min(44 * 16, window.innerWidth - 24);
-      let left = rect.left;
-      if (left + width > window.innerWidth - 12) {
-        left = Math.max(12, window.innerWidth - width - 12);
-      }
+      const anchor =
+        el.closest("header")?.getBoundingClientRect() ??
+        el.closest("nav")?.getBoundingClientRect() ??
+        el.getBoundingClientRect();
+      const bottomReserve = 4.25 * 16 + 12;
       setPanelCoords({
-        top: rect.bottom + 8,
-        left,
-        width,
-        maxHeight: Math.min(window.innerHeight - rect.bottom - 24, window.innerHeight * 0.72),
+        top: anchor.bottom,
+        left: 0,
+        width: window.innerWidth,
+        maxHeight: Math.max(
+          280,
+          window.innerHeight - anchor.bottom - bottomReserve,
+        ),
       });
     };
 
@@ -567,24 +609,14 @@ export default function ServicesMegaMenu({
       window.removeEventListener("resize", update);
       window.removeEventListener("scroll", update, true);
     };
-  }, [open, isDesktop]);
+  }, [open, useEditorial]);
 
   const handleNavigate = useCallback(() => {
     close();
     onNavigate?.();
   }, [close, onNavigate]);
 
-  const footerHref = activeSection
-    ? buildServicesCategoryPath(
-        activeSection.id,
-        activeGroup ? [activeGroup.id] : [],
-      )
-    : "/services";
-  const footerLabel = activeSection
-    ? `Open ${activeGroup?.title ?? activeSection.title}`
-    : "View full services page";
-
-  const triggerClassName = isDesktop
+  const triggerClassName = variant === "desktop"
     ? `${styles.trigger} ${open ? styles.triggerOpen : ""}`
     : variant === "mobile"
       ? `${styles.mobileTrigger} ${open ? styles.mobileTriggerOpen : ""}`
@@ -600,25 +632,21 @@ export default function ServicesMegaMenu({
         isEmpty={loadState === "ready" && sections.length === 0}
       />
       {ready &&
-        (isDesktop ? (
+        (useEditorial ? (
           <DesktopMegaPanel
+            sections={sections}
+            activeCategoryId={activeCategoryId}
+            onSelectCategory={selectCategory}
+            onNavigate={handleNavigate}
+          />
+        ) : (
+          <MobileLookbook
             sections={sections}
             activeCategoryId={activeCategoryId}
             openSubcategoryId={activeSubcategoryId}
             onSelectCategory={selectCategory}
             onToggleSubcategory={toggleSubcategory}
             onNavigate={handleNavigate}
-            scrollParentRef={listScrollRef}
-          />
-        ) : (
-          <CatalogAccordion
-            sections={sections}
-            openCategoryId={activeCategoryId}
-            openSubcategoryId={activeSubcategoryId}
-            onToggleCategory={toggleCategory}
-            onToggleSubcategory={toggleSubcategory}
-            onNavigate={handleNavigate}
-            scrollParentRef={listScrollRef}
           />
         ))}
     </>
@@ -653,18 +681,7 @@ export default function ServicesMegaMenu({
                     <X size={20} aria-hidden />
                   </button>
                 </header>
-                <div className={styles.drawerBody} ref={listScrollRef}>
-                  {bodyContent}
-                </div>
-                <footer className={styles.drawerFooter}>
-                  <Link
-                    href={footerHref}
-                    className={styles.footerLink}
-                    onClick={handleNavigate}
-                  >
-                    {footerLabel}
-                  </Link>
-                </footer>
+                <div className={styles.drawerBody}>{bodyContent}</div>
               </div>
             </>
           ) : (
@@ -686,15 +703,6 @@ export default function ServicesMegaMenu({
               }
             >
               <div className={styles.desktopBody}>{bodyContent}</div>
-              <footer className={styles.drawerFooter}>
-                <Link
-                  href={footerHref}
-                  className={styles.footerLink}
-                  onClick={handleNavigate}
-                >
-                  {footerLabel}
-                </Link>
-              </footer>
             </div>
           ),
           document.body,
@@ -704,7 +712,7 @@ export default function ServicesMegaMenu({
   return (
     <div
       className={styles.wrap}
-      onMouseEnter={isDesktop ? () => void ensureCatalog() : undefined}
+      onMouseEnter={variant !== "mobile" ? () => void ensureCatalog() : undefined}
     >
       <button
         ref={triggerRef}
@@ -716,7 +724,7 @@ export default function ServicesMegaMenu({
         aria-label="Services"
         onClick={toggle}
       >
-        {isDesktop || variant === "mobile" ? (
+        {variant === "desktop" || variant === "mobile" ? (
           <span>Services</span>
         ) : (
           <>
