@@ -1,0 +1,15 @@
+---
+description: Service names stay on one line at a fitted size
+alwaysApply: true
+---
+
+# Fit the name
+
+A service name stays on one line and shows the full text. Use `FitName` from `src/components/fitName/FitName.jsx`.
+
+- The parent is a flex row with a bounded width (`min-width: 0`, `width: 100%`).
+- `FitName` keeps `white-space: nowrap` and shrinks the font until `scrollWidth` fits `clientWidth`.
+- Short names keep the stylesheet size. Only long names get smaller.
+- Measure at medium weight so hover and the chosen state still fit.
+- Do not clip the name with ellipsis.
+- This covers the services page and the navbar services list.

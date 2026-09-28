@@ -10,9 +10,14 @@
   );
   z-index: var(--z-tooltip, 1070);
   display: flex;
+  transition: bottom 0.28s ease;
   flex-direction: column;
   align-items: flex-start;
   gap: 0.875rem;
+}
+
+.root[data-nav-hidden="true"] {
+  bottom: calc(var(--spacing-4, 1rem) + env(safe-area-inset-bottom, 0px));
 }
 
 /* —— AI tip bubble —— */
@@ -1087,6 +1092,7 @@
 }
 
 @media (prefers-reduced-motion: reduce) {
+  .root,
   .launcherTip,
   .launcherTip::before,
   .launcherTipGlass::before,

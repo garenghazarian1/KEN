@@ -1,0 +1,15 @@
+---
+description: Disclosure lists ease open instead of flashing
+alwaysApply: true
+---
+
+# Drop panel
+
+When a control reveals a list, use `DropPanel` from `src/components/dropPanel/DropPanel.jsx`. Do not mount and unmount the body.
+
+- Closed: `grid-template-rows: 0fr`. Open: `1fr`. The change takes 0.8s, `ease-in-out`.
+- The inner wrapper is `overflow: hidden` and `min-height: 0`.
+- A closed panel stays in the DOM with `aria-hidden` and `inert`.
+- The chevron uses `dropChevronClass` so it turns over the same 0.8s.
+- `prefers-reduced-motion`: the panel and chevron do not transition.
+- Keep a picture inside the panel until `DROP_PANEL_MS` after close, so it does not vanish mid-motion.

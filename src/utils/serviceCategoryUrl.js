@@ -1,7 +1,8 @@
 /** Query key for the active service category on `/services`. */
 export const SERVICE_CATEGORY_QUERY_KEY = "category";
 
-/** Query key for open subcategory accordions (`comma-separated` ids). */
+/** Query key for the service opened from the navbar. */
+export const SERVICE_QUERY_KEY = "service";
 export const SERVICE_SUBCATEGORIES_QUERY_KEY = "sub";
 
 /**
@@ -49,11 +50,13 @@ export function resolveOpenSubcategoryIds(rawSub, sections, categoryId) {
  * Build the services path with optional category + open subcategory params.
  * @param {string | null} categoryId
  * @param {string[]} [openSubcategoryIds]
+ * @param {string | null} [serviceId]
  * @returns {string}
  */
 export function buildServicesCategoryPath(
   categoryId,
   openSubcategoryIds = [],
+  serviceId = null,
 ) {
   const params = new URLSearchParams();
   if (categoryId) {
@@ -61,6 +64,9 @@ export function buildServicesCategoryPath(
   }
   if (categoryId && openSubcategoryIds.length > 0) {
     params.set(SERVICE_SUBCATEGORIES_QUERY_KEY, openSubcategoryIds.join(","));
+  }
+  if (categoryId && serviceId) {
+    params.set(SERVICE_QUERY_KEY, serviceId);
   }
   const query = params.toString();
   return query ? `/services?${query}` : "/services";
@@ -71,11 +77,11 @@ export function buildServicesCategoryPath(
  * Uses pushState when opening a category from the grid; replaceState when switching
  * subcategories or clearing so `force-dynamic` `/services` does not refetch.
  *
- * @param {{ categoryId: string | null, openSubcategoryIds?: string[] }} state
+ * @param {{ categoryId: string | null, openSubcategoryIds?: string[], serviceId?: string | null }} state
  * @param {{ mode?: "auto" | "push" | "replace" }} [options]
  */
 export function syncServiceMenuToUrl(
-  { categoryId, openSubcategoryIds = [] },
+  { categoryId, openSubcategoryIds = [], serviceId = null },
   { mode = "replace" } = {},
 ) {
   if (typeof window === "undefined") return;
@@ -88,6 +94,7 @@ export function syncServiceMenuToUrl(
   } else {
     url.searchParams.delete(SERVICE_CATEGORY_QUERY_KEY);
     url.searchParams.delete(SERVICE_SUBCATEGORIES_QUERY_KEY);
+    url.searchParams.delete(SERVICE_QUERY_KEY);
   }
 
   if (categoryId && openSubcategoryIds.length > 0) {
@@ -97,6 +104,12 @@ export function syncServiceMenuToUrl(
     );
   } else {
     url.searchParams.delete(SERVICE_SUBCATEGORIES_QUERY_KEY);
+  }
+
+  if (categoryId && serviceId) {
+    url.searchParams.set(SERVICE_QUERY_KEY, serviceId);
+  } else {
+    url.searchParams.delete(SERVICE_QUERY_KEY);
   }
 
   const nextUrl = `${url.pathname}${url.search}${url.hash}`;

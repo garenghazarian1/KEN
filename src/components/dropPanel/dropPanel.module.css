@@ -1,0 +1,25 @@
+.panel {
+  display: grid;
+  grid-template-rows: 0fr;
+  transition: grid-template-rows 0.8s ease-in-out;
+}
+
+.open {
+  grid-template-rows: 1fr;
+}
+
+.inner {
+  min-height: 0;
+  overflow: hidden;
+}
+
+.chevron {
+  transition: transform 0.8s ease;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .panel,
+  .chevron {
+    transition: none;
+  }
+}

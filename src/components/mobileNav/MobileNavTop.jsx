@@ -77,10 +77,10 @@ export default function MobileNavTop() {
           <a
             href={BOOKING_URL}
             className={styles.actionLink}
-            aria-label="Book now"
+            aria-label="Book"
           >
             <Calendar size={22} strokeWidth={1} className={styles.icon} aria-hidden />
-            <span className={styles.label}>Book now</span>
+            <span className={styles.label}>Book</span>
           </a>
         </div>
       </nav>

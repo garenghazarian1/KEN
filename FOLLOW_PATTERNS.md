@@ -486,6 +486,12 @@ import { motion, AnimatePresence } from "framer-motion";
 </motion.div>
 ```
 
+The services page and the navbar services list both use `FitName` (`src/components/fitName/FitName.jsx`) so a service name stays on one line and the full text stays visible. Short names keep the stylesheet size.
+
+### 7. Disclosure drop
+
+Opening a subcategory list uses `DropPanel` (`src/components/dropPanel/DropPanel.jsx`), not a mount/unmount and not a height animation in Framer Motion. The body eases from `0fr` to `1fr` over 0.8s. Closing eases shut the same way. The services page and the navbar services sheet both use this. On the phone services page, the open subcategory keeps its photo under the name. A service row shows the name only; the same drop reveals that service’s photo, price, duration, and description. Desktop keeps the price on the row. A navbar service name links to `/services` with `category`, the real subcategory in `sub` when there is one, and `service` set to that item. The page opens that service and eases it up under the category row when it is not already on screen. Group titles and View all stay on the group.
+
 ### Animation Timing
 
 - **Fast**: 150-200ms (micro-interactions)

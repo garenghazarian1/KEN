@@ -8,6 +8,8 @@ import { ChevronDown, Scissors, X } from "lucide-react";
 import { getCategoryImage } from "@/data/serviceImages";
 import { cldTransform } from "@/utils/cloudinary";
 import { buildServicesCategoryPath } from "@/utils/serviceCategoryUrl";
+import { DropPanel, dropChevronClass } from "@/components/dropPanel/DropPanel";
+import FitName from "@/components/fitName/FitName";
 import styles from "./ServicesMegaMenu.module.css";
 
 const PREVIEW_TRANSFORM = "f_auto,q_auto,w_960,h_960,c_fill,g_auto";
@@ -167,22 +169,26 @@ function MobileLookbook({
                   <span>{column.title}</span>
                   <ChevronDown
                     size={16}
-                    className={`${styles.phoneChevron} ${
+                    className={`${dropChevronClass} ${styles.phoneChevron} ${
                       isOpen ? styles.phoneChevronOpen : ""
                     }`}
                     aria-hidden
                   />
                 </button>
-                {isOpen ? (
+                <DropPanel open={isOpen}>
                   <ul className={styles.phoneServices} aria-label={column.title}>
                     {shown.map((item) => (
                       <li key={item.id}>
                         <Link
-                          href={href}
+                          href={buildServicesCategoryPath(
+                            activeSection.id,
+                            column.groupId ? [column.groupId] : [],
+                            item.id,
+                          )}
                           className={styles.phoneService}
                           onClick={onNavigate}
                         >
-                          {item.name}
+                          <FitName text={item.name}>{item.name}</FitName>
                         </Link>
                       </li>
                     ))}
@@ -196,7 +202,7 @@ function MobileLookbook({
                       </Link>
                     </li>
                   </ul>
-                ) : null}
+                </DropPanel>
               </li>
             );
           })}
@@ -344,7 +350,11 @@ function DesktopMegaPanel({
                       {shown.map((item) => (
                         <li key={item.id}>
                           <Link
-                            href={href}
+                            href={buildServicesCategoryPath(
+                              activeSection.id,
+                              column.groupId ? [column.groupId] : [],
+                              item.id,
+                            )}
                             className={styles.megaService}
                             onClick={onNavigate}
                             onPointerEnter={() => showService(column, item)}
@@ -366,7 +376,7 @@ function DesktopMegaPanel({
                             }}
                             onFocus={() => showService(column, item)}
                           >
-                            <span>{item.name}</span>
+                            <FitName text={item.name}>{item.name}</FitName>
                           </Link>
                         </li>
                       ))}

@@ -1,0 +1,44 @@
+---
+description: Every button needs six responsive states
+alwaysApply: true
+---
+
+# Button states
+
+Style every `<button>` for all six states. Use tokens from `globals.css` only.
+
+| State | Selector | Where it applies |
+| --- | --- | --- |
+| Rest | the class | every viewport |
+| Hover | `:hover` | only inside `@media (hover: hover) and (pointer: fine)` |
+| Focus | `:focus-visible` | every viewport; theme outline, keyboard only |
+| Press | `:active` | every viewport, including touch |
+| Disabled | `:disabled` | every viewport; quieter text, `cursor: not-allowed`, even if none are disabled yet |
+| Chosen | `[aria-current]`, `[aria-pressed="true"]`, or `[aria-expanded="true"]` | every viewport; stays after the pointer lifts |
+
+Do not use `:hover` as the only feedback. A finger never hovers.
+
+One example:
+
+```css
+.action:active,
+.action[aria-pressed="true"] {
+  color: var(--color-text-primary);
+}
+
+.action:focus-visible {
+  outline: 1px solid var(--color-secondary);
+  outline-offset: 2px;
+}
+
+.action:disabled {
+  color: var(--color-text-tertiary);
+  cursor: not-allowed;
+}
+
+@media (hover: hover) and (pointer: fine) {
+  .action:hover {
+    color: var(--color-text-primary);
+  }
+}
+```

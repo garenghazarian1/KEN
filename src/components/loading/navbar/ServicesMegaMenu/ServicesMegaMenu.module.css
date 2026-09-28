@@ -458,6 +458,8 @@
   font-weight: var(--font-weight-light);
   line-height: 1.35;
   text-decoration: none;
+  width: 100%;
+  min-width: 0;
 }
 
 .megaService::before,
@@ -583,7 +585,6 @@
 .phoneChevron {
   flex-shrink: 0;
   color: var(--color-text-tertiary);
-  transition: transform var(--transition-base) var(--ease-in-out);
 }
 
 .phoneChevronOpen {
@@ -603,6 +604,8 @@
   display: flex;
   align-items: center;
   min-height: 2.75rem;
+  width: 100%;
+  min-width: 0;
   text-decoration: none;
 }
 
@@ -639,8 +642,7 @@
   .trigger,
   .topbarTrigger,
   .megaCategory,
-  .phoneCategory,
-  .phoneChevron {
+  .phoneCategory {
     transition: none;
   }
 }

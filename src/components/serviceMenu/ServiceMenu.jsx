@@ -1,29 +1,21 @@
 "use client";
 
-import { useState, useMemo, useEffect, useCallback, useRef } from "react";
+import {
+  useState,
+  useMemo,
+  useEffect,
+  useLayoutEffect,
+  useCallback,
+  useRef,
+} from "react";
 import { useSearchParams } from "next/navigation";
 import Link from "next/link";
 import Image from "next/image";
 import { motion, AnimatePresence } from "framer-motion";
-import {
-  Scissors,
-  Sparkles,
-  Sun,
-  Smile,
-  Palette,
-  User,
-  Clock,
-  Banknote,
-  Calendar,
-  Search,
-  X,
-  ChevronDown,
-  ChevronLeft,
-  ChevronRight,
-  Columns3,
-  LayoutGrid,
-  LayoutList,
-} from "lucide-react";
+import { Calendar, Search, X, ChevronDown, ChevronLeft, ChevronRight } from "lucide-react";
+import { useHideNavOnScroll } from "@/components/mobileNav/useHideNavOnScroll";
+import { DROP_PANEL_MS, DropPanel, dropChevronClass } from "@/components/dropPanel/DropPanel";
+import FitName from "@/components/fitName/FitName";
 import {
   BOOKING_URL,
   BUSINESS_CURRENCY,
@@ -35,9 +27,10 @@ import {
   searchServices,
   suggestServiceTitles,
 } from "@/lib/business/serviceSearch";
-import { cldResponsiveFit, cldTransform } from "@/utils/cloudinary";
+import { cldTransform } from "@/utils/cloudinary";
 import {
   SERVICE_CATEGORY_QUERY_KEY,
+  SERVICE_QUERY_KEY,
   SERVICE_SUBCATEGORIES_QUERY_KEY,
   resolveOpenSubcategoryIds,
   resolveServiceCategoryId,
@@ -45,74 +38,152 @@ import {
 } from "@/utils/serviceCategoryUrl";
 import styles from "./ServiceMenu.module.css";
 
-/* ─── Category icon map ───────────────────────────────────────────── */
-const CATEGORY_ICONS = [
-  { match: /hair/i, Icon: Scissors },
-  { match: /nail/i, Icon: Sparkles },
-  { match: /solarium|tan/i, Icon: Sun },
-  { match: /facial|skin/i, Icon: Smile },
-  { match: /make\s*up|makeup/i, Icon: Palette },
-  { match: /barber|men|him/i, Icon: User },
-];
+const PREVIEW_TRANSFORM = "f_auto,q_auto,w_960,h_960,c_fill,g_auto";
+const DESKTOP_MEDIA_QUERY = "(min-width: 1024px)";
+const ARABIC_TEXT = /[\u0600-\u06FF]/;
 
-const SERVICE_LAYOUT_OPTIONS = [
-  { id: "horizontal", label: "Horizontal", Icon: Columns3 },
-  { id: "vertical", label: "Vertical", Icon: LayoutList },
-  { id: "grid", label: "Grid", Icon: LayoutGrid },
-];
-
-function ServiceLayoutSwitcher({ layoutMode, onLayoutModeChange }) {
-  return (
-    <div className={styles.viewSwitcher} aria-label="Service layout">
-      <span className={styles.viewSwitcherLabel}>View</span>
-      {SERVICE_LAYOUT_OPTIONS.map(({ id, label, Icon }) => (
-        <button
-          key={id}
-          type="button"
-          className={`${styles.viewButton} ${
-            layoutMode === id ? styles.viewButtonActive : ""
-          }`}
-          onClick={() => onLayoutModeChange(id)}
-          aria-pressed={layoutMode === id}
-        >
-          <Icon size={15} className={styles.viewButtonIcon} aria-hidden />
-          <span>{label}</span>
-        </button>
-      ))}
-    </div>
-  );
+function hasArabic(text) {
+  return ARABIC_TEXT.test(text ?? "");
 }
 
-function getCategoryIcon(title) {
-  return (
-    CATEGORY_ICONS.find(({ match }) => match.test(title))?.Icon ?? Sparkles
-  );
+function directColumnId(sectionId) {
+  return `${sectionId}__direct`;
 }
 
-/**
- * Cover for category/subcategory folders: API image first, then static banner.
- * @param {string} title
- * @param {string[] | undefined} imageUrls
- * @param {string} cldOptions
- * @param {string} [fallbackTitle]
- */
-function resolveFolderCover(title, imageUrls, cldOptions, fallbackTitle) {
-  const remote = imageUrls?.[0]
-    ? cldTransform(imageUrls[0], cldOptions)
-    : null;
-  if (remote) return { kind: "remote", src: remote };
+function isDirectColumn(id) {
+  return String(id).endsWith("__direct");
+}
 
-  const staticMatch =
-    getCategoryImage(title) ??
-    (fallbackTitle ? getCategoryImage(fallbackTitle) : null);
-  if (staticMatch) {
-    return { kind: "static", src: staticMatch.src, alt: staticMatch.alt };
+function columnIdForService(section, serviceId) {
+  if (!section || !serviceId) return null;
+  for (const group of section.groups ?? []) {
+    if (group.items?.some((item) => item.id === serviceId)) return group.id;
   }
-
+  if (section.items?.some((item) => item.id === serviceId)) {
+    return directColumnId(section.id);
+  }
   return null;
 }
 
-/* ─── Helpers ─────────────────────────────────────────────────────── */
+/** Subcategory columns, plus parent-only services under the category name. */
+function pageColumns(section) {
+  const columns = (section.groups ?? [])
+    .filter((group) => group.items?.length)
+    .map((group) => ({
+      id: group.id,
+      title: group.title,
+      items: group.items,
+      imageUrls: group.imageUrls,
+    }));
+
+  if (section.items?.length) {
+    columns.push({
+      id: directColumnId(section.id),
+      title: section.title,
+      items: section.items,
+      imageUrls: section.imageUrls,
+    });
+  }
+
+  return columns;
+}
+
+function remotePreview(imageUrls) {
+  const url = imageUrls?.[0];
+  return url ? cldTransform(url, PREVIEW_TRANSFORM) : null;
+}
+
+function categoryPreviewSrc(section) {
+  return (
+    remotePreview(section?.imageUrls) ??
+    getCategoryImage(section?.title)?.src ??
+    null
+  );
+}
+
+function columnPreviewSrc(column, section) {
+  return (
+    remotePreview(column?.imageUrls) ??
+    remotePreview(section?.imageUrls) ??
+    getCategoryImage(column?.title)?.src ??
+    getCategoryImage(section?.title)?.src ??
+    null
+  );
+}
+
+function servicePreviewSrc(item, column, section) {
+  return remotePreview(item?.imageUrls) ?? columnPreviewSrc(column, section);
+}
+
+const CHAPTER_SCROLL_MS = 500;
+let chapterScrollFrame = 0;
+
+function chapterHeading(id) {
+  return document
+    .getElementById(`service-subcategory-${id}`)
+    ?.querySelector("button");
+}
+
+function serviceRow(id) {
+  return document.getElementById(`service-item-${id}`);
+}
+
+function categoryRestDelta(element) {
+  const row = document.querySelector('[aria-label="Service categories"]');
+  if (!element || !row) return null;
+  return element.getBoundingClientRect().top - row.getBoundingClientRect().bottom - 8;
+}
+
+/** Ease an element up to sit just under the category row. */
+function easeUnderCategoryRow(getElement, tappedTop) {
+  const element = getElement();
+  if (!element || categoryRestDelta(element) == null) return;
+
+  const reduced = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+  if (reduced) {
+    if (tappedTop != null) {
+      const jump = element.getBoundingClientRect().top - tappedTop;
+      if (Math.abs(jump) > 1) window.scrollBy({ top: jump });
+    }
+    const delta = categoryRestDelta(getElement());
+    if (delta != null && Math.abs(delta) >= 12) window.scrollBy({ top: delta });
+    return;
+  }
+
+  const started = performance.now();
+  let prevEased = 0;
+  cancelAnimationFrame(chapterScrollFrame);
+  const step = (now) => {
+    const delta = categoryRestDelta(getElement());
+    if (delta == null) return;
+    const progress = Math.min(1, (now - started) / CHAPTER_SCROLL_MS);
+    const eased = 1 - (1 - progress) ** 3;
+    if (progress >= 1) {
+      if (Math.abs(delta) > 1) window.scrollBy({ top: delta });
+      return;
+    }
+    const portion = (eased - prevEased) / (1 - prevEased);
+    prevEased = eased;
+    if (Math.abs(delta) >= 1) window.scrollBy({ top: delta * portion });
+    chapterScrollFrame = requestAnimationFrame(step);
+  };
+  chapterScrollFrame = requestAnimationFrame(step);
+}
+
+function settleOpenChapter(id, tappedTop) {
+  easeUnderCategoryRow(() => chapterHeading(id), tappedTop);
+}
+
+function settleOpenService(id) {
+  const element = serviceRow(id);
+  const delta = categoryRestDelta(element);
+  if (!element || delta == null) return;
+  const rect = element.getBoundingClientRect();
+  const visibleTop = rect.top - delta;
+  if (rect.top >= visibleTop - 12 && rect.bottom <= window.innerHeight - 8) return;
+  easeUnderCategoryRow(() => serviceRow(id));
+}
+
 function formatPrice(amount) {
   if (amount == null) return null;
   return `${amount} ${BUSINESS_CURRENCY}`;
@@ -135,16 +206,8 @@ function formatDuration(minutes) {
   return `${minutes} min`;
 }
 
-function totalItemCount(section) {
-  const direct = section.items?.length ?? 0;
-  const nested =
-    section.groups?.reduce((acc, g) => acc + (g.items?.length ?? 0), 0) ?? 0;
-  return direct + nested;
-}
-
-/* ─── Search highlight ────────────────────────────────────────────── */
 function Highlight({ text, query }) {
-  if (!query.trim()) return text;
+  if (!text || !query.trim()) return text;
   const escaped = query.replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
   const parts = text.split(new RegExp(`(${escaped})`, "gi"));
   return parts.map((part, i) =>
@@ -158,97 +221,180 @@ function Highlight({ text, query }) {
   );
 }
 
-/* ─── Flat search result row ──────────────────────────────────────── */
-function SearchResultRow({ result, query, index }) {
-  const { item, categoryTitle, subcategoryTitle } = result;
+function PriceLabel({ item }) {
   const priceText = item.priceLabel ?? formatPrice(item.defaultPrice);
-  const hasPrice = Boolean(priceText);
+  if (!priceText) return null;
   const showCompareAt =
     item.priceDisplayType === "sale" && Boolean(item.priceCompareAtLabel);
-  const hasDuration = item.durationMinutes != null && item.durationMinutes > 0;
-  const breadcrumb = subcategoryTitle
-    ? `${categoryTitle} › ${subcategoryTitle}`
-    : categoryTitle;
-  const cover = item.imageUrls?.[0]
-    ? cldResponsiveFit(
-        item.imageUrls[0],
-        [80, 120, 160],
-        "f_auto,q_auto,h_120,c_fit",
-        120,
-      )
-    : null;
-
   return (
-    <motion.li
-      className={styles.searchResultRow}
-      initial={{ opacity: 0, y: 8 }}
-      animate={{ opacity: 1, y: 0 }}
-      transition={{ duration: 0.2, delay: Math.min(index * 0.025, 0.35) }}
-    >
-      {cover && (
-        <div className={styles.searchResultThumb}>
-          <Image
-            src={cover.src}
-            srcSet={cover.srcSet}
-            alt=""
-            fill
-            className={styles.searchResultThumbImage}
-            sizes="64px"
-            loading="lazy"
-          />
-        </div>
-      )}
-      <div className={styles.searchResultBody}>
-        <p className={styles.searchResultBreadcrumb}>{breadcrumb}</p>
-        <h3 className={styles.searchResultName}>
-          <Highlight text={item.name} query={query} />
-        </h3>
-        {item.description && (
-          <p className={styles.searchResultDescription}>
-            <Highlight text={item.description} query={query} />
-          </p>
-        )}
-      </div>
-      {(hasPrice || hasDuration) && (
-        <div className={styles.searchResultMeta}>
-          {hasPrice && (
-            <span className={styles.searchResultMetaItem}>
-              <Banknote size={15} className={styles.metaIcon} aria-hidden />
-              <span className={styles.metaContent}>
-                {showCompareAt && (
-                  <span className={styles.metaCompareAt}>
-                    {keepAmountWithCurrency(item.priceCompareAtLabel)}
-                  </span>
-                )}
-                <span className={styles.metaValue}>
-                  {keepAmountWithCurrency(priceText)}
-                </span>
-              </span>
-            </span>
-          )}
-          {hasDuration && (
-            <span className={styles.searchResultMetaItem}>
-              <Clock size={15} className={styles.metaIcon} aria-hidden />
-              <span className={styles.metaValue}>
-                {formatDuration(item.durationMinutes)}
-              </span>
-            </span>
-          )}
-        </div>
-      )}
-    </motion.li>
+    <span className={styles.servicePrice}>
+      {showCompareAt ? (
+        <span className={styles.compareAt}>
+          {keepAmountWithCurrency(item.priceCompareAtLabel)}
+        </span>
+      ) : null}
+      <span>{keepAmountWithCurrency(priceText)}</span>
+    </span>
   );
 }
 
-function SearchResultsList({ results, query }) {
+function ServiceLine({
+  item,
+  query,
+  onSelect,
+  selected = false,
+  expandable = false,
+  imageSrc = null,
+}) {
+  const hasDuration = item.durationMinutes != null && item.durationMinutes > 0;
+  const nameClass = `${styles.serviceName} ${
+    hasArabic(item.name) ? styles.quietScript : ""
+  }`;
+  const lineClass = `${styles.serviceLine} ${
+    selected ? styles.serviceLineSelected : ""
+  }`;
+  const [panelSrc, setPanelSrc] = useState(imageSrc);
+
+  useLayoutEffect(() => {
+    if (expandable && selected && imageSrc) setPanelSrc(imageSrc);
+  }, [expandable, imageSrc, selected]);
+
+  useEffect(() => {
+    if (!expandable || selected) return undefined;
+    const timer = window.setTimeout(() => setPanelSrc(null), DROP_PANEL_MS);
+    return () => window.clearTimeout(timer);
+  }, [expandable, selected]);
+
+  const notes = (
+    <>
+      {hasDuration ? (
+        <p className={styles.serviceQuiet}>{formatDuration(item.durationMinutes)}</p>
+      ) : null}
+      {item.description ? (
+        <p className={styles.serviceQuiet}>
+          <Highlight text={item.description} query={query} />
+        </p>
+      ) : null}
+    </>
+  );
+
+  if (expandable) {
+    return (
+      <div className={lineClass}>
+        <button
+          type="button"
+          className={styles.serviceToggle}
+          aria-expanded={selected}
+          onClick={onSelect}
+        >
+          <FitName className={nameClass} text={item.name}>
+            <Highlight text={item.name} query={query} />
+          </FitName>
+          <ChevronDown
+            size={16}
+            aria-hidden
+            className={`${dropChevronClass} ${
+              selected ? styles.chevronOpen : styles.chevron
+            }`}
+          />
+        </button>
+        <DropPanel open={selected}>
+          <div className={styles.serviceDetails}>
+            {panelSrc ? (
+              <div className={styles.boardMedia}>
+                <div className={styles.boardFrame}>
+                  <Image
+                    key={panelSrc}
+                    src={panelSrc}
+                    alt=""
+                    fill
+                    className={styles.boardImage}
+                    sizes="100vw"
+                  />
+                </div>
+              </div>
+            ) : null}
+            <PriceLabel item={item} />
+            {notes}
+          </div>
+        </DropPanel>
+      </div>
+    );
+  }
+
+  const body = (
+    <>
+      <div className={styles.serviceMain}>
+        <FitName className={nameClass} text={item.name}>
+          <Highlight text={item.name} query={query} />
+        </FitName>
+        <PriceLabel item={item} />
+      </div>
+      {notes}
+    </>
+  );
+
+  if (!onSelect) {
+    return <div className={lineClass}>{body}</div>;
+  }
+
+  return (
+    <button
+      type="button"
+      className={lineClass}
+      aria-pressed={selected}
+      onClick={onSelect}
+    >
+      {body}
+    </button>
+  );
+}
+
+function SearchResultRow({ result, query, expandable, selected, onSelect }) {
+  const { item, categoryTitle, subcategoryTitle } = result;
+  const breadcrumb = subcategoryTitle
+    ? `${categoryTitle} · ${subcategoryTitle}`
+    : categoryTitle;
+
+  return (
+    <li className={styles.searchResultRow}>
+      <p className={styles.searchResultBreadcrumb}>{breadcrumb}</p>
+      <ServiceLine
+        item={item}
+        query={query}
+        expandable={expandable}
+        selected={selected}
+        imageSrc={remotePreview(item.imageUrls)}
+        onSelect={onSelect}
+      />
+    </li>
+  );
+}
+
+function SearchResultsList({ results, query, expandable }) {
+  const [openId, setOpenId] = useState(null);
+
+  useEffect(() => {
+    setOpenId(null);
+  }, [query]);
+
   return (
     <ul className={styles.searchResultsList} aria-label="Search results">
-      {results.map((result, index) => (
+      {results.map((result) => (
         <SearchResultRow
           key={result.item.id}
           result={result}
           query={query}
-          index={index}
+          expandable={expandable}
+          selected={openId === result.item.id}
+          onSelect={
+            expandable
+              ? () =>
+                  setOpenId((current) =>
+                    current === result.item.id ? null : result.item.id,
+                  )
+              : undefined
+          }
         />
       ))}
     </ul>
@@ -276,7 +422,7 @@ function SearchSuggestions({
     >
       {suggestions.map((suggestion, index) => {
         const breadcrumb = suggestion.subcategoryTitle
-          ? `${suggestion.categoryTitle} › ${suggestion.subcategoryTitle}`
+          ? `${suggestion.categoryTitle} · ${suggestion.subcategoryTitle}`
           : suggestion.categoryTitle;
 
         return (
@@ -303,409 +449,387 @@ function SearchSuggestions({
   );
 }
 
-/* ─── Service card ────────────────────────────────────────────────── */
-function ServiceCard({ item, index, query, layoutMode }) {
-  // Prefer the API's localized, currency-suffixed priceLabel; fall back to raw.
-  const priceText = item.priceLabel ?? formatPrice(item.defaultPrice);
-  const hasPrice = Boolean(priceText);
-  const showCompareAt =
-    item.priceDisplayType === "sale" && Boolean(item.priceCompareAtLabel);
-  const hasDuration = item.durationMinutes != null && item.durationMinutes > 0;
-  const isVertical = layoutMode === "vertical";
-  const cover = item.imageUrls?.[0]
-    ? cldResponsiveFit(
-        item.imageUrls[0],
-        isVertical ? [120, 160, 240] : [320, 400, 640, 800],
-        isVertical ? "f_auto,q_auto,h_120,c_fit" : "f_auto,q_auto,h_300,c_fit",
-        isVertical ? 160 : 400,
-      )
-    : null;
-
-  return (
-    <motion.article
-      className={styles.serviceCard}
-      initial={{ opacity: 0, y: 14 }}
-      whileInView={{ opacity: 1, y: 0 }}
-      viewport={{ once: true, amount: 0.3 }}
-      transition={{ duration: 0.25, delay: Math.min(index * 0.02, 0.18) }}
-      whileHover={{ y: -3 }}
-    >
-      {cover && (
-        <div
-          className={styles.serviceImageWrap}
-          style={{ "--sweep-delay": `${(index % 7) * 0.55}s` }}
-        >
-          <Image
-            src={cover.src}
-            srcSet={cover.srcSet}
-            alt={item.name}
-            fill
-            className={styles.serviceImage}
-            sizes={
-              isVertical
-                ? "120px"
-                : "(max-width: 768px) 90vw, (max-width: 1280px) 45vw, 320px"
-            }
-            loading="lazy"
-          />
-        </div>
-      )}
-      <div className={styles.serviceInfo}>
-        <div className={styles.serviceTopRow}>
-          <h3 className={styles.serviceName}>
-            <Highlight text={item.name} query={query} />
-          </h3>
-          {(hasPrice || hasDuration) && (
-            <div className={styles.serviceMeta}>
-              {hasPrice && (
-                <span className={styles.metaItem}>
-                  <Banknote size={16} className={styles.metaIcon} aria-hidden />
-                  <span className={styles.metaContent}>
-                    {showCompareAt && (
-                      <span className={styles.metaCompareAt}>
-                        {keepAmountWithCurrency(item.priceCompareAtLabel)}
-                      </span>
-                    )}
-                    <span className={styles.metaValue}>
-                      {keepAmountWithCurrency(priceText)}
-                    </span>
-                  </span>
-                </span>
-              )}
-              {hasPrice && hasDuration && (
-                <span className={styles.metaDivider} aria-hidden>
-                  •
-                </span>
-              )}
-              {hasDuration && (
-                <span className={styles.metaItem}>
-                  <Clock size={16} className={styles.metaIcon} aria-hidden />
-                  <span className={styles.metaContent}>
-                    <span className={styles.metaValue}>
-                      {formatDuration(item.durationMinutes)}
-                    </span>
-                  </span>
-                </span>
-              )}
-            </div>
-          )}
-        </div>
-        {item.description && (
-          <p className={styles.serviceDescription}>
-            <Highlight text={item.description} query={query} />
-          </p>
-        )}
-      </div>
-    </motion.article>
-  );
-}
-
-function ServicesDisplay({ items, query, layoutMode }) {
-  const trackRef = useRef(null);
-  const isHorizontal = layoutMode === "horizontal";
-
-  const scrollCarousel = useCallback((direction) => {
-    const track = trackRef.current;
-    if (!track) return;
-
-    track.scrollBy({
-      left: direction * track.clientWidth,
-      behavior: "smooth",
-    });
-  }, []);
-
-  return (
-    <div
-      className={`${styles.servicesDisplay} ${
-        isHorizontal
-          ? styles.servicesDisplayHorizontal
-          : layoutMode === "grid"
-            ? styles.servicesDisplayGrid
-            : styles.servicesDisplayVertical
-      }`}
-    >
-      {isHorizontal && (
-        <div className={styles.carouselControls} aria-label="Carousel controls">
-          <span className={styles.carouselHint}>Swipe or use arrows</span>
-          <div className={styles.carouselButtons}>
-            <button
-              type="button"
-              className={styles.carouselArrow}
-              onClick={() => scrollCarousel(-1)}
-              aria-label="Previous services"
-            >
-              <ChevronLeft size={22} aria-hidden />
-            </button>
-            <button
-              type="button"
-              className={styles.carouselArrow}
-              onClick={() => scrollCarousel(1)}
-              aria-label="Next services"
-            >
-              <ChevronRight size={22} aria-hidden />
-            </button>
-          </div>
-        </div>
-      )}
-
-      <div className={styles.servicesTrack} ref={isHorizontal ? trackRef : null}>
-        {items.map((item, i) => (
-          <ServiceCard
-            key={item.id}
-            item={item}
-            index={i}
-            query={query}
-            layoutMode={layoutMode}
-          />
-        ))}
-      </div>
-    </div>
-  );
-}
-
-/* ─── Subcategory accordion ───────────────────────────────────────── */
-function SubcategoryAccordion({
-  group,
-  parentTitle,
+function PriceColumn({
+  column,
+  section,
+  isWide,
   isOpen,
   onToggle,
   query,
-  layoutMode,
+  onSelectItem,
+  onHoverColumn,
+  onHoverColumnEnd,
+  selectedId,
+  chapterSrc,
 }) {
-  const Icon = getCategoryIcon(group.title);
-  const cover = resolveFolderCover(
-    group.title,
-    group.imageUrls,
-    "f_auto,q_auto,w_120,h_120,c_fit",
-    parentTitle,
+  const titleClass = `${styles.columnTitle} ${
+    hasArabic(column.title) ? styles.quietScript : ""
+  }`;
+  const [panelSrc, setPanelSrc] = useState(chapterSrc);
+
+  useLayoutEffect(() => {
+    if (!isWide && isOpen && chapterSrc) setPanelSrc(chapterSrc);
+  }, [chapterSrc, isOpen, isWide]);
+
+  useEffect(() => {
+    if (isWide || isOpen) return undefined;
+    const timer = window.setTimeout(() => setPanelSrc(null), DROP_PANEL_MS);
+    return () => window.clearTimeout(timer);
+  }, [isOpen, isWide]);
+
+  const items = (
+    <ul className={styles.serviceList}>
+      {column.items.map((item) => (
+        <li key={item.id} id={`service-item-${item.id}`}>
+          <ServiceLine
+            item={item}
+            query={query}
+            expandable={!isWide}
+            selected={item.id === selectedId}
+            imageSrc={servicePreviewSrc(item, column, section)}
+            onSelect={
+              onSelectItem ? () => onSelectItem(item, column) : undefined
+            }
+          />
+        </li>
+      ))}
+    </ul>
   );
 
   return (
-    <div
-      id={`service-subcategory-${group.id}`}
-      className={styles.subcategoryBlock}
+    <section
+      id={`service-subcategory-${column.id}`}
+      className={styles.column}
     >
-      <button
-        className={styles.subcategoryTrigger}
-        onClick={onToggle}
-        aria-expanded={isOpen}
-      >
-        <span className={styles.subcategoryLead}>
-          <span className={styles.subcategoryThumbWrap}>
-            {cover ? (
-              <Image
-                src={cover.src}
-                alt={cover.kind === "static" ? cover.alt : ""}
-                fill
-                className={styles.subcategoryThumb}
-                sizes="44px"
-                loading="lazy"
-              />
-            ) : (
-              <span className={styles.subcategoryThumbFallback} aria-hidden>
-                <Icon size={18} strokeWidth={1.75} />
-              </span>
-            )}
-          </span>
-          <span className={styles.subcategoryTitleText}>{group.title}</span>
-        </span>
-        <span className={styles.subcategoryMeta}>
-          <span className={styles.subCount}>{group.items.length}</span>
-          <motion.span
-            className={styles.chevronSub}
-            animate={{ rotate: isOpen ? 180 : 0 }}
-            transition={{ duration: 0.25 }}
-          >
-            <ChevronDown size={16} />
-          </motion.span>
-        </span>
-      </button>
+      {isWide ? (
+        <h3
+          className={titleClass}
+          onPointerEnter={onHoverColumn}
+          onPointerLeave={onHoverColumnEnd}
+        >
+          {column.title}
+        </h3>
+      ) : (
+        <button
+          type="button"
+          className={styles.columnToggle}
+          aria-expanded={isOpen}
+          onClick={() => onToggle(column.id)}
+        >
+          <span className={titleClass}>{column.title}</span>
+          <ChevronDown
+            size={16}
+            aria-hidden
+            className={`${dropChevronClass} ${
+              isOpen ? styles.chevronOpen : styles.chevron
+            }`}
+          />
+        </button>
+      )}
+      {isWide ? (
+        items
+      ) : (
+        <DropPanel open={isOpen}>
+          {panelSrc ? (
+            <div className={styles.boardMedia}>
+              <div className={styles.boardFrame}>
+                <Image
+                  key={panelSrc}
+                  src={panelSrc}
+                  alt=""
+                  fill
+                  className={styles.boardImage}
+                  sizes="100vw"
+                />
+              </div>
+            </div>
+          ) : null}
+          {items}
+        </DropPanel>
+      )}
+    </section>
+  );
+}
 
-      <AnimatePresence initial={false}>
-        {isOpen && (
-          <motion.div
-            key="sub-body"
-            initial={{ height: 0, opacity: 0 }}
-            animate={{ height: "auto", opacity: 1 }}
-            exit={{ height: 0, opacity: 0 }}
-            transition={{ duration: 0.3, ease: "easeInOut" }}
-            style={{ overflow: "hidden" }}
+function CategoryBoard({
+  sections,
+  activeSection,
+  openSubcategories,
+  onSelectCategory,
+  onToggleSubcategory,
+  query,
+  isWide,
+  serviceId,
+  onServiceChange,
+}) {
+  const navHidden = useHideNavOnScroll();
+  const columns = useMemo(
+    () => (activeSection ? pageColumns(activeSection) : []),
+    [activeSection],
+  );
+  const baseSrc = categoryPreviewSrc(activeSection);
+  const [hoverSrc, setHoverSrc] = useState(null);
+  const [picked, setPicked] = useState(null);
+  const previewSrc = isWide ? hoverSrc || picked?.src || baseSrc : null;
+  const openColumn = isWide
+    ? null
+    : (columns.find((column) => openSubcategories.has(column.id)) ?? null);
+
+  useEffect(() => {
+    setHoverSrc(null);
+    setPicked(null);
+  }, [activeSection?.id]);
+
+  useEffect(() => {
+    if (isWide) return;
+    setPicked((current) => {
+      if (!current) return current;
+      const stillOpen = columns.some(
+        (column) =>
+          openSubcategories.has(column.id) &&
+          column.items.some((item) => item.id === current.id),
+      );
+      return stillOpen ? current : null;
+    });
+  }, [columns, isWide, openSubcategories]);
+
+  const scrolledServiceRef = useRef(null);
+
+  useEffect(() => {
+    if (!serviceId) return undefined;
+    for (const column of columns) {
+      const item = column.items.find((entry) => entry.id === serviceId);
+      if (!item) continue;
+      setPicked({
+        id: item.id,
+        src: servicePreviewSrc(item, column, activeSection),
+      });
+      if (scrolledServiceRef.current === serviceId) return undefined;
+      scrolledServiceRef.current = serviceId;
+      requestAnimationFrame(() => settleOpenService(serviceId));
+      return undefined;
+    }
+    return undefined;
+  }, [activeSection, columns, serviceId]);
+
+  const pickedIdRef = useRef(null);
+  pickedIdRef.current = picked?.id ?? null;
+
+  const selectItem = useCallback((item, column) => {
+    setHoverSrc(null);
+    const closing = !isWide && pickedIdRef.current === item.id;
+    const next = closing
+      ? null
+      : {
+          id: item.id,
+          src: servicePreviewSrc(item, column, activeSection),
+        };
+    setPicked(next);
+    onServiceChange?.(next?.id ?? null);
+  }, [activeSection, isWide, onServiceChange]);
+
+  const rowRef = useRef(null);
+  const [finePointer, setFinePointer] = useState(false);
+  const [rowOverflow, setRowOverflow] = useState(false);
+  const [rowAtStart, setRowAtStart] = useState(true);
+  const [rowAtEnd, setRowAtEnd] = useState(true);
+
+  useLayoutEffect(() => {
+    const media = window.matchMedia("(hover: hover) and (pointer: fine)");
+    const apply = () => setFinePointer(media.matches);
+    apply();
+    media.addEventListener("change", apply);
+    return () => media.removeEventListener("change", apply);
+  }, []);
+
+  useLayoutEffect(() => {
+    const row = rowRef.current;
+    if (!row) return undefined;
+    const update = () => {
+      const max = row.scrollWidth - row.clientWidth;
+      const overflow = max > 1;
+      const left = row.scrollLeft;
+      const rtl = getComputedStyle(row).direction === "rtl";
+      let atStart = true;
+      let atEnd = true;
+      if (overflow) {
+        if (!rtl || left <= 0) {
+          atStart = Math.abs(left) <= 2;
+          atEnd = Math.abs(left) >= max - 2;
+        } else {
+          atStart = left >= max - 2;
+          atEnd = left <= 2;
+        }
+      }
+      setRowOverflow((current) => (current === overflow ? current : overflow));
+      setRowAtStart((current) => (current === atStart ? current : atStart));
+      setRowAtEnd((current) => (current === atEnd ? current : atEnd));
+    };
+    update();
+    row.addEventListener("scroll", update, { passive: true });
+    const observer = new ResizeObserver(update);
+    observer.observe(row);
+    return () => {
+      row.removeEventListener("scroll", update);
+      observer.disconnect();
+    };
+  }, [sections]);
+
+  useEffect(() => {
+    const row = rowRef.current;
+    if (!row || !finePointer) return undefined;
+    const onWheel = (event) => {
+      if (row.scrollWidth <= row.clientWidth + 1) return;
+      if (Math.abs(event.deltaY) <= Math.abs(event.deltaX)) return;
+      const before = row.scrollLeft;
+      row.scrollBy({ left: event.deltaY });
+      if (row.scrollLeft !== before) event.preventDefault();
+    };
+    row.addEventListener("wheel", onWheel, { passive: false });
+    return () => row.removeEventListener("wheel", onWheel);
+  }, [finePointer, sections]);
+
+  const scrollCategories = (direction) => {
+    const row = rowRef.current;
+    if (!row) return;
+    const amount = Math.round(row.clientWidth * 0.75);
+    const towardEnd = direction === "next" ? 1 : -1;
+    const rtl = getComputedStyle(row).direction === "rtl";
+    const reduced = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+    row.scrollBy({
+      left: towardEnd * amount * (rtl ? -1 : 1),
+      behavior: reduced ? "auto" : "smooth",
+    });
+  };
+
+  const rowMore =
+    finePointer && rowOverflow
+      ? !rowAtStart && !rowAtEnd
+        ? "both"
+        : !rowAtStart
+          ? "start"
+          : "end"
+      : undefined;
+
+  return (
+    <div className={styles.board} data-nav-hidden={navHidden ? "true" : "false"}>
+      <div
+        className={styles.categoryBar}
+        data-more={rowMore}
+      >
+        <ul
+          ref={rowRef}
+          className={styles.categoryRow}
+          data-overflow={rowOverflow ? "true" : "false"}
+          aria-label="Service categories"
+          onPointerLeave={isWide ? () => setHoverSrc(null) : undefined}
+        >
+        {sections.map((section) => {
+          const selected = section.id === activeSection?.id;
+          return (
+            <li key={section.id} className={styles.categoryItem}>
+              <button
+                type="button"
+                className={`${styles.categoryButton} ${
+                  selected ? styles.categoryButtonActive : ""
+                } ${hasArabic(section.title) ? styles.quietScript : ""}`}
+                aria-current={selected ? "true" : undefined}
+                onClick={() => onSelectCategory(section.id)}
+                onPointerEnter={
+                  isWide
+                    ? () => setHoverSrc(categoryPreviewSrc(section))
+                    : undefined
+                }
+              >
+                {section.title}
+              </button>
+            </li>
+          );
+        })}
+        </ul>
+        {finePointer && rowOverflow && !rowAtStart ? (
+          <button
+            type="button"
+            className={`${styles.categoryStep} ${styles.categoryStepStart}`}
+            aria-label="Previous categories"
+            onClick={() => scrollCategories("previous")}
           >
-            <ServicesDisplay
-              items={group.items}
-              query={query}
-              layoutMode={layoutMode}
-            />
-          </motion.div>
-        )}
-      </AnimatePresence>
+            <ChevronLeft size={16} aria-hidden />
+          </button>
+        ) : null}
+        {finePointer && rowOverflow && !rowAtEnd ? (
+          <button
+            type="button"
+            className={`${styles.categoryStep} ${styles.categoryStepEnd}`}
+            aria-label="Next categories"
+            onClick={() => scrollCategories("next")}
+          >
+            <ChevronRight size={16} aria-hidden />
+          </button>
+        ) : null}
+      </div>
+      {!finePointer && rowOverflow && !rowAtEnd ? (
+        <p className={styles.swipeHint}>Swipe for more</p>
+      ) : null}
+
+      {activeSection ? (
+        <div className={styles.boardBody}>
+          {previewSrc ? (
+            <div className={styles.boardMedia}>
+              <div
+                className={
+                  previewSrc ? styles.boardFrame : styles.boardFrameFallback
+                }
+              >
+                {previewSrc ? (
+                  <Image
+                    key={previewSrc}
+                    src={previewSrc}
+                    alt=""
+                    fill
+                    className={styles.boardImage}
+                    sizes={isWide ? "40vw" : "100vw"}
+                    priority
+                  />
+                ) : (
+                  <p className={styles.boardFallbackTitle}>{activeSection.title}</p>
+                )}
+              </div>
+            </div>
+          ) : null}
+
+          <div className={styles.columns}>
+            {columns.map((column) => (
+              <PriceColumn
+                key={column.id}
+                column={column}
+                section={activeSection}
+                isWide={isWide}
+                isOpen={openSubcategories.has(column.id)}
+                onToggle={onToggleSubcategory}
+                query={query}
+                selectedId={picked?.id ?? null}
+                chapterSrc={
+                  column.id === openColumn?.id
+                    ? columnPreviewSrc(openColumn, activeSection)
+                    : null
+                }
+                onSelectItem={selectItem}
+                onHoverColumn={
+                  isWide
+                    ? () => setHoverSrc(columnPreviewSrc(column, activeSection))
+                    : undefined
+                }
+                onHoverColumnEnd={isWide ? () => setHoverSrc(null) : undefined}
+              />
+            ))}
+          </div>
+        </div>
+      ) : null}
     </div>
   );
 }
 
-/* ─── Category tile (browse grid + picker) ────────────────────────── */
-function CategoryTile({ section, onSelect, compact = false }) {
-  const Icon = getCategoryIcon(section.title);
-  const count = totalItemCount(section);
-  const cover = resolveFolderCover(
-    section.title,
-    section.imageUrls,
-    "f_auto,q_auto,w_640,h_480,c_fit",
-  );
-
-  return (
-    <motion.button
-      type="button"
-      className={`${styles.categoryTile} ${
-        compact ? styles.categoryTileCompact : ""
-      }`}
-      onClick={() => onSelect(section.id)}
-      aria-label={`View ${section.title} services`}
-      initial={{ opacity: 0, y: 20 }}
-      animate={{ opacity: 1, y: 0 }}
-      transition={{ duration: 0.35 }}
-      whileHover={{ y: compact ? 0 : -2 }}
-    >
-      {cover ? (
-        <div className={styles.categoryTileImageWrap}>
-          <Image
-            src={cover.src}
-            alt={cover.kind === "static" ? cover.alt : ""}
-            fill
-            className={styles.categoryTileImage}
-            sizes={
-              compact
-                ? "120px"
-                : "(max-width: 768px) 50vw, (max-width: 1280px) 33vw, 25vw"
-            }
-          />
-        </div>
-      ) : (
-        <div className={styles.categoryTileImageWrap}>
-          <div className={styles.categoryImageFallback} aria-hidden>
-            <Icon size={compact ? 28 : 40} strokeWidth={1.5} />
-          </div>
-        </div>
-      )}
-
-      <div className={styles.categoryTileContent}>
-        <span className={styles.categoryIcon} aria-hidden>
-          <Icon size={compact ? 16 : 18} strokeWidth={2} />
-        </span>
-        <span className={styles.categoryTileTitle}>{section.title}</span>
-        <span className={styles.categoryTileMeta}>
-          <span className={styles.categoryTileCount}>{count}</span>
-          <span className={styles.categoryTileMetaLabel} aria-hidden="true">
-            service{count !== 1 ? "s" : ""}
-          </span>
-        </span>
-      </div>
-    </motion.button>
-  );
-}
-
-/* ─── Unified category focus view (hero + services, one block) ───── */
-function CategoryFocusView({
-  section,
-  onClose,
-  showClose = true,
-  openSubcategories,
-  onToggleSub,
-  query,
-  layoutMode,
-  onLayoutModeChange,
-  focusRef,
-}) {
-  const Icon = getCategoryIcon(section.title);
-  const count = totalItemCount(section);
-  const cover = resolveFolderCover(
-    section.title,
-    section.imageUrls,
-    "f_auto,q_auto,w_960,h_480,c_fit",
-  );
-
-  return (
-    <motion.article
-      ref={focusRef}
-      className={styles.categoryFocus}
-      initial={{ opacity: 0, y: 16 }}
-      animate={{ opacity: 1, y: 0 }}
-      transition={{ duration: 0.35 }}
-      aria-labelledby={`category-focus-title-${section.id}`}
-    >
-      <header className={styles.categoryFocusHero}>
-        {cover ? (
-          <Image
-            src={cover.src}
-            alt={cover.kind === "static" ? cover.alt : ""}
-            fill
-            className={styles.categoryFocusHeroImage}
-            sizes="100vw"
-            priority
-          />
-        ) : (
-          <div className={styles.categoryFocusHeroFallback} aria-hidden>
-            <Icon size={56} strokeWidth={1.25} />
-          </div>
-        )}
-        <div className={styles.categoryFocusHeroOverlay} aria-hidden />
-        <div className={styles.categoryFocusHeroContent}>
-          <span className={styles.categoryFocusIcon} aria-hidden>
-            <Icon size={22} strokeWidth={2} />
-          </span>
-          <div className={styles.categoryFocusHeading}>
-            <h2
-              id={`category-focus-title-${section.id}`}
-              className={styles.categoryFocusTitle}
-            >
-              {section.title}
-            </h2>
-            <p className={styles.categoryFocusMeta}>
-              {count} service{count !== 1 ? "s" : ""}
-            </p>
-          </div>
-          {showClose && onClose && (
-            <button
-              type="button"
-              className={styles.categoryFocusClose}
-              onClick={onClose}
-              aria-label={`Close ${section.title} and return to categories`}
-            >
-              <X size={20} aria-hidden />
-            </button>
-          )}
-        </div>
-      </header>
-
-      <div className={styles.categoryFocusBody}>
-        <ServiceLayoutSwitcher
-          layoutMode={layoutMode}
-          onLayoutModeChange={onLayoutModeChange}
-        />
-        {section.groups?.map((group) => (
-          <SubcategoryAccordion
-            key={group.id}
-            group={group}
-            parentTitle={section.title}
-            isOpen={openSubcategories.has(group.id)}
-            onToggle={() => onToggleSub(group.id)}
-            query={query}
-            layoutMode={layoutMode}
-          />
-        ))}
-        {section.items && section.items.length > 0 && (
-          <ServicesDisplay
-            items={section.items}
-            query={query}
-            layoutMode={layoutMode}
-          />
-        )}
-      </div>
-    </motion.article>
-  );
-}
-
-/* ─── WhatsApp icon (SVG) ─────────────────────────────────────────── */
 function WhatsAppIcon({ size = 22 }) {
   return (
     <svg
@@ -721,7 +845,6 @@ function WhatsAppIcon({ size = 22 }) {
   );
 }
 
-/* ─── WhatsApp booking banner ─────────────────────────────────────── */
 function WhatsAppBanner() {
   const [isOpen, setIsOpen] = useState(false);
 
@@ -791,7 +914,15 @@ function WhatsAppBanner() {
   );
 }
 
-/* ─── Main component ──────────────────────────────────────────────── */
+function initialOpenIds(sections, categoryId, fromUrl, serviceId) {
+  const section = sections.find((item) => item.id === categoryId);
+  const serviceColumnId = columnIdForService(section, serviceId);
+  if (serviceColumnId) return new Set([serviceColumnId]);
+  if (fromUrl.length) return new Set(fromUrl);
+  const first = section ? pageColumns(section)[0] : null;
+  return first ? new Set([first.id]) : new Set();
+}
+
 export default function ServiceMenu({ sections = [], error = null }) {
   const searchParams = useSearchParams();
   const categoryFromUrl = useMemo(
@@ -802,6 +933,8 @@ export default function ServiceMenu({ sections = [], error = null }) {
       ),
     [searchParams, sections],
   );
+
+  const serviceFromUrl = searchParams.get(SERVICE_QUERY_KEY);
 
   const openSubcategoriesFromUrl = useMemo(
     () =>
@@ -814,50 +947,120 @@ export default function ServiceMenu({ sections = [], error = null }) {
   );
 
   const [query, setQuery] = useState("");
-  const [activeCategoryId, setActiveCategoryId] = useState(categoryFromUrl);
-  const [openSubcategories, setOpenSubcategories] = useState(
-    () => new Set(openSubcategoriesFromUrl),
+  const [activeCategoryId, setActiveCategoryId] = useState(
+    () => categoryFromUrl ?? sections[0]?.id ?? null,
   );
-  const [layoutMode, setLayoutMode] = useState("horizontal");
+  const [openSubcategories, setOpenSubcategories] = useState(() =>
+    initialOpenIds(
+      sections,
+      categoryFromUrl ?? sections[0]?.id ?? null,
+      openSubcategoriesFromUrl,
+      serviceFromUrl,
+    ),
+  );
+  const [isWide, setIsWide] = useState(false);
   const [isSearchFocused, setIsSearchFocused] = useState(false);
   const [suggestionsDismissed, setSuggestionsDismissed] = useState(false);
   const [activeSuggestionIndex, setActiveSuggestionIndex] = useState(-1);
-  const categoryFocusRef = useRef(null);
   const searchInputRef = useRef(null);
-  const subcategoryScrollDoneRef = useRef(false);
+  const ignoreNextUrlRef = useRef(false);
+
+  useLayoutEffect(() => {
+    const media = window.matchMedia(DESKTOP_MEDIA_QUERY);
+    const apply = () => setIsWide(media.matches);
+    apply();
+    media.addEventListener("change", apply);
+    return () => media.removeEventListener("change", apply);
+  }, []);
 
   useEffect(() => {
-    setActiveCategoryId(categoryFromUrl);
-  }, [categoryFromUrl]);
-
-  useEffect(() => {
-    setOpenSubcategories(new Set(openSubcategoriesFromUrl));
-  }, [openSubcategoriesFromUrl]);
+    if (categoryFromUrl) {
+      setActiveCategoryId(categoryFromUrl);
+      return;
+    }
+    setActiveCategoryId((current) => {
+      if (current && sections.some((section) => section.id === current)) {
+        return current;
+      }
+      return sections[0]?.id ?? null;
+    });
+  }, [categoryFromUrl, sections]);
 
   const syncMenuUrl = useCallback(
-    (categoryId, subcategoryIds, { urlMode = "replace" } = {}) => {
+    (categoryId, subcategoryIds, { urlMode = "replace", serviceId = null } = {}) => {
+      const before = `${window.location.pathname}${window.location.search}`;
       syncServiceMenuToUrl(
         {
           categoryId,
           openSubcategoryIds: [...subcategoryIds],
+          serviceId,
         },
         { mode: urlMode },
       );
+      const after = `${window.location.pathname}${window.location.search}`;
+      if (after !== before) ignoreNextUrlRef.current = true;
     },
     [],
+  );
+
+  useEffect(() => {
+    if (ignoreNextUrlRef.current) {
+      ignoreNextUrlRef.current = false;
+      return;
+    }
+
+    if (openSubcategoriesFromUrl.length && !serviceFromUrl) {
+      setOpenSubcategories(new Set(openSubcategoriesFromUrl));
+      return;
+    }
+
+    const section = sections.find((item) => item.id === activeCategoryId);
+    const serviceColumnId = columnIdForService(section, serviceFromUrl);
+    if (serviceColumnId) {
+      setOpenSubcategories(new Set([serviceColumnId]));
+      return;
+    }
+
+    if (openSubcategoriesFromUrl.length) {
+      setOpenSubcategories(new Set(openSubcategoriesFromUrl));
+      return;
+    }
+
+    if (!activeCategoryId) return;
+    const first = section ? pageColumns(section)[0] : null;
+    setOpenSubcategories(first ? new Set([first.id]) : new Set());
+  }, [activeCategoryId, openSubcategoriesFromUrl, sections, serviceFromUrl]);
+
+  const linkService = useCallback(
+    (serviceId) => {
+      const urlIds = [...openSubcategories].filter((id) => !isDirectColumn(id));
+      syncMenuUrl(activeCategoryId, urlIds, { urlMode: "replace", serviceId });
+    },
+    [activeCategoryId, openSubcategories, syncMenuUrl],
   );
 
   const setActiveCategory = useCallback(
     (categoryId, { urlMode = "auto", resetSubs = true } = {}) => {
       setActiveCategoryId(categoryId);
-      if (resetSubs) {
-        setOpenSubcategories(new Set());
-        syncMenuUrl(categoryId, [], { urlMode });
+      if (!categoryId || !resetSubs) {
+        const urlIds = categoryId
+          ? [...openSubcategories].filter((id) => !isDirectColumn(id))
+          : [];
+        if (!categoryId) setOpenSubcategories(new Set());
+        syncMenuUrl(categoryId, urlIds, { urlMode });
         return;
       }
-      syncMenuUrl(categoryId, openSubcategories, { urlMode });
+      const section = sections.find((item) => item.id === categoryId);
+      const first = section ? pageColumns(section)[0] : null;
+      const nextIds = first ? [first.id] : [];
+      setOpenSubcategories(new Set(nextIds));
+      syncMenuUrl(
+        categoryId,
+        nextIds.filter((id) => !isDirectColumn(id)),
+        { urlMode },
+      );
     },
-    [openSubcategories, syncMenuUrl],
+    [openSubcategories, sections, syncMenuUrl],
   );
 
   const searchCatalog = useMemo(
@@ -913,12 +1116,7 @@ export default function ServiceMenu({ sections = [], error = null }) {
         setActiveSuggestionIndex(-1);
       }
     },
-    [
-      showSuggestions,
-      suggestions,
-      activeSuggestionIndex,
-      applySuggestion,
-    ],
+    [showSuggestions, suggestions, activeSuggestionIndex, applySuggestion],
   );
 
   const handleSearchChange = useCallback((event) => {
@@ -929,7 +1127,8 @@ export default function ServiceMenu({ sections = [], error = null }) {
 
   const selectCategory = useCallback(
     (id) => {
-      const switchingCategory = activeCategoryId != null && activeCategoryId !== id;
+      const switchingCategory =
+        activeCategoryId != null && activeCategoryId !== id;
       setActiveCategory(id, {
         urlMode: switchingCategory ? "replace" : "auto",
         resetSubs: switchingCategory || activeCategoryId == null,
@@ -938,68 +1137,35 @@ export default function ServiceMenu({ sections = [], error = null }) {
     [activeCategoryId, setActiveCategory],
   );
 
-  const closeCategory = useCallback(() => {
-    setActiveCategory(null, { urlMode: "replace", resetSubs: true });
-  }, [setActiveCategory]);
-
-  useEffect(() => {
-    if (!activeCategoryId || !categoryFocusRef.current) return;
-    const el = categoryFocusRef.current;
-    requestAnimationFrame(() => {
-      el.scrollIntoView({ behavior: "smooth", block: "start" });
-    });
-  }, [activeCategoryId]);
-
   const toggleSubcategory = useCallback(
     (id) => {
+      const tappedTop = chapterHeading(id)?.getBoundingClientRect().top ?? null;
+      let opened = false;
       setOpenSubcategories((prev) => {
-        const next = new Set(prev);
-        next.has(id) ? next.delete(id) : next.add(id);
-        syncMenuUrl(activeCategoryId, next, { urlMode: "replace" });
+        const closing = prev.size === 1 && prev.has(id);
+        opened = !closing;
+        const next = closing ? new Set() : new Set([id]);
+        const urlIds = [...next].filter((value) => !isDirectColumn(value));
+        syncMenuUrl(activeCategoryId, urlIds, { urlMode: "replace" });
         return next;
       });
+      if (!opened) {
+        cancelAnimationFrame(chapterScrollFrame);
+        return;
+      }
+      requestAnimationFrame(() => settleOpenChapter(id, tappedTop));
     },
     [activeCategoryId, syncMenuUrl],
   );
 
   const clearSearch = useCallback(() => {
     setQuery("");
-    setActiveCategory(null, { urlMode: "replace", resetSubs: true });
     setSuggestionsDismissed(false);
     setActiveSuggestionIndex(-1);
-  }, [setActiveCategory]);
-
-  useEffect(() => {
-    if (query.trim()) {
-      setActiveCategory(null, { urlMode: "replace", resetSubs: true });
-    }
-  }, [query, setActiveCategory]);
-
-  useEffect(() => {
-    if (
-      subcategoryScrollDoneRef.current ||
-      !activeCategoryId ||
-      openSubcategoriesFromUrl.length === 0
-    ) {
-      return;
-    }
-
-    subcategoryScrollDoneRef.current = true;
-    const firstOpenSubcategoryId = openSubcategoriesFromUrl[0];
-    requestAnimationFrame(() => {
-      document
-        .getElementById(`service-subcategory-${firstOpenSubcategoryId}`)
-        ?.scrollIntoView({ behavior: "smooth", block: "start" });
-    });
-  }, [activeCategoryId, openSubcategoriesFromUrl]);
+  }, []);
 
   const activeSection = useMemo(
     () => sections.find((section) => section.id === activeCategoryId) ?? null,
-    [sections, activeCategoryId],
-  );
-
-  const otherSections = useMemo(
-    () => sections.filter((section) => section.id !== activeCategoryId),
     [sections, activeCategoryId],
   );
 
@@ -1007,7 +1173,6 @@ export default function ServiceMenu({ sections = [], error = null }) {
 
   return (
     <div className={styles.container}>
-      {/* ─ Sticky search bar ─ */}
       {!error && sections.length > 0 && (
         <motion.div
           className={styles.searchWrapper}
@@ -1090,10 +1255,8 @@ export default function ServiceMenu({ sections = [], error = null }) {
         </motion.div>
       )}
 
-      {/* ─ WhatsApp booking banner ─ */}
       {!error && sections.length > 0 && <WhatsAppBanner />}
 
-      {/* ─ Error ─ */}
       {error && (
         <div className={styles.errorState} role="alert">
           <p>{error}</p>
@@ -1103,14 +1266,12 @@ export default function ServiceMenu({ sections = [], error = null }) {
         </div>
       )}
 
-      {/* ─ Empty ─ */}
       {!error && sections.length === 0 && (
         <div className={styles.emptyState} role="status">
           <p>No services are available to display right now.</p>
         </div>
       )}
 
-      {/* ─ No search results ─ */}
       {!error && sections.length > 0 && isSearching && searchResults.length === 0 && (
         <div className={styles.noResults} role="status">
           <Search size={32} className={styles.noResultsIcon} />
@@ -1121,54 +1282,30 @@ export default function ServiceMenu({ sections = [], error = null }) {
         </div>
       )}
 
-      {/* ─ Categories / search results ─ */}
       {!error && (isSearching ? searchResults.length > 0 : sections.length > 0) && (
         <div className={styles.categoriesArea}>
           {isSearching ? (
-            <SearchResultsList results={searchResults} query={query} />
-          ) : activeSection ? (
-            <div className={styles.categoryBrowseFocus}>
-              <CategoryFocusView
-                section={activeSection}
-                onClose={closeCategory}
-                openSubcategories={openSubcategories}
-                onToggleSub={toggleSubcategory}
-                query={query}
-                layoutMode={layoutMode}
-                onLayoutModeChange={setLayoutMode}
-                focusRef={categoryFocusRef}
-              />
-              {otherSections.length > 0 && (
-                <div className={styles.categoryPicker}>
-                  <p className={styles.categoryPickerLabel}>Other categories</p>
-                  <div className={styles.categoryPickerGrid}>
-                    {otherSections.map((section) => (
-                      <CategoryTile
-                        key={section.id}
-                        section={section}
-                        compact
-                        onSelect={selectCategory}
-                      />
-                    ))}
-                  </div>
-                </div>
-              )}
-            </div>
+            <SearchResultsList
+              results={searchResults}
+              query={query}
+              expandable={!isWide}
+            />
           ) : (
-            <div className={styles.categoriesGrid}>
-              {sections.map((section) => (
-                <CategoryTile
-                  key={section.id}
-                  section={section}
-                  onSelect={selectCategory}
-                />
-              ))}
-            </div>
+            <CategoryBoard
+              sections={sections}
+              activeSection={activeSection}
+              openSubcategories={openSubcategories}
+              onSelectCategory={selectCategory}
+              onToggleSubcategory={toggleSubcategory}
+              query={query}
+              isWide={isWide}
+              serviceId={serviceFromUrl}
+              onServiceChange={linkService}
+            />
           )}
         </div>
       )}
 
-      {/* ─ Footer note ─ */}
       <motion.div
         className={styles.footerNote}
         initial={{ opacity: 0, y: 30 }}

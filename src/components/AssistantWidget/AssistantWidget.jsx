@@ -11,6 +11,7 @@ import {
 } from "@/data/assistantUi";
 import styles from "./AssistantWidget.module.css";
 import { useAfterHeroVideo } from "@/components/hero/useAfterHeroVideo";
+import { useHideNavOnScroll } from "@/components/mobileNav/useHideNavOnScroll";
 
 /** Panel is lazy-loaded on first open to keep First Load JS small. */
 const AssistantPanel = dynamic(() => import("./AssistantPanel"), {
@@ -28,6 +29,7 @@ export default function AssistantWidget() {
   const [tipPhase, setTipPhase] = useState("idle"); // idle | typing | hold | exit
   const launcherRef = useRef(null);
   const videoFirst = useAfterHeroVideo();
+  const navHidden = useHideNavOnScroll();
   const tipsDoneRef = useRef(false);
   const tipsRef = useRef(null);
   if (!tipsRef.current) tipsRef.current = getAssistantLauncherTips();
@@ -126,7 +128,7 @@ export default function AssistantWidget() {
   if (!videoFirst) return null;
 
   return (
-    <div className={styles.root}>
+    <div className={styles.root} data-nav-hidden={navHidden ? "true" : "false"}>
       {everOpened && (
         <div
           id="ken-assistant-panel"

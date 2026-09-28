@@ -30,6 +30,17 @@ test("phone Services opens a lookbook sheet", async ({ page }) => {
   await expect(firstSub).toHaveAttribute("aria-expanded", "false");
   await expect(dialog.getByText(/AED/)).toHaveCount(0);
   await expect(page).toHaveURL(/\/$/);
+
+  const serviceLink = subList
+    .locator('li:has(> button[aria-expanded="true"]) a[href*="service="]')
+    .first();
+  await expect(serviceLink).toBeVisible();
+  const serviceName = (await serviceLink.textContent()).trim();
+  await serviceLink.click();
+  await expect(page).toHaveURL(/[?&]service=/);
+  const opened = page.getByRole("button", { name: serviceName, exact: true });
+  await expect(opened).toHaveAttribute("aria-expanded", "true");
+  await expect(opened).toBeInViewport();
 });
 
 test("desktop Services opens a lookbook panel", async ({ page }) => {
@@ -48,4 +59,14 @@ test("desktop Services opens a lookbook panel", async ({ page }) => {
   await expect(dialog.getByRole("heading", { name: "Services" })).toHaveCount(0);
   await expect(page.getByRole("button", { name: "Go back" })).toHaveCount(0);
   await expect(page).toHaveURL(/\/$/);
+
+  const serviceLink = dialog.locator('a[href*="service="]').first();
+  await expect(serviceLink).toBeVisible();
+  const serviceName = (await serviceLink.textContent()).trim();
+  await serviceLink.click();
+  await expect(page).toHaveURL(/[?&]service=/);
+  const pressed = page.locator('button[aria-pressed="true"]');
+  await expect(pressed).toHaveCount(1);
+  await expect(pressed).toContainText(serviceName);
+  await expect(pressed).toBeInViewport();
 });
