@@ -4,7 +4,7 @@ import { useCallback, useEffect, useId, useLayoutEffect, useMemo, useRef, useSta
 import { createPortal } from "react-dom";
 import Link from "next/link";
 import Image from "next/image";
-import { Scissors, X } from "lucide-react";
+import { ChevronDown, Scissors, X } from "lucide-react";
 import { getCategoryImage } from "@/data/serviceImages";
 import { cldTransform } from "@/utils/cloudinary";
 import { buildServicesCategoryPath } from "@/utils/serviceCategoryUrl";
@@ -110,11 +110,6 @@ function MobileLookbook({
   const columns = activeSection ? desktopColumns(activeSection) : [];
   const activeColumn =
     columns.find((column) => column.id === openSubcategoryId) ?? null;
-  const preview = !activeSection
-    ? { src: null, alt: "", title: "" }
-    : activeColumn
-      ? columnPreview(activeColumn, activeSection)
-      : resolvePreview(activeSection, activeSection.title);
 
   if (!activeSection) {
     return <p className={styles.status}>Choose a category</p>;
@@ -142,42 +137,13 @@ function MobileLookbook({
         })}
       </ul>
 
-      <div className={styles.phoneMedia}>
-        <div
-          className={
-            preview.src ? styles.phoneFrame : styles.phoneFrameFallback
-          }
-        >
-          {preview.src ? (
-            <>
-              <Image
-                key={preview.src}
-                src={preview.src}
-                alt=""
-                fill
-                className={styles.phoneImage}
-                sizes="100vw"
-              />
-              <div className={styles.phoneScrim} aria-hidden />
-            </>
-          ) : (
-            <p
-              className={`${styles.phoneFallbackTitle} ${
-                hasArabic(preview.title) ? styles.megaQuietScript : ""
-              }`}
-            >
-              {preview.title}
-            </p>
-          )}
-          <Link
-            href={buildServicesCategoryPath(activeSection.id)}
-            className={styles.phoneView}
-            onClick={onNavigate}
-          >
-            View services
-          </Link>
-        </div>
-      </div>
+      <Link
+        href={buildServicesCategoryPath(activeSection.id)}
+        className={styles.phoneView}
+        onClick={onNavigate}
+      >
+        View services
+      </Link>
 
       {columns.length ? (
         <ul className={styles.phoneGroups} aria-label="Subcategories">
@@ -198,7 +164,14 @@ function MobileLookbook({
                   aria-expanded={isOpen}
                   onClick={() => onToggleSubcategory(column.id)}
                 >
-                  {column.title}
+                  <span>{column.title}</span>
+                  <ChevronDown
+                    size={16}
+                    className={`${styles.phoneChevron} ${
+                      isOpen ? styles.phoneChevronOpen : ""
+                    }`}
+                    aria-hidden
+                  />
                 </button>
                 {isOpen ? (
                   <ul className={styles.phoneServices} aria-label={column.title}>
@@ -529,8 +502,14 @@ export default function ServicesMegaMenu({
   }, []);
 
   useEffect(() => {
-    setActiveSubcategoryId(null);
-  }, [activeCategoryId]);
+    if (!activeCategoryId || useEditorial) {
+      setActiveSubcategoryId(null);
+      return;
+    }
+    const section = sections.find((item) => item.id === activeCategoryId);
+    const firstColumn = section ? desktopColumns(section)[0] : null;
+    setActiveSubcategoryId(firstColumn?.id ?? null);
+  }, [activeCategoryId, useEditorial, sections]);
 
   useEffect(() => {
     setOpen(false);

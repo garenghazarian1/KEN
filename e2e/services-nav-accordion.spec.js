@@ -22,10 +22,12 @@ test("phone Services opens a lookbook sheet", async ({ page }) => {
 
   const subList = dialog.getByRole("list", { name: "Subcategories" });
   const firstSub = subList.getByRole("button").first();
-  await expect(firstSub).toHaveAttribute("aria-expanded", "false");
-  await firstSub.click();
   await expect(firstSub).toHaveAttribute("aria-expanded", "true");
   await expect(dialog.getByRole("link", { name: "View all" }).first()).toBeVisible();
+  const secondSub = subList.getByRole("button").nth(1);
+  await secondSub.click();
+  await expect(secondSub).toHaveAttribute("aria-expanded", "true");
+  await expect(firstSub).toHaveAttribute("aria-expanded", "false");
   await expect(dialog.getByText(/AED/)).toHaveCount(0);
   await expect(page).toHaveURL(/\/$/);
 });
