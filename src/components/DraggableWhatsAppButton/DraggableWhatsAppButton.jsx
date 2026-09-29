@@ -3,7 +3,7 @@
 import { useEffect, useRef, useState } from "react";
 import { motion } from "framer-motion";
 import { FaWhatsapp } from "react-icons/fa";
-import { CONTACT } from "@/config/constants";
+import { WHATSAPP_CONTACTS } from "@/config/constants";
 import {
   buildWhatsAppUrl,
   trackWhatsAppClick,
@@ -14,6 +14,9 @@ import { useAfterHeroVideo } from "@/components/hero/useAfterHeroVideo";
 
 const STORAGE_KEY = "ken-whatsapp-position";
 const DRAG_THRESHOLD = 8;
+const FLOATING_WHATSAPP = WHATSAPP_CONTACTS.find(
+  (contact) => contact.shortLabel === "Rixos"
+);
 
 function readSavedPosition() {
   try {
@@ -69,7 +72,10 @@ export default function DraggableWhatsAppButton() {
   const [mounted, setMounted] = useState(false);
   const videoFirst = useAfterHeroVideo();
   const [whatsappHref, setWhatsappHref] = useState(() =>
-    CONTACT.whatsapp.url()
+    buildWhatsAppUrl({
+      number: FLOATING_WHATSAPP.number,
+      message: FLOATING_WHATSAPP.message,
+    })
   );
 
   const applyClamped = (pos) => {
@@ -88,8 +94,8 @@ export default function DraggableWhatsAppButton() {
     setPosition(readSavedPosition());
     setWhatsappHref(
       buildWhatsAppUrl({
-        number: CONTACT.whatsapp.number,
-        message: CONTACT.whatsapp.message,
+        number: FLOATING_WHATSAPP.number,
+        message: FLOATING_WHATSAPP.message,
       })
     );
   }, []);
@@ -136,17 +142,17 @@ export default function DraggableWhatsAppButton() {
     }
 
     trackWhatsAppClick({
-      branch: "floating",
-      number: CONTACT.whatsapp.number,
+      branch: "rixos",
+      number: FLOATING_WHATSAPP.number,
     });
-    recordOutbound(`https://wa.me/${CONTACT.whatsapp.number}`, {
-      branch: "galleria",
+    recordOutbound(`https://wa.me/${FLOATING_WHATSAPP.number}`, {
+      branch: "rixos",
     });
 
     // Refresh href in case attribution arrived after first paint
     const nextHref = buildWhatsAppUrl({
-      number: CONTACT.whatsapp.number,
-      message: CONTACT.whatsapp.message,
+      number: FLOATING_WHATSAPP.number,
+      message: FLOATING_WHATSAPP.message,
     });
     if (nextHref !== whatsappHref) {
       e.preventDefault();
@@ -165,7 +171,7 @@ export default function DraggableWhatsAppButton() {
         ref={buttonRef}
         href={whatsappHref}
         className={styles.button}
-        aria-label="Contact us on WhatsApp"
+        aria-label="Contact Rixos on WhatsApp"
         target="_blank"
         rel="noopener noreferrer"
         drag
