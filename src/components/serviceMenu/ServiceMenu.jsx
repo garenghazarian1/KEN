@@ -29,6 +29,7 @@ import {
   searchServices,
   suggestServiceTitles,
 } from "@/lib/business/serviceSearch";
+import { BookingHint, bookingMessage } from "./BookingGuide";
 import { cldTransform } from "@/utils/cloudinary";
 import {
   SERVICE_CATEGORY_QUERY_KEY,
@@ -240,11 +241,6 @@ function PriceLabel({ item }) {
   );
 }
 
-function bookingMessage(branch, services) {
-  const lines = services.map((service) => `- ${service.name}`).join("\n");
-  return `Hello KEN Beauty Center (${branch})\nI would like to book:\n${lines}`;
-}
-
 function plainWhatsAppUrl(number, message) {
   return `https://wa.me/${number}?text=${encodeURIComponent(message)}`;
 }
@@ -436,27 +432,30 @@ function SearchResultsList({ results, query, expandable, bookedIds, onToggleBook
   }, [query]);
 
   return (
-    <ul className={styles.searchResultsList} aria-label="Search results">
-      {results.map((result) => (
-        <SearchResultRow
-          key={result.item.id}
-          result={result}
-          query={query}
-          expandable={expandable}
-          selected={openId === result.item.id}
-          added={bookedIds.has(result.item.id)}
-          onToggleBook={onToggleBook}
-          onSelect={
-            expandable
-              ? () =>
-                  setOpenId((current) =>
-                    current === result.item.id ? null : result.item.id,
-                  )
-              : undefined
-          }
-        />
-      ))}
-    </ul>
+    <>
+      <BookingHint />
+      <ul className={styles.searchResultsList} aria-label="Search results">
+        {results.map((result) => (
+          <SearchResultRow
+            key={result.item.id}
+            result={result}
+            query={query}
+            expandable={expandable}
+            selected={openId === result.item.id}
+            added={bookedIds.has(result.item.id)}
+            onToggleBook={onToggleBook}
+            onSelect={
+              expandable
+                ? () =>
+                    setOpenId((current) =>
+                      current === result.item.id ? null : result.item.id,
+                    )
+                : undefined
+            }
+          />
+        ))}
+      </ul>
+    </>
   );
 }
 
@@ -836,6 +835,7 @@ function CategoryBoard({
       {!finePointer && rowOverflow && !rowAtEnd ? (
         <p className={styles.swipeHint}>Swipe for more</p>
       ) : null}
+      <BookingHint />
 
       {activeSection ? (
         <div className={styles.boardBody}>
@@ -1459,9 +1459,7 @@ export default function ServiceMenu({ sections = [], error = null }) {
           <Calendar size={20} />
         </div>
         <p>
-          Prices shown are starting rates in {BUSINESS_CURRENCY}. Message us on
-          WhatsApp to confirm availability and book at all Ken Beauty Salon
-          locations.{" "}
+          Prices shown are starting rates in {BUSINESS_CURRENCY}.{" "}
           <Link href={BOOKING_URL} className={styles.footerLink}>
             Or book online
           </Link>

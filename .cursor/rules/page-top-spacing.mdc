@@ -1,0 +1,32 @@
+---
+description: Page content starts just under the fixed nav. Do not add a second top offset.
+alwaysApply: true
+---
+
+# Page top spacing
+
+The layout already clears the fixed top bar. `src/app/Layout.module.css` `.childrenContainer` sets:
+
+```css
+padding-top: calc(3.5rem + var(--spacing-2) + env(safe-area-inset-top, 0px));
+```
+
+A page or section inside that container must not add nav clearance again.
+
+Do not put these on a page wrapper `padding-top`:
+
+- `5rem` or another copy of the navbar height
+- `var(--app-banner-height)`
+- `env(safe-area-inset-top)`
+
+Start the page like the drinks menu:
+
+```css
+padding-top: clamp(0.382rem, 1vw, 0.618rem);
+```
+
+The first heading sits in that small gap. Do not add a second top padding on the header.
+
+The bottom bar is already `padding-bottom: var(--mobile-nav-bottom-height)` on `.childrenContainer`. Do not add another safe-area bottom offset on the page.
+
+When a spacing fix is requested, record it here and in `FOLLOW_PATTERNS.md` so the next page follows it.

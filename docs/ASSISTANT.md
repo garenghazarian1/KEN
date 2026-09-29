@@ -179,7 +179,8 @@ CTAs. Cron inactivity does not change `handed_off` rows.
    complimentary **drinks** (from `src/data/drinks.js`), **About / founder**
    (Vicken Ghazarian / Ken), **Gallery** page pointers, the **WhatsApp booking
    process** (Services page → Add → Galleria or Rixos → WhatsApp opens with the
-   service names already written; the branch confirms the time in that chat),
+   service names already written; the branch confirms the time in that chat;
+   the same steps are linked under the categories at `/services/how-to-book`),
    and a `campaign_offers` pointer that defers to ACTIVE CAMPAIGN context.
 4. **Deterministic locations** (`resolveLocationRequest`): address/directions
    questions bypass model phrasing and use `src/data/stores.js`, the same source

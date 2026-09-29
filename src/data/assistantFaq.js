@@ -202,7 +202,7 @@ export const ASSISTANT_FAQ = [
       "tap add",
     ],
     answer: `WhatsApp booking on the website (this is the process; do not invent another one):
-1. Open the Services page: ${BASE_URL}/services.
+1. Open the Services page: ${BASE_URL}/services. A line under the categories links to ${BASE_URL}/services/how-to-book for the same steps.
 2. Tap Add on each service to book. Tap Added to remove it. More than one service can be added.
 3. A bar at the bottom shows the count and two branches, Galleria and Rixos.
 4. Tap the branch. WhatsApp opens to that branch with this message already filled in:

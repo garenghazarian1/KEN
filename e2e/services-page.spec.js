@@ -21,6 +21,10 @@ test("desktop services page is one priced lookbook", async ({ page }) => {
 
   const categories = page.getByRole("list", { name: "Service categories" });
   await expect(categories).toBeVisible({ timeout: 20_000 });
+  await expect(page.getByRole("link", { name: "See how" })).toHaveAttribute(
+    "href",
+    "/services/how-to-book",
+  );
   await expect(categories.getByRole("button").first()).toHaveAttribute(
     "aria-current",
     "true",

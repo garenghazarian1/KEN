@@ -1,20 +1,10 @@
 "use client";
 
-import { useState, useEffect, useCallback } from "react";
-import { motion, AnimatePresence } from "framer-motion";
+import { useState, useEffect, useCallback, useRef } from "react";
 import Image from "next/image";
-import {
-  X,
-  ChevronLeft,
-  ChevronRight,
-  Heart,
-  Sparkles,
-  Grid3x3,
-  LayoutGrid,
-} from "lucide-react";
+import { X, ChevronLeft, ChevronRight } from "lucide-react";
 import styles from "./Gallery.modern.module.css";
 
-// Sample gallery images - replace with your actual images
 const galleryImages = [
   {
     id: 1,
@@ -66,281 +56,169 @@ export default function Gallery() {
   const [selectedCategory, setSelectedCategory] = useState("all");
   const [lightboxOpen, setLightboxOpen] = useState(false);
   const [lightboxIndex, setLightboxIndex] = useState(0);
-  const [viewMode, setViewMode] = useState("masonry");
-  const [isMobile, setIsMobile] = useState(false);
-
-  useEffect(() => {
-    const checkMobile = () => {
-      setIsMobile(window.innerWidth <= 768);
-      if (window.innerWidth <= 768) {
-        setViewMode("grid");
-      }
-    };
-    checkMobile();
-    window.addEventListener("resize", checkMobile);
-    return () => window.removeEventListener("resize", checkMobile);
-  }, []);
+  const dialogRef = useRef(null);
 
   const filteredImages =
     selectedCategory === "all"
       ? galleryImages
       : galleryImages.filter((img) => img.category === selectedCategory);
 
+  const current = filteredImages[lightboxIndex];
+
   const openLightbox = (index) => {
     setLightboxIndex(index);
     setLightboxOpen(true);
-    document.body.style.overflow = "hidden";
   };
 
   const closeLightbox = useCallback(() => {
     setLightboxOpen(false);
-    document.body.style.overflow = "unset";
   }, []);
 
-  const navigateLightbox = useCallback((direction) => {
-    setLightboxIndex((prev) => {
-      const len = filteredImages.length;
-      if (direction === "prev") return prev === 0 ? len - 1 : prev - 1;
-      return prev === len - 1 ? 0 : prev + 1;
-    });
-  }, [filteredImages.length]);
+  const navigateLightbox = useCallback(
+    (direction) => {
+      setLightboxIndex((prev) => {
+        const len = filteredImages.length;
+        if (len === 0) return 0;
+        if (direction === "prev") return prev === 0 ? len - 1 : prev - 1;
+        return prev === len - 1 ? 0 : prev + 1;
+      });
+    },
+    [filteredImages.length]
+  );
 
   useEffect(() => {
-    const handleKeyPress = (e) => {
-      if (!lightboxOpen) return;
-      if (e.key === "Escape") closeLightbox();
-      if (e.key === "ArrowLeft") navigateLightbox("prev");
-      if (e.key === "ArrowRight") navigateLightbox("next");
+    const dialog = dialogRef.current;
+    if (!dialog) return;
+    if (lightboxOpen && !dialog.open) dialog.showModal();
+    if (!lightboxOpen && dialog.open) dialog.close();
+  }, [lightboxOpen]);
+
+  useEffect(() => {
+    if (!lightboxOpen) return;
+    const handleKey = (event) => {
+      if (event.key === "ArrowLeft") {
+        event.preventDefault();
+        navigateLightbox("prev");
+      }
+      if (event.key === "ArrowRight") {
+        event.preventDefault();
+        navigateLightbox("next");
+      }
     };
-    window.addEventListener("keydown", handleKeyPress);
-    return () => window.removeEventListener("keydown", handleKeyPress);
-  }, [lightboxOpen, closeLightbox, navigateLightbox]);
+    window.addEventListener("keydown", handleKey);
+    return () => window.removeEventListener("keydown", handleKey);
+  }, [lightboxOpen, navigateLightbox]);
 
   return (
     <main className={styles.main}>
-      {/* Animated Background */}
-      <div className={styles.backgroundElements}>
-        <div className={styles.gradientOrb1} />
-        <div className={styles.gradientOrb2} />
-        <div className={styles.gradientOrb3} />
+      <header className={styles.header}>
+        <h1 className={styles.title}>
+          <span className={styles.titleLine1}>Our</span>
+          <span className={styles.titleLine2}>Gallery</span>
+        </h1>
+        <p className={styles.subtitle}>
+          Discover our latest beauty transformations and stunning work
+        </p>
+      </header>
+
+      <div className={styles.filters} role="group" aria-label="Filter by category">
+        {categories.map((category) => (
+          <button
+            key={category}
+            type="button"
+            className={styles.categoryBtn}
+            aria-pressed={selectedCategory === category}
+            onClick={() => setSelectedCategory(category)}
+          >
+            {category.charAt(0).toUpperCase() + category.slice(1)}
+          </button>
+        ))}
       </div>
 
-      {/* Hero Section */}
-      <motion.section
-        className={styles.hero}
-        initial={{ opacity: 0, y: 30 }}
-        animate={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.8 }}
-      >
-        <div className={styles.heroContent}>
-          <motion.div
-            className={styles.decorativeIcon}
-            animate={{
-              y: [0, -15, 0],
-              rotate: [0, 5, -5, 0],
-            }}
-            transition={{
-              duration: 6,
-              repeat: Infinity,
-              ease: "easeInOut",
-            }}
-          >
-            <Sparkles size={48} strokeWidth={1.5} />
-          </motion.div>
-
-          <h1 className={styles.title}>
-            <span className={styles.titleMain}>Our</span>{" "}
-            <span className={styles.titleAccent}>Gallery</span>
-          </h1>
-
-          <p className={styles.subtitle}>
-            Discover our latest beauty transformations and stunning work
-          </p>
-        </div>
-      </motion.section>
-
-      {/* Gallery Controls */}
-      <motion.section
-        className={styles.controlsSection}
-        initial={{ opacity: 0 }}
-        animate={{ opacity: 1 }}
-        transition={{ delay: 0.3 }}
-      >
-        <div className={styles.controls}>
-          {/* Category Filter */}
-          <div className={styles.categoryFilter}>
-            {categories.map((category) => (
-              <motion.button
-                key={category}
-                className={`${styles.categoryBtn} ${
-                  selectedCategory === category ? styles.active : ""
-                }`}
-                onClick={() => setSelectedCategory(category)}
-                whileHover={{ scale: 1.05 }}
-                whileTap={{ scale: 0.95 }}
-              >
-                {category.charAt(0).toUpperCase() + category.slice(1)}
-              </motion.button>
-            ))}
-          </div>
-
-          {/* View Mode Toggle */}
-          {!isMobile && (
-            <div className={styles.viewModeToggle}>
+      <section className={styles.gallerySection} aria-label="Gallery photos">
+        <ul className={styles.galleryGrid}>
+          {filteredImages.map((image, index) => (
+            <li key={image.id}>
               <button
-                className={`${styles.viewBtn} ${
-                  viewMode === "masonry" ? styles.active : ""
-                }`}
-                onClick={() => setViewMode("masonry")}
-                aria-label="Masonry view"
-              >
-                <LayoutGrid size={20} />
-              </button>
-              <button
-                className={`${styles.viewBtn} ${
-                  viewMode === "grid" ? styles.active : ""
-                }`}
-                onClick={() => setViewMode("grid")}
-                aria-label="Grid view"
-              >
-                <Grid3x3 size={20} />
-              </button>
-            </div>
-          )}
-        </div>
-      </motion.section>
-
-      {/* Gallery Grid */}
-      <motion.section
-        className={styles.gallerySection}
-        initial={{ opacity: 0 }}
-        animate={{ opacity: 1 }}
-        transition={{ delay: 0.4 }}
-      >
-        <AnimatePresence mode="wait">
-          <motion.div
-            key={`${selectedCategory}-${viewMode}`}
-            className={`${styles.galleryGrid} ${
-              viewMode === "masonry" ? styles.masonry : styles.grid
-            }`}
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            exit={{ opacity: 0 }}
-            transition={{ duration: 0.3 }}
-          >
-            {filteredImages.map((image, index) => (
-              <motion.div
-                key={image.id}
+                type="button"
                 className={styles.galleryItem}
-                initial={{ opacity: 0, scale: 0.9 }}
-                animate={{ opacity: 1, scale: 1 }}
-                transition={{
-                  duration: 0.5,
-                  delay: index * 0.1,
-                  ease: [0.22, 1, 0.36, 1],
-                }}
                 onClick={() => openLightbox(index)}
               >
-                <div className={styles.imageWrapper}>
+                <span className={styles.frame}>
                   <Image
                     src={image.src}
-                    alt={image.title}
-                    width={600}
-                    height={800}
+                    alt=""
+                    fill
                     className={styles.galleryImage}
-                    loading={index < 6 ? "eager" : "lazy"}
-                    sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 33vw"
+                    sizes="(max-width: 767px) 50vw, (max-width: 1023px) 33vw, 25vw"
                   />
-                  <div className={styles.imageOverlay}>
-                    <div className={styles.overlayContent}>
-                      <Heart size={24} className={styles.overlayIcon} />
-                      <span className={styles.overlayText}>{image.title}</span>
-                    </div>
-                  </div>
-                  <div className={styles.imageBadge}>{image.category}</div>
-                </div>
-              </motion.div>
-            ))}
-          </motion.div>
-        </AnimatePresence>
-      </motion.section>
-
-      {/* Lightbox Modal */}
-      <AnimatePresence>
-        {lightboxOpen && (
-          <motion.div
-            className={styles.lightbox}
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            exit={{ opacity: 0 }}
-            onClick={closeLightbox}
-          >
-            <motion.button
-              className={styles.lightboxClose}
-              onClick={closeLightbox}
-              whileHover={{ scale: 1.1, rotate: 90 }}
-              whileTap={{ scale: 0.9 }}
-            >
-              <X size={28} />
-            </motion.button>
-
-            <motion.button
-              className={styles.lightboxNav}
-              style={{ left: "2rem" }}
-              onClick={(e) => {
-                e.stopPropagation();
-                navigateLightbox("prev");
-              }}
-              whileHover={{ scale: 1.1, x: -5 }}
-              whileTap={{ scale: 0.9 }}
-            >
-              <ChevronLeft size={32} />
-            </motion.button>
-
-            <motion.button
-              className={styles.lightboxNav}
-              style={{ right: "2rem" }}
-              onClick={(e) => {
-                e.stopPropagation();
-                navigateLightbox("next");
-              }}
-              whileHover={{ scale: 1.1, x: 5 }}
-              whileTap={{ scale: 0.9 }}
-            >
-              <ChevronRight size={32} />
-            </motion.button>
-
-            <motion.div
-              className={styles.lightboxContent}
-              onClick={(e) => e.stopPropagation()}
-              initial={{ scale: 0.8, opacity: 0 }}
-              animate={{ scale: 1, opacity: 1 }}
-              exit={{ scale: 0.8, opacity: 0 }}
-            >
-              <Image
-                src={filteredImages[lightboxIndex]?.src}
-                alt={filteredImages[lightboxIndex]?.title || "Gallery image"}
-                width={1200}
-                height={1600}
-                className={styles.lightboxImage}
-                priority
-              />
-              <div className={styles.lightboxInfo}>
-                <h3 className={styles.lightboxInfoTitle}>
-                  {filteredImages[lightboxIndex]?.title}
-                </h3>
-                <span className={styles.lightboxCategory}>
-                  {filteredImages[lightboxIndex]?.category}
                 </span>
-              </div>
-            </motion.div>
+                <span className={styles.caption}>{image.title}</span>
+              </button>
+            </li>
+          ))}
+        </ul>
+      </section>
 
-            <div className={styles.lightboxCounter}>
-              {lightboxIndex + 1} / {filteredImages.length}
+      <dialog
+        ref={dialogRef}
+        className={styles.lightbox}
+        aria-labelledby="gallery-lightbox-title"
+        onClose={closeLightbox}
+        onClick={(event) => {
+          if (event.target === event.currentTarget) closeLightbox();
+        }}
+      >
+        {current ? (
+          <>
+            <button
+              type="button"
+              className={`${styles.lightboxControl} ${styles.lightboxClose}`}
+              onClick={closeLightbox}
+              aria-label="Close gallery"
+            >
+              <X size={22} aria-hidden="true" />
+            </button>
+
+            <button
+              type="button"
+              className={`${styles.lightboxControl} ${styles.lightboxPrev}`}
+              onClick={() => navigateLightbox("prev")}
+              aria-label="Previous photo"
+            >
+              <ChevronLeft size={26} aria-hidden="true" />
+            </button>
+
+            <button
+              type="button"
+              className={`${styles.lightboxControl} ${styles.lightboxNext}`}
+              onClick={() => navigateLightbox("next")}
+              aria-label="Next photo"
+            >
+              <ChevronRight size={26} aria-hidden="true" />
+            </button>
+
+            <div className={styles.lightboxStage}>
+              <div className={styles.lightboxFrame}>
+                <Image
+                  src={current.src}
+                  alt={current.title}
+                  fill
+                  className={styles.lightboxImage}
+                  sizes="90vw"
+                  priority
+                />
+              </div>
+              <h2 id="gallery-lightbox-title" className={styles.lightboxTitle}>
+                {current.title}
+              </h2>
+              <p className={styles.lightboxCounter}>
+                {lightboxIndex + 1} / {filteredImages.length}
+              </p>
             </div>
-          </motion.div>
-        )}
-      </AnimatePresence>
+          </>
+        ) : null}
+      </dialog>
     </main>
   );
 }

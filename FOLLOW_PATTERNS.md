@@ -368,14 +368,17 @@ var(--overlay-black-10)
 }
 ```
 
-### Mobile Padding Pattern (Account for Fixed Navbar)
+### Page top spacing
+
+The layout already clears the fixed top bar in `src/app/Layout.module.css` (`.childrenContainer`). A page inside that container does not add nav clearance again.
+
+Do not put `5rem`, `var(--app-banner-height)`, or `env(safe-area-inset-top)` on a page wrapper's `padding-top`. The bottom bar is already `var(--mobile-nav-bottom-height)` on `.childrenContainer`.
+
+Match the drinks menu. The first heading sits in this small gap. Do not add a second top padding on the page header.
 
 ```css
 .page {
-  /* Account for fixed navbar (5rem) + banner + spacing */
-  padding-top: calc(
-    var(--app-banner-height, 0px) + 5rem + var(--spacing-6) + env(safe-area-inset-top, 0px)
-  );
+  padding-top: clamp(0.382rem, 1vw, 0.618rem);
   padding-left: max(
     clamp(var(--spacing-4), 5vw, var(--spacing-7)),
     env(safe-area-inset-left, 0px)
@@ -490,7 +493,7 @@ The services page and the navbar services list both use `FitName` (`src/componen
 
 ### 7. Disclosure drop
 
-Opening a subcategory list uses `DropPanel` (`src/components/dropPanel/DropPanel.jsx`), not a mount/unmount and not a height animation in Framer Motion. The body eases from `0fr` to `1fr` over 0.8s. Closing eases shut the same way. The services page and the navbar services sheet both use this. On the phone services page, the open subcategory keeps its photo under the name, centered at half the column width. A service row shows the name only; the same drop reveals that service’s photo at the same size, plus price, duration, and description. Desktop keeps the price on the row. Add on the row puts that service in a bar, stays the same width when it reads Added, and turns that row head WhatsApp green. Galleria and Rixos stay on one row and open WhatsApp with the chosen names already written. A chevron on that bar opens the chosen names; each name has a remove control. That tap, and every salon phone, `info@ken-salon.com`, and directions tap, writes one `lead_events` row in the admin database (`beauty-admin`) after the click. The link still opens if the save fails. A navbar service name links to `/services` with `category`, the real subcategory in `sub` when there is one, and `service` set to that item. The page opens that service and eases it up under the category row when it is not already on screen. Group titles and View all stay on the group.
+Opening a subcategory list uses `DropPanel` (`src/components/dropPanel/DropPanel.jsx`), not a mount/unmount and not a height animation in Framer Motion. The body eases from `0fr` to `1fr` over 0.8s. Closing eases shut the same way. The services page and the navbar services sheet both use this. On the phone services page, the open subcategory keeps its photo under the name, centered at half the column width. A service row shows the name only; the same drop reveals that service’s photo at the same size, plus price, duration, and description. Desktop keeps the price on the row. A line under the categories says to add a service and send to Galleria or Rixos, and links to `/services/how-to-book`. Add on the row puts that service in a bar, stays the same width when it reads Added, and turns that row head WhatsApp green. Galleria and Rixos stay on one row and open WhatsApp with the chosen names already written. A chevron on that bar opens the chosen names; each name has a remove control. That tap, and every salon phone, `info@ken-salon.com`, and directions tap, writes one `lead_events` row in the admin database (`beauty-admin`) after the click. The link still opens if the save fails. A navbar service name links to `/services` with `category`, the real subcategory in `sub` when there is one, and `service` set to that item. The page opens that service and eases it up under the category row when it is not already on screen. Group titles and View all stay on the group.
 
 ### Animation Timing
 
