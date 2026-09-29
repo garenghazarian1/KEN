@@ -28,17 +28,19 @@ import FitName from "@/components/fitName/FitName";
 import {
   BOOKING_URL,
   BUSINESS_CURRENCY,
-  WHATSAPP_CONTACTS,
 } from "@/config/constants";
 import { getCategoryImage } from "@/data/serviceImages";
-import { buildWhatsAppUrl, trackWhatsAppClick } from "@/lib/adsAttribution";
-import { recordOutbound } from "@/lib/leads/trackLead";
 import {
   buildServiceSearchCatalog,
   searchServices,
   suggestServiceTitles,
 } from "@/lib/business/serviceSearch";
-import { BookingHint, bookingMessage } from "./BookingGuide";
+import { BookingHint } from "./BookingGuide";
+import {
+  BOOKING_OPEN_EVENT,
+  toggleBookingService,
+  useBookingServices,
+} from "@/components/bookingDock/bookingList";
 import { cldTransform } from "@/utils/cloudinary";
 import {
   SERVICE_CATEGORY_QUERY_KEY,
@@ -238,10 +240,6 @@ function PriceLabel({ item }) {
       <span>{keepAmountWithCurrency(priceText)}</span>
     </span>
   );
-}
-
-function plainWhatsAppUrl(number, message) {
-  return `https://wa.me/${number}?text=${encodeURIComponent(message)}`;
 }
 
 function BookAdd({ item, added, onToggleBook }) {
@@ -795,10 +793,16 @@ function CategoryBoard({
             <ChevronRight size={16} aria-hidden />
           </button>
         ) : null}
+        {!finePointer && rowOverflow && !rowAtEnd ? (
+          <span className={styles.swipeHint}>
+            <span className={styles.swipeMark} aria-hidden="true">
+              <ChevronRight size={16} strokeWidth={1.75} />
+              <ChevronRight size={16} strokeWidth={1.75} />
+            </span>
+            <span className={styles.swipeLabel}>Swipe for more</span>
+          </span>
+        ) : null}
       </div>
-      {!finePointer && rowOverflow && !rowAtEnd ? (
-        <p className={styles.swipeHint}>Swipe for more</p>
-      ) : null}
       <BookingHint />
 
       {activeSection ? (
@@ -849,132 +853,6 @@ function CategoryBoard({
   );
 }
 
-function BookingSheet({ open, services, onClose, onToggleBook, focusIdRef }) {
-  const panelRef = useRef(null);
-  const wasOpen = useRef(false);
-  const serviceKey = services.map((service) => service.id).join("\n");
-  const [hrefByNumber, setHrefByNumber] = useState(null);
-
-  useEffect(() => {
-    const next = {};
-    for (const contact of WHATSAPP_CONTACTS) {
-      next[contact.number] = buildWhatsAppUrl({
-        number: contact.number,
-        message: bookingMessage(contact.shortLabel, services),
-      });
-    }
-    setHrefByNumber(next);
-  }, [serviceKey, services]);
-
-  useEffect(() => {
-    if (!open) return undefined;
-    const previousOverflow = document.body.style.overflow;
-    document.body.style.overflow = "hidden";
-    panelRef.current?.focus();
-    const onKey = (event) => {
-      if (event.key !== "Escape") return;
-      event.preventDefault();
-      onClose();
-    };
-    document.addEventListener("keydown", onKey);
-    return () => {
-      document.body.style.overflow = previousOverflow;
-      document.removeEventListener("keydown", onKey);
-    };
-  }, [onClose, open]);
-
-  useEffect(() => {
-    if (open) {
-      wasOpen.current = true;
-      return;
-    }
-    if (!wasOpen.current) return;
-    const id = focusIdRef.current;
-    if (!id) return;
-    const button = document.querySelector(
-      `[data-book-service="${CSS.escape(String(id))}"]`,
-    );
-    if (button instanceof HTMLElement) button.focus();
-  }, [focusIdRef, open]);
-
-  if (!services.length) return null;
-
-  return (
-    <div
-      ref={panelRef}
-      className={styles.bookingSheet}
-      data-open={open ? "true" : "false"}
-      role={open ? "dialog" : undefined}
-      aria-modal={open ? "true" : undefined}
-      aria-hidden={open ? undefined : true}
-      aria-labelledby="booking-sheet-title"
-      tabIndex={-1}
-    >
-      <div className={styles.bookingSheetPanel}>
-        <h2 id="booking-sheet-title" className={styles.bookingTitle}>
-          Your booking
-        </h2>
-        <p className={styles.bookingLead}>
-          We send these names on WhatsApp. The salon replies with the time.
-        </p>
-        <ul className={styles.bookList} aria-label="Chosen services">
-          {services.map((service) => (
-            <li key={service.id} className={styles.bookItem}>
-              <FitName className={styles.bookItemName} text={service.name}>
-                {service.name}
-              </FitName>
-              <button
-                type="button"
-                className={styles.bookRemove}
-                aria-label={`Remove ${service.name} from booking`}
-                onClick={() => onToggleBook(service)}
-              >
-                <X size={16} aria-hidden />
-              </button>
-            </li>
-          ))}
-        </ul>
-        <button type="button" className={styles.continueAdding} onClick={onClose}>
-          Continue adding
-        </button>
-        <div className={styles.bookBranches}>
-          {WHATSAPP_CONTACTS.map((contact) => {
-            const message = bookingMessage(contact.shortLabel, services);
-            const href =
-              hrefByNumber?.[contact.number] ??
-              plainWhatsAppUrl(contact.number, message);
-            return (
-              <a
-                key={contact.number}
-                href={href}
-                target="_blank"
-                rel="noopener noreferrer"
-                className={styles.bookBranch}
-                aria-label={`Book at ${contact.shortLabel} on WhatsApp`}
-                onClick={() => {
-                  trackWhatsAppClick({
-                    branch: contact.shortLabel,
-                    number: contact.number,
-                  });
-                  recordOutbound(href, {
-                    branch: contact.shortLabel === "Rixos" ? "rixos" : "galleria",
-                    services: services.map((service) => ({
-                      id: service.id,
-                      name: service.name,
-                    })),
-                  });
-                }}
-              >
-                Book at {contact.shortLabel}
-              </a>
-            );
-          })}
-        </div>
-      </div>
-    </div>
-  );
-}
-
 function initialOpenIds(sections, categoryId, fromUrl, serviceId) {
   const section = sections.find((item) => item.id === categoryId);
   const serviceColumnId = columnIdForService(section, serviceId);
@@ -1020,10 +898,7 @@ export default function ServiceMenu({ sections = [], error = null }) {
     ),
   );
   const [isWide, setIsWide] = useState(false);
-  const [booked, setBooked] = useState([]);
-  const [sheetOpen, setSheetOpen] = useState(false);
-  const focusAddId = useRef(null);
-  const navHidden = useHideNavOnScroll();
+  const booked = useBookingServices();
   const [isSearchFocused, setIsSearchFocused] = useState(false);
   const [suggestionsDismissed, setSuggestionsDismissed] = useState(false);
   const [activeSuggestionIndex, setActiveSuggestionIndex] = useState(-1);
@@ -1239,30 +1114,18 @@ export default function ServiceMenu({ sections = [], error = null }) {
     [booked],
   );
 
-  const closeSheet = useCallback(() => setSheetOpen(false), []);
-
   const toggleBook = useCallback((item) => {
-    focusAddId.current = item.id;
-    const removing = bookedIds.has(item.id);
-    setBooked((current) =>
-      removing
-        ? current.filter((service) => service.id !== item.id)
-        : [...current, { id: item.id, name: item.name }],
+    const { added } = toggleBookingService(item);
+    if (!added) return;
+    window.dispatchEvent(
+      new CustomEvent(BOOKING_OPEN_EVENT, { detail: { id: item.id } }),
     );
-    if (removing) {
-      if (bookedIds.size === 1) setSheetOpen(false);
-      return;
-    }
-    setSheetOpen(true);
-  }, [bookedIds]);
+  }, []);
 
   const isSearching = Boolean(query.trim());
 
   return (
-    <div
-      className={styles.container}
-      data-review={booked.length > 0 && !sheetOpen ? "true" : "false"}
-    >
+    <div className={styles.container}>
       {!error && sections.length > 0 && (
         <motion.div
           className={styles.searchWrapper}
@@ -1397,24 +1260,6 @@ export default function ServiceMenu({ sections = [], error = null }) {
           )}
         </div>
       )}
-
-      <BookingSheet
-        open={sheetOpen}
-        services={booked}
-        onClose={closeSheet}
-        onToggleBook={toggleBook}
-        focusIdRef={focusAddId}
-      />
-      {booked.length > 0 && !sheetOpen ? (
-        <button
-          type="button"
-          className={styles.reviewBooking}
-          data-nav-hidden={navHidden ? "true" : "false"}
-          onClick={() => setSheetOpen(true)}
-        >
-          Review booking
-        </button>
-      ) : null}
 
       <motion.div
         className={styles.footerNote}

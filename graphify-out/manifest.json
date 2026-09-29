@@ -60,8 +60,8 @@
     "semantic_hash": ""
   },
   "C:\\Users\\garen\\Desktop\\01-WEB-DEV\\KenLight02\\ken\\src\\app\\layout.jsx": {
-    "mtime": 1790660141.6773205,
-    "ast_hash": "d396ee8be28bac5b06ca400142103b7e",
+    "mtime": 1790701537.7235978,
+    "ast_hash": "c57f1c301d049cbad8229b673e55e0b6",
     "semantic_hash": ""
   },
   "C:\\Users\\garen\\Desktop\\01-WEB-DEV\\KenLight02\\ken\\src\\app\\loading.jsx": {
@@ -435,8 +435,8 @@
     "semantic_hash": ""
   },
   "C:\\Users\\garen\\Desktop\\01-WEB-DEV\\KenLight02\\ken\\FOLLOW_PATTERNS.md": {
-    "mtime": 1790698337.1394184,
-    "ast_hash": "408bc9f2309c107bdfa6e89e66b06ea8",
+    "mtime": 1790706547.1021833,
+    "ast_hash": "09014488b05922241692ee3db5e54ec8",
     "semantic_hash": ""
   },
   "C:\\Users\\garen\\Desktop\\01-WEB-DEV\\KenLight02\\ken\\IMPROVEMENTS_NEEDED.md": {
@@ -1010,8 +1010,8 @@
     "semantic_hash": ""
   },
   "C:\\Users\\garen\\Desktop\\01-WEB-DEV\\KenLight02\\ken\\src\\components\\serviceMenu\\ServiceMenu.jsx": {
-    "mtime": 1790698271.4416366,
-    "ast_hash": "f51f30634638644aa72df86b336ff8e8",
+    "mtime": 1790707675.9572299,
+    "ast_hash": "307588bdff3533a1f187e2dede6cd8c7",
     "semantic_hash": ""
   },
   "C:\\Users\\garen\\Desktop\\01-WEB-DEV\\KenLight02\\ken\\src\\lib\\business\\serviceCatalog.js": {
@@ -1620,8 +1620,8 @@
     "semantic_hash": ""
   },
   "C:\\Users\\garen\\Desktop\\01-WEB-DEV\\KenLight02\\ken\\e2e\\services-page.spec.js": {
-    "mtime": 1790698377.2181973,
-    "ast_hash": "26f9f07961d0888b0ad3260058299ab1",
+    "mtime": 1790706544.395928,
+    "ast_hash": "497d29b986165047e24bb54ea1037a50",
     "semantic_hash": ""
   },
   "C:\\Users\\garen\\Desktop\\01-WEB-DEV\\KenLight02\\ken\\src\\components\\dropPanel\\DropPanel.jsx": {
@@ -1677,6 +1677,16 @@
   "C:\\Users\\garen\\Desktop\\01-WEB-DEV\\KenLight02\\ken\\src\\components\\serviceMenu\\BookingGuide.jsx": {
     "mtime": 1790668669.4497077,
     "ast_hash": "35bf61016b6981b9d8bd892b7a8f66ca",
+    "semantic_hash": ""
+  },
+  "C:\\Users\\garen\\Desktop\\01-WEB-DEV\\KenLight02\\ken\\src\\components\\bookingDock\\BookingDock.jsx": {
+    "mtime": 1790706536.719234,
+    "ast_hash": "ad8c93519ad87f3dbc688e1b4e03b9c6",
+    "semantic_hash": ""
+  },
+  "C:\\Users\\garen\\Desktop\\01-WEB-DEV\\KenLight02\\ken\\src\\components\\bookingDock\\bookingList.js": {
+    "mtime": 1790701472.5798438,
+    "ast_hash": "32f7921c7622ecabe0c6ee2269549af9",
     "semantic_hash": ""
   }
 }

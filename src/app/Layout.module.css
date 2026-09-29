@@ -28,3 +28,7 @@
   );
   padding-bottom: var(--mobile-nav-bottom-height);
 }
+
+:global(body[data-booking-bar="true"]) .childrenContainer {
+  padding-bottom: calc(var(--mobile-nav-bottom-height) + 3.25rem);
+}

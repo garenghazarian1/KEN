@@ -194,7 +194,29 @@ test("added services open WhatsApp with those names", async ({ page }) => {
 
   await sheet.getByRole("button", { name: "Continue adding" }).click();
   await expect(sheet).toBeHidden();
-  await expect(page.getByRole("button", { name: "Review booking" })).toBeVisible();
+  const oneBar = page.getByRole("button", { name: "Your booking · 1 service" });
+  await expect(oneBar).toBeVisible();
+  await expect(oneBar.locator("svg")).toBeVisible();
+  const motion = await oneBar.evaluate((el) => {
+    const badge = el.querySelector("svg").parentElement;
+    return {
+      mirror: getComputedStyle(el, "::after").animationName,
+      badge: getComputedStyle(badge).animationName,
+      badgeBg: getComputedStyle(badge).backgroundColor,
+    };
+  });
+  expect(motion.mirror).not.toBe("none");
+  expect(motion.badge).not.toBe("none");
+  expect(motion.badgeBg).toBe(addedBg);
+  await page.reload();
+  await expect(oneBar).toBeVisible();
+  await page.goto("/");
+  await expect(oneBar).toBeVisible();
+  await page.goBack();
+  await expect(oneBar).toBeVisible();
+  await oneBar.click();
+  await expect(sheet).toBeVisible();
+  await sheet.getByRole("button", { name: "Continue adding" }).click();
 
   const secondAdd = page.getByRole("button", { name: /^Add / }).first();
   const secondName = (await secondAdd.getAttribute("aria-label")).replace(/^Add /, "");
@@ -209,7 +231,19 @@ test("added services open WhatsApp with those names", async ({ page }) => {
   const chosen = sheet.getByRole("list", { name: "Chosen services" });
   await chosen.getByRole("button", { name: `Remove ${secondName} from booking` }).click();
   await expect(sheet).toContainText(serviceName);
+  await sheet.getByRole("button", { name: "Continue adding" }).click();
+  const twoBar = page.getByRole("button", { name: "Your booking · 1 service" });
+  await expect(twoBar).toBeVisible();
+  const stored = await page.evaluate(() =>
+    localStorage.getItem("ken-booking-services"),
+  );
+  expect(stored).toContain(serviceName);
+  await twoBar.click();
+  await expect(sheet).toBeVisible();
   await chosen.getByRole("button", { name: `Remove ${serviceName} from booking` }).click();
   await expect(sheet).toHaveCount(0);
-  await expect(page.getByRole("button", { name: "Review booking" })).toHaveCount(0);
+  await expect(page.getByRole("button", { name: /Your booking/ })).toHaveCount(0);
+  expect(
+    await page.evaluate(() => localStorage.getItem("ken-booking-services")),
+  ).toBeNull();
 });

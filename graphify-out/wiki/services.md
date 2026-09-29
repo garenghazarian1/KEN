@@ -28,6 +28,7 @@ Last updated: 29 September 2026
 - Layout switcher: horizontal carousel / vertical list / grid
 - WhatsApp booking banner, sticky search with suggestions
 - A service photo uses that service’s own Cloudinary image only. Subcategory rows have no photo. The desktop board uses the category image until a chosen service has its own.
+- Chosen services live in `localStorage` (`ken-booking-services`) and in `BookingDock`, mounted from the root layout. Add slides the sheet up. Continue adding leaves a count bar on every page. Back does not clear the list.
 
 ## Graph edges (key)
 - `ServicesPage()` → `getServiceCatalog()`, `buildServiceSections()`, `ServiceMenu`
