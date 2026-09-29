@@ -256,10 +256,11 @@ function BookAdd({ item, added, onToggleBook }) {
       type="button"
       className={styles.addService}
       aria-pressed={added}
+      data-book-service={item.id}
       aria-label={added ? `Remove ${item.name}` : `Add ${item.name}`}
       onClick={() => onToggleBook(item)}
     >
-      {added ? "Added" : "Add"}
+      <span className={styles.addServiceLabel}>{added ? "Added" : "Add"}</span>
     </button>
   );
 }
@@ -278,9 +279,13 @@ function ServiceLine({
   const nameClass = `${styles.serviceName} ${
     hasArabic(item.name) ? styles.quietScript : ""
   }`;
-  const lineClass = `${styles.serviceLine} ${
-    selected ? styles.serviceLineSelected : ""
-  }`;
+  const lineClass = [
+    styles.serviceLine,
+    selected ? styles.serviceLineSelected : "",
+    added ? styles.serviceLineAdded : "",
+  ]
+    .filter(Boolean)
+    .join(" ");
   const [panelSrc, setPanelSrc] = useState(imageSrc);
 
   useLayoutEffect(() => {
@@ -345,7 +350,7 @@ function ServiceLine({
                     alt=""
                     fill
                     className={styles.boardImage}
-                    sizes="100vw"
+                    sizes="50vw"
                   />
                 </div>
               </div>
@@ -597,7 +602,7 @@ function PriceColumn({
                   alt=""
                   fill
                   className={styles.boardImage}
-                  sizes="100vw"
+                  sizes="50vw"
                 />
               </div>
             </div>
@@ -907,10 +912,12 @@ function WhatsAppIcon({ size = 22 }) {
   );
 }
 
-function WhatsAppBookBar({ services }) {
+function WhatsAppBookBar({ services, onToggleBook }) {
   const navHidden = useHideNavOnScroll();
   const serviceKey = services.map((service) => service.id).join("\n");
   const [hrefByNumber, setHrefByNumber] = useState(null);
+  const [listOpen, setListOpen] = useState(false);
+  const focusServiceId = useRef(null);
 
   useEffect(() => {
     const next = {};
@@ -923,6 +930,21 @@ function WhatsAppBookBar({ services }) {
     setHrefByNumber(next);
   }, [serviceKey, services]);
 
+  useEffect(() => {
+    if (services.length) return;
+    setListOpen(false);
+  }, [services.length]);
+
+  useEffect(() => {
+    const id = focusServiceId.current;
+    if (!id || services.some((service) => service.id === id)) return;
+    focusServiceId.current = null;
+    const button = document.querySelector(
+      `[data-book-service="${CSS.escape(String(id))}"]`,
+    );
+    if (button instanceof HTMLElement) button.focus();
+  }, [services]);
+
   if (!services.length || !WHATSAPP_CONTACTS.length) return null;
 
   const countLabel = `${services.length} ${services.length === 1 ? "service" : "services"}`;
@@ -934,11 +956,26 @@ function WhatsAppBookBar({ services }) {
       role="region"
       aria-label="Send selected services on WhatsApp"
     >
-      <p className={styles.bookCount} aria-live="polite">
-        <WhatsAppIcon size={18} />
-        {countLabel}
-      </p>
-      <div className={styles.bookBranches}>
+      <div className={styles.bookRow}>
+        <p className={styles.bookCount} aria-live="polite">
+          <WhatsAppIcon size={18} />
+          {countLabel}
+        </p>
+        <button
+          type="button"
+          className={styles.bookToggle}
+          aria-expanded={listOpen}
+          aria-controls="chosen-services"
+          aria-label={listOpen ? "Hide chosen services" : "Show chosen services"}
+          onClick={() => setListOpen((open) => !open)}
+        >
+          <ChevronDown
+            size={16}
+            aria-hidden
+            className={`${dropChevronClass} ${listOpen ? styles.chevronOpen : ""}`}
+          />
+        </button>
+        <div className={styles.bookBranches}>
         {WHATSAPP_CONTACTS.map((contact) => {
           const message = bookingMessage(contact.shortLabel, services);
           const href =
@@ -970,7 +1007,30 @@ function WhatsAppBookBar({ services }) {
             </a>
           );
         })}
+        </div>
       </div>
+      <DropPanel open={listOpen}>
+        <ul id="chosen-services" className={styles.bookList} aria-label="Chosen services">
+          {services.map((service) => (
+            <li key={service.id} className={styles.bookItem}>
+              <FitName className={styles.bookItemName} text={service.name}>
+                {service.name}
+              </FitName>
+              <button
+                type="button"
+                className={styles.bookRemove}
+                aria-label={`Remove ${service.name}`}
+                onClick={() => {
+                  focusServiceId.current = service.id;
+                  onToggleBook(service);
+                }}
+              >
+                <X size={16} aria-hidden />
+              </button>
+            </li>
+          ))}
+        </ul>
+      </DropPanel>
     </div>
   );
 }
@@ -1387,7 +1447,7 @@ export default function ServiceMenu({ sections = [], error = null }) {
         </div>
       )}
 
-      <WhatsAppBookBar services={booked} />
+      <WhatsAppBookBar services={booked} onToggleBook={toggleBook} />
 
       <motion.div
         className={styles.footerNote}

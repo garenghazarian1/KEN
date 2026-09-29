@@ -92,8 +92,8 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
               <MobileNavBottom />
             </div>
           </div>
+          <AssistantWidget />
         </ClientLayout>
-        <AssistantWidget />
         <Analytics />
         {/* Tidio chatbot – commented out for now, use later */}
         {/* <Script src={THIRD_PARTY.tidio.scriptUrl} strategy="lazyOnload" /> */}

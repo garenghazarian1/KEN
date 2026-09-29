@@ -1,5 +1,4 @@
-/* Assistant widget — bottom-LEFT so it never collides with the draggable
-   WhatsApp button (bottom-right) or the mobile bottom nav. */
+/* Assistant panel sits above the bottom bar. The Ani control lives in that bar. */
 
 .root {
   position: fixed;
@@ -193,17 +192,28 @@
   animation: launcherTipCursorBlink 0.85s step-end infinite;
 }
 
-.launcherTip:hover {
-  border-color: var(--glass-border-gold-medium);
-  box-shadow:
-    0 0.65rem 2rem color-mix(in srgb, var(--color-secondary) 36%, transparent),
-    0 0 0 1px var(--glass-border-white-medium) inset;
-  transform: translateY(-1px);
-}
-
 .launcherTip:focus-visible {
   outline: 2px solid var(--color-accent-1);
   outline-offset: 3px;
+}
+
+.launcherTip:active {
+  border-color: var(--glass-border-gold-medium);
+}
+
+.launcherTip:disabled {
+  color: var(--color-text-tertiary);
+  cursor: not-allowed;
+}
+
+@media (hover: hover) and (pointer: fine) {
+  .launcherTip:hover {
+    border-color: var(--glass-border-gold-medium);
+    box-shadow:
+      0 0.65rem 2rem color-mix(in srgb, var(--color-secondary) 36%, transparent),
+      0 0 0 1px var(--glass-border-white-medium) inset;
+    transform: translateY(-1px);
+  }
 }
 
 @keyframes launcherTipIn {
@@ -252,126 +262,90 @@
   }
 }
 
-/* —— AI launcher orb —— */
+/* —— Ani tab in the bottom bar —— */
 
-.launcherShell {
+.navSlot {
   position: relative;
-  width: 3.75rem;
-  height: 3.75rem;
-  flex-shrink: 0;
-}
-
-.launcherGlow {
-  position: absolute;
-  inset: -0.55rem;
-  border-radius: var(--radius-full);
-  background: radial-gradient(
-    circle,
-    color-mix(in srgb, var(--color-accent-1) 45%, transparent) 0%,
-    color-mix(in srgb, var(--color-secondary) 18%, transparent) 48%,
-    transparent 72%
-  );
-  animation: launcherGlowPulse 3.2s ease-in-out infinite;
-  pointer-events: none;
-  z-index: 0;
-}
-
-.launcherRing {
-  position: absolute;
-  inset: -0.2rem;
-  border-radius: var(--radius-full);
-  background: conic-gradient(
-    from 210deg,
-    var(--color-primary-light),
-    var(--color-accent-1),
-    var(--color-secondary-dark),
-    var(--color-primary),
-    var(--color-accent-1),
-    var(--color-primary-light)
-  );
-  animation: launcherRingSpin 10s linear infinite;
-  pointer-events: none;
-  z-index: 1;
-  -webkit-mask: radial-gradient(farthest-side, transparent calc(100% - 2.5px), #000 calc(100% - 2px));
-  mask: radial-gradient(farthest-side, transparent calc(100% - 2.5px), #000 calc(100% - 2px));
-}
-
-.launcherShellOpen .launcherGlow,
-.launcherShellOpen .launcherRing {
-  animation: none;
-  opacity: 0.35;
-}
-
-.launcher {
-  position: relative;
-  z-index: 2;
   display: flex;
   align-items: center;
   justify-content: center;
   width: 100%;
-  height: 100%;
-  padding: 0;
-  border: 2px solid color-mix(in srgb, var(--color-bg-card) 90%, var(--color-accent-1));
-  border-radius: var(--radius-full);
-  background: var(--color-bg-dark);
-  color: var(--color-text-inverse);
+  min-width: 0;
+}
+
+.navTipAnchor {
+  position: absolute;
+  left: max(0px, calc(50% - 1.35rem));
+  bottom: calc(100% + 0.75rem);
+  z-index: 2;
+  width: max-content;
+  max-width: min(15.5rem, calc(100vw - 2rem));
+}
+
+.navButton {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: var(--spacing-1);
+  width: 100%;
+  min-width: 44px;
+  min-height: 44px;
+  padding: 0 var(--spacing-2);
+  border: none;
+  background: transparent;
+  font-family: inherit;
+  font-size: var(--font-size-xs);
+  font-weight: var(--font-weight-medium);
+  line-height: 1;
+  color: var(--color-text-secondary);
   cursor: pointer;
-  overflow: hidden;
+  border-radius: var(--radius-md);
   appearance: none;
   -webkit-appearance: none;
-  box-shadow:
-    0 0.4rem 1.1rem color-mix(in srgb, var(--color-bg-dark) 45%, transparent),
-    0 0 0 0.2rem color-mix(in srgb, var(--color-bg-card) 55%, transparent);
-  transition: transform 0.25s ease, box-shadow 0.25s ease;
 }
 
-.launcherFace {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
+.navFace {
+  width: 1.75rem;
+  height: 1.75rem;
   border-radius: var(--radius-full);
+  object-fit: cover;
+  box-shadow: 0 0 0 1px var(--glass-border-gold-medium);
 }
 
-.launcherClose {
+.navClose {
   display: flex;
-  align-items: center;
-  justify-content: center;
-  width: 100%;
-  height: 100%;
-  background: linear-gradient(
-    145deg,
-    var(--color-bg-dark) 0%,
-    color-mix(in srgb, var(--color-secondary-dark) 70%, var(--color-bg-dark)) 100%
-  );
+  color: var(--color-bg-black);
 }
 
-.launcher:hover {
-  transform: scale(1.05);
-  box-shadow:
-    0 0.55rem 1.4rem color-mix(in srgb, var(--color-bg-dark) 50%, transparent),
-    0 0 0 0.25rem color-mix(in srgb, var(--color-accent-1) 28%, transparent);
+.navLabel {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  max-width: 100%;
+  line-height: 1;
 }
 
-.launcher:focus-visible {
-  outline: 2px solid var(--color-accent-1);
-  outline-offset: 4px;
+.navButton:focus-visible {
+  outline: 2px solid var(--color-accent-3);
+  outline-offset: 2px;
 }
 
-@keyframes launcherGlowPulse {
-  0%,
-  100% {
-    opacity: 0.55;
-    transform: scale(0.96);
-  }
-  50% {
-    opacity: 1;
-    transform: scale(1.06);
-  }
+.navButton:active,
+.navButton[aria-expanded="true"] {
+  color: var(--color-bg-dark);
+  font-weight: var(--font-weight-semibold);
 }
 
-@keyframes launcherRingSpin {
-  to {
-    transform: rotate(360deg);
+.navButton:disabled {
+  color: var(--color-text-tertiary);
+  cursor: not-allowed;
+}
+
+@media (hover: hover) and (pointer: fine) {
+  .navButton:hover {
+    color: var(--color-text-primary);
+    background-color: var(--overlay-black-04);
   }
 }
 
@@ -1097,9 +1071,7 @@
   .launcherTip::before,
   .launcherTipGlass::before,
   .launcherTipGlass::after,
-  .launcherTipCursor,
-  .launcherGlow,
-  .launcherRing {
+  .launcherTipCursor {
     animation: none;
   }
 

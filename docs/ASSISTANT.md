@@ -1,8 +1,8 @@
 # Ken AI Assistant — Ani (Text + Voice)
 
-Last updated: 4 September 2026
+Last updated: 29 September 2026
 
-Catalog-grounded website assistant **Ani**: floating widget with model-style
+Catalog-grounded website assistant **Ani**: bottom-bar tab with model-style
 avatar, optional guest name (dismissible strip on chat), text + voice input,
 MongoDB transcript persistence, and hard escalation to WhatsApp / phone for
 everything controlled by the third-party booking system (Zenoti).
@@ -11,7 +11,7 @@ Persona display name and greeting live in `src/data/assistantUi.js`; system
 prompt identity is in `src/lib/assistant/prompt.js`. Avatar assets:
 `public/assistant/ken-assistant-avatar.webp` (+ `.png` fallback), paths in
 `src/config/constants.js`. On each page load, launcher tips rotate above the
-launcher (`getAssistantLauncherTips()`, ~4.2 s each, once per load) then stop;
+Ani tab (`getAssistantLauncherTips()`, ~4.2 s each, once per load) then stop;
 opening the chat ends the sequence early. When a campaign is active, tips and
 quick chips include an August-offers prompt.
 
@@ -177,8 +177,10 @@ CTAs. Cron inactivity does not change `handed_off` rows.
    as catalog context (text chat + Realtime turn). See `docs/CAMPAIGNS.md`.
 3. Curated FAQ + approved copy: `src/data/assistantFaq.js` — includes
    complimentary **drinks** (from `src/data/drinks.js`), **About / founder**
-   (Vicken Ghazarian / Ken), **Gallery** page pointers, and a
-   `campaign_offers` pointer that defers to ACTIVE CAMPAIGN context.
+   (Vicken Ghazarian / Ken), **Gallery** page pointers, the **WhatsApp booking
+   process** (Services page → Add → Galleria or Rixos → WhatsApp opens with the
+   service names already written; the branch confirms the time in that chat),
+   and a `campaign_offers` pointer that defers to ACTIVE CAMPAIGN context.
 4. **Deterministic locations** (`resolveLocationRequest`): address/directions
    questions bypass model phrasing and use `src/data/stores.js`, the same source
    as the Contact page. Replies include exact full addresses; the shared
@@ -190,18 +192,21 @@ CTAs. Cron inactivity does not change `handed_off` rows.
    "book me for..." requests never reach the LLM. They get a fixed template +
    WhatsApp/call/Book Now CTAs and mark the conversation `handed_off`.
 6. System prompt (`src/lib/assistant/prompt.js`) forbids invented prices,
-   hours, policies, and any claim of booking/cancelling/refunding. Campaign
-   packages override only for promo packages; ordinary services stay on the
-   catalog.
+   hours, policies, and any claim of booking/cancelling/refunding. Booking
+   answers use only the Services-page WhatsApp steps above, or Book Now.
+   Campaign packages override only for promo packages; ordinary services stay
+   on the catalog.
 7. Retrieval includes the last three user turns so follow-ups such as “How
    much is it?” remain grounded in the previously mentioned service.
 
 ## UI
 
-- `src/components/AssistantWidget/` — launcher fixed bottom-left (WhatsApp
-  button owns bottom-right), panel lazy-loaded via `next/dynamic` on first open.
-  One-time tip bubble above the face button (3 marketing lines × 3 s).
-- Mounted once in `src/app/layout.jsx`.
+- `src/components/AssistantWidget/` — **Ani** replaces Home on the bottom bar
+  (the top-bar logo still goes home). The panel stays fixed above that bar and
+  is lazy-loaded via `next/dynamic` on first open. One-time tip bubble above
+  the Ani tab. Opening Ani closes the contact sheet; opening Contact closes Ani.
+- `AssistantProvider` wraps the shell in `ClientLayout`. The panel mounts from
+  `src/app/layout.jsx`.
 - Flow: opening the panel starts a session immediately and shows chat (greeting
   + quick chips). Optional name is a small dismissible strip above the
   transcript — it never blocks chatting. Save updates `guestName` via PATCH;

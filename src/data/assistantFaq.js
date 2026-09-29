@@ -163,9 +163,9 @@ export const ESCALATION_INTENTS = [
       "موعد.{0,10}(اليوم|غدا|غداً)",
     ],
     reply:
-      "I can't complete bookings inside this chat, but it only takes a minute: use Book Now to pick your branch, service, and time online — or message the branch on WhatsApp with your preferred day and time and they'll confirm it for you.",
+      "I can't complete the booking in this chat. On the Services page, tap Add beside each service you want. A bar shows Galleria and Rixos — tap your branch. WhatsApp opens with those service names already written. Send it and add your preferred day and time; the team confirms it there. You can also use Book Now to choose a time online.",
     replyAr:
-      "لا يمكنني إتمام الحجز داخل المحادثة، لكن يمكنك استخدام رابط الحجز لاختيار الفرع والخدمة والوقت، أو إرسال اليوم والوقت المفضلين إلى الفرع عبر واتساب وسيؤكد الفريق الحجز معك.",
+      "لا يمكنني إتمام الحجز داخل هذه المحادثة. في صفحة الخدمات، اضغط إضافة بجانب كل خدمة تريدها. يظهر شريط فيه غاليريا وريكسوس — اضغط فرعك. يفتح واتساب ورسالة الحجز مكتوب فيها أسماء الخدمات. أرسلها وأضف اليوم والوقت المناسبين، ويؤكد الفريق الحجز هناك. يمكنك أيضاً استخدام رابط الحجز لاختيار الوقت عبر الإنترنت.",
   },
 ];
 
@@ -190,8 +190,28 @@ export const ASSISTANT_FAQ = [
   },
   {
     id: "how_to_book",
-    questions: ["how", "book", "booking", "appointment", "online", "reserve"],
-    answer: `Bookings are made through our online booking page (Zenoti) at ${BOOKING_URL}: choose your branch, pick a service and time, and confirm. You can also book by WhatsApp — message the branch with the service and your preferred time. Bookings cannot be completed inside this chat.`,
+    questions: [
+      "how",
+      "book",
+      "booking",
+      "appointment",
+      "online",
+      "reserve",
+      "whatsapp",
+      "services page",
+      "tap add",
+    ],
+    answer: `WhatsApp booking on the website (this is the process; do not invent another one):
+1. Open the Services page: ${BASE_URL}/services.
+2. Tap Add on each service to book. Tap Added to remove it. More than one service can be added.
+3. A bar at the bottom shows the count and two branches, Galleria and Rixos.
+4. Tap the branch. WhatsApp opens to that branch with this message already filled in:
+Hello KEN Beauty Center (Galleria or Rixos)
+I would like to book:
+- each selected service name
+5. The guest sends that message and adds a preferred day and time. The salon team confirms the appointment in the WhatsApp chat.
+This chat cannot book, hold a time, or see availability.
+Other path: Book Now (Zenoti) at ${BOOKING_URL} — choose the branch, service, and time online.`,
     actions: [],
   },
   {

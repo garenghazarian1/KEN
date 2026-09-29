@@ -1,9 +1,10 @@
 "use client";
 
+import { useEffect, useState } from "react";
 import Link from "next/link";
 import Image from "next/image";
 import { usePathname } from "next/navigation";
-import { Briefcase, Calendar, Coffee } from "lucide-react";
+import { Briefcase, Calendar, Coffee, House } from "lucide-react";
 import {
   BOOKING_URL,
   CAREERS_URL,
@@ -13,13 +14,46 @@ import ServicesMegaMenu from "@/components/loading/navbar/ServicesMegaMenu/Servi
 import styles from "./MobileNavTop.module.css";
 import { useHideNavOnScroll } from "./useHideNavOnScroll";
 
+const LOGO_HOLD_MS = 5000;
+const HOME_HOLD_MS = 2000;
+
 export default function MobileNavTop() {
   const pathname = usePathname();
   const hidden = useHideNavOnScroll();
+  const [showHome, setShowHome] = useState(false);
+  const [markPaused, setMarkPaused] = useState(false);
   const drinksActive =
     pathname === "/drinks" || pathname.startsWith("/drinks/");
   const servicesActive =
     pathname === "/services" || pathname.startsWith("/services/");
+
+  useEffect(() => {
+    const media = window.matchMedia("(prefers-reduced-motion: reduce)");
+    if (media.matches) return undefined;
+
+    let timer = 0;
+    const hold = showHome ? HOME_HOLD_MS : LOGO_HOLD_MS;
+
+    const start = () => {
+      window.clearTimeout(timer);
+      if (document.hidden || markPaused) return;
+      timer = window.setTimeout(() => {
+        setShowHome((current) => !current);
+      }, hold);
+    };
+
+    const onVisibility = () => {
+      if (document.hidden) window.clearTimeout(timer);
+      else start();
+    };
+
+    start();
+    document.addEventListener("visibilitychange", onVisibility);
+    return () => {
+      window.clearTimeout(timer);
+      document.removeEventListener("visibilitychange", onVisibility);
+    };
+  }, [markPaused, showHome]);
 
   return (
     <header
@@ -37,16 +71,31 @@ export default function MobileNavTop() {
             href="/"
             className={styles.logoLink}
             aria-label="Ken Beauty Salon home"
+            onMouseEnter={() => setMarkPaused(true)}
+            onMouseLeave={() => setMarkPaused(false)}
+            onFocus={() => setMarkPaused(true)}
+            onBlur={() => setMarkPaused(false)}
           >
-            <Image
-              src={NAVBAR_LOGO_DEFAULT_SRC}
-              alt="Ken Beauty Salon logo"
-              width={44}
-              height={44}
-              className={styles.logo}
-              style={{ width: "44px", height: "44px", objectFit: "contain" }}
-              priority
-            />
+            <span
+              className={styles.mark}
+              data-home={showHome ? "true" : "false"}
+              aria-hidden="true"
+            >
+              <span className={`${styles.markLayer} ${styles.markLogo}`}>
+                <Image
+                  src={NAVBAR_LOGO_DEFAULT_SRC}
+                  alt=""
+                  width={44}
+                  height={44}
+                  className={styles.logo}
+                  style={{ width: "44px", height: "44px", objectFit: "contain" }}
+                  priority
+                />
+              </span>
+              <span className={`${styles.markLayer} ${styles.markHome}`}>
+                <House size={22} strokeWidth={1} className={styles.icon} />
+              </span>
+            </span>
           </Link>
         </div>
         <div className={styles.navItem}>

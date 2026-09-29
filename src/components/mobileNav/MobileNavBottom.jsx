@@ -7,7 +7,6 @@ import Image from "next/image";
 import { usePathname } from "next/navigation";
 import {
   ArrowUpRight,
-  Home,
   Users,
   Mail,
   Images,
@@ -15,6 +14,10 @@ import {
   Phone,
   MessageCircle,
 } from "lucide-react";
+import {
+  AssistantNavButton,
+  useAssistant,
+} from "@/components/AssistantWidget/AssistantWidget";
 import { CARD_URL, getTelLink } from "@/config/constants";
 import { stores } from "@/data/stores";
 import {
@@ -27,7 +30,6 @@ import styles from "./MobileNavBottom.module.css";
 import { useHideNavOnScroll } from "./useHideNavOnScroll";
 
 const mobileNavLinks = [
-  { label: "Home", path: "/", icon: Home },
   { label: "About us", path: "/about", icon: Users },
   { label: "Contact", path: "/contact", icon: Mail, opensSheet: true },
   { label: "Gallery", path: "/gallery", icon: Images },
@@ -46,9 +48,11 @@ export default function MobileNavBottom() {
   const contactButtonRef = useRef(null);
   const panelRef = useRef(null);
   const wasOpenRef = useRef(false);
+  const skipContactFocusRef = useRef(false);
   const [open, setOpen] = useState(false);
   const [mounted, setMounted] = useState(false);
-  const hidden = useHideNavOnScroll() && !open;
+  const { open: assistantOpen, close: closeAssistant } = useAssistant();
+  const hidden = useHideNavOnScroll() && !open && !assistantOpen;
 
   useEffect(() => {
     setMounted(true);
@@ -83,6 +87,10 @@ export default function MobileNavBottom() {
     }
     if (wasOpenRef.current) {
       wasOpenRef.current = false;
+      if (skipContactFocusRef.current) {
+        skipContactFocusRef.current = false;
+        return;
+      }
       contactButtonRef.current?.focus();
     }
   }, [open]);
@@ -98,12 +106,18 @@ export default function MobileNavBottom() {
       {...(hidden ? { inert: "" } : {})}
     >
       <ul className={styles.navList}>
+        <li className={styles.navItem}>
+          <AssistantNavButton
+            onActivate={() => {
+              skipContactFocusRef.current = true;
+              setOpen(false);
+            }}
+          />
+        </li>
         {mobileNavLinks.map(({ label, path, icon: Icon, external, opensSheet }) => {
           const isActive =
             !external &&
-            (path === "/"
-              ? pathname === "/"
-              : pathname === path || pathname.startsWith(path + "/"));
+            (pathname === path || pathname.startsWith(`${path}/`));
           return (
             <li key={path} className={styles.navItem}>
               {opensSheet ? (
@@ -114,7 +128,10 @@ export default function MobileNavBottom() {
                   aria-expanded={open}
                   aria-controls={panelId}
                   aria-current={isActive && !open ? "page" : undefined}
-                  onClick={() => setOpen((current) => !current)}
+                  onClick={() => {
+                    closeAssistant({ focus: false });
+                    setOpen((current) => !current);
+                  }}
                 >
                   <Icon size={22} strokeWidth={1} className={styles.icon} aria-hidden />
                   <span className={styles.label}>{label}</span>

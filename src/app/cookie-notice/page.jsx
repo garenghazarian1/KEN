@@ -1,4 +1,5 @@
 import { BUSINESS, CONTACT } from "@/config/constants";
+import LeadLink from "@/components/leadLink/LeadLink";
 import styles from "./cookie.module.css";
 
 export const metadata = {
@@ -118,7 +119,7 @@ export default function CookieNotice() {
           <p>
             If you have any questions about our use of cookies, please contact
             us through our contact page or by email at{" "}
-            <a href={`mailto:${CONTACT.email}`}>{CONTACT.email}</a>
+            <LeadLink href={`mailto:${CONTACT.email}`}>{CONTACT.email}</LeadLink>
             .
           </p>
         </section>

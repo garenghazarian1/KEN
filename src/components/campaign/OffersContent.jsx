@@ -2,6 +2,7 @@
 
 import Link from "next/link";
 import { CONTACT } from "@/config/constants";
+import { recordOutbound } from "@/lib/leads/trackLead";
 import { formatCampaignPrice, tCampaign } from "@/lib/business/campaigns";
 import styles from "./OffersContent.module.css";
 
@@ -79,6 +80,14 @@ export default function OffersContent({ campaign, expired = false }) {
                 className={styles.bookBtn}
                 target="_blank"
                 rel="noopener noreferrer"
+                onClick={() =>
+                  recordOutbound(bookUrl(name), {
+                    branch: "galleria",
+                    gtm: true,
+                    gtmBranch: "Galleria",
+                    services: [{ id: pkg.id, name }],
+                  })
+                }
               >
                 Book this package
               </a>

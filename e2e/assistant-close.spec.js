@@ -22,8 +22,17 @@ function collectJsonPosts(page, matchPath) {
 
 async function openAssistant(page) {
   await page.goto("/");
-  await page.getByRole("button", { name: /^Chat with Ani$/ }).click();
-  await expect(page.getByRole("button", { name: "End chat" })).toBeVisible();
+  const launcher = page.getByRole("button", { name: /^Chat with Ani$/ });
+  await expect(launcher).toBeVisible();
+  // The tab is in the first HTML paint. A click before hydration is dropped.
+  await expect(async () => {
+    if ((await launcher.getAttribute("aria-expanded")) !== "true") {
+      await launcher.click();
+    }
+    await expect(page.getByRole("button", { name: "End chat" })).toBeVisible({
+      timeout: 4000,
+    });
+  }).toPass({ timeout: 20000 });
 }
 
 test.describe("Ani conversation close", () => {

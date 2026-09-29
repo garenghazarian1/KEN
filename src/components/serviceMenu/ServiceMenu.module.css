@@ -492,7 +492,9 @@
 .serviceSelect:focus-visible,
 .serviceToggle:focus-visible,
 .addService:focus-visible,
-.bookBranch:focus-visible {
+.bookBranch:focus-visible,
+.bookToggle:focus-visible,
+.bookRemove:focus-visible {
   outline: 1px solid var(--color-secondary);
   outline-offset: 2px;
 }
@@ -675,6 +677,8 @@ button.serviceSelect {
 
 .addService {
   appearance: none;
+  display: inline-grid;
+  place-items: center;
   flex: 0 0 auto;
   min-height: 2.75rem;
   padding: 0 var(--spacing-3);
@@ -690,11 +694,76 @@ button.serviceSelect {
   cursor: pointer;
 }
 
+.addService::before {
+  content: "Added" / "";
+  grid-area: 1 / 1;
+  visibility: hidden;
+}
+
+.addServiceLabel {
+  grid-area: 1 / 1;
+  position: relative;
+  z-index: 1;
+}
+
+.serviceHead:has(.serviceToggle) .addService {
+  position: relative;
+  margin-block: var(--spacing-2);
+  min-height: calc(2.75rem - (var(--spacing-2) * 2));
+}
+
+.serviceHead:has(.serviceToggle) .addService::after {
+  content: "";
+  position: absolute;
+  z-index: 0;
+  inset-block: calc(var(--spacing-2) * -1);
+  inset-inline: 0;
+}
+
 .addService:active,
 .addService[aria-pressed="true"] {
   color: var(--color-text-primary);
   border-color: var(--color-text-primary);
   background: var(--overlay-secondary-10);
+}
+
+.serviceLineAdded .serviceHead {
+  background: var(--color-whatsapp);
+  color: var(--color-text-inverse);
+}
+
+.serviceLineAdded .serviceHead .serviceName,
+.serviceLineAdded .serviceHead .servicePrice,
+.serviceLineAdded .serviceHead .compareAt,
+.serviceLineAdded .serviceHead .serviceQuiet,
+.serviceLineAdded .serviceHead .chevron,
+.serviceLineAdded .serviceHead .chevronOpen,
+.serviceLineAdded .serviceToggle:active .serviceName,
+.serviceLineAdded .serviceSelect:active .serviceName,
+.serviceLineAdded .serviceSelect:active .servicePrice,
+.serviceLineAdded.serviceLineSelected .serviceHead .serviceName,
+.serviceLineAdded.serviceLineSelected .serviceHead .servicePrice {
+  color: var(--color-text-inverse);
+}
+
+.serviceLineAdded .serviceName::before {
+  background: var(--color-text-inverse);
+}
+
+.serviceLineAdded .addService,
+.serviceLineAdded .addService[aria-pressed="true"] {
+  color: var(--color-text-inverse);
+  border-color: transparent;
+  background: var(--color-whatsapp);
+}
+
+.serviceLineAdded .serviceHead:has(.serviceToggle:active),
+.serviceLineAdded .serviceHead:has(.serviceSelect:active),
+.serviceLineAdded .serviceHead:has(.addService:active),
+.serviceLineAdded .addService:active {
+  background: var(--color-whatsapp-hover);
+  color: var(--color-text-inverse);
+  border-color: transparent;
 }
 
 .addService:disabled {
@@ -757,9 +826,23 @@ button.serviceSelect {
     transform: scale(1.6);
   }
 
-  .addService:hover {
+  .addService:hover,
+  .bookToggle:hover,
+  .bookRemove:hover {
     color: var(--color-text-primary);
     border-color: var(--color-text-primary);
+  }
+
+  .serviceLineAdded .serviceHead:hover,
+  .serviceLineAdded .serviceHead:hover .addService {
+    background: var(--color-whatsapp-hover);
+    color: var(--color-text-inverse);
+    border-color: transparent;
+  }
+
+  .serviceLineAdded .serviceHead:hover .serviceName,
+  .serviceLineAdded .serviceHead:hover .servicePrice {
+    color: var(--color-text-inverse);
   }
 
   .bookBranch:hover {
@@ -893,7 +976,7 @@ button.serviceSelect {
   }
 
   .boardMedia {
-    width: min(100%, 26rem);
+    width: min(50%, 13rem);
     margin-inline: auto;
   }
 
@@ -912,11 +995,11 @@ button.serviceSelect {
   right: 0;
   bottom: var(--mobile-nav-bottom-height);
   display: flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: var(--spacing-3);
-  padding: var(--spacing-2) max(4.75rem, env(safe-area-inset-right, 0px))
-    var(--spacing-2) max(4.75rem, env(safe-area-inset-left, 0px));
+  flex-direction: column-reverse;
+  align-items: stretch;
+  gap: 0;
+  padding: var(--spacing-2) max(var(--spacing-4), env(safe-area-inset-right, 0px))
+    var(--spacing-2) max(var(--spacing-4), env(safe-area-inset-left, 0px));
   background: var(--glass-white-strong);
   border-top: 1px solid var(--glass-border-light);
   backdrop-filter: blur(var(--glass-blur-md));
@@ -927,6 +1010,13 @@ button.serviceSelect {
 .bookBar[data-nav-hidden="true"] {
   bottom: 0;
   padding-bottom: calc(var(--spacing-2) + env(safe-area-inset-bottom, 0px));
+}
+
+.bookRow {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-2);
+  min-width: 0;
 }
 
 .bookCount {
@@ -946,10 +1036,45 @@ button.serviceSelect {
   color: var(--color-whatsapp);
 }
 
+.bookToggle,
+.bookRemove {
+  appearance: none;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  flex: 0 0 2.75rem;
+  width: 2.75rem;
+  height: 2.75rem;
+  padding: 0;
+  border: 1px solid var(--glass-border-light);
+  border-radius: 999px;
+  background: transparent;
+  color: var(--color-text-secondary);
+  cursor: pointer;
+}
+
+.bookToggle:active,
+.bookToggle[aria-expanded="true"],
+.bookRemove:active {
+  color: var(--color-text-primary);
+  border-color: var(--color-text-primary);
+  background: var(--overlay-secondary-10);
+}
+
+.bookToggle:disabled,
+.bookRemove:disabled {
+  color: var(--color-text-tertiary);
+  border-color: var(--glass-border-light);
+  background: transparent;
+  cursor: not-allowed;
+}
+
 .bookBranches {
   display: flex;
-  flex-wrap: wrap;
+  flex: 1 1 auto;
+  flex-wrap: nowrap;
   justify-content: flex-end;
+  min-width: 0;
   gap: var(--spacing-2);
 }
 
@@ -957,6 +1082,7 @@ button.serviceSelect {
   display: inline-flex;
   align-items: center;
   justify-content: center;
+  flex: 0 0 auto;
   min-height: 2.75rem;
   padding: 0 var(--spacing-3);
   border-radius: 999px;
@@ -967,6 +1093,28 @@ button.serviceSelect {
   line-height: 1;
   text-decoration: none;
   white-space: nowrap;
+}
+
+.bookList {
+  list-style: none;
+  margin: 0;
+  padding: 0 0 var(--spacing-2);
+  max-height: 40vh;
+  overflow-y: auto;
+}
+
+.bookItem {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-2);
+  min-width: 0;
+  min-height: 2.75rem;
+}
+
+.bookItemName {
+  color: var(--color-text-primary);
+  font-size: var(--font-size-sm);
+  font-weight: var(--font-weight-light);
 }
 
 .bookBranch:active {

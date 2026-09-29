@@ -7,6 +7,15 @@ import {
 import { drinksMenu } from "@/data/drinks";
 
 describe("detectEscalation", () => {
+  it("tells a book-me request the Services page WhatsApp steps", () => {
+    const result = detectEscalation("Can you book me a haircut tomorrow?");
+    expect(result?.reason).toBe("book_for_me");
+    expect(result?.reply).toContain("Add");
+    expect(result?.reply).toContain("Galleria");
+    expect(result?.reply).toContain("Rixos");
+    expect(result?.reply).toContain("WhatsApp");
+  });
+
   it("escalates booking-account credential help without a bare password keyword", () => {
     expect(detectEscalation("I forgot my password")?.reason).toBe(
       "booking_account"
@@ -21,6 +30,15 @@ describe("detectEscalation", () => {
 });
 
 describe("matchFaqEntries", () => {
+  it("grounds WhatsApp booking questions with the Services page steps", () => {
+    const entries = matchFaqEntries("How do I book on WhatsApp?");
+    const booking = entries.find((e) => e.id === "how_to_book");
+    expect(booking).toBeTruthy();
+    expect(booking.answer).toContain("Tap Add");
+    expect(booking.answer).toContain("Galleria");
+    expect(booking.answer).toContain("https://www.kenbeautysalon.com/services");
+  });
+
   it("grounds drink questions from the drinks menu data", () => {
     const entries = matchFaqEntries("What drinks do you have?");
     expect(entries.some((e) => e.id === "drinks")).toBe(true);

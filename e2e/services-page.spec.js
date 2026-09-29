@@ -51,7 +51,7 @@ test("phone services page opens one service at a time", async ({ page }) => {
 
   const categories = page.getByRole("list", { name: "Service categories" });
   await expect(categories).toBeVisible({ timeout: 20_000 });
-  const photo = page.locator('img[sizes="100vw"]');
+  const photo = page.locator('img[sizes="50vw"]');
   await expect(photo).toHaveCount(1);
 
   const groups = page.locator('[id^="service-subcategory-"]');
@@ -69,6 +69,15 @@ test("phone services page opens one service at a time", async ({ page }) => {
     page.getByRole("button", { name: openName, exact: true }),
   ).toHaveAttribute("aria-expanded", "false");
   await expect(photo).toHaveCount(1);
+  const frame = nextGroup.locator('[class*="boardFrame"]');
+  await expect.poll(async () => {
+    const frameBox = await frame.boundingBox();
+    const columnBox = await nextGroup.boundingBox();
+    if (!frameBox || !columnBox || columnBox.width < 1) return 0;
+    const ratio = frameBox.width / columnBox.width;
+    const square = Math.abs(frameBox.height - frameBox.width) <= 2;
+    return ratio > 0.4 && ratio < 0.55 && square ? 1 : 0;
+  }).toBe(1);
 
   const serviceToggles = nextGroup.locator("[data-service-toggle]");
   const service = serviceToggles.nth(0);
@@ -114,18 +123,51 @@ test("added services open WhatsApp with those names", async ({ page }) => {
   });
 
   const add = page.getByRole("button", { name: /^Add / }).first();
+  const before = await add.boundingBox();
   const label = await add.getAttribute("aria-label");
   const serviceName = label.replace(/^Add /, "");
   await add.click();
   const added = page.getByRole("button", { name: `Remove ${serviceName}` });
   await expect(added).toHaveAttribute("aria-pressed", "true");
+  const after = await added.boundingBox();
+  expect(Math.abs(after.width - before.width)).toBeLessThan(1);
 
   const galleria = page.getByRole("link", { name: "Send to Galleria on WhatsApp" });
+  const rixos = page.getByRole("link", { name: "Send to Rixos on WhatsApp" });
   await expect(galleria).toBeVisible();
+  await page.mouse.move(0, 0);
+  const addedBg = await added.evaluate((el) => getComputedStyle(el).backgroundColor);
+  const branchBg = await galleria.evaluate((el) => getComputedStyle(el).backgroundColor);
+  expect(addedBg).toBe(branchBg);
+
+  const secondAdd = page.getByRole("button", { name: /^Add / }).first();
+  const secondName = (await secondAdd.getAttribute("aria-label")).replace(/^Add /, "");
+  await secondAdd.click();
+  await expect(rixos).toBeVisible();
+  const galleriaBox = await galleria.boundingBox();
+  const rixosBox = await rixos.boundingBox();
+  expect(Math.abs(galleriaBox.y - rixosBox.y)).toBeLessThan(2);
+  const galleriaClipped = await galleria.evaluate(
+    (el) => el.scrollWidth > el.clientWidth + 1,
+  );
+  const rixosClipped = await rixos.evaluate(
+    (el) => el.scrollWidth > el.clientWidth + 1,
+  );
+  expect(galleriaClipped).toBe(false);
+  expect(rixosClipped).toBe(false);
+  expect(galleriaBox.x).toBeGreaterThanOrEqual(0);
+  expect(rixosBox.x + rixosBox.width).toBeLessThanOrEqual(390);
   const href = await galleria.getAttribute("href");
   expect(decodeURIComponent(href)).toContain(serviceName);
+  expect(decodeURIComponent(href)).toContain(secondName);
   expect(href).toContain("https://wa.me/971503043570");
 
-  await added.click();
+  await page.getByRole("button", { name: "Show chosen services" }).click();
+  const chosen = page.getByRole("list", { name: "Chosen services" });
+  await expect(chosen).toContainText(serviceName);
+  await expect(chosen).toContainText(secondName);
+  await chosen.getByRole("button", { name: `Remove ${secondName}` }).click();
+  await expect(galleria).toBeVisible();
+  await chosen.getByRole("button", { name: `Remove ${serviceName}` }).click();
   await expect(galleria).toHaveCount(0);
 });
