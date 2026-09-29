@@ -435,8 +435,8 @@
     "semantic_hash": ""
   },
   "C:\\Users\\garen\\Desktop\\01-WEB-DEV\\KenLight02\\ken\\FOLLOW_PATTERNS.md": {
-    "mtime": 1790668444.2593253,
-    "ast_hash": "755e43608da41f0b42167dc1ff12fab3",
+    "mtime": 1790698337.1394184,
+    "ast_hash": "408bc9f2309c107bdfa6e89e66b06ea8",
     "semantic_hash": ""
   },
   "C:\\Users\\garen\\Desktop\\01-WEB-DEV\\KenLight02\\ken\\IMPROVEMENTS_NEEDED.md": {
@@ -1010,8 +1010,8 @@
     "semantic_hash": ""
   },
   "C:\\Users\\garen\\Desktop\\01-WEB-DEV\\KenLight02\\ken\\src\\components\\serviceMenu\\ServiceMenu.jsx": {
-    "mtime": 1790668673.2363262,
-    "ast_hash": "be35e4a297e15a4dedd2c5c329d579c8",
+    "mtime": 1790698271.4416366,
+    "ast_hash": "f51f30634638644aa72df86b336ff8e8",
     "semantic_hash": ""
   },
   "C:\\Users\\garen\\Desktop\\01-WEB-DEV\\KenLight02\\ken\\src\\lib\\business\\serviceCatalog.js": {
@@ -1185,8 +1185,8 @@
     "semantic_hash": ""
   },
   "C:\\Users\\garen\\Desktop\\01-WEB-DEV\\KenLight02\\ken\\docs\\PUBLIC_API_INTEGRATION.md": {
-    "mtime": 1789723511.64782,
-    "ast_hash": "3cb6cb23d8e7eeab8e33343bf7823422",
+    "mtime": 1790694571.2778125,
+    "ast_hash": "5418ea269a4ca33cc9d2a625ad6bf384",
     "semantic_hash": ""
   },
   "C:\\Users\\garen\\Desktop\\01-WEB-DEV\\KenLight02\\ken\\scripts\\graphify-services-update.mjs": {
@@ -1195,8 +1195,8 @@
     "semantic_hash": ""
   },
   "C:\\Users\\garen\\Desktop\\01-WEB-DEV\\KenLight02\\ken\\src\\components\\DraggableWhatsAppButton\\DraggableWhatsAppButton.jsx": {
-    "mtime": 1790638763.210555,
-    "ast_hash": "202a96023a209ced2c59038b83e48ea9",
+    "mtime": 1790683919.9263554,
+    "ast_hash": "85388a7548bc8db28e595b9426c43b04",
     "semantic_hash": ""
   },
   "C:\\Users\\garen\\Desktop\\01-WEB-DEV\\KenLight02\\ken\\src\\utils\\cloudinary.js": {
@@ -1620,8 +1620,8 @@
     "semantic_hash": ""
   },
   "C:\\Users\\garen\\Desktop\\01-WEB-DEV\\KenLight02\\ken\\e2e\\services-page.spec.js": {
-    "mtime": 1790668537.3589325,
-    "ast_hash": "0a14621cd6c06a22763e34273ff52784",
+    "mtime": 1790698377.2181973,
+    "ast_hash": "26f9f07961d0888b0ad3260058299ab1",
     "semantic_hash": ""
   },
   "C:\\Users\\garen\\Desktop\\01-WEB-DEV\\KenLight02\\ken\\src\\components\\dropPanel\\DropPanel.jsx": {
@@ -1630,8 +1630,8 @@
     "semantic_hash": ""
   },
   "C:\\Users\\garen\\Desktop\\01-WEB-DEV\\KenLight02\\ken\\src\\components\\fitName\\FitName.jsx": {
-    "mtime": 1790630841.5117676,
-    "ast_hash": "6e85712e35b50fa5b561e9612775e13b",
+    "mtime": 1790696579.6231785,
+    "ast_hash": "0da341516652cc2138f7654151687860",
     "semantic_hash": ""
   },
   "C:\\Users\\garen\\Desktop\\01-WEB-DEV\\KenLight02\\ken\\src\\app\\api\\leads\\route.js": {

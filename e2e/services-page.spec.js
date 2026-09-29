@@ -36,14 +36,44 @@ test("desktop services page is one priced lookbook", async ({ page }) => {
   await expect(preview).toHaveCount(1);
   const categorySrc = await preview.getAttribute("src");
   await page.getByRole("heading", { level: 3, name: "Hair Color" }).hover();
-  await expect.poll(async () => preview.getAttribute("src")).not.toBe(categorySrc);
+  await expect.poll(async () => preview.getAttribute("src")).toBe(categorySrc);
   const haircut = page
     .locator("[data-service-toggle]")
     .filter({ hasText: "Ken Haircut" });
-  await haircut.hover();
-  await expect.poll(async () => preview.getAttribute("src")).toBe(categorySrc);
   await haircut.click();
   await expect.poll(async () => preview.getAttribute("src")).not.toBe(categorySrc);
+  const longRow = page
+    .locator("[data-service-toggle]")
+    .filter({ hasText: "Hair Color Correction/Change" });
+  const longName = longRow.locator('[class*="serviceName"]');
+  const longPrice = longRow.locator('[class*="servicePrice"]');
+  const floor = await page.evaluate(() => {
+    const probe = document.createElement("span");
+    probe.style.fontSize = "var(--font-size-xs)";
+    document.body.appendChild(probe);
+    const size = parseFloat(getComputedStyle(probe).fontSize);
+    probe.remove();
+    return size;
+  });
+  const longNameSize = await longName.evaluate(
+    (el) => parseFloat(getComputedStyle(el).fontSize),
+  );
+  const longPriceSize = await longPrice.evaluate(
+    (el) => parseFloat(getComputedStyle(el).fontSize),
+  );
+  expect(longNameSize).toBeGreaterThanOrEqual(floor - 0.5);
+  expect(Math.abs(longNameSize - longPriceSize)).toBeLessThan(0.6);
+  const shortRow = page
+    .locator("[data-service-toggle]")
+    .filter({ hasText: /^Hair Wash/ });
+  const shortNameSize = await shortRow
+    .locator('[class*="serviceName"]')
+    .evaluate((el) => parseFloat(getComputedStyle(el).fontSize));
+  const shortPriceSize = await shortRow
+    .locator('[class*="servicePrice"]')
+    .evaluate((el) => parseFloat(getComputedStyle(el).fontSize));
+  expect(Math.abs(shortNameSize - shortPriceSize)).toBeLessThan(0.6);
+  expect(shortNameSize).toBeGreaterThan(longNameSize);
   await categories.getByRole("button").first().hover();
   await expect.poll(async () => preview.getAttribute("src")).toBe(categorySrc);
 });
@@ -56,7 +86,14 @@ test("phone services page opens one service at a time", async ({ page }) => {
   const categories = page.getByRole("list", { name: "Service categories" });
   await expect(categories).toBeVisible({ timeout: 20_000 });
   const photo = page.locator('img[sizes="50vw"]');
-  await expect(photo).toHaveCount(1);
+  await expect(photo).toHaveCount(0);
+  const serviceName = page.locator('[class*="serviceName"]').first();
+  const nameStyle = await serviceName.evaluate((el) => {
+    const style = getComputedStyle(el);
+    return { whiteSpace: style.whiteSpace, textOverflow: style.textOverflow };
+  });
+  expect(nameStyle.whiteSpace).toBe("normal");
+  expect(nameStyle.textOverflow).not.toBe("ellipsis");
 
   const groups = page.locator('[id^="service-subcategory-"]');
   const openToggle = groups.first().locator("> button");
@@ -72,6 +109,15 @@ test("phone services page opens one service at a time", async ({ page }) => {
   await expect(
     page.getByRole("button", { name: openName, exact: true }),
   ).toHaveAttribute("aria-expanded", "false");
+  await expect(photo).toHaveCount(0);
+  await expect(nextGroup.locator('[class*="boardFrame"]')).toHaveCount(0);
+
+  const serviceToggles = nextGroup.locator("[data-service-toggle]");
+  const service = serviceToggles.nth(0);
+  await expect(service).not.toContainText("AED");
+  await service.click();
+  await expect(service).toHaveAttribute("aria-expanded", "true");
+  await expect(nextGroup.getByText(/AED/).locator("visible=true").first()).toBeVisible();
   await expect(photo).toHaveCount(1);
   const frame = nextGroup.locator('[class*="boardFrame"]');
   await expect.poll(async () => {
@@ -83,23 +129,15 @@ test("phone services page opens one service at a time", async ({ page }) => {
     return ratio > 0.4 && ratio < 0.55 && square ? 1 : 0;
   }).toBe(1);
 
-  const serviceToggles = nextGroup.locator("[data-service-toggle]");
-  const service = serviceToggles.nth(0);
-  await expect(service).not.toContainText("AED");
-  await service.click();
-  await expect(service).toHaveAttribute("aria-expanded", "true");
-  await expect(nextGroup.getByText(/AED/).locator("visible=true").first()).toBeVisible();
-  await expect(photo).toHaveCount(2);
-
   const other = serviceToggles.nth(1);
   await other.click();
   await expect(service).toHaveAttribute("aria-expanded", "false");
   await expect(other).toHaveAttribute("aria-expanded", "true");
-  await expect(photo).toHaveCount(2);
+  await expect(photo).toHaveCount(1);
 
   await other.click();
   await expect(other).toHaveAttribute("aria-expanded", "false");
-  await expect(photo).toHaveCount(1);
+  await expect(photo).toHaveCount(0);
 });
 
 test("menu link opens the priced category", async ({ page }) => {
@@ -131,47 +169,47 @@ test("added services open WhatsApp with those names", async ({ page }) => {
   const label = await add.getAttribute("aria-label");
   const serviceName = label.replace(/^Add /, "");
   await add.click();
-  const added = page.getByRole("button", { name: `Remove ${serviceName}` });
+  const added = page.getByRole("button", {
+    name: `Remove ${serviceName}`,
+    exact: true,
+  });
   await expect(added).toHaveAttribute("aria-pressed", "true");
   const after = await added.boundingBox();
   expect(Math.abs(after.width - before.width)).toBeLessThan(1);
 
-  const galleria = page.getByRole("link", { name: "Send to Galleria on WhatsApp" });
-  const rixos = page.getByRole("link", { name: "Send to Rixos on WhatsApp" });
+  const sheet = page.getByRole("dialog", { name: "Your booking" });
+  await expect(sheet).toBeVisible();
+  await expect(sheet).toContainText(
+    "We send these names on WhatsApp. The salon replies with the time.",
+  );
+  await expect(sheet).toContainText(serviceName);
+  const galleria = sheet.getByRole("link", { name: "Book at Galleria" });
+  const rixos = sheet.getByRole("link", { name: "Book at Rixos" });
   await expect(galleria).toBeVisible();
+  await expect(rixos).toBeVisible();
   await page.mouse.move(0, 0);
   const addedBg = await added.evaluate((el) => getComputedStyle(el).backgroundColor);
   const branchBg = await galleria.evaluate((el) => getComputedStyle(el).backgroundColor);
   expect(addedBg).toBe(branchBg);
 
+  await sheet.getByRole("button", { name: "Continue adding" }).click();
+  await expect(sheet).toBeHidden();
+  await expect(page.getByRole("button", { name: "Review booking" })).toBeVisible();
+
   const secondAdd = page.getByRole("button", { name: /^Add / }).first();
   const secondName = (await secondAdd.getAttribute("aria-label")).replace(/^Add /, "");
   await secondAdd.click();
-  await expect(rixos).toBeVisible();
-  const galleriaBox = await galleria.boundingBox();
-  const rixosBox = await rixos.boundingBox();
-  expect(Math.abs(galleriaBox.y - rixosBox.y)).toBeLessThan(2);
-  const galleriaClipped = await galleria.evaluate(
-    (el) => el.scrollWidth > el.clientWidth + 1,
-  );
-  const rixosClipped = await rixos.evaluate(
-    (el) => el.scrollWidth > el.clientWidth + 1,
-  );
-  expect(galleriaClipped).toBe(false);
-  expect(rixosClipped).toBe(false);
-  expect(galleriaBox.x).toBeGreaterThanOrEqual(0);
-  expect(rixosBox.x + rixosBox.width).toBeLessThanOrEqual(390);
+  await expect(sheet).toBeVisible();
+  await expect(sheet).toContainText(secondName);
   const href = await galleria.getAttribute("href");
   expect(decodeURIComponent(href)).toContain(serviceName);
   expect(decodeURIComponent(href)).toContain(secondName);
   expect(href).toContain("https://wa.me/971503043570");
 
-  await page.getByRole("button", { name: "Show chosen services" }).click();
-  const chosen = page.getByRole("list", { name: "Chosen services" });
-  await expect(chosen).toContainText(serviceName);
-  await expect(chosen).toContainText(secondName);
-  await chosen.getByRole("button", { name: `Remove ${secondName}` }).click();
-  await expect(galleria).toBeVisible();
-  await chosen.getByRole("button", { name: `Remove ${serviceName}` }).click();
-  await expect(galleria).toHaveCount(0);
+  const chosen = sheet.getByRole("list", { name: "Chosen services" });
+  await chosen.getByRole("button", { name: `Remove ${secondName} from booking` }).click();
+  await expect(sheet).toContainText(serviceName);
+  await chosen.getByRole("button", { name: `Remove ${serviceName} from booking` }).click();
+  await expect(sheet).toHaveCount(0);
+  await expect(page.getByRole("button", { name: "Review booking" })).toHaveCount(0);
 });

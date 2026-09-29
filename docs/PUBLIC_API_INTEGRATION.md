@@ -1,6 +1,6 @@
 # Public API Integration (Admin System)
 
-Last updated: 18 September 2026
+Last updated: 29 September 2026
 
 This consumer app (kenbeautysalon.com) reads business data from the **Garen admin
 system** over its **read-only public HTTP API**. We do **not** connect to the admin
@@ -48,7 +48,9 @@ closures, contact.
 
 Consumed by:
 
-- `src/app/(navPages)/services/page.jsx` → `src/components/serviceMenu/ServiceMenu.jsx`
+- `src/app/(navPages)/services/page.jsx` → `src/components/serviceMenu/ServiceMenu.jsx`.
+  The services page shows a photo only when an opened service has its own `imageUrls`.
+  Subcategory rows are the name and chevron. The navbar sheet still shows thumbs.
 - `GET /api/services/catalog` (app route) → slim sections for
   `src/components/loading/navbar/ServicesMegaMenu/ServicesMegaMenu.jsx`
 

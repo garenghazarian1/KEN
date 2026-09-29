@@ -12,7 +12,16 @@ import { useSearchParams } from "next/navigation";
 import Link from "next/link";
 import Image from "next/image";
 import { motion, AnimatePresence } from "framer-motion";
-import { Calendar, Search, X, ChevronDown, ChevronLeft, ChevronRight } from "lucide-react";
+import {
+  Calendar,
+  Check,
+  ChevronDown,
+  ChevronLeft,
+  ChevronRight,
+  Plus,
+  Search,
+  X,
+} from "lucide-react";
 import { useHideNavOnScroll } from "@/components/mobileNav/useHideNavOnScroll";
 import { DROP_PANEL_MS, DropPanel, dropChevronClass } from "@/components/dropPanel/DropPanel";
 import FitName from "@/components/fitName/FitName";
@@ -104,18 +113,8 @@ function categoryPreviewSrc(section) {
   );
 }
 
-function columnPreviewSrc(column, section) {
-  return (
-    remotePreview(column?.imageUrls) ??
-    remotePreview(section?.imageUrls) ??
-    getCategoryImage(column?.title)?.src ??
-    getCategoryImage(section?.title)?.src ??
-    null
-  );
-}
-
-function servicePreviewSrc(item, column, section) {
-  return remotePreview(item?.imageUrls) ?? columnPreviewSrc(column, section);
+function servicePreviewSrc(item) {
+  return remotePreview(item?.imageUrls);
 }
 
 const CHAPTER_SCROLL_MS = 500;
@@ -256,7 +255,14 @@ function BookAdd({ item, added, onToggleBook }) {
       aria-label={added ? `Remove ${item.name}` : `Add ${item.name}`}
       onClick={() => onToggleBook(item)}
     >
-      <span className={styles.addServiceLabel}>{added ? "Added" : "Add"}</span>
+      <span className={styles.addServiceSizer} aria-hidden="true">
+        <Check size={14} />
+        <span>Added</span>
+      </span>
+      <span className={styles.addServiceLabel}>
+        {added ? <Check size={14} aria-hidden /> : <Plus size={14} aria-hidden />}
+        <span>{added ? "Added" : "Add"}</span>
+      </span>
     </button>
   );
 }
@@ -362,7 +368,7 @@ function ServiceLine({
   const body = (
     <>
       <div className={styles.serviceMain}>
-        <FitName className={nameClass} text={item.name}>
+        <FitName className={nameClass} text={item.name} syncPrice>
           <Highlight text={item.name} query={query} />
         </FitName>
         <PriceLabel item={item} />
@@ -509,7 +515,6 @@ function SearchSuggestions({
 
 function PriceColumn({
   column,
-  section,
   isWide,
   isOpen,
   onToggle,
@@ -517,25 +522,11 @@ function PriceColumn({
   onSelectItem,
   onToggleBook,
   bookedIds,
-  onHoverColumn,
-  onHoverColumnEnd,
   selectedId,
-  chapterSrc,
 }) {
   const titleClass = `${styles.columnTitle} ${
     hasArabic(column.title) ? styles.quietScript : ""
   }`;
-  const [panelSrc, setPanelSrc] = useState(chapterSrc);
-
-  useLayoutEffect(() => {
-    if (!isWide && isOpen && chapterSrc) setPanelSrc(chapterSrc);
-  }, [chapterSrc, isOpen, isWide]);
-
-  useEffect(() => {
-    if (isWide || isOpen) return undefined;
-    const timer = window.setTimeout(() => setPanelSrc(null), DROP_PANEL_MS);
-    return () => window.clearTimeout(timer);
-  }, [isOpen, isWide]);
 
   const items = (
     <ul className={styles.serviceList}>
@@ -547,10 +538,8 @@ function PriceColumn({
             expandable={!isWide}
             selected={item.id === selectedId}
             added={bookedIds.has(item.id)}
-            imageSrc={servicePreviewSrc(item, column, section)}
-            onSelect={
-              onSelectItem ? () => onSelectItem(item, column) : undefined
-            }
+            imageSrc={servicePreviewSrc(item)}
+            onSelect={onSelectItem ? () => onSelectItem(item) : undefined}
             onToggleBook={onToggleBook}
           />
         </li>
@@ -564,13 +553,7 @@ function PriceColumn({
       className={styles.column}
     >
       {isWide ? (
-        <h3
-          className={titleClass}
-          onPointerEnter={onHoverColumn}
-          onPointerLeave={onHoverColumnEnd}
-        >
-          {column.title}
-        </h3>
+        <h3 className={titleClass}>{column.title}</h3>
       ) : (
         <button
           type="button"
@@ -591,23 +574,7 @@ function PriceColumn({
       {isWide ? (
         items
       ) : (
-        <DropPanel open={isOpen}>
-          {panelSrc ? (
-            <div className={styles.boardMedia}>
-              <div className={styles.boardFrame}>
-                <Image
-                  key={panelSrc}
-                  src={panelSrc}
-                  alt=""
-                  fill
-                  className={styles.boardImage}
-                  sizes="50vw"
-                />
-              </div>
-            </div>
-          ) : null}
-          {items}
-        </DropPanel>
+        <DropPanel open={isOpen}>{items}</DropPanel>
       )}
     </section>
   );
@@ -635,9 +602,6 @@ function CategoryBoard({
   const [hoverSrc, setHoverSrc] = useState(null);
   const [picked, setPicked] = useState(null);
   const previewSrc = isWide ? hoverSrc || picked?.src || baseSrc : null;
-  const openColumn = isWide
-    ? null
-    : (columns.find((column) => openSubcategories.has(column.id)) ?? null);
 
   useEffect(() => {
     setHoverSrc(null);
@@ -666,7 +630,7 @@ function CategoryBoard({
       if (!item) continue;
       setPicked({
         id: item.id,
-        src: servicePreviewSrc(item, column, activeSection),
+        src: servicePreviewSrc(item),
       });
       if (scrolledServiceRef.current === serviceId) return undefined;
       scrolledServiceRef.current = serviceId;
@@ -674,23 +638,23 @@ function CategoryBoard({
       return undefined;
     }
     return undefined;
-  }, [activeSection, columns, serviceId]);
+  }, [columns, serviceId]);
 
   const pickedIdRef = useRef(null);
   pickedIdRef.current = picked?.id ?? null;
 
-  const selectItem = useCallback((item, column) => {
+  const selectItem = useCallback((item) => {
     setHoverSrc(null);
     const closing = !isWide && pickedIdRef.current === item.id;
     const next = closing
       ? null
       : {
           id: item.id,
-          src: servicePreviewSrc(item, column, activeSection),
+          src: servicePreviewSrc(item),
         };
     setPicked(next);
     onServiceChange?.(next?.id ?? null);
-  }, [activeSection, isWide, onServiceChange]);
+  }, [isWide, onServiceChange]);
 
   const rowRef = useRef(null);
   const [finePointer, setFinePointer] = useState(false);
@@ -868,7 +832,6 @@ function CategoryBoard({
               <PriceColumn
                 key={column.id}
                 column={column}
-                section={activeSection}
                 isWide={isWide}
                 isOpen={openSubcategories.has(column.id)}
                 onToggle={onToggleSubcategory}
@@ -876,18 +839,7 @@ function CategoryBoard({
                 bookedIds={bookedIds}
                 onToggleBook={onToggleBook}
                 selectedId={picked?.id ?? null}
-                chapterSrc={
-                  column.id === openColumn?.id
-                    ? columnPreviewSrc(openColumn, activeSection)
-                    : null
-                }
                 onSelectItem={selectItem}
-                onHoverColumn={
-                  isWide
-                    ? () => setHoverSrc(columnPreviewSrc(column, activeSection))
-                    : undefined
-                }
-                onHoverColumnEnd={isWide ? () => setHoverSrc(null) : undefined}
               />
             ))}
           </div>
@@ -897,27 +849,11 @@ function CategoryBoard({
   );
 }
 
-function WhatsAppIcon({ size = 22 }) {
-  return (
-    <svg
-      xmlns="http://www.w3.org/2000/svg"
-      width={size}
-      height={size}
-      viewBox="0 0 24 24"
-      fill="currentColor"
-      aria-hidden="true"
-    >
-      <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z" />
-    </svg>
-  );
-}
-
-function WhatsAppBookBar({ services, onToggleBook }) {
-  const navHidden = useHideNavOnScroll();
+function BookingSheet({ open, services, onClose, onToggleBook, focusIdRef }) {
+  const panelRef = useRef(null);
+  const wasOpen = useRef(false);
   const serviceKey = services.map((service) => service.id).join("\n");
   const [hrefByNumber, setHrefByNumber] = useState(null);
-  const [listOpen, setListOpen] = useState(false);
-  const focusServiceId = useRef(null);
 
   useEffect(() => {
     const next = {};
@@ -931,86 +867,57 @@ function WhatsAppBookBar({ services, onToggleBook }) {
   }, [serviceKey, services]);
 
   useEffect(() => {
-    if (services.length) return;
-    setListOpen(false);
-  }, [services.length]);
+    if (!open) return undefined;
+    const previousOverflow = document.body.style.overflow;
+    document.body.style.overflow = "hidden";
+    panelRef.current?.focus();
+    const onKey = (event) => {
+      if (event.key !== "Escape") return;
+      event.preventDefault();
+      onClose();
+    };
+    document.addEventListener("keydown", onKey);
+    return () => {
+      document.body.style.overflow = previousOverflow;
+      document.removeEventListener("keydown", onKey);
+    };
+  }, [onClose, open]);
 
   useEffect(() => {
-    const id = focusServiceId.current;
-    if (!id || services.some((service) => service.id === id)) return;
-    focusServiceId.current = null;
+    if (open) {
+      wasOpen.current = true;
+      return;
+    }
+    if (!wasOpen.current) return;
+    const id = focusIdRef.current;
+    if (!id) return;
     const button = document.querySelector(
       `[data-book-service="${CSS.escape(String(id))}"]`,
     );
     if (button instanceof HTMLElement) button.focus();
-  }, [services]);
+  }, [focusIdRef, open]);
 
-  if (!services.length || !WHATSAPP_CONTACTS.length) return null;
-
-  const countLabel = `${services.length} ${services.length === 1 ? "service" : "services"}`;
+  if (!services.length) return null;
 
   return (
     <div
-      className={styles.bookBar}
-      data-nav-hidden={navHidden ? "true" : "false"}
-      role="region"
-      aria-label="Send selected services on WhatsApp"
+      ref={panelRef}
+      className={styles.bookingSheet}
+      data-open={open ? "true" : "false"}
+      role={open ? "dialog" : undefined}
+      aria-modal={open ? "true" : undefined}
+      aria-hidden={open ? undefined : true}
+      aria-labelledby="booking-sheet-title"
+      tabIndex={-1}
     >
-      <div className={styles.bookRow}>
-        <p className={styles.bookCount} aria-live="polite">
-          <WhatsAppIcon size={18} />
-          {countLabel}
+      <div className={styles.bookingSheetPanel}>
+        <h2 id="booking-sheet-title" className={styles.bookingTitle}>
+          Your booking
+        </h2>
+        <p className={styles.bookingLead}>
+          We send these names on WhatsApp. The salon replies with the time.
         </p>
-        <button
-          type="button"
-          className={styles.bookToggle}
-          aria-expanded={listOpen}
-          aria-controls="chosen-services"
-          aria-label={listOpen ? "Hide chosen services" : "Show chosen services"}
-          onClick={() => setListOpen((open) => !open)}
-        >
-          <ChevronDown
-            size={16}
-            aria-hidden
-            className={`${dropChevronClass} ${listOpen ? styles.chevronOpen : ""}`}
-          />
-        </button>
-        <div className={styles.bookBranches}>
-        {WHATSAPP_CONTACTS.map((contact) => {
-          const message = bookingMessage(contact.shortLabel, services);
-          const href =
-            hrefByNumber?.[contact.number] ??
-            plainWhatsAppUrl(contact.number, message);
-          return (
-            <a
-              key={contact.number}
-              href={href}
-              target="_blank"
-              rel="noopener noreferrer"
-              className={styles.bookBranch}
-              aria-label={`Send to ${contact.shortLabel} on WhatsApp`}
-              onClick={() => {
-                trackWhatsAppClick({
-                  branch: contact.shortLabel,
-                  number: contact.number,
-                });
-                recordOutbound(href, {
-                  branch: contact.shortLabel === "Rixos" ? "rixos" : "galleria",
-                  services: services.map((service) => ({
-                    id: service.id,
-                    name: service.name,
-                  })),
-                });
-              }}
-            >
-              {contact.shortLabel}
-            </a>
-          );
-        })}
-        </div>
-      </div>
-      <DropPanel open={listOpen}>
-        <ul id="chosen-services" className={styles.bookList} aria-label="Chosen services">
+        <ul className={styles.bookList} aria-label="Chosen services">
           {services.map((service) => (
             <li key={service.id} className={styles.bookItem}>
               <FitName className={styles.bookItemName} text={service.name}>
@@ -1019,18 +926,51 @@ function WhatsAppBookBar({ services, onToggleBook }) {
               <button
                 type="button"
                 className={styles.bookRemove}
-                aria-label={`Remove ${service.name}`}
-                onClick={() => {
-                  focusServiceId.current = service.id;
-                  onToggleBook(service);
-                }}
+                aria-label={`Remove ${service.name} from booking`}
+                onClick={() => onToggleBook(service)}
               >
                 <X size={16} aria-hidden />
               </button>
             </li>
           ))}
         </ul>
-      </DropPanel>
+        <button type="button" className={styles.continueAdding} onClick={onClose}>
+          Continue adding
+        </button>
+        <div className={styles.bookBranches}>
+          {WHATSAPP_CONTACTS.map((contact) => {
+            const message = bookingMessage(contact.shortLabel, services);
+            const href =
+              hrefByNumber?.[contact.number] ??
+              plainWhatsAppUrl(contact.number, message);
+            return (
+              <a
+                key={contact.number}
+                href={href}
+                target="_blank"
+                rel="noopener noreferrer"
+                className={styles.bookBranch}
+                aria-label={`Book at ${contact.shortLabel} on WhatsApp`}
+                onClick={() => {
+                  trackWhatsAppClick({
+                    branch: contact.shortLabel,
+                    number: contact.number,
+                  });
+                  recordOutbound(href, {
+                    branch: contact.shortLabel === "Rixos" ? "rixos" : "galleria",
+                    services: services.map((service) => ({
+                      id: service.id,
+                      name: service.name,
+                    })),
+                  });
+                }}
+              >
+                Book at {contact.shortLabel}
+              </a>
+            );
+          })}
+        </div>
+      </div>
     </div>
   );
 }
@@ -1081,6 +1021,9 @@ export default function ServiceMenu({ sections = [], error = null }) {
   );
   const [isWide, setIsWide] = useState(false);
   const [booked, setBooked] = useState([]);
+  const [sheetOpen, setSheetOpen] = useState(false);
+  const focusAddId = useRef(null);
+  const navHidden = useHideNavOnScroll();
   const [isSearchFocused, setIsSearchFocused] = useState(false);
   const [suggestionsDismissed, setSuggestionsDismissed] = useState(false);
   const [activeSuggestionIndex, setActiveSuggestionIndex] = useState(-1);
@@ -1296,21 +1239,29 @@ export default function ServiceMenu({ sections = [], error = null }) {
     [booked],
   );
 
+  const closeSheet = useCallback(() => setSheetOpen(false), []);
+
   const toggleBook = useCallback((item) => {
-    setBooked((current) => {
-      if (current.some((service) => service.id === item.id)) {
-        return current.filter((service) => service.id !== item.id);
-      }
-      return [...current, { id: item.id, name: item.name }];
-    });
-  }, []);
+    focusAddId.current = item.id;
+    const removing = bookedIds.has(item.id);
+    setBooked((current) =>
+      removing
+        ? current.filter((service) => service.id !== item.id)
+        : [...current, { id: item.id, name: item.name }],
+    );
+    if (removing) {
+      if (bookedIds.size === 1) setSheetOpen(false);
+      return;
+    }
+    setSheetOpen(true);
+  }, [bookedIds]);
 
   const isSearching = Boolean(query.trim());
 
   return (
     <div
       className={styles.container}
-      data-booking={booked.length > 0 ? "true" : "false"}
+      data-review={booked.length > 0 && !sheetOpen ? "true" : "false"}
     >
       {!error && sections.length > 0 && (
         <motion.div
@@ -1447,7 +1398,23 @@ export default function ServiceMenu({ sections = [], error = null }) {
         </div>
       )}
 
-      <WhatsAppBookBar services={booked} onToggleBook={toggleBook} />
+      <BookingSheet
+        open={sheetOpen}
+        services={booked}
+        onClose={closeSheet}
+        onToggleBook={toggleBook}
+        focusIdRef={focusAddId}
+      />
+      {booked.length > 0 && !sheetOpen ? (
+        <button
+          type="button"
+          className={styles.reviewBooking}
+          data-nav-hidden={navHidden ? "true" : "false"}
+          onClick={() => setSheetOpen(true)}
+        >
+          Review booking
+        </button>
+      ) : null}
 
       <motion.div
         className={styles.footerNote}

@@ -1,6 +1,6 @@
 # Services Page Architecture
 
-Last updated: 12 July 2026
+Last updated: 29 September 2026
 
 ## Route
 - `src/app/(navPages)/services/page.jsx` — server page, `force-dynamic`, wraps `ServiceMenu` in `Suspense`
@@ -27,7 +27,7 @@ Last updated: 12 July 2026
 - `SubcategoryAccordion` per group
 - Layout switcher: horizontal carousel / vertical list / grid
 - WhatsApp booking banner, sticky search with suggestions
-- Media via Cloudinary helpers + `serviceImages` fallbacks
+- A service photo uses that service’s own Cloudinary image only. Subcategory rows have no photo. The desktop board uses the category image until a chosen service has its own.
 
 ## Graph edges (key)
 - `ServicesPage()` → `getServiceCatalog()`, `buildServiceSections()`, `ServiceMenu`
