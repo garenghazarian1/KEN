@@ -43,11 +43,14 @@ describe("classifyHref", () => {
 describe("parseLeadBody", () => {
   it("keeps booking services only on WhatsApp", () => {
     const parsed = parseLeadBody({
+      eventId: "event_1234567890abcdef",
       eventType: "whatsapp",
-      branch: "galleria",
+      branch: "rixos",
       target: "971503043570",
       services: [{ id: "a", name: "Hydrafacial" }],
     });
+    expect(parsed.eventId).toBe("event_1234567890abcdef");
+    expect(parsed.branch).toBe("galleria");
     expect(parsed.services).toEqual([{ id: "a", name: "Hydrafacial" }]);
   });
 
@@ -65,5 +68,30 @@ describe("parseLeadBody", () => {
         target: "someone@gmail.com",
       })
     ).toBeNull();
+  });
+
+  it("rejects unknown contact targets and invalid click identifiers", () => {
+    expect(
+      parseLeadBody({
+        eventType: "whatsapp",
+        target: "971501234567",
+      })
+    ).toBeNull();
+    expect(
+      parseLeadBody({
+        eventType: "whatsapp",
+        target: "971503043570",
+        gclid: "TEST123",
+      })
+    ).toBeNull();
+  });
+
+  it("keeps only the pathname from a click event", () => {
+    const parsed = parseLeadBody({
+      eventType: "phone",
+      target: "97126218808",
+      pagePath: "/contact?private=value#branch",
+    });
+    expect(parsed.pagePath).toBe("/contact");
   });
 });

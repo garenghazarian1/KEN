@@ -39,7 +39,10 @@ export async function POST(request) {
 
   const ip = clientIp(request);
   if (!allowRequest(`lead:${ip || "unknown"}`, 40)) {
-    return new NextResponse(null, { status: 204 });
+    return NextResponse.json(
+      { code: "RATE_LIMITED", message: "Too many click events." },
+      { status: 429, headers: { "Retry-After": "60" } }
+    );
   }
 
   try {
@@ -47,11 +50,19 @@ export async function POST(request) {
     await LeadEvent.create({
       ...lead,
       businessSlug: BUSINESS_SLUG,
-      userAgent: (request.headers.get("user-agent") || "").slice(0, 400) || null,
-      ip,
     });
   } catch (error) {
-    console.error("lead_events write failed", error);
+    if (error?.code === 11000 && lead.eventId) {
+      return new NextResponse(null, { status: 204 });
+    }
+    console.error("lead_events write failed", {
+      eventId: lead.eventId,
+      message: error?.message,
+    });
+    return NextResponse.json(
+      { code: "WRITE_FAILED", message: "Click event was not stored." },
+      { status: 503 }
+    );
   }
 
   return new NextResponse(null, { status: 204 });

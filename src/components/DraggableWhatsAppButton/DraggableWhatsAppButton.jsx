@@ -4,10 +4,7 @@ import { useEffect, useRef, useState } from "react";
 import { motion } from "framer-motion";
 import { FaWhatsapp } from "react-icons/fa";
 import { WHATSAPP_CONTACTS } from "@/config/constants";
-import {
-  buildWhatsAppUrl,
-  trackWhatsAppClick,
-} from "@/lib/adsAttribution";
+import { buildWhatsAppUrl } from "@/lib/adsAttribution";
 import { recordOutbound } from "@/lib/leads/trackLead";
 import styles from "./DraggableWhatsAppButton.module.css";
 import { useAfterHeroVideo } from "@/components/hero/useAfterHeroVideo";
@@ -141,18 +138,15 @@ export default function DraggableWhatsAppButton() {
       return;
     }
 
-    trackWhatsAppClick({
-      branch: "rixos",
-      number: FLOATING_WHATSAPP.number,
-    });
-    recordOutbound(`https://wa.me/${FLOATING_WHATSAPP.number}`, {
-      branch: "rixos",
-    });
-
     // Refresh href in case attribution arrived after first paint
     const nextHref = buildWhatsAppUrl({
       number: FLOATING_WHATSAPP.number,
       message: FLOATING_WHATSAPP.message,
+    });
+    recordOutbound(nextHref, {
+      branch: "rixos",
+      gtm: true,
+      gtmBranch: "Rixos",
     });
     if (nextHref !== whatsappHref) {
       e.preventDefault();

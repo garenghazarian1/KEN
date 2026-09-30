@@ -14,7 +14,7 @@ export default function CookieNotice() {
         <div className={styles.header}>
           <h1>Cookie Notice</h1>
           <p className={styles.lastUpdated}>
-            Last Updated: {new Date().toLocaleDateString()}
+            Last Updated: 30 September 2026
           </p>
         </div>
 
@@ -79,6 +79,18 @@ export default function CookieNotice() {
             <code>ken-assistant-speak</code>). You can remove these values by clearing this
             site&apos;s stored data in your browser. Clearing them starts a new assistant session
             and resets the voice preference.
+          </p>
+        </section>
+
+        <section className={styles.section}>
+          <h2>Advertising Attribution</h2>
+          <p>
+            After you accept marketing cookies, we may store Google Ads click
+            identifiers in <code>ken_ads_attribution</code> local storage and
+            the <code>ken_gclid</code> cookie for up to 90 days. These values
+            help us attribute an outbound contact click to an advertising
+            visit. Declining clears these values and prevents Google Tag
+            Manager from loading.
           </p>
         </section>
 

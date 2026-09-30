@@ -3,6 +3,7 @@ import { connectServicesDB } from "@/lib/db/mongoose";
 import { BUSINESS_SLUG } from "@/config/constants";
 
 const { Schema } = mongoose;
+const RETENTION_SECONDS = 90 * 24 * 60 * 60;
 
 const leadEventSchema = new Schema(
   {
@@ -11,6 +12,11 @@ const leadEventSchema = new Schema(
       required: true,
       default: BUSINESS_SLUG,
       index: true,
+    },
+    eventId: {
+      type: String,
+      default: null,
+      maxlength: 80,
     },
     eventType: {
       type: String,
@@ -37,23 +43,24 @@ const leadEventSchema = new Schema(
     gclid: { type: String, default: null, maxlength: 200 },
     gbraid: { type: String, default: null, maxlength: 200 },
     wbraid: { type: String, default: null, maxlength: 200 },
-    userAgent: { type: String, default: null, maxlength: 400 },
-    language: { type: String, default: null, maxlength: 40 },
-    timezone: { type: String, default: null, maxlength: 80 },
-    screen: {
-      w: { type: Number, default: null },
-      h: { type: Number, default: null },
-      dpr: { type: Number, default: null },
-    },
-    referrer: { type: String, default: null, maxlength: 500 },
-    ip: { type: String, default: null, maxlength: 64 },
   },
   { timestamps: true, collection: "lead_events" }
 );
 
+leadEventSchema.index(
+  { eventId: 1 },
+  {
+    unique: true,
+    partialFilterExpression: { eventId: { $type: "string" } },
+  }
+);
 leadEventSchema.index({ businessSlug: 1, createdAt: -1 });
 leadEventSchema.index({ businessSlug: 1, eventType: 1, createdAt: -1 });
 leadEventSchema.index({ businessSlug: 1, branch: 1, createdAt: -1 });
+leadEventSchema.index(
+  { createdAt: 1 },
+  { expireAfterSeconds: RETENTION_SECONDS }
+);
 
 export async function getLeadEventModel() {
   const conn = await connectServicesDB();

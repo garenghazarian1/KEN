@@ -298,17 +298,19 @@ function ServiceLine({
     return () => window.clearTimeout(timer);
   }, [expandable, selected]);
 
-  const notes = (
-    <>
-      {hasDuration ? (
-        <p className={styles.serviceQuiet}>{formatDuration(item.durationMinutes)}</p>
-      ) : null}
-      {item.description ? (
-        <p className={styles.serviceQuiet}>
-          <Highlight text={item.description} query={query} />
-        </p>
-      ) : null}
-    </>
+  const duration = hasDuration ? (
+    <p className={styles.serviceQuiet}>{formatDuration(item.durationMinutes)}</p>
+  ) : null;
+  const description = item.description ? (
+    <p className={styles.serviceQuiet}>
+      <Highlight text={item.description} query={query} />
+    </p>
+  ) : null;
+  const facts = (
+    <div className={styles.serviceFacts}>
+      <PriceLabel item={item} />
+      {duration}
+    </div>
   );
 
   const add = (
@@ -326,7 +328,7 @@ function ServiceLine({
             aria-expanded={selected}
             onClick={onSelect}
           >
-            <FitName className={nameClass} text={item.name}>
+            <FitName className={nameClass}>
               <Highlight text={item.name} query={query} />
             </FitName>
             <ChevronDown
@@ -355,8 +357,8 @@ function ServiceLine({
                 </div>
               </div>
             ) : null}
-            <PriceLabel item={item} />
-            {notes}
+            {facts}
+            {description}
           </div>
         </DropPanel>
       </div>
@@ -364,15 +366,13 @@ function ServiceLine({
   }
 
   const body = (
-    <>
-      <div className={styles.serviceMain}>
-        <FitName className={nameClass} text={item.name} syncPrice>
-          <Highlight text={item.name} query={query} />
-        </FitName>
-        <PriceLabel item={item} />
-      </div>
-      {notes}
-    </>
+    <div className={styles.serviceMain}>
+      <FitName className={nameClass}>
+        <Highlight text={item.name} query={query} />
+      </FitName>
+      {facts}
+      {description}
+    </div>
   );
 
   return (
@@ -1160,6 +1160,7 @@ export default function ServiceMenu({ sections = [], error = null }) {
               <AnimatePresence>
                 {query && (
                   <motion.button
+                    type="button"
                     className={styles.clearButton}
                     onClick={clearSearch}
                     aria-label="Clear search"
@@ -1227,7 +1228,11 @@ export default function ServiceMenu({ sections = [], error = null }) {
         <div className={styles.noResults} role="status">
           <Search size={32} className={styles.noResultsIcon} />
           <p>No services match &ldquo;{query}&rdquo;</p>
-          <button className={styles.noResultsClear} onClick={clearSearch}>
+          <button
+            type="button"
+            className={styles.noResultsClear}
+            onClick={clearSearch}
+          >
             Clear search
           </button>
         </div>

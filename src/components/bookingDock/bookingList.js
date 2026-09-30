@@ -4,16 +4,30 @@ import { useEffect, useState } from "react";
 
 const STORAGE_KEY = "ken-booking-services";
 const CHANGE_EVENT = "ken-booking-change";
+const MAX_SERVICES = 20;
+const MAX_ID_LENGTH = 80;
+const MAX_NAME_LENGTH = 120;
 export const BOOKING_OPEN_EVENT = "ken-booking-open";
 
-function isService(value) {
-  return (
-    value &&
-    typeof value.id === "string" &&
-    value.id.length > 0 &&
-    typeof value.name === "string" &&
-    value.name.length > 0
-  );
+function normalizedService(value) {
+  if (!value || typeof value.id !== "string" || typeof value.name !== "string") {
+    return null;
+  }
+  const id = value.id.trim().slice(0, MAX_ID_LENGTH);
+  const name = value.name.trim().slice(0, MAX_NAME_LENGTH);
+  return id && name ? { id, name } : null;
+}
+
+function normalizeServices(values) {
+  if (!Array.isArray(values)) return [];
+  const unique = new Map();
+  for (const value of values) {
+    const service = normalizedService(value);
+    if (!service || unique.has(service.id)) continue;
+    unique.set(service.id, service);
+    if (unique.size === MAX_SERVICES) break;
+  }
+  return [...unique.values()];
 }
 
 export function readBookingServices() {
@@ -22,11 +36,7 @@ export function readBookingServices() {
     const raw = window.localStorage.getItem(STORAGE_KEY);
     if (!raw) return [];
     const parsed = JSON.parse(raw);
-    if (!Array.isArray(parsed)) return [];
-    return parsed.filter(isService).map((service) => ({
-      id: service.id,
-      name: service.name,
-    }));
+    return normalizeServices(parsed);
   } catch {
     return [];
   }
@@ -34,17 +44,23 @@ export function readBookingServices() {
 
 export function writeBookingServices(services) {
   if (typeof window === "undefined") return;
-  if (!services.length) window.localStorage.removeItem(STORAGE_KEY);
-  else window.localStorage.setItem(STORAGE_KEY, JSON.stringify(services));
+  const normalized = normalizeServices(services);
+  if (!normalized.length) window.localStorage.removeItem(STORAGE_KEY);
+  else window.localStorage.setItem(STORAGE_KEY, JSON.stringify(normalized));
   window.dispatchEvent(new Event(CHANGE_EVENT));
 }
 
 export function toggleBookingService(item) {
   const current = readBookingServices();
-  const removing = current.some((service) => service.id === item.id);
+  const service = normalizedService(item);
+  if (!service) return { added: false };
+  const removing = current.some((entry) => entry.id === service.id);
+  if (!removing && current.length >= MAX_SERVICES) {
+    return { added: false, limitReached: true };
+  }
   const next = removing
-    ? current.filter((service) => service.id !== item.id)
-    : [...current, { id: item.id, name: item.name }];
+    ? current.filter((entry) => entry.id !== service.id)
+    : [...current, service];
   writeBookingServices(next);
   return { added: !removing };
 }

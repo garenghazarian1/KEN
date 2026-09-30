@@ -188,7 +188,7 @@ function MobileLookbook({
                           className={styles.phoneService}
                           onClick={onNavigate}
                         >
-                          <FitName text={item.name}>{item.name}</FitName>
+                          <FitName>{item.name}</FitName>
                         </Link>
                       </li>
                     ))}
@@ -376,7 +376,7 @@ function DesktopMegaPanel({
                             }}
                             onFocus={() => showService(column, item)}
                           >
-                            <FitName text={item.name}>{item.name}</FitName>
+                            <FitName>{item.name}</FitName>
                           </Link>
                         </li>
                       ))}

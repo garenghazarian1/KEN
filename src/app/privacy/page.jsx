@@ -49,7 +49,7 @@ export default function PrivacyPage() {
         <div className={styles.header}>
           <h1>Privacy Policy</h1>
           <p className={styles.lastUpdated}>
-            Last Updated: {new Date().toLocaleDateString()}
+            Last Updated: 30 September 2026
           </p>
         </div>
 
@@ -83,6 +83,12 @@ export default function PrivacyPage() {
               and usage data collected through cookies and similar technologies.
             </li>
             <li>
+              <strong>Outbound Contact Clicks:</strong> The contact method, branch, selected service
+              names, page path, and advertising click identifier associated with a WhatsApp,
+              telephone, email, or directions link. A WhatsApp click does not tell us whether a
+              message was sent.
+            </li>
+            <li>
               <strong>Website Chat Transcripts:</strong> Messages you exchange with our website
               assistant, including the optional name you provide and voice messages converted to
               text. We also store limited technical context such as the page where the chat began
@@ -103,6 +109,7 @@ export default function PrivacyPage() {
               AI-generated spoken replies
             </li>
             <li>Improve our website and services</li>
+            <li>Measure which contact and booking actions visitors choose</li>
             <li>Send you promotional materials (with your consent)</li>
             <li>Comply with legal obligations</li>
           </ul>
@@ -137,12 +144,17 @@ export default function PrivacyPage() {
         </section>
 
         <section className={styles.section}>
-          <h2>6. Chat Data Retention</h2>
+          <h2>6. Data Retention</h2>
           <p>
             Assistant transcripts are retained in our database while needed to operate, support,
             and improve the assistant. Raw voice recordings are processed transiently and are not
             retained by us. You may request deletion of your chat data using the contact details
             below.
+          </p>
+          <p>
+            Outbound contact-click records expire after 90 days. Advertising attribution stored in
+            your browser also expires after 90 days and is stored only after you accept marketing
+            cookies.
           </p>
         </section>
 

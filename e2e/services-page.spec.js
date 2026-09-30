@@ -63,6 +63,10 @@ test("desktop services page is one priced lookbook", async ({ page }) => {
   );
   expect(longNameSize).toBeGreaterThanOrEqual(floor - 0.5);
   expect(Math.abs(longNameSize - longPriceSize)).toBeLessThan(0.6);
+  const longNameBox = await longName.boundingBox();
+  const longPriceBox = await longPrice.boundingBox();
+  expect(longPriceBox.y).toBeGreaterThan(longNameBox.y + longNameBox.height * 0.5);
+  expect(longPriceBox.x).toBeGreaterThanOrEqual(longNameBox.x - 1);
   const shortRow = page
     .locator("[data-service-toggle]")
     .filter({ hasText: /^Hair Wash/ });
@@ -73,7 +77,7 @@ test("desktop services page is one priced lookbook", async ({ page }) => {
     .locator('[class*="servicePrice"]')
     .evaluate((el) => parseFloat(getComputedStyle(el).fontSize));
   expect(Math.abs(shortNameSize - shortPriceSize)).toBeLessThan(0.6);
-  expect(shortNameSize).toBeGreaterThan(longNameSize);
+  expect(Math.abs(shortNameSize - longNameSize)).toBeLessThan(0.6);
   await categories.getByRole("button").first().hover();
   await expect.poll(async () => preview.getAttribute("src")).toBe(categorySrc);
 });
@@ -155,6 +159,32 @@ test("menu link opens the priced category", async ({ page }) => {
   await expect(page.locator('img[sizes="40vw"]')).toHaveCount(1);
 });
 
+test("declining cookies prevents ad attribution storage", async ({ page }) => {
+  const gtmRequests = [];
+  page.on("request", (request) => {
+    if (request.url().includes("googletagmanager.com")) {
+      gtmRequests.push(request.url());
+    }
+  });
+
+  await page.goto("/services?gclid=CjwKCAjw1234567890abcdef");
+  const decline = page.getByRole("button", { name: "Decline cookies" });
+  await expect(decline).toBeVisible();
+  await decline.click();
+  await expect(decline).toBeHidden();
+  await page.waitForLoadState("networkidle");
+
+  const stored = await page.evaluate(() => ({
+    consent: localStorage.getItem("cookieConsent"),
+    attribution: localStorage.getItem("ken_ads_attribution"),
+    cookie: document.cookie,
+  }));
+  expect(stored.consent).toBe("declined");
+  expect(stored.attribution).toBeNull();
+  expect(stored.cookie).not.toContain("ken_gclid");
+  expect(gtmRequests).toEqual([]);
+});
+
 test("added services open WhatsApp with those names", async ({ page }) => {
   await page.setViewportSize({ width: 390, height: 844 });
   await page.goto("/services");
@@ -187,6 +217,12 @@ test("added services open WhatsApp with those names", async ({ page }) => {
   const rixos = sheet.getByRole("link", { name: "Book at Rixos" });
   await expect(galleria).toBeVisible();
   await expect(rixos).toBeVisible();
+  await expect(sheet).toHaveAttribute(
+    "aria-describedby",
+    "booking-sheet-lead",
+  );
+  await page.keyboard.press("Shift+Tab");
+  await expect(rixos).toBeFocused();
   await page.mouse.move(0, 0);
   const addedBg = await added.evaluate((el) => getComputedStyle(el).backgroundColor);
   const branchBg = await galleria.evaluate((el) => getComputedStyle(el).backgroundColor);
@@ -194,6 +230,7 @@ test("added services open WhatsApp with those names", async ({ page }) => {
 
   await sheet.getByRole("button", { name: "Continue adding" }).click();
   await expect(sheet).toBeHidden();
+  await expect(added).toBeFocused();
   const oneBar = page.getByRole("button", { name: "Your booking · 1 service" });
   await expect(oneBar).toBeVisible();
   await expect(oneBar.locator("svg")).toBeVisible();
@@ -217,6 +254,7 @@ test("added services open WhatsApp with those names", async ({ page }) => {
   await oneBar.click();
   await expect(sheet).toBeVisible();
   await sheet.getByRole("button", { name: "Continue adding" }).click();
+  await expect(oneBar).toBeFocused();
 
   const secondAdd = page.getByRole("button", { name: /^Add / }).first();
   const secondName = (await secondAdd.getAttribute("aria-label")).replace(/^Add /, "");

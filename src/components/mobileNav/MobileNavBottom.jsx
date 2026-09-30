@@ -20,10 +20,7 @@ import {
 } from "@/components/AssistantWidget/AssistantWidget";
 import { CARD_URL, getTelLink } from "@/config/constants";
 import { stores } from "@/data/stores";
-import {
-  buildWhatsAppUrl,
-  trackWhatsAppClick,
-} from "@/lib/adsAttribution";
+import { buildWhatsAppUrl } from "@/lib/adsAttribution";
 import { branchKey } from "@/lib/leads/leadRecord";
 import { recordOutbound } from "@/lib/leads/trackLead";
 import styles from "./MobileNavBottom.module.css";
@@ -236,13 +233,11 @@ export default function MobileNavBottom() {
                         className={styles.whatsappRow}
                         target="_blank"
                         rel="noopener noreferrer"
-                        onClick={() => {
-                          trackWhatsAppClick({
-                            branch: label,
-                            number: whatsappDigits,
-                          });
-                          recordOutbound(`https://wa.me/${whatsappDigits}`, {
+                        onClick={(event) => {
+                          recordOutbound(event.currentTarget.href, {
                             branch: branchKey(store.name),
+                            gtm: true,
+                            gtmBranch: label,
                           });
                         }}
                       >

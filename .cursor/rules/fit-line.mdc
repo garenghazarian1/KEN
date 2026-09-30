@@ -1,15 +1,15 @@
 ---
-description: Service names stay on one line at a fitted size
+description: Service name, price, and time stay in one reading order
 alwaysApply: true
 ---
 
-# Fit the name
+# Service row reading order
 
-A service name stays on one line and shows the full text. Use `FitName` from `src/components/fitName/FitName.jsx`.
+A priced service row uses the same order at every width, including the green Added row:
 
-- The parent is a flex row with a bounded width (`min-width: 0`, `width: 100%`).
-- `FitName` keeps `white-space: nowrap` and shrinks the font until `scrollWidth` fits `clientWidth`.
-- Short names keep the stylesheet size. Only long names get smaller.
-- Measure at medium weight so hover and the chosen state still fit.
-- Do not clip the name with ellipsis.
-- This covers the services page and the navbar services list.
+1. Name on its own line. Show the full text. It may wrap. Do not ellipsis, and do not shrink it to share the line with the price.
+2. Price and duration on the next line, in `.serviceFacts`, start-aligned with the name text after the marker.
+3. Description under that, with the same indent.
+4. Add / Added in its own column, vertically centered on the text block.
+
+The expanded phone panel uses that same price-and-duration line. `FitName` is the name element only.

@@ -6,17 +6,16 @@ import AppInstallBanner from "@/components/AppInstallBanner/AppInstallBanner";
 import AssistantWidget from "@/components/AssistantWidget/AssistantWidget";
 import BookingDock from "@/components/bookingDock/BookingDock";
 import ClientLayout from "@/components/ClientLayout";
+import ConsentAnalytics from "@/components/ConsentAnalytics/ConsentAnalytics";
 // import InitialLoader from "@/components/InitialLoader";
 import styles from "./Layout.module.css";
 import { Analytics } from "@vercel/analytics/react";
-import Script from "next/script";
 import {
   APPLE_TOUCH_ICON_URL,
   BASE_URL,
   BUSINESS,
   IMAGES,
   METADATA_FAVICON_ICONS,
-  THIRD_PARTY,
   WEB_APP_MANIFEST_URL,
 } from "@/config/constants";
 
@@ -60,26 +59,8 @@ export const metadata = {
 export default function RootLayout({ children }) {
   return (
     <html lang="en" className={`${inter.variable} ${lora.variable}`}>
-      <head>
-        {/* Google Tag Manager */}
-        <Script id="gtm-init" strategy="afterInteractive">
-          {`(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
-new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
-j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
-'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
-})(window,document,'script','dataLayer','${THIRD_PARTY.googleTagManager.id}');`}
-        </Script>
-      </head>
       <body>
-        {/* Google Tag Manager (noscript) */}
-        <noscript>
-          <iframe
-            src={`https://www.googletagmanager.com/ns.html?id=${THIRD_PARTY.googleTagManager.id}`}
-            height="0"
-            width="0"
-            style={{ display: "none", visibility: "hidden" }}
-          />
-        </noscript>
+        <ConsentAnalytics />
         {/* <InitialLoader /> */}
         <AppInstallBanner />
         <ClientLayout>

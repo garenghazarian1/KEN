@@ -1,6 +1,6 @@
 .bookingSheet {
   position: fixed;
-  z-index: var(--z-modal);
+  z-index: calc(var(--z-tooltip) + 1);
   inset: 0;
   display: flex;
   pointer-events: none;
@@ -37,6 +37,13 @@
   transform: translateY(0);
 }
 
+.bookingHead {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--spacing-3);
+}
+
 .bookingTitle {
   margin: 0;
   color: var(--color-text-primary);
@@ -56,6 +63,7 @@
 .continueAdding,
 .bookingBar,
 .bookRemove,
+.closeSheet,
 .bookBranch {
   font: inherit;
 }
@@ -76,6 +84,7 @@
 .continueAdding:focus-visible,
 .bookingBar:focus-visible,
 .bookRemove:focus-visible,
+.closeSheet:focus-visible,
 .bookBranch:focus-visible {
   outline: 1px solid var(--color-secondary);
   outline-offset: 2px;
@@ -171,7 +180,8 @@
   padding-bottom: calc(var(--spacing-2) + env(safe-area-inset-bottom, 0px));
 }
 
-.bookRemove {
+.bookRemove,
+.closeSheet {
   appearance: none;
   display: inline-flex;
   align-items: center;
@@ -185,6 +195,18 @@
   background: transparent;
   color: var(--color-text-secondary);
   cursor: pointer;
+  transition: transform 160ms ease-out;
+}
+
+.closeSheet:active,
+.bookRemove:active {
+  transform: scale(0.97);
+}
+
+.closeSheet:disabled,
+.bookRemove:disabled {
+  color: var(--color-text-tertiary);
+  cursor: not-allowed;
 }
 
 .bookBranches {
@@ -238,7 +260,8 @@
 
 @media (hover: hover) and (pointer: fine) {
   .continueAdding:hover,
-  .bookRemove:hover {
+  .bookRemove:hover,
+  .closeSheet:hover {
     color: var(--color-text-primary);
     border-color: var(--color-text-primary);
   }
@@ -257,5 +280,10 @@
   .bookingBar::after,
   .bookingBarIcon {
     animation: none;
+  }
+
+  .closeSheet:active,
+  .bookRemove:active {
+    transform: none;
   }
 }

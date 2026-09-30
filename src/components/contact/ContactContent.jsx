@@ -13,10 +13,7 @@ import {
   ArrowUpRight,
 } from "lucide-react";
 import { CAREERS_URL } from "@/config/constants";
-import {
-  buildWhatsAppUrl,
-  trackWhatsAppClick,
-} from "@/lib/adsAttribution";
+import { buildWhatsAppUrl } from "@/lib/adsAttribution";
 import { getGoogleMapsUrl } from "@/data/stores";
 import { branchKey } from "@/lib/leads/leadRecord";
 import { recordOutbound } from "@/lib/leads/trackLead";
@@ -149,14 +146,11 @@ export default function ContactContent({ stores }) {
                     className={styles.actionWhatsapp}
                     target="_blank"
                     rel="noopener noreferrer"
-                    onClick={() => {
-                      const number = store.whatsapp.replace(/[\s+]/g, "");
-                      trackWhatsAppClick({
-                        branch: shortLocationLabel(store.name),
-                        number,
-                      });
-                      recordOutbound(`https://wa.me/${number}`, {
+                    onClick={(event) => {
+                      recordOutbound(event.currentTarget.href, {
                         branch: branchKey(store.name),
+                        gtm: true,
+                        gtmBranch: shortLocationLabel(store.name),
                       });
                     }}
                   >

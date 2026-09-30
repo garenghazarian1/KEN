@@ -34,6 +34,7 @@ import {
   APP_STORES,
 } from "@/config/constants";
 import { stores } from "@/data/stores";
+import { readCookieConsent, writeCookieConsent } from "@/lib/consent";
 import { branchKey } from "@/lib/leads/leadRecord";
 import { recordOutbound } from "@/lib/leads/trackLead";
 import styles from "./Footer.modern.module.css";
@@ -42,20 +43,19 @@ export default function FooterModern() {
   const [showCookieBanner, setShowCookieBanner] = useState(false);
 
   useEffect(() => {
-    // Check if user has already given consent
-    const consent = localStorage.getItem("cookieConsent");
+    const consent = readCookieConsent();
     if (!consent) {
       setShowCookieBanner(true);
     }
   }, []);
 
   const handleAcceptCookies = () => {
-    localStorage.setItem("cookieConsent", "accepted");
+    writeCookieConsent("accepted");
     setShowCookieBanner(false);
   };
 
   const handleDeclineCookies = () => {
-    localStorage.setItem("cookieConsent", "declined");
+    writeCookieConsent("declined");
     setShowCookieBanner(false);
   };
 
@@ -109,6 +109,7 @@ export default function FooterModern() {
               </div>
               <div className={styles.cookieButtons}>
                 <button
+                  type="button"
                   onClick={handleDeclineCookies}
                   className={styles.cookieDecline}
                   aria-label="Decline cookies"
@@ -117,6 +118,7 @@ export default function FooterModern() {
                   <span>Decline</span>
                 </button>
                 <button
+                  type="button"
                   onClick={handleAcceptCookies}
                   className={styles.cookieAccept}
                   aria-label="Accept all cookies"

@@ -1,22 +1,19 @@
 /**
  * Google Ads click attribution helpers for WhatsApp CTAs.
- * Stores gclid / gbraid / wbraid from the landing URL so staff and analytics
- * can later tie a WhatsApp chat back to the original ad click.
+ * Stores gclid / gbraid / wbraid from the landing URL so analytics can
+ * attribute an outbound WhatsApp click to the original ad visit.
  */
+
+import { productionClickId } from "@/lib/ads/clickId";
+import { branchFromDigits, branchKey } from "@/lib/leads/leadRecord";
+
+export { productionClickId };
 
 const STORAGE_KEY = "ken_ads_attribution";
 const COOKIE_NAME = "ken_gclid";
 const TTL_MS = 90 * 24 * 60 * 60 * 1000; // 90 days
 
 const PARAM_KEYS = ["gclid", "gbraid", "wbraid"];
-
-/** Real Google click ids are long. Test values such as TEST123 are not. */
-export function productionClickId(value) {
-  const text = String(value || "").trim();
-  if (!/^[A-Za-z0-9._-]{20,200}$/.test(text)) return null;
-  if (/^test/i.test(text)) return null;
-  return text;
-}
 
 function usableAttribution(parsed) {
   if (!parsed || typeof parsed !== "object") return null;
@@ -91,7 +88,7 @@ function writeStored(payload) {
       const maxAge = Math.floor(TTL_MS / 1000);
       document.cookie = `${COOKIE_NAME}=${encodeURIComponent(
         payload.gclid
-      )}; Max-Age=${maxAge}; Path=/; SameSite=Lax`;
+      )}; Max-Age=${maxAge}; Path=/; SameSite=Lax; Secure`;
     }
   } catch {
     // Ignore cookie failures
@@ -107,7 +104,7 @@ export function captureAdsAttributionFromUrl() {
 
   try {
     const params = new URLSearchParams(window.location.search);
-    const next = { ...(readStored() || {}) };
+    const next = {};
     let changed = false;
 
     for (const key of PARAM_KEYS) {
@@ -129,6 +126,11 @@ export function captureAdsAttributionFromUrl() {
   } catch {
     return getAdsAttribution();
   }
+}
+
+/** Remove persisted marketing attribution after consent is declined. */
+export function clearAdsAttribution() {
+  persistUsable({});
 }
 
 /** @returns {{ gclid?: string, gbraid?: string, wbraid?: string, capturedAt?: string, landingPath?: string } | null} */
@@ -168,14 +170,18 @@ export function buildWhatsAppUrl({ number, message } = {}) {
 /**
  * Fire a GTM/dataLayer event on WhatsApp click (does not replace existing TechSol tags).
  */
-export function trackWhatsAppClick({ branch, number } = {}) {
+export function trackWhatsAppClick({ branch, number, eventId } = {}) {
   if (!canUseDom()) return;
   const attrs = getAdsAttribution() || {};
+  const canonicalBranch =
+    branchKey(branch) ||
+    branchFromDigits(String(number || "").replace(/[^\d]/g, ""));
   try {
     window.dataLayer = window.dataLayer || [];
     window.dataLayer.push({
       event: "whatsapp_click",
-      whatsapp_branch: branch || null,
+      event_id: eventId || null,
+      whatsapp_branch: canonicalBranch,
       whatsapp_number: number || null,
       gclid: attrs.gclid || null,
       gbraid: attrs.gbraid || null,
