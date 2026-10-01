@@ -95,6 +95,19 @@ export function classifyHref(href) {
   };
 }
 
+function finite(value) {
+  const number = Number(value);
+  if (!Number.isFinite(number) || number < 0 || number > 20000) return null;
+  return Math.round(number * 100) / 100;
+}
+
+function screenOf(value) {
+  if (!value || typeof value !== "object") return null;
+  const screen = { w: finite(value.w), h: finite(value.h), dpr: finite(value.dpr) };
+  if (screen.w == null && screen.h == null && screen.dpr == null) return null;
+  return screen;
+}
+
 function servicesOf(eventType, value) {
   if (eventType !== "whatsapp" || !Array.isArray(value)) return [];
   return value
@@ -179,5 +192,9 @@ export function parseLeadBody(body) {
     gclid,
     gbraid,
     wbraid,
+    language: clip(body.language, 40),
+    timezone: clip(body.timezone, 80),
+    screen: screenOf(body.screen),
+    referrer: clip(body.referrer, 500),
   };
 }

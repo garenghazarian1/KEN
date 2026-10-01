@@ -43,6 +43,16 @@ const leadEventSchema = new Schema(
     gclid: { type: String, default: null, maxlength: 200 },
     gbraid: { type: String, default: null, maxlength: 200 },
     wbraid: { type: String, default: null, maxlength: 200 },
+    userAgent: { type: String, default: null, maxlength: 400 },
+    language: { type: String, default: null, maxlength: 40 },
+    timezone: { type: String, default: null, maxlength: 80 },
+    screen: {
+      w: { type: Number, default: null },
+      h: { type: Number, default: null },
+      dpr: { type: Number, default: null },
+    },
+    referrer: { type: String, default: null, maxlength: 500 },
+    ip: { type: String, default: null, maxlength: 64 },
   },
   { timestamps: true, collection: "lead_events" }
 );

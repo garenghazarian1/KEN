@@ -50,6 +50,8 @@ export async function POST(request) {
     await LeadEvent.create({
       ...lead,
       businessSlug: BUSINESS_SLUG,
+      userAgent: (request.headers.get("user-agent") || "").slice(0, 400) || null,
+      ip,
     });
   } catch (error) {
     if (error?.code === 11000 && lead.eventId) {

@@ -47,11 +47,11 @@ rate limits return `429`, and storage failures return `503`.
 - Pathname where the click occurred
 - Selected service IDs and names for WhatsApp booking clicks
 - Valid Google Ads click identifiers, when marketing consent exists
+- Browser language, timezone, screen size (width, height, pixel ratio), and referrer
+- User-agent and IP address, read from the request on the server
 - Creation timestamp with automatic 90-day expiration
 
-The click pipeline does not store screen dimensions, timezone, referrer,
-user-agent, or IP address. The request IP is used transiently for rate limiting.
-Records expire after 90 days.
+The admin app shows these on the website-click detail. Records expire after 90 days.
 
 ## Consent
 
@@ -70,6 +70,9 @@ Declining consent clears `ken_ads_attribution` local storage and the
 - Saved services are deduplicated and bounded to 20 entries.
 
 ## Change log
+
+- 1 October 2026: Restored language, timezone, screen size, referrer,
+  user-agent, and IP on stored clicks; the admin click detail depends on them.
 
 - 30 September 2026: Added consent-gated attribution, canonical target
   validation, event IDs, 90-day retention, data minimization, bounded booking

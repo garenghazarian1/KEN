@@ -86,6 +86,23 @@ describe("parseLeadBody", () => {
     ).toBeNull();
   });
 
+  it("keeps the visitor language, timezone, screen, and referrer", () => {
+    const parsed = parseLeadBody({
+      eventType: "phone",
+      target: "97126218808",
+      language: "ar-AE",
+      timezone: "Asia/Dubai",
+      screen: { w: 390, h: 844, dpr: 3 },
+      referrer: "https://www.google.com/",
+    });
+    expect(parsed).toMatchObject({
+      language: "ar-AE",
+      timezone: "Asia/Dubai",
+      screen: { w: 390, h: 844, dpr: 3 },
+      referrer: "https://www.google.com/",
+    });
+  });
+
   it("keeps only the pathname from a click event", () => {
     const parsed = parseLeadBody({
       eventType: "phone",

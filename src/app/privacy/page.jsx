@@ -84,7 +84,8 @@ export default function PrivacyPage() {
             </li>
             <li>
               <strong>Outbound Contact Clicks:</strong> The contact method, branch, selected service
-              names, page path, and advertising click identifier associated with a WhatsApp,
+              names, page path, advertising click identifier, browser language, time zone, screen
+              size, referring page, browser type, and IP address associated with a WhatsApp,
               telephone, email, or directions link. A WhatsApp click does not tell us whether a
               message was sent.
             </li>
