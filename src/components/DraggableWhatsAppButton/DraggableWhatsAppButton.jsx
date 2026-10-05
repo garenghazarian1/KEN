@@ -147,6 +147,7 @@ export default function DraggableWhatsAppButton() {
       branch: "rixos",
       gtm: true,
       gtmBranch: "Rixos",
+      placement: "floating",
     });
     if (nextHref !== whatsappHref) {
       e.preventDefault();

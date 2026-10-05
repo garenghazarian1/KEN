@@ -12,23 +12,21 @@ import {
   COOKIE_CONSENT_KEY,
   readCookieConsent,
 } from "@/lib/consent";
+import { captureFirstVisit, clearFirstVisit } from "@/lib/leads/visit";
 
 export default function ConsentAnalytics() {
   const [consent, setConsent] = useState(null);
 
   useEffect(() => {
-    const syncConsent = () => {
-      const next = readCookieConsent();
+    const applyConsent = (next) => {
       setConsent(next);
       if (next === "accepted") captureAdsAttributionFromUrl();
       else clearAdsAttribution();
+      if (next === "declined") clearFirstVisit();
+      else captureFirstVisit();
     };
-    const onConsentChange = (event) => {
-      const next = event.detail;
-      setConsent(next);
-      if (next === "accepted") captureAdsAttributionFromUrl();
-      else clearAdsAttribution();
-    };
+    const syncConsent = () => applyConsent(readCookieConsent());
+    const onConsentChange = (event) => applyConsent(event.detail);
     const onStorage = (event) => {
       if (event.key === COOKIE_CONSENT_KEY) syncConsent();
     };

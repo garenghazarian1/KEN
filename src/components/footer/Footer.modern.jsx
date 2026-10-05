@@ -164,6 +164,7 @@ export default function FooterModern() {
                         onClick={() =>
                           recordOutbound(`tel:${store.phone.replace(/\s/g, "")}`, {
                             branch: branchKey(store.name),
+                            placement: "footer",
                           })
                         }
                       >
@@ -183,6 +184,7 @@ export default function FooterModern() {
                         onClick={() =>
                           recordOutbound(`tel:${store.mobile.replace(/\s/g, "")}`, {
                             branch: branchKey(store.name),
+                            placement: "footer",
                           })
                         }
                       >
@@ -208,6 +210,7 @@ export default function FooterModern() {
                               branch: branchKey(store.name),
                               gtm: true,
                               gtmBranch: store.name,
+                              placement: "footer",
                             },
                           )
                         }
@@ -225,7 +228,11 @@ export default function FooterModern() {
                   href={`mailto:info@ken-salon.com?subject=Inquiry about ${BUSINESS.name}&body=Hello, I would like to know more about your services.`}
                   className={styles.contactLink}
                   aria-label="Email us at info@ken-salon.com"
-                  onClick={() => recordOutbound("mailto:info@ken-salon.com")}
+                  onClick={() =>
+                    recordOutbound("mailto:info@ken-salon.com", {
+                      placement: "footer",
+                    })
+                  }
                 >
                   <Mail
                     size={18}

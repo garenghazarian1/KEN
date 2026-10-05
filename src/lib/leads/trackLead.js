@@ -1,5 +1,6 @@
 import { getAdsAttribution, trackWhatsAppClick } from "@/lib/adsAttribution";
 import { classifyHref } from "@/lib/leads/leadRecord";
+import { createId, visitFields } from "@/lib/leads/visit";
 
 function postLead(payload) {
   const json = JSON.stringify(payload);
@@ -17,24 +18,20 @@ function postLead(payload) {
   }).catch(() => {});
 }
 
-function createEventId() {
-  try {
-    return window.crypto.randomUUID();
-  } catch {
-    return `evt_${Date.now().toString(36)}_${Math.random().toString(36).slice(2, 14)}`;
-  }
-}
-
 /**
  * Record one outbound contact click. Does not prove a message was sent and
  * does not prevent navigation.
  * gtm: also push the existing whatsapp_click dataLayer event.
+ * placement: short id of the pressed button, set only where it is obvious.
  */
-export function recordOutbound(href, { branch, services, gtm = false, gtmBranch } = {}) {
+export function recordOutbound(
+  href,
+  { branch, services, gtm = false, gtmBranch, placement } = {},
+) {
   if (typeof window === "undefined") return;
   const lead = classifyHref(href);
   if (!lead) return;
-  const eventId = createEventId();
+  const eventId = createId();
 
   if (gtm && lead.eventType === "whatsapp") {
     trackWhatsAppClick({
@@ -63,6 +60,9 @@ export function recordOutbound(href, { branch, services, gtm = false, gtmBranch 
     gclid: attrs.gclid || null,
     gbraid: attrs.gbraid || null,
     wbraid: attrs.wbraid || null,
+    ...visitFields(),
+    pageUrl: window.location.href,
+    placement: placement || null,
   });
   return eventId;
 }

@@ -159,6 +159,44 @@ function optionalClickId(value) {
   return productionClickId(value);
 }
 
+// First-touch fields are optional: a bad value becomes null, never a rejected click.
+const VISIT_ID_PATTERN = /^[A-Za-z0-9_-]{8,200}$/;
+const PLACEMENT_PATTERN = /^[A-Za-z0-9_-]{1,80}$/;
+const AD_CLICK_ID_PATTERN = /^[A-Za-z0-9._~-]{1,200}$/;
+const MAX_SECONDS_ON_SITE = 7 * 24 * 60 * 60;
+
+function text(value, max) {
+  return typeof value === "string" ? clip(value, max) : null;
+}
+
+function matching(value, pattern) {
+  const candidate = typeof value === "string" ? value.trim() : "";
+  return pattern.test(candidate) ? candidate : null;
+}
+
+function webUrl(value) {
+  const url = text(value, 2000);
+  if (!url) return null;
+  try {
+    const { protocol } = new URL(url);
+    return protocol === "https:" || protocol === "http:" ? url.slice(0, 500) : null;
+  } catch {
+    return null;
+  }
+}
+
+function dateOf(value) {
+  if (typeof value !== "string") return null;
+  const date = new Date(value);
+  return Number.isNaN(date.getTime()) ? null : date;
+}
+
+function secondsOf(value) {
+  if (typeof value !== "number" || !Number.isFinite(value)) return null;
+  if (value < 0 || value > MAX_SECONDS_ON_SITE) return null;
+  return Math.round(value);
+}
+
 /** Returns a storage-ready object, or null when the click is not a lead. */
 export function parseLeadBody(body) {
   if (!body || typeof body !== "object") return null;
@@ -196,5 +234,20 @@ export function parseLeadBody(body) {
     timezone: clip(body.timezone, 80),
     screen: screenOf(body.screen),
     referrer: clip(body.referrer, 500),
+    visitId: matching(body.visitId, VISIT_ID_PATTERN),
+    landingUrl: webUrl(body.landingUrl),
+    landingReferrer: text(body.landingReferrer, 500),
+    landedAt: dateOf(body.landedAt),
+    pageUrl: webUrl(body.pageUrl),
+    utmSource: text(body.utmSource, 200),
+    utmMedium: text(body.utmMedium, 200),
+    utmCampaign: text(body.utmCampaign, 200),
+    utmContent: text(body.utmContent, 200),
+    utmTerm: text(body.utmTerm, 200),
+    fbclid: matching(body.fbclid, AD_CLICK_ID_PATTERN),
+    ttclid: matching(body.ttclid, AD_CLICK_ID_PATTERN),
+    msclkid: matching(body.msclkid, AD_CLICK_ID_PATTERN),
+    placement: matching(body.placement, PLACEMENT_PATTERN),
+    secondsOnSite: secondsOf(body.secondsOnSite),
   };
 }
