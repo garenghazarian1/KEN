@@ -1,5 +1,5 @@
 import { afterEach, describe, expect, it, vi } from "vitest";
-import { recordOutbound } from "@/lib/leads/trackLead";
+import { recordOutbound, resetLeadClickWindow } from "@/lib/leads/trackLead";
 
 function stubBrowser({ sendBeacon, session = {}, href = "https://ken-salon.com/services?x=1" }) {
   vi.stubGlobal("window", {
@@ -20,6 +20,7 @@ async function sentPayload(sendBeacon) {
 
 describe("recordOutbound", () => {
   afterEach(() => {
+    resetLeadClickWindow();
     vi.useRealTimers();
     vi.unstubAllGlobals();
   });
@@ -101,5 +102,27 @@ describe("recordOutbound", () => {
       placement: null,
       pageUrl: "https://ken-salon.com/services?x=1",
     });
+  });
+
+  it("logs five clicks in a minute, then stays quiet while the link still opens", () => {
+    vi.useFakeTimers();
+    vi.setSystemTime(new Date("2026-10-07T18:12:00Z"));
+    const sendBeacon = vi.fn(() => true);
+    stubBrowser({ sendBeacon });
+    let n = 0;
+    window.crypto.randomUUID = () =>
+      `4c5216d8-53b7-4d6c-bb5c-10ea38fd33${String(n++).padStart(2, "0")}`;
+
+    for (let i = 0; i < 5; i += 1) {
+      expect(recordOutbound("https://wa.me/971503043570", { gtm: true })).toBeTruthy();
+    }
+    expect(recordOutbound("https://wa.me/971503043570", { gtm: true })).toBeUndefined();
+
+    expect(sendBeacon).toHaveBeenCalledTimes(5);
+    expect(window.dataLayer).toHaveLength(5);
+
+    vi.setSystemTime(new Date("2026-10-07T18:13:00Z"));
+    expect(recordOutbound("https://wa.me/971503043570", { gtm: true })).toBeTruthy();
+    expect(sendBeacon).toHaveBeenCalledTimes(6);
   });
 });

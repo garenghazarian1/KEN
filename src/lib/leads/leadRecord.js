@@ -3,6 +3,9 @@ import { productionClickId } from "@/lib/ads/clickId";
 
 export const SALON_EMAIL = stores[0].email.toLowerCase();
 
+/** Background logs kept per minute. The contact link still opens after this. */
+export const LEAD_CLICKS_PER_MINUTE = 5;
+
 const EVENT_TYPES = new Set(["whatsapp", "phone", "email", "directions"]);
 const EVENT_ID_PATTERN = /^[A-Za-z0-9_-]{16,80}$/;
 

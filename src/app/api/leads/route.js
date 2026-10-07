@@ -2,7 +2,7 @@ import { NextResponse } from "next/server";
 import { BUSINESS_SLUG } from "@/config/constants";
 import { allowRequest } from "@/lib/assistant/rateLimit";
 import { getLeadEventModel } from "@/lib/leads/leadEvent";
-import { parseLeadBody } from "@/lib/leads/leadRecord";
+import { LEAD_CLICKS_PER_MINUTE, parseLeadBody } from "@/lib/leads/leadRecord";
 
 export const maxDuration = 10;
 
@@ -38,7 +38,7 @@ export async function POST(request) {
   }
 
   const ip = clientIp(request);
-  if (!allowRequest(`lead:${ip || "unknown"}`, 40)) {
+  if (!allowRequest(`lead:${ip || "unknown"}`, LEAD_CLICKS_PER_MINUTE)) {
     return NextResponse.json(
       { code: "RATE_LIMITED", message: "Too many click events." },
       { status: 429, headers: { "Retry-After": "60" } }

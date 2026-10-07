@@ -1,6 +1,24 @@
 import { getAdsAttribution, trackWhatsAppClick } from "@/lib/adsAttribution";
-import { classifyHref } from "@/lib/leads/leadRecord";
+import { classifyHref, LEAD_CLICKS_PER_MINUTE } from "@/lib/leads/leadRecord";
 import { createId, visitFields } from "@/lib/leads/visit";
+
+const LEAD_WINDOW_MS = 60 * 1000;
+const leadClickTimes = [];
+
+function takeLeadClickSlot() {
+  const now = Date.now();
+  const recent = leadClickTimes.filter((time) => now - time < LEAD_WINDOW_MS);
+  leadClickTimes.length = 0;
+  leadClickTimes.push(...recent);
+  if (leadClickTimes.length >= LEAD_CLICKS_PER_MINUTE) return false;
+  leadClickTimes.push(now);
+  return true;
+}
+
+/** Test seam. The contact link does not use this window. */
+export function resetLeadClickWindow() {
+  leadClickTimes.length = 0;
+}
 
 function postLead(payload) {
   const json = JSON.stringify(payload);
@@ -20,7 +38,8 @@ function postLead(payload) {
 
 /**
  * Record one outbound contact click. Does not prove a message was sent and
- * does not prevent navigation.
+ * does not prevent navigation. After five logs in a minute, later taps still
+ * open the link and are not stored or sent to the data layer.
  * gtm: also push the existing whatsapp_click dataLayer event.
  * placement: short id of the pressed button, set only where it is obvious.
  */
@@ -31,6 +50,7 @@ export function recordOutbound(
   if (typeof window === "undefined") return;
   const lead = classifyHref(href);
   if (!lead) return;
+  if (!takeLeadClickSlot()) return;
   const eventId = createId();
 
   if (gtm && lead.eventType === "whatsapp") {

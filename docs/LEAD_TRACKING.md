@@ -1,6 +1,6 @@
 # Outbound contact-click tracking
 
-Last updated: 5 October 2026
+Last updated: 7 October 2026
 
 ## Scope
 
@@ -16,7 +16,10 @@ No WhatsApp API, webhook, CRM, paid integration, or staff action is required.
 1. A contact control calls `recordOutbound()` in
    `src/lib/leads/trackLead.js`.
 2. The browser classifies the destination, creates an event ID, and sends a
-   minimal payload to `POST /api/leads` without delaying navigation.
+   minimal payload to `POST /api/leads` without delaying navigation. Five
+   clicks per minute are stored. Later taps in that minute still open the
+   contact link and are not stored or sent to the data layer. The server
+   keeps the same five-per-IP limit.
 3. WhatsApp clicks also push the same event ID to the existing
    `whatsapp_click` data-layer event.
 4. `src/lib/leads/leadRecord.js` validates the destination against the
@@ -83,6 +86,9 @@ unless consent is `declined`, and clears it on decline.
 - Saved services are deduplicated and bounded to 20 entries.
 
 ## Change log
+
+- 7 October 2026: Background click log keeps five events per minute. Further
+  taps still open the contact link and do not create another stored click.
 
 - 5 October 2026: Added session first-touch visit, tap page URL, UTM and
   ad-click ids from the landing URL, button placement, and seconds on site.
