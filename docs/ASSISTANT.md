@@ -1,6 +1,6 @@
 # Ken AI Assistant — Ani (Text + Voice)
 
-Last updated: 29 September 2026
+Last updated: 12 October 2026
 
 Catalog-grounded website assistant **Ani**: bottom-bar tab with model-style
 avatar, optional guest name (dismissible strip on chat), text + voice input,
@@ -13,7 +13,7 @@ prompt identity is in `src/lib/assistant/prompt.js`. Avatar assets:
 `src/config/constants.js`. On each page load, launcher tips rotate above the
 Ani tab (`getAssistantLauncherTips()`, ~4.2 s each, once per load) then stop;
 opening the chat ends the sequence early. When a campaign is active, tips and
-quick chips include an August-offers prompt.
+quick chips use that campaign's own wording.
 
 ## Environment variables
 
@@ -172,9 +172,10 @@ CTAs. Cron inactivity does not change `handed_off` rows.
    Drink-menu and **active campaign** questions skip the service-catalog overview
    so they do not drown FAQ / campaign grounding.
 2. **Active campaigns** (`src/lib/assistant/campaignContext.js` +
-   `src/data/campaigns.js`): promotional packages, package inclusions, promo
-   prices, and Hot Tuesday rules. Injected into the system prompt the same way
-   as catalog context (text chat + Realtime turn). See `docs/CAMPAIGNS.md`.
+   `src/data/campaigns.js`): whatever the active entry lists — packages and
+   Hot Tuesday, or a single offer such as the Pink October Monday haircut.
+   Injected into the system prompt the same way as catalog context (text chat +
+   Realtime turn). See `docs/CAMPAIGNS.md`.
 3. Curated FAQ + approved copy: `src/data/assistantFaq.js` — includes
    complimentary **drinks** (from `src/data/drinks.js`), **About / founder**
    (Vicken Ghazarian / Ken), **Gallery** page pointers, the **WhatsApp booking
@@ -280,6 +281,9 @@ CTAs. Cron inactivity does not change `handed_off` rows.
 
 ## History
 
+- **12 October 2026** — Pink October is the active campaign (free Monday
+  haircut, no packages). Ani quotes that block and does not invent August
+  packages or Hot Tuesday while it is the active entry.
 - **4 September 2026** — Ported Cheer-style close lifecycle: panel close and
   End chat post `/session/end`; cron idle (15 min) / close (24 h); `idle`
   status + `inactivity` reason; keep voice 15 s idle and `superseded`.

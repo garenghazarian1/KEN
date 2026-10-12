@@ -11,6 +11,8 @@ import {
 } from "@/config/constants";
 import { getActiveCampaign } from "@/lib/business/campaigns";
 import styles from "./mainPage.module.css";
+export const revalidate = 3600;
+
 export const metadata = {
   title: BUSINESS.fullName,
   description: BUSINESS.description,

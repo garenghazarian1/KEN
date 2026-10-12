@@ -14,14 +14,14 @@ import {
 
 /** English campaign keywords — word boundaries are safe in Latin script. */
 const CAMPAIGN_QUERY_EN_RE =
-  /\b(august|offers|promo|promotion|package|packages|discount|hot\s*tuesday|mermaid|glow\s*up|princess\s*hands|50\s*%|save\s+now|special\s+offer)\b/i;
+  /\b(august|offers|promo|promotion|package|packages|discount|hot\s*tuesday|mermaid|glow\s*up|princess\s*hands|50\s*%|save\s+now|special\s+offer|pink\s*october|free\s+haircut)\b/i;
 
 /**
  * Arabic campaign keywords. Do NOT use `\b` — Arabic script has no word
  * boundaries that JS `\b` understands, so `\bباقة\b` never matches.
  */
 const CAMPAIGN_QUERY_AR_RE =
-  /(أغسطس|اغسطس|عرض|عروض|باقة|باقات|خصم|الثلاثاء|حورية|البحر|جلو|الأميرة|الاميرة)/;
+  /(أغسطس|اغسطس|عرض|عروض|باقة|باقات|خصم|الثلاثاء|حورية|البحر|جلو|الأميرة|الاميرة|أكتوبر|اكتوبر|الوردي)/;
 
 /**
  * @param {string} [query]
@@ -74,17 +74,37 @@ export function formatCampaignContext(campaign) {
         "en"
       )}.`
     : "";
+  const noteEn = tCampaign(campaign.heroSubtitle, "en");
+  const noteAr = tCampaign(campaign.heroSubtitle, "ar");
+  const noteLine =
+    noteEn && !packageLines.length
+      ? `Note: ${noteEn}${noteAr && noteAr !== noteEn ? ` / ${noteAr}` : ""}`
+      : "";
+  const hasPackages = packageLines.length > 0;
+  const detailLines = (campaign.details || []).map((item) => {
+    const titleEn = tCampaign(item.title, "en");
+    const titleAr = tCampaign(item.title, "ar");
+    const bodyEn = tCampaign(item.body, "en");
+    const bodyAr = tCampaign(item.body, "ar");
+    return `${titleEn} / ${titleAr}: ${bodyEn} / ${bodyAr}`;
+  });
 
   return [
-    `Active campaign (source of truth for promotional packages and promo prices only — quote these package prices exactly; do not invent other packages):`,
+    hasPackages
+      ? `Active campaign (source of truth for promotional packages and promo prices only — quote these package prices exactly; do not invent other packages):`
+      : `Active campaign (source of truth for this promotion only — quote it exactly; do not invent packages, discounts, or other offers):`,
     `Theme: ${themeEn} / ${themeAr}`,
-    `Primary CTA: ${ctaEn} / ${ctaAr}`,
+    `Offer: ${ctaEn} / ${ctaAr}`,
+    noteLine,
     `Valid ${campaign.startsOn} → ${campaign.endsOn} (${campaign.timezone || "Asia/Dubai"}), both Abu Dhabi branches.`,
     `Details page: ${path}`,
-    `Signature packages:`,
+    hasPackages ? `Signature packages:` : "",
     ...packageLines,
     weeklyLine,
-    `Hot Tuesday excludes the August Special Packages. For ordinary single services (not these packages), use the live service catalog prices. Direct guests to ${path} or WhatsApp to book a package.`,
+    ...detailLines,
+    hasPackages
+      ? `For ordinary single services (not these packages), use the live service catalog prices. Direct guests to ${path} or WhatsApp to book a package.`
+      : `There are no signature packages and no weekly percent-off in this campaign. Direct guests to ${path} or WhatsApp to book.`,
   ]
     .filter(Boolean)
     .join("\n");

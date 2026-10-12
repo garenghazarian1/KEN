@@ -138,4 +138,64 @@ export const CAMPAIGNS = [
       ar: "ينتهي 31 أغسطس",
     },
   },
+  {
+    id: "pink-october-2026",
+    slug: "pink-october-2026",
+    path: "/offers",
+    startsOn: "2026-10-01",
+    endsOn: "2026-10-31",
+    timezone: CAMPAIGN_TIMEZONE,
+    branches: "both",
+    theme: {
+      en: "Pink October Special",
+      ar: "عرض أكتوبر الوردي",
+    },
+    titleLines: {
+      en: ["Pink October", "Special"],
+      ar: ["أكتوبر الوردي", "عرض خاص"],
+    },
+    primaryCta: {
+      en: "Get a free haircut every Monday",
+      ar: "قصة شعر مجانية كل يوم اثنين",
+    },
+    heroSubtitle: {
+      en: "Available throughout October",
+      ar: "متاح طوال شهر أكتوبر",
+    },
+    bookLabel: {
+      en: "Book a Monday",
+      ar: "احجزي يوم الاثنين",
+    },
+    bookMessage: {
+      en: "Hello KEN Beauty, I would like to book the free Monday haircut for Pink October.",
+      ar: "مرحبا كين بيوتي، أود حجز قصة الشعر المجانية ليوم الاثنين ضمن أكتوبر الوردي.",
+    },
+    readMoreLabel: { en: "Read more", ar: "اقرئي المزيد" },
+    readLessLabel: { en: "Read less", ar: "اقرئي أقل" },
+    details: [
+      {
+        id: "uae",
+        title: {
+          en: "Pink October in the UAE",
+          ar: "أكتوبر الوردي في الإمارات",
+        },
+        body: {
+          en: "October is Breast Cancer Awareness Month. In the UAE it is marked as Pink October: a time for early checks, for standing with people in treatment, and for pink as a sign of care. Clinics, malls, and community groups take part every year.",
+          ar: "أكتوبر شهر التوعية بسرطان الثدي. في الإمارات يُعرف بأكتوبر الوردي: وقت للفحوصات المبكرة، وللوقوف مع من يخضعون للعلاج، وللون الوردي كعلامة اهتمام. تشارك فيه العيادات والمجمعات التجارية والمجتمع كل عام.",
+        },
+      },
+      {
+        id: "values",
+        title: { en: "What we value", ar: "ما نعتز به" },
+        body: {
+          en: "At Ken, care is personal. Through October a haircut is free every Monday at both Abu Dhabi branches, The Galleria and Rixos Marina. It is how we take part in the month, and how we make one visit easier.",
+          ar: "في كين، العناية شخصية. طوال أكتوبر قصة الشعر مجانية كل يوم اثنين في فرعي أبوظبي، الغاليريا وريكسوس مارينا. هكذا نشارك في الشهر، وهكذا نسهّل زيارة واحدة.",
+        },
+      },
+    ],
+    endsLabel: {
+      en: "Throughout October",
+      ar: "طوال شهر أكتوبر",
+    },
+  },
 ];

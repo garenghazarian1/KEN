@@ -53,12 +53,8 @@ export function getAssistantLauncherTips(now = new Date()) {
   if (!campaign) return BASE_LAUNCHER_TIPS;
 
   const cta = tCampaign(campaign.primaryCta, "en");
-  return [
-    cta
-      ? `${cta} — ask Ani about our August packages.`
-      : "August offers are live — ask Ani about our packages.",
-    ...BASE_LAUNCHER_TIPS,
-  ];
+  const theme = tCampaign(campaign.theme, "en");
+  return [cta || theme, ...BASE_LAUNCHER_TIPS];
 }
 
 /** @deprecated Prefer getAssistantQuickChips() so campaign chips stay in sync. */

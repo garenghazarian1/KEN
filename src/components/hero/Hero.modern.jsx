@@ -3,7 +3,7 @@
 import Image from "next/image";
 import Link from "next/link";
 import { motion } from "framer-motion";
-import OfferPromo from "@/components/campaign/OfferPromo";
+import CampaignPoster from "@/components/campaign/CampaignPoster";
 import styles from "./Hero.modern.module.css";
 
 const HERO_VIDEO_SRC = "/hero-vid-01.mp4";
@@ -111,8 +111,6 @@ export default function HeroModern({ campaign = null }) {
           />
         </div>
 
-        {campaign ? <OfferPromo campaign={campaign} /> : null}
-
         <div className={styles.copy}>
           <motion.h1
             className={styles.mainTitle}
@@ -134,6 +132,10 @@ export default function HeroModern({ campaign = null }) {
           </Link>
         </div>
       </section>
+
+      {campaign && !campaign.packages?.length ? (
+        <CampaignPoster campaign={campaign} />
+      ) : null}
 
       {/* Gallery Section — stacked images, free scroll */}
       <section className={styles.gallerySection}>

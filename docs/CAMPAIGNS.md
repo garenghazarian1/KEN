@@ -1,6 +1,6 @@
 # Campaigns (promotional packages)
 
-Last updated: 12 August 2026
+Last updated: 12 October 2026
 
 Single source of truth for limited-time offers: [`src/data/campaigns.js`](../src/data/campaigns.js).
 
@@ -8,8 +8,9 @@ Helpers: [`src/lib/business/campaigns.js`](../src/lib/business/campaigns.js) —
 
 ## Website surfaces
 
-- Hero + Services: [`OfferPromo`](../src/components/campaign/OfferPromo.jsx) (glass takeover → water-drop pill)
-- Destination: [`/offers`](../src/app/(navPages)/offers/page.jsx)
+- Home, under the hero: [`CampaignPoster`](../src/components/campaign/CampaignPoster.jsx) when the active campaign has no package list (Pink October). From 1200px the title and offer sit on one side and the explanation on the other; narrower screens keep that text behind Read more.
+- Destination: [`/offers`](../src/app/(navPages)/offers/page.jsx) — the same poster while that campaign is active; package cards for a package campaign such as August
+- Services does not show a campaign popup
 
 ## Assistant grounding (same pattern as catalog)
 
@@ -18,7 +19,7 @@ Helpers: [`src/lib/business/campaigns.js`](../src/lib/business/campaigns.js) —
 - FAQ pointer: `campaign_offers` in [`assistantFaq.js`](../src/data/assistantFaq.js)
 - Quick chips / launcher tips: `getAssistantQuickChips` / `getAssistantLauncherTips` in [`assistantUi.js`](../src/data/assistantUi.js)
 
-**Authority:** campaign packages + promo prices = campaigns.js. Ordinary à-la-carte services/prices = live admin catalog. Hot Tuesday excludes August Special Packages.
+**Authority:** the active campaign in campaigns.js. Package prices and Hot Tuesday only when that entry lists them. Ordinary à-la-carte services/prices = live admin catalog. Pink October is a free Monday haircut, not a package.
 
 ## Updating a campaign
 

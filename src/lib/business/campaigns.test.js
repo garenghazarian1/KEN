@@ -24,6 +24,16 @@ describe("campaigns helpers", () => {
   it("deactivates outside the window", () => {
     expect(getActiveCampaign(new Date("2026-07-31T23:00:00+04:00"))).toBeNull();
     expect(getActiveCampaign(new Date("2026-09-01T00:30:00+04:00"))).toBeNull();
+    expect(getActiveCampaign(new Date("2026-11-01T00:30:00+04:00"))).toBeNull();
+  });
+
+  it("activates pink october inside October", () => {
+    const campaign = getActiveCampaign(new Date("2026-10-12T12:00:00+04:00"));
+    expect(campaign?.id).toBe("pink-october-2026");
+    expect(campaign?.packages).toBeUndefined();
+    expect(isCampaignActive(campaign, new Date("2026-10-31T23:00:00+04:00"))).toBe(
+      true
+    );
   });
 
   it("localizes bilingual fields", () => {
