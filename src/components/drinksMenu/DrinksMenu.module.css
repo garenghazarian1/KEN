@@ -337,12 +337,6 @@
   margin-right: auto;
 }
 
-.footerIcon {
-  color: var(--color-secondary);
-  flex-shrink: 0;
-  filter: drop-shadow(0 2px 8px var(--overlay-secondary-30));
-}
-
 .footerNote p {
   font-size: var(--font-size-base);
   color: var(--color-text-secondary);
@@ -415,8 +409,6 @@
 
   .footerNote {
     padding: var(--spacing-6) var(--spacing-4);
-    flex-direction: column;
-    gap: var(--spacing-2);
   }
 }
 

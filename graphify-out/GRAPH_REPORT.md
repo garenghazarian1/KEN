@@ -1,16 +1,16 @@
-# Graph Report - ken  (2026-10-12)
+# Graph Report - ken  (2026-10-18)
 
 ## Corpus Check
-- 192 files · ~747,178 words
+- 192 files · ~747,205 words
 - Verdict: corpus is large enough that graph structure adds value.
 
 ## Summary
-- 1359 nodes · 1627 edges · 137 communities (98 shown, 39 thin omitted)
+- 1360 nodes · 1628 edges · 145 communities (106 shown, 39 thin omitted)
 - Extraction: 91% EXTRACTED · 9% INFERRED · 0% AMBIGUOUS · INFERRED: 141 edges (avg confidence: 0.8)
 - Token cost: 0 input · 0 output
 
 ## Graph Freshness
-- Built from commit: `5391ec25`
+- Built from commit: `80cdf3b7`
 - Run `git rev-parse HEAD` and compare to check if the graph is stale.
 - Run `graphify update .` after code changes (no API cost).
 
@@ -35,7 +35,6 @@
 - [[_COMMUNITY_Community 17|Community 17]]
 - [[_COMMUNITY_Community 18|Community 18]]
 - [[_COMMUNITY_Community 19|Community 19]]
-- [[_COMMUNITY_Community 20|Community 20]]
 - [[_COMMUNITY_Community 21|Community 21]]
 - [[_COMMUNITY_Community 22|Community 22]]
 - [[_COMMUNITY_Community 24|Community 24]]
@@ -110,18 +109,27 @@
 - [[_COMMUNITY_Community 108|Community 108]]
 - [[_COMMUNITY_Community 109|Community 109]]
 - [[_COMMUNITY_Community 110|Community 110]]
+- [[_COMMUNITY_Community 111|Community 111]]
 - [[_COMMUNITY_Community 112|Community 112]]
 - [[_COMMUNITY_Community 113|Community 113]]
+- [[_COMMUNITY_Community 114|Community 114]]
 - [[_COMMUNITY_Community 115|Community 115]]
 - [[_COMMUNITY_Community 116|Community 116]]
 - [[_COMMUNITY_Community 117|Community 117]]
 - [[_COMMUNITY_Community 118|Community 118]]
 - [[_COMMUNITY_Community 122|Community 122]]
+- [[_COMMUNITY_Community 123|Community 123]]
 - [[_COMMUNITY_Community 124|Community 124]]
+- [[_COMMUNITY_Community 125|Community 125]]
 - [[_COMMUNITY_Community 126|Community 126]]
+- [[_COMMUNITY_Community 128|Community 128]]
+- [[_COMMUNITY_Community 129|Community 129]]
+- [[_COMMUNITY_Community 130|Community 130]]
 - [[_COMMUNITY_Community 131|Community 131]]
 - [[_COMMUNITY_Community 132|Community 132]]
 - [[_COMMUNITY_Community 133|Community 133]]
+- [[_COMMUNITY_Community 135|Community 135]]
+- [[_COMMUNITY_Community 138|Community 138]]
 - [[_COMMUNITY_Community 140|Community 140]]
 - [[_COMMUNITY_Community 142|Community 142]]
 - [[_COMMUNITY_Community 143|Community 143]]
@@ -139,6 +147,8 @@
 10. `Google Lighthouse Audit Report - Contact Page` - 12 edges
 
 ## Surprising Connections (you probably didn't know these)
+- `ServiceMenu()` --calls--> `resolveServiceCategoryId()`  [INFERRED]
+  src/components/serviceMenu/ServiceMenu.jsx → src/utils/serviceCategoryUrl.js
 - `Home()` --calls--> `getActiveCampaign()`  [INFERRED]
   src/app/page.jsx → src/lib/business/campaigns.js
 - `ServicesPage()` --calls--> `getActiveCampaign()`  [INFERRED]
@@ -147,10 +157,8 @@
   src/app/api/assistant/chat/route.js → src/lib/assistant/campaignContext.js
 - `POST()` --calls--> `buildCatalogContext()`  [INFERRED]
   src/app/api/assistant/chat/route.js → src/lib/assistant/catalogContext.js
-- `POST()` --calls--> `detectEscalation()`  [INFERRED]
-  src/app/api/assistant/chat/route.js → src/lib/assistant/intentGate.js
 
-## Communities (137 total, 39 thin omitted)
+## Communities (145 total, 39 thin omitted)
 
 ### Community 0 - "Community 0"
 Cohesion: 0.20
@@ -181,8 +189,8 @@ Cohesion: 0.07
 Nodes (28): Border Radius Variables, code:css (/* Font Families */), code:css (var(--radius-sm)    /* 4px */), code:css (/* Glass Backgrounds */), code:css (var(--shadow-light)), code:css (var(--overlay-white-65)), code:css (/* Mobile First Approach */), code:css (.page {) (+20 more)
 
 ### Community 7 - "Community 7"
-Cohesion: 0.08
-Nodes (24): 10. **Hardcoded Data** ✅ **RESOLVED**, 11. **Inconsistent Naming**, 12. **Unused Environment Variable**, 13. **Poor Alt Text**, 14. **Missing ARIA Labels**, 15. **Missing Semantic HTML**, 16. **Missing OpenGraph Images**, 17. **Hardcoded URLs** (+16 more)
+Cohesion: 0.22
+Nodes (9): 13. **Poor Alt Text**, 14. **Missing ARIA Labels**, 15. **Missing Semantic HTML**, 16. **Missing OpenGraph Images**, 17. **Hardcoded URLs**, 18. **No TypeScript**, Accessibility Issues, SEO & Metadata Issues (+1 more)
 
 ### Community 8 - "Community 8"
 Cohesion: 0.06
@@ -201,12 +209,12 @@ Cohesion: 0.10
 Nodes (20): 1. Fade In Animation, 2. Slide Up Animation, 3. Staggered Children Animation, 4. Scroll-Triggered Animation, 5. Hover Animation, 6. Page Entrance Animation, 7. Disclosure drop, Animation Patterns (+12 more)
 
 ### Community 12 - "Community 12"
-Cohesion: 0.22
-Nodes (9): Accessibility (Priority: MEDIUM), Code Quality (Priority: MEDIUM), Critical Bug Fixes (Priority: HIGH) ✅ **COMPLETED**, Design System (Priority: HIGH) ✅ **COMPLETED**, Detailed Todo List, Documentation (Priority: LOW), Performance Optimizations (Priority: MEDIUM), SEO & Metadata (Priority: MEDIUM) (+1 more)
+Cohesion: 0.12
+Nodes (16): Accessibility (Priority: MEDIUM), Code Quality (Priority: MEDIUM), Contact Page, Critical Bug Fixes (Priority: HIGH) ✅ **COMPLETED**, Design System (Priority: HIGH) ✅ **COMPLETED**, Detailed Todo List, Documentation (Priority: LOW), Footer (+8 more)
 
 ### Community 13 - "Community 13"
-Cohesion: 0.13
-Nodes (15): Contact Page, Current Breakpoint Inconsistencies, Device Breakpoint Strategy, Extra Large Devices (1024px+), Extra Small Devices (320px - 360px), Footer, Gallery Page, Hero Section (+7 more)
+Cohesion: 0.25
+Nodes (8): Current Breakpoint Inconsistencies, Device Breakpoint Strategy, Extra Large Devices (1024px+), Extra Small Devices (320px - 360px), Large Devices (768px - 1024px), Medium Devices (480px - 768px), Mobile Responsiveness Analysis, Small Devices (360px - 480px)
 
 ### Community 14 - "Community 14"
 Cohesion: 0.14
@@ -249,12 +257,12 @@ Cohesion: 0.50
 Nodes (3): description, name, version
 
 ### Community 31 - "Community 31"
-Cohesion: 0.07
-Nodes (27): Home(), localBusinessJsonLd, metadata, buildCampaignContext(), formatCampaignContext(), isCampaignQuery(), august, october (+19 more)
+Cohesion: 0.06
+Nodes (32): Home(), localBusinessJsonLd, metadata, buildCampaignContext(), formatCampaignContext(), isCampaignQuery(), august, october (+24 more)
 
 ### Community 33 - "Community 33"
-Cohesion: 0.11
-Nodes (18): bgReveal, captionReveal, descriptions, galleryItemVariants, galleryViewport, HERO_VIDEO_PROPS, imageReveal, images (+10 more)
+Cohesion: 0.12
+Nodes (10): bgReveal, captionReveal, descriptions, galleryItemVariants, galleryViewport, HERO_VIDEO_PROPS, imageReveal, images (+2 more)
 
 ### Community 37 - "Community 37"
 Cohesion: 0.22
@@ -297,8 +305,8 @@ Cohesion: 0.25
 Nodes (13): Accuracy & escalation rules, API routes, Conversation close lifecycle, Environment variables, History, Ken AI Assistant — Ani (Text + Voice), Ken AI Assistant (Text + Voice), Known limitations (v1) (+5 more)
 
 ### Community 66 - "Community 66"
-Cohesion: 0.29
-Nodes (7): Contact Page, Footer, Gallery Page, Hero Section ✅ **COMPLETED**, Mobile Responsiveness (Priority: HIGH), Navbar ✅ **COMPLETED**, Portfolio Components
+Cohesion: 0.23
+Nodes (10): buildServiceSearchCatalog(), searchServices(), suggestServiceTitles(), appearances, catalog, hits, sections, services (+2 more)
 
 ### Community 67 - "Community 67"
 Cohesion: 0.22
@@ -309,12 +317,12 @@ Cohesion: 0.22
 Nodes (8): Basic Component Template, code:jsx ("use client"; // Required for client-side features (state, e), Component Development Patterns Guide, Component Structure, Component Structure Checklist, Quick Reference Checklist, Resources, Table of Contents
 
 ### Community 69 - "Community 69"
-Cohesion: 0.07
-Nodes (22): AssistantContext, AssistantNavButton(), AssistantPanel, AssistantProvider(), AssistantWidget(), useAssistant(), getSpecialPeriodLogo(), ASSISTANT_LAUNCHER_TIPS (+14 more)
+Cohesion: 0.09
+Nodes (17): AssistantContext, AssistantNavButton(), AssistantPanel, AssistantProvider(), AssistantWidget(), useAssistant(), getSpecialPeriodLogo(), getAssistantLauncherTips() (+9 more)
 
 ### Community 70 - "Community 70"
-Cohesion: 0.15
-Nodes (12): accept, categories, dialog, firstCategory, firstSub, nested, opened, pressed (+4 more)
+Cohesion: 0.14
+Nodes (13): accept, categories, dialog, firstCategory, firstSub, nested, opened, pressed (+5 more)
 
 ### Community 71 - "Community 71"
 Cohesion: 0.22
@@ -361,8 +369,8 @@ Cohesion: 0.06
 Nodes (42): getCategoryImage(), isMenSection(), SERVICE_CATEGORY_IMAGES, BookingGuide(), BookingHint(), bookingMessage(), branchChoice(), BookingSheet() (+34 more)
 
 ### Community 88 - "Community 88"
-Cohesion: 0.06
-Nodes (36): buildCatalogContext(), formatCategoryOverview(), getCachedCatalog(), loadCatalog(), localeCaches, mergeHits(), buildServiceSections(), BusinessSchema (+28 more)
+Cohesion: 0.16
+Nodes (9): buildServiceSections(), BusinessSchema, BusinessServiceCategorySchema, BusinessServiceItemCategoryLinkSchema, BusinessServiceItemSchema, getModel(), getServiceCatalog(), metadata (+1 more)
 
 ### Community 89 - "Community 89"
 Cohesion: 0.40
@@ -420,9 +428,17 @@ Nodes (7): reopenOnCustomerActivity(), conversation, handedOff, now, open, resul
 Cohesion: 0.50
 Nodes (3): bad, old, parsed
 
+### Community 111 - "Community 111"
+Cohesion: 0.53
+Nodes (8): int, Path, build_square(), main(), Generates the full favicon / PWA icon suite from public/salon-logo-2026.jpg., save_ico(), save_png(), save_svg_wrapper()
+
 ### Community 113 - "Community 113"
 Cohesion: 0.33
 Nodes (5): find, lean, limit, select, updateOne
+
+### Community 114 - "Community 114"
+Cohesion: 0.39
+Nodes (6): buildCatalogContext(), formatCategoryOverview(), getCachedCatalog(), loadCatalog(), localeCaches, mergeHits()
 
 ### Community 115 - "Community 115"
 Cohesion: 0.33
@@ -432,12 +448,36 @@ Nodes (3): eventId, payload, sendBeacon
 Cohesion: 0.60
 Nodes (5): contentWidth(), FitName(), pxSize(), rowFits(), showFull()
 
+### Community 123 - "Community 123"
+Cohesion: 0.29
+Nodes (7): Contact Page, Footer, Gallery Page, Hero Section, Mobile-Specific Issues, Navbar, Portfolio Components
+
 ### Community 124 - "Community 124"
 Cohesion: 0.40
 Nodes (4): accept, bar, close, sheet
 
+### Community 125 - "Community 125"
+Cohesion: 0.32
+Nodes (7): parseSubcategoryIdsParam(), resolveOpenSubcategoryIds(), resolveServiceCategoryId(), SERVICE_CATEGORY_QUERY_KEY, SERVICE_SUBCATEGORIES_QUERY_KEY, syncServiceCategoryToUrl(), syncServiceMenuToUrl()
+
+### Community 128 - "Community 128"
+Cohesion: 0.60
+Nodes (4): firstImage(), GET(), slimItem(), slimSections()
+
+### Community 129 - "Community 129"
+Cohesion: 0.40
+Nodes (5): 10. **Hardcoded Data** ✅ **RESOLVED**, 11. **Inconsistent Naming**, 12. **Unused Environment Variable**, 9. **Repetitive Portfolio Structure**, Code Quality Issues
+
+### Community 130 - "Community 130"
+Cohesion: 0.40
+Nodes (5): 1. **Dead Code & Unused Imports**, 2. **CSS Class Name Error**, 3. **Third-Party Script Loading**, 4. **Missing Error Boundaries**, Critical Issues
+
+### Community 135 - "Community 135"
+Cohesion: 0.40
+Nodes (5): 5. **Excessive Portfolio Components**, 6. **Video Loading Strategy**, 7. **Image Optimization Missing**, 8. **No Code Splitting**, Performance Issues
+
 ## Knowledge Gaps
-- **622 isolated node(s):** `extends`, `accept`, `sheet`, `close`, `bar` (+617 more)
+- **623 isolated node(s):** `extends`, `accept`, `sheet`, `close`, `bar` (+618 more)
   These have ≤1 connection - possible missing edges or undocumented components.
 - **39 thin communities (<3 nodes) omitted from report** — run `graphify query` to explore isolated nodes.
 
@@ -445,15 +485,15 @@ Nodes (4): accept, bar, close, sheet
 _Questions this graph is uniquely positioned to answer:_
 
 - **Why does `Image` connect `Community 42` to `Community 4`, `Community 133`, `Community 134`, `Community 137`, `Community 140`, `Community 145`, `Community 146`, `Community 147`, `Community 20`, `Community 23`, `Community 25`, `Community 31`, `Community 33`, `Community 34`, `Community 39`, `Community 43`, `Community 53`, `Community 69`, `Community 87`, `Community 94`, `Community 111`?**
-  _High betweenness centrality (0.107) - this node is a cross-community bridge._
+  _High betweenness centrality (0.110) - this node is a cross-community bridge._
 - **Why does `ServicesPage()` connect `Community 88` to `Community 87`, `Community 31`?**
   _High betweenness centrality (0.057) - this node is a cross-community bridge._
-- **Why does `getServiceCatalog()` connect `Community 88` to `Community 41`?**
+- **Why does `getServiceCatalog()` connect `Community 88` to `Community 128`, `Community 41`, `Community 114`?**
   _High betweenness centrality (0.041) - this node is a cross-community bridge._
 - **Are the 10 inferred relationships involving `POST()` (e.g. with `buildCampaignContext()` and `buildCatalogContext()`) actually correct?**
   _`POST()` has 10 INFERRED edges - model-reasoned connections that need verification._
 - **What connects `extends`, `accept`, `sheet` to the rest of the system?**
-  _623 weakly-connected nodes found - possible documentation gaps or missing edges._
+  _624 weakly-connected nodes found - possible documentation gaps or missing edges._
 - **Should `Community 1` be split into smaller, more focused modules?**
   _Cohesion score 0.0425531914893617 - nodes in this community are weakly interconnected._
 - **Should `Community 2` be split into smaller, more focused modules?**

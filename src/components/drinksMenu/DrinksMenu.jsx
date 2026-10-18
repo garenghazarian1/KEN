@@ -2,7 +2,7 @@
 
 import Image from "next/image";
 import { motion } from "framer-motion";
-import { Coffee, GlassWater, Plus, Sparkles } from "lucide-react";
+import { Coffee, GlassWater, Plus } from "lucide-react";
 import { drinksCategories } from "@/data/drinks";
 import styles from "./DrinksMenu.module.css";
 
@@ -141,9 +141,6 @@ export default function DrinksMenu() {
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.8, delay: 1.2 }}
       >
-        <div className={styles.footerIcon}>
-          <Sparkles size={20} />
-        </div>
         <p>
           All beverages are complimentary and available at all Ken Beauty Salon
           locations.

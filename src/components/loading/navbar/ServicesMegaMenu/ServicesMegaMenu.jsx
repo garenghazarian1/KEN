@@ -120,6 +120,11 @@ function MobileLookbook({
   return (
     <div className={styles.phoneSheet}>
       <ul className={styles.phoneCategories} aria-label="Service categories">
+        <li className={styles.phoneCategoryItem}>
+          <Link href="/services" className={styles.phoneCategory} onClick={onNavigate}>
+            All services
+          </Link>
+        </li>
         {sections.map((section) => {
           const isActive = activeSection.id === section.id;
           return (
@@ -251,6 +256,11 @@ function DesktopMegaPanel({
   return (
     <div className={styles.megaShell}>
       <ul className={styles.megaCategories} aria-label="Service categories">
+        <li>
+          <Link href="/services" className={styles.megaCategory} onClick={onNavigate}>
+            All services
+          </Link>
+        </li>
         {sections.map((section) => {
           const isActive = activeSection?.id === section.id;
           return (
