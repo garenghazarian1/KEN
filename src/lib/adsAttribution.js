@@ -128,7 +128,7 @@ export function captureAdsAttributionFromUrl() {
   }
 }
 
-/** Remove persisted marketing attribution after consent is declined. */
+/** Remove persisted marketing attribution from this browser. */
 export function clearAdsAttribution() {
   persistUsable({});
 }

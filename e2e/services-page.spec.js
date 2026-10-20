@@ -159,7 +159,7 @@ test("menu link opens the priced category", async ({ page }) => {
   await expect(page.locator('img[sizes="40vw"]')).toHaveCount(1);
 });
 
-test("declining cookies prevents ad attribution storage", async ({ page }) => {
+test("google ads tag and click id load without a cookie prompt", async ({ page }) => {
   const gtmRequests = [];
   page.on("request", (request) => {
     if (request.url().includes("googletagmanager.com")) {
@@ -168,21 +168,15 @@ test("declining cookies prevents ad attribution storage", async ({ page }) => {
   });
 
   await page.goto("/services?gclid=CjwKCAjw1234567890abcdef");
-  const decline = page.getByRole("button", { name: "Decline cookies" });
-  await expect(decline).toBeVisible();
-  await decline.click();
-  await expect(decline).toBeHidden();
-  await page.waitForLoadState("networkidle");
+  await expect(page.getByRole("button", { name: "Decline cookies" })).toHaveCount(0);
+  await expect(page.getByRole("button", { name: "Accept all cookies" })).toHaveCount(0);
 
-  const stored = await page.evaluate(() => ({
-    consent: localStorage.getItem("cookieConsent"),
-    attribution: localStorage.getItem("ken_ads_attribution"),
-    cookie: document.cookie,
-  }));
-  expect(stored.consent).toBe("declined");
-  expect(stored.attribution).toBeNull();
-  expect(stored.cookie).not.toContain("ken_gclid");
-  expect(gtmRequests).toEqual([]);
+  const stored = await page.evaluate(() =>
+    localStorage.getItem("ken_ads_attribution"),
+  );
+  expect(stored).toContain("CjwKCAjw1234567890abcdef");
+  await expect.poll(() => gtmRequests.length).toBeGreaterThan(0);
+  expect(gtmRequests.some((url) => url.includes("GTM-M3QMMNGZ"))).toBe(true);
 });
 
 test("added services open WhatsApp with those names", async ({ page }) => {

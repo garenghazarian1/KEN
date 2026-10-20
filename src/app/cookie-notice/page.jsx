@@ -14,7 +14,7 @@ export default function CookieNotice() {
         <div className={styles.header}>
           <h1>Cookie Notice</h1>
           <p className={styles.lastUpdated}>
-            Last Updated: 30 September 2026
+            Last Updated: 20 October 2026
           </p>
         </div>
 
@@ -63,9 +63,8 @@ export default function CookieNotice() {
               settings to provide a more personalized experience.
             </li>
             <li>
-              <strong>Marketing Cookies:</strong> Used to track visitors across
-              websites to display relevant advertisements (only with your
-              consent).
+              <strong>Marketing Cookies:</strong> Used to measure advertising
+              visits and show relevant advertisements.
             </li>
           </ul>
         </section>
@@ -85,12 +84,12 @@ export default function CookieNotice() {
         <section className={styles.section}>
           <h2>Advertising Attribution</h2>
           <p>
-            After you accept marketing cookies, we may store Google Ads click
-            identifiers in <code>ken_ads_attribution</code> local storage and
+            When you arrive from an advertisement, we store the Google Ads click
+            identifier in <code>ken_ads_attribution</code> local storage and
             the <code>ken_gclid</code> cookie for up to 90 days. These values
-            help us attribute an outbound contact click to an advertising
-            visit. Declining clears these values and prevents Google Tag
-            Manager from loading.
+            help us attribute an outbound contact click to that advertising
+            visit. Google Tag Manager loads on each page so ad conversions can
+            be recorded.
           </p>
         </section>
 

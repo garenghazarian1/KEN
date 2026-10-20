@@ -154,8 +154,7 @@ export default function PrivacyPage() {
           </p>
           <p>
             Outbound contact-click records expire after 90 days. Advertising attribution stored in
-            your browser also expires after 90 days and is stored only after you accept marketing
-            cookies.
+            your browser also expires after 90 days.
           </p>
         </section>
 

@@ -166,7 +166,7 @@ export default function MobileNavBottom() {
             aria-labelledby={`${panelId}-title`}
             tabIndex={-1}
           >
-            <div className={styles.atmosphere} aria-hidden="true">
+            <div className={styles.sheetPhoto}>
               <Image
                 src="/portfolio/portfolioA001.webp"
                 alt=""
@@ -175,14 +175,15 @@ export default function MobileNavBottom() {
                 sizes="100vw"
                 priority
               />
+              <div className={styles.sheetPhotoScrim} aria-hidden="true" />
+              <h2 id={`${panelId}-title`} className={styles.sheetTitle}>
+                Call us
+              </h2>
             </div>
 
             <div className={styles.sheetInner}>
               <header className={styles.sheetHeader}>
                 <p className={styles.eyebrow}>Ken Beauty Salon</p>
-                <h2 id={`${panelId}-title`} className={styles.sheetTitle}>
-                  Call us
-                </h2>
                 <p className={styles.sheetLead}>
                   Choose a branch. Numbers open your phone; WhatsApp opens a chat.
                 </p>

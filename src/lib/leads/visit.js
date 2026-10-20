@@ -51,7 +51,7 @@ export function captureFirstVisit() {
   }
 }
 
-/** Remove the saved visit after tracking consent is declined. */
+/** Drop the saved visit for this browser session. */
 export function clearFirstVisit() {
   try {
     window.sessionStorage.removeItem(STORAGE_KEY);

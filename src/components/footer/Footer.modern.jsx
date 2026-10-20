@@ -1,9 +1,8 @@
 "use client";
 
-import { useState, useEffect } from "react";
 import Link from "next/link";
 import Image from "next/image";
-import { motion, AnimatePresence } from "framer-motion";
+import { motion } from "framer-motion";
 import {
   Instagram,
   Facebook,
@@ -17,8 +16,6 @@ import {
   Shield,
   Cookie,
   Building2,
-  X,
-  Check,
   MessageCircle,
   Coffee,
   CreditCard,
@@ -34,31 +31,11 @@ import {
   APP_STORES,
 } from "@/config/constants";
 import { stores } from "@/data/stores";
-import { readCookieConsent, writeCookieConsent } from "@/lib/consent";
 import { branchKey } from "@/lib/leads/leadRecord";
 import { recordOutbound } from "@/lib/leads/trackLead";
 import styles from "./Footer.modern.module.css";
 
 export default function FooterModern() {
-  const [showCookieBanner, setShowCookieBanner] = useState(false);
-
-  useEffect(() => {
-    const consent = readCookieConsent();
-    if (!consent) {
-      setShowCookieBanner(true);
-    }
-  }, []);
-
-  const handleAcceptCookies = () => {
-    writeCookieConsent("accepted");
-    setShowCookieBanner(false);
-  };
-
-  const handleDeclineCookies = () => {
-    writeCookieConsent("declined");
-    setShowCookieBanner(false);
-  };
-
   const currentYear = new Date().getFullYear();
 
   const navigationLinks = [
@@ -81,58 +58,6 @@ export default function FooterModern() {
   ];
 
   return (
-    <>
-      {/* Cookie Consent Banner */}
-      <AnimatePresence>
-        {showCookieBanner && (
-          <motion.div
-            className={styles.cookieBanner}
-            initial={{ y: 100, opacity: 0 }}
-            animate={{ y: 0, opacity: 1 }}
-            exit={{ y: 100, opacity: 0 }}
-            transition={{ duration: 0.5, ease: "easeOut" }}
-          >
-            <div className={styles.cookieContent}>
-              <div className={styles.cookieText}>
-                <Cookie size={24} className={styles.cookieIcon} />
-                <div>
-                  <h3 className={styles.cookieTextTitle}>Cookie Consent</h3>
-                  <p className={styles.cookieTextDescription}>
-                    We use cookies to enhance your browsing experience and
-                    analyze site traffic. By clicking &quot;Accept All&quot;,
-                    you consent to our use of cookies.{" "}
-                    <Link href="/cookie-notice" className={styles.cookieLink}>
-                      Learn more
-                    </Link>
-                  </p>
-                </div>
-              </div>
-              <div className={styles.cookieButtons}>
-                <button
-                  type="button"
-                  onClick={handleDeclineCookies}
-                  className={styles.cookieDecline}
-                  aria-label="Decline cookies"
-                >
-                  <X size={18} />
-                  <span>Decline</span>
-                </button>
-                <button
-                  type="button"
-                  onClick={handleAcceptCookies}
-                  className={styles.cookieAccept}
-                  aria-label="Accept all cookies"
-                >
-                  <Check size={18} />
-                  <span>Accept All</span>
-                </button>
-              </div>
-            </div>
-          </motion.div>
-        )}
-      </AnimatePresence>
-
-      {/* Main Footer */}
       <footer className={styles.footer}>
         <div className={styles.footerContainer}>
           {/* Top Section */}
@@ -406,6 +331,5 @@ export default function FooterModern() {
           </div>
         </div>
       </footer>
-    </>
   );
 }

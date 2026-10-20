@@ -1,6 +1,6 @@
 # Outbound contact-click tracking
 
-Last updated: 7 October 2026
+Last updated: 20 October 2026
 
 ## Scope
 
@@ -49,7 +49,7 @@ rate limits return `429`, and storage failures return `503`.
 - Server-derived branch
 - Pathname where the click occurred
 - Selected service IDs and names for WhatsApp booking clicks
-- Valid Google Ads click identifiers, when marketing consent exists
+- Valid Google Ads click identifiers, saved from the landing URL
 - Browser language, timezone, screen size (width, height, pixel ratio), and referrer
 - First-touch visit (`src/lib/leads/visit.js`, `sessionStorage` key
   `ken_first_visit`, saved once per tab session, never overwritten, separate
@@ -68,13 +68,12 @@ placement 80). No fingerprint, GPS, name, or visitor phone is collected.
 
 The admin app shows these on the website-click detail. Records expire after 90 days.
 
-## Consent
+## Advertising tags
 
-`src/components/ConsentAnalytics/ConsentAnalytics.jsx` loads Google Tag Manager
-and captures ad attribution only after `cookieConsent` is `accepted`.
-Declining consent clears `ken_ads_attribution` local storage and the
-`ken_gclid` cookie. The same component saves the first-touch visit on load
-unless consent is `declined`, and clears it on decline.
+Google Tag Manager (`GTM-M3QMMNGZ`) loads on every page from
+`src/app/layout.jsx`. It does not wait for a cookie prompt.
+`src/components/ConsentAnalytics/ConsentAnalytics.jsx` saves the Google click
+id and the first-touch visit on load. There is no cookie-consent banner.
 
 ## Booking UI guarantees
 
@@ -86,6 +85,9 @@ unless consent is `declined`, and clears it on decline.
 - Saved services are deduplicated and bounded to 20 entries.
 
 ## Change log
+
+- 20 October 2026: Google Tag Manager loads on every page again. The click
+  id is saved without a cookie prompt, and the consent banner is removed.
 
 - 7 October 2026: Background click log keeps five events per minute. Further
   taps still open the contact link and do not create another stored click.
