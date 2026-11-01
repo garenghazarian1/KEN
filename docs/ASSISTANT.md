@@ -1,6 +1,7 @@
-# Ken AI Assistant — Ani (Text + Voice)
+Last updated: 1 November 2026
+Last verified against code: 1 Nov 2026 (HEAD 8634780, working tree)
 
-Last updated: 12 October 2026
+# Ken AI Assistant — Ani (Text + Voice)
 
 Catalog-grounded website assistant **Ani**: bottom-bar tab with model-style
 avatar, optional guest name (dismissible strip on chat), text + voice input,
@@ -10,17 +11,17 @@ everything controlled by the third-party booking system (Zenoti).
 Persona display name and greeting live in `src/data/assistantUi.js`; system
 prompt identity is in `src/lib/assistant/prompt.js`. Avatar assets:
 `public/assistant/ken-assistant-avatar.webp` (+ `.png` fallback), paths in
-`src/config/constants.js`. On each page load, launcher tips rotate above the
-Ani tab (`getAssistantLauncherTips()`, ~4.2 s each, once per load) then stop;
-opening the chat ends the sequence early. When a campaign is active, tips and
-quick chips use that campaign's own wording.
+`src/config/constants.js`. The rotating launcher-tip bubble above the Ani tab
+is commented out in `AssistantNavButton`; only the Ani icon shows. Tip copy
+still lives in `getAssistantLauncherTips()`. Quick chips still use campaign
+wording when a campaign is active.
 
 ## Environment variables
 
 | Variable          | Purpose                                                |
 | ----------------- | ------------------------------------------------------ |
 | `OPENAI_API_KEY`  | Server-only. Chat + transcription + TTS. Never `NEXT_PUBLIC` |
-| `MONGODB_URI`     | Existing cluster URI (already used by `connectDB`)     |
+| `MONGODB_URI`     | Cluster URI read by `connectServicesDB` (assistant collections). `connectDB` has no caller. |
 | `SERVICES_MONGODB_DB_NAME` | `beauty-admin` (assistant collections live in the admin platform DB) |
 | `CRON_SECRET`     | Bearer token for `GET /api/cron/assistant-cleanup` (Vercel Cron sends `Authorization: Bearer …`) |
 

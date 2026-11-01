@@ -1,6 +1,7 @@
 "use client";
 import { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
+import LazyVideo from "@/components/portfolio/LazyVideo.modern";
 import styles from "./PageTwentyOne.modern.module.css";
 
 const services = [
@@ -26,14 +27,10 @@ export default function PageTwentyOne() {
     <div className={styles.page}>
       {/* Hero with Full Video */}
       <section className={styles.heroSection}>
-        <video
-          src="/portfolio/description05.mp4"
-          autoPlay
-          muted
-          loop
-          playsInline
-          preload="auto"
+        <LazyVideo
+          name="description-05"
           className={styles.video}
+          wrapperClassName={styles.videoFill}
         />
         
         {/* Cycling Ad Card */}

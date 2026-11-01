@@ -1,0 +1,64 @@
+.wrapper {
+  position: relative;
+  display: block;
+  background: var(--color-bg-dark);
+  overflow: hidden;
+}
+
+.skeleton {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+      100deg,
+      transparent 30%,
+      var(--overlay-white-08) 50%,
+      transparent 70%
+    )
+    var(--color-bg-dark);
+  background-size: 200% 100%;
+  animation: lazyVideoShimmer 1.6s linear infinite;
+  transition: opacity 500ms var(--ease-out);
+  pointer-events: none;
+  z-index: 1;
+}
+
+.skeletonHidden {
+  opacity: 0;
+}
+
+.skeletonStatic {
+  animation: none;
+  background: var(--color-bg-dark);
+}
+
+.video {
+  display: block;
+  opacity: 0;
+  transition: opacity 500ms var(--ease-out);
+}
+
+.videoVisible {
+  opacity: 1;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .skeleton {
+    animation: none;
+    transition: none;
+    background: var(--color-bg-dark);
+  }
+
+  .video {
+    transition: none;
+  }
+}
+
+@keyframes lazyVideoShimmer {
+  from {
+    background-position: 100% 0;
+  }
+
+  to {
+    background-position: -100% 0;
+  }
+}

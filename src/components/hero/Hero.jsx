@@ -22,18 +22,7 @@ const imagesSet = [
 ];
 
 export default function Hero() {
-  const [activeIndices, setActiveIndices] = useState([0, 0]); // Active image index for each box
-  const [isMobile, setIsMobile] = useState(false);
-
-  useEffect(() => {
-    // Check if mobile on mount and resize
-    const checkMobile = () => {
-      setIsMobile(window.innerWidth <= 768);
-    };
-    checkMobile();
-    window.addEventListener("resize", checkMobile);
-    return () => window.removeEventListener("resize", checkMobile);
-  }, []);
+  const [activeIndices, setActiveIndices] = useState([0, 0]);
 
   useEffect(() => {
     const intervals = imagesSet.map(
@@ -55,38 +44,7 @@ export default function Hero() {
       <div className={styles.page}>
         {/* Top Glass Div */}
         <div className={styles.glassTop} />
-        <div className={styles.videoContainer}>
-          {/* Primary video - loads on mobile, full preload on desktop */}
-          <video
-            src="/hero-vid-01.mp4"
-            autoPlay
-            muted
-            loop
-            playsInline
-            preload={isMobile ? "metadata" : "auto"}
-            className={styles.heroVideo}
-          />
-          {/* Secondary video - metadata only, hidden on mobile */}
-          <video
-            src="/hero-vid-02.mp4"
-            autoPlay
-            muted
-            loop
-            playsInline
-            preload="metadata"
-            className={styles.heroVideo}
-          />
-          {/* Tertiary video - lazy load, hidden on mobile and smaller tablets */}
-          <video
-            src="/hero-vid-03.mp4"
-            autoPlay
-            muted
-            loop
-            playsInline
-            preload="none"
-            className={styles.heroVideo}
-          />
-        </div>
+        <div className={styles.videoContainer} />
         <div className={styles.buttonContainer}>
           <a
             href="https://wa.me/971503043570?text=Hello%20KEN%20Beauty%20Center%2C%20I%20would%20like%20to%20know%20more%20about%20your%20services."

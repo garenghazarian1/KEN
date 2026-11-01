@@ -1,5 +1,6 @@
 "use client";
 import { motion } from "framer-motion";
+import LazyVideo from "@/components/portfolio/LazyVideo.modern";
 import styles from "./PageThree.modern.module.css";
 
 export default function PageThree() {
@@ -24,14 +25,10 @@ export default function PageThree() {
         </motion.p>
       </div>
       <div className={styles.videoPane}>
-        <video
-          src="/PortfolioVideo01.mp4"
-          autoPlay
-          muted
-          loop
-          playsInline
-          preload="auto"
+        <LazyVideo
+          name="portfolio-intro"
           className={styles.video}
+          wrapperClassName={styles.videoWrapperLazy}
         />
       </div>
     </section>

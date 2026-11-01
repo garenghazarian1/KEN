@@ -54,6 +54,7 @@
 .video {
   width: 280px;
   height: auto;
+  aspect-ratio: 9 / 16;
   border-radius: 12px;
   box-shadow: 0 25px 50px -12px var(--overlay-black-50);
 }

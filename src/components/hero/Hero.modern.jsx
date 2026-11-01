@@ -1,22 +1,29 @@
 "use client";
 
+import { useEffect, useRef, useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import { motion } from "framer-motion";
 import CampaignPoster from "@/components/campaign/CampaignPoster";
 import styles from "./Hero.modern.module.css";
 
-const HERO_VIDEO_SRC = "/hero-vid-01.mp4";
-const HERO_VIDEO_POSTER = "/hero-vid-01-poster.jpg";
-const HERO_VIDEO_PROPS = {
-  autoPlay: true,
-  muted: true,
-  loop: true,
-  playsInline: true,
-  preload: "auto",
-  poster: HERO_VIDEO_POSTER,
-  fetchPriority: "high",
+const HERO_CLIPS = {
+  desktop: {
+    av1: { src: "/videos/hero/hero-desktop-av1.mp4", codec: "av01.0.08M.08" },
+    h264: { src: "/videos/hero/hero-desktop-h264.mp4", codec: "avc1.640028" },
+  },
+  phone: {
+    av1: { src: "/videos/hero/hero-phone-av1.mp4", codec: "av01.0.05M.08" },
+    h264: { src: "/videos/hero/hero-phone-h264.mp4", codec: "avc1.64001F" },
+  },
 };
+
+function clipSrc(video) {
+  const desktop = window.matchMedia("(min-width: 900px)").matches;
+  const set = desktop ? HERO_CLIPS.desktop : HERO_CLIPS.phone;
+  const support = video.canPlayType(`video/mp4; codecs="${set.av1.codec}"`);
+  return support === "probably" || support === "maybe" ? set.av1.src : set.h264.src;
+}
 
 const slides = [
   {
@@ -98,16 +105,76 @@ function GalleryStack() {
 }
 
 export default function HeroModern({ campaign = null }) {
+  const videoRef = useRef(null);
+  const [visible, setVisible] = useState(false);
+
+  useEffect(() => {
+    const video = videoRef.current;
+    if (!video) return undefined;
+
+    if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
+      video.removeAttribute("data-hero-video");
+      return undefined;
+    }
+
+    let cancelled = false;
+    let failed = false;
+    let revealTimer = 0;
+
+    const reveal = () => {
+      if (!cancelled && !failed) setVisible(true);
+    };
+
+    const onError = () => {
+      failed = true;
+      window.clearTimeout(revealTimer);
+      if (!cancelled) setVisible(false);
+    };
+
+    const start = () => {
+      if (cancelled) return;
+      video.muted = true;
+      video.playsInline = true;
+      video.src = clipSrc(video);
+      video.load();
+      video.play().catch(() => {});
+      revealTimer = window.setTimeout(() => {
+        if (!cancelled && !failed && video.readyState >= 2) setVisible(true);
+      }, 4000);
+    };
+
+    video.addEventListener("playing", reveal);
+    video.addEventListener("loadeddata", reveal);
+    video.addEventListener("error", onError);
+    if (document.readyState === "complete") start();
+    else window.addEventListener("load", start, { once: true });
+
+    return () => {
+      cancelled = true;
+      window.clearTimeout(revealTimer);
+      video.removeEventListener("playing", reveal);
+      video.removeEventListener("loadeddata", reveal);
+      video.removeEventListener("error", onError);
+      window.removeEventListener("load", start);
+    };
+  }, []);
+
   return (
     <>
-      {/* Hero Section */}
       <section className={styles.heroSection}>
         <div className={styles.media}>
+          {visible ? null : <div className={styles.mediaSkeleton} aria-hidden="true" />}
           <video
-            src={HERO_VIDEO_SRC}
-            className={styles.heroVideo}
+            ref={videoRef}
+            className={
+              visible ? `${styles.heroVideo} ${styles.heroVideoVisible}` : styles.heroVideo
+            }
             data-hero-video=""
-            {...HERO_VIDEO_PROPS}
+            muted
+            playsInline
+            loop
+            preload="none"
+            aria-hidden="true"
           />
         </div>
 

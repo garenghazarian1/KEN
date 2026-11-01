@@ -2,7 +2,7 @@ import { lora, inter } from "@/app/ui/fonts";
 import "./globals.css";
 import { MobileNavTop, MobileNavBottom } from "@/components/mobileNav";
 import FooterModern from "@/components/footer/Footer.modern";
-import AppInstallBanner from "@/components/AppInstallBanner/AppInstallBanner";
+// import AppInstallBanner from "@/components/AppInstallBanner/AppInstallBanner";
 import AssistantWidget from "@/components/AssistantWidget/AssistantWidget";
 import BookingDock from "@/components/bookingDock/BookingDock";
 import ClientLayout from "@/components/ClientLayout";
@@ -81,7 +81,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
         </noscript>
         <ConsentAnalytics />
         {/* <InitialLoader /> */}
-        <AppInstallBanner />
+        {/* <AppInstallBanner /> */}
         <ClientLayout>
           <div className={styles.layoutContainer}>
             <div className={styles.mobileNavTopWrapper}>

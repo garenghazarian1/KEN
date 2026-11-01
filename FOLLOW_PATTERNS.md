@@ -1,6 +1,6 @@
-# Component Development Patterns Guide
+Last verified against code: 1 Nov 2026 (HEAD 8634780, working tree)
 
-Last updated: 29 September 2026
+# Component Development Patterns Guide
 
 This document outlines the patterns, libraries, and conventions used in the Ken Beauty Salon project. Follow these patterns when creating new components to ensure consistency, maintainability, and best practices.
 
@@ -25,9 +25,9 @@ This document outlines the patterns, libraries, and conventions used in the Ken 
 
 ### Core Framework
 
-- **Next.js 14.2.13** - React framework with App Router
+- **Next.js 14.2.35** - React framework with App Router (`eslint-config-next` is 14.2.13)
 - **React 18** - UI library
-- **TypeScript** - (Optional, but recommended for type safety)
+- **Plain JavaScript** - `jsconfig.json` maps `@/*` to `./src/*`
 
 ### Key Libraries
 
@@ -61,8 +61,10 @@ This document outlines the patterns, libraries, and conventions used in the Ken 
 
 ### Basic Component Template
 
+`"use client"` and `framer-motion` belong only in interactive or animated components. Production pages stay server components and export `metadata`. `src/app/(navPages)/services/page.jsx` is one of those server pages (`force-dynamic`, `getServiceCatalog("en")`). The only client `page.jsx` files are `src/app/test-loading/page.jsx` and `src/app/test-error/page.jsx`.
+
 ```jsx
-"use client"; // Required for client-side features (state, effects, animations)
+"use client"; // Interactive or animated components only. Pages stay server components.
 
 import { useState, useEffect } from "react";
 import Image from "next/image";
@@ -95,10 +97,11 @@ export default function ComponentName() {
 
 ### Component Structure Checklist
 
-- [ ] Use `"use client"` directive for client components
+- [ ] Add `"use client"` and framer-motion only in interactive or animated components
+- [ ] Keep production pages as server components that export `metadata`
 - [ ] Import React hooks at the top
 - [ ] Import Next.js components (Image, Link)
-- [ ] Import framer-motion for animations
+- [ ] Import framer-motion only when the component animates
 - [ ] Import icons from lucide-react
 - [ ] Import CSS module styles
 - [ ] Use default export for main component
@@ -336,34 +339,29 @@ var(--overlay-black-10)
 
 ### Responsive Design Pattern
 
+New CSS is mobile-first: base styles are the narrow layout, and larger layouts use `min-width`.
+
+Known deviation: on 1 Nov 2026, `src` CSS had 178 `@media (max-width` rules and 22 `@media (min-width` rules, so existing CSS is mostly desktop-first. Do not copy that. Write new rules with `min-width`.
+
 ```css
-/* Mobile First Approach */
+/* Mobile-first: base styles are the narrow layout */
 .component {
-  /* Base mobile styles */
-  padding: var(--spacing-4);
-  font-size: var(--font-size-base);
+  padding: var(--spacing-2);
+  font-size: var(--font-size-sm);
 }
 
-/* Tablet (768px and below) */
-@media (max-width: 768px) {
+/* Large phones and up */
+@media (min-width: 480px) {
   .component {
     padding: var(--spacing-3);
-    font-size: var(--font-size-sm);
   }
 }
 
-/* Large phones (480px and below) */
-@media (max-width: 480px) {
+/* Tablet and up */
+@media (min-width: 768px) {
   .component {
-    padding: var(--spacing-2);
-    font-size: var(--font-size-sm);
-  }
-}
-
-/* Small phones (360px and below) */
-@media (max-width: 360px) {
-  .component {
-    padding: var(--spacing-2);
+    padding: var(--spacing-4);
+    font-size: var(--font-size-base);
   }
 }
 ```
@@ -787,7 +785,7 @@ import styles from "./ComponentName.modern.module.css";
 ### Component Organization
 
 ```jsx
-"use client";
+"use client"; // Interactive or animated components only
 
 // 1. Imports
 import ...
@@ -853,11 +851,11 @@ export default function ComponentName() {
   ...;
 }
 
-/* 5. Responsive Styles */
-@media (max-width: 768px) {
+/* 5. Responsive Styles (min-width, mobile-first) */
+@media (min-width: 480px) {
   ...;
 }
-@media (max-width: 480px) {
+@media (min-width: 768px) {
   ...;
 }
 ```
@@ -1036,8 +1034,9 @@ const handleSubmit = (e) => {
 
 When creating a new component:
 
-- [ ] Use `"use client"` directive
-- [ ] Import required libraries (framer-motion, lucide-react, Next.js)
+- [ ] Add `"use client"` and framer-motion only in interactive or animated components
+- [ ] Keep production pages as server components that export `metadata`
+- [ ] Import required libraries (lucide-react, Next.js; framer-motion only when animating)
 - [ ] Use CSS modules for styling
 - [ ] Use CSS variables from globals.css (no hardcoded values)
 - [ ] Add framer-motion animations
@@ -1063,5 +1062,4 @@ When creating a new component:
 
 ---
 
-**Last Updated**: 2025-01-27
 **Maintained By**: Development Team

@@ -6,13 +6,13 @@
   left: 0;
   right: 0;
   width: 100%;
-  min-height: 3.5rem;
-  padding-top: calc(env(safe-area-inset-top, 0px) + var(--spacing-2));
+  min-height: calc(3.5rem + env(safe-area-inset-top, 0px));
+  padding-top: 0;
   padding-left: max(var(--spacing-2), env(safe-area-inset-left, 0));
   padding-right: max(var(--spacing-2), env(safe-area-inset-right, 0));
-  padding-bottom: var(--spacing-2);
+  padding-bottom: 0;
   display: flex;
-  align-items: center;
+  align-items: stretch;
   justify-content: space-around;
   z-index: var(--z-fixed);
   background-color: var(--glass-white-strong);
@@ -34,9 +34,11 @@
   margin: 0;
   padding: 0;
   display: flex;
-  align-items: center;
+  align-items: stretch;
+  align-self: stretch;
   justify-content: space-around;
   width: 100%;
+  min-height: calc(3.5rem + env(safe-area-inset-top, 0px));
   gap: var(--spacing-1);
 }
 
@@ -44,7 +46,7 @@
   flex: 1;
   min-width: 0;
   display: flex;
-  align-items: center;
+  align-items: stretch;
   justify-content: center;
 }
 
@@ -53,17 +55,20 @@
   flex-direction: column;
   align-items: center;
   justify-content: center;
+  flex: 1;
   width: 100%;
   min-width: 44px;
-  min-height: 44px;
+  min-height: 0;
   height: 100%;
-  padding: 0 var(--spacing-2);
-  border-radius: var(--radius-md);
-  transition: transform var(--transition-base) var(--ease-in-out);
+  padding: calc(env(safe-area-inset-top, 0px) + var(--spacing-2)) var(--spacing-2)
+    var(--spacing-2);
+  border-radius: 0;
+  box-sizing: border-box;
+  transition: background-color var(--transition-base) var(--ease-in-out);
 }
 
 .logoLink:hover {
-  transform: scale(1.05);
+  background-color: var(--overlay-black-12);
 }
 
 .logo {
@@ -128,17 +133,20 @@
   align-items: center;
   justify-content: center;
   gap: var(--spacing-1);
+  flex: 1;
   width: 100%;
-  min-height: 44px;
+  min-height: 0;
   min-width: 44px;
   height: 100%;
-  padding: 0 var(--spacing-2);
+  padding: calc(env(safe-area-inset-top, 0px) + var(--spacing-2)) var(--spacing-2)
+    var(--spacing-2);
   font-size: var(--font-size-xs);
   font-weight: var(--font-weight-medium);
   line-height: 1;
   color: var(--color-text-secondary);
   text-decoration: none;
-  border-radius: var(--radius-md);
+  border-radius: 0;
+  box-sizing: border-box;
   transition:
     color var(--transition-base) var(--ease-in-out),
     background-color var(--transition-base) var(--ease-in-out);
@@ -146,12 +154,12 @@
 
 .actionLink:hover {
   color: var(--color-text-primary);
-  background-color: var(--overlay-black-04);
+  background-color: var(--overlay-black-12);
 }
 
 .actionLink:focus-visible {
   outline: 2px solid var(--color-accent-3);
-  outline-offset: 2px;
+  outline-offset: -2px;
 }
 
 .actionLink[aria-current="page"] {

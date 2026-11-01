@@ -61,11 +61,13 @@
   align-items: center;
   justify-content: center;
   gap: var(--spacing-1);
+  flex: 1;
   width: 100%;
-  min-height: 44px;
+  min-height: 0;
   min-width: 44px;
   height: 100%;
-  padding: 0 var(--spacing-2);
+  padding: calc(env(safe-area-inset-top, 0px) + var(--spacing-2)) var(--spacing-2)
+    var(--spacing-2);
   font-size: var(--font-size-xs);
   font-weight: var(--font-weight-medium);
   line-height: 1;
@@ -73,7 +75,8 @@
   color: var(--color-text-secondary);
   background: transparent;
   border: none;
-  border-radius: var(--radius-md);
+  border-radius: 0;
+  box-sizing: border-box;
   cursor: pointer;
   transition:
     color var(--transition-base) var(--ease-in-out),
@@ -83,10 +86,14 @@
 .topbarTrigger:hover,
 .topbarTriggerOpen {
   color: var(--color-text-primary);
-  background-color: var(--overlay-black-04);
+  background-color: var(--overlay-black-12);
 }
 
-.topbarTrigger:focus-visible,
+.topbarTrigger:focus-visible {
+  outline: 2px solid var(--color-accent-3);
+  outline-offset: -2px;
+}
+
 .trigger:focus-visible,
 .mobileTrigger:focus-visible {
   outline: 2px solid var(--color-accent-3);

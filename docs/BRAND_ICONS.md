@@ -1,6 +1,6 @@
-# Brand logo & favicon maintenance
+Last verified against code: 1 Nov 2026 (HEAD 8634780, working tree)
 
-Last updated: 19 July 2026
+# Brand logo & favicon maintenance
 
 How to replace the Ken Salon logo and propagate it to favicons, PWA launchers,
 navbar, and metadata.

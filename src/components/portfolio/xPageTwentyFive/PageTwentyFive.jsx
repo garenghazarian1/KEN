@@ -1,5 +1,6 @@
 "use client";
 import { motion } from "framer-motion";
+import LazyVideo from "@/components/portfolio/LazyVideo.modern";
 import styles from "./PageTwentyFive.modern.module.css";
 
 const engagementContent = [
@@ -44,15 +45,7 @@ export default function PageTwentyFive() {
         transition={{ duration: 0.5 }}
       >
         <div className={styles.videoWrapper}>
-          <video
-            src="/portfolio/CommunityEngagement.mp4"
-            autoPlay
-            muted
-            loop
-            playsInline
-            preload="auto"
-            className={styles.video}
-          />
+          <LazyVideo name="community-engagement" className={styles.video} />
         </div>
       </motion.div>
     </section>

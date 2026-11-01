@@ -14,7 +14,7 @@ import Image from "next/image";
 import { X } from "lucide-react";
 import { ASSISTANT_AVATAR_SRC } from "@/config/constants";
 import {
-  ASSISTANT_LAUNCHER_TIP_MS,
+  // ASSISTANT_LAUNCHER_TIP_MS, // restore with the launcher-tip rotation below
   getAssistantLauncherTips,
 } from "@/data/assistantUi";
 import styles from "./AssistantWidget.module.css";
@@ -53,6 +53,9 @@ export function AssistantProvider({ children }) {
   const launcherTips = tipsRef.current;
 
   useEffect(() => {
+    // Launcher tip bubble is commented out in AssistantNavButton.
+    // Restore the rotation below with that block.
+    /*
     if (!videoFirst) return undefined;
     let step = 0;
     let exitTimer = 0;
@@ -81,6 +84,8 @@ export function AssistantProvider({ children }) {
       window.clearInterval(id);
       window.clearTimeout(exitTimer);
     };
+    */
+    return undefined;
   }, [launcherTips.length, videoFirst]);
 
   useEffect(() => {
@@ -170,10 +175,11 @@ export function AssistantNavButton({ onActivate }) {
     open,
     toggle,
     launcherRef,
-    showTip,
-    tipFull,
-    typedTip,
-    tipPhase,
+    // Tip bubble is commented out below. Restore these with that block.
+    // showTip,
+    // tipFull,
+    // typedTip,
+    // tipPhase,
   } = useAssistant();
 
   const activate = () => {
@@ -183,6 +189,7 @@ export function AssistantNavButton({ onActivate }) {
 
   return (
     <div className={styles.navSlot}>
+      {/* Launcher tip copy — hidden; Ani icon only.
       {showTip && (
         <div className={styles.navTipAnchor}>
           <button
@@ -206,6 +213,7 @@ export function AssistantNavButton({ onActivate }) {
           </button>
         </div>
       )}
+      */}
       <button
         type="button"
         ref={launcherRef}

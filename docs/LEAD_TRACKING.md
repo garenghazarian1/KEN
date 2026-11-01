@@ -1,6 +1,6 @@
-# Outbound contact-click tracking
+Last verified against code: 1 Nov 2026 (HEAD 8634780, working tree)
 
-Last updated: 20 October 2026
+# Outbound contact-click tracking
 
 ## Scope
 

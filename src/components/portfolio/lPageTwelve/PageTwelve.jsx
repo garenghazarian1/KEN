@@ -1,5 +1,6 @@
 "use client";
 import { motion } from "framer-motion";
+import LazyVideo from "@/components/portfolio/LazyVideo.modern";
 import styles from "./PageTwelve.modern.module.css";
 
 const paragraphs = [
@@ -32,15 +33,7 @@ export default function PageTwelve() {
           viewport={{ once: true }}
           transition={{ duration: 0.6 }}
         >
-          <video
-            src="/portfolio/description01.mp4"
-            autoPlay
-            muted
-            loop
-            playsInline
-            preload="auto"
-            className={styles.video}
-          />
+          <LazyVideo name="description-01" className={styles.video} />
         </motion.div>
 
         <motion.div

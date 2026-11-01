@@ -1,6 +1,6 @@
-# Campaigns (promotional packages)
+Last verified against code: 1 Nov 2026 (HEAD 8634780, working tree)
 
-Last updated: 12 October 2026
+# Campaigns (promotional packages)
 
 Single source of truth for limited-time offers: [`src/data/campaigns.js`](../src/data/campaigns.js).
 

@@ -1,10 +1,12 @@
+Last verified against code: 1 Nov 2026 (HEAD 8634780, working tree)
+
 # Public API Integration (Admin System)
 
-Last updated: 29 September 2026
+The service catalog is read from the Garen admin system over its read-only public HTTP API (`getServiceCatalog`). That catalog path does not use Mongoose.
 
-This consumer app (kenbeautysalon.com) reads business data from the **Garen admin
-system** over its **read-only public HTTP API**. We do **not** connect to the admin
-MongoDB directly.
+`connectServicesDB` in `src/lib/db/mongoose.js` (line 48) is used by assistant models (`src/lib/assistant/models.js` lines 14 and 92) and lead events (`src/lib/leads/leadEvent.js` lines 2 and 91). It uses `MONGODB_URI` and `SERVICES_MONGODB_DB_NAME` (default `beauty-admin`).
+
+`connectDB` (`src/lib/db/mongoose.js` lines 43–45, default database `ken-loyalty`) also reads `MONGODB_URI` and currently has no caller.
 
 ## Configuration
 
@@ -17,7 +19,8 @@ All in `src/config/constants.js`:
 | `BUSINESS_CURRENCY`     | `AED`                                   | Fallback currency label only   |
 
 - No auth, cookies, or API key. CORS is `Access-Control-Allow-Origin: *`.
-- Locales: `en`, `ar`. Pass `locale`; for `ar` render `dir="rtl"`, `lang="ar"`.
+- Admin API locales: `en`, `ar`. Pass `locale`; for `ar` the API contract says render `dir="rtl"`, `lang="ar"`.
+- This site calls `getServiceCatalog("en")` from `src/app/(navPages)/services/page.jsx` and `src/app/api/services/catalog/route.js`. `src/app/layout.jsx` sets `lang="en"`. This site does not ship an Arabic UI.
 - Errors: `{ code, message, details?: { fieldErrors? } }`. Treat 404 `BUSINESS_NOT_FOUND` as "no catalog".
 
 ## Endpoints
@@ -25,7 +28,7 @@ All in `src/config/constants.js`:
 | Method | Path                                            | Purpose                        | Used by               |
 | ------ | ----------------------------------------------- | ------------------------------ | --------------------- |
 | GET    | `/api/public/businesses/{slug}/service-catalog` | Catalog + pricing + media      | `getServiceCatalog()` |
-| GET    | `/api/public/careers/company/{businessSlug}`    | Careers board (published jobs) | (planned in app)      |
+| GET    | `/api/public/careers/company/{businessSlug}`    | Careers board (published jobs) | Not called. Careers is the external `CAREERS_URL` link (`src/config/constants.js` lines 28–29), used by `ContactContent.jsx` and `MobileNavTop.jsx`. No `src/app` careers route. |
 | GET    | `/api/public/jobs/{slug}`                       | Job detail + apply form config | (planned in app)      |
 | POST   | `/api/public/jobs/{slug}/apply`                 | Submit application (multipart) | (planned in app)      |
 
@@ -132,6 +135,7 @@ Every node (`category` / `subcategory` / `item`) can carry:
 
 ## History
 
+- **1 November 2026** — `connectServicesDB` is used for assistant models and lead events. `connectDB` has no caller. Careers on this site is the external `CAREERS_URL` link, not `GET /api/public/careers/...`. Job detail and apply are still not called.
 - **8 September 2026** — Navbar Services menu is a nested accordion (expand in
   place) on the top-bar drawer; desktop uses a category-rail mega panel. No
   drill-down Back. Thumbnails use `c_fit`.

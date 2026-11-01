@@ -64,12 +64,6 @@ export default function Home() {
 
   return (
     <main className={styles.main}>
-      <link
-        rel="preload"
-        href="/hero-vid-01.mp4"
-        as="video"
-        fetchPriority="high"
-      />
       <Script
         id="ld-local-business"
         type="application/ld+json"

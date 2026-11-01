@@ -18,6 +18,12 @@
   object-fit: cover;
 }
 
+.videoFill {
+  position: absolute;
+  inset: 0;
+  isolation: isolate;
+}
+
 /* Cycling Ad Card */
 .adContainer {
   position: absolute;

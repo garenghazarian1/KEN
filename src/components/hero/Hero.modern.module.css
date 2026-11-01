@@ -27,12 +27,45 @@
   background: var(--color-bg-dark);
 }
 
+.mediaSkeleton {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  background: color-mix(in srgb, var(--color-bg-primary) 18%, var(--color-bg-dark));
+  animation: mediaSkeleton 1.2s var(--ease-in-out) infinite;
+}
+
+@keyframes mediaSkeleton {
+  50% {
+    opacity: 0.55;
+  }
+}
+
 .heroVideo {
-  display: block;
+  position: absolute;
+  inset: 0;
   width: 100%;
   height: 100%;
   object-fit: cover;
   object-position: center 18%;
+  z-index: 1;
+  opacity: 0;
+  transition: opacity 500ms var(--ease-out);
+}
+
+.heroVideoVisible {
+  opacity: 1;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .mediaSkeleton {
+    display: none;
+  }
+
+  .heroVideo {
+    display: none;
+    transition: none;
+  }
 }
 
 .copy {

@@ -1,3 +1,7 @@
+Last verified against code: 1 Nov 2026 (HEAD 8634780, working tree)
+
+ARCHIVED – historical, not maintained; see IMPROVEMENTS_NEEDED.md
+
 # Ken Beauty Salon - Comprehensive Improvement Plan
 
 ## Executive Summary
