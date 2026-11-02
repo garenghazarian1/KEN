@@ -10,8 +10,8 @@
     "semantic_hash": ""
   },
   "C:\\Users\\garen\\Desktop\\01-WEB-DEV\\KenLight02\\ken\\next.config.mjs": {
-    "mtime": 1793565843.0530446,
-    "ast_hash": "4daa214238dfc0992902941cf3a07767",
+    "mtime": 1793577919.607021,
+    "ast_hash": "259fe328a8604a9ca18ecbeea358c696",
     "semantic_hash": ""
   },
   "C:\\Users\\garen\\Desktop\\01-WEB-DEV\\KenLight02\\ken\\package.json": {
@@ -60,7 +60,7 @@
     "semantic_hash": ""
   },
   "C:\\Users\\garen\\Desktop\\01-WEB-DEV\\KenLight02\\ken\\src\\app\\layout.jsx": {
-    "mtime": 1793563185.6587844,
+    "mtime": 1793573117.7341378,
     "ast_hash": "5b81d91404d889b9d2486a0ab79c3f8c",
     "semantic_hash": ""
   },
@@ -260,12 +260,12 @@
     "semantic_hash": ""
   },
   "C:\\Users\\garen\\Desktop\\01-WEB-DEV\\KenLight02\\ken\\src\\components\\mobileNav\\MobileNavBottom.jsx": {
-    "mtime": 1792475673.878338,
-    "ast_hash": "4e514618b5b8ef6c7b00324910fa6ee8",
+    "mtime": 1793573123.2566986,
+    "ast_hash": "29229a7aa41d001b6c3adb76a67f7340",
     "semantic_hash": ""
   },
   "C:\\Users\\garen\\Desktop\\01-WEB-DEV\\KenLight02\\ken\\src\\components\\mobileNav\\MobileNavTop.jsx": {
-    "mtime": 1790662791.819618,
+    "mtime": 1793573121.3917847,
     "ast_hash": "e4004527b8edc3f610d53be4572f395b",
     "semantic_hash": ""
   },
@@ -1155,7 +1155,7 @@
     "semantic_hash": ""
   },
   "C:\\Users\\garen\\Desktop\\01-WEB-DEV\\KenLight02\\ken\\docs\\PUBLIC_API_INTEGRATION.md": {
-    "mtime": 1793565813.565394,
+    "mtime": 1793573134.5692277,
     "ast_hash": "9c3965e96103b8f8377ff186125f02ad",
     "semantic_hash": ""
   },
@@ -1385,7 +1385,7 @@
     "semantic_hash": ""
   },
   "C:\\Users\\garen\\Desktop\\01-WEB-DEV\\KenLight02\\ken\\src\\components\\loading\\navbar\\ServicesMegaMenu\\ServicesMegaMenu.jsx": {
-    "mtime": 1793547343.5275388,
+    "mtime": 1793573156.363305,
     "ast_hash": "f34660331b3d5e5e4f41a1c099275f38",
     "semantic_hash": ""
   },
@@ -1752,6 +1752,11 @@
   "C:\\Users\\garen\\Desktop\\01-WEB-DEV\\KenLight02\\ken\\public\\videos\\about\\portfolio-intro-h264.mp4": {
     "mtime": 1793568282.0,
     "ast_hash": "a6a607b979c0fd78a0b4e2203bc03f34",
+    "semantic_hash": ""
+  },
+  "C:\\Users\\garen\\Desktop\\01-WEB-DEV\\KenLight02\\ken\\next.config.test.js": {
+    "mtime": 1793577919.7487452,
+    "ast_hash": "6e629f6f5f470794c763938eccf866e9",
     "semantic_hash": ""
   }
 }
