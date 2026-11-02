@@ -44,6 +44,11 @@ const nextConfig = {
           { key: "Content-Security-Policy-Report-Only", value: contentSecurityPolicy },
         ],
       },
+      {
+        source: "/:path*",
+        has: [{ type: "host", value: "(?<sub>.*)\\.vercel\\.app" }],
+        headers: [{ key: "X-Robots-Tag", value: "noindex" }],
+      },
     ];
   },
 };

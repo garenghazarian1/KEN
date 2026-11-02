@@ -14,8 +14,14 @@ describe("next.config security headers", () => {
     expect(nextConfig.poweredByHeader).toBe(false);
 
     const rules = await nextConfig.headers();
-    expect(rules).toHaveLength(1);
+    expect(rules).toHaveLength(2);
     expect(rules[0].source).toBe("/:path*");
+    expect(rules[0].has).toBeUndefined();
+    expect(rules[1]).toEqual({
+      source: "/:path*",
+      has: [{ type: "host", value: "(?<sub>.*)\\.vercel\\.app" }],
+      headers: [{ key: "X-Robots-Tag", value: "noindex" }],
+    });
 
     const headers = Object.fromEntries(rules[0].headers.map((header) => [header.key, header.value]));
 

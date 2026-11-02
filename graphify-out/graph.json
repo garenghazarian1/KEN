@@ -151,7 +151,7 @@
       "label": "headers",
       "file_type": "code",
       "source_file": "next.config.test.js",
-      "source_location": "L20",
+      "source_location": "L26",
       "id": "ken_next_config_test_headers",
       "community": 63,
       "norm_label": "headers"
@@ -1746,7 +1746,7 @@
       "source_file": "src/app/page.jsx",
       "source_location": "L1",
       "id": "src_app_page_jsx",
-      "community": 143,
+      "community": 94,
       "norm_label": "page.jsx"
     },
     {
@@ -1755,7 +1755,7 @@
       "source_file": "src/app/page.jsx",
       "source_location": "L16",
       "id": "app_page_metadata",
-      "community": 143,
+      "community": 94,
       "norm_label": "metadata"
     },
     {
@@ -1764,7 +1764,7 @@
       "source_file": "src/app/page.jsx",
       "source_location": "L45",
       "id": "app_page_localbusinessjsonld",
-      "community": 143,
+      "community": 94,
       "norm_label": "localbusinessjsonld"
     },
     {
@@ -1773,7 +1773,7 @@
       "source_file": "src/app/page.jsx",
       "source_location": "L62",
       "id": "app_page_home",
-      "community": 143,
+      "community": 94,
       "norm_label": "home()"
     },
     {
@@ -2005,7 +2005,7 @@
       "label": "generateMetadata()",
       "file_type": "code",
       "source_file": "src/app/(navPages)/offers/page.jsx",
-      "source_location": "L17",
+      "source_location": "L18",
       "id": "offers_page_generatemetadata",
       "community": 94,
       "norm_label": "generatemetadata()"
@@ -2014,7 +2014,7 @@
       "label": "offerItems()",
       "file_type": "code",
       "source_file": "src/app/(navPages)/offers/page.jsx",
-      "source_location": "L46",
+      "source_location": "L50",
       "id": "offers_page_offeritems",
       "community": 94,
       "norm_label": "offeritems()"
@@ -2023,7 +2023,7 @@
       "label": "OffersPage()",
       "file_type": "code",
       "source_file": "src/app/(navPages)/offers/page.jsx",
-      "source_location": "L73",
+      "source_location": "L77",
       "id": "offers_page_offerspage",
       "community": 94,
       "norm_label": "offerspage()"
@@ -2952,7 +2952,7 @@
       "source_file": "src/components/AssistantWidget/AssistantPanel.jsx",
       "source_location": "L132",
       "id": "assistantwidget_assistantpanel_assistantpanel",
-      "community": 31,
+      "community": 137,
       "norm_label": "assistantpanel()"
     },
     {
@@ -3024,7 +3024,7 @@
       "source_file": "src/components/bookingDock/BookingDock.jsx",
       "source_location": "L1",
       "id": "src_components_bookingdock_bookingdock_jsx",
-      "community": 88,
+      "community": 130,
       "norm_label": "bookingdock.jsx"
     },
     {
@@ -3033,7 +3033,7 @@
       "source_file": "src/components/bookingDock/BookingDock.jsx",
       "source_location": "L19",
       "id": "bookingdock_bookingdock_focusable_selector",
-      "community": 88,
+      "community": 130,
       "norm_label": "focusable_selector"
     },
     {
@@ -3042,7 +3042,7 @@
       "source_file": "src/components/bookingDock/BookingDock.jsx",
       "source_location": "L28",
       "id": "bookingdock_bookingdock_bookingdock",
-      "community": 88,
+      "community": 130,
       "norm_label": "bookingdock()"
     },
     {
@@ -3051,7 +3051,7 @@
       "source_file": "src/components/bookingDock/bookingList.js",
       "source_location": "L1",
       "id": "src_components_bookingdock_bookinglist_js",
-      "community": 88,
+      "community": 130,
       "norm_label": "bookinglist.js"
     },
     {
@@ -3060,7 +3060,7 @@
       "source_file": "src/components/bookingDock/bookingList.js",
       "source_location": "L12",
       "id": "bookingdock_bookinglist_normalizedservice",
-      "community": 88,
+      "community": 130,
       "norm_label": "normalizedservice()"
     },
     {
@@ -3069,7 +3069,7 @@
       "source_file": "src/components/bookingDock/bookingList.js",
       "source_location": "L21",
       "id": "bookingdock_bookinglist_normalizeservices",
-      "community": 88,
+      "community": 130,
       "norm_label": "normalizeservices()"
     },
     {
@@ -3078,7 +3078,7 @@
       "source_file": "src/components/bookingDock/bookingList.js",
       "source_location": "L33",
       "id": "bookingdock_bookinglist_readbookingservices",
-      "community": 88,
+      "community": 130,
       "norm_label": "readbookingservices()"
     },
     {
@@ -3087,7 +3087,7 @@
       "source_file": "src/components/bookingDock/bookingList.js",
       "source_location": "L45",
       "id": "bookingdock_bookinglist_writebookingservices",
-      "community": 88,
+      "community": 130,
       "norm_label": "writebookingservices()"
     },
     {
@@ -3096,7 +3096,7 @@
       "source_file": "src/components/bookingDock/bookingList.js",
       "source_location": "L53",
       "id": "bookingdock_bookinglist_togglebookingservice",
-      "community": 88,
+      "community": 130,
       "norm_label": "togglebookingservice()"
     },
     {
@@ -3105,7 +3105,7 @@
       "source_file": "src/components/bookingDock/bookingList.js",
       "source_location": "L68",
       "id": "bookingdock_bookinglist_usebookingservices",
-      "community": 88,
+      "community": 130,
       "norm_label": "usebookingservices()"
     },
     {
@@ -3145,6 +3145,42 @@
       "norm_label": "stored"
     },
     {
+      "label": "CampaignFilm.jsx",
+      "file_type": "code",
+      "source_file": "src/components/campaign/CampaignFilm.jsx",
+      "source_location": "L1",
+      "id": "src_components_campaign_campaignfilm_jsx",
+      "community": 146,
+      "norm_label": "campaignfilm.jsx"
+    },
+    {
+      "label": "clipSrc()",
+      "file_type": "code",
+      "source_file": "src/components/campaign/CampaignFilm.jsx",
+      "source_location": "L13",
+      "id": "campaign_campaignfilm_clipsrc",
+      "community": 146,
+      "norm_label": "clipsrc()"
+    },
+    {
+      "label": "muteOthers()",
+      "file_type": "code",
+      "source_file": "src/components/campaign/CampaignFilm.jsx",
+      "source_location": "L18",
+      "id": "campaign_campaignfilm_muteothers",
+      "community": 146,
+      "norm_label": "muteothers()"
+    },
+    {
+      "label": "CampaignFilm()",
+      "file_type": "code",
+      "source_file": "src/components/campaign/CampaignFilm.jsx",
+      "source_location": "L30",
+      "id": "campaign_campaignfilm_campaignfilm",
+      "community": 146,
+      "norm_label": "campaignfilm()"
+    },
+    {
       "label": "CampaignPoster.jsx",
       "file_type": "code",
       "source_file": "src/components/campaign/CampaignPoster.jsx",
@@ -3177,7 +3213,7 @@
       "source_file": "src/components/campaign/OffersContent.jsx",
       "source_location": "L1",
       "id": "src_components_campaign_offerscontent_jsx",
-      "community": 94,
+      "community": 146,
       "norm_label": "offerscontent.jsx"
     },
     {
@@ -3186,7 +3222,7 @@
       "source_file": "src/components/campaign/OffersContent.jsx",
       "source_location": "L9",
       "id": "campaign_offerscontent_offerscontent",
-      "community": 94,
+      "community": 146,
       "norm_label": "offerscontent()"
     },
     {
@@ -3427,7 +3463,7 @@
       "label": "FooterModern()",
       "file_type": "code",
       "source_file": "src/components/footer/Footer.modern.jsx",
-      "source_location": "L38",
+      "source_location": "L39",
       "id": "footer_footer_modern_footermodern",
       "community": 42,
       "norm_label": "footermodern()"
@@ -3490,7 +3526,7 @@
       "label": "HERO_CLIPS",
       "file_type": "code",
       "source_file": "src/components/hero/Hero.modern.jsx",
-      "source_location": "L10",
+      "source_location": "L11",
       "id": "hero_hero_modern_hero_clips",
       "community": 33,
       "norm_label": "hero_clips"
@@ -3499,7 +3535,7 @@
       "label": "clipSrc()",
       "file_type": "code",
       "source_file": "src/components/hero/Hero.modern.jsx",
-      "source_location": "L21",
+      "source_location": "L22",
       "id": "hero_hero_modern_clipsrc",
       "community": 33,
       "norm_label": "clipsrc()"
@@ -3508,7 +3544,7 @@
       "label": "slides",
       "file_type": "code",
       "source_file": "src/components/hero/Hero.modern.jsx",
-      "source_location": "L28",
+      "source_location": "L29",
       "id": "hero_hero_modern_slides",
       "community": 33,
       "norm_label": "slides"
@@ -3517,7 +3553,7 @@
       "label": "rise",
       "file_type": "code",
       "source_file": "src/components/hero/Hero.modern.jsx",
-      "source_location": "L66",
+      "source_location": "L67",
       "id": "hero_hero_modern_rise",
       "community": 33,
       "norm_label": "rise"
@@ -3526,7 +3562,7 @@
       "label": "GalleryStack()",
       "file_type": "code",
       "source_file": "src/components/hero/Hero.modern.jsx",
-      "source_location": "L75",
+      "source_location": "L76",
       "id": "hero_hero_modern_gallerystack",
       "community": 33,
       "norm_label": "gallerystack()"
@@ -3535,7 +3571,7 @@
       "label": "HeroModern()",
       "file_type": "code",
       "source_file": "src/components/hero/Hero.modern.jsx",
-      "source_location": "L107",
+      "source_location": "L108",
       "id": "hero_hero_modern_heromodern",
       "community": 33,
       "norm_label": "heromodern()"
@@ -4176,7 +4212,7 @@
       "source_file": "src/components/portfolio/dPageFour/PageFour.jsx",
       "source_location": "L1",
       "id": "src_components_portfolio_dpagefour_pagefour_jsx",
-      "community": 150,
+      "community": 20,
       "norm_label": "pagefour.jsx"
     },
     {
@@ -4185,7 +4221,7 @@
       "source_file": "src/components/portfolio/dPageFour/PageFour.jsx",
       "source_location": "L6",
       "id": "dpagefour_pagefour_pagefour",
-      "community": 150,
+      "community": 20,
       "norm_label": "pagefour()"
     },
     {
@@ -4221,7 +4257,7 @@
       "source_file": "src/components/portfolio/fPageSix/PageSix.jsx",
       "source_location": "L1",
       "id": "src_components_portfolio_fpagesix_pagesix_jsx",
-      "community": 20,
+      "community": 141,
       "norm_label": "pagesix.jsx"
     },
     {
@@ -4230,7 +4266,7 @@
       "source_file": "src/components/portfolio/fPageSix/PageSix.jsx",
       "source_location": "L6",
       "id": "fpagesix_pagesix_sections",
-      "community": 20,
+      "community": 141,
       "norm_label": "sections"
     },
     {
@@ -4239,7 +4275,7 @@
       "source_file": "src/components/portfolio/fPageSix/PageSix.jsx",
       "source_location": "L17",
       "id": "fpagesix_pagesix_pagesix",
-      "community": 20,
+      "community": 141,
       "norm_label": "pagesix()"
     },
     {
@@ -4248,7 +4284,7 @@
       "source_file": "src/components/portfolio/gPageSeven/PageSeven.jsx",
       "source_location": "L1",
       "id": "src_components_portfolio_gpageseven_pageseven_jsx",
-      "community": 20,
+      "community": 42,
       "norm_label": "pageseven.jsx"
     },
     {
@@ -4257,7 +4293,7 @@
       "source_file": "src/components/portfolio/gPageSeven/PageSeven.jsx",
       "source_location": "L6",
       "id": "gpageseven_pageseven_pageseven",
-      "community": 20,
+      "community": 42,
       "norm_label": "pageseven()"
     },
     {
@@ -4329,7 +4365,7 @@
       "source_file": "src/components/portfolio/kPageEleven/PageEleven.jsx",
       "source_location": "L1",
       "id": "src_components_portfolio_kpageeleven_pageeleven_jsx",
-      "community": 42,
+      "community": 145,
       "norm_label": "pageeleven.jsx"
     },
     {
@@ -4338,7 +4374,7 @@
       "source_file": "src/components/portfolio/kPageEleven/PageEleven.jsx",
       "source_location": "L6",
       "id": "kpageeleven_pageeleven_pageeleven",
-      "community": 42,
+      "community": 145,
       "norm_label": "pageeleven()"
     },
     {
@@ -4347,7 +4383,7 @@
       "source_file": "src/components/portfolio/lPageTwelve/PageTwelve.jsx",
       "source_location": "L1",
       "id": "src_components_portfolio_lpagetwelve_pagetwelve_jsx",
-      "community": 148,
+      "community": 20,
       "norm_label": "pagetwelve.jsx"
     },
     {
@@ -4356,7 +4392,7 @@
       "source_file": "src/components/portfolio/lPageTwelve/PageTwelve.jsx",
       "source_location": "L6",
       "id": "lpagetwelve_pagetwelve_paragraphs",
-      "community": 148,
+      "community": 20,
       "norm_label": "paragraphs"
     },
     {
@@ -4365,7 +4401,7 @@
       "source_file": "src/components/portfolio/lPageTwelve/PageTwelve.jsx",
       "source_location": "L13",
       "id": "lpagetwelve_pagetwelve_pagetwelve",
-      "community": 148,
+      "community": 20,
       "norm_label": "pagetwelve()"
     },
     {
@@ -4374,7 +4410,7 @@
       "source_file": "src/components/portfolio/mPageThirteen/PageThirteen.jsx",
       "source_location": "L1",
       "id": "src_components_portfolio_mpagethirteen_pagethirteen_jsx",
-      "community": 20,
+      "community": 42,
       "norm_label": "pagethirteen.jsx"
     },
     {
@@ -4383,7 +4419,7 @@
       "source_file": "src/components/portfolio/mPageThirteen/PageThirteen.jsx",
       "source_location": "L6",
       "id": "mpagethirteen_pagethirteen_pagethirteen",
-      "community": 20,
+      "community": 42,
       "norm_label": "pagethirteen()"
     },
     {
@@ -4392,7 +4428,7 @@
       "source_file": "src/components/portfolio/nPageFourteen/PageFourteen.jsx",
       "source_location": "L1",
       "id": "src_components_portfolio_npagefourteen_pagefourteen_jsx",
-      "community": 20,
+      "community": 42,
       "norm_label": "pagefourteen.jsx"
     },
     {
@@ -4401,7 +4437,7 @@
       "source_file": "src/components/portfolio/nPageFourteen/PageFourteen.jsx",
       "source_location": "L6",
       "id": "npagefourteen_pagefourteen_pagefourteen",
-      "community": 20,
+      "community": 42,
       "norm_label": "pagefourteen()"
     },
     {
@@ -4410,7 +4446,7 @@
       "source_file": "src/components/portfolio/oPageFifteen/PageFifteen.jsx",
       "source_location": "L1",
       "id": "src_components_portfolio_opagefifteen_pagefifteen_jsx",
-      "community": 145,
+      "community": 20,
       "norm_label": "pagefifteen.jsx"
     },
     {
@@ -4419,7 +4455,7 @@
       "source_file": "src/components/portfolio/oPageFifteen/PageFifteen.jsx",
       "source_location": "L6",
       "id": "opagefifteen_pagefifteen_pagefifteen",
-      "community": 145,
+      "community": 20,
       "norm_label": "pagefifteen()"
     },
     {
@@ -4428,7 +4464,7 @@
       "source_file": "src/components/portfolio/pPageSixteen/PageSixteen.jsx",
       "source_location": "L1",
       "id": "src_components_portfolio_ppagesixteen_pagesixteen_jsx",
-      "community": 151,
+      "community": 20,
       "norm_label": "pagesixteen.jsx"
     },
     {
@@ -4437,7 +4473,7 @@
       "source_file": "src/components/portfolio/pPageSixteen/PageSixteen.jsx",
       "source_location": "L6",
       "id": "ppagesixteen_pagesixteen_pagesixteen",
-      "community": 151,
+      "community": 20,
       "norm_label": "pagesixteen()"
     },
     {
@@ -4473,7 +4509,7 @@
       "source_file": "src/components/portfolio/rPageEighteen/PageEighteen.jsx",
       "source_location": "L1",
       "id": "src_components_portfolio_rpageeighteen_pageeighteen_jsx",
-      "community": 42,
+      "community": 148,
       "norm_label": "pageeighteen.jsx"
     },
     {
@@ -4482,7 +4518,7 @@
       "source_file": "src/components/portfolio/rPageEighteen/PageEighteen.jsx",
       "source_location": "L6",
       "id": "rpageeighteen_pageeighteen_pageeighteen",
-      "community": 42,
+      "community": 148,
       "norm_label": "pageeighteen()"
     },
     {
@@ -4491,7 +4527,7 @@
       "source_file": "src/components/portfolio/sPageNineteen/PageNineteen.jsx",
       "source_location": "L1",
       "id": "src_components_portfolio_spagenineteen_pagenineteen_jsx",
-      "community": 132,
+      "community": 20,
       "norm_label": "pagenineteen.jsx"
     },
     {
@@ -4500,7 +4536,7 @@
       "source_file": "src/components/portfolio/sPageNineteen/PageNineteen.jsx",
       "source_location": "L7",
       "id": "spagenineteen_pagenineteen_services",
-      "community": 132,
+      "community": 20,
       "norm_label": "services"
     },
     {
@@ -4509,7 +4545,7 @@
       "source_file": "src/components/portfolio/sPageNineteen/PageNineteen.jsx",
       "source_location": "L22",
       "id": "spagenineteen_pagenineteen_pagenineteen",
-      "community": 132,
+      "community": 20,
       "norm_label": "pagenineteen()"
     },
     {
@@ -4518,7 +4554,7 @@
       "source_file": "src/components/portfolio/tPageTwenty/PageTwenty.jsx",
       "source_location": "L1",
       "id": "src_components_portfolio_tpagetwenty_pagetwenty_jsx",
-      "community": 20,
+      "community": 150,
       "norm_label": "pagetwenty.jsx"
     },
     {
@@ -4527,7 +4563,7 @@
       "source_file": "src/components/portfolio/tPageTwenty/PageTwenty.jsx",
       "source_location": "L6",
       "id": "tpagetwenty_pagetwenty_pagetwenty",
-      "community": 20,
+      "community": 150,
       "norm_label": "pagetwenty()"
     },
     {
@@ -4563,7 +4599,7 @@
       "source_file": "src/components/portfolio/uPageTwentyTwo/PageTwentyTwo.jsx",
       "source_location": "L1",
       "id": "src_components_portfolio_upagetwentytwo_pagetwentytwo_jsx",
-      "community": 42,
+      "community": 151,
       "norm_label": "pagetwentytwo.jsx"
     },
     {
@@ -4572,7 +4608,7 @@
       "source_file": "src/components/portfolio/uPageTwentyTwo/PageTwentyTwo.jsx",
       "source_location": "L6",
       "id": "upagetwentytwo_pagetwentytwo_pagetwentytwo",
-      "community": 42,
+      "community": 151,
       "norm_label": "pagetwentytwo()"
     },
     {
@@ -4653,7 +4689,7 @@
       "source_file": "src/components/portfolio/yPageTwentySix/PageTwentySix.jsx",
       "source_location": "L1",
       "id": "src_components_portfolio_ypagetwentysix_pagetwentysix_jsx",
-      "community": 20,
+      "community": 153,
       "norm_label": "pagetwentysix.jsx"
     },
     {
@@ -4662,7 +4698,7 @@
       "source_file": "src/components/portfolio/yPageTwentySix/PageTwentySix.jsx",
       "source_location": "L6",
       "id": "ypagetwentysix_pagetwentysix_pagetwentysix",
-      "community": 20,
+      "community": 153,
       "norm_label": "pagetwentysix()"
     },
     {
@@ -5047,7 +5083,7 @@
       "label": "SOCIAL_HANDLES",
       "file_type": "code",
       "source_file": "src/config/constants.js",
-      "source_location": "L89",
+      "source_location": "L90",
       "id": "config_constants_social_handles",
       "community": 4,
       "norm_label": "social_handles"
@@ -5056,7 +5092,7 @@
       "label": "BUSINESS",
       "file_type": "code",
       "source_file": "src/config/constants.js",
-      "source_location": "L106",
+      "source_location": "L108",
       "id": "config_constants_business",
       "community": 4,
       "norm_label": "business"
@@ -5065,7 +5101,7 @@
       "label": "APP_STORES",
       "file_type": "code",
       "source_file": "src/config/constants.js",
-      "source_location": "L119",
+      "source_location": "L121",
       "id": "config_constants_app_stores",
       "community": 4,
       "norm_label": "app_stores"
@@ -5074,7 +5110,7 @@
       "label": "THIRD_PARTY",
       "file_type": "code",
       "source_file": "src/config/constants.js",
-      "source_location": "L127",
+      "source_location": "L129",
       "id": "config_constants_third_party",
       "community": 4,
       "norm_label": "third_party"
@@ -5083,7 +5119,7 @@
       "label": "IMAGES",
       "file_type": "code",
       "source_file": "src/config/constants.js",
-      "source_location": "L149",
+      "source_location": "L151",
       "id": "config_constants_images",
       "community": 4,
       "norm_label": "images"
@@ -5092,7 +5128,7 @@
       "label": "METADATA_FAVICON_ICONS",
       "file_type": "code",
       "source_file": "src/config/constants.js",
-      "source_location": "L176",
+      "source_location": "L178",
       "id": "config_constants_metadata_favicon_icons",
       "community": 4,
       "norm_label": "metadata_favicon_icons"
@@ -5101,7 +5137,7 @@
       "label": "formatPhoneForTel()",
       "file_type": "code",
       "source_file": "src/config/constants.js",
-      "source_location": "L201",
+      "source_location": "L203",
       "id": "config_constants_formatphonefortel",
       "community": 4,
       "norm_label": "formatphonefortel()"
@@ -5110,7 +5146,7 @@
       "label": "getTelLink()",
       "file_type": "code",
       "source_file": "src/config/constants.js",
-      "source_location": "L222",
+      "source_location": "L224",
       "id": "config_constants_gettellink",
       "community": 4,
       "norm_label": "gettellink()"
@@ -5119,7 +5155,7 @@
       "label": "isIOSWebView()",
       "file_type": "code",
       "source_file": "src/config/constants.js",
-      "source_location": "L230",
+      "source_location": "L232",
       "id": "config_constants_isioswebview",
       "community": 4,
       "norm_label": "isioswebview()"
@@ -5128,7 +5164,7 @@
       "label": "isAndroidWebView()",
       "file_type": "code",
       "source_file": "src/config/constants.js",
-      "source_location": "L243",
+      "source_location": "L245",
       "id": "config_constants_isandroidwebview",
       "community": 4,
       "norm_label": "isandroidwebview()"
@@ -5137,7 +5173,7 @@
       "label": "handlePhoneClick()",
       "file_type": "code",
       "source_file": "src/config/constants.js",
-      "source_location": "L261",
+      "source_location": "L263",
       "id": "config_constants_handlephoneclick",
       "community": 4,
       "norm_label": "handlephoneclick()"
@@ -5146,7 +5182,7 @@
       "label": "getFullUrl()",
       "file_type": "code",
       "source_file": "src/config/constants.js",
-      "source_location": "L276",
+      "source_location": "L278",
       "id": "config_constants_getfullurl",
       "community": 4,
       "norm_label": "getfullurl()"
@@ -5155,7 +5191,7 @@
       "label": "getSocialMediaArray()",
       "file_type": "code",
       "source_file": "src/config/constants.js",
-      "source_location": "L283",
+      "source_location": "L285",
       "id": "config_constants_getsocialmediaarray",
       "community": 4,
       "norm_label": "getsocialmediaarray()"
@@ -5283,7 +5319,7 @@
       "source_file": "src/data/assistantUi.js",
       "source_location": "L37",
       "id": "data_assistantui_getassistantquickchips",
-      "community": 94,
+      "community": 137,
       "norm_label": "getassistantquickchips()"
     },
     {
@@ -5292,7 +5328,7 @@
       "source_file": "src/data/assistantUi.js",
       "source_location": "L51",
       "id": "data_assistantui_getassistantlaunchertips",
-      "community": 94,
+      "community": 103,
       "norm_label": "getassistantlaunchertips()"
     },
     {
@@ -5418,7 +5454,7 @@
       "source_file": "src/hooks/useAssistantRealtime.js",
       "source_location": "L1",
       "id": "src_hooks_useassistantrealtime_js",
-      "community": 31,
+      "community": 137,
       "norm_label": "useassistantrealtime.js"
     },
     {
@@ -5427,7 +5463,7 @@
       "source_file": "src/hooks/useAssistantRealtime.js",
       "source_location": "L29",
       "id": "hooks_useassistantrealtime_voicesupported",
-      "community": 31,
+      "community": 137,
       "norm_label": "voicesupported()"
     },
     {
@@ -5436,7 +5472,7 @@
       "source_file": "src/hooks/useAssistantRealtime.js",
       "source_location": "L37",
       "id": "hooks_useassistantrealtime_extractresponsetranscript",
-      "community": 31,
+      "community": 137,
       "norm_label": "extractresponsetranscript()"
     },
     {
@@ -5445,7 +5481,7 @@
       "source_file": "src/hooks/useAssistantRealtime.js",
       "source_location": "L63",
       "id": "hooks_useassistantrealtime_useassistantrealtime",
-      "community": 31,
+      "community": 137,
       "norm_label": "useassistantrealtime()"
     },
     {
@@ -5812,7 +5848,7 @@
       "label": "buildCampaignContext()",
       "file_type": "code",
       "source_file": "src/lib/assistant/campaignContext.js",
-      "source_location": "L119",
+      "source_location": "L149",
       "id": "assistant_campaigncontext_buildcampaigncontext",
       "community": 111,
       "norm_label": "buildcampaigncontext()"
@@ -5839,7 +5875,7 @@
       "label": "text",
       "file_type": "code",
       "source_file": "src/lib/assistant/campaignContext.test.js",
-      "source_location": "L34",
+      "source_location": "L37",
       "id": "assistant_campaigncontext_test_text",
       "community": 111,
       "norm_label": "text"
@@ -5848,16 +5884,25 @@
       "label": "october",
       "file_type": "code",
       "source_file": "src/lib/assistant/campaignContext.test.js",
-      "source_location": "L44",
+      "source_location": "L47",
       "id": "assistant_campaigncontext_test_october",
       "community": 111,
       "norm_label": "october"
     },
     {
+      "label": "iphone",
+      "file_type": "code",
+      "source_file": "src/lib/assistant/campaignContext.test.js",
+      "source_location": "L63",
+      "id": "assistant_campaigncontext_test_iphone",
+      "community": 111,
+      "norm_label": "iphone"
+    },
+    {
       "label": "result",
       "file_type": "code",
       "source_file": "src/lib/assistant/campaignContext.test.js",
-      "source_location": "L61",
+      "source_location": "L80",
       "id": "assistant_campaigncontext_test_result",
       "community": 111,
       "norm_label": "result"
@@ -6469,7 +6514,7 @@
       "label": "getActiveCampaign()",
       "file_type": "code",
       "source_file": "src/lib/business/campaigns.js",
-      "source_location": "L33",
+      "source_location": "L34",
       "id": "business_campaigns_getactivecampaign",
       "community": 94,
       "norm_label": "getactivecampaign()"
@@ -6478,16 +6523,16 @@
       "label": "tCampaign()",
       "file_type": "code",
       "source_file": "src/lib/business/campaigns.js",
-      "source_location": "L42",
+      "source_location": "L43",
       "id": "business_campaigns_tcampaign",
-      "community": 94,
+      "community": 146,
       "norm_label": "tcampaign()"
     },
     {
       "label": "formatCampaignPrice()",
       "file_type": "code",
       "source_file": "src/lib/business/campaigns.js",
-      "source_location": "L55",
+      "source_location": "L56",
       "id": "business_campaigns_formatcampaignprice",
       "community": 127,
       "norm_label": "formatcampaignprice()"
@@ -6518,6 +6563,15 @@
       "id": "business_campaigns_test_campaign",
       "community": 127,
       "norm_label": "campaign"
+    },
+    {
+      "label": "now",
+      "file_type": "code",
+      "source_file": "src/lib/business/campaigns.test.js",
+      "source_location": "L31",
+      "id": "business_campaigns_test_now",
+      "community": 127,
+      "norm_label": "now"
     },
     {
       "label": "serviceCatalog.js",
@@ -7713,7 +7767,7 @@
       "source_file": "FOLLOW_PATTERNS.md",
       "source_location": "L114",
       "id": "ken_follow_patterns_styling_patterns",
-      "community": 141,
+      "community": 6,
       "norm_label": "styling patterns"
     },
     {
@@ -7722,7 +7776,7 @@
       "source_file": "FOLLOW_PATTERNS.md",
       "source_location": "L116",
       "id": "ken_follow_patterns_css_modules",
-      "community": 130,
+      "community": 6,
       "norm_label": "css modules"
     },
     {
@@ -7731,7 +7785,7 @@
       "source_file": "FOLLOW_PATTERNS.md",
       "source_location": "L122",
       "id": "ken_follow_patterns_codeblock_2",
-      "community": 130,
+      "community": 6,
       "norm_label": "code:jsx (import styles from \"./componentname.modern.module.css\";)"
     },
     {
@@ -7740,7 +7794,7 @@
       "source_file": "FOLLOW_PATTERNS.md",
       "source_location": "L128",
       "id": "ken_follow_patterns_codeblock_3",
-      "community": 130,
+      "community": 6,
       "norm_label": "code:jsx (<div classname={styles.container}>)"
     },
     {
@@ -7749,7 +7803,7 @@
       "source_file": "FOLLOW_PATTERNS.md",
       "source_location": "L138",
       "id": "ken_follow_patterns_codeblock_4",
-      "community": 130,
+      "community": 6,
       "norm_label": "code:css (/* bad - nested selector */)"
     },
     {
@@ -7758,7 +7812,7 @@
       "source_file": "FOLLOW_PATTERNS.md",
       "source_location": "L149",
       "id": "ken_follow_patterns_codeblock_5",
-      "community": 130,
+      "community": 6,
       "norm_label": "code:jsx (/* bad - no class on child elements */)"
     },
     {
@@ -7767,7 +7821,7 @@
       "source_file": "FOLLOW_PATTERNS.md",
       "source_location": "L159",
       "id": "ken_follow_patterns_codeblock_6",
-      "community": 130,
+      "community": 6,
       "norm_label": "code:css (/* good - direct class names */)"
     },
     {
@@ -7776,7 +7830,7 @@
       "source_file": "FOLLOW_PATTERNS.md",
       "source_location": "L174",
       "id": "ken_follow_patterns_codeblock_7",
-      "community": 130,
+      "community": 6,
       "norm_label": "code:jsx (/* good - each element has its unique class */)"
     },
     {
@@ -7920,7 +7974,7 @@
       "source_file": "FOLLOW_PATTERNS.md",
       "source_location": "L340",
       "id": "ken_follow_patterns_responsive_design_pattern",
-      "community": 141,
+      "community": 6,
       "norm_label": "responsive design pattern"
     },
     {
@@ -7929,7 +7983,7 @@
       "source_file": "FOLLOW_PATTERNS.md",
       "source_location": "L346",
       "id": "ken_follow_patterns_codeblock_15",
-      "community": 141,
+      "community": 6,
       "norm_label": "code:css (/* mobile-first: base styles are the narrow layout */)"
     },
     {
@@ -7938,7 +7992,7 @@
       "source_file": "FOLLOW_PATTERNS.md",
       "source_location": "L369",
       "id": "ken_follow_patterns_page_top_spacing",
-      "community": 141,
+      "community": 6,
       "norm_label": "page top spacing"
     },
     {
@@ -7947,7 +8001,7 @@
       "source_file": "FOLLOW_PATTERNS.md",
       "source_location": "L377",
       "id": "ken_follow_patterns_codeblock_16",
-      "community": 141,
+      "community": 6,
       "norm_label": "code:css (.page {)"
     },
     {
@@ -8631,7 +8685,7 @@
       "source_file": "FOLLOW_PATTERNS.md",
       "source_location": "L952",
       "id": "ken_follow_patterns_5_animation_performance",
-      "community": 9,
+      "community": 143,
       "norm_label": "5. animation performance"
     },
     {
@@ -8640,7 +8694,7 @@
       "source_file": "FOLLOW_PATTERNS.md",
       "source_location": "L956",
       "id": "ken_follow_patterns_codeblock_49",
-      "community": 9,
+      "community": 143,
       "norm_label": "code:jsx (<motion.div)"
     },
     {
@@ -8649,7 +8703,7 @@
       "source_file": "FOLLOW_PATTERNS.md",
       "source_location": "L965",
       "id": "ken_follow_patterns_codeblock_50",
-      "community": 9,
+      "community": 143,
       "norm_label": "code:jsx (<motion.div)"
     },
     {
@@ -9430,7 +9484,7 @@
       "label": "Campaigns (promotional packages)",
       "file_type": "document",
       "source_file": "docs/CAMPAIGNS.md",
-      "source_location": "L3",
+      "source_location": "L4",
       "id": "docs_campaigns_campaigns_promotional_packages",
       "community": 102,
       "norm_label": "campaigns (promotional packages)"
@@ -9439,7 +9493,7 @@
       "label": "Website surfaces",
       "file_type": "document",
       "source_file": "docs/CAMPAIGNS.md",
-      "source_location": "L9",
+      "source_location": "L10",
       "id": "docs_campaigns_website_surfaces",
       "community": 102,
       "norm_label": "website surfaces"
@@ -9448,7 +9502,7 @@
       "label": "Assistant grounding (same pattern as catalog)",
       "file_type": "document",
       "source_file": "docs/CAMPAIGNS.md",
-      "source_location": "L15",
+      "source_location": "L17",
       "id": "docs_campaigns_assistant_grounding_same_pattern_as_catalog",
       "community": 102,
       "norm_label": "assistant grounding (same pattern as catalog)"
@@ -9457,7 +9511,7 @@
       "label": "Updating a campaign",
       "file_type": "document",
       "source_file": "docs/CAMPAIGNS.md",
-      "source_location": "L24",
+      "source_location": "L26",
       "id": "docs_campaigns_updating_a_campaign",
       "community": 102,
       "norm_label": "updating a campaign"
@@ -10638,7 +10692,7 @@
       "source_file": "oldMD/IMPROVEMENT_PLAN.md",
       "source_location": "L1156",
       "id": "oldmd_improvement_plan_detailed_todo_list",
-      "community": 12,
+      "community": 132,
       "norm_label": "detailed todo list"
     },
     {
@@ -10647,7 +10701,7 @@
       "source_file": "oldMD/IMPROVEMENT_PLAN.md",
       "source_location": "L1158",
       "id": "oldmd_improvement_plan_design_system_priority_high_completed",
-      "community": 12,
+      "community": 132,
       "norm_label": "design system (priority: high) \u2705 **completed**"
     },
     {
@@ -10656,7 +10710,7 @@
       "source_file": "oldMD/IMPROVEMENT_PLAN.md",
       "source_location": "L1172",
       "id": "oldmd_improvement_plan_critical_bug_fixes_priority_high_completed",
-      "community": 12,
+      "community": 132,
       "norm_label": "critical bug fixes (priority: high) \u2705 **completed**"
     },
     {
@@ -10728,7 +10782,7 @@
       "source_file": "oldMD/IMPROVEMENT_PLAN.md",
       "source_location": "L1253",
       "id": "oldmd_improvement_plan_performance_optimizations_priority_medium",
-      "community": 12,
+      "community": 132,
       "norm_label": "performance optimizations (priority: medium)"
     },
     {
@@ -10737,7 +10791,7 @@
       "source_file": "oldMD/IMPROVEMENT_PLAN.md",
       "source_location": "L1270",
       "id": "oldmd_improvement_plan_code_quality_priority_medium",
-      "community": 12,
+      "community": 132,
       "norm_label": "code quality (priority: medium)"
     },
     {
@@ -10746,7 +10800,7 @@
       "source_file": "oldMD/IMPROVEMENT_PLAN.md",
       "source_location": "L1283",
       "id": "oldmd_improvement_plan_accessibility_priority_medium",
-      "community": 12,
+      "community": 132,
       "norm_label": "accessibility (priority: medium)"
     },
     {
@@ -10755,7 +10809,7 @@
       "source_file": "oldMD/IMPROVEMENT_PLAN.md",
       "source_location": "L1297",
       "id": "oldmd_improvement_plan_seo_metadata_priority_medium",
-      "community": 12,
+      "community": 132,
       "norm_label": "seo & metadata (priority: medium)"
     },
     {
@@ -10764,7 +10818,7 @@
       "source_file": "oldMD/IMPROVEMENT_PLAN.md",
       "source_location": "L1307",
       "id": "oldmd_improvement_plan_typescript_migration_priority_medium",
-      "community": 12,
+      "community": 132,
       "norm_label": "typescript migration (priority: medium)"
     },
     {
@@ -10773,7 +10827,7 @@
       "source_file": "oldMD/IMPROVEMENT_PLAN.md",
       "source_location": "L1344",
       "id": "oldmd_improvement_plan_documentation_priority_low",
-      "community": 12,
+      "community": 132,
       "norm_label": "documentation (priority: low)"
     },
     {
@@ -12050,7 +12104,7 @@
       "file_type": "code",
       "source_file": "src/components/bookingDock/BookingDock.jsx",
       "source_location": "L18",
-      "community": 88,
+      "community": 130,
       "norm_label": "plainwhatsappurl()",
       "id": "bookingdock_bookingdock_plainwhatsappurl"
     },
@@ -12059,7 +12113,7 @@
       "file_type": "code",
       "source_file": "src/components/bookingDock/bookingList.js",
       "source_location": "L9",
-      "community": 88,
+      "community": 130,
       "norm_label": "isservice()",
       "id": "bookingdock_bookinglist_isservice"
     },
@@ -12131,7 +12185,7 @@
       "file_type": "document",
       "source_file": "FOLLOW_PATTERNS.md",
       "source_location": "L371",
-      "community": 141,
+      "community": 6,
       "norm_label": "mobile padding pattern (account for fixed navbar)",
       "id": "ken_follow_patterns_mobile_padding_pattern_account_for_fixed_navbar"
     },
@@ -14209,6 +14263,17 @@
       "relation": "imports_from",
       "context": "import",
       "confidence": "EXTRACTED",
+      "source_file": "src/components/campaign/CampaignFilm.jsx",
+      "source_location": "L4",
+      "weight": 1.0,
+      "source": "src_components_campaign_campaignfilm_jsx",
+      "target": "image",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
       "source_file": "src/components/campaign/CampaignPoster.jsx",
       "source_location": "L3",
       "weight": 1.0,
@@ -14934,9 +14999,9 @@
       "source_file": "src/app/sitemap.js",
       "source_location": "L3",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "src_app_sitemap_js",
-      "target": "app_sitemap_routes",
-      "confidence_score": 1.0
+      "target": "app_sitemap_routes"
     },
     {
       "relation": "contains",
@@ -14944,9 +15009,9 @@
       "source_file": "src/app/sitemap.js",
       "source_location": "L18",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "src_app_sitemap_js",
-      "target": "app_sitemap_sitemap",
-      "confidence_score": 1.0
+      "target": "app_sitemap_sitemap"
     },
     {
       "relation": "imports_from",
@@ -14955,9 +15020,9 @@
       "source_file": "src/app/sitemap.test.js",
       "source_location": "L2",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "src_app_sitemap_test_js",
-      "target": "src_app_sitemap_js",
-      "confidence_score": 1.0
+      "target": "src_app_sitemap_js"
     },
     {
       "relation": "contains",
@@ -14965,9 +15030,9 @@
       "source_file": "src/app/sitemap.test.js",
       "source_location": "L22",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "src_app_sitemap_test_js",
-      "target": "app_sitemap_test_entries",
-      "confidence_score": 1.0
+      "target": "app_sitemap_test_entries"
     },
     {
       "relation": "contains",
@@ -14975,9 +15040,9 @@
       "source_file": "src/app/sitemap.test.js",
       "source_location": "L5",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "src_app_sitemap_test_js",
-      "target": "app_sitemap_test_expected_urls",
-      "confidence_score": 1.0
+      "target": "app_sitemap_test_expected_urls"
     },
     {
       "relation": "contains",
@@ -17243,6 +17308,47 @@
       "confidence_score": 1.0,
       "source": "src_components_bookingdock_bookinglist_test_js",
       "target": "bookingdock_bookinglist_test_stored"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "src/components/campaign/CampaignFilm.jsx",
+      "source_location": "L30",
+      "weight": 1.0,
+      "source": "src_components_campaign_campaignfilm_jsx",
+      "target": "campaign_campaignfilm_campaignfilm",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "src/components/campaign/CampaignFilm.jsx",
+      "source_location": "L13",
+      "weight": 1.0,
+      "source": "src_components_campaign_campaignfilm_jsx",
+      "target": "campaign_campaignfilm_clipsrc",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "src/components/campaign/CampaignFilm.jsx",
+      "source_location": "L18",
+      "weight": 1.0,
+      "source": "src_components_campaign_campaignfilm_jsx",
+      "target": "campaign_campaignfilm_muteothers",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "INFERRED",
+      "confidence_score": 0.8,
+      "source_file": "src/components/campaign/CampaignFilm.jsx",
+      "source_location": "L90",
+      "weight": 1.0,
+      "source": "campaign_campaignfilm_campaignfilm",
+      "target": "business_campaigns_tcampaign"
     },
     {
       "relation": "contains",
@@ -22016,6 +22122,17 @@
       "confidence": "INFERRED",
       "confidence_score": 0.8,
       "source_file": "src/lib/assistant/campaignContext.js",
+      "source_location": "L92",
+      "weight": 1.0,
+      "source": "assistant_campaigncontext_formatcampaigncontext",
+      "target": "business_campaigns_formatcampaignprice"
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "INFERRED",
+      "confidence_score": 0.8,
+      "source_file": "src/lib/assistant/campaignContext.js",
       "source_location": "L43",
       "weight": 1.0,
       "source": "assistant_campaigncontext_formatcampaigncontext",
@@ -22063,6 +22180,16 @@
       "confidence_score": 1.0,
       "source": "src_lib_assistant_campaigncontext_test_js",
       "target": "assistant_campaigncontext_test_august"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "src/lib/assistant/campaignContext.test.js",
+      "source_location": "L63",
+      "weight": 1.0,
+      "source": "src_lib_assistant_campaigncontext_test_js",
+      "target": "assistant_campaigncontext_test_iphone",
+      "confidence_score": 1.0
     },
     {
       "relation": "contains",
@@ -23049,6 +23176,16 @@
       "confidence_score": 1.0,
       "source": "src_lib_business_campaigns_test_js",
       "target": "business_campaigns_test_key"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "src/lib/business/campaigns.test.js",
+      "source_location": "L31",
+      "weight": 1.0,
+      "source": "src_lib_business_campaigns_test_js",
+      "target": "business_campaigns_test_now",
+      "confidence_score": 1.0
     },
     {
       "relation": "contains",
@@ -29823,5 +29960,5 @@
     }
   ],
   "hyperedges": [],
-  "built_at_commit": "c8e3bfb83f14de9469c7e9476de17e13f7382674"
+  "built_at_commit": "09ac970561f26bc66714b7839edad78b55126a61"
 }

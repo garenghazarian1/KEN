@@ -188,7 +188,7 @@ export const APPLE_TOUCH_ICON_REVISION = 3;
 export const APPLE_TOUCH_ICON_URL = `/favicon-for-app/apple-touch-icon-v3.png?v=${APPLE_TOUCH_ICON_REVISION}`;
 
 /** Bump when changing PWA manifest fields or launcher PNGs under `public/favicon-for-app/`. */
-export const WEB_APP_MANIFEST_REVISION = 3;
+export const WEB_APP_MANIFEST_REVISION = 4;
 
 /** Web app manifest for Chrome / Android install and launcher icons. */
 export const WEB_APP_MANIFEST_URL = `/favicon-for-app/site-v3.webmanifest?v=${WEB_APP_MANIFEST_REVISION}`;

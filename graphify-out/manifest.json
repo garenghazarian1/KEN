@@ -10,8 +10,8 @@
     "semantic_hash": ""
   },
   "C:\\Users\\garen\\Desktop\\01-WEB-DEV\\KenLight02\\ken\\next.config.mjs": {
-    "mtime": 1793577919.607021,
-    "ast_hash": "259fe328a8604a9ca18ecbeea358c696",
+    "mtime": 1793636453.321218,
+    "ast_hash": "406d1f6142e37bfbc4a88070a48efaaf",
     "semantic_hash": ""
   },
   "C:\\Users\\garen\\Desktop\\01-WEB-DEV\\KenLight02\\ken\\package.json": {
@@ -185,8 +185,8 @@
     "semantic_hash": ""
   },
   "C:\\Users\\garen\\Desktop\\01-WEB-DEV\\KenLight02\\ken\\src\\components\\footer\\Footer.modern.jsx": {
-    "mtime": 1792477302.3454812,
-    "ast_hash": "fedba319184a25a71f6868cd4ef147bc",
+    "mtime": 1793626753.2804022,
+    "ast_hash": "90e7a593046667f190c456aadb5bbf59",
     "semantic_hash": ""
   },
   "C:\\Users\\garen\\Desktop\\01-WEB-DEV\\KenLight02\\ken\\src\\components\\hero\\hero-old.jsx": {
@@ -200,8 +200,8 @@
     "semantic_hash": ""
   },
   "C:\\Users\\garen\\Desktop\\01-WEB-DEV\\KenLight02\\ken\\src\\components\\hero\\Hero.modern.jsx": {
-    "mtime": 1793567858.7022436,
-    "ast_hash": "d13e027819785db99117af23f7cba238",
+    "mtime": 1793623818.885796,
+    "ast_hash": "4c13d8b4cfaffe52bf65c0280395303b",
     "semantic_hash": ""
   },
   "C:\\Users\\garen\\Desktop\\01-WEB-DEV\\KenLight02\\ken\\src\\components\\hooks\\useScrollTrigger.js": {
@@ -415,8 +415,8 @@
     "semantic_hash": ""
   },
   "C:\\Users\\garen\\Desktop\\01-WEB-DEV\\KenLight02\\ken\\src\\config\\constants.js": {
-    "mtime": 1790638763.2118769,
-    "ast_hash": "224f38ec6872fec440fadce74ba35076",
+    "mtime": 1793633267.6606407,
+    "ast_hash": "a78ba6ac6e65d1883bb262596fb9cd26",
     "semantic_hash": ""
   },
   "C:\\Users\\garen\\Desktop\\01-WEB-DEV\\KenLight02\\ken\\src\\data\\drinks.js": {
@@ -1320,8 +1320,8 @@
     "semantic_hash": ""
   },
   "C:\\Users\\garen\\Desktop\\01-WEB-DEV\\KenLight02\\ken\\docs\\ASSISTANT.md": {
-    "mtime": 1793568375.3860688,
-    "ast_hash": "e49aa44ffe392c326034472d478dd512",
+    "mtime": 1793628553.0374627,
+    "ast_hash": "2883cba64f0211eefb3be2286b8876a9",
     "semantic_hash": ""
   },
   "C:\\Users\\garen\\Desktop\\01-WEB-DEV\\KenLight02\\ken\\public\\assistant\\ken-assistant-avatar.png": {
@@ -1395,8 +1395,8 @@
     "semantic_hash": ""
   },
   "C:\\Users\\garen\\Desktop\\01-WEB-DEV\\KenLight02\\ken\\src\\app\\(navPages)\\offers\\page.jsx": {
-    "mtime": 1791805036.3921206,
-    "ast_hash": "5624e14231d58d5cf4294f1428a97542",
+    "mtime": 1793623926.6742342,
+    "ast_hash": "0a94c7b94633ebe4fa066ba97ea656b0",
     "semantic_hash": ""
   },
   "C:\\Users\\garen\\Desktop\\01-WEB-DEV\\KenLight02\\ken\\src\\app\\api\\cron\\assistant-cleanup\\route.js": {
@@ -1410,8 +1410,8 @@
     "semantic_hash": ""
   },
   "C:\\Users\\garen\\Desktop\\01-WEB-DEV\\KenLight02\\ken\\src\\data\\campaigns.js": {
-    "mtime": 1791805815.5048902,
-    "ast_hash": "8abf6e345486c0c8dad5c90b779de9c4",
+    "mtime": 1793630799.1322403,
+    "ast_hash": "ee7b7b597a6e12b883e04f0e1f4d30eb",
     "semantic_hash": ""
   },
   "C:\\Users\\garen\\Desktop\\01-WEB-DEV\\KenLight02\\ken\\src\\lib\\assistant\\assistantLifecycle.js": {
@@ -1430,13 +1430,13 @@
     "semantic_hash": ""
   },
   "C:\\Users\\garen\\Desktop\\01-WEB-DEV\\KenLight02\\ken\\src\\lib\\assistant\\campaignContext.js": {
-    "mtime": 1791805819.1021252,
-    "ast_hash": "d5a2cc3c4f009e7471cd8454e79c840d",
+    "mtime": 1793630817.883255,
+    "ast_hash": "aa22479f0f74ed96e55e947214134401",
     "semantic_hash": ""
   },
   "C:\\Users\\garen\\Desktop\\01-WEB-DEV\\KenLight02\\ken\\src\\lib\\assistant\\campaignContext.test.js": {
-    "mtime": 1791805818.4439242,
-    "ast_hash": "5b525af0e80296f48a5c1cc2a71a34ee",
+    "mtime": 1793631947.545277,
+    "ast_hash": "0dc3180bc698be94e11b29e8956186e8",
     "semantic_hash": ""
   },
   "C:\\Users\\garen\\Desktop\\01-WEB-DEV\\KenLight02\\ken\\src\\lib\\assistant\\catalogQueryExpand.js": {
@@ -1455,18 +1455,18 @@
     "semantic_hash": ""
   },
   "C:\\Users\\garen\\Desktop\\01-WEB-DEV\\KenLight02\\ken\\src\\lib\\business\\campaigns.js": {
-    "mtime": 1786525714.2506306,
-    "ast_hash": "798dc6a699637fbda4f4daab1d18571a",
+    "mtime": 1793623788.565999,
+    "ast_hash": "17e1c8a14e68b3f6f270d2271977571b",
     "semantic_hash": ""
   },
   "C:\\Users\\garen\\Desktop\\01-WEB-DEV\\KenLight02\\ken\\src\\lib\\business\\campaigns.test.js": {
-    "mtime": 1791805043.8071308,
-    "ast_hash": "e87b787c7c2d9fc6df25a7a79699cf0f",
+    "mtime": 1793623852.0271516,
+    "ast_hash": "6c3c570052a495d26f0abcf6b0ec395d",
     "semantic_hash": ""
   },
   "C:\\Users\\garen\\Desktop\\01-WEB-DEV\\KenLight02\\ken\\docs\\CAMPAIGNS.md": {
-    "mtime": 1793565808.5186682,
-    "ast_hash": "1f1ff70f4e521d601015522550ad0d1b",
+    "mtime": 1793631948.0462427,
+    "ast_hash": "8a55346f85805d6a79e43f709b10c24c",
     "semantic_hash": ""
   },
   "C:\\Users\\garen\\Desktop\\01-WEB-DEV\\KenLight02\\ken\\playwright.config.js": {
@@ -1755,8 +1755,8 @@
     "semantic_hash": ""
   },
   "C:\\Users\\garen\\Desktop\\01-WEB-DEV\\KenLight02\\ken\\next.config.test.js": {
-    "mtime": 1793577919.7487452,
-    "ast_hash": "6e629f6f5f470794c763938eccf866e9",
+    "mtime": 1793633270.3339293,
+    "ast_hash": "551e676dac22562cbde16194d61b346f",
     "semantic_hash": ""
   },
   "C:\\Users\\garen\\Desktop\\01-WEB-DEV\\KenLight02\\ken\\src\\app\\sitemap.js": {
@@ -1767,6 +1767,31 @@
   "C:\\Users\\garen\\Desktop\\01-WEB-DEV\\KenLight02\\ken\\src\\app\\sitemap.test.js": {
     "mtime": 1793621465.8944438,
     "ast_hash": "4e9c55ae84db99e38c65d91472137b08",
+    "semantic_hash": ""
+  },
+  "C:\\Users\\garen\\Desktop\\01-WEB-DEV\\KenLight02\\ken\\src\\components\\campaign\\CampaignFilm.jsx": {
+    "mtime": 1793631257.1733725,
+    "ast_hash": "885ea579e77033cf9b560a0f9d112d8a",
+    "semantic_hash": ""
+  },
+  "C:\\Users\\garen\\Desktop\\01-WEB-DEV\\KenLight02\\ken\\public\\videos\\offers\\iphone-nov2026\\ken-iphone-offer-nov2026-poster.jpg": {
+    "mtime": 1793623727.5148685,
+    "ast_hash": "ec564860421272aaa3af84fae646dec1",
+    "semantic_hash": ""
+  },
+  "C:\\Users\\garen\\Desktop\\01-WEB-DEV\\KenLight02\\ken\\public\\videos\\offers\\iphone-nov2026\\ken-iphone-offer-nov2026-poster.webp": {
+    "mtime": 1793623727.5135918,
+    "ast_hash": "86492fe8592958a3113896478f6f465d",
+    "semantic_hash": ""
+  },
+  "C:\\Users\\garen\\Desktop\\01-WEB-DEV\\KenLight02\\ken\\public\\videos\\offers\\iphone-nov2026\\ken-iphone-offer-nov2026-av1.mp4": {
+    "mtime": 1793628518.6171086,
+    "ast_hash": "ebdcea0b416a3ef0b67fef3cb521807a",
+    "semantic_hash": ""
+  },
+  "C:\\Users\\garen\\Desktop\\01-WEB-DEV\\KenLight02\\ken\\public\\videos\\offers\\iphone-nov2026\\ken-iphone-offer-nov2026-h264.mp4": {
+    "mtime": 1793628518.6969607,
+    "ast_hash": "3fa199f76bccef4cee7fa5d8ba5ddccd",
     "semantic_hash": ""
   }
 }
