@@ -198,4 +198,59 @@ export const CAMPAIGNS = [
       ar: "طوال شهر أكتوبر",
     },
   },
+  {
+    id: "iphone-nov-2026",
+    slug: "iphone-nov-2026",
+    path: "/offers",
+    startsOn: "2026-11-01",
+    endsOn: "2026-11-30",
+    timezone: CAMPAIGN_TIMEZONE,
+    branches: "both",
+    // Set true when the 200 places are gone. Hides the offer before endsOn.
+    soldOut: false,
+    theme: {
+      en: "Win an iPhone",
+      ar: "اربحي آيفون",
+    },
+    primaryCta: {
+      en: "3 blow-dry sessions + 1 Moremo session for AED 500",
+      ar: "3 جلسات سيشوار + جلسة موريمو واحدة مقابل 500 درهم",
+    },
+    description: {
+      en: "Win an iPhone at KEN! 3 blow-dry sessions + 1 Moremo session for AED 500. Every subscriber enters the iPhone draw. Limited to 200 subscribers. Book now.",
+      ar: "اربحي آيفون في كين! 3 جلسات سيشوار + جلسة موريمو واحدة مقابل 500 درهم. كل مشتركة تدخل سحب الآيفون. العدد محدود بـ 200 مشتركة. احجزي الآن.",
+    },
+    price: { amount: 500, currency: "AED" },
+    subscriberLimit: 200,
+    bookLabel: {
+      en: "Book now",
+      ar: "احجزي الآن",
+    },
+    bookMessage: {
+      en: "Hello KEN Beauty, I would like to book the iPhone offer: 3 blow-dry sessions + 1 Moremo session for AED 500.",
+      ar: "مرحبا كين بيوتي، أود حجز عرض الآيفون: 3 جلسات سيشوار + جلسة موريمو واحدة مقابل 500 درهم.",
+    },
+    watchLabel: {
+      en: "Watch with sound",
+      ar: "شاهدي مع الصوت",
+    },
+    watchUrl: "https://youtube.com/shorts/vgNf5H-Tbqs",
+    soundLabel: {
+      en: "Tap for sound",
+      ar: "اضغطي للصوت",
+    },
+    muteLabel: {
+      en: "Mute",
+      ar: "كتمي الصوت",
+    },
+    media: {
+      av1: "/videos/offers/iphone-nov2026/ken-iphone-offer-nov2026-av1.mp4",
+      h264: "/videos/offers/iphone-nov2026/ken-iphone-offer-nov2026-h264.mp4",
+      poster: "/videos/offers/iphone-nov2026/ken-iphone-offer-nov2026-poster.jpg",
+    },
+    endsLabel: {
+      en: "Ends 30 November",
+      ar: "ينتهي 30 نوفمبر",
+    },
+  },
 ];

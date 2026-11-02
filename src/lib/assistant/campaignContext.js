@@ -14,14 +14,14 @@ import {
 
 /** English campaign keywords — word boundaries are safe in Latin script. */
 const CAMPAIGN_QUERY_EN_RE =
-  /\b(august|offers|promo|promotion|package|packages|discount|hot\s*tuesday|mermaid|glow\s*up|princess\s*hands|50\s*%|save\s+now|special\s+offer|pink\s*october|free\s+haircut)\b/i;
+  /\b(august|offers|promo|promotion|package|packages|discount|hot\s*tuesday|mermaid|glow\s*up|princess\s*hands|50\s*%|save\s+now|special\s+offer|pink\s*october|free\s+haircut|iphone|moremo|blow-?dry)\b/i;
 
 /**
  * Arabic campaign keywords. Do NOT use `\b` — Arabic script has no word
  * boundaries that JS `\b` understands, so `\bباقة\b` never matches.
  */
 const CAMPAIGN_QUERY_AR_RE =
-  /(أغسطس|اغسطس|عرض|عروض|باقة|باقات|خصم|الثلاثاء|حورية|البحر|جلو|الأميرة|الاميرة|أكتوبر|اكتوبر|الوردي)/;
+  /(أغسطس|اغسطس|عرض|عروض|باقة|باقات|خصم|الثلاثاء|حورية|البحر|جلو|الأميرة|الاميرة|أكتوبر|اكتوبر|الوردي|آيفون|ايفون|موريمو)/;
 
 /**
  * @param {string} [query]
@@ -80,6 +80,31 @@ export function formatCampaignContext(campaign) {
     noteEn && !packageLines.length
       ? `Note: ${noteEn}${noteAr && noteAr !== noteEn ? ` / ${noteAr}` : ""}`
       : "";
+  const descriptionEn = tCampaign(campaign.description, "en");
+  const descriptionAr = tCampaign(campaign.description, "ar");
+  const descriptionLine = descriptionEn
+    ? `Description: ${descriptionEn}${
+        descriptionAr && descriptionAr !== descriptionEn ? ` / ${descriptionAr}` : ""
+      }`
+    : "";
+  const priceLine =
+    campaign.price?.amount != null
+      ? `Price: ${formatCampaignPrice(
+          campaign.price.amount,
+          campaign.price.currency || "AED",
+          "en"
+        )}`
+      : "";
+  const limitLine = campaign.subscriberLimit
+    ? `Limited to ${campaign.subscriberLimit} subscribers.`
+    : "";
+  const soundLine =
+    campaign.media?.av1 || campaign.media?.h264
+      ? "The film on the site includes the voice-over. It starts muted; the guest taps the video for sound."
+      : "";
+  const watchLine = campaign.watchUrl
+    ? `Watch with sound: ${campaign.watchUrl}`
+    : "";
   const hasPackages = packageLines.length > 0;
   const detailLines = (campaign.details || []).map((item) => {
     const titleEn = tCampaign(item.title, "en");
@@ -95,7 +120,12 @@ export function formatCampaignContext(campaign) {
       : `Active campaign (source of truth for this promotion only — quote it exactly; do not invent packages, discounts, or other offers):`,
     `Theme: ${themeEn} / ${themeAr}`,
     `Offer: ${ctaEn} / ${ctaAr}`,
+    descriptionLine,
+    priceLine,
+    limitLine,
     noteLine,
+    soundLine,
+    watchLine,
     `Valid ${campaign.startsOn} → ${campaign.endsOn} (${campaign.timezone || "Asia/Dubai"}), both Abu Dhabi branches.`,
     `Details page: ${path}`,
     hasPackages ? `Signature packages:` : "",

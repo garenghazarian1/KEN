@@ -14,12 +14,15 @@ describe("isCampaignQuery", () => {
     expect(isCampaignQuery("Tell me about the Mermaid package")).toBe(true);
     expect(isCampaignQuery("Hot Tuesday discount?")).toBe(true);
     expect(isCampaignQuery("Is the Pink October free haircut on?")).toBe(true);
+    expect(isCampaignQuery("Can I win an iPhone?")).toBe(true);
+    expect(isCampaignQuery("Moremo blow-dry offer")).toBe(true);
   });
 
   it("matches Arabic offer keywords without word boundaries", () => {
     expect(isCampaignQuery("ما هي باقة حورية البحر؟")).toBe(true);
     expect(isCampaignQuery("عروض أغسطس")).toBe(true);
     expect(isCampaignQuery("عرض أكتوبر الوردي")).toBe(true);
+    expect(isCampaignQuery("عرض الآيفون")).toBe(true);
   });
 
   it("ignores unrelated questions", () => {
@@ -56,6 +59,22 @@ describe("formatCampaignContext poster campaigns", () => {
   });
 });
 
+describe("formatCampaignContext iphone offer", () => {
+  const iphone = CAMPAIGNS.find((c) => c.id === "iphone-nov-2026");
+
+  it("quotes the draw, the price, and the sound link without packages", () => {
+    const text = formatCampaignContext(iphone);
+    expect(text).toContain("Theme: Win an iPhone /");
+    expect(text).toContain("500 AED");
+    expect(text).toContain("200");
+    expect(text).toContain("voice-over");
+    expect(text).toContain("https://youtube.com/shorts/vgNf5H-Tbqs");
+    expect(text).not.toContain("Signature packages");
+    expect(text).not.toContain("Mermaid");
+    expect(text).not.toContain("Hot Tuesday");
+  });
+});
+
 describe("buildCampaignContext", () => {
   it("returns campaign context for offer queries during the window", () => {
     const result = buildCampaignContext(
@@ -75,6 +94,17 @@ describe("buildCampaignContext", () => {
     expect(result.available).toBe(true);
     expect(result.sources).toContain("campaign:pink-october-2026");
     expect(result.context).toContain("free haircut");
+  });
+
+  it("returns the iPhone offer during November", () => {
+    const result = buildCampaignContext(
+      "Can I win an iPhone?",
+      new Date("2026-11-02T12:00:00+04:00")
+    );
+    expect(result.available).toBe(true);
+    expect(result.sources).toContain("campaign:iphone-nov-2026");
+    expect(result.context).toContain("AED 500");
+    expect(result.context).not.toContain("Mermaid");
   });
 
   it("returns empty context when inactive", () => {

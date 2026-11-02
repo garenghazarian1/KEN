@@ -24,7 +24,23 @@ describe("campaigns helpers", () => {
   it("deactivates outside the window", () => {
     expect(getActiveCampaign(new Date("2026-07-31T23:00:00+04:00"))).toBeNull();
     expect(getActiveCampaign(new Date("2026-09-01T00:30:00+04:00"))).toBeNull();
-    expect(getActiveCampaign(new Date("2026-11-01T00:30:00+04:00"))).toBeNull();
+    expect(getActiveCampaign(new Date("2026-12-01T00:30:00+04:00"))).toBeNull();
+  });
+
+  it("activates the November iPhone offer unless it is sold out", () => {
+    const now = new Date("2026-11-02T12:00:00+04:00");
+    const campaign = getActiveCampaign(now);
+    expect(campaign?.id).toBe("iphone-nov-2026");
+    expect(campaign?.soldOut).toBe(false);
+    expect(campaign?.price?.amount).toBe(500);
+    expect(campaign?.subscriberLimit).toBe(200);
+    expect(isCampaignActive(campaign, new Date("2026-11-01T00:30:00+04:00"))).toBe(
+      true
+    );
+    expect(isCampaignActive(campaign, new Date("2026-11-30T23:00:00+04:00"))).toBe(
+      true
+    );
+    expect(isCampaignActive({ ...campaign, soldOut: true }, now)).toBe(false);
   });
 
   it("activates pink october inside October", () => {

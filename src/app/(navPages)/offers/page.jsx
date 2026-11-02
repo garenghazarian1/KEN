@@ -1,4 +1,5 @@
 import Script from "next/script";
+import CampaignFilm from "@/components/campaign/CampaignFilm";
 import CampaignPoster from "@/components/campaign/CampaignPoster";
 import OffersContent from "@/components/campaign/OffersContent";
 import { BUSINESS, BASE_URL } from "@/config/constants";
@@ -19,8 +20,11 @@ export function generateMetadata() {
   const campaign = active || augustCampaign;
   const titleName = tCampaign(campaign?.theme) || "Offers";
   const description =
-    tCampaign(active ? campaign.primaryCta : campaign?.heroSubtitle) ||
-    `Special offers at ${BUSINESS.name}.`;
+    tCampaign(
+      active
+        ? campaign.description || campaign.primaryCta
+        : campaign?.heroSubtitle
+    ) || `Special offers at ${BUSINESS.name}.`;
   const title = `${titleName} | ${BUSINESS.name} Abu Dhabi`;
 
   return {
@@ -61,9 +65,9 @@ function offerItems(campaign) {
     {
       "@type": "Offer",
       position: 1,
-      name: tCampaign(campaign.primaryCta),
-      price: 0,
-      priceCurrency: "AED",
+      name: tCampaign(campaign.theme) || tCampaign(campaign.primaryCta),
+      price: campaign.price?.amount ?? 0,
+      priceCurrency: campaign.price?.currency || "AED",
       availability: "https://schema.org/InStock",
       validThrough: `${campaign.endsOn}T23:59:59+04:00`,
     },
@@ -74,7 +78,8 @@ export default function OffersPage() {
   const active = getActiveCampaign();
   const campaign = active || augustCampaign;
   const expired = campaign ? !isCampaignActive(campaign) : true;
-  const poster = Boolean(active && !active.packages?.length);
+  const film = Boolean(active?.media);
+  const poster = Boolean(active && !active.packages?.length && !active.media);
 
   const offerJsonLd =
     campaign && !expired
@@ -99,7 +104,9 @@ export default function OffersPage() {
           }}
         />
       ) : null}
-      {poster ? (
+      {film ? (
+        <CampaignFilm campaign={active} placement="page" />
+      ) : poster ? (
         <CampaignPoster campaign={active} placement="page" />
       ) : (
         <OffersContent campaign={campaign} expired={expired} />

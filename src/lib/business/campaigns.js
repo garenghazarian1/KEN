@@ -22,6 +22,7 @@ export function getZonedDateKey(date = new Date(), timeZone = CAMPAIGN_TIMEZONE)
  */
 export function isCampaignActive(campaign, now = new Date()) {
   if (!campaign?.startsOn || !campaign?.endsOn) return false;
+  if (campaign.soldOut) return false;
   const key = getZonedDateKey(now, campaign.timezone || CAMPAIGN_TIMEZONE);
   return key >= campaign.startsOn && key <= campaign.endsOn;
 }

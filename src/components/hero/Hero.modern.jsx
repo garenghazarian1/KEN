@@ -4,6 +4,7 @@ import { useEffect, useRef, useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import { motion } from "framer-motion";
+import CampaignFilm from "@/components/campaign/CampaignFilm";
 import CampaignPoster from "@/components/campaign/CampaignPoster";
 import styles from "./Hero.modern.module.css";
 
@@ -200,7 +201,9 @@ export default function HeroModern({ campaign = null }) {
         </div>
       </section>
 
-      {campaign && !campaign.packages?.length ? (
+      {campaign?.media ? (
+        <CampaignFilm campaign={campaign} />
+      ) : campaign && !campaign.packages?.length ? (
         <CampaignPoster campaign={campaign} />
       ) : null}
 

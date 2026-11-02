@@ -5,6 +5,9 @@ import styles from "./cookie.module.css";
 export const metadata = {
   title: `Cookie Notice | ${BUSINESS.name}`,
   description: `Cookie Notice for ${BUSINESS.name}`,
+  alternates: {
+    canonical: "/cookie-notice",
+  },
 };
 
 export default function CookieNotice() {

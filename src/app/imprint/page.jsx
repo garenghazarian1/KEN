@@ -6,6 +6,9 @@ import styles from "./imprint.module.css";
 export const metadata = {
   title: "Imprint",
   description: `Legal information and imprint for ${BUSINESS.name}`,
+  alternates: {
+    canonical: "/imprint",
+  },
 };
 
 export default function Imprint() {

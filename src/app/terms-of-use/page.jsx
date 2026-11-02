@@ -4,6 +4,9 @@ import styles from "./terms.module.css";
 export const metadata = {
   title: `Terms of Use | ${BUSINESS.name}`,
   description: `Terms of Use for ${BUSINESS.name}`,
+  alternates: {
+    canonical: "/terms-of-use",
+  },
 };
 
 export default function TermsOfUse() {

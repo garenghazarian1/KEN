@@ -1,4 +1,4 @@
-Last updated: 1 November 2026
+Last updated: 2 November 2026
 Last verified against code: 1 Nov 2026 (HEAD 8634780, working tree)
 
 # Ken AI Assistant — Ani (Text + Voice)
@@ -174,7 +174,7 @@ CTAs. Cron inactivity does not change `handed_off` rows.
    so they do not drown FAQ / campaign grounding.
 2. **Active campaigns** (`src/lib/assistant/campaignContext.js` +
    `src/data/campaigns.js`): whatever the active entry lists — packages and
-   Hot Tuesday, or a single offer such as the Pink October Monday haircut.
+   Hot Tuesday, or a single offer such as the Pink October Monday haircut or the November iPhone draw. A `soldOut` campaign is not active.
    Injected into the system prompt the same way as catalog context (text chat +
    Realtime turn). See `docs/CAMPAIGNS.md`.
 3. Curated FAQ + approved copy: `src/data/assistantFaq.js` — includes
@@ -282,6 +282,7 @@ CTAs. Cron inactivity does not change `handed_off` rows.
 
 ## History
 
+- **2 November 2026** — November iPhone offer (AED 500, 200 subscribers, voice-over on the film, starts muted). `soldOut` hides it before `endsOn`. Ani quotes that block and does not invent packages.
 - **12 October 2026** — Pink October is the active campaign (free Monday
   haircut, no packages). Ani quotes that block and does not invent August
   packages or Hot Tuesday while it is the active entry.

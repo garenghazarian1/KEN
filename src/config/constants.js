@@ -83,6 +83,7 @@ export const SOCIAL_MEDIA = {
     beauty: "https://www.facebook.com/profile.php?id=100087593044512",
     barbershop: "https://www.facebook.com/profile.php?id=61570395518132",
   },
+  youtube: "https://www.youtube.com/@kenbeautyad",
 };
 
 // Social Media Handles (for display)
@@ -100,6 +101,7 @@ export const SOCIAL_HANDLES = {
     beauty: "Ken Beauty Salon",
     barbershop: "Ken Barbershop",
   },
+  youtube: "@kenbeautyad",
 };
 
 // Business Information
@@ -287,4 +289,5 @@ export const getSocialMediaArray = () => [
   SOCIAL_MEDIA.tiktok.beauty,
   SOCIAL_MEDIA.facebook.beauty,
   SOCIAL_MEDIA.facebook.barbershop,
+  SOCIAL_MEDIA.youtube,
 ];
