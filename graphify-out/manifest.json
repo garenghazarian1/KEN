@@ -65,8 +65,8 @@
     "semantic_hash": ""
   },
   "C:\\Users\\garen\\Desktop\\01-WEB-DEV\\KenLight02\\ken\\src\\app\\loading.jsx": {
-    "mtime": 1765052027.0468338,
-    "ast_hash": "f0b4d2ab854d4cce7904ee576603d7df",
+    "mtime": 1793605104.542055,
+    "ast_hash": "d52cded308829847a78e35231ccff10a",
     "semantic_hash": ""
   },
   "C:\\Users\\garen\\Desktop\\01-WEB-DEV\\KenLight02\\ken\\src\\app\\not-found.jsx": {
@@ -975,13 +975,13 @@
     "semantic_hash": ""
   },
   "C:\\Users\\garen\\Desktop\\01-WEB-DEV\\KenLight02\\ken\\src\\app\\(navPages)\\services\\page.jsx": {
-    "mtime": 1791805006.8798592,
-    "ast_hash": "94c633ef6533e4b83b5a9542058e3b58",
+    "mtime": 1793581498.9783,
+    "ast_hash": "20400626f04732e798a498aa1cf8d357",
     "semantic_hash": ""
   },
   "C:\\Users\\garen\\Desktop\\01-WEB-DEV\\KenLight02\\ken\\src\\components\\serviceMenu\\ServiceMenu.jsx": {
-    "mtime": 1790761847.975373,
-    "ast_hash": "94a5b72587937fb06edd16e2d657fd05",
+    "mtime": 1793608003.7975621,
+    "ast_hash": "c53c0011701f66e6c193a284d130b346",
     "semantic_hash": ""
   },
   "C:\\Users\\garen\\Desktop\\01-WEB-DEV\\KenLight02\\ken\\src\\lib\\business\\serviceCatalog.js": {
@@ -1155,8 +1155,8 @@
     "semantic_hash": ""
   },
   "C:\\Users\\garen\\Desktop\\01-WEB-DEV\\KenLight02\\ken\\docs\\PUBLIC_API_INTEGRATION.md": {
-    "mtime": 1793573134.5692277,
-    "ast_hash": "9c3965e96103b8f8377ff186125f02ad",
+    "mtime": 1793609559.835859,
+    "ast_hash": "fd5668ab73f53f594bee2642ee113bb6",
     "semantic_hash": ""
   },
   "C:\\Users\\garen\\Desktop\\01-WEB-DEV\\KenLight02\\ken\\scripts\\graphify-services-update.mjs": {
@@ -1385,8 +1385,8 @@
     "semantic_hash": ""
   },
   "C:\\Users\\garen\\Desktop\\01-WEB-DEV\\KenLight02\\ken\\src\\components\\loading\\navbar\\ServicesMegaMenu\\ServicesMegaMenu.jsx": {
-    "mtime": 1793573156.363305,
-    "ast_hash": "f34660331b3d5e5e4f41a1c099275f38",
+    "mtime": 1793609437.0191174,
+    "ast_hash": "d90ebe61eb951164afb36071f03dd01e",
     "semantic_hash": ""
   },
   "C:\\Users\\garen\\Desktop\\01-WEB-DEV\\KenLight02\\ken\\vercel.json": {

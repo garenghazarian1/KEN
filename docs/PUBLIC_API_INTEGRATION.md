@@ -1,3 +1,4 @@
+Last updated: 2 November 2026
 Last verified against code: 1 Nov 2026 (HEAD 8634780, working tree)
 
 # Public API Integration (Admin System)
@@ -66,7 +67,9 @@ expand under their parent. There is no Back / drill-down level. Escape closes
 the drawer. Desktop `Navbar.modern` uses the same catalog in a **mega panel**
 (category rail + nested pane), not a full-screen sheet. Rows deep-link to
 `/services?category=…&sub=…`. Catalog loads on first open via `/api/services/catalog`
-(includes first image URL per node). Hover on the desktop trigger prefetches the
+(includes first image URL per node). Until that response arrives, the open menu
+keeps the loaded layout with a brand-colour skeleton; “Loading services” stays
+available to screen readers. Hover on the desktop trigger prefetches the
 catalog. Rows show thumbs via Cloudinary `c_fit` transform + static category
 fallbacks. The open category or subcategory becomes a **centered selected
 block**; its children stay a left-aligned list. Opening a row only pushes it

@@ -1,4 +1,3 @@
-import { Suspense } from "react";
 import ServiceMenu from "@/components/serviceMenu/ServiceMenu";
 import { BUSINESS } from "@/config/constants";
 import {
@@ -30,7 +29,12 @@ export const metadata = {
   },
 };
 
-export default async function ServicesPage() {
+function queryValue(value) {
+  const raw = Array.isArray(value) ? value[0] : value;
+  return typeof raw === "string" && raw ? raw : null;
+}
+
+export default async function ServicesPage({ searchParams }) {
   let sections = [];
   let error = null;
 
@@ -42,10 +46,12 @@ export default async function ServicesPage() {
   }
 
   return (
-    <>
-      <Suspense fallback={null}>
-        <ServiceMenu sections={sections} error={error} />
-      </Suspense>
-    </>
+    <ServiceMenu
+      sections={sections}
+      error={error}
+      initialCategory={queryValue(searchParams?.category)}
+      initialService={queryValue(searchParams?.service)}
+      initialSubcategories={queryValue(searchParams?.sub)}
+    />
   );
 }

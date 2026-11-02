@@ -1,16 +1,16 @@
 # Graph Report - ken  (2026-11-02)
 
 ## Corpus Check
-- 192 files · ~743,587 words
+- 192 files · ~744,158 words
 - Verdict: corpus is large enough that graph structure adds value.
 
 ## Summary
-- 1383 nodes · 1653 edges · 152 communities (114 shown, 38 thin omitted)
-- Extraction: 91% EXTRACTED · 9% INFERRED · 0% AMBIGUOUS · INFERRED: 141 edges (avg confidence: 0.8)
+- 1396 nodes · 1669 edges · 147 communities (112 shown, 35 thin omitted)
+- Extraction: 92% EXTRACTED · 8% INFERRED · 0% AMBIGUOUS · INFERRED: 141 edges (avg confidence: 0.8)
 - Token cost: 0 input · 0 output
 
 ## Graph Freshness
-- Built from commit: `c295646f`
+- Built from commit: `c4d642e9`
 - Run `git rev-parse HEAD` and compare to check if the graph is stale.
 - Run `graphify update .` after code changes (no API cost).
 
@@ -134,11 +134,7 @@
 - [[_COMMUNITY_Community 138|Community 138]]
 - [[_COMMUNITY_Community 139|Community 139]]
 - [[_COMMUNITY_Community 140|Community 140]]
-- [[_COMMUNITY_Community 141|Community 141]]
-- [[_COMMUNITY_Community 142|Community 142]]
 - [[_COMMUNITY_Community 143|Community 143]]
-- [[_COMMUNITY_Community 145|Community 145]]
-- [[_COMMUNITY_Community 147|Community 147]]
 
 ## God Nodes (most connected - your core abstractions)
 1. `Image` - 39 edges
@@ -155,16 +151,16 @@
 ## Surprising Connections (you probably didn't know these)
 - `Home()` --calls--> `getActiveCampaign()`  [INFERRED]
   src/app/page.jsx → src/lib/business/campaigns.js
-- `generateMetadata()` --calls--> `getActiveCampaign()`  [INFERRED]
-  src/app/(navPages)/offers/page.jsx → src/lib/business/campaigns.js
-- `OffersPage()` --calls--> `getActiveCampaign()`  [INFERRED]
-  src/app/(navPages)/offers/page.jsx → src/lib/business/campaigns.js
-- `OffersPage()` --calls--> `isCampaignActive()`  [INFERRED]
-  src/app/(navPages)/offers/page.jsx → src/lib/business/campaigns.js
 - `ServicesPage()` --calls--> `getActiveCampaign()`  [INFERRED]
   src/app/(navPages)/services/page.jsx → src/lib/business/campaigns.js
+- `POST()` --calls--> `buildCampaignContext()`  [INFERRED]
+  src/app/api/assistant/chat/route.js → src/lib/assistant/campaignContext.js
+- `POST()` --calls--> `buildCatalogContext()`  [INFERRED]
+  src/app/api/assistant/chat/route.js → src/lib/assistant/catalogContext.js
+- `POST()` --calls--> `detectEscalation()`  [INFERRED]
+  src/app/api/assistant/chat/route.js → src/lib/assistant/intentGate.js
 
-## Communities (152 total, 38 thin omitted)
+## Communities (147 total, 35 thin omitted)
 
 ### Community 0 - "Community 0"
 Cohesion: 0.20
@@ -246,6 +242,10 @@ Nodes (14): astHash(), containsEdges, fileNodes, graph, graphPath, inferredCalls
 Cohesion: 0.12
 Nodes (16): 1. Replace the master image, 2. Regenerate all icon sizes, 3. Bump cache-bust revisions, 3. Bump cache-bust revisions (and rename if Google is stale), 4. Deploy, 5. Update graphify, 6. Verify, Brand logo & favicon maintenance (+8 more)
 
+### Community 20 - "Community 20"
+Cohesion: 0.09
+Nodes (3): paragraphs, coreValues, services
+
 ### Community 21 - "Community 21"
 Cohesion: 0.22
 Nodes (8): compilerOptions, paths, exclude, @/*, typeAcquisition, disableFilenameBasedTypeAcquisition, enable, exclude
@@ -263,12 +263,12 @@ Cohesion: 0.50
 Nodes (3): description, name, version
 
 ### Community 31 - "Community 31"
-Cohesion: 0.15
-Nodes (3): AssistantPanel(), getAssistantQuickChips(), useAssistantRealtime()
+Cohesion: 0.06
+Nodes (33): Home(), localBusinessJsonLd, metadata, buildCampaignContext(), formatCampaignContext(), isCampaignQuery(), august, october (+25 more)
 
 ### Community 33 - "Community 33"
-Cohesion: 0.11
-Nodes (12): bgReveal, captionReveal, descriptions, galleryItemVariants, galleryViewport, HERO_CLIPS, HERO_POSTER, HERO_VIDEO_PROPS (+4 more)
+Cohesion: 0.10
+Nodes (20): bgReveal, captionReveal, descriptions, galleryItemVariants, galleryViewport, HERO_CLIPS, HERO_POSTER, HERO_VIDEO_PROPS (+12 more)
 
 ### Community 37 - "Community 37"
 Cohesion: 0.20
@@ -287,8 +287,8 @@ Cohesion: 0.22
 Nodes (6): connectDB, connectServicesDB, getLeadEventModel(), leadEventSchema, clientIp(), POST()
 
 ### Community 43 - "Community 43"
-Cohesion: 0.15
-Nodes (21): accordionGroups(), CatalogAccordion(), columnPreview(), desktopColumns(), DesktopMegaPanel(), directGroupId(), GroupAccordionList(), hasArabic() (+13 more)
+Cohesion: 0.10
+Nodes (27): accordionGroups(), CatalogAccordion(), columnPreview(), DESKTOP_CATEGORY_BONES, DESKTOP_PRICE_COLUMNS, desktopColumns(), DesktopMegaPanel(), directGroupId() (+19 more)
 
 ### Community 44 - "Community 44"
 Cohesion: 0.07
@@ -327,8 +327,8 @@ Cohesion: 0.22
 Nodes (8): Basic Component Template, code:jsx ("use client"; // Interactive or animated components only. Pa), Component Development Patterns Guide, Component Structure, Component Structure Checklist, Quick Reference Checklist, Resources, Table of Contents
 
 ### Community 69 - "Community 69"
-Cohesion: 0.18
-Nodes (12): AssistantContext, AssistantNavButton(), AssistantPanel, AssistantProvider(), AssistantWidget(), useAssistant(), ASSISTANT_LAUNCHER_TIPS, ASSISTANT_QUICK_CHIPS (+4 more)
+Cohesion: 0.10
+Nodes (16): AssistantContext, AssistantNavButton(), AssistantPanel, AssistantProvider(), AssistantWidget(), useAssistant(), getSpecialPeriodLogo(), DraggableWhatsAppButton() (+8 more)
 
 ### Community 70 - "Community 70"
 Cohesion: 0.14
@@ -376,11 +376,11 @@ Nodes (7): cSpell.ignorePaths, cSpell.words, files.watcherExclude, **/graphify-o
 
 ### Community 87 - "Community 87"
 Cohesion: 0.06
-Nodes (42): getCategoryImage(), isMenSection(), SERVICE_CATEGORY_IMAGES, BookingGuide(), BookingHint(), bookingMessage(), branchChoice(), BookingSheet() (+34 more)
+Nodes (44): getCategoryImage(), isMenSection(), SERVICE_CATEGORY_IMAGES, BookingGuide(), BookingHint(), bookingMessage(), branchChoice(), BookingSheet() (+36 more)
 
 ### Community 88 - "Community 88"
-Cohesion: 0.06
-Nodes (36): buildCatalogContext(), formatCategoryOverview(), getCachedCatalog(), loadCatalog(), localeCaches, mergeHits(), buildServiceSections(), BusinessSchema (+28 more)
+Cohesion: 0.16
+Nodes (10): buildServiceSections(), BusinessSchema, BusinessServiceCategorySchema, BusinessServiceItemCategoryLinkSchema, BusinessServiceItemSchema, getModel(), getServiceCatalog(), metadata (+2 more)
 
 ### Community 89 - "Community 89"
 Cohesion: 0.40
@@ -423,8 +423,8 @@ Cohesion: 0.40
 Nodes (4): Assistant grounding (same pattern as catalog), Campaigns (promotional packages), Updating a campaign, Website surfaces
 
 ### Community 103 - "Community 103"
-Cohesion: 0.13
-Nodes (15): BookingDock(), FOCUSABLE_SELECTOR, normalizedService(), normalizeServices(), readBookingServices(), toggleBookingService(), useBookingServices(), writeBookingServices() (+7 more)
+Cohesion: 0.30
+Nodes (8): BookingDock(), FOCUSABLE_SELECTOR, normalizedService(), normalizeServices(), readBookingServices(), toggleBookingService(), useBookingServices(), writeBookingServices()
 
 ### Community 107 - "Community 107"
 Cohesion: 0.25
@@ -439,8 +439,8 @@ Cohesion: 0.50
 Nodes (3): bad, old, parsed
 
 ### Community 111 - "Community 111"
-Cohesion: 0.53
-Nodes (8): int, Path, build_square(), main(), Generates the full favicon / PWA icon suite from public/salon-logo-2026.jpg., save_ico(), save_png(), save_svg_wrapper()
+Cohesion: 0.21
+Nodes (11): buildServiceSearchCatalog(), searchServices(), suggestServiceTitles(), appearances, catalog, hits, sections, services (+3 more)
 
 ### Community 113 - "Community 113"
 Cohesion: 0.33
@@ -463,16 +463,16 @@ Cohesion: 0.29
 Nodes (7): Contact Page, Footer, Gallery Page, Hero Section, Mobile-Specific Issues, Navbar, Portfolio Components
 
 ### Community 124 - "Community 124"
-Cohesion: 0.27
-Nodes (8): tCampaign(), CampaignPoster(), linesOf(), OffersContent(), generateMetadata(), metadata, offerItems(), OffersPage()
+Cohesion: 0.39
+Nodes (6): buildCatalogContext(), formatCategoryOverview(), getCachedCatalog(), loadCatalog(), localeCaches, mergeHits()
 
 ### Community 125 - "Community 125"
 Cohesion: 0.29
 Nodes (7): 10. Contact Page Legacy CSS, 11. NotFound Component, 12. ErrorBoundary Component, 13. Legal Pages Styling, 14. Home Page (Main Page), 9. Legacy Component Cleanup, Medium Priority Improvements
 
 ### Community 127 - "Community 127"
-Cohesion: 0.36
-Nodes (7): buildCampaignContext(), formatCampaignContext(), isCampaignQuery(), august, october, result, text
+Cohesion: 0.38
+Nodes (6): parseSubcategoryIdsParam(), resolveOpenSubcategoryIds(), SERVICE_CATEGORY_QUERY_KEY, SERVICE_SUBCATEGORIES_QUERY_KEY, syncServiceCategoryToUrl(), syncServiceMenuToUrl()
 
 ### Community 128 - "Community 128"
 Cohesion: 0.40
@@ -483,8 +483,8 @@ Cohesion: 0.50
 Nodes (4): 1. Layout.jsx ClassName Error ⚠️, code:jsx (className={`${inter.className}, ${lora.className}`}), code:jsx (className={`${inter.className} ${lora.className}`}), Critical Issues
 
 ### Community 130 - "Community 130"
-Cohesion: 0.43
-Nodes (6): formatCampaignPrice(), getActiveCampaign(), getZonedDateKey(), isCampaignActive(), campaign, key
+Cohesion: 0.60
+Nodes (4): firstImage(), GET(), slimItem(), slimSections()
 
 ### Community 135 - "Community 135"
 Cohesion: 0.67
@@ -498,36 +498,28 @@ Nodes (3): 21. Bundle Size Optimization, 22. Animation Performance, Performance 
 Cohesion: 0.67
 Nodes (3): 25. Standardize Component Structure, 26. CSS Variable Migration, Modernization Tasks
 
-### Community 140 - "Community 140"
-Cohesion: 0.25
-Nodes (3): DraggableWhatsAppButton(), FLOATING_WHATSAPP, useAfterHeroVideo()
-
-### Community 141 - "Community 141"
-Cohesion: 0.50
-Nodes (3): Home(), localBusinessJsonLd, metadata
-
 ### Community 143 - "Community 143"
 Cohesion: 0.67
 Nodes (3): 5. Animation Performance, code:jsx (<motion.div), code:jsx (<motion.div)
 
 ## Knowledge Gaps
-- **643 isolated node(s):** `extends`, `@/*`, `enable`, `disableFilenameBasedTypeAcquisition`, `exclude` (+638 more)
+- **648 isolated node(s):** `extends`, `@/*`, `enable`, `disableFilenameBasedTypeAcquisition`, `exclude` (+643 more)
   These have ≤1 connection - possible missing edges or undocumented components.
-- **38 thin communities (<3 nodes) omitted from report** — run `graphify query` to explore isolated nodes.
+- **35 thin communities (<3 nodes) omitted from report** — run `graphify query` to explore isolated nodes.
 
 ## Suggested Questions
 _Questions this graph is uniquely positioned to answer:_
 
-- **Why does `Image` connect `Community 42` to `Community 4`, `Community 133`, `Community 134`, `Community 137`, `Community 142`, `Community 146`, `Community 20`, `Community 148`, `Community 149`, `Community 23`, `Community 150`, `Community 25`, `Community 151`, `Community 31`, `Community 33`, `Community 34`, `Community 39`, `Community 43`, `Community 53`, `Community 69`, `Community 87`, `Community 94`, `Community 103`, `Community 111`, `Community 124`?**
-  _High betweenness centrality (0.099) - this node is a cross-community bridge._
-- **Why does `ServicesPage()` connect `Community 88` to `Community 130`, `Community 87`?**
-  _High betweenness centrality (0.051) - this node is a cross-community bridge._
-- **Why does `getServiceCatalog()` connect `Community 88` to `Community 41`?**
-  _High betweenness centrality (0.039) - this node is a cross-community bridge._
+- **Why does `Image` connect `Community 42` to `Community 4`, `Community 133`, `Community 134`, `Community 137`, `Community 140`, `Community 141`, `Community 142`, `Community 145`, `Community 146`, `Community 20`, `Community 23`, `Community 25`, `Community 31`, `Community 33`, `Community 34`, `Community 39`, `Community 43`, `Community 53`, `Community 69`, `Community 87`, `Community 94`?**
+  _High betweenness centrality (0.095) - this node is a cross-community bridge._
+- **Why does `ServicesPage()` connect `Community 88` to `Community 87`, `Community 31`?**
+  _High betweenness centrality (0.049) - this node is a cross-community bridge._
+- **Why does `getServiceCatalog()` connect `Community 88` to `Community 41`, `Community 130`, `Community 124`?**
+  _High betweenness centrality (0.037) - this node is a cross-community bridge._
 - **Are the 10 inferred relationships involving `POST()` (e.g. with `buildCampaignContext()` and `buildCatalogContext()`) actually correct?**
   _`POST()` has 10 INFERRED edges - model-reasoned connections that need verification._
 - **What connects `extends`, `@/*`, `enable` to the rest of the system?**
-  _644 weakly-connected nodes found - possible documentation gaps or missing edges._
+  _649 weakly-connected nodes found - possible documentation gaps or missing edges._
 - **Should `Community 2` be split into smaller, more focused modules?**
   _Cohesion score 0.043478260869565216 - nodes in this community are weakly interconnected._
 - **Should `Community 3` be split into smaller, more focused modules?**

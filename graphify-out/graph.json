@@ -1404,7 +1404,7 @@
       "source_file": "scripts/generate-brand-icons.py",
       "source_location": "L1",
       "id": "scripts_generate_brand_icons_py",
-      "community": 111,
+      "community": 33,
       "norm_label": "generate-brand-icons.py"
     },
     {
@@ -1413,7 +1413,7 @@
       "source_file": "scripts/generate-brand-icons.py",
       "source_location": "L43",
       "id": "scripts_generate_brand_icons_build_square",
-      "community": 111,
+      "community": 33,
       "norm_label": "build_square()"
     },
     {
@@ -1422,7 +1422,7 @@
       "source_file": "scripts/generate-brand-icons.py",
       "source_location": "L43",
       "id": "int",
-      "community": 111,
+      "community": 33,
       "norm_label": "int"
     },
     {
@@ -1440,7 +1440,7 @@
       "source_file": "scripts/generate-brand-icons.py",
       "source_location": "L53",
       "id": "scripts_generate_brand_icons_save_png",
-      "community": 111,
+      "community": 33,
       "norm_label": "save_png()"
     },
     {
@@ -1449,7 +1449,7 @@
       "source_file": "scripts/generate-brand-icons.py",
       "source_location": "L53",
       "id": "path",
-      "community": 111,
+      "community": 33,
       "norm_label": "path"
     },
     {
@@ -1458,7 +1458,7 @@
       "source_file": "scripts/generate-brand-icons.py",
       "source_location": "L58",
       "id": "scripts_generate_brand_icons_save_ico",
-      "community": 111,
+      "community": 33,
       "norm_label": "save_ico()"
     },
     {
@@ -1467,7 +1467,7 @@
       "source_file": "scripts/generate-brand-icons.py",
       "source_location": "L64",
       "id": "scripts_generate_brand_icons_save_svg_wrapper",
-      "community": 111,
+      "community": 33,
       "norm_label": "save_svg_wrapper()"
     },
     {
@@ -1476,7 +1476,7 @@
       "source_file": "scripts/generate-brand-icons.py",
       "source_location": "L78",
       "id": "scripts_generate_brand_icons_main",
-      "community": 111,
+      "community": 33,
       "norm_label": "main()"
     },
     {
@@ -1485,7 +1485,7 @@
       "source_file": "scripts/generate-brand-icons.py",
       "source_location": "L1",
       "id": "scripts_generate_brand_icons_rationale_1",
-      "community": 111,
+      "community": 33,
       "norm_label": "generates the full favicon / pwa icon suite from public/salon-logo-2026.jpg."
     },
     {
@@ -1717,7 +1717,7 @@
       "label": "Loading()",
       "file_type": "code",
       "source_file": "src/app/loading.jsx",
-      "source_location": "L3",
+      "source_location": "L4",
       "id": "app_loading_loading",
       "community": 55,
       "norm_label": "loading()"
@@ -1746,7 +1746,7 @@
       "source_file": "src/app/page.jsx",
       "source_location": "L1",
       "id": "src_app_page_jsx",
-      "community": 141,
+      "community": 31,
       "norm_label": "page.jsx"
     },
     {
@@ -1755,7 +1755,7 @@
       "source_file": "src/app/page.jsx",
       "source_location": "L16",
       "id": "app_page_metadata",
-      "community": 141,
+      "community": 31,
       "norm_label": "metadata"
     },
     {
@@ -1764,7 +1764,7 @@
       "source_file": "src/app/page.jsx",
       "source_location": "L45",
       "id": "app_page_localbusinessjsonld",
-      "community": 141,
+      "community": 31,
       "norm_label": "localbusinessjsonld"
     },
     {
@@ -1773,7 +1773,7 @@
       "source_file": "src/app/page.jsx",
       "source_location": "L62",
       "id": "app_page_home",
-      "community": 141,
+      "community": 31,
       "norm_label": "home()"
     },
     {
@@ -1944,7 +1944,7 @@
       "source_file": "src/app/(navPages)/offers/page.jsx",
       "source_location": "L1",
       "id": "src_app_navpages_offers_page_jsx",
-      "community": 124,
+      "community": 31,
       "norm_label": "page.jsx"
     },
     {
@@ -1953,7 +1953,7 @@
       "source_file": "src/app/(navPages)/offers/page.jsx",
       "source_location": "L17",
       "id": "offers_page_generatemetadata",
-      "community": 124,
+      "community": 31,
       "norm_label": "generatemetadata()"
     },
     {
@@ -1962,7 +1962,7 @@
       "source_file": "src/app/(navPages)/offers/page.jsx",
       "source_location": "L46",
       "id": "offers_page_offeritems",
-      "community": 124,
+      "community": 31,
       "norm_label": "offeritems()"
     },
     {
@@ -1971,7 +1971,7 @@
       "source_file": "src/app/(navPages)/offers/page.jsx",
       "source_location": "L73",
       "id": "offers_page_offerspage",
-      "community": 124,
+      "community": 31,
       "norm_label": "offerspage()"
     },
     {
@@ -1987,16 +1987,25 @@
       "label": "metadata",
       "file_type": "code",
       "source_file": "src/app/(navPages)/services/page.jsx",
-      "source_location": "L12",
+      "source_location": "L11",
       "id": "services_page_metadata",
       "community": 88,
       "norm_label": "metadata"
     },
     {
+      "label": "queryValue()",
+      "file_type": "code",
+      "source_file": "src/app/(navPages)/services/page.jsx",
+      "source_location": "L32",
+      "id": "services_page_queryvalue",
+      "community": 88,
+      "norm_label": "queryvalue()"
+    },
+    {
       "label": "ServicesPage()",
       "file_type": "code",
       "source_file": "src/app/(navPages)/services/page.jsx",
-      "source_location": "L33",
+      "source_location": "L37",
       "id": "services_page_servicespage",
       "community": 88,
       "norm_label": "servicespage()"
@@ -2403,7 +2412,7 @@
       "source_file": "src/app/api/services/catalog/route.js",
       "source_location": "L1",
       "id": "src_app_api_services_catalog_route_js",
-      "community": 88,
+      "community": 130,
       "norm_label": "route.js"
     },
     {
@@ -2412,7 +2421,7 @@
       "source_file": "src/app/api/services/catalog/route.js",
       "source_location": "L11",
       "id": "catalog_route_firstimage",
-      "community": 88,
+      "community": 130,
       "norm_label": "firstimage()"
     },
     {
@@ -2421,7 +2430,7 @@
       "source_file": "src/app/api/services/catalog/route.js",
       "source_location": "L17",
       "id": "catalog_route_slimitem",
-      "community": 88,
+      "community": 130,
       "norm_label": "slimitem()"
     },
     {
@@ -2430,7 +2439,7 @@
       "source_file": "src/app/api/services/catalog/route.js",
       "source_location": "L26",
       "id": "catalog_route_slimsections",
-      "community": 88,
+      "community": 130,
       "norm_label": "slimsections()"
     },
     {
@@ -2439,7 +2448,7 @@
       "source_file": "src/app/api/services/catalog/route.js",
       "source_location": "L41",
       "id": "catalog_route_get",
-      "community": 88,
+      "community": 130,
       "norm_label": "get()"
     },
     {
@@ -3087,7 +3096,7 @@
       "source_file": "src/components/campaign/CampaignPoster.jsx",
       "source_location": "L1",
       "id": "src_components_campaign_campaignposter_jsx",
-      "community": 124,
+      "community": 31,
       "norm_label": "campaignposter.jsx"
     },
     {
@@ -3096,7 +3105,7 @@
       "source_file": "src/components/campaign/CampaignPoster.jsx",
       "source_location": "L11",
       "id": "campaign_campaignposter_linesof",
-      "community": 124,
+      "community": 31,
       "norm_label": "linesof()"
     },
     {
@@ -3105,7 +3114,7 @@
       "source_file": "src/components/campaign/CampaignPoster.jsx",
       "source_location": "L22",
       "id": "campaign_campaignposter_campaignposter",
-      "community": 124,
+      "community": 31,
       "norm_label": "campaignposter()"
     },
     {
@@ -3114,7 +3123,7 @@
       "source_file": "src/components/campaign/OffersContent.jsx",
       "source_location": "L1",
       "id": "src_components_campaign_offerscontent_jsx",
-      "community": 124,
+      "community": 31,
       "norm_label": "offerscontent.jsx"
     },
     {
@@ -3123,7 +3132,7 @@
       "source_file": "src/components/campaign/OffersContent.jsx",
       "source_location": "L9",
       "id": "campaign_offerscontent_offerscontent",
-      "community": 124,
+      "community": 31,
       "norm_label": "offerscontent()"
     },
     {
@@ -3231,7 +3240,7 @@
       "source_file": "src/components/DraggableWhatsAppButton/DraggableWhatsAppButton.jsx",
       "source_location": "L1",
       "id": "src_components_draggablewhatsappbutton_draggablewhatsappbutton_jsx",
-      "community": 140,
+      "community": 69,
       "norm_label": "draggablewhatsappbutton.jsx"
     },
     {
@@ -3240,7 +3249,7 @@
       "source_file": "src/components/DraggableWhatsAppButton/DraggableWhatsAppButton.jsx",
       "source_location": "L14",
       "id": "draggablewhatsappbutton_draggablewhatsappbutton_floating_whatsapp",
-      "community": 140,
+      "community": 69,
       "norm_label": "floating_whatsapp"
     },
     {
@@ -3249,7 +3258,7 @@
       "source_file": "src/components/DraggableWhatsAppButton/DraggableWhatsAppButton.jsx",
       "source_location": "L18",
       "id": "draggablewhatsappbutton_draggablewhatsappbutton_readsavedposition",
-      "community": 140,
+      "community": 69,
       "norm_label": "readsavedposition()"
     },
     {
@@ -3258,7 +3267,7 @@
       "source_file": "src/components/DraggableWhatsAppButton/DraggableWhatsAppButton.jsx",
       "source_location": "L37",
       "id": "draggablewhatsappbutton_draggablewhatsappbutton_persistposition",
-      "community": 140,
+      "community": 69,
       "norm_label": "persistposition()"
     },
     {
@@ -3267,7 +3276,7 @@
       "source_file": "src/components/DraggableWhatsAppButton/DraggableWhatsAppButton.jsx",
       "source_location": "L49",
       "id": "draggablewhatsappbutton_draggablewhatsappbutton_clampintoconstraints",
-      "community": 140,
+      "community": 69,
       "norm_label": "clampintoconstraints()"
     },
     {
@@ -3276,7 +3285,7 @@
       "source_file": "src/components/DraggableWhatsAppButton/DraggableWhatsAppButton.jsx",
       "source_location": "L64",
       "id": "draggablewhatsappbutton_draggablewhatsappbutton_draggablewhatsappbutton",
-      "community": 140,
+      "community": 69,
       "norm_label": "draggablewhatsappbutton()"
     },
     {
@@ -3393,7 +3402,7 @@
       "source_file": "src/components/hero/Hero.jsx",
       "source_location": "L1",
       "id": "src_components_hero_hero_jsx",
-      "community": 42,
+      "community": 140,
       "norm_label": "hero.jsx"
     },
     {
@@ -3402,7 +3411,7 @@
       "source_file": "src/components/hero/Hero.jsx",
       "source_location": "L9",
       "id": "hero_hero_imagesset",
-      "community": 42,
+      "community": 140,
       "norm_label": "imagesset"
     },
     {
@@ -3411,7 +3420,7 @@
       "source_file": "src/components/hero/Hero.jsx",
       "source_location": "L24",
       "id": "hero_hero_hero",
-      "community": 42,
+      "community": 140,
       "norm_label": "hero()"
     },
     {
@@ -3483,7 +3492,7 @@
       "source_file": "src/components/hero/useAfterHeroVideo.js",
       "source_location": "L1",
       "id": "src_components_hero_useafterherovideo_js",
-      "community": 140,
+      "community": 69,
       "norm_label": "useafterherovideo.js"
     },
     {
@@ -3492,7 +3501,7 @@
       "source_file": "src/components/hero/useAfterHeroVideo.js",
       "source_location": "L6",
       "id": "hero_useafterherovideo_useafterherovideo",
-      "community": 140,
+      "community": 69,
       "norm_label": "useafterherovideo()"
     },
     {
@@ -3618,7 +3627,7 @@
       "source_file": "src/components/loading/navbar/Navbar.modern.jsx",
       "source_location": "L1",
       "id": "src_components_loading_navbar_navbar_modern_jsx",
-      "community": 103,
+      "community": 69,
       "norm_label": "navbar.modern.jsx"
     },
     {
@@ -3627,7 +3636,7 @@
       "source_file": "src/components/loading/navbar/Navbar.modern.jsx",
       "source_location": "L24",
       "id": "navbar_navbar_modern_navlinks",
-      "community": 103,
+      "community": 69,
       "norm_label": "navlinks"
     },
     {
@@ -3636,7 +3645,7 @@
       "source_file": "src/components/loading/navbar/Navbar.modern.jsx",
       "source_location": "L33",
       "id": "navbar_navbar_modern_navbarmodern",
-      "community": 103,
+      "community": 69,
       "norm_label": "navbarmodern()"
     },
     {
@@ -3793,10 +3802,100 @@
       "norm_label": "desktopmegapanel()"
     },
     {
-      "label": "CatalogStatus()",
+      "label": "SKELETON_WIDTH",
       "file_type": "code",
       "source_file": "src/components/loading/navbar/ServicesMegaMenu/ServicesMegaMenu.jsx",
       "source_location": "L416",
+      "id": "servicesmegamenu_servicesmegamenu_skeleton_width",
+      "community": 43,
+      "norm_label": "skeleton_width"
+    },
+    {
+      "label": "DESKTOP_CATEGORY_BONES",
+      "file_type": "code",
+      "source_file": "src/components/loading/navbar/ServicesMegaMenu/ServicesMegaMenu.jsx",
+      "source_location": "L425",
+      "id": "servicesmegamenu_servicesmegamenu_desktop_category_bones",
+      "community": 43,
+      "norm_label": "desktop_category_bones"
+    },
+    {
+      "label": "DESKTOP_PRICE_COLUMNS",
+      "file_type": "code",
+      "source_file": "src/components/loading/navbar/ServicesMegaMenu/ServicesMegaMenu.jsx",
+      "source_location": "L434",
+      "id": "servicesmegamenu_servicesmegamenu_desktop_price_columns",
+      "community": 43,
+      "norm_label": "desktop_price_columns"
+    },
+    {
+      "label": "PHONE_CATEGORY_BONES",
+      "file_type": "code",
+      "source_file": "src/components/loading/navbar/ServicesMegaMenu/ServicesMegaMenu.jsx",
+      "source_location": "L457",
+      "id": "servicesmegamenu_servicesmegamenu_phone_category_bones",
+      "community": 43,
+      "norm_label": "phone_category_bones"
+    },
+    {
+      "label": "PHONE_ROW_BONES",
+      "file_type": "code",
+      "source_file": "src/components/loading/navbar/ServicesMegaMenu/ServicesMegaMenu.jsx",
+      "source_location": "L465",
+      "id": "servicesmegamenu_servicesmegamenu_phone_row_bones",
+      "community": 43,
+      "norm_label": "phone_row_bones"
+    },
+    {
+      "label": "skeletonText()",
+      "file_type": "code",
+      "source_file": "src/components/loading/navbar/ServicesMegaMenu/ServicesMegaMenu.jsx",
+      "source_location": "L474",
+      "id": "servicesmegamenu_servicesmegamenu_skeletontext",
+      "community": 43,
+      "norm_label": "skeletontext()"
+    },
+    {
+      "label": "SkeletonPriceColumn()",
+      "file_type": "code",
+      "source_file": "src/components/loading/navbar/ServicesMegaMenu/ServicesMegaMenu.jsx",
+      "source_location": "L478",
+      "id": "servicesmegamenu_servicesmegamenu_skeletonpricecolumn",
+      "community": 43,
+      "norm_label": "skeletonpricecolumn()"
+    },
+    {
+      "label": "DesktopCatalogSkeleton()",
+      "file_type": "code",
+      "source_file": "src/components/loading/navbar/ServicesMegaMenu/ServicesMegaMenu.jsx",
+      "source_location": "L499",
+      "id": "servicesmegamenu_servicesmegamenu_desktopcatalogskeleton",
+      "community": 43,
+      "norm_label": "desktopcatalogskeleton()"
+    },
+    {
+      "label": "PhoneCatalogSkeleton()",
+      "file_type": "code",
+      "source_file": "src/components/loading/navbar/ServicesMegaMenu/ServicesMegaMenu.jsx",
+      "source_location": "L521",
+      "id": "servicesmegamenu_servicesmegamenu_phonecatalogskeleton",
+      "community": 43,
+      "norm_label": "phonecatalogskeleton()"
+    },
+    {
+      "label": "CatalogSkeleton()",
+      "file_type": "code",
+      "source_file": "src/components/loading/navbar/ServicesMegaMenu/ServicesMegaMenu.jsx",
+      "source_location": "L544",
+      "id": "servicesmegamenu_servicesmegamenu_catalogskeleton",
+      "community": 43,
+      "norm_label": "catalogskeleton()"
+    },
+    {
+      "label": "CatalogStatus()",
+      "file_type": "code",
+      "source_file": "src/components/loading/navbar/ServicesMegaMenu/ServicesMegaMenu.jsx",
+      "source_location": "L553",
       "id": "servicesmegamenu_servicesmegamenu_catalogstatus",
       "community": 43,
       "norm_label": "catalogstatus()"
@@ -3805,7 +3904,7 @@
       "label": "ServicesMegaMenu()",
       "file_type": "code",
       "source_file": "src/components/loading/navbar/ServicesMegaMenu/ServicesMegaMenu.jsx",
-      "source_location": "L437",
+      "source_location": "L574",
       "id": "servicesmegamenu_servicesmegamenu_servicesmegamenu",
       "community": 43,
       "norm_label": "servicesmegamenu()"
@@ -3816,7 +3915,7 @@
       "source_file": "src/components/mobileNav/index.js",
       "source_location": "L1",
       "id": "src_components_mobilenav_index_js",
-      "community": 103,
+      "community": 69,
       "norm_label": "index.js"
     },
     {
@@ -3825,7 +3924,7 @@
       "source_file": "src/components/mobileNav/MobileNavBottom.jsx",
       "source_location": "L1",
       "id": "src_components_mobilenav_mobilenavbottom_jsx",
-      "community": 103,
+      "community": 69,
       "norm_label": "mobilenavbottom.jsx"
     },
     {
@@ -3834,7 +3933,7 @@
       "source_file": "src/components/mobileNav/MobileNavBottom.jsx",
       "source_location": "L29",
       "id": "mobilenav_mobilenavbottom_mobilenavlinks",
-      "community": 103,
+      "community": 69,
       "norm_label": "mobilenavlinks"
     },
     {
@@ -3843,7 +3942,7 @@
       "source_file": "src/components/mobileNav/MobileNavBottom.jsx",
       "source_location": "L36",
       "id": "mobilenav_mobilenavbottom_branchlabel",
-      "community": 103,
+      "community": 69,
       "norm_label": "branchlabel()"
     },
     {
@@ -3852,7 +3951,7 @@
       "source_file": "src/components/mobileNav/MobileNavBottom.jsx",
       "source_location": "L42",
       "id": "mobilenav_mobilenavbottom_mobilenavbottom",
-      "community": 103,
+      "community": 69,
       "norm_label": "mobilenavbottom()"
     },
     {
@@ -3861,7 +3960,7 @@
       "source_file": "src/components/mobileNav/MobileNavTop.jsx",
       "source_location": "L1",
       "id": "src_components_mobilenav_mobilenavtop_jsx",
-      "community": 103,
+      "community": 69,
       "norm_label": "mobilenavtop.jsx"
     },
     {
@@ -3870,7 +3969,7 @@
       "source_file": "src/components/mobileNav/MobileNavTop.jsx",
       "source_location": "L20",
       "id": "mobilenav_mobilenavtop_mobilenavtop",
-      "community": 103,
+      "community": 69,
       "norm_label": "mobilenavtop()"
     },
     {
@@ -3879,7 +3978,7 @@
       "source_file": "src/components/mobileNav/useHideNavOnScroll.js",
       "source_location": "L1",
       "id": "src_components_mobilenav_usehidenavonscroll_js",
-      "community": 103,
+      "community": 69,
       "norm_label": "usehidenavonscroll.js"
     },
     {
@@ -3888,7 +3987,7 @@
       "source_file": "src/components/mobileNav/useHideNavOnScroll.js",
       "source_location": "L7",
       "id": "mobilenav_usehidenavonscroll_usehidenavonscroll",
-      "community": 103,
+      "community": 69,
       "norm_label": "usehidenavonscroll()"
     },
     {
@@ -4041,7 +4140,7 @@
       "source_file": "src/components/portfolio/ePageFive/PageFive.jsx",
       "source_location": "L1",
       "id": "src_components_portfolio_epagefive_pagefive_jsx",
-      "community": 142,
+      "community": 42,
       "norm_label": "pagefive.jsx"
     },
     {
@@ -4050,7 +4149,7 @@
       "source_file": "src/components/portfolio/ePageFive/PageFive.jsx",
       "source_location": "L11",
       "id": "epagefive_pagefive_sections",
-      "community": 142,
+      "community": 42,
       "norm_label": "sections"
     },
     {
@@ -4059,7 +4158,7 @@
       "source_file": "src/components/portfolio/ePageFive/PageFive.jsx",
       "source_location": "L34",
       "id": "epagefive_pagefive_pagefive",
-      "community": 142,
+      "community": 42,
       "norm_label": "pagefive()"
     },
     {
@@ -4194,7 +4293,7 @@
       "source_file": "src/components/portfolio/lPageTwelve/PageTwelve.jsx",
       "source_location": "L1",
       "id": "src_components_portfolio_lpagetwelve_pagetwelve_jsx",
-      "community": 145,
+      "community": 20,
       "norm_label": "pagetwelve.jsx"
     },
     {
@@ -4203,7 +4302,7 @@
       "source_file": "src/components/portfolio/lPageTwelve/PageTwelve.jsx",
       "source_location": "L6",
       "id": "lpagetwelve_pagetwelve_paragraphs",
-      "community": 145,
+      "community": 20,
       "norm_label": "paragraphs"
     },
     {
@@ -4212,7 +4311,7 @@
       "source_file": "src/components/portfolio/lPageTwelve/PageTwelve.jsx",
       "source_location": "L13",
       "id": "lpagetwelve_pagetwelve_pagetwelve",
-      "community": 145,
+      "community": 20,
       "norm_label": "pagetwelve()"
     },
     {
@@ -4221,7 +4320,7 @@
       "source_file": "src/components/portfolio/mPageThirteen/PageThirteen.jsx",
       "source_location": "L1",
       "id": "src_components_portfolio_mpagethirteen_pagethirteen_jsx",
-      "community": 42,
+      "community": 141,
       "norm_label": "pagethirteen.jsx"
     },
     {
@@ -4230,7 +4329,7 @@
       "source_file": "src/components/portfolio/mPageThirteen/PageThirteen.jsx",
       "source_location": "L6",
       "id": "mpagethirteen_pagethirteen_pagethirteen",
-      "community": 42,
+      "community": 141,
       "norm_label": "pagethirteen()"
     },
     {
@@ -4239,7 +4338,7 @@
       "source_file": "src/components/portfolio/nPageFourteen/PageFourteen.jsx",
       "source_location": "L1",
       "id": "src_components_portfolio_npagefourteen_pagefourteen_jsx",
-      "community": 20,
+      "community": 142,
       "norm_label": "pagefourteen.jsx"
     },
     {
@@ -4248,7 +4347,7 @@
       "source_file": "src/components/portfolio/nPageFourteen/PageFourteen.jsx",
       "source_location": "L6",
       "id": "npagefourteen_pagefourteen_pagefourteen",
-      "community": 20,
+      "community": 142,
       "norm_label": "pagefourteen()"
     },
     {
@@ -4257,7 +4356,7 @@
       "source_file": "src/components/portfolio/oPageFifteen/PageFifteen.jsx",
       "source_location": "L1",
       "id": "src_components_portfolio_opagefifteen_pagefifteen_jsx",
-      "community": 42,
+      "community": 145,
       "norm_label": "pagefifteen.jsx"
     },
     {
@@ -4266,7 +4365,7 @@
       "source_file": "src/components/portfolio/oPageFifteen/PageFifteen.jsx",
       "source_location": "L6",
       "id": "opagefifteen_pagefifteen_pagefifteen",
-      "community": 42,
+      "community": 145,
       "norm_label": "pagefifteen()"
     },
     {
@@ -4275,7 +4374,7 @@
       "source_file": "src/components/portfolio/pPageSixteen/PageSixteen.jsx",
       "source_location": "L1",
       "id": "src_components_portfolio_ppagesixteen_pagesixteen_jsx",
-      "community": 20,
+      "community": 42,
       "norm_label": "pagesixteen.jsx"
     },
     {
@@ -4284,7 +4383,7 @@
       "source_file": "src/components/portfolio/pPageSixteen/PageSixteen.jsx",
       "source_location": "L6",
       "id": "ppagesixteen_pagesixteen_pagesixteen",
-      "community": 20,
+      "community": 42,
       "norm_label": "pagesixteen()"
     },
     {
@@ -4293,7 +4392,7 @@
       "source_file": "src/components/portfolio/qPageSeventeen/PageSeventeen.jsx",
       "source_location": "L1",
       "id": "src_components_portfolio_qpageseventeen_pageseventeen_jsx",
-      "community": 147,
+      "community": 20,
       "norm_label": "pageseventeen.jsx"
     },
     {
@@ -4302,7 +4401,7 @@
       "source_file": "src/components/portfolio/qPageSeventeen/PageSeventeen.jsx",
       "source_location": "L5",
       "id": "qpageseventeen_pageseventeen_corevalues",
-      "community": 147,
+      "community": 20,
       "norm_label": "corevalues"
     },
     {
@@ -4311,7 +4410,7 @@
       "source_file": "src/components/portfolio/qPageSeventeen/PageSeventeen.jsx",
       "source_location": "L43",
       "id": "qpageseventeen_pageseventeen_pageseventeen",
-      "community": 147,
+      "community": 20,
       "norm_label": "pageseventeen()"
     },
     {
@@ -4320,7 +4419,7 @@
       "source_file": "src/components/portfolio/rPageEighteen/PageEighteen.jsx",
       "source_location": "L1",
       "id": "src_components_portfolio_rpageeighteen_pageeighteen_jsx",
-      "community": 148,
+      "community": 42,
       "norm_label": "pageeighteen.jsx"
     },
     {
@@ -4329,7 +4428,7 @@
       "source_file": "src/components/portfolio/rPageEighteen/PageEighteen.jsx",
       "source_location": "L6",
       "id": "rpageeighteen_pageeighteen_pageeighteen",
-      "community": 148,
+      "community": 42,
       "norm_label": "pageeighteen()"
     },
     {
@@ -4365,7 +4464,7 @@
       "source_file": "src/components/portfolio/tPageTwenty/PageTwenty.jsx",
       "source_location": "L1",
       "id": "src_components_portfolio_tpagetwenty_pagetwenty_jsx",
-      "community": 149,
+      "community": 20,
       "norm_label": "pagetwenty.jsx"
     },
     {
@@ -4374,7 +4473,7 @@
       "source_file": "src/components/portfolio/tPageTwenty/PageTwenty.jsx",
       "source_location": "L6",
       "id": "tpagetwenty_pagetwenty_pagetwenty",
-      "community": 149,
+      "community": 20,
       "norm_label": "pagetwenty()"
     },
     {
@@ -4410,7 +4509,7 @@
       "source_file": "src/components/portfolio/uPageTwentyTwo/PageTwentyTwo.jsx",
       "source_location": "L1",
       "id": "src_components_portfolio_upagetwentytwo_pagetwentytwo_jsx",
-      "community": 150,
+      "community": 20,
       "norm_label": "pagetwentytwo.jsx"
     },
     {
@@ -4419,7 +4518,7 @@
       "source_file": "src/components/portfolio/uPageTwentyTwo/PageTwentyTwo.jsx",
       "source_location": "L6",
       "id": "upagetwentytwo_pagetwentytwo_pagetwentytwo",
-      "community": 150,
+      "community": 20,
       "norm_label": "pagetwentytwo()"
     },
     {
@@ -4455,7 +4554,7 @@
       "source_file": "src/components/portfolio/wPageTwentyFour/PageTwentyFour.jsx",
       "source_location": "L1",
       "id": "src_components_portfolio_wpagetwentyfour_pagetwentyfour_jsx",
-      "community": 151,
+      "community": 42,
       "norm_label": "pagetwentyfour.jsx"
     },
     {
@@ -4464,7 +4563,7 @@
       "source_file": "src/components/portfolio/wPageTwentyFour/PageTwentyFour.jsx",
       "source_location": "L6",
       "id": "wpagetwentyfour_pagetwentyfour_pagetwentyfour",
-      "community": 151,
+      "community": 42,
       "norm_label": "pagetwentyfour()"
     },
     {
@@ -4588,7 +4687,7 @@
       "label": "hasArabic()",
       "file_type": "code",
       "source_file": "src/components/serviceMenu/ServiceMenu.jsx",
-      "source_location": "L59",
+      "source_location": "L58",
       "id": "servicemenu_servicemenu_hasarabic",
       "community": 87,
       "norm_label": "hasarabic()"
@@ -4597,7 +4696,7 @@
       "label": "directColumnId()",
       "file_type": "code",
       "source_file": "src/components/serviceMenu/ServiceMenu.jsx",
-      "source_location": "L63",
+      "source_location": "L62",
       "id": "servicemenu_servicemenu_directcolumnid",
       "community": 87,
       "norm_label": "directcolumnid()"
@@ -4606,7 +4705,7 @@
       "label": "isDirectColumn()",
       "file_type": "code",
       "source_file": "src/components/serviceMenu/ServiceMenu.jsx",
-      "source_location": "L67",
+      "source_location": "L66",
       "id": "servicemenu_servicemenu_isdirectcolumn",
       "community": 87,
       "norm_label": "isdirectcolumn()"
@@ -4615,7 +4714,7 @@
       "label": "columnIdForService()",
       "file_type": "code",
       "source_file": "src/components/serviceMenu/ServiceMenu.jsx",
-      "source_location": "L71",
+      "source_location": "L70",
       "id": "servicemenu_servicemenu_columnidforservice",
       "community": 87,
       "norm_label": "columnidforservice()"
@@ -4624,7 +4723,7 @@
       "label": "pageColumns()",
       "file_type": "code",
       "source_file": "src/components/serviceMenu/ServiceMenu.jsx",
-      "source_location": "L83",
+      "source_location": "L82",
       "id": "servicemenu_servicemenu_pagecolumns",
       "community": 87,
       "norm_label": "pagecolumns()"
@@ -4633,7 +4732,7 @@
       "label": "remotePreview()",
       "file_type": "code",
       "source_file": "src/components/serviceMenu/ServiceMenu.jsx",
-      "source_location": "L105",
+      "source_location": "L104",
       "id": "servicemenu_servicemenu_remotepreview",
       "community": 87,
       "norm_label": "remotepreview()"
@@ -4642,7 +4741,7 @@
       "label": "categoryPreviewSrc()",
       "file_type": "code",
       "source_file": "src/components/serviceMenu/ServiceMenu.jsx",
-      "source_location": "L110",
+      "source_location": "L109",
       "id": "servicemenu_servicemenu_categorypreviewsrc",
       "community": 87,
       "norm_label": "categorypreviewsrc()"
@@ -4651,7 +4750,7 @@
       "label": "servicePreviewSrc()",
       "file_type": "code",
       "source_file": "src/components/serviceMenu/ServiceMenu.jsx",
-      "source_location": "L118",
+      "source_location": "L117",
       "id": "servicemenu_servicemenu_servicepreviewsrc",
       "community": 87,
       "norm_label": "servicepreviewsrc()"
@@ -4660,7 +4759,7 @@
       "label": "chapterHeading()",
       "file_type": "code",
       "source_file": "src/components/serviceMenu/ServiceMenu.jsx",
-      "source_location": "L125",
+      "source_location": "L124",
       "id": "servicemenu_servicemenu_chapterheading",
       "community": 87,
       "norm_label": "chapterheading()"
@@ -4669,7 +4768,7 @@
       "label": "serviceRow()",
       "file_type": "code",
       "source_file": "src/components/serviceMenu/ServiceMenu.jsx",
-      "source_location": "L131",
+      "source_location": "L130",
       "id": "servicemenu_servicemenu_servicerow",
       "community": 87,
       "norm_label": "servicerow()"
@@ -4678,7 +4777,7 @@
       "label": "categoryRestDelta()",
       "file_type": "code",
       "source_file": "src/components/serviceMenu/ServiceMenu.jsx",
-      "source_location": "L135",
+      "source_location": "L134",
       "id": "servicemenu_servicemenu_categoryrestdelta",
       "community": 87,
       "norm_label": "categoryrestdelta()"
@@ -4687,7 +4786,7 @@
       "label": "easeUnderCategoryRow()",
       "file_type": "code",
       "source_file": "src/components/serviceMenu/ServiceMenu.jsx",
-      "source_location": "L142",
+      "source_location": "L141",
       "id": "servicemenu_servicemenu_easeundercategoryrow",
       "community": 87,
       "norm_label": "easeundercategoryrow()"
@@ -4696,7 +4795,7 @@
       "label": "settleOpenChapter()",
       "file_type": "code",
       "source_file": "src/components/serviceMenu/ServiceMenu.jsx",
-      "source_location": "L177",
+      "source_location": "L176",
       "id": "servicemenu_servicemenu_settleopenchapter",
       "community": 87,
       "norm_label": "settleopenchapter()"
@@ -4705,7 +4804,7 @@
       "label": "settleOpenService()",
       "file_type": "code",
       "source_file": "src/components/serviceMenu/ServiceMenu.jsx",
-      "source_location": "L181",
+      "source_location": "L180",
       "id": "servicemenu_servicemenu_settleopenservice",
       "community": 87,
       "norm_label": "settleopenservice()"
@@ -4714,7 +4813,7 @@
       "label": "formatPrice()",
       "file_type": "code",
       "source_file": "src/components/serviceMenu/ServiceMenu.jsx",
-      "source_location": "L191",
+      "source_location": "L190",
       "id": "servicemenu_servicemenu_formatprice",
       "community": 87,
       "norm_label": "formatprice()"
@@ -4723,7 +4822,7 @@
       "label": "keepAmountWithCurrency()",
       "file_type": "code",
       "source_file": "src/components/serviceMenu/ServiceMenu.jsx",
-      "source_location": "L196",
+      "source_location": "L195",
       "id": "servicemenu_servicemenu_keepamountwithcurrency",
       "community": 87,
       "norm_label": "keepamountwithcurrency()"
@@ -4732,7 +4831,7 @@
       "label": "formatDuration()",
       "file_type": "code",
       "source_file": "src/components/serviceMenu/ServiceMenu.jsx",
-      "source_location": "L208",
+      "source_location": "L207",
       "id": "servicemenu_servicemenu_formatduration",
       "community": 87,
       "norm_label": "formatduration()"
@@ -4741,7 +4840,7 @@
       "label": "Highlight()",
       "file_type": "code",
       "source_file": "src/components/serviceMenu/ServiceMenu.jsx",
-      "source_location": "L213",
+      "source_location": "L212",
       "id": "servicemenu_servicemenu_highlight",
       "community": 87,
       "norm_label": "highlight()"
@@ -4750,7 +4849,7 @@
       "label": "PriceLabel()",
       "file_type": "code",
       "source_file": "src/components/serviceMenu/ServiceMenu.jsx",
-      "source_location": "L228",
+      "source_location": "L227",
       "id": "servicemenu_servicemenu_pricelabel",
       "community": 87,
       "norm_label": "pricelabel()"
@@ -4759,7 +4858,7 @@
       "label": "BookAdd()",
       "file_type": "code",
       "source_file": "src/components/serviceMenu/ServiceMenu.jsx",
-      "source_location": "L245",
+      "source_location": "L244",
       "id": "servicemenu_servicemenu_bookadd",
       "community": 87,
       "norm_label": "bookadd()"
@@ -4768,7 +4867,7 @@
       "label": "ServiceLine()",
       "file_type": "code",
       "source_file": "src/components/serviceMenu/ServiceMenu.jsx",
-      "source_location": "L268",
+      "source_location": "L267",
       "id": "servicemenu_servicemenu_serviceline",
       "community": 87,
       "norm_label": "serviceline()"
@@ -4777,7 +4876,7 @@
       "label": "SearchResultRow()",
       "file_type": "code",
       "source_file": "src/components/serviceMenu/ServiceMenu.jsx",
-      "source_location": "L400",
+      "source_location": "L486",
       "id": "servicemenu_servicemenu_searchresultrow",
       "community": 87,
       "norm_label": "searchresultrow()"
@@ -4786,7 +4885,7 @@
       "label": "SearchResultsList()",
       "file_type": "code",
       "source_file": "src/components/serviceMenu/ServiceMenu.jsx",
-      "source_location": "L431",
+      "source_location": "L517",
       "id": "servicemenu_servicemenu_searchresultslist",
       "community": 87,
       "norm_label": "searchresultslist()"
@@ -4795,7 +4894,7 @@
       "label": "SearchSuggestions()",
       "file_type": "code",
       "source_file": "src/components/serviceMenu/ServiceMenu.jsx",
-      "source_location": "L468",
+      "source_location": "L554",
       "id": "servicemenu_servicemenu_searchsuggestions",
       "community": 87,
       "norm_label": "searchsuggestions()"
@@ -4804,7 +4903,7 @@
       "label": "PriceColumn()",
       "file_type": "code",
       "source_file": "src/components/serviceMenu/ServiceMenu.jsx",
-      "source_location": "L514",
+      "source_location": "L600",
       "id": "servicemenu_servicemenu_pricecolumn",
       "community": 87,
       "norm_label": "pricecolumn()"
@@ -4813,7 +4912,7 @@
       "label": "CategoryBoard()",
       "file_type": "code",
       "source_file": "src/components/serviceMenu/ServiceMenu.jsx",
-      "source_location": "L581",
+      "source_location": "L663",
       "id": "servicemenu_servicemenu_categoryboard",
       "community": 87,
       "norm_label": "categoryboard()"
@@ -4822,18 +4921,36 @@
       "label": "initialOpenIds()",
       "file_type": "code",
       "source_file": "src/components/serviceMenu/ServiceMenu.jsx",
-      "source_location": "L856",
+      "source_location": "L930",
       "id": "servicemenu_servicemenu_initialopenids",
       "community": 87,
       "norm_label": "initialopenids()"
     },
     {
+      "label": "readMenuQuery()",
+      "file_type": "code",
+      "source_file": "src/components/serviceMenu/ServiceMenu.jsx",
+      "source_location": "L939",
+      "id": "servicemenu_servicemenu_readmenuquery",
+      "community": 87,
+      "norm_label": "readmenuquery()"
+    },
+    {
+      "label": "sameMenuQuery()",
+      "file_type": "code",
+      "source_file": "src/components/serviceMenu/ServiceMenu.jsx",
+      "source_location": "L948",
+      "id": "servicemenu_servicemenu_samemenuquery",
+      "community": 87,
+      "norm_label": "samemenuquery()"
+    },
+    {
       "label": "ServiceMenu()",
       "file_type": "code",
       "source_file": "src/components/serviceMenu/ServiceMenu.jsx",
-      "source_location": "L865",
+      "source_location": "L956",
       "id": "servicemenu_servicemenu_servicemenu",
-      "community": 88,
+      "community": 111,
       "norm_label": "servicemenu()"
     },
     {
@@ -5076,7 +5193,7 @@
       "source_file": "src/data/assistantUi.js",
       "source_location": "L1",
       "id": "src_data_assistantui_js",
-      "community": 69,
+      "community": 31,
       "norm_label": "assistantui.js"
     },
     {
@@ -5085,7 +5202,7 @@
       "source_file": "src/data/assistantUi.js",
       "source_location": "L5",
       "id": "data_assistantui_assistant_welcome",
-      "community": 69,
+      "community": 31,
       "norm_label": "assistant_welcome"
     },
     {
@@ -5094,7 +5211,7 @@
       "source_file": "src/data/assistantUi.js",
       "source_location": "L19",
       "id": "data_assistantui_base_quick_chips",
-      "community": 69,
+      "community": 31,
       "norm_label": "base_quick_chips"
     },
     {
@@ -5103,7 +5220,7 @@
       "source_file": "src/data/assistantUi.js",
       "source_location": "L26",
       "id": "data_assistantui_base_launcher_tips",
-      "community": 69,
+      "community": 31,
       "norm_label": "base_launcher_tips"
     },
     {
@@ -5121,7 +5238,7 @@
       "source_file": "src/data/assistantUi.js",
       "source_location": "L51",
       "id": "data_assistantui_getassistantlaunchertips",
-      "community": 69,
+      "community": 31,
       "norm_label": "getassistantlaunchertips()"
     },
     {
@@ -5616,7 +5733,7 @@
       "source_file": "src/lib/assistant/campaignContext.js",
       "source_location": "L1",
       "id": "src_lib_assistant_campaigncontext_js",
-      "community": 127,
+      "community": 31,
       "norm_label": "campaigncontext.js"
     },
     {
@@ -5625,7 +5742,7 @@
       "source_file": "src/lib/assistant/campaignContext.js",
       "source_location": "L30",
       "id": "assistant_campaigncontext_iscampaignquery",
-      "community": 127,
+      "community": 31,
       "norm_label": "iscampaignquery()"
     },
     {
@@ -5634,7 +5751,7 @@
       "source_file": "src/lib/assistant/campaignContext.js",
       "source_location": "L40",
       "id": "assistant_campaigncontext_formatcampaigncontext",
-      "community": 127,
+      "community": 31,
       "norm_label": "formatcampaigncontext()"
     },
     {
@@ -5643,7 +5760,7 @@
       "source_file": "src/lib/assistant/campaignContext.js",
       "source_location": "L119",
       "id": "assistant_campaigncontext_buildcampaigncontext",
-      "community": 127,
+      "community": 31,
       "norm_label": "buildcampaigncontext()"
     },
     {
@@ -5652,7 +5769,7 @@
       "source_file": "src/lib/assistant/campaignContext.test.js",
       "source_location": "L1",
       "id": "src_lib_assistant_campaigncontext_test_js",
-      "community": 127,
+      "community": 31,
       "norm_label": "campaigncontext.test.js"
     },
     {
@@ -5661,7 +5778,7 @@
       "source_file": "src/lib/assistant/campaignContext.test.js",
       "source_location": "L9",
       "id": "assistant_campaigncontext_test_august",
-      "community": 127,
+      "community": 31,
       "norm_label": "august"
     },
     {
@@ -5670,7 +5787,7 @@
       "source_file": "src/lib/assistant/campaignContext.test.js",
       "source_location": "L34",
       "id": "assistant_campaigncontext_test_text",
-      "community": 127,
+      "community": 31,
       "norm_label": "text"
     },
     {
@@ -5679,7 +5796,7 @@
       "source_file": "src/lib/assistant/campaignContext.test.js",
       "source_location": "L44",
       "id": "assistant_campaigncontext_test_october",
-      "community": 127,
+      "community": 31,
       "norm_label": "october"
     },
     {
@@ -5688,7 +5805,7 @@
       "source_file": "src/lib/assistant/campaignContext.test.js",
       "source_location": "L61",
       "id": "assistant_campaigncontext_test_result",
-      "community": 127,
+      "community": 31,
       "norm_label": "result"
     },
     {
@@ -5697,7 +5814,7 @@
       "source_file": "src/lib/assistant/catalogContext.js",
       "source_location": "L1",
       "id": "src_lib_assistant_catalogcontext_js",
-      "community": 88,
+      "community": 124,
       "norm_label": "catalogcontext.js"
     },
     {
@@ -5706,7 +5823,7 @@
       "source_file": "src/lib/assistant/catalogContext.js",
       "source_location": "L33",
       "id": "assistant_catalogcontext_localecaches",
-      "community": 88,
+      "community": 124,
       "norm_label": "localecaches"
     },
     {
@@ -5715,7 +5832,7 @@
       "source_file": "src/lib/assistant/catalogContext.js",
       "source_location": "L35",
       "id": "assistant_catalogcontext_loadcatalog",
-      "community": 88,
+      "community": 124,
       "norm_label": "loadcatalog()"
     },
     {
@@ -5724,7 +5841,7 @@
       "source_file": "src/lib/assistant/catalogContext.js",
       "source_location": "L44",
       "id": "assistant_catalogcontext_getcachedcatalog",
-      "community": 88,
+      "community": 124,
       "norm_label": "getcachedcatalog()"
     },
     {
@@ -5733,7 +5850,7 @@
       "source_file": "src/lib/assistant/catalogContext.js",
       "source_location": "L73",
       "id": "assistant_catalogcontext_formatitem",
-      "community": 88,
+      "community": 124,
       "norm_label": "formatitem()"
     },
     {
@@ -5742,7 +5859,7 @@
       "source_file": "src/lib/assistant/catalogContext.js",
       "source_location": "L88",
       "id": "assistant_catalogcontext_formatcategoryoverview",
-      "community": 88,
+      "community": 124,
       "norm_label": "formatcategoryoverview()"
     },
     {
@@ -5751,7 +5868,7 @@
       "source_file": "src/lib/assistant/catalogContext.js",
       "source_location": "L110",
       "id": "assistant_catalogcontext_mergehits",
-      "community": 88,
+      "community": 124,
       "norm_label": "mergehits()"
     },
     {
@@ -5760,7 +5877,7 @@
       "source_file": "src/lib/assistant/catalogContext.js",
       "source_location": "L132",
       "id": "assistant_catalogcontext_buildcatalogcontext",
-      "community": 88,
+      "community": 124,
       "norm_label": "buildcatalogcontext()"
     },
     {
@@ -6273,7 +6390,7 @@
       "source_file": "src/lib/business/campaigns.js",
       "source_location": "L1",
       "id": "src_lib_business_campaigns_js",
-      "community": 130,
+      "community": 31,
       "norm_label": "campaigns.js"
     },
     {
@@ -6282,7 +6399,7 @@
       "source_file": "src/lib/business/campaigns.js",
       "source_location": "L9",
       "id": "business_campaigns_getzoneddatekey",
-      "community": 130,
+      "community": 31,
       "norm_label": "getzoneddatekey()"
     },
     {
@@ -6291,7 +6408,7 @@
       "source_file": "src/lib/business/campaigns.js",
       "source_location": "L23",
       "id": "business_campaigns_iscampaignactive",
-      "community": 130,
+      "community": 31,
       "norm_label": "iscampaignactive()"
     },
     {
@@ -6300,7 +6417,7 @@
       "source_file": "src/lib/business/campaigns.js",
       "source_location": "L33",
       "id": "business_campaigns_getactivecampaign",
-      "community": 130,
+      "community": 31,
       "norm_label": "getactivecampaign()"
     },
     {
@@ -6309,7 +6426,7 @@
       "source_file": "src/lib/business/campaigns.js",
       "source_location": "L42",
       "id": "business_campaigns_tcampaign",
-      "community": 124,
+      "community": 31,
       "norm_label": "tcampaign()"
     },
     {
@@ -6318,7 +6435,7 @@
       "source_file": "src/lib/business/campaigns.js",
       "source_location": "L55",
       "id": "business_campaigns_formatcampaignprice",
-      "community": 130,
+      "community": 31,
       "norm_label": "formatcampaignprice()"
     },
     {
@@ -6327,7 +6444,7 @@
       "source_file": "src/lib/business/campaigns.test.js",
       "source_location": "L1",
       "id": "src_lib_business_campaigns_test_js",
-      "community": 130,
+      "community": 31,
       "norm_label": "campaigns.test.js"
     },
     {
@@ -6336,7 +6453,7 @@
       "source_file": "src/lib/business/campaigns.test.js",
       "source_location": "L12",
       "id": "business_campaigns_test_key",
-      "community": 130,
+      "community": 31,
       "norm_label": "key"
     },
     {
@@ -6345,7 +6462,7 @@
       "source_file": "src/lib/business/campaigns.test.js",
       "source_location": "L17",
       "id": "business_campaigns_test_campaign",
-      "community": 130,
+      "community": 31,
       "norm_label": "campaign"
     },
     {
@@ -6399,7 +6516,7 @@
       "source_file": "src/lib/business/serviceSearch.js",
       "source_location": "L1",
       "id": "src_lib_business_servicesearch_js",
-      "community": 88,
+      "community": 111,
       "norm_label": "servicesearch.js"
     },
     {
@@ -6408,7 +6525,7 @@
       "source_file": "src/lib/business/serviceSearch.js",
       "source_location": "L7",
       "id": "business_servicesearch_buildservicesearchcatalog",
-      "community": 88,
+      "community": 111,
       "norm_label": "buildservicesearchcatalog()"
     },
     {
@@ -6417,7 +6534,7 @@
       "source_file": "src/lib/business/serviceSearch.js",
       "source_location": "L65",
       "id": "business_servicesearch_searchservices",
-      "community": 88,
+      "community": 111,
       "norm_label": "searchservices()"
     },
     {
@@ -6426,7 +6543,7 @@
       "source_file": "src/lib/business/serviceSearch.js",
       "source_location": "L87",
       "id": "business_servicesearch_suggestservicetitles",
-      "community": 88,
+      "community": 111,
       "norm_label": "suggestservicetitles()"
     },
     {
@@ -6435,7 +6552,7 @@
       "source_file": "src/lib/business/serviceSearch.test.js",
       "source_location": "L1",
       "id": "src_lib_business_servicesearch_test_js",
-      "community": 88,
+      "community": 111,
       "norm_label": "servicesearch.test.js"
     },
     {
@@ -6444,7 +6561,7 @@
       "source_file": "src/lib/business/serviceSearch.test.js",
       "source_location": "L8",
       "id": "business_servicesearch_test_shared_item",
-      "community": 88,
+      "community": 111,
       "norm_label": "shared_item"
     },
     {
@@ -6453,7 +6570,7 @@
       "source_file": "src/lib/business/serviceSearch.test.js",
       "source_location": "L16",
       "id": "business_servicesearch_test_sections",
-      "community": 88,
+      "community": 111,
       "norm_label": "sections"
     },
     {
@@ -6462,7 +6579,7 @@
       "source_file": "src/lib/business/serviceSearch.test.js",
       "source_location": "L31",
       "id": "business_servicesearch_test_catalog",
-      "community": 88,
+      "community": 111,
       "norm_label": "catalog"
     },
     {
@@ -6471,7 +6588,7 @@
       "source_file": "src/lib/business/serviceSearch.test.js",
       "source_location": "L35",
       "id": "business_servicesearch_test_hits",
-      "community": 88,
+      "community": 111,
       "norm_label": "hits"
     },
     {
@@ -6480,7 +6597,7 @@
       "source_file": "src/lib/business/serviceSearch.test.js",
       "source_location": "L69",
       "id": "business_servicesearch_test_services",
-      "community": 88,
+      "community": 111,
       "norm_label": "services"
     },
     {
@@ -6489,7 +6606,7 @@
       "source_file": "src/lib/business/serviceSearch.test.js",
       "source_location": "L102",
       "id": "business_servicesearch_test_appearances",
-      "community": 88,
+      "community": 111,
       "norm_label": "appearances"
     },
     {
@@ -7002,7 +7119,7 @@
       "source_file": "src/utils/cloudinary.js",
       "source_location": "L1",
       "id": "src_utils_cloudinary_js",
-      "community": 43,
+      "community": 87,
       "norm_label": "cloudinary.js"
     },
     {
@@ -7011,7 +7128,7 @@
       "source_file": "src/utils/cloudinary.js",
       "source_location": "L18",
       "id": "utils_cloudinary_cldtransform",
-      "community": 43,
+      "community": 87,
       "norm_label": "cldtransform()"
     },
     {
@@ -7020,7 +7137,7 @@
       "source_file": "src/utils/cloudinary.js",
       "source_location": "L35",
       "id": "utils_cloudinary_cldresponsivefit",
-      "community": 43,
+      "community": 87,
       "norm_label": "cldresponsivefit()"
     },
     {
@@ -7299,7 +7416,7 @@
       "source_file": "src/utils/serviceCategoryUrl.js",
       "source_location": "L1",
       "id": "src_utils_servicecategoryurl_js",
-      "community": 88,
+      "community": 127,
       "norm_label": "servicecategoryurl.js"
     },
     {
@@ -7308,7 +7425,7 @@
       "source_file": "src/utils/serviceCategoryUrl.js",
       "source_location": "L14",
       "id": "utils_servicecategoryurl_resolveservicecategoryid",
-      "community": 88,
+      "community": 111,
       "norm_label": "resolveservicecategoryid()"
     },
     {
@@ -7317,7 +7434,7 @@
       "source_file": "src/utils/serviceCategoryUrl.js",
       "source_location": "L24",
       "id": "utils_servicecategoryurl_parsesubcategoryidsparam",
-      "community": 88,
+      "community": 127,
       "norm_label": "parsesubcategoryidsparam()"
     },
     {
@@ -7326,7 +7443,7 @@
       "source_file": "src/utils/serviceCategoryUrl.js",
       "source_location": "L39",
       "id": "utils_servicecategoryurl_resolveopensubcategoryids",
-      "community": 88,
+      "community": 127,
       "norm_label": "resolveopensubcategoryids()"
     },
     {
@@ -7344,7 +7461,7 @@
       "source_file": "src/utils/serviceCategoryUrl.js",
       "source_location": "L83",
       "id": "utils_servicecategoryurl_syncservicemenutourl",
-      "community": 88,
+      "community": 127,
       "norm_label": "syncservicemenutourl()"
     },
     {
@@ -7353,7 +7470,7 @@
       "source_file": "src/utils/serviceCategoryUrl.js",
       "source_location": "L128",
       "id": "utils_servicecategoryurl_syncservicecategorytourl",
-      "community": 88,
+      "community": 127,
       "norm_label": "syncservicecategorytourl()"
     },
     {
@@ -9385,7 +9502,7 @@
       "label": "Public API Integration (Admin System)",
       "file_type": "document",
       "source_file": "docs/PUBLIC_API_INTEGRATION.md",
-      "source_location": "L3",
+      "source_location": "L4",
       "id": "docs_public_api_integration_public_api_integration_admin_system",
       "community": 90,
       "norm_label": "public api integration (admin system)"
@@ -9394,7 +9511,7 @@
       "label": "Configuration",
       "file_type": "document",
       "source_file": "docs/PUBLIC_API_INTEGRATION.md",
-      "source_location": "L11",
+      "source_location": "L12",
       "id": "docs_public_api_integration_configuration",
       "community": 90,
       "norm_label": "configuration"
@@ -9403,7 +9520,7 @@
       "label": "Endpoints",
       "file_type": "document",
       "source_file": "docs/PUBLIC_API_INTEGRATION.md",
-      "source_location": "L26",
+      "source_location": "L27",
       "id": "docs_public_api_integration_endpoints",
       "community": 90,
       "norm_label": "endpoints"
@@ -9412,7 +9529,7 @@
       "label": "Service catalog",
       "file_type": "document",
       "source_file": "docs/PUBLIC_API_INTEGRATION.md",
-      "source_location": "L38",
+      "source_location": "L39",
       "id": "docs_public_api_integration_service_catalog",
       "community": 90,
       "norm_label": "service catalog"
@@ -9421,7 +9538,7 @@
       "label": "Navbar services viewer (nested accordion)",
       "file_type": "document",
       "source_file": "docs/PUBLIC_API_INTEGRATION.md",
-      "source_location": "L60",
+      "source_location": "L61",
       "id": "docs_public_api_integration_navbar_services_viewer_nested_accordion",
       "community": 90,
       "norm_label": "navbar services viewer (nested accordion)"
@@ -9430,7 +9547,7 @@
       "label": "Navbar contact sheet",
       "file_type": "document",
       "source_file": "docs/PUBLIC_API_INTEGRATION.md",
-      "source_location": "L83",
+      "source_location": "L86",
       "id": "docs_public_api_integration_navbar_contact_sheet",
       "community": 90,
       "norm_label": "navbar contact sheet"
@@ -9439,7 +9556,7 @@
       "label": "Tree rules",
       "file_type": "document",
       "source_file": "docs/PUBLIC_API_INTEGRATION.md",
-      "source_location": "L90",
+      "source_location": "L93",
       "id": "docs_public_api_integration_tree_rules",
       "community": 90,
       "norm_label": "tree rules"
@@ -9448,7 +9565,7 @@
       "label": "Pricing (render order)",
       "file_type": "document",
       "source_file": "docs/PUBLIC_API_INTEGRATION.md",
-      "source_location": "L97",
+      "source_location": "L100",
       "id": "docs_public_api_integration_pricing_render_order",
       "community": 90,
       "norm_label": "pricing (render order)"
@@ -9457,7 +9574,7 @@
       "label": "Cloudinary media",
       "file_type": "document",
       "source_file": "docs/PUBLIC_API_INTEGRATION.md",
-      "source_location": "L118",
+      "source_location": "L121",
       "id": "docs_public_api_integration_cloudinary_media",
       "community": 90,
       "norm_label": "cloudinary media"
@@ -9466,7 +9583,7 @@
       "label": "History",
       "file_type": "document",
       "source_file": "docs/PUBLIC_API_INTEGRATION.md",
-      "source_location": "L136",
+      "source_location": "L139",
       "id": "docs_public_api_integration_history",
       "community": 90,
       "norm_label": "history"
@@ -11430,7 +11547,7 @@
       "source_file": "src/data/assistantUi.js",
       "source_location": "L61",
       "id": "data_assistantui_assistant_quick_chips",
-      "community": 69,
+      "community": 31,
       "norm_label": "assistant_quick_chips"
     },
     {
@@ -11439,7 +11556,7 @@
       "source_file": "src/data/assistantUi.js",
       "source_location": "L64",
       "id": "data_assistantui_assistant_launcher_tips",
-      "community": 69,
+      "community": 31,
       "norm_label": "assistant_launcher_tips"
     },
     {
@@ -11816,7 +11933,7 @@
       "file_type": "code",
       "source_file": "src/app/(navPages)/offers/page.jsx",
       "source_location": "L14",
-      "community": 124,
+      "community": 31,
       "norm_label": "metadata",
       "id": "offers_page_metadata"
     },
@@ -12275,7 +12392,7 @@
       "file_type": "code",
       "source_file": "src/config/constants.js",
       "source_location": "L176",
-      "community": 103,
+      "community": 69,
       "norm_label": "getspecialperiodlogo()",
       "id": "config_constants_getspecialperiodlogo"
     },
@@ -12437,7 +12554,7 @@
       "file_type": "code",
       "source_file": "src/utils/serviceCategoryUrl.js",
       "source_location": "L1",
-      "community": 88,
+      "community": 127,
       "norm_label": "service_category_query_key",
       "id": "utils_servicecategoryurl_service_category_query_key"
     },
@@ -12446,7 +12563,7 @@
       "file_type": "code",
       "source_file": "src/utils/serviceCategoryUrl.js",
       "source_location": "L4",
-      "community": 88,
+      "community": 127,
       "norm_label": "service_subcategories_query_key",
       "id": "utils_servicecategoryurl_service_subcategories_query_key"
     }
@@ -12548,9 +12665,9 @@
       "source_file": "next.config.mjs",
       "source_location": "L2",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "next_config_mjs",
-      "target": "ken_next_config_contentsecuritypolicy",
-      "confidence_score": 1.0
+      "target": "ken_next_config_contentsecuritypolicy"
     },
     {
       "relation": "contains",
@@ -12569,9 +12686,9 @@
       "source_file": "next.config.test.js",
       "source_location": "L2",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "next_config_test_js",
-      "target": "next_config_mjs",
-      "confidence_score": 1.0
+      "target": "next_config_mjs"
     },
     {
       "relation": "contains",
@@ -12579,9 +12696,9 @@
       "source_file": "next.config.test.js",
       "source_location": "L20",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "next_config_test_js",
-      "target": "ken_next_config_test_headers",
-      "confidence_score": 1.0
+      "target": "ken_next_config_test_headers"
     },
     {
       "relation": "contains",
@@ -12589,9 +12706,9 @@
       "source_file": "next.config.test.js",
       "source_location": "L4",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "next_config_test_js",
-      "target": "ken_next_config_test_required_headers",
-      "confidence_score": 1.0
+      "target": "ken_next_config_test_required_headers"
     },
     {
       "relation": "contains",
@@ -15029,11 +15146,32 @@
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "src/app/(navPages)/services/page.jsx",
+      "source_location": "L32",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "src_app_navpages_services_page_jsx",
+      "target": "services_page_queryvalue"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "src/app/(navPages)/services/page.jsx",
       "source_location": "L29",
       "weight": 1,
       "confidence_score": 1,
       "source": "src_app_navpages_services_page_jsx",
       "target": "services_page_servicespage"
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "source_file": "src/app/(navPages)/services/page.jsx",
+      "source_location": "L52",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "services_page_servicespage",
+      "target": "services_page_queryvalue"
     },
     {
       "relation": "calls",
@@ -17833,6 +17971,16 @@
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "src/components/loading/navbar/ServicesMegaMenu/ServicesMegaMenu.jsx",
+      "source_location": "L544",
+      "weight": 1.0,
+      "source": "src_components_loading_navbar_servicesmegamenu_servicesmegamenu_jsx",
+      "target": "servicesmegamenu_servicesmegamenu_catalogskeleton",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "src/components/loading/navbar/ServicesMegaMenu/ServicesMegaMenu.jsx",
       "source_location": "L386",
       "weight": 1.0,
       "confidence_score": 1.0,
@@ -17848,6 +17996,36 @@
       "confidence_score": 1.0,
       "source": "src_components_loading_navbar_servicesmegamenu_servicesmegamenu_jsx",
       "target": "servicesmegamenu_servicesmegamenu_columnpreview"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "src/components/loading/navbar/ServicesMegaMenu/ServicesMegaMenu.jsx",
+      "source_location": "L425",
+      "weight": 1.0,
+      "source": "src_components_loading_navbar_servicesmegamenu_servicesmegamenu_jsx",
+      "target": "servicesmegamenu_servicesmegamenu_desktop_category_bones",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "src/components/loading/navbar/ServicesMegaMenu/ServicesMegaMenu.jsx",
+      "source_location": "L434",
+      "weight": 1.0,
+      "source": "src_components_loading_navbar_servicesmegamenu_servicesmegamenu_jsx",
+      "target": "servicesmegamenu_servicesmegamenu_desktop_price_columns",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "src/components/loading/navbar/ServicesMegaMenu/ServicesMegaMenu.jsx",
+      "source_location": "L499",
+      "weight": 1.0,
+      "source": "src_components_loading_navbar_servicesmegamenu_servicesmegamenu_jsx",
+      "target": "servicesmegamenu_servicesmegamenu_desktopcatalogskeleton",
+      "confidence_score": 1.0
     },
     {
       "relation": "contains",
@@ -17908,6 +18086,36 @@
       "confidence_score": 1.0,
       "source": "src_components_loading_navbar_servicesmegamenu_servicesmegamenu_jsx",
       "target": "servicesmegamenu_servicesmegamenu_mobilelookbook"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "src/components/loading/navbar/ServicesMegaMenu/ServicesMegaMenu.jsx",
+      "source_location": "L457",
+      "weight": 1.0,
+      "source": "src_components_loading_navbar_servicesmegamenu_servicesmegamenu_jsx",
+      "target": "servicesmegamenu_servicesmegamenu_phone_category_bones",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "src/components/loading/navbar/ServicesMegaMenu/ServicesMegaMenu.jsx",
+      "source_location": "L465",
+      "weight": 1.0,
+      "source": "src_components_loading_navbar_servicesmegamenu_servicesmegamenu_jsx",
+      "target": "servicesmegamenu_servicesmegamenu_phone_row_bones",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "src/components/loading/navbar/ServicesMegaMenu/ServicesMegaMenu.jsx",
+      "source_location": "L521",
+      "weight": 1.0,
+      "source": "src_components_loading_navbar_servicesmegamenu_servicesmegamenu_jsx",
+      "target": "servicesmegamenu_servicesmegamenu_phonecatalogskeleton",
+      "confidence_score": 1.0
     },
     {
       "relation": "contains",
@@ -17988,6 +18196,36 @@
       "confidence_score": 1.0,
       "source": "src_components_loading_navbar_servicesmegamenu_servicesmegamenu_jsx",
       "target": "servicesmegamenu_servicesmegamenu_servicesmegamenu"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "src/components/loading/navbar/ServicesMegaMenu/ServicesMegaMenu.jsx",
+      "source_location": "L416",
+      "weight": 1.0,
+      "source": "src_components_loading_navbar_servicesmegamenu_servicesmegamenu_jsx",
+      "target": "servicesmegamenu_servicesmegamenu_skeleton_width",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "src/components/loading/navbar/ServicesMegaMenu/ServicesMegaMenu.jsx",
+      "source_location": "L478",
+      "weight": 1.0,
+      "source": "src_components_loading_navbar_servicesmegamenu_servicesmegamenu_jsx",
+      "target": "servicesmegamenu_servicesmegamenu_skeletonpricecolumn",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "src/components/loading/navbar/ServicesMegaMenu/ServicesMegaMenu.jsx",
+      "source_location": "L474",
+      "weight": 1.0,
+      "source": "src_components_loading_navbar_servicesmegamenu_servicesmegamenu_jsx",
+      "target": "servicesmegamenu_servicesmegamenu_skeletontext",
+      "confidence_score": 1.0
     },
     {
       "relation": "contains",
@@ -18173,6 +18411,28 @@
       "weight": 1.0,
       "source": "servicesmegamenu_servicesmegamenu_desktopmegapanel",
       "target": "utils_servicecategoryurl_buildservicescategorypath"
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "source_file": "src/components/loading/navbar/ServicesMegaMenu/ServicesMegaMenu.jsx",
+      "source_location": "L532",
+      "weight": 1.0,
+      "source": "servicesmegamenu_servicesmegamenu_phonecatalogskeleton",
+      "target": "servicesmegamenu_servicesmegamenu_skeletontext",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "source_file": "src/components/loading/navbar/ServicesMegaMenu/ServicesMegaMenu.jsx",
+      "source_location": "L482",
+      "weight": 1.0,
+      "source": "servicesmegamenu_servicesmegamenu_skeletonpricecolumn",
+      "target": "servicesmegamenu_servicesmegamenu_skeletontext",
+      "confidence_score": 1.0
     },
     {
       "relation": "calls",
@@ -19517,6 +19777,16 @@
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "src/components/serviceMenu/ServiceMenu.jsx",
+      "source_location": "L864",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "src_components_servicemenu_servicemenu_jsx",
+      "target": "servicemenu_servicemenu_readmenuquery"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "src/components/serviceMenu/ServiceMenu.jsx",
       "source_location": "L91",
       "weight": 1.0,
       "confidence_score": 1.0,
@@ -19532,6 +19802,16 @@
       "confidence_score": 1.0,
       "source": "src_components_servicemenu_servicemenu_jsx",
       "target": "servicemenu_servicemenu_resolvefoldercover"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "src/components/serviceMenu/ServiceMenu.jsx",
+      "source_location": "L873",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "src_components_servicemenu_servicemenu_jsx",
+      "target": "servicemenu_servicemenu_samemenuquery"
     },
     {
       "relation": "contains",
@@ -29438,5 +29718,5 @@
     }
   ],
   "hyperedges": [],
-  "built_at_commit": "c295646f4793f7cfbeb3a0e0d5bb7cc9574fe4dc"
+  "built_at_commit": "c4d642e99c52354c585184421572fe89b7fc2d20"
 }

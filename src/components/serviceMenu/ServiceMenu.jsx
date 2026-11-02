@@ -8,7 +8,6 @@ import {
   useCallback,
   useRef,
 } from "react";
-import { useSearchParams } from "next/navigation";
 import Link from "next/link";
 import Image from "next/image";
 import { motion, AnimatePresence } from "framer-motion";
@@ -273,6 +272,8 @@ function ServiceLine({
   selected = false,
   added = false,
   expandable = false,
+  responsive = false,
+  wide = false,
   imageSrc = null,
 }) {
   const hasDuration = item.durationMinutes != null && item.durationMinutes > 0;
@@ -287,35 +288,120 @@ function ServiceLine({
     .filter(Boolean)
     .join(" ");
   const [panelSrc, setPanelSrc] = useState(imageSrc);
+  const phoneAccordion = expandable || (responsive && !wide);
 
   useLayoutEffect(() => {
-    if (expandable && selected && imageSrc) setPanelSrc(imageSrc);
-  }, [expandable, imageSrc, selected]);
+    if (phoneAccordion && selected && imageSrc) setPanelSrc(imageSrc);
+  }, [phoneAccordion, imageSrc, selected]);
 
   useEffect(() => {
-    if (!expandable || selected) return undefined;
+    if (!phoneAccordion || selected) return undefined;
     const timer = window.setTimeout(() => setPanelSrc(null), DROP_PANEL_MS);
     return () => window.clearTimeout(timer);
-  }, [expandable, selected]);
+  }, [phoneAccordion, selected]);
 
-  const duration = hasDuration ? (
-    <p className={styles.serviceQuiet}>{formatDuration(item.durationMinutes)}</p>
-  ) : null;
-  const description = item.description ? (
-    <p className={styles.serviceQuiet}>
-      <Highlight text={item.description} query={query} />
-    </p>
-  ) : null;
-  const facts = (
+  const renderFacts = () => (
     <div className={styles.serviceFacts}>
       <PriceLabel item={item} />
-      {duration}
+      {hasDuration ? (
+        <p className={styles.serviceQuiet}>{formatDuration(item.durationMinutes)}</p>
+      ) : null}
     </div>
   );
+  const renderDescription = () =>
+    item.description ? (
+      <p className={styles.serviceQuiet}>
+        <Highlight text={item.description} query={query} />
+      </p>
+    ) : null;
 
-  const add = (
+  const renderAdd = () => (
     <BookAdd item={item} added={added} onToggleBook={onToggleBook} />
   );
+
+  if (responsive) {
+    const desktopBody = (
+      <div className={styles.serviceMain}>
+        <FitName className={nameClass}>
+          <Highlight text={item.name} query={query} />
+        </FitName>
+        {renderFacts()}
+        {renderDescription()}
+      </div>
+    );
+
+    return (
+      <>
+        {wide ? null : (
+          <div className={styles.servicePhoneLine}>
+            <div className={lineClass}>
+              <div className={styles.serviceHead}>
+                <button
+                  type="button"
+                  className={styles.serviceToggle}
+                  data-service-toggle=""
+                  aria-expanded={selected}
+                  onClick={onSelect}
+                >
+                  <FitName className={nameClass}>
+                    <Highlight text={item.name} query={query} />
+                  </FitName>
+                  <ChevronDown
+                    size={16}
+                    aria-hidden
+                    className={`${dropChevronClass} ${
+                      selected ? styles.chevronOpen : styles.chevron
+                    }`}
+                  />
+                </button>
+                {renderAdd()}
+              </div>
+              <DropPanel open={selected}>
+                <div className={styles.serviceDetails}>
+                  {panelSrc ? (
+                    <div className={styles.boardMedia}>
+                      <div className={styles.boardFrame}>
+                        <Image
+                          key={panelSrc}
+                          src={panelSrc}
+                          alt=""
+                          fill
+                          className={styles.boardImage}
+                          sizes="50vw"
+                        />
+                      </div>
+                    </div>
+                  ) : null}
+                  {renderFacts()}
+                  {renderDescription()}
+                </div>
+              </DropPanel>
+            </div>
+          </div>
+        )}
+        <div className={styles.serviceDesktopLine}>
+          <div className={lineClass}>
+            <div className={styles.serviceHead}>
+              {onSelect ? (
+                <button
+                  type="button"
+                  className={styles.serviceSelect}
+                  data-service-toggle={wide ? "" : undefined}
+                  aria-pressed={selected}
+                  onClick={onSelect}
+                >
+                  {desktopBody}
+                </button>
+              ) : (
+                <div className={styles.serviceSelect}>{desktopBody}</div>
+              )}
+              {renderAdd()}
+            </div>
+          </div>
+        </div>
+      </>
+    );
+  }
 
   if (expandable) {
     return (
@@ -339,7 +425,7 @@ function ServiceLine({
               }`}
             />
           </button>
-          {add}
+          {renderAdd()}
         </div>
         <DropPanel open={selected}>
           <div className={styles.serviceDetails}>
@@ -357,8 +443,8 @@ function ServiceLine({
                 </div>
               </div>
             ) : null}
-            {facts}
-            {description}
+            {renderFacts()}
+            {renderDescription()}
           </div>
         </DropPanel>
       </div>
@@ -370,8 +456,8 @@ function ServiceLine({
       <FitName className={nameClass}>
         <Highlight text={item.name} query={query} />
       </FitName>
-      {facts}
-      {description}
+      {renderFacts()}
+      {renderDescription()}
     </div>
   );
 
@@ -391,7 +477,7 @@ function ServiceLine({
         ) : (
           <div className={styles.serviceSelect}>{body}</div>
         )}
-        {add}
+        {renderAdd()}
       </div>
     </div>
   );
@@ -533,7 +619,8 @@ function PriceColumn({
           <ServiceLine
             item={item}
             query={query}
-            expandable={!isWide}
+            responsive
+            wide={isWide}
             selected={item.id === selectedId}
             added={bookedIds.has(item.id)}
             imageSrc={servicePreviewSrc(item)}
@@ -550,30 +637,25 @@ function PriceColumn({
       id={`service-subcategory-${column.id}`}
       className={styles.column}
     >
-      {isWide ? (
-        <h3 className={titleClass}>{column.title}</h3>
-      ) : (
-        <button
-          type="button"
-          className={styles.columnToggle}
-          aria-expanded={isOpen}
-          onClick={() => onToggle(column.id)}
-        >
-          <span className={titleClass}>{column.title}</span>
-          <ChevronDown
-            size={16}
-            aria-hidden
-            className={`${dropChevronClass} ${
-              isOpen ? styles.chevronOpen : styles.chevron
-            }`}
-          />
-        </button>
-      )}
-      {isWide ? (
-        items
-      ) : (
-        <DropPanel open={isOpen}>{items}</DropPanel>
-      )}
+      <h3 className={`${styles.columnHeading} ${titleClass}`}>{column.title}</h3>
+      <button
+        type="button"
+        className={styles.columnToggle}
+        aria-expanded={isOpen}
+        onClick={() => onToggle(column.id)}
+      >
+        <span className={titleClass}>{column.title}</span>
+        <ChevronDown
+          size={16}
+          aria-hidden
+          className={`${dropChevronClass} ${
+            isOpen ? styles.chevronOpen : styles.chevron
+          }`}
+        />
+      </button>
+      <div className={styles.columnList}>
+        <DropPanel open={isWide || isOpen}>{items}</DropPanel>
+      </div>
     </section>
   );
 }
@@ -599,7 +681,7 @@ function CategoryBoard({
   const baseSrc = categoryPreviewSrc(activeSection);
   const [hoverSrc, setHoverSrc] = useState(null);
   const [picked, setPicked] = useState(null);
-  const previewSrc = isWide ? hoverSrc || picked?.src || baseSrc : null;
+  const previewSrc = hoverSrc || picked?.src || baseSrc;
 
   useEffect(() => {
     setHoverSrc(null);
@@ -807,26 +889,18 @@ function CategoryBoard({
 
       {activeSection ? (
         <div className={styles.boardBody}>
-          {previewSrc ? (
+          {baseSrc ? (
             <div className={styles.boardMedia}>
-              <div
-                className={
-                  previewSrc ? styles.boardFrame : styles.boardFrameFallback
-                }
-              >
-                {previewSrc ? (
-                  <Image
-                    key={previewSrc}
-                    src={previewSrc}
-                    alt=""
-                    fill
-                    className={styles.boardImage}
-                    sizes={isWide ? "40vw" : "100vw"}
-                    priority
-                  />
-                ) : (
-                  <p className={styles.boardFallbackTitle}>{activeSection.title}</p>
-                )}
+              <div className={styles.boardFrame}>
+                <Image
+                  key={previewSrc}
+                  src={previewSrc}
+                  alt=""
+                  fill
+                  className={styles.boardImage}
+                  sizes={isWide ? "40vw" : "100vw"}
+                  priority
+                />
               </div>
             </div>
           ) : null}
@@ -862,27 +936,64 @@ function initialOpenIds(sections, categoryId, fromUrl, serviceId) {
   return first ? new Set([first.id]) : new Set();
 }
 
-export default function ServiceMenu({ sections = [], error = null }) {
-  const searchParams = useSearchParams();
+function readMenuQuery() {
+  const params = new URLSearchParams(window.location.search);
+  return {
+    category: params.get(SERVICE_CATEGORY_QUERY_KEY),
+    service: params.get(SERVICE_QUERY_KEY),
+    sub: params.get(SERVICE_SUBCATEGORIES_QUERY_KEY),
+  };
+}
+
+function sameMenuQuery(current, next) {
+  return (
+    current.category === next.category &&
+    current.service === next.service &&
+    current.sub === next.sub
+  );
+}
+
+export default function ServiceMenu({
+  sections = [],
+  error = null,
+  initialCategory = null,
+  initialService = null,
+  initialSubcategories = null,
+}) {
+  const [urlQuery, setUrlQuery] = useState({
+    category: initialCategory,
+    service: initialService,
+    sub: initialSubcategories,
+  });
+
+  useEffect(() => {
+    const next = {
+      category: initialCategory,
+      service: initialService,
+      sub: initialSubcategories,
+    };
+    setUrlQuery((current) => (sameMenuQuery(current, next) ? current : next));
+  }, [initialCategory, initialService, initialSubcategories]);
+
+  useEffect(() => {
+    const onPopState = () => {
+      const next = readMenuQuery();
+      setUrlQuery((current) => (sameMenuQuery(current, next) ? current : next));
+    };
+    window.addEventListener("popstate", onPopState);
+    return () => window.removeEventListener("popstate", onPopState);
+  }, []);
+
   const categoryFromUrl = useMemo(
-    () =>
-      resolveServiceCategoryId(
-        searchParams.get(SERVICE_CATEGORY_QUERY_KEY),
-        sections,
-      ),
-    [searchParams, sections],
+    () => resolveServiceCategoryId(urlQuery.category, sections),
+    [urlQuery.category, sections],
   );
 
-  const serviceFromUrl = searchParams.get(SERVICE_QUERY_KEY);
+  const serviceFromUrl = urlQuery.service;
 
   const openSubcategoriesFromUrl = useMemo(
-    () =>
-      resolveOpenSubcategoryIds(
-        searchParams.get(SERVICE_SUBCATEGORIES_QUERY_KEY),
-        sections,
-        categoryFromUrl,
-      ),
-    [searchParams, sections, categoryFromUrl],
+    () => resolveOpenSubcategoryIds(urlQuery.sub, sections, categoryFromUrl),
+    [urlQuery.sub, sections, categoryFromUrl],
   );
 
   const [query, setQuery] = useState("");

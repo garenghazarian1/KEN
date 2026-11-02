@@ -624,6 +624,14 @@
   );
 }
 
+.columnHeading {
+  display: none;
+}
+
+.columnList {
+  min-width: 0;
+}
+
 .columnToggle {
   appearance: none;
   display: flex;
@@ -742,6 +750,14 @@ button.serviceSelect {
   margin-top: 0.15rem;
 }
 
+.servicePhoneLine {
+  display: contents;
+}
+
+.serviceDesktopLine {
+  display: none;
+}
+
 .serviceDetails {
   padding-bottom: var(--spacing-3);
 }
@@ -758,6 +774,7 @@ button.serviceSelect {
 .serviceSelect:active .serviceName,
 .serviceSelect:active .servicePrice,
 .serviceToggle:active .serviceName,
+.serviceToggle:active .servicePrice,
 .serviceLineSelected .serviceName,
 .serviceLineSelected .servicePrice {
   color: var(--color-text-primary);
@@ -772,7 +789,8 @@ button.serviceSelect {
 
 .serviceSelect:disabled .serviceName,
 .serviceSelect:disabled .servicePrice,
-.serviceToggle:disabled .serviceName {
+.serviceToggle:disabled .serviceName,
+.serviceToggle:disabled .servicePrice {
   color: var(--color-text-tertiary);
   font-weight: var(--font-weight-light);
 }
@@ -1059,7 +1077,8 @@ button.serviceSelect {
 
   .serviceSelect:hover .serviceName,
   .serviceSelect:hover .servicePrice,
-  .serviceToggle:hover .serviceName {
+  .serviceToggle:hover .serviceName,
+  .serviceToggle:hover .servicePrice {
     color: var(--color-text-primary);
     font-weight: var(--font-weight-medium);
   }
@@ -1125,11 +1144,11 @@ button.serviceSelect {
   margin: 0 0 var(--spacing-4);
 }
 
-.boardFrame,
-.boardFrameFallback {
+.boardFrame {
   position: relative;
   width: 100%;
-  height: 40vh;
+  height: auto;
+  aspect-ratio: 1 / 1;
   overflow: hidden;
   background: color-mix(
     in srgb,
@@ -1140,17 +1159,6 @@ button.serviceSelect {
 
 .boardImage {
   object-fit: cover;
-}
-
-.boardFallbackTitle {
-  margin: 0;
-  padding: var(--spacing-6);
-  color: var(--color-text-primary);
-  font-family: var(--font-secondary);
-  font-size: var(--font-size-sm);
-  font-weight: var(--font-weight-normal);
-  letter-spacing: 0.1em;
-  text-transform: uppercase;
 }
 
 @media (min-width: 1024px) {
@@ -1185,12 +1193,6 @@ button.serviceSelect {
     top: calc(var(--spacing-6) + env(safe-area-inset-top, 0px));
   }
 
-  .boardFrame,
-  .boardFrameFallback {
-    height: auto;
-    aspect-ratio: 1 / 1;
-  }
-
   .columns {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(18rem, 1fr));
@@ -1202,8 +1204,32 @@ button.serviceSelect {
     border-bottom: none;
   }
 
+  .columnHeading {
+    display: block;
+  }
+
+  .columnToggle {
+    display: none;
+  }
+
+  .column .columnList > div {
+    grid-template-rows: 1fr;
+  }
+
+  .column .columnList > div > div {
+    overflow: visible;
+  }
+
   .columnTitle {
     margin-bottom: var(--spacing-2);
+  }
+
+  .servicePhoneLine {
+    display: none;
+  }
+
+  .serviceDesktopLine {
+    display: contents;
   }
 }
 
@@ -1212,16 +1238,15 @@ button.serviceSelect {
     padding-bottom: calc(var(--spacing-16) + var(--spacing-12));
   }
 
+  .boardBody > .boardMedia {
+    display: none;
+  }
+
   .boardMedia {
     width: min(50%, 13rem);
     margin-inline: auto;
   }
 
-  .boardFrame,
-  .boardFrameFallback {
-    height: auto;
-    aspect-ratio: 1 / 1;
-  }
 }
 
 /* ─── Footer note ──────────────────────────────────────── */

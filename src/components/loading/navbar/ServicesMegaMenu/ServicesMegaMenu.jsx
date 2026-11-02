@@ -413,9 +413,146 @@ function DesktopMegaPanel({
   );
 }
 
-function CatalogStatus({ loadState, errorMessage, isEmpty }) {
+const SKELETON_WIDTH = {
+  wide: styles.skeletonWide,
+  medium: styles.skeletonMedium,
+  short: styles.skeletonShort,
+  lineLong: styles.skeletonLineLong,
+  lineMid: styles.skeletonLineMid,
+  lineShort: styles.skeletonLineShort,
+};
+
+const DESKTOP_CATEGORY_BONES = [
+  ["cat-a", "wide"],
+  ["cat-b", "medium"],
+  ["cat-c", "short"],
+  ["cat-d", "wide"],
+  ["cat-e", "medium"],
+  ["cat-f", "short"],
+];
+
+const DESKTOP_PRICE_COLUMNS = [
+  [
+    "col-a",
+    "wide",
+    [
+      ["a1", "lineLong"],
+      ["a2", "lineMid"],
+      ["a3", "lineShort"],
+      ["a4", "lineMid"],
+    ],
+  ],
+  [
+    "col-b",
+    "medium",
+    [
+      ["b1", "lineMid"],
+      ["b2", "lineLong"],
+      ["b3", "lineMid"],
+      ["b4", "lineShort"],
+    ],
+  ],
+];
+
+const PHONE_CATEGORY_BONES = [
+  ["phone-a", "wide"],
+  ["phone-b", "medium"],
+  ["phone-c", "short"],
+  ["phone-d", "wide"],
+  ["phone-e", "medium"],
+];
+
+const PHONE_ROW_BONES = [
+  ["row-a", "lineLong"],
+  ["row-b", "lineMid"],
+  ["row-c", "wide"],
+  ["row-d", "lineLong"],
+  ["row-e", "medium"],
+  ["row-f", "lineShort"],
+];
+
+function skeletonText(width) {
+  return `${styles.skeletonBone} ${styles.skeletonText} ${SKELETON_WIDTH[width]}`;
+}
+
+function SkeletonPriceColumn({ title, lines }) {
+  return (
+    <div className={styles.skeletonColumn}>
+      <span className={styles.skeletonLabelLine}>
+        <span className={skeletonText(title)} />
+      </span>
+      <div className={styles.skeletonServiceList}>
+        {lines.map(([id, width]) => (
+          <span key={id} className={styles.skeletonServiceSlot}>
+            <span className={`${styles.skeletonBone} ${styles.skeletonDot}`} />
+            <span className={skeletonText(width)} />
+          </span>
+        ))}
+      </div>
+      <span className={styles.skeletonLabelLine}>
+        <span className={skeletonText("short")} />
+      </span>
+    </div>
+  );
+}
+
+function DesktopCatalogSkeleton() {
+  return (
+    <div className={styles.skeletonDesktop} aria-hidden="true">
+      <div className={styles.skeletonCategories}>
+        {DESKTOP_CATEGORY_BONES.map(([id, width]) => (
+          <span key={id} className={styles.skeletonCategorySlot}>
+            <span className={skeletonText(width)} />
+          </span>
+        ))}
+      </div>
+      <div className={styles.skeletonMega}>
+        <div className={`${styles.skeletonBone} ${styles.skeletonMedia}`} />
+        <div className={styles.skeletonColumns}>
+          {DESKTOP_PRICE_COLUMNS.map(([id, title, lines]) => (
+            <SkeletonPriceColumn key={id} title={title} lines={lines} />
+          ))}
+        </div>
+      </div>
+    </div>
+  );
+}
+
+function PhoneCatalogSkeleton() {
+  return (
+    <div className={styles.skeletonPhone} aria-hidden="true">
+      <div className={styles.skeletonPhoneCategories}>
+        {PHONE_CATEGORY_BONES.map(([id, width]) => (
+          <span key={id} className={styles.skeletonPhoneCategory}>
+            <span className={skeletonText(width)} />
+          </span>
+        ))}
+      </div>
+      <div className={styles.skeletonPhoneView}>
+        <span className={skeletonText("wide")} />
+      </div>
+      {PHONE_ROW_BONES.map(([id, width]) => (
+        <span key={id} className={styles.skeletonPhoneRow}>
+          <span className={skeletonText(width)} />
+          <span className={`${styles.skeletonBone} ${styles.skeletonChevron}`} />
+        </span>
+      ))}
+    </div>
+  );
+}
+
+function CatalogSkeleton({ editorial }) {
+  return (
+    <div className={styles.skeletonStatus} role="status" aria-busy="true">
+      <p className={styles.skeletonLabel}>Loading services</p>
+      {editorial ? <DesktopCatalogSkeleton /> : <PhoneCatalogSkeleton />}
+    </div>
+  );
+}
+
+function CatalogStatus({ loadState, errorMessage, isEmpty, editorial }) {
   if (loadState === "idle" || loadState === "loading") {
-    return <p className={styles.status}>Loading services…</p>;
+    return <CatalogSkeleton editorial={editorial} />;
   }
   if (loadState === "error") {
     return (
@@ -629,6 +766,7 @@ export default function ServicesMegaMenu({
         loadState={loadState}
         errorMessage={errorMessage}
         isEmpty={loadState === "ready" && sections.length === 0}
+        editorial={useEditorial}
       />
       {ready &&
         (useEditorial ? (
