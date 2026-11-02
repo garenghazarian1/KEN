@@ -46,6 +46,7 @@ const aboutJsonLd = {
 export default function Home() {
   return (
     <>
+      <h1 className="sr-only">About KEN Beauty Salon Abu Dhabi</h1>
       <Script
         id="ld-about"
         type="application/ld+json"

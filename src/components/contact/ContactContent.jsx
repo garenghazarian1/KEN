@@ -34,7 +34,8 @@ const fadeUp = {
   }),
 };
 
-export default function ContactContent({ stores }) {
+export default function ContactContent({ stores, titleAs = "h1" }) {
+  const Title = titleAs;
   const [formData, setFormData] = useState({
     name: "",
     email: "",
@@ -70,7 +71,7 @@ export default function ContactContent({ stores }) {
           variants={fadeUp}
         >
           <p className={styles.eyebrow}>Ken Beauty Salon</p>
-          <h1 className={styles.title}>We&apos;d love to hear from you</h1>
+          <Title className={styles.title}>We&apos;d love to hear from you</Title>
           <p className={styles.subtitle}>
             Find us at The Galleria and Rixos Marina — or message us anytime to
             book, ask a question, or plan your next visit.

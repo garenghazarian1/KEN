@@ -46,12 +46,15 @@ export default async function ServicesPage({ searchParams }) {
   }
 
   return (
-    <ServiceMenu
-      sections={sections}
-      error={error}
-      initialCategory={queryValue(searchParams?.category)}
-      initialService={queryValue(searchParams?.service)}
-      initialSubcategories={queryValue(searchParams?.sub)}
-    />
+    <>
+      <h1 className="sr-only">Beauty Services at KEN Beauty Salon Abu Dhabi</h1>
+      <ServiceMenu
+        sections={sections}
+        error={error}
+        initialCategory={queryValue(searchParams?.category)}
+        initialService={queryValue(searchParams?.service)}
+        initialSubcategories={queryValue(searchParams?.sub)}
+      />
+    </>
   );
 }

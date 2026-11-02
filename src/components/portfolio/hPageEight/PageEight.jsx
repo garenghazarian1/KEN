@@ -3,5 +3,5 @@ import ContactContent from "@/components/contact/ContactContent";
 import { stores } from "@/data/stores";
 
 export default function PageEight() {
-  return <ContactContent stores={stores} />;
+  return <ContactContent stores={stores} titleAs="h2" />;
 }
