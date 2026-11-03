@@ -1,4 +1,4 @@
-Last verified against code: 1 Nov 2026 (HEAD 8634780, working tree)
+Last verified against code: 3 Nov 2026 (working tree)
 
 # Critical Issues Report
 
@@ -19,7 +19,7 @@ No critical runtime break was re-found on this pass.
 
 ## Open warnings
 
-✅ Resolved 1 Nov 2026, with the caveats in `IMPROVEMENTS_NEEDED.md`: layout className, Gallery (`Gallery.jsx` line 6), About (renders `Portfolio`), 26 portfolio page components on `*.modern.module.css`, AppInstallBanner, InstagramEmbed, HamburgerButton.
+✅ Resolved 1 Nov 2026, with the caveats in `IMPROVEMENTS_NEEDED.md`: layout className, Gallery (`Gallery.jsx` line 6), About (renders `Portfolio`), 26 portfolio page components on `*.modern.module.css`, AppInstallBanner, HamburgerButton. Unused Instagram embed removed 3 Nov 2026.
 
 Still open:
 

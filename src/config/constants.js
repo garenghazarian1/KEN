@@ -130,13 +130,8 @@ export const THIRD_PARTY = {
   googleTagManager: {
     id: "GTM-M3QMMNGZ",
   },
-  tidio: {
-    scriptUrl: "//code.tidio.co/wuxjaut5j0iru5lnq6efealcjpqmlyhw.js",
-  },
-  instagram: {
-    embedScript: "https://www.instagram.com/embed.js",
-    lightwidget:
-      "https://cdn.lightwidget.com/widgets/0df751793acd50a8a639c5a6d27cadeb.html",
+  clarity: {
+    id: "z82wvl7quf",
   },
 };
 

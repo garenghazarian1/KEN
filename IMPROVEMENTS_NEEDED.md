@@ -1,4 +1,4 @@
-Last verified against code: 1 Nov 2026 (HEAD 8634780, working tree)
+Last verified against code: 3 Nov 2026 (working tree)
 
 # App Improvements Needed
 
@@ -47,10 +47,6 @@ This document outlines all areas where the application can be improved, organize
 ### AppInstallBanner
 
 `src/components/AppInstallBanner/AppInstallBanner.jsx` line 7 imports `AppInstallBanner.modern.module.css`. The banner is commented out in `src/app/layout.jsx` lines 5 and 84. That comment-out is an uncommitted working-tree change, intended by Garen. The component is not mounted.
-
-### InstagramEmbed
-
-`src/components/instagram/InstagramEmbed.jsx` line 5 imports `InstagramEmbed.modern.module.css`. No other file imports `InstagramEmbed`.
 
 ### HamburgerButton
 
@@ -424,7 +420,9 @@ None.
 
 ## Quick Wins
 
-Done on 1 Nov 2026: layout className, Gallery modern CSS, About rendering Portfolio, 26 portfolio page CSS modules, AppInstallBanner modern CSS (not mounted), InstagramEmbed modern CSS (not imported), HamburgerButton modern CSS (not on the live nav).
+Done on 1 Nov 2026: layout className, Gallery modern CSS, About rendering Portfolio, 26 portfolio page CSS modules, AppInstallBanner modern CSS (not mounted), HamburgerButton modern CSS (not on the live nav).
+
+Removed 3 Nov 2026: unused `InstagramEmbed` and the Tidio and LightWidget config. Instagram, TikTok, Facebook, and YouTube profile links stay.
 
 Still small and open:
 

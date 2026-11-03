@@ -57,8 +57,6 @@ describe("next.config security headers", () => {
       "https://api.openai.com",
       "https://beauty-admin-mauve.vercel.app",
       "https://res.cloudinary.com",
-      "https://www.instagram.com",
-      "https://cdn.lightwidget.com",
       "https://kenbeauty.zenoti.com",
       "https://wa.me",
       "https://upload.wikimedia.org",

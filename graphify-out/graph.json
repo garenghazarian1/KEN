@@ -1998,7 +1998,7 @@
       "source_file": "src/app/(navPages)/offers/page.jsx",
       "source_location": "L1",
       "id": "src_app_navpages_offers_page_jsx",
-      "community": 94,
+      "community": 146,
       "norm_label": "page.jsx"
     },
     {
@@ -2007,7 +2007,7 @@
       "source_file": "src/app/(navPages)/offers/page.jsx",
       "source_location": "L18",
       "id": "offers_page_generatemetadata",
-      "community": 94,
+      "community": 146,
       "norm_label": "generatemetadata()"
     },
     {
@@ -2016,7 +2016,7 @@
       "source_file": "src/app/(navPages)/offers/page.jsx",
       "source_location": "L50",
       "id": "offers_page_offeritems",
-      "community": 94,
+      "community": 146,
       "norm_label": "offeritems()"
     },
     {
@@ -2025,7 +2025,7 @@
       "source_file": "src/app/(navPages)/offers/page.jsx",
       "source_location": "L77",
       "id": "offers_page_offerspage",
-      "community": 94,
+      "community": 146,
       "norm_label": "offerspage()"
     },
     {
@@ -2952,7 +2952,7 @@
       "source_file": "src/components/AssistantWidget/AssistantPanel.jsx",
       "source_location": "L132",
       "id": "assistantwidget_assistantpanel_assistantpanel",
-      "community": 137,
+      "community": 31,
       "norm_label": "assistantpanel()"
     },
     {
@@ -3024,7 +3024,7 @@
       "source_file": "src/components/bookingDock/BookingDock.jsx",
       "source_location": "L1",
       "id": "src_components_bookingdock_bookingdock_jsx",
-      "community": 130,
+      "community": 88,
       "norm_label": "bookingdock.jsx"
     },
     {
@@ -3033,7 +3033,7 @@
       "source_file": "src/components/bookingDock/BookingDock.jsx",
       "source_location": "L19",
       "id": "bookingdock_bookingdock_focusable_selector",
-      "community": 130,
+      "community": 88,
       "norm_label": "focusable_selector"
     },
     {
@@ -3042,7 +3042,7 @@
       "source_file": "src/components/bookingDock/BookingDock.jsx",
       "source_location": "L28",
       "id": "bookingdock_bookingdock_bookingdock",
-      "community": 130,
+      "community": 88,
       "norm_label": "bookingdock()"
     },
     {
@@ -3051,7 +3051,7 @@
       "source_file": "src/components/bookingDock/bookingList.js",
       "source_location": "L1",
       "id": "src_components_bookingdock_bookinglist_js",
-      "community": 130,
+      "community": 88,
       "norm_label": "bookinglist.js"
     },
     {
@@ -3060,7 +3060,7 @@
       "source_file": "src/components/bookingDock/bookingList.js",
       "source_location": "L12",
       "id": "bookingdock_bookinglist_normalizedservice",
-      "community": 130,
+      "community": 88,
       "norm_label": "normalizedservice()"
     },
     {
@@ -3069,7 +3069,7 @@
       "source_file": "src/components/bookingDock/bookingList.js",
       "source_location": "L21",
       "id": "bookingdock_bookinglist_normalizeservices",
-      "community": 130,
+      "community": 88,
       "norm_label": "normalizeservices()"
     },
     {
@@ -3078,7 +3078,7 @@
       "source_file": "src/components/bookingDock/bookingList.js",
       "source_location": "L33",
       "id": "bookingdock_bookinglist_readbookingservices",
-      "community": 130,
+      "community": 88,
       "norm_label": "readbookingservices()"
     },
     {
@@ -3087,7 +3087,7 @@
       "source_file": "src/components/bookingDock/bookingList.js",
       "source_location": "L45",
       "id": "bookingdock_bookinglist_writebookingservices",
-      "community": 130,
+      "community": 88,
       "norm_label": "writebookingservices()"
     },
     {
@@ -3096,7 +3096,7 @@
       "source_file": "src/components/bookingDock/bookingList.js",
       "source_location": "L53",
       "id": "bookingdock_bookinglist_togglebookingservice",
-      "community": 130,
+      "community": 88,
       "norm_label": "togglebookingservice()"
     },
     {
@@ -3105,7 +3105,7 @@
       "source_file": "src/components/bookingDock/bookingList.js",
       "source_location": "L68",
       "id": "bookingdock_bookinglist_usebookingservices",
-      "community": 130,
+      "community": 88,
       "norm_label": "usebookingservices()"
     },
     {
@@ -3150,7 +3150,7 @@
       "source_file": "src/components/campaign/CampaignFilm.jsx",
       "source_location": "L1",
       "id": "src_components_campaign_campaignfilm_jsx",
-      "community": 146,
+      "community": 36,
       "norm_label": "campaignfilm.jsx"
     },
     {
@@ -3159,7 +3159,7 @@
       "source_file": "src/components/campaign/CampaignFilm.jsx",
       "source_location": "L13",
       "id": "campaign_campaignfilm_clipsrc",
-      "community": 146,
+      "community": 36,
       "norm_label": "clipsrc()"
     },
     {
@@ -3168,7 +3168,7 @@
       "source_file": "src/components/campaign/CampaignFilm.jsx",
       "source_location": "L18",
       "id": "campaign_campaignfilm_muteothers",
-      "community": 146,
+      "community": 36,
       "norm_label": "muteothers()"
     },
     {
@@ -3177,7 +3177,7 @@
       "source_file": "src/components/campaign/CampaignFilm.jsx",
       "source_location": "L30",
       "id": "campaign_campaignfilm_campaignfilm",
-      "community": 146,
+      "community": 36,
       "norm_label": "campaignfilm()"
     },
     {
@@ -3611,33 +3611,6 @@
       "id": "hooks_usescrolltrigger_usescrolltrigger",
       "community": 61,
       "norm_label": "usescrolltrigger()"
-    },
-    {
-      "label": "InstagramEmbed.jsx",
-      "file_type": "code",
-      "source_file": "src/components/instagram/InstagramEmbed.jsx",
-      "source_location": "L1",
-      "id": "src_components_instagram_instagramembed_jsx",
-      "community": 36,
-      "norm_label": "instagramembed.jsx"
-    },
-    {
-      "label": "INSTAGRAM_POSTS",
-      "file_type": "code",
-      "source_file": "src/components/instagram/InstagramEmbed.jsx",
-      "source_location": "L8",
-      "id": "instagram_instagramembed_instagram_posts",
-      "community": 36,
-      "norm_label": "instagram_posts"
-    },
-    {
-      "label": "InstagramEmbed()",
-      "file_type": "code",
-      "source_file": "src/components/instagram/InstagramEmbed.jsx",
-      "source_location": "L12",
-      "id": "instagram_instagramembed_instagramembed",
-      "community": 36,
-      "norm_label": "instagramembed()"
     },
     {
       "label": "LeadLink.jsx",
@@ -4149,7 +4122,7 @@
       "source_file": "src/components/portfolio/aPageOne/PageOne.jsx",
       "source_location": "L1",
       "id": "src_components_portfolio_apageone_pageone_jsx",
-      "community": 42,
+      "community": 20,
       "norm_label": "pageone.jsx"
     },
     {
@@ -4158,7 +4131,7 @@
       "source_file": "src/components/portfolio/aPageOne/PageOne.jsx",
       "source_location": "L6",
       "id": "apageone_pageone_pageone",
-      "community": 42,
+      "community": 20,
       "norm_label": "pageone()"
     },
     {
@@ -4212,7 +4185,7 @@
       "source_file": "src/components/portfolio/dPageFour/PageFour.jsx",
       "source_location": "L1",
       "id": "src_components_portfolio_dpagefour_pagefour_jsx",
-      "community": 20,
+      "community": 42,
       "norm_label": "pagefour.jsx"
     },
     {
@@ -4221,7 +4194,7 @@
       "source_file": "src/components/portfolio/dPageFour/PageFour.jsx",
       "source_location": "L6",
       "id": "dpagefour_pagefour_pagefour",
-      "community": 20,
+      "community": 42,
       "norm_label": "pagefour()"
     },
     {
@@ -4410,7 +4383,7 @@
       "source_file": "src/components/portfolio/mPageThirteen/PageThirteen.jsx",
       "source_location": "L1",
       "id": "src_components_portfolio_mpagethirteen_pagethirteen_jsx",
-      "community": 42,
+      "community": 20,
       "norm_label": "pagethirteen.jsx"
     },
     {
@@ -4419,7 +4392,7 @@
       "source_file": "src/components/portfolio/mPageThirteen/PageThirteen.jsx",
       "source_location": "L6",
       "id": "mpagethirteen_pagethirteen_pagethirteen",
-      "community": 42,
+      "community": 20,
       "norm_label": "pagethirteen()"
     },
     {
@@ -4464,7 +4437,7 @@
       "source_file": "src/components/portfolio/pPageSixteen/PageSixteen.jsx",
       "source_location": "L1",
       "id": "src_components_portfolio_ppagesixteen_pagesixteen_jsx",
-      "community": 20,
+      "community": 42,
       "norm_label": "pagesixteen.jsx"
     },
     {
@@ -4473,7 +4446,7 @@
       "source_file": "src/components/portfolio/pPageSixteen/PageSixteen.jsx",
       "source_location": "L6",
       "id": "ppagesixteen_pagesixteen_pagesixteen",
-      "community": 20,
+      "community": 42,
       "norm_label": "pagesixteen()"
     },
     {
@@ -4554,7 +4527,7 @@
       "source_file": "src/components/portfolio/tPageTwenty/PageTwenty.jsx",
       "source_location": "L1",
       "id": "src_components_portfolio_tpagetwenty_pagetwenty_jsx",
-      "community": 150,
+      "community": 42,
       "norm_label": "pagetwenty.jsx"
     },
     {
@@ -4563,7 +4536,7 @@
       "source_file": "src/components/portfolio/tPageTwenty/PageTwenty.jsx",
       "source_location": "L6",
       "id": "tpagetwenty_pagetwenty_pagetwenty",
-      "community": 150,
+      "community": 42,
       "norm_label": "pagetwenty()"
     },
     {
@@ -4707,7 +4680,7 @@
       "source_file": "src/components/portfolio/zPageTwentySeven/PageTwentySeven.jsx",
       "source_location": "L1",
       "id": "src_components_portfolio_zpagetwentyseven_pagetwentyseven_jsx",
-      "community": 42,
+      "community": 20,
       "norm_label": "pagetwentyseven.jsx"
     },
     {
@@ -4716,7 +4689,7 @@
       "source_file": "src/components/portfolio/zPageTwentySeven/PageTwentySeven.jsx",
       "source_location": "L6",
       "id": "zpagetwentyseven_pagetwentyseven_pagetwentyseven",
-      "community": 42,
+      "community": 20,
       "norm_label": "pagetwentyseven()"
     },
     {
@@ -5119,7 +5092,7 @@
       "label": "IMAGES",
       "file_type": "code",
       "source_file": "src/config/constants.js",
-      "source_location": "L151",
+      "source_location": "L146",
       "id": "config_constants_images",
       "community": 4,
       "norm_label": "images"
@@ -5128,7 +5101,7 @@
       "label": "METADATA_FAVICON_ICONS",
       "file_type": "code",
       "source_file": "src/config/constants.js",
-      "source_location": "L178",
+      "source_location": "L173",
       "id": "config_constants_metadata_favicon_icons",
       "community": 4,
       "norm_label": "metadata_favicon_icons"
@@ -5137,7 +5110,7 @@
       "label": "formatPhoneForTel()",
       "file_type": "code",
       "source_file": "src/config/constants.js",
-      "source_location": "L203",
+      "source_location": "L198",
       "id": "config_constants_formatphonefortel",
       "community": 4,
       "norm_label": "formatphonefortel()"
@@ -5146,7 +5119,7 @@
       "label": "getTelLink()",
       "file_type": "code",
       "source_file": "src/config/constants.js",
-      "source_location": "L224",
+      "source_location": "L219",
       "id": "config_constants_gettellink",
       "community": 4,
       "norm_label": "gettellink()"
@@ -5155,7 +5128,7 @@
       "label": "isIOSWebView()",
       "file_type": "code",
       "source_file": "src/config/constants.js",
-      "source_location": "L232",
+      "source_location": "L227",
       "id": "config_constants_isioswebview",
       "community": 4,
       "norm_label": "isioswebview()"
@@ -5164,7 +5137,7 @@
       "label": "isAndroidWebView()",
       "file_type": "code",
       "source_file": "src/config/constants.js",
-      "source_location": "L245",
+      "source_location": "L240",
       "id": "config_constants_isandroidwebview",
       "community": 4,
       "norm_label": "isandroidwebview()"
@@ -5173,7 +5146,7 @@
       "label": "handlePhoneClick()",
       "file_type": "code",
       "source_file": "src/config/constants.js",
-      "source_location": "L263",
+      "source_location": "L258",
       "id": "config_constants_handlephoneclick",
       "community": 4,
       "norm_label": "handlephoneclick()"
@@ -5182,7 +5155,7 @@
       "label": "getFullUrl()",
       "file_type": "code",
       "source_file": "src/config/constants.js",
-      "source_location": "L278",
+      "source_location": "L273",
       "id": "config_constants_getfullurl",
       "community": 4,
       "norm_label": "getfullurl()"
@@ -5191,7 +5164,7 @@
       "label": "getSocialMediaArray()",
       "file_type": "code",
       "source_file": "src/config/constants.js",
-      "source_location": "L285",
+      "source_location": "L280",
       "id": "config_constants_getsocialmediaarray",
       "community": 4,
       "norm_label": "getsocialmediaarray()"
@@ -5319,7 +5292,7 @@
       "source_file": "src/data/assistantUi.js",
       "source_location": "L37",
       "id": "data_assistantui_getassistantquickchips",
-      "community": 137,
+      "community": 94,
       "norm_label": "getassistantquickchips()"
     },
     {
@@ -5454,7 +5427,7 @@
       "source_file": "src/hooks/useAssistantRealtime.js",
       "source_location": "L1",
       "id": "src_hooks_useassistantrealtime_js",
-      "community": 137,
+      "community": 31,
       "norm_label": "useassistantrealtime.js"
     },
     {
@@ -5463,7 +5436,7 @@
       "source_file": "src/hooks/useAssistantRealtime.js",
       "source_location": "L29",
       "id": "hooks_useassistantrealtime_voicesupported",
-      "community": 137,
+      "community": 31,
       "norm_label": "voicesupported()"
     },
     {
@@ -5472,7 +5445,7 @@
       "source_file": "src/hooks/useAssistantRealtime.js",
       "source_location": "L37",
       "id": "hooks_useassistantrealtime_extractresponsetranscript",
-      "community": 137,
+      "community": 31,
       "norm_label": "extractresponsetranscript()"
     },
     {
@@ -5481,7 +5454,7 @@
       "source_file": "src/hooks/useAssistantRealtime.js",
       "source_location": "L63",
       "id": "hooks_useassistantrealtime_useassistantrealtime",
-      "community": 137,
+      "community": 31,
       "norm_label": "useassistantrealtime()"
     },
     {
@@ -7227,7 +7200,7 @@
       "source_file": "src/utils/cloudinary.js",
       "source_location": "L1",
       "id": "src_utils_cloudinary_js",
-      "community": 87,
+      "community": 43,
       "norm_label": "cloudinary.js"
     },
     {
@@ -7236,7 +7209,7 @@
       "source_file": "src/utils/cloudinary.js",
       "source_location": "L18",
       "id": "utils_cloudinary_cldtransform",
-      "community": 87,
+      "community": 43,
       "norm_label": "cldtransform()"
     },
     {
@@ -7245,7 +7218,7 @@
       "source_file": "src/utils/cloudinary.js",
       "source_location": "L35",
       "id": "utils_cloudinary_cldresponsivefit",
-      "community": 87,
+      "community": 43,
       "norm_label": "cldresponsivefit()"
     },
     {
@@ -8869,19 +8842,10 @@
       "norm_label": "appinstallbanner"
     },
     {
-      "label": "InstagramEmbed",
-      "file_type": "document",
-      "source_file": "IMPROVEMENTS_NEEDED.md",
-      "source_location": "L51",
-      "id": "ken_improvements_needed_instagramembed",
-      "community": 107,
-      "norm_label": "instagramembed"
-    },
-    {
       "label": "HamburgerButton",
       "file_type": "document",
       "source_file": "IMPROVEMENTS_NEEDED.md",
-      "source_location": "L55",
+      "source_location": "L51",
       "id": "ken_improvements_needed_hamburgerbutton",
       "community": 107,
       "norm_label": "hamburgerbutton"
@@ -8890,7 +8854,7 @@
       "label": "Critical Issues",
       "file_type": "document",
       "source_file": "IMPROVEMENTS_NEEDED.md",
-      "source_location": "L61",
+      "source_location": "L57",
       "id": "ken_improvements_needed_critical_issues",
       "community": 129,
       "norm_label": "critical issues"
@@ -8899,7 +8863,7 @@
       "label": "High Priority Improvements",
       "file_type": "document",
       "source_file": "IMPROVEMENTS_NEEDED.md",
-      "source_location": "L67",
+      "source_location": "L63",
       "id": "ken_improvements_needed_high_priority_improvements",
       "community": 66,
       "norm_label": "high priority improvements"
@@ -8908,7 +8872,7 @@
       "label": "1. Drinks page modernization",
       "file_type": "document",
       "source_file": "IMPROVEMENTS_NEEDED.md",
-      "source_location": "L69",
+      "source_location": "L65",
       "id": "ken_improvements_needed_1_drinks_page_modernization",
       "community": 66,
       "norm_label": "1. drinks page modernization"
@@ -8917,7 +8881,7 @@
       "label": "2. Portfolio page eight",
       "file_type": "document",
       "source_file": "IMPROVEMENTS_NEEDED.md",
-      "source_location": "L89",
+      "source_location": "L85",
       "id": "ken_improvements_needed_2_portfolio_page_eight",
       "community": 66,
       "norm_label": "2. portfolio page eight"
@@ -8926,7 +8890,7 @@
       "label": "Medium Priority Improvements",
       "file_type": "document",
       "source_file": "IMPROVEMENTS_NEEDED.md",
-      "source_location": "L99",
+      "source_location": "L95",
       "id": "ken_improvements_needed_medium_priority_improvements",
       "community": 125,
       "norm_label": "medium priority improvements"
@@ -8935,7 +8899,7 @@
       "label": "9. Legacy Component Cleanup",
       "file_type": "document",
       "source_file": "IMPROVEMENTS_NEEDED.md",
-      "source_location": "L101",
+      "source_location": "L97",
       "id": "ken_improvements_needed_9_legacy_component_cleanup",
       "community": 125,
       "norm_label": "9. legacy component cleanup"
@@ -8944,7 +8908,7 @@
       "label": "10. Contact Page Legacy CSS",
       "file_type": "document",
       "source_file": "IMPROVEMENTS_NEEDED.md",
-      "source_location": "L122",
+      "source_location": "L118",
       "id": "ken_improvements_needed_10_contact_page_legacy_css",
       "community": 125,
       "norm_label": "10. contact page legacy css"
@@ -8953,7 +8917,7 @@
       "label": "11. NotFound Component",
       "file_type": "document",
       "source_file": "IMPROVEMENTS_NEEDED.md",
-      "source_location": "L132",
+      "source_location": "L128",
       "id": "ken_improvements_needed_11_notfound_component",
       "community": 125,
       "norm_label": "11. notfound component"
@@ -8962,7 +8926,7 @@
       "label": "12. ErrorBoundary Component",
       "file_type": "document",
       "source_file": "IMPROVEMENTS_NEEDED.md",
-      "source_location": "L155",
+      "source_location": "L151",
       "id": "ken_improvements_needed_12_errorboundary_component",
       "community": 125,
       "norm_label": "12. errorboundary component"
@@ -8971,7 +8935,7 @@
       "label": "13. Legal Pages Styling",
       "file_type": "document",
       "source_file": "IMPROVEMENTS_NEEDED.md",
-      "source_location": "L175",
+      "source_location": "L171",
       "id": "ken_improvements_needed_13_legal_pages_styling",
       "community": 125,
       "norm_label": "13. legal pages styling"
@@ -8980,7 +8944,7 @@
       "label": "14. Home Page (Main Page)",
       "file_type": "document",
       "source_file": "IMPROVEMENTS_NEEDED.md",
-      "source_location": "L200",
+      "source_location": "L196",
       "id": "ken_improvements_needed_14_home_page_main_page",
       "community": 125,
       "norm_label": "14. home page (main page)"
@@ -8989,7 +8953,7 @@
       "label": "Low Priority Improvements",
       "file_type": "document",
       "source_file": "IMPROVEMENTS_NEEDED.md",
-      "source_location": "L219",
+      "source_location": "L215",
       "id": "ken_improvements_needed_low_priority_improvements",
       "community": 135,
       "norm_label": "low priority improvements"
@@ -8998,7 +8962,7 @@
       "label": "15. Test Pages Cleanup",
       "file_type": "document",
       "source_file": "IMPROVEMENTS_NEEDED.md",
-      "source_location": "L221",
+      "source_location": "L217",
       "id": "ken_improvements_needed_15_test_pages_cleanup",
       "community": 135,
       "norm_label": "15. test pages cleanup"
@@ -9007,7 +8971,7 @@
       "label": "16. Unused Files",
       "file_type": "document",
       "source_file": "IMPROVEMENTS_NEEDED.md",
-      "source_location": "L233",
+      "source_location": "L229",
       "id": "ken_improvements_needed_16_unused_files",
       "community": 135,
       "norm_label": "16. unused files"
@@ -9016,7 +8980,7 @@
       "label": "Code Quality Improvements",
       "file_type": "document",
       "source_file": "IMPROVEMENTS_NEEDED.md",
-      "source_location": "L249",
+      "source_location": "L245",
       "id": "ken_improvements_needed_code_quality_improvements",
       "community": 128,
       "norm_label": "code quality improvements"
@@ -9025,7 +8989,7 @@
       "label": "17. Hardcoded Colors Audit",
       "file_type": "document",
       "source_file": "IMPROVEMENTS_NEEDED.md",
-      "source_location": "L251",
+      "source_location": "L247",
       "id": "ken_improvements_needed_17_hardcoded_colors_audit",
       "community": 128,
       "norm_label": "17. hardcoded colors audit"
@@ -9034,7 +8998,7 @@
       "label": "18. React Icons Migration",
       "file_type": "document",
       "source_file": "IMPROVEMENTS_NEEDED.md",
-      "source_location": "L259",
+      "source_location": "L255",
       "id": "ken_improvements_needed_18_react_icons_migration",
       "community": 128,
       "norm_label": "18. react icons migration"
@@ -9043,7 +9007,7 @@
       "label": "19. Image Optimization",
       "file_type": "document",
       "source_file": "IMPROVEMENTS_NEEDED.md",
-      "source_location": "L270",
+      "source_location": "L266",
       "id": "ken_improvements_needed_19_image_optimization",
       "community": 128,
       "norm_label": "19. image optimization"
@@ -9052,7 +9016,7 @@
       "label": "20. Accessibility Audit",
       "file_type": "document",
       "source_file": "IMPROVEMENTS_NEEDED.md",
-      "source_location": "L283",
+      "source_location": "L279",
       "id": "ken_improvements_needed_20_accessibility_audit",
       "community": 128,
       "norm_label": "20. accessibility audit"
@@ -9061,7 +9025,7 @@
       "label": "Performance Optimizations",
       "file_type": "document",
       "source_file": "IMPROVEMENTS_NEEDED.md",
-      "source_location": "L296",
+      "source_location": "L292",
       "id": "ken_improvements_needed_performance_optimizations",
       "community": 138,
       "norm_label": "performance optimizations"
@@ -9070,7 +9034,7 @@
       "label": "21. Bundle Size Optimization",
       "file_type": "document",
       "source_file": "IMPROVEMENTS_NEEDED.md",
-      "source_location": "L298",
+      "source_location": "L294",
       "id": "ken_improvements_needed_21_bundle_size_optimization",
       "community": 138,
       "norm_label": "21. bundle size optimization"
@@ -9079,7 +9043,7 @@
       "label": "22. Animation Performance",
       "file_type": "document",
       "source_file": "IMPROVEMENTS_NEEDED.md",
-      "source_location": "L310",
+      "source_location": "L306",
       "id": "ken_improvements_needed_22_animation_performance",
       "community": 138,
       "norm_label": "22. animation performance"
@@ -9088,7 +9052,7 @@
       "label": "Accessibility Improvements",
       "file_type": "document",
       "source_file": "IMPROVEMENTS_NEEDED.md",
-      "source_location": "L322",
+      "source_location": "L318",
       "id": "ken_improvements_needed_accessibility_improvements",
       "community": 1,
       "norm_label": "accessibility improvements"
@@ -9097,7 +9061,7 @@
       "label": "23. Form Accessibility",
       "file_type": "document",
       "source_file": "IMPROVEMENTS_NEEDED.md",
-      "source_location": "L324",
+      "source_location": "L320",
       "id": "ken_improvements_needed_23_form_accessibility",
       "community": 1,
       "norm_label": "23. form accessibility"
@@ -9106,7 +9070,7 @@
       "label": "24. Navigation Accessibility",
       "file_type": "document",
       "source_file": "IMPROVEMENTS_NEEDED.md",
-      "source_location": "L337",
+      "source_location": "L333",
       "id": "ken_improvements_needed_24_navigation_accessibility",
       "community": 1,
       "norm_label": "24. navigation accessibility"
@@ -9115,7 +9079,7 @@
       "label": "Modernization Tasks",
       "file_type": "document",
       "source_file": "IMPROVEMENTS_NEEDED.md",
-      "source_location": "L349",
+      "source_location": "L345",
       "id": "ken_improvements_needed_modernization_tasks",
       "community": 139,
       "norm_label": "modernization tasks"
@@ -9124,7 +9088,7 @@
       "label": "25. Standardize Component Structure",
       "file_type": "document",
       "source_file": "IMPROVEMENTS_NEEDED.md",
-      "source_location": "L351",
+      "source_location": "L347",
       "id": "ken_improvements_needed_25_standardize_component_structure",
       "community": 139,
       "norm_label": "25. standardize component structure"
@@ -9133,7 +9097,7 @@
       "label": "26. CSS Variable Migration",
       "file_type": "document",
       "source_file": "IMPROVEMENTS_NEEDED.md",
-      "source_location": "L364",
+      "source_location": "L360",
       "id": "ken_improvements_needed_26_css_variable_migration",
       "community": 139,
       "norm_label": "26. css variable migration"
@@ -9142,7 +9106,7 @@
       "label": "Summary by Priority",
       "file_type": "document",
       "source_file": "IMPROVEMENTS_NEEDED.md",
-      "source_location": "L378",
+      "source_location": "L374",
       "id": "ken_improvements_needed_summary_by_priority",
       "community": 114,
       "norm_label": "summary by priority"
@@ -9151,7 +9115,7 @@
       "label": "Critical (0)",
       "file_type": "document",
       "source_file": "IMPROVEMENTS_NEEDED.md",
-      "source_location": "L380",
+      "source_location": "L376",
       "id": "ken_improvements_needed_critical_0",
       "community": 114,
       "norm_label": "critical (0)"
@@ -9160,7 +9124,7 @@
       "label": "High Priority (2)",
       "file_type": "document",
       "source_file": "IMPROVEMENTS_NEEDED.md",
-      "source_location": "L384",
+      "source_location": "L380",
       "id": "ken_improvements_needed_high_priority_2",
       "community": 114,
       "norm_label": "high priority (2)"
@@ -9169,7 +9133,7 @@
       "label": "Medium Priority",
       "file_type": "document",
       "source_file": "IMPROVEMENTS_NEEDED.md",
-      "source_location": "L389",
+      "source_location": "L385",
       "id": "ken_improvements_needed_medium_priority",
       "community": 114,
       "norm_label": "medium priority"
@@ -9178,7 +9142,7 @@
       "label": "Low Priority (2)",
       "file_type": "document",
       "source_file": "IMPROVEMENTS_NEEDED.md",
-      "source_location": "L408",
+      "source_location": "L404",
       "id": "ken_improvements_needed_low_priority_2",
       "community": 114,
       "norm_label": "low priority (2)"
@@ -9187,7 +9151,7 @@
       "label": "Recommended Implementation Order",
       "file_type": "document",
       "source_file": "IMPROVEMENTS_NEEDED.md",
-      "source_location": "L415",
+      "source_location": "L411",
       "id": "ken_improvements_needed_recommended_implementation_order",
       "community": 1,
       "norm_label": "recommended implementation order"
@@ -9196,7 +9160,7 @@
       "label": "Quick Wins",
       "file_type": "document",
       "source_file": "IMPROVEMENTS_NEEDED.md",
-      "source_location": "L425",
+      "source_location": "L421",
       "id": "ken_improvements_needed_quick_wins",
       "community": 1,
       "norm_label": "quick wins"
@@ -9205,7 +9169,7 @@
       "label": "Notes",
       "file_type": "document",
       "source_file": "IMPROVEMENTS_NEEDED.md",
-      "source_location": "L436",
+      "source_location": "L434",
       "id": "ken_improvements_needed_notes",
       "community": 1,
       "norm_label": "notes"
@@ -11668,6 +11632,15 @@
       "norm_label": "assistant_launcher_tips"
     },
     {
+      "label": "InstagramEmbed",
+      "file_type": "document",
+      "source_file": "IMPROVEMENTS_NEEDED.md",
+      "source_location": "L51",
+      "community": 107,
+      "norm_label": "instagramembed",
+      "id": "ken_improvements_needed_instagramembed"
+    },
+    {
       "label": "HERO_POSTER",
       "file_type": "code",
       "source_file": "src/components/hero/Hero.modern.jsx",
@@ -12041,7 +12014,7 @@
       "file_type": "code",
       "source_file": "src/app/(navPages)/offers/page.jsx",
       "source_location": "L14",
-      "community": 94,
+      "community": 146,
       "norm_label": "metadata",
       "id": "offers_page_metadata"
     },
@@ -12104,7 +12077,7 @@
       "file_type": "code",
       "source_file": "src/components/bookingDock/BookingDock.jsx",
       "source_location": "L18",
-      "community": 130,
+      "community": 88,
       "norm_label": "plainwhatsappurl()",
       "id": "bookingdock_bookingdock_plainwhatsappurl"
     },
@@ -12113,7 +12086,7 @@
       "file_type": "code",
       "source_file": "src/components/bookingDock/bookingList.js",
       "source_location": "L9",
-      "community": 130,
+      "community": 88,
       "norm_label": "isservice()",
       "id": "bookingdock_bookinglist_isservice"
     },
@@ -14266,9 +14239,9 @@
       "source_file": "src/components/campaign/CampaignFilm.jsx",
       "source_location": "L4",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "src_components_campaign_campaignfilm_jsx",
-      "target": "image",
-      "confidence_score": 1.0
+      "target": "image"
     },
     {
       "relation": "imports_from",
@@ -17315,9 +17288,9 @@
       "source_file": "src/components/campaign/CampaignFilm.jsx",
       "source_location": "L30",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "src_components_campaign_campaignfilm_jsx",
-      "target": "campaign_campaignfilm_campaignfilm",
-      "confidence_score": 1.0
+      "target": "campaign_campaignfilm_campaignfilm"
     },
     {
       "relation": "contains",
@@ -17325,9 +17298,9 @@
       "source_file": "src/components/campaign/CampaignFilm.jsx",
       "source_location": "L13",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "src_components_campaign_campaignfilm_jsx",
-      "target": "campaign_campaignfilm_clipsrc",
-      "confidence_score": 1.0
+      "target": "campaign_campaignfilm_clipsrc"
     },
     {
       "relation": "contains",
@@ -17335,9 +17308,9 @@
       "source_file": "src/components/campaign/CampaignFilm.jsx",
       "source_location": "L18",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "src_components_campaign_campaignfilm_jsx",
-      "target": "campaign_campaignfilm_muteothers",
-      "confidence_score": 1.0
+      "target": "campaign_campaignfilm_muteothers"
     },
     {
       "relation": "calls",
@@ -17982,26 +17955,6 @@
       "confidence_score": 1,
       "source": "src_components_hooks_usescrolltrigger_js",
       "target": "hooks_usescrolltrigger_usescrolltrigger"
-    },
-    {
-      "relation": "contains",
-      "confidence": "EXTRACTED",
-      "source_file": "src/components/instagram/InstagramEmbed.jsx",
-      "source_location": "L8",
-      "weight": 1,
-      "confidence_score": 1,
-      "source": "src_components_instagram_instagramembed_jsx",
-      "target": "instagram_instagramembed_instagram_posts"
-    },
-    {
-      "relation": "contains",
-      "confidence": "EXTRACTED",
-      "source_file": "src/components/instagram/InstagramEmbed.jsx",
-      "source_location": "L12",
-      "weight": 1,
-      "confidence_score": 1,
-      "source": "src_components_instagram_instagramembed_jsx",
-      "target": "instagram_instagramembed_instagramembed"
     },
     {
       "relation": "contains",
@@ -22187,9 +22140,9 @@
       "source_file": "src/lib/assistant/campaignContext.test.js",
       "source_location": "L63",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "src_lib_assistant_campaigncontext_test_js",
-      "target": "assistant_campaigncontext_test_iphone",
-      "confidence_score": 1.0
+      "target": "assistant_campaigncontext_test_iphone"
     },
     {
       "relation": "contains",
@@ -23183,9 +23136,9 @@
       "source_file": "src/lib/business/campaigns.test.js",
       "source_location": "L31",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "src_lib_business_campaigns_test_js",
-      "target": "business_campaigns_test_now",
-      "confidence_score": 1.0
+      "target": "business_campaigns_test_now"
     },
     {
       "relation": "contains",
@@ -29960,5 +29913,5 @@
     }
   ],
   "hyperedges": [],
-  "built_at_commit": "09ac970561f26bc66714b7839edad78b55126a61"
+  "built_at_commit": "5b8376f762cd3b0f44afcdf565f0bd80f1cd380c"
 }
