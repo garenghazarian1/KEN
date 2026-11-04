@@ -6,6 +6,12 @@ import Link from "next/link";
 import { motion } from "framer-motion";
 import CampaignFilm from "@/components/campaign/CampaignFilm";
 import CampaignPoster from "@/components/campaign/CampaignPoster";
+import {
+  HERO_STILL,
+  heroFileBuffered,
+  releaseHeroVideoFetch,
+  savesData,
+} from "@/components/hero/heroFetchGate";
 import styles from "./Hero.modern.module.css";
 
 const HERO_CLIPS = {
@@ -107,20 +113,49 @@ function GalleryStack() {
 
 export default function HeroModern({ campaign = null }) {
   const videoRef = useRef(null);
+  const stillReadyRef = useRef(false);
+  const startRef = useRef(null);
   const [visible, setVisible] = useState(false);
+  const [allowPlay, setAllowPlay] = useState(false);
+  const [paused, setPaused] = useState(false);
+
+  function onStillReady() {
+    stillReadyRef.current = true;
+    startRef.current?.();
+  }
+
+  function togglePlayback() {
+    const video = videoRef.current;
+    if (!video?.src) return;
+    if (video.paused) {
+      video.play().catch(() => {});
+      return;
+    }
+    video.pause();
+  }
 
   useEffect(() => {
     const video = videoRef.current;
     if (!video) return undefined;
 
-    if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
+    const skip =
+      window.matchMedia("(prefers-reduced-motion: reduce)").matches || savesData();
+    if (skip) {
       video.removeAttribute("data-hero-video");
+      releaseHeroVideoFetch();
       return undefined;
     }
 
     let cancelled = false;
     let failed = false;
+    let released = false;
     let revealTimer = 0;
+
+    const release = () => {
+      if (released) return;
+      released = true;
+      releaseHeroVideoFetch();
+    };
 
     const reveal = () => {
       if (!cancelled && !failed) setVisible(true);
@@ -130,33 +165,52 @@ export default function HeroModern({ campaign = null }) {
       failed = true;
       window.clearTimeout(revealTimer);
       if (!cancelled) setVisible(false);
+      release();
+    };
+
+    const onBuffer = () => {
+      if (heroFileBuffered(video)) release();
     };
 
     const start = () => {
-      if (cancelled) return;
+      if (cancelled || !stillReadyRef.current || video.src) return;
       video.muted = true;
       video.playsInline = true;
       video.src = clipSrc(video);
       video.load();
       video.play().catch(() => {});
+      onBuffer();
       revealTimer = window.setTimeout(() => {
         if (!cancelled && !failed && video.readyState >= 2) setVisible(true);
       }, 4000);
     };
 
+    startRef.current = start;
+    setAllowPlay(true);
+
+    const onPause = () => setPaused(true);
+    const onPlay = () => setPaused(false);
+
     video.addEventListener("playing", reveal);
     video.addEventListener("loadeddata", reveal);
+    video.addEventListener("loadeddata", onBuffer);
+    video.addEventListener("progress", onBuffer);
     video.addEventListener("error", onError);
-    if (document.readyState === "complete") start();
-    else window.addEventListener("load", start, { once: true });
+    video.addEventListener("pause", onPause);
+    video.addEventListener("play", onPlay);
+    if (stillReadyRef.current) start();
 
     return () => {
       cancelled = true;
+      startRef.current = null;
       window.clearTimeout(revealTimer);
       video.removeEventListener("playing", reveal);
       video.removeEventListener("loadeddata", reveal);
+      video.removeEventListener("loadeddata", onBuffer);
+      video.removeEventListener("progress", onBuffer);
       video.removeEventListener("error", onError);
-      window.removeEventListener("load", start);
+      video.removeEventListener("pause", onPause);
+      video.removeEventListener("play", onPlay);
     };
   }, []);
 
@@ -164,7 +218,18 @@ export default function HeroModern({ campaign = null }) {
     <>
       <section className={styles.heroSection}>
         <div className={styles.media}>
-          {visible ? null : <div className={styles.mediaSkeleton} aria-hidden="true" />}
+          <Image
+            src={HERO_STILL}
+            alt=""
+            fill
+            priority
+            sizes="100vw"
+            className={styles.heroStill}
+            style={{ objectFit: "cover", objectPosition: "center 18%" }}
+            data-hero-still=""
+            onLoad={onStillReady}
+            onError={onStillReady}
+          />
           <video
             ref={videoRef}
             className={
@@ -177,6 +242,14 @@ export default function HeroModern({ campaign = null }) {
             preload="none"
             aria-hidden="true"
           />
+          {allowPlay ? (
+            <button
+              type="button"
+              className={styles.mediaPlay}
+              aria-label={paused ? "Play video" : "Pause video"}
+              onClick={togglePlayback}
+            />
+          ) : null}
         </div>
 
         <div className={styles.copy}>

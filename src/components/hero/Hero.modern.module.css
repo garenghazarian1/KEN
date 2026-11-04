@@ -27,18 +27,31 @@
   background: var(--color-bg-dark);
 }
 
-.mediaSkeleton {
-  position: absolute;
-  inset: 0;
+.heroStill {
   z-index: 0;
-  background: color-mix(in srgb, var(--color-bg-primary) 18%, var(--color-bg-dark));
-  animation: mediaSkeleton 1.2s var(--ease-in-out) infinite;
 }
 
-@keyframes mediaSkeleton {
-  50% {
-    opacity: 0.55;
-  }
+.mediaPlay {
+  position: absolute;
+  inset: 0;
+  z-index: 2;
+  display: block;
+  margin: 0;
+  padding: 0;
+  border: 0;
+  appearance: none;
+  background: transparent;
+  cursor: pointer;
+  -webkit-tap-highlight-color: transparent;
+}
+
+.mediaPlay:focus-visible {
+  outline: 2px solid var(--color-secondary);
+  outline-offset: -4px;
+}
+
+.mediaPlay:active {
+  background: color-mix(in srgb, var(--color-bg-dark) 18%, transparent);
 }
 
 .heroVideo {
@@ -58,13 +71,13 @@
 }
 
 @media (prefers-reduced-motion: reduce) {
-  .mediaSkeleton {
-    display: none;
-  }
-
   .heroVideo {
     display: none;
     transition: none;
+  }
+
+  .mediaPlay:active {
+    background: transparent;
   }
 }
 

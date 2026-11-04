@@ -6,6 +6,8 @@ import { Volume2, VolumeX } from "lucide-react";
 import { CONTACT } from "@/config/constants";
 import { recordOutbound } from "@/lib/leads/trackLead";
 import { tCampaign } from "@/lib/business/campaigns";
+import { savesData } from "@/components/hero/heroFetchGate";
+import { shouldLoadFilm } from "@/components/campaign/filmLoadGate";
 import styles from "./CampaignFilm.module.css";
 
 const AV1_CODEC = "av01.0.05M.08";
@@ -29,16 +31,54 @@ function muteOthers(video) {
  */
 export default function CampaignFilm({ campaign, placement = "home" }) {
   const videoRef = useRef(null);
+  const stageRef = useRef(null);
   const [failed, setFailed] = useState(false);
   const [ready, setReady] = useState(false);
   const [muted, setMuted] = useState(true);
+  const [fetchAllowed, setFetchAllowed] = useState(false);
   const media = campaign?.media;
   const av1 = media?.av1;
   const h264 = media?.h264;
+  const poster = media?.poster;
+
+  useEffect(() => {
+    if (savesData()) return undefined;
+
+    let settled = false;
+    let observer;
+
+    const allow = (intersecting) => {
+      if (settled || !shouldLoadFilm({ placement, intersecting })) return;
+      settled = true;
+      setFetchAllowed(true);
+    };
+
+    if (placement === "page" || typeof IntersectionObserver !== "function") {
+      allow(true);
+      return undefined;
+    }
+
+    const stage = stageRef.current;
+    if (!stage) return undefined;
+
+    observer = new IntersectionObserver(
+      ([entry]) => {
+        if (!entry?.isIntersecting) return;
+        allow(true);
+      },
+      { rootMargin: "0px" }
+    );
+    observer.observe(stage);
+
+    return () => {
+      settled = true;
+      observer.disconnect();
+    };
+  }, [placement]);
 
   useEffect(() => {
     const video = videoRef.current;
-    if (!video || !av1 || !h264) return undefined;
+    if (!fetchAllowed || !video || !av1 || !h264) return undefined;
 
     let cancelled = false;
     const reduce = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
@@ -55,14 +95,18 @@ export default function CampaignFilm({ campaign, placement = "home" }) {
       if (!video.muted) muteOthers(video);
     };
 
-    video.defaultMuted = true;
-    video.muted = true;
-    video.playsInline = true;
-    video.src = clipSrc(video, { av1, h264 });
+    if (!video.getAttribute("src")) {
+      if (poster) video.poster = poster;
+      video.preload = "metadata";
+      video.defaultMuted = true;
+      video.muted = true;
+      video.playsInline = true;
+      video.src = clipSrc(video, { av1, h264 });
+      if (!reduce) video.play().catch(() => {});
+    }
     video.addEventListener("error", onError);
     video.addEventListener("loadedmetadata", onReady);
     video.addEventListener("volumechange", onVolume);
-    if (!reduce) video.play().catch(() => {});
 
     return () => {
       cancelled = true;
@@ -70,7 +114,7 @@ export default function CampaignFilm({ campaign, placement = "home" }) {
       video.removeEventListener("loadedmetadata", onReady);
       video.removeEventListener("volumechange", onVolume);
     };
-  }, [av1, h264]);
+  }, [fetchAllowed, av1, h264, poster]);
 
   function toggleSound() {
     const video = videoRef.current;
@@ -109,6 +153,7 @@ export default function CampaignFilm({ campaign, placement = "home" }) {
 
   return (
     <section
+      ref={stageRef}
       className={`${styles.band}${placement === "page" ? ` ${styles.page}` : ""}`}
       aria-labelledby={titleId}
     >
@@ -123,13 +168,14 @@ export default function CampaignFilm({ campaign, placement = "home" }) {
         />
         <video
           ref={videoRef}
-          className={failed ? styles.filmHidden : styles.film}
-          poster={media.poster}
-          defaultMuted
-          controls
+          className={
+            failed ? styles.filmHidden : ready ? `${styles.film} ${styles.filmReady}` : styles.film
+          }
+          muted
           playsInline
           loop
-          preload="metadata"
+          preload="none"
+          disablePictureInPicture
           aria-label={title}
         />
         <button

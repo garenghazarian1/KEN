@@ -1,4 +1,4 @@
-Last verified against code: 1 Nov 2026 (HEAD 8634780, working tree)
+Last verified against code: 4 Nov 2026 (working tree)
 
 # Outbound contact-click tracking
 
@@ -70,8 +70,11 @@ The admin app shows these on the website-click detail. Records expire after 90 d
 
 ## Advertising tags
 
-Google Tag Manager (`GTM-M3QMMNGZ`) loads on every page from
-`src/app/layout.jsx`. It does not wait for a cookie prompt.
+Google Tag Manager (`GTM-M3QMMNGZ`) loads from
+`src/components/DeferredGoogleTag.jsx`. On the home page it waits until the
+hero still has loaded, then runs on idle with a cap of about 3 seconds. Other
+pages load it as soon as the page is interactive. It does not wait for a
+cookie prompt.
 `src/components/ConsentAnalytics/ConsentAnalytics.jsx` saves the Google click
 id and the first-touch visit on load. There is no cookie-consent banner.
 
@@ -85,6 +88,9 @@ id and the first-touch visit on load. There is no cookie-consent banner.
 - Saved services are deduplicated and bounded to 20 entries.
 
 ## Change log
+
+- 4 November 2026: On the home page, Tag Manager waits for the hero still and then
+  idle, with a cap of about 3 seconds. Other pages still load it immediately.
 
 - 20 October 2026: Google Tag Manager loads on every page again. The click
   id is saved without a cookie prompt, and the consent banner is removed.
