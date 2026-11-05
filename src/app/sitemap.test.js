@@ -11,6 +11,7 @@ const EXPECTED_URLS = [
   `${BASE_URL}/gallery`,
   `${BASE_URL}/drinks`,
   `${BASE_URL}/contact`,
+  `${BASE_URL}/careers`,
   `${BASE_URL}/privacy`,
   `${BASE_URL}/imprint`,
   `${BASE_URL}/terms-of-use`,
@@ -18,7 +19,7 @@ const EXPECTED_URLS = [
 ];
 
 describe("sitemap", () => {
-  it("lists exactly the 12 public pages", () => {
+  it("lists exactly the 13 public pages", () => {
     const entries = sitemap();
 
     expect(entries.map((entry) => entry.url)).toEqual(EXPECTED_URLS);

@@ -7,7 +7,7 @@ import { usePathname } from "next/navigation";
 import { Briefcase, Calendar, Coffee, House } from "lucide-react";
 import {
   BOOKING_URL,
-  CAREERS_URL,
+  CAREERS_PATH,
   NAVBAR_LOGO_DEFAULT_SRC,
 } from "@/config/constants";
 import ServicesMegaMenu from "@/components/loading/navbar/ServicesMegaMenu/ServicesMegaMenu";
@@ -26,6 +26,8 @@ export default function MobileNavTop() {
     pathname === "/drinks" || pathname.startsWith("/drinks/");
   const servicesActive =
     pathname === "/services" || pathname.startsWith("/services/");
+  const careersActive =
+    pathname === CAREERS_PATH || pathname.startsWith(`${CAREERS_PATH}/`);
 
   useEffect(() => {
     const media = window.matchMedia("(prefers-reduced-motion: reduce)");
@@ -113,14 +115,15 @@ export default function MobileNavTop() {
           </Link>
         </div>
         <div className={styles.navItem}>
-          <a
-            href={CAREERS_URL}
+          <Link
+            href={CAREERS_PATH}
             className={styles.actionLink}
             aria-label="Jobs"
+            aria-current={careersActive ? "page" : undefined}
           >
             <Briefcase size={22} strokeWidth={1} className={styles.icon} aria-hidden />
             <span className={styles.label}>Jobs</span>
-          </a>
+          </Link>
         </div>
         <div className={styles.navItem}>
           <a

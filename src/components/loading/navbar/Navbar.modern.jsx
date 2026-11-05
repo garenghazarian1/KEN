@@ -15,7 +15,7 @@ import {
 import {
   BOOKING_URL,
   CARD_URL,
-  CAREERS_URL,
+  CAREERS_PATH,
   NAVBAR_LOGO_DEFAULT_SRC,
 } from "@/config/constants";
 import ServicesMegaMenu from "./ServicesMegaMenu/ServicesMegaMenu";
@@ -273,15 +273,15 @@ export default function NavbarModern() {
                 animate={{ opacity: 1, x: 0 }}
                 transition={{ delay: (navLinks.length + 4) * 0.1 }}
               >
-                <a
-                  href={CAREERS_URL}
+                <Link
+                  href={CAREERS_PATH}
                   className={styles.mobileBookButton}
                   onClick={closeMenu}
                   aria-label="Careers - open roles"
                 >
                   <Briefcase size={20} aria-hidden />
                   <span>Careers</span>
-                </a>
+                </Link>
               </motion.div>
             </div>
           </motion.div>

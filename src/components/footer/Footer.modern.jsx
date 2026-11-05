@@ -28,7 +28,7 @@ import {
   BUSINESS,
   BOOKING_URL,
   CARD_URL,
-  CAREERS_URL,
+  CAREERS_PATH,
   APP_STORES,
 } from "@/config/constants";
 import { stores } from "@/data/stores";
@@ -48,7 +48,7 @@ export default function FooterModern() {
     { title: "Services & Prices", path: "/services", icon: Scissors },
     { title: "Drinks Menu", path: "/drinks", icon: Coffee },
     { title: "Ken Card", path: CARD_URL, icon: CreditCard, external: true },
-    { title: "Careers", path: CAREERS_URL, icon: Briefcase, external: true },
+    { title: "Careers", path: CAREERS_PATH, icon: Briefcase },
   ];
 
   const legalLinks = [

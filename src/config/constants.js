@@ -24,9 +24,9 @@ export const BUSINESS_SLUG = "ken-beauty-salon";
 
 export const BUSINESS_CURRENCY = "AED";
 
-// Careers / open roles (hosted on Superuser admin app)
-export const CAREERS_URL =
-  `${ADMIN_PUBLIC_BASE_URL}/en/careers/company/ken-beauty-salon`;
+// Careers board on this site. The absolute URL is for assistant copy and trusted links.
+export const CAREERS_PATH = "/careers";
+export const CAREERS_URL = `${BASE_URL}/careers`;
 
 // Contact Information
 export const CONTACT = {

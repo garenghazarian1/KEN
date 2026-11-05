@@ -12,7 +12,8 @@ import {
   Briefcase,
   ArrowUpRight,
 } from "lucide-react";
-import { CAREERS_URL } from "@/config/constants";
+import Link from "next/link";
+import { CAREERS_PATH } from "@/config/constants";
 import { buildWhatsAppUrl } from "@/lib/adsAttribution";
 import { getGoogleMapsUrl } from "@/data/stores";
 import { branchKey } from "@/lib/leads/leadRecord";
@@ -263,15 +264,14 @@ export default function ContactContent({ stores, titleAs = "h1" }) {
               Stylists, barbers, and trainers — open roles across Abu Dhabi
             </p>
           </div>
-          <a
-            href={CAREERS_URL}
+          <Link
+            href={CAREERS_PATH}
             className={styles.careersBtn}
             aria-label="View open roles at Ken Beauty Salon"
           >
             <Briefcase size={16} aria-hidden />
             <span>View open roles</span>
-            <ArrowUpRight size={14} aria-hidden />
-          </a>
+          </Link>
         </motion.section>
       </div>
     </main>

@@ -1,5 +1,5 @@
-Last updated: 2 November 2026
-Last verified against code: 1 Nov 2026 (HEAD 8634780, working tree)
+Last updated: 5 November 2026
+Last verified against code: 5 Nov 2026 (working tree)
 
 # Public API Integration (Admin System)
 
@@ -19,7 +19,7 @@ All in `src/config/constants.js`:
 | `BUSINESS_SLUG`         | `ken-beauty-salon`                      | Our business slug on the admin |
 | `BUSINESS_CURRENCY`     | `AED`                                   | Fallback currency label only   |
 
-- No auth, cookies, or API key. CORS is `Access-Control-Allow-Origin: *`.
+- No auth, cookies, or API key. The service catalog route sends `Access-Control-Allow-Origin: *`. The careers and job routes do not, so this site reads them on the server and proxies applications.
 - Admin API locales: `en`, `ar`. Pass `locale`; for `ar` the API contract says render `dir="rtl"`, `lang="ar"`.
 - This site calls `getServiceCatalog("en")` from `src/app/(navPages)/services/page.jsx` and `src/app/api/services/catalog/route.js`. `src/app/layout.jsx` sets `lang="en"`. This site does not ship an Arabic UI.
 - Errors: `{ code, message, details?: { fieldErrors? } }`. Treat 404 `BUSINESS_NOT_FOUND` as "no catalog".
@@ -29,9 +29,9 @@ All in `src/config/constants.js`:
 | Method | Path                                            | Purpose                        | Used by               |
 | ------ | ----------------------------------------------- | ------------------------------ | --------------------- |
 | GET    | `/api/public/businesses/{slug}/service-catalog` | Catalog + pricing + media      | `getServiceCatalog()` |
-| GET    | `/api/public/careers/company/{businessSlug}`    | Careers board (published jobs) | Not called. Careers is the external `CAREERS_URL` link (`src/config/constants.js` lines 28–29), used by `ContactContent.jsx` and `MobileNavTop.jsx`. No `src/app` careers route. |
-| GET    | `/api/public/jobs/{slug}`                       | Job detail + apply form config | (planned in app)      |
-| POST   | `/api/public/jobs/{slug}/apply`                 | Submit application (multipart) | (planned in app)      |
+| GET    | `/api/public/careers/company/{businessSlug}`    | Careers board (published jobs) | `getCareersBoard()` in `src/lib/business/careers.js`, rendered by `src/app/(navPages)/careers/page.jsx`. |
+| GET    | `/api/public/jobs/{slug}`                       | Job detail + apply form config | `getPublicJob()` for `src/app/(navPages)/careers/[slug]/page.jsx`. |
+| POST   | `/api/public/jobs/{slug}/apply`                 | Submit application (multipart) | Browser posts to `POST /api/careers/[slug]/apply`, which forwards the form. These job routes do not send CORS headers, so the browser does not call the admin host directly. |
 
 Planned/admin-side-only (do not call until published): branches, branch hours,
 closures, contact.
@@ -133,12 +133,13 @@ Every node (`category` / `subcategory` / `item`) can carry:
   service media so the full image fits inside its box without crop or stretch. Non-Cloudinary
   URLs pass through unchanged.
 - `next.config.mjs` → `images.remotePatterns` allows `res.cloudinary.com` pathname `/**`
-  so any admin Cloudinary cloud renders. Lock to a specific cloud once confirmed.
+  so any admin Cloudinary cloud renders, and `beauty-admin-mauve.vercel.app` pathname `/job-logos/**` for career profession images. Lock Cloudinary to a specific cloud once confirmed.
 - The URL contains a Cloudinary version segment (`/v123/`), so cache aggressively; combine with row `updatedAt`.
 
 ## History
 
-- **1 November 2026** — `connectServicesDB` is used for assistant models and lead events. `connectDB` has no caller. Careers on this site is the external `CAREERS_URL` link, not `GET /api/public/careers/...`. Job detail and apply are still not called.
+- **5 November 2026** — Careers board, job page, and apply form render on this site. Board and job GETs run on the server. Apply is posted to `POST /api/careers/[slug]/apply`, which forwards multipart to the admin apply route. Page colors stay in this site's CSS. `careersPageTheme` is not applied.
+- **1 November 2026** — `connectServicesDB` is used for assistant models and lead events. `connectDB` has no caller. Careers was still an external link to the admin app.
 - **8 September 2026** — Navbar Services menu is a nested accordion (expand in
   place) on the top-bar drawer; desktop uses a category-rail mega panel. No
   drill-down Back. Thumbnails use `c_fit`.

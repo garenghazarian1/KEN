@@ -1,0 +1,166 @@
+.page {
+  position: relative;
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: var(--spacing-8) var(--spacing-6);
+  padding-top: clamp(0.382rem, 1vw, 0.618rem);
+  min-height: calc(100vh - 10rem);
+  background: var(--color-bg-primary);
+  background-image: radial-gradient(
+      circle at 10% 20%,
+      var(--overlay-primary-tint-40) 0%,
+      transparent 40%
+    ),
+    radial-gradient(
+      circle at 90% 80%,
+      var(--overlay-primary-tint-30) 0%,
+      transparent 40%
+    );
+}
+
+.header {
+  position: relative;
+  z-index: 1;
+  text-align: center;
+  margin-bottom: var(--spacing-8);
+}
+
+.title {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin: 0 0 0.618rem;
+  line-height: 1.128;
+  letter-spacing: -0.02em;
+  font-weight: var(--font-weight-normal);
+}
+
+.titleLine1,
+.titleLine2 {
+  font-family: var(--font-secondary);
+  font-size: clamp(2.058rem, 4vw, 2.618rem);
+}
+
+.titleLine1 {
+  color: var(--color-text-primary);
+}
+
+.titleLine2 {
+  color: var(--color-secondary);
+}
+
+.subtitle {
+  max-width: 36rem;
+  margin: 0 auto;
+  color: var(--color-text-secondary);
+  font-size: var(--font-size-base);
+  line-height: 1.618;
+}
+
+.status {
+  position: relative;
+  z-index: 1;
+  margin: 0 auto;
+  max-width: 36rem;
+  text-align: center;
+  color: var(--color-text-secondary);
+  font-size: var(--font-size-lg);
+}
+
+.list {
+  position: relative;
+  z-index: 1;
+  list-style: none;
+  margin: 0 auto;
+  padding: 0;
+  max-width: 52rem;
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-4);
+}
+
+.row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--spacing-4);
+  align-items: center;
+  min-height: 2.75rem;
+  padding: var(--spacing-4);
+  text-decoration: none;
+  color: inherit;
+  background: var(--glass-white-light);
+  border: 1px solid var(--glass-border-light);
+  border-radius: var(--radius-lg);
+  backdrop-filter: blur(var(--glass-blur-md));
+  -webkit-backdrop-filter: blur(var(--glass-blur-md));
+}
+
+.row:not(.rowClosed):hover .cta,
+.row:not(.rowClosed):focus-visible .cta {
+  color: var(--color-secondary);
+}
+
+.row:focus-visible {
+  outline: 2px solid var(--color-secondary);
+  outline-offset: 3px;
+}
+
+.rowClosed {
+  color: var(--color-text-secondary);
+}
+
+.thumb {
+  position: relative;
+  width: 5.5rem;
+  height: 5.5rem;
+  overflow: hidden;
+  border-radius: var(--radius-md, var(--radius-lg));
+  background: var(--color-bg-secondary, var(--color-bg-primary));
+}
+
+.thumb img {
+  object-fit: cover;
+}
+
+.copy {
+  display: flex;
+  flex: 1 1 12rem;
+  flex-direction: column;
+  gap: 0.25rem;
+  min-width: 0;
+}
+
+.role {
+  font-family: var(--font-secondary);
+  font-size: var(--font-size-xl);
+  color: var(--color-text-primary);
+  letter-spacing: -0.02em;
+}
+
+.location,
+.deadline {
+  color: var(--color-text-secondary);
+  font-size: var(--font-size-sm);
+}
+
+.cta,
+.closed {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.25rem;
+  min-height: 2.75rem;
+  font-size: var(--font-size-sm);
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+}
+
+.cta {
+  color: var(--color-text-primary);
+}
+
+@media (max-width: 40rem) {
+  .cta,
+  .closed {
+    flex-basis: 100%;
+  }
+}
