@@ -382,10 +382,19 @@
       "norm_label": "react-icons"
     },
     {
-      "label": "swiper",
+      "label": "sharp",
       "file_type": "code",
       "source_file": "package.json",
       "source_location": "L28",
+      "id": "ken_package_dependencies_sharp",
+      "community": 8,
+      "norm_label": "sharp"
+    },
+    {
+      "label": "swiper",
+      "file_type": "code",
+      "source_file": "package.json",
+      "source_location": "L29",
       "id": "ken_package_dependencies_swiper",
       "community": 8,
       "norm_label": "swiper"
@@ -394,7 +403,7 @@
       "label": "devDependencies",
       "file_type": "code",
       "source_file": "package.json",
-      "source_location": "L30",
+      "source_location": "L31",
       "id": "ken_package_devdependencies",
       "community": 8,
       "norm_label": "devdependencies"
@@ -403,7 +412,7 @@
       "label": "@playwright/test",
       "file_type": "code",
       "source_file": "package.json",
-      "source_location": "L31",
+      "source_location": "L32",
       "id": "ken_package_devdependencies_playwright_test",
       "community": 8,
       "norm_label": "@playwright/test"
@@ -412,7 +421,7 @@
       "label": "eslint",
       "file_type": "code",
       "source_file": "package.json",
-      "source_location": "L32",
+      "source_location": "L33",
       "id": "ken_package_devdependencies_eslint",
       "community": 8,
       "norm_label": "eslint"
@@ -421,7 +430,7 @@
       "label": "eslint-config-next",
       "file_type": "code",
       "source_file": "package.json",
-      "source_location": "L33",
+      "source_location": "L34",
       "id": "ken_package_devdependencies_eslint_config_next",
       "community": 8,
       "norm_label": "eslint-config-next"
@@ -430,7 +439,7 @@
       "label": "postcss",
       "file_type": "code",
       "source_file": "package.json",
-      "source_location": "L34",
+      "source_location": "L35",
       "id": "ken_package_devdependencies_postcss",
       "community": 8,
       "norm_label": "postcss"
@@ -439,7 +448,7 @@
       "label": "tailwindcss",
       "file_type": "code",
       "source_file": "package.json",
-      "source_location": "L35",
+      "source_location": "L36",
       "id": "ken_package_devdependencies_tailwindcss",
       "community": 8,
       "norm_label": "tailwindcss"
@@ -448,7 +457,7 @@
       "label": "vitest",
       "file_type": "code",
       "source_file": "package.json",
-      "source_location": "L36",
+      "source_location": "L37",
       "id": "ken_package_devdependencies_vitest",
       "community": 8,
       "norm_label": "vitest"
@@ -1690,7 +1699,7 @@
       "label": "metadata",
       "file_type": "code",
       "source_file": "src/app/layout.jsx",
-      "source_location": "L24",
+      "source_location": "L25",
       "id": "app_layout_metadata",
       "community": 49,
       "norm_label": "metadata"
@@ -1699,7 +1708,7 @@
       "label": "RootLayout()",
       "file_type": "code",
       "source_file": "src/app/layout.jsx",
-      "source_location": "L61",
+      "source_location": "L62",
       "id": "app_layout_rootlayout",
       "community": 49,
       "norm_label": "rootlayout()"
@@ -1746,34 +1755,34 @@
       "source_file": "src/app/page.jsx",
       "source_location": "L1",
       "id": "src_app_page_jsx",
-      "community": 94,
+      "community": 152,
       "norm_label": "page.jsx"
     },
     {
       "label": "metadata",
       "file_type": "code",
       "source_file": "src/app/page.jsx",
-      "source_location": "L16",
+      "source_location": "L17",
       "id": "app_page_metadata",
-      "community": 94,
+      "community": 152,
       "norm_label": "metadata"
     },
     {
       "label": "localBusinessJsonLd",
       "file_type": "code",
       "source_file": "src/app/page.jsx",
-      "source_location": "L45",
+      "source_location": "L46",
       "id": "app_page_localbusinessjsonld",
-      "community": 94,
+      "community": 152,
       "norm_label": "localbusinessjsonld"
     },
     {
       "label": "Home()",
       "file_type": "code",
       "source_file": "src/app/page.jsx",
-      "source_location": "L62",
+      "source_location": "L63",
       "id": "app_page_home",
-      "community": 94,
+      "community": 152,
       "norm_label": "home()"
     },
     {
@@ -1798,7 +1807,7 @@
       "label": "sitemap()",
       "file_type": "code",
       "source_file": "src/app/sitemap.js",
-      "source_location": "L18",
+      "source_location": "L19",
       "id": "app_sitemap_sitemap",
       "community": 134,
       "norm_label": "sitemap()"
@@ -1825,7 +1834,7 @@
       "label": "entries",
       "file_type": "code",
       "source_file": "src/app/sitemap.test.js",
-      "source_location": "L22",
+      "source_location": "L23",
       "id": "app_sitemap_test_entries",
       "community": 134,
       "norm_label": "entries"
@@ -1865,6 +1874,60 @@
       "id": "about_page_home",
       "community": 29,
       "norm_label": "home()"
+    },
+    {
+      "label": "page.jsx",
+      "file_type": "code",
+      "source_file": "src/app/(navPages)/careers/page.jsx",
+      "source_location": "L1",
+      "id": "src_app_navpages_careers_page_jsx",
+      "community": 56,
+      "norm_label": "page.jsx"
+    },
+    {
+      "label": "metadata",
+      "file_type": "code",
+      "source_file": "src/app/(navPages)/careers/page.jsx",
+      "source_location": "L7",
+      "id": "careers_page_metadata",
+      "community": 56,
+      "norm_label": "metadata"
+    },
+    {
+      "label": "CareersPage()",
+      "file_type": "code",
+      "source_file": "src/app/(navPages)/careers/page.jsx",
+      "source_location": "L23",
+      "id": "careers_page_careerspage",
+      "community": 56,
+      "norm_label": "careerspage()"
+    },
+    {
+      "label": "page.jsx",
+      "file_type": "code",
+      "source_file": "src/app/(navPages)/careers/[slug]/page.jsx",
+      "source_location": "L1",
+      "id": "src_app_navpages_careers_slug_page_jsx",
+      "community": 56,
+      "norm_label": "page.jsx"
+    },
+    {
+      "label": "generateMetadata()",
+      "file_type": "code",
+      "source_file": "src/app/(navPages)/careers/[slug]/page.jsx",
+      "source_location": "L9",
+      "id": "slug_page_generatemetadata",
+      "community": 56,
+      "norm_label": "generatemetadata()"
+    },
+    {
+      "label": "CareerJobPage()",
+      "file_type": "code",
+      "source_file": "src/app/(navPages)/careers/[slug]/page.jsx",
+      "source_location": "L38",
+      "id": "slug_page_careerjobpage",
+      "community": 56,
+      "norm_label": "careerjobpage()"
     },
     {
       "label": "page.jsx",
@@ -1998,7 +2061,7 @@
       "source_file": "src/app/(navPages)/offers/page.jsx",
       "source_location": "L1",
       "id": "src_app_navpages_offers_page_jsx",
-      "community": 146,
+      "community": 31,
       "norm_label": "page.jsx"
     },
     {
@@ -2007,7 +2070,7 @@
       "source_file": "src/app/(navPages)/offers/page.jsx",
       "source_location": "L18",
       "id": "offers_page_generatemetadata",
-      "community": 146,
+      "community": 31,
       "norm_label": "generatemetadata()"
     },
     {
@@ -2016,7 +2079,7 @@
       "source_file": "src/app/(navPages)/offers/page.jsx",
       "source_location": "L50",
       "id": "offers_page_offeritems",
-      "community": 146,
+      "community": 31,
       "norm_label": "offeritems()"
     },
     {
@@ -2025,7 +2088,7 @@
       "source_file": "src/app/(navPages)/offers/page.jsx",
       "source_location": "L77",
       "id": "offers_page_offerspage",
-      "community": 146,
+      "community": 31,
       "norm_label": "offerspage()"
     },
     {
@@ -2034,7 +2097,7 @@
       "source_file": "src/app/(navPages)/services/page.jsx",
       "source_location": "L1",
       "id": "src_app_navpages_services_page_jsx",
-      "community": 88,
+      "community": 72,
       "norm_label": "page.jsx"
     },
     {
@@ -2043,7 +2106,7 @@
       "source_file": "src/app/(navPages)/services/page.jsx",
       "source_location": "L11",
       "id": "services_page_metadata",
-      "community": 88,
+      "community": 72,
       "norm_label": "metadata"
     },
     {
@@ -2052,7 +2115,7 @@
       "source_file": "src/app/(navPages)/services/page.jsx",
       "source_location": "L32",
       "id": "services_page_queryvalue",
-      "community": 88,
+      "community": 72,
       "norm_label": "queryvalue()"
     },
     {
@@ -2061,7 +2124,7 @@
       "source_file": "src/app/(navPages)/services/page.jsx",
       "source_location": "L37",
       "id": "services_page_servicespage",
-      "community": 88,
+      "community": 72,
       "norm_label": "servicespage()"
     },
     {
@@ -2364,6 +2427,24 @@
     {
       "label": "route.js",
       "file_type": "code",
+      "source_file": "src/app/api/careers/[slug]/apply/route.js",
+      "source_location": "L1",
+      "id": "src_app_api_careers_slug_apply_route_js",
+      "community": 56,
+      "norm_label": "route.js"
+    },
+    {
+      "label": "POST()",
+      "file_type": "code",
+      "source_file": "src/app/api/careers/[slug]/apply/route.js",
+      "source_location": "L8",
+      "id": "apply_route_post",
+      "community": 56,
+      "norm_label": "post()"
+    },
+    {
+      "label": "route.js",
+      "file_type": "code",
       "source_file": "src/app/api/cron/assistant-cleanup/route.js",
       "source_location": "L1",
       "id": "src_app_api_cron_assistant_cleanup_route_js",
@@ -2439,7 +2520,7 @@
       "source_file": "src/app/api/leads/route.js",
       "source_location": "L1",
       "id": "src_app_api_leads_route_js",
-      "community": 41,
+      "community": 140,
       "norm_label": "route.js"
     },
     {
@@ -2448,7 +2529,7 @@
       "source_file": "src/app/api/leads/route.js",
       "source_location": "L9",
       "id": "leads_route_clientip",
-      "community": 41,
+      "community": 140,
       "norm_label": "clientip()"
     },
     {
@@ -2457,7 +2538,7 @@
       "source_file": "src/app/api/leads/route.js",
       "source_location": "L21",
       "id": "leads_route_post",
-      "community": 41,
+      "community": 140,
       "norm_label": "post()"
     },
     {
@@ -2466,7 +2547,7 @@
       "source_file": "src/app/api/services/catalog/route.js",
       "source_location": "L1",
       "id": "src_app_api_services_catalog_route_js",
-      "community": 88,
+      "community": 72,
       "norm_label": "route.js"
     },
     {
@@ -2475,7 +2556,7 @@
       "source_file": "src/app/api/services/catalog/route.js",
       "source_location": "L11",
       "id": "catalog_route_firstimage",
-      "community": 88,
+      "community": 72,
       "norm_label": "firstimage()"
     },
     {
@@ -2484,7 +2565,7 @@
       "source_file": "src/app/api/services/catalog/route.js",
       "source_location": "L17",
       "id": "catalog_route_slimitem",
-      "community": 88,
+      "community": 72,
       "norm_label": "slimitem()"
     },
     {
@@ -2493,7 +2574,7 @@
       "source_file": "src/app/api/services/catalog/route.js",
       "source_location": "L26",
       "id": "catalog_route_slimsections",
-      "community": 88,
+      "community": 72,
       "norm_label": "slimsections()"
     },
     {
@@ -2502,7 +2583,7 @@
       "source_file": "src/app/api/services/catalog/route.js",
       "source_location": "L41",
       "id": "catalog_route_get",
-      "community": 88,
+      "community": 72,
       "norm_label": "get()"
     },
     {
@@ -2725,7 +2806,7 @@
       "label": "abril",
       "file_type": "code",
       "source_file": "src/app/ui/fonts.jsx",
-      "source_location": "L16",
+      "source_location": "L17",
       "id": "ui_fonts_abril",
       "community": 24,
       "norm_label": "abril"
@@ -2734,7 +2815,7 @@
       "label": "sevillana",
       "file_type": "code",
       "source_file": "src/app/ui/fonts.jsx",
-      "source_location": "L17",
+      "source_location": "L18",
       "id": "ui_fonts_sevillana",
       "community": 24,
       "norm_label": "sevillana"
@@ -2743,7 +2824,7 @@
       "label": "bad",
       "file_type": "code",
       "source_file": "src/app/ui/fonts.jsx",
-      "source_location": "L18",
+      "source_location": "L19",
       "id": "ui_fonts_bad",
       "community": 24,
       "norm_label": "bad"
@@ -2752,7 +2833,7 @@
       "label": "pt",
       "file_type": "code",
       "source_file": "src/app/ui/fonts.jsx",
-      "source_location": "L19",
+      "source_location": "L20",
       "id": "ui_fonts_pt",
       "community": 24,
       "norm_label": "pt"
@@ -2761,7 +2842,7 @@
       "label": "gv",
       "file_type": "code",
       "source_file": "src/app/ui/fonts.jsx",
-      "source_location": "L20",
+      "source_location": "L21",
       "id": "ui_fonts_gv",
       "community": 24,
       "norm_label": "gv"
@@ -2770,7 +2851,7 @@
       "label": "lora",
       "file_type": "code",
       "source_file": "src/app/ui/fonts.jsx",
-      "source_location": "L21",
+      "source_location": "L22",
       "id": "ui_fonts_lora",
       "community": 24,
       "norm_label": "lora"
@@ -2792,6 +2873,33 @@
       "id": "components_clientlayout_clientlayout",
       "community": 22,
       "norm_label": "clientlayout()"
+    },
+    {
+      "label": "DeferredGoogleTag.jsx",
+      "file_type": "code",
+      "source_file": "src/components/DeferredGoogleTag.jsx",
+      "source_location": "L1",
+      "id": "src_components_deferredgoogletag_jsx",
+      "community": 103,
+      "norm_label": "deferredgoogletag.jsx"
+    },
+    {
+      "label": "injectGoogleTag()",
+      "file_type": "code",
+      "source_file": "src/components/DeferredGoogleTag.jsx",
+      "source_location": "L8",
+      "id": "components_deferredgoogletag_injectgoogletag",
+      "community": 103,
+      "norm_label": "injectgoogletag()"
+    },
+    {
+      "label": "DeferredGoogleTag()",
+      "file_type": "code",
+      "source_file": "src/components/DeferredGoogleTag.jsx",
+      "source_location": "L21",
+      "id": "components_deferredgoogletag_deferredgoogletag",
+      "community": 103,
+      "norm_label": "deferredgoogletag()"
     },
     {
       "label": "ErrorBoundary.jsx",
@@ -2889,7 +2997,7 @@
       "source_file": "src/components/AssistantWidget/AssistantPanel.jsx",
       "source_location": "L1",
       "id": "src_components_assistantwidget_assistantpanel_jsx",
-      "community": 31,
+      "community": 150,
       "norm_label": "assistantpanel.jsx"
     },
     {
@@ -2898,7 +3006,7 @@
       "source_file": "src/components/AssistantWidget/AssistantPanel.jsx",
       "source_location": "L42",
       "id": "assistantwidget_assistantpanel_isnamepromptdismissed",
-      "community": 31,
+      "community": 150,
       "norm_label": "isnamepromptdismissed()"
     },
     {
@@ -2907,7 +3015,7 @@
       "source_file": "src/components/AssistantWidget/AssistantPanel.jsx",
       "source_location": "L50",
       "id": "assistantwidget_assistantpanel_persistnamepromptdismissed",
-      "community": 31,
+      "community": 150,
       "norm_label": "persistnamepromptdismissed()"
     },
     {
@@ -2916,7 +3024,7 @@
       "source_file": "src/components/AssistantWidget/AssistantPanel.jsx",
       "source_location": "L58",
       "id": "assistantwidget_assistantpanel_createclientmessage",
-      "community": 31,
+      "community": 150,
       "norm_label": "createclientmessage()"
     },
     {
@@ -2925,7 +3033,7 @@
       "source_file": "src/components/AssistantWidget/AssistantPanel.jsx",
       "source_location": "L69",
       "id": "assistantwidget_assistantpanel_getsessionid",
-      "community": 31,
+      "community": 150,
       "norm_label": "getsessionid()"
     },
     {
@@ -2934,7 +3042,7 @@
       "source_file": "src/components/AssistantWidget/AssistantPanel.jsx",
       "source_location": "L89",
       "id": "assistantwidget_assistantpanel_actionicon",
-      "community": 31,
+      "community": 150,
       "norm_label": "actionicon()"
     },
     {
@@ -2943,7 +3051,7 @@
       "source_file": "src/components/AssistantWidget/AssistantPanel.jsx",
       "source_location": "L96",
       "id": "assistantwidget_assistantpanel_readassistantsse",
-      "community": 31,
+      "community": 150,
       "norm_label": "readassistantsse()"
     },
     {
@@ -2952,7 +3060,7 @@
       "source_file": "src/components/AssistantWidget/AssistantPanel.jsx",
       "source_location": "L132",
       "id": "assistantwidget_assistantpanel_assistantpanel",
-      "community": 31,
+      "community": 41,
       "norm_label": "assistantpanel()"
     },
     {
@@ -2961,7 +3069,7 @@
       "source_file": "src/components/AssistantWidget/AssistantWidget.jsx",
       "source_location": "L1",
       "id": "src_components_assistantwidget_assistantwidget_jsx",
-      "community": 103,
+      "community": 147,
       "norm_label": "assistantwidget.jsx"
     },
     {
@@ -2970,7 +3078,7 @@
       "source_file": "src/components/AssistantWidget/AssistantWidget.jsx",
       "source_location": "L25",
       "id": "assistantwidget_assistantwidget_assistantpanel",
-      "community": 103,
+      "community": 147,
       "norm_label": "assistantpanel"
     },
     {
@@ -2979,7 +3087,7 @@
       "source_file": "src/components/AssistantWidget/AssistantWidget.jsx",
       "source_location": "L32",
       "id": "assistantwidget_assistantwidget_assistantcontext",
-      "community": 103,
+      "community": 147,
       "norm_label": "assistantcontext"
     },
     {
@@ -2988,7 +3096,7 @@
       "source_file": "src/components/AssistantWidget/AssistantWidget.jsx",
       "source_location": "L34",
       "id": "assistantwidget_assistantwidget_useassistant",
-      "community": 103,
+      "community": 147,
       "norm_label": "useassistant()"
     },
     {
@@ -2997,25 +3105,25 @@
       "source_file": "src/components/AssistantWidget/AssistantWidget.jsx",
       "source_location": "L42",
       "id": "assistantwidget_assistantwidget_assistantprovider",
-      "community": 103,
+      "community": 147,
       "norm_label": "assistantprovider()"
     },
     {
       "label": "AssistantNavButton()",
       "file_type": "code",
       "source_file": "src/components/AssistantWidget/AssistantWidget.jsx",
-      "source_location": "L173",
+      "source_location": "L171",
       "id": "assistantwidget_assistantwidget_assistantnavbutton",
-      "community": 103,
+      "community": 147,
       "norm_label": "assistantnavbutton()"
     },
     {
       "label": "AssistantWidget()",
       "file_type": "code",
       "source_file": "src/components/AssistantWidget/AssistantWidget.jsx",
-      "source_location": "L247",
+      "source_location": "L246",
       "id": "assistantwidget_assistantwidget_assistantwidget",
-      "community": 103,
+      "community": 147,
       "norm_label": "assistantwidget()"
     },
     {
@@ -3150,34 +3258,25 @@
       "source_file": "src/components/campaign/CampaignFilm.jsx",
       "source_location": "L1",
       "id": "src_components_campaign_campaignfilm_jsx",
-      "community": 36,
+      "community": 153,
       "norm_label": "campaignfilm.jsx"
-    },
-    {
-      "label": "clipSrc()",
-      "file_type": "code",
-      "source_file": "src/components/campaign/CampaignFilm.jsx",
-      "source_location": "L13",
-      "id": "campaign_campaignfilm_clipsrc",
-      "community": 36,
-      "norm_label": "clipsrc()"
     },
     {
       "label": "muteOthers()",
       "file_type": "code",
       "source_file": "src/components/campaign/CampaignFilm.jsx",
-      "source_location": "L18",
+      "source_location": "L15",
       "id": "campaign_campaignfilm_muteothers",
-      "community": 36,
+      "community": 153,
       "norm_label": "muteothers()"
     },
     {
       "label": "CampaignFilm()",
       "file_type": "code",
       "source_file": "src/components/campaign/CampaignFilm.jsx",
-      "source_location": "L30",
+      "source_location": "L27",
       "id": "campaign_campaignfilm_campaignfilm",
-      "community": 36,
+      "community": 153,
       "norm_label": "campaignfilm()"
     },
     {
@@ -3186,7 +3285,7 @@
       "source_file": "src/components/campaign/CampaignPoster.jsx",
       "source_location": "L1",
       "id": "src_components_campaign_campaignposter_jsx",
-      "community": 146,
+      "community": 31,
       "norm_label": "campaignposter.jsx"
     },
     {
@@ -3195,7 +3294,7 @@
       "source_file": "src/components/campaign/CampaignPoster.jsx",
       "source_location": "L11",
       "id": "campaign_campaignposter_linesof",
-      "community": 146,
+      "community": 31,
       "norm_label": "linesof()"
     },
     {
@@ -3204,8 +3303,35 @@
       "source_file": "src/components/campaign/CampaignPoster.jsx",
       "source_location": "L22",
       "id": "campaign_campaignposter_campaignposter",
-      "community": 146,
+      "community": 31,
       "norm_label": "campaignposter()"
+    },
+    {
+      "label": "filmLoadGate.js",
+      "file_type": "code",
+      "source_file": "src/components/campaign/filmLoadGate.js",
+      "source_location": "L1",
+      "id": "src_components_campaign_filmloadgate_js",
+      "community": 94,
+      "norm_label": "filmloadgate.js"
+    },
+    {
+      "label": "shouldLoadFilm()",
+      "file_type": "code",
+      "source_file": "src/components/campaign/filmLoadGate.js",
+      "source_location": "L2",
+      "id": "campaign_filmloadgate_shouldloadfilm",
+      "community": 94,
+      "norm_label": "shouldloadfilm()"
+    },
+    {
+      "label": "filmLoadGate.test.js",
+      "file_type": "code",
+      "source_file": "src/components/campaign/filmLoadGate.test.js",
+      "source_location": "L1",
+      "id": "src_components_campaign_filmloadgate_test_js",
+      "community": 94,
+      "norm_label": "filmloadgate.test.js"
     },
     {
       "label": "OffersContent.jsx",
@@ -3213,7 +3339,7 @@
       "source_file": "src/components/campaign/OffersContent.jsx",
       "source_location": "L1",
       "id": "src_components_campaign_offerscontent_jsx",
-      "community": 146,
+      "community": 31,
       "norm_label": "offerscontent.jsx"
     },
     {
@@ -3222,8 +3348,107 @@
       "source_file": "src/components/campaign/OffersContent.jsx",
       "source_location": "L9",
       "id": "campaign_offerscontent_offerscontent",
-      "community": 146,
+      "community": 31,
       "norm_label": "offerscontent()"
+    },
+    {
+      "label": "CareersBoard.jsx",
+      "file_type": "code",
+      "source_file": "src/components/careers/CareersBoard.jsx",
+      "source_location": "L1",
+      "id": "src_components_careers_careersboard_jsx",
+      "community": 42,
+      "norm_label": "careersboard.jsx"
+    },
+    {
+      "label": "CareersBoard()",
+      "file_type": "code",
+      "source_file": "src/components/careers/CareersBoard.jsx",
+      "source_location": "L6",
+      "id": "careers_careersboard_careersboard",
+      "community": 42,
+      "norm_label": "careersboard()"
+    },
+    {
+      "label": "JobApplyForm.jsx",
+      "file_type": "code",
+      "source_file": "src/components/careers/JobApplyForm.jsx",
+      "source_location": "L1",
+      "id": "src_components_careers_jobapplyform_jsx",
+      "community": 36,
+      "norm_label": "jobapplyform.jsx"
+    },
+    {
+      "label": "emptyErrors()",
+      "file_type": "code",
+      "source_file": "src/components/careers/JobApplyForm.jsx",
+      "source_location": "L12",
+      "id": "careers_jobapplyform_emptyerrors",
+      "community": 36,
+      "norm_label": "emptyerrors()"
+    },
+    {
+      "label": "isPdf()",
+      "file_type": "code",
+      "source_file": "src/components/careers/JobApplyForm.jsx",
+      "source_location": "L16",
+      "id": "careers_jobapplyform_ispdf",
+      "community": 36,
+      "norm_label": "ispdf()"
+    },
+    {
+      "label": "fileProblem()",
+      "file_type": "code",
+      "source_file": "src/components/careers/JobApplyForm.jsx",
+      "source_location": "L22",
+      "id": "careers_jobapplyform_fileproblem",
+      "community": 36,
+      "norm_label": "fileproblem()"
+    },
+    {
+      "label": "FieldError()",
+      "file_type": "code",
+      "source_file": "src/components/careers/JobApplyForm.jsx",
+      "source_location": "L35",
+      "id": "careers_jobapplyform_fielderror",
+      "community": 36,
+      "norm_label": "fielderror()"
+    },
+    {
+      "label": "TextControl()",
+      "file_type": "code",
+      "source_file": "src/components/careers/JobApplyForm.jsx",
+      "source_location": "L40",
+      "id": "careers_jobapplyform_textcontrol",
+      "community": 36,
+      "norm_label": "textcontrol()"
+    },
+    {
+      "label": "JobApplyForm()",
+      "file_type": "code",
+      "source_file": "src/components/careers/JobApplyForm.jsx",
+      "source_location": "L71",
+      "id": "careers_jobapplyform_jobapplyform",
+      "community": 36,
+      "norm_label": "jobapplyform()"
+    },
+    {
+      "label": "JobPage.jsx",
+      "file_type": "code",
+      "source_file": "src/components/careers/JobPage.jsx",
+      "source_location": "L1",
+      "id": "src_components_careers_jobpage_jsx",
+      "community": 36,
+      "norm_label": "jobpage.jsx"
+    },
+    {
+      "label": "JobPage()",
+      "file_type": "code",
+      "source_file": "src/components/careers/JobPage.jsx",
+      "source_location": "L7",
+      "id": "careers_jobpage_jobpage",
+      "community": 36,
+      "norm_label": "jobpage()"
     },
     {
       "label": "ConsentAnalytics.jsx",
@@ -3256,7 +3481,7 @@
       "label": "shortLocationLabel()",
       "file_type": "code",
       "source_file": "src/components/contact/ContactContent.jsx",
-      "source_location": "L22",
+      "source_location": "L23",
       "id": "contact_contactcontent_shortlocationlabel",
       "community": 53,
       "norm_label": "shortlocationlabel()"
@@ -3265,7 +3490,7 @@
       "label": "fadeUp",
       "file_type": "code",
       "source_file": "src/components/contact/ContactContent.jsx",
-      "source_location": "L28",
+      "source_location": "L29",
       "id": "contact_contactcontent_fadeup",
       "community": 53,
       "norm_label": "fadeup"
@@ -3274,7 +3499,7 @@
       "label": "ContactContent()",
       "file_type": "code",
       "source_file": "src/components/contact/ContactContent.jsx",
-      "source_location": "L37",
+      "source_location": "L38",
       "id": "contact_contactcontent_contactcontent",
       "community": 53,
       "norm_label": "contactcontent()"
@@ -3330,53 +3555,89 @@
       "source_file": "src/components/DraggableWhatsAppButton/DraggableWhatsAppButton.jsx",
       "source_location": "L1",
       "id": "src_components_draggablewhatsappbutton_draggablewhatsappbutton_jsx",
-      "community": 142,
+      "community": 44,
       "norm_label": "draggablewhatsappbutton.jsx"
-    },
-    {
-      "label": "FLOATING_WHATSAPP",
-      "file_type": "code",
-      "source_file": "src/components/DraggableWhatsAppButton/DraggableWhatsAppButton.jsx",
-      "source_location": "L14",
-      "id": "draggablewhatsappbutton_draggablewhatsappbutton_floating_whatsapp",
-      "community": 142,
-      "norm_label": "floating_whatsapp"
     },
     {
       "label": "readSavedPosition()",
       "file_type": "code",
       "source_file": "src/components/DraggableWhatsAppButton/DraggableWhatsAppButton.jsx",
-      "source_location": "L18",
+      "source_location": "L16",
       "id": "draggablewhatsappbutton_draggablewhatsappbutton_readsavedposition",
-      "community": 142,
+      "community": 44,
       "norm_label": "readsavedposition()"
     },
     {
       "label": "persistPosition()",
       "file_type": "code",
       "source_file": "src/components/DraggableWhatsAppButton/DraggableWhatsAppButton.jsx",
-      "source_location": "L37",
+      "source_location": "L35",
       "id": "draggablewhatsappbutton_draggablewhatsappbutton_persistposition",
-      "community": 142,
+      "community": 44,
       "norm_label": "persistposition()"
     },
     {
       "label": "clampIntoConstraints()",
       "file_type": "code",
       "source_file": "src/components/DraggableWhatsAppButton/DraggableWhatsAppButton.jsx",
-      "source_location": "L49",
+      "source_location": "L47",
       "id": "draggablewhatsappbutton_draggablewhatsappbutton_clampintoconstraints",
-      "community": 142,
+      "community": 44,
       "norm_label": "clampintoconstraints()"
     },
     {
       "label": "DraggableWhatsAppButton()",
       "file_type": "code",
       "source_file": "src/components/DraggableWhatsAppButton/DraggableWhatsAppButton.jsx",
-      "source_location": "L64",
+      "source_location": "L62",
       "id": "draggablewhatsappbutton_draggablewhatsappbutton_draggablewhatsappbutton",
-      "community": 103,
+      "community": 44,
       "norm_label": "draggablewhatsappbutton()"
+    },
+    {
+      "label": "floatingWhatsApp.js",
+      "file_type": "code",
+      "source_file": "src/components/DraggableWhatsAppButton/floatingWhatsApp.js",
+      "source_location": "L1",
+      "id": "src_components_draggablewhatsappbutton_floatingwhatsapp_js",
+      "community": 44,
+      "norm_label": "floatingwhatsapp.js"
+    },
+    {
+      "label": "FLOATING_WHATSAPP",
+      "file_type": "code",
+      "source_file": "src/components/DraggableWhatsAppButton/floatingWhatsApp.js",
+      "source_location": "L6",
+      "id": "draggablewhatsappbutton_floatingwhatsapp_floating_whatsapp",
+      "community": 44,
+      "norm_label": "floating_whatsapp"
+    },
+    {
+      "label": "floatingWhatsAppBaseHref()",
+      "file_type": "code",
+      "source_file": "src/components/DraggableWhatsAppButton/floatingWhatsApp.js",
+      "source_location": "L11",
+      "id": "draggablewhatsappbutton_floatingwhatsapp_floatingwhatsappbasehref",
+      "community": 44,
+      "norm_label": "floatingwhatsappbasehref()"
+    },
+    {
+      "label": "floatingWhatsAppHref()",
+      "file_type": "code",
+      "source_file": "src/components/DraggableWhatsAppButton/floatingWhatsApp.js",
+      "source_location": "L17",
+      "id": "draggablewhatsappbutton_floatingwhatsapp_floatingwhatsapphref",
+      "community": 44,
+      "norm_label": "floatingwhatsapphref()"
+    },
+    {
+      "label": "trackFloatingWhatsApp()",
+      "file_type": "code",
+      "source_file": "src/components/DraggableWhatsAppButton/floatingWhatsApp.js",
+      "source_location": "L24",
+      "id": "draggablewhatsappbutton_floatingwhatsapp_trackfloatingwhatsapp",
+      "community": 44,
+      "norm_label": "trackfloatingwhatsapp()"
     },
     {
       "label": "DrinksMenu.jsx",
@@ -3492,7 +3753,7 @@
       "source_file": "src/components/hero/Hero.jsx",
       "source_location": "L1",
       "id": "src_components_hero_hero_jsx",
-      "community": 140,
+      "community": 42,
       "norm_label": "hero.jsx"
     },
     {
@@ -3501,7 +3762,7 @@
       "source_file": "src/components/hero/Hero.jsx",
       "source_location": "L9",
       "id": "hero_hero_imagesset",
-      "community": 140,
+      "community": 42,
       "norm_label": "imagesset"
     },
     {
@@ -3510,7 +3771,7 @@
       "source_file": "src/components/hero/Hero.jsx",
       "source_location": "L24",
       "id": "hero_hero_hero",
-      "community": 140,
+      "community": 42,
       "norm_label": "hero()"
     },
     {
@@ -3523,28 +3784,10 @@
       "norm_label": "hero.modern.jsx"
     },
     {
-      "label": "HERO_CLIPS",
-      "file_type": "code",
-      "source_file": "src/components/hero/Hero.modern.jsx",
-      "source_location": "L11",
-      "id": "hero_hero_modern_hero_clips",
-      "community": 33,
-      "norm_label": "hero_clips"
-    },
-    {
-      "label": "clipSrc()",
-      "file_type": "code",
-      "source_file": "src/components/hero/Hero.modern.jsx",
-      "source_location": "L22",
-      "id": "hero_hero_modern_clipsrc",
-      "community": 33,
-      "norm_label": "clipsrc()"
-    },
-    {
       "label": "slides",
       "file_type": "code",
       "source_file": "src/components/hero/Hero.modern.jsx",
-      "source_location": "L29",
+      "source_location": "L10",
       "id": "hero_hero_modern_slides",
       "community": 33,
       "norm_label": "slides"
@@ -3553,7 +3796,7 @@
       "label": "rise",
       "file_type": "code",
       "source_file": "src/components/hero/Hero.modern.jsx",
-      "source_location": "L67",
+      "source_location": "L48",
       "id": "hero_hero_modern_rise",
       "community": 33,
       "norm_label": "rise"
@@ -3562,7 +3805,7 @@
       "label": "GalleryStack()",
       "file_type": "code",
       "source_file": "src/components/hero/Hero.modern.jsx",
-      "source_location": "L76",
+      "source_location": "L57",
       "id": "hero_hero_modern_gallerystack",
       "community": 33,
       "norm_label": "gallerystack()"
@@ -3571,28 +3814,91 @@
       "label": "HeroModern()",
       "file_type": "code",
       "source_file": "src/components/hero/Hero.modern.jsx",
-      "source_location": "L108",
+      "source_location": "L89",
       "id": "hero_hero_modern_heromodern",
       "community": 33,
       "norm_label": "heromodern()"
     },
     {
-      "label": "useAfterHeroVideo.js",
+      "label": "heroFetchGate.js",
       "file_type": "code",
-      "source_file": "src/components/hero/useAfterHeroVideo.js",
+      "source_file": "src/components/hero/heroFetchGate.js",
       "source_location": "L1",
-      "id": "src_components_hero_useafterherovideo_js",
-      "community": 103,
-      "norm_label": "useafterherovideo.js"
+      "id": "src_components_hero_herofetchgate_js",
+      "community": 132,
+      "norm_label": "herofetchgate.js"
     },
     {
-      "label": "useAfterHeroVideo()",
+      "label": "savesData()",
       "file_type": "code",
-      "source_file": "src/components/hero/useAfterHeroVideo.js",
-      "source_location": "L6",
-      "id": "hero_useafterherovideo_useafterherovideo",
-      "community": 103,
-      "norm_label": "useafterherovideo()"
+      "source_file": "src/components/hero/heroFetchGate.js",
+      "source_location": "L1",
+      "id": "hero_herofetchgate_savesdata",
+      "community": 132,
+      "norm_label": "savesdata()"
+    },
+    {
+      "label": "HeroFrame.jsx",
+      "file_type": "code",
+      "source_file": "src/components/hero/HeroFrame.jsx",
+      "source_location": "L1",
+      "id": "src_components_hero_heroframe_jsx",
+      "community": 42,
+      "norm_label": "heroframe.jsx"
+    },
+    {
+      "label": "HeroFrame()",
+      "file_type": "code",
+      "source_file": "src/components/hero/HeroFrame.jsx",
+      "source_location": "L8",
+      "id": "hero_heroframe_heroframe",
+      "community": 42,
+      "norm_label": "heroframe()"
+    },
+    {
+      "label": "HeroPress.jsx",
+      "file_type": "code",
+      "source_file": "src/components/hero/HeroPress.jsx",
+      "source_location": "L1",
+      "id": "src_components_hero_heropress_jsx",
+      "community": 154,
+      "norm_label": "heropress.jsx"
+    },
+    {
+      "label": "Opening()",
+      "file_type": "code",
+      "source_file": "src/components/hero/HeroPress.jsx",
+      "source_location": "L8",
+      "id": "hero_heropress_opening",
+      "community": 154,
+      "norm_label": "opening()"
+    },
+    {
+      "label": "HeroPress()",
+      "file_type": "code",
+      "source_file": "src/components/hero/HeroPress.jsx",
+      "source_location": "L17",
+      "id": "hero_heropress_heropress",
+      "community": 154,
+      "norm_label": "heropress()"
+    },
+    {
+      "label": "HeroWhatsApp.jsx",
+      "file_type": "code",
+      "source_file": "src/components/hero/HeroWhatsApp.jsx",
+      "source_location": "L1",
+      "id": "src_components_hero_herowhatsapp_jsx",
+      "community": 137,
+      "norm_label": "herowhatsapp.jsx"
+    },
+    {
+      "label": "HeroWhatsApp()",
+      "file_type": "code",
+      "source_file": "src/components/hero/HeroWhatsApp.jsx",
+      "source_location": "L11",
+      "id": "hero_herowhatsapp_herowhatsapp",
+      "community": 137,
+      "norm_label": "herowhatsapp()"
     },
     {
       "label": "useScrollTrigger.js",
@@ -4122,7 +4428,7 @@
       "source_file": "src/components/portfolio/aPageOne/PageOne.jsx",
       "source_location": "L1",
       "id": "src_components_portfolio_apageone_pageone_jsx",
-      "community": 20,
+      "community": 42,
       "norm_label": "pageone.jsx"
     },
     {
@@ -4131,7 +4437,7 @@
       "source_file": "src/components/portfolio/aPageOne/PageOne.jsx",
       "source_location": "L6",
       "id": "apageone_pageone_pageone",
-      "community": 20,
+      "community": 42,
       "norm_label": "pageone()"
     },
     {
@@ -4140,7 +4446,7 @@
       "source_file": "src/components/portfolio/bPageTwo/PageTwo.jsx",
       "source_location": "L1",
       "id": "src_components_portfolio_bpagetwo_pagetwo_jsx",
-      "community": 126,
+      "community": 20,
       "norm_label": "pagetwo.jsx"
     },
     {
@@ -4149,7 +4455,7 @@
       "source_file": "src/components/portfolio/bPageTwo/PageTwo.jsx",
       "source_location": "L5",
       "id": "bpagetwo_pagetwo_tocitems",
-      "community": 126,
+      "community": 20,
       "norm_label": "tocitems"
     },
     {
@@ -4158,7 +4464,7 @@
       "source_file": "src/components/portfolio/bPageTwo/PageTwo.jsx",
       "source_location": "L20",
       "id": "bpagetwo_pagetwo_pagetwo",
-      "community": 126,
+      "community": 20,
       "norm_label": "pagetwo()"
     },
     {
@@ -4185,7 +4491,7 @@
       "source_file": "src/components/portfolio/dPageFour/PageFour.jsx",
       "source_location": "L1",
       "id": "src_components_portfolio_dpagefour_pagefour_jsx",
-      "community": 42,
+      "community": 20,
       "norm_label": "pagefour.jsx"
     },
     {
@@ -4194,7 +4500,7 @@
       "source_file": "src/components/portfolio/dPageFour/PageFour.jsx",
       "source_location": "L6",
       "id": "dpagefour_pagefour_pagefour",
-      "community": 42,
+      "community": 20,
       "norm_label": "pagefour()"
     },
     {
@@ -4203,7 +4509,7 @@
       "source_file": "src/components/portfolio/ePageFive/PageFive.jsx",
       "source_location": "L1",
       "id": "src_components_portfolio_epagefive_pagefive_jsx",
-      "community": 147,
+      "community": 20,
       "norm_label": "pagefive.jsx"
     },
     {
@@ -4212,7 +4518,7 @@
       "source_file": "src/components/portfolio/ePageFive/PageFive.jsx",
       "source_location": "L11",
       "id": "epagefive_pagefive_sections",
-      "community": 147,
+      "community": 20,
       "norm_label": "sections"
     },
     {
@@ -4221,7 +4527,7 @@
       "source_file": "src/components/portfolio/ePageFive/PageFive.jsx",
       "source_location": "L34",
       "id": "epagefive_pagefive_pagefive",
-      "community": 147,
+      "community": 20,
       "norm_label": "pagefive()"
     },
     {
@@ -4257,7 +4563,7 @@
       "source_file": "src/components/portfolio/gPageSeven/PageSeven.jsx",
       "source_location": "L1",
       "id": "src_components_portfolio_gpageseven_pageseven_jsx",
-      "community": 42,
+      "community": 130,
       "norm_label": "pageseven.jsx"
     },
     {
@@ -4266,7 +4572,7 @@
       "source_file": "src/components/portfolio/gPageSeven/PageSeven.jsx",
       "source_location": "L6",
       "id": "gpageseven_pageseven_pageseven",
-      "community": 42,
+      "community": 130,
       "norm_label": "pageseven()"
     },
     {
@@ -4293,7 +4599,7 @@
       "source_file": "src/components/portfolio/iPageNine/PageNine.jsx",
       "source_location": "L1",
       "id": "src_components_portfolio_ipagenine_pagenine_jsx",
-      "community": 42,
+      "community": 157,
       "norm_label": "pagenine.jsx"
     },
     {
@@ -4302,7 +4608,7 @@
       "source_file": "src/components/portfolio/iPageNine/PageNine.jsx",
       "source_location": "L6",
       "id": "ipagenine_pagenine_pagenine",
-      "community": 42,
+      "community": 157,
       "norm_label": "pagenine()"
     },
     {
@@ -4311,7 +4617,7 @@
       "source_file": "src/components/portfolio/jPageTen/PageTen.jsx",
       "source_location": "L1",
       "id": "src_components_portfolio_jpageten_pageten_jsx",
-      "community": 39,
+      "community": 42,
       "norm_label": "pageten.jsx"
     },
     {
@@ -4320,7 +4626,7 @@
       "source_file": "src/components/portfolio/jPageTen/PageTen.jsx",
       "source_location": "L7",
       "id": "jpageten_pageten_profiles",
-      "community": 39,
+      "community": 42,
       "norm_label": "profiles"
     },
     {
@@ -4329,7 +4635,7 @@
       "source_file": "src/components/portfolio/jPageTen/PageTen.jsx",
       "source_location": "L28",
       "id": "jpageten_pageten_pageten",
-      "community": 39,
+      "community": 42,
       "norm_label": "pageten()"
     },
     {
@@ -4338,7 +4644,7 @@
       "source_file": "src/components/portfolio/kPageEleven/PageEleven.jsx",
       "source_location": "L1",
       "id": "src_components_portfolio_kpageeleven_pageeleven_jsx",
-      "community": 145,
+      "community": 20,
       "norm_label": "pageeleven.jsx"
     },
     {
@@ -4347,7 +4653,7 @@
       "source_file": "src/components/portfolio/kPageEleven/PageEleven.jsx",
       "source_location": "L6",
       "id": "kpageeleven_pageeleven_pageeleven",
-      "community": 145,
+      "community": 20,
       "norm_label": "pageeleven()"
     },
     {
@@ -4356,7 +4662,7 @@
       "source_file": "src/components/portfolio/lPageTwelve/PageTwelve.jsx",
       "source_location": "L1",
       "id": "src_components_portfolio_lpagetwelve_pagetwelve_jsx",
-      "community": 20,
+      "community": 156,
       "norm_label": "pagetwelve.jsx"
     },
     {
@@ -4365,7 +4671,7 @@
       "source_file": "src/components/portfolio/lPageTwelve/PageTwelve.jsx",
       "source_location": "L6",
       "id": "lpagetwelve_pagetwelve_paragraphs",
-      "community": 20,
+      "community": 156,
       "norm_label": "paragraphs"
     },
     {
@@ -4374,7 +4680,7 @@
       "source_file": "src/components/portfolio/lPageTwelve/PageTwelve.jsx",
       "source_location": "L13",
       "id": "lpagetwelve_pagetwelve_pagetwelve",
-      "community": 20,
+      "community": 156,
       "norm_label": "pagetwelve()"
     },
     {
@@ -4383,7 +4689,7 @@
       "source_file": "src/components/portfolio/mPageThirteen/PageThirteen.jsx",
       "source_location": "L1",
       "id": "src_components_portfolio_mpagethirteen_pagethirteen_jsx",
-      "community": 20,
+      "community": 142,
       "norm_label": "pagethirteen.jsx"
     },
     {
@@ -4392,7 +4698,7 @@
       "source_file": "src/components/portfolio/mPageThirteen/PageThirteen.jsx",
       "source_location": "L6",
       "id": "mpagethirteen_pagethirteen_pagethirteen",
-      "community": 20,
+      "community": 142,
       "norm_label": "pagethirteen()"
     },
     {
@@ -4401,7 +4707,7 @@
       "source_file": "src/components/portfolio/nPageFourteen/PageFourteen.jsx",
       "source_location": "L1",
       "id": "src_components_portfolio_npagefourteen_pagefourteen_jsx",
-      "community": 42,
+      "community": 145,
       "norm_label": "pagefourteen.jsx"
     },
     {
@@ -4410,7 +4716,7 @@
       "source_file": "src/components/portfolio/nPageFourteen/PageFourteen.jsx",
       "source_location": "L6",
       "id": "npagefourteen_pagefourteen_pagefourteen",
-      "community": 42,
+      "community": 145,
       "norm_label": "pagefourteen()"
     },
     {
@@ -4437,7 +4743,7 @@
       "source_file": "src/components/portfolio/pPageSixteen/PageSixteen.jsx",
       "source_location": "L1",
       "id": "src_components_portfolio_ppagesixteen_pagesixteen_jsx",
-      "community": 42,
+      "community": 146,
       "norm_label": "pagesixteen.jsx"
     },
     {
@@ -4446,7 +4752,7 @@
       "source_file": "src/components/portfolio/pPageSixteen/PageSixteen.jsx",
       "source_location": "L6",
       "id": "ppagesixteen_pagesixteen_pagesixteen",
-      "community": 42,
+      "community": 146,
       "norm_label": "pagesixteen()"
     },
     {
@@ -4482,7 +4788,7 @@
       "source_file": "src/components/portfolio/rPageEighteen/PageEighteen.jsx",
       "source_location": "L1",
       "id": "src_components_portfolio_rpageeighteen_pageeighteen_jsx",
-      "community": 148,
+      "community": 158,
       "norm_label": "pageeighteen.jsx"
     },
     {
@@ -4491,7 +4797,7 @@
       "source_file": "src/components/portfolio/rPageEighteen/PageEighteen.jsx",
       "source_location": "L6",
       "id": "rpageeighteen_pageeighteen_pageeighteen",
-      "community": 148,
+      "community": 158,
       "norm_label": "pageeighteen()"
     },
     {
@@ -4500,7 +4806,7 @@
       "source_file": "src/components/portfolio/sPageNineteen/PageNineteen.jsx",
       "source_location": "L1",
       "id": "src_components_portfolio_spagenineteen_pagenineteen_jsx",
-      "community": 20,
+      "community": 111,
       "norm_label": "pagenineteen.jsx"
     },
     {
@@ -4509,7 +4815,7 @@
       "source_file": "src/components/portfolio/sPageNineteen/PageNineteen.jsx",
       "source_location": "L7",
       "id": "spagenineteen_pagenineteen_services",
-      "community": 20,
+      "community": 111,
       "norm_label": "services"
     },
     {
@@ -4518,7 +4824,7 @@
       "source_file": "src/components/portfolio/sPageNineteen/PageNineteen.jsx",
       "source_location": "L22",
       "id": "spagenineteen_pagenineteen_pagenineteen",
-      "community": 20,
+      "community": 111,
       "norm_label": "pagenineteen()"
     },
     {
@@ -4527,7 +4833,7 @@
       "source_file": "src/components/portfolio/tPageTwenty/PageTwenty.jsx",
       "source_location": "L1",
       "id": "src_components_portfolio_tpagetwenty_pagetwenty_jsx",
-      "community": 42,
+      "community": 20,
       "norm_label": "pagetwenty.jsx"
     },
     {
@@ -4536,7 +4842,7 @@
       "source_file": "src/components/portfolio/tPageTwenty/PageTwenty.jsx",
       "source_location": "L6",
       "id": "tpagetwenty_pagetwenty_pagetwenty",
-      "community": 42,
+      "community": 20,
       "norm_label": "pagetwenty()"
     },
     {
@@ -4545,7 +4851,7 @@
       "source_file": "src/components/portfolio/tPageTwentyOne/PageTwentyOne.jsx",
       "source_location": "L1",
       "id": "src_components_portfolio_tpagetwentyone_pagetwentyone_jsx",
-      "community": 20,
+      "community": 126,
       "norm_label": "pagetwentyone.jsx"
     },
     {
@@ -4554,7 +4860,7 @@
       "source_file": "src/components/portfolio/tPageTwentyOne/PageTwentyOne.jsx",
       "source_location": "L7",
       "id": "tpagetwentyone_pagetwentyone_services",
-      "community": 20,
+      "community": 126,
       "norm_label": "services"
     },
     {
@@ -4563,7 +4869,7 @@
       "source_file": "src/components/portfolio/tPageTwentyOne/PageTwentyOne.jsx",
       "source_location": "L16",
       "id": "tpagetwentyone_pagetwentyone_pagetwentyone",
-      "community": 20,
+      "community": 126,
       "norm_label": "pagetwentyone()"
     },
     {
@@ -4572,7 +4878,7 @@
       "source_file": "src/components/portfolio/uPageTwentyTwo/PageTwentyTwo.jsx",
       "source_location": "L1",
       "id": "src_components_portfolio_upagetwentytwo_pagetwentytwo_jsx",
-      "community": 151,
+      "community": 20,
       "norm_label": "pagetwentytwo.jsx"
     },
     {
@@ -4581,7 +4887,7 @@
       "source_file": "src/components/portfolio/uPageTwentyTwo/PageTwentyTwo.jsx",
       "source_location": "L6",
       "id": "upagetwentytwo_pagetwentytwo_pagetwentytwo",
-      "community": 151,
+      "community": 20,
       "norm_label": "pagetwentytwo()"
     },
     {
@@ -4617,7 +4923,7 @@
       "source_file": "src/components/portfolio/wPageTwentyFour/PageTwentyFour.jsx",
       "source_location": "L1",
       "id": "src_components_portfolio_wpagetwentyfour_pagetwentyfour_jsx",
-      "community": 152,
+      "community": 20,
       "norm_label": "pagetwentyfour.jsx"
     },
     {
@@ -4626,7 +4932,7 @@
       "source_file": "src/components/portfolio/wPageTwentyFour/PageTwentyFour.jsx",
       "source_location": "L6",
       "id": "wpagetwentyfour_pagetwentyfour_pagetwentyfour",
-      "community": 152,
+      "community": 20,
       "norm_label": "pagetwentyfour()"
     },
     {
@@ -4662,7 +4968,7 @@
       "source_file": "src/components/portfolio/yPageTwentySix/PageTwentySix.jsx",
       "source_location": "L1",
       "id": "src_components_portfolio_ypagetwentysix_pagetwentysix_jsx",
-      "community": 153,
+      "community": 42,
       "norm_label": "pagetwentysix.jsx"
     },
     {
@@ -4671,7 +4977,7 @@
       "source_file": "src/components/portfolio/yPageTwentySix/PageTwentySix.jsx",
       "source_location": "L6",
       "id": "ypagetwentysix_pagetwentysix_pagetwentysix",
-      "community": 153,
+      "community": 42,
       "norm_label": "pagetwentysix()"
     },
     {
@@ -4680,7 +4986,7 @@
       "source_file": "src/components/portfolio/zPageTwentySeven/PageTwentySeven.jsx",
       "source_location": "L1",
       "id": "src_components_portfolio_zpagetwentyseven_pagetwentyseven_jsx",
-      "community": 20,
+      "community": 42,
       "norm_label": "pagetwentyseven.jsx"
     },
     {
@@ -4689,7 +4995,7 @@
       "source_file": "src/components/portfolio/zPageTwentySeven/PageTwentySeven.jsx",
       "source_location": "L6",
       "id": "zpagetwentyseven_pagetwentyseven_pagetwentyseven",
-      "community": 20,
+      "community": 42,
       "norm_label": "pagetwentyseven()"
     },
     {
@@ -5013,7 +5319,7 @@
       "source_file": "src/components/serviceMenu/ServiceMenu.jsx",
       "source_location": "L956",
       "id": "servicemenu_servicemenu_servicemenu",
-      "community": 88,
+      "community": 72,
       "norm_label": "servicemenu()"
     },
     {
@@ -5256,7 +5562,7 @@
       "source_file": "src/data/assistantUi.js",
       "source_location": "L1",
       "id": "src_data_assistantui_js",
-      "community": 137,
+      "community": 41,
       "norm_label": "assistantui.js"
     },
     {
@@ -5265,7 +5571,7 @@
       "source_file": "src/data/assistantUi.js",
       "source_location": "L5",
       "id": "data_assistantui_assistant_welcome",
-      "community": 137,
+      "community": 41,
       "norm_label": "assistant_welcome"
     },
     {
@@ -5274,7 +5580,7 @@
       "source_file": "src/data/assistantUi.js",
       "source_location": "L19",
       "id": "data_assistantui_base_quick_chips",
-      "community": 137,
+      "community": 41,
       "norm_label": "base_quick_chips"
     },
     {
@@ -5283,7 +5589,7 @@
       "source_file": "src/data/assistantUi.js",
       "source_location": "L26",
       "id": "data_assistantui_base_launcher_tips",
-      "community": 137,
+      "community": 41,
       "norm_label": "base_launcher_tips"
     },
     {
@@ -5292,7 +5598,7 @@
       "source_file": "src/data/assistantUi.js",
       "source_location": "L37",
       "id": "data_assistantui_getassistantquickchips",
-      "community": 94,
+      "community": 41,
       "norm_label": "getassistantquickchips()"
     },
     {
@@ -5301,7 +5607,7 @@
       "source_file": "src/data/assistantUi.js",
       "source_location": "L51",
       "id": "data_assistantui_getassistantlaunchertips",
-      "community": 103,
+      "community": 147,
       "norm_label": "getassistantlaunchertips()"
     },
     {
@@ -5427,7 +5733,7 @@
       "source_file": "src/hooks/useAssistantRealtime.js",
       "source_location": "L1",
       "id": "src_hooks_useassistantrealtime_js",
-      "community": 31,
+      "community": 41,
       "norm_label": "useassistantrealtime.js"
     },
     {
@@ -5436,7 +5742,7 @@
       "source_file": "src/hooks/useAssistantRealtime.js",
       "source_location": "L29",
       "id": "hooks_useassistantrealtime_voicesupported",
-      "community": 31,
+      "community": 41,
       "norm_label": "voicesupported()"
     },
     {
@@ -5445,7 +5751,7 @@
       "source_file": "src/hooks/useAssistantRealtime.js",
       "source_location": "L37",
       "id": "hooks_useassistantrealtime_extractresponsetranscript",
-      "community": 31,
+      "community": 41,
       "norm_label": "extractresponsetranscript()"
     },
     {
@@ -5454,7 +5760,7 @@
       "source_file": "src/hooks/useAssistantRealtime.js",
       "source_location": "L63",
       "id": "hooks_useassistantrealtime_useassistantrealtime",
-      "community": 31,
+      "community": 41,
       "norm_label": "useassistantrealtime()"
     },
     {
@@ -5796,7 +6102,7 @@
       "source_file": "src/lib/assistant/campaignContext.js",
       "source_location": "L1",
       "id": "src_lib_assistant_campaigncontext_js",
-      "community": 111,
+      "community": 127,
       "norm_label": "campaigncontext.js"
     },
     {
@@ -5805,7 +6111,7 @@
       "source_file": "src/lib/assistant/campaignContext.js",
       "source_location": "L30",
       "id": "assistant_campaigncontext_iscampaignquery",
-      "community": 111,
+      "community": 127,
       "norm_label": "iscampaignquery()"
     },
     {
@@ -5814,7 +6120,7 @@
       "source_file": "src/lib/assistant/campaignContext.js",
       "source_location": "L40",
       "id": "assistant_campaigncontext_formatcampaigncontext",
-      "community": 111,
+      "community": 127,
       "norm_label": "formatcampaigncontext()"
     },
     {
@@ -5823,7 +6129,7 @@
       "source_file": "src/lib/assistant/campaignContext.js",
       "source_location": "L149",
       "id": "assistant_campaigncontext_buildcampaigncontext",
-      "community": 111,
+      "community": 127,
       "norm_label": "buildcampaigncontext()"
     },
     {
@@ -5832,7 +6138,7 @@
       "source_file": "src/lib/assistant/campaignContext.test.js",
       "source_location": "L1",
       "id": "src_lib_assistant_campaigncontext_test_js",
-      "community": 111,
+      "community": 127,
       "norm_label": "campaigncontext.test.js"
     },
     {
@@ -5841,7 +6147,7 @@
       "source_file": "src/lib/assistant/campaignContext.test.js",
       "source_location": "L9",
       "id": "assistant_campaigncontext_test_august",
-      "community": 111,
+      "community": 127,
       "norm_label": "august"
     },
     {
@@ -5850,7 +6156,7 @@
       "source_file": "src/lib/assistant/campaignContext.test.js",
       "source_location": "L37",
       "id": "assistant_campaigncontext_test_text",
-      "community": 111,
+      "community": 127,
       "norm_label": "text"
     },
     {
@@ -5859,7 +6165,7 @@
       "source_file": "src/lib/assistant/campaignContext.test.js",
       "source_location": "L47",
       "id": "assistant_campaigncontext_test_october",
-      "community": 111,
+      "community": 127,
       "norm_label": "october"
     },
     {
@@ -5868,7 +6174,7 @@
       "source_file": "src/lib/assistant/campaignContext.test.js",
       "source_location": "L63",
       "id": "assistant_campaigncontext_test_iphone",
-      "community": 111,
+      "community": 127,
       "norm_label": "iphone"
     },
     {
@@ -5877,7 +6183,7 @@
       "source_file": "src/lib/assistant/campaignContext.test.js",
       "source_location": "L80",
       "id": "assistant_campaigncontext_test_result",
-      "community": 111,
+      "community": 127,
       "norm_label": "result"
     },
     {
@@ -5886,7 +6192,7 @@
       "source_file": "src/lib/assistant/catalogContext.js",
       "source_location": "L1",
       "id": "src_lib_assistant_catalogcontext_js",
-      "community": 88,
+      "community": 72,
       "norm_label": "catalogcontext.js"
     },
     {
@@ -5895,7 +6201,7 @@
       "source_file": "src/lib/assistant/catalogContext.js",
       "source_location": "L33",
       "id": "assistant_catalogcontext_localecaches",
-      "community": 88,
+      "community": 72,
       "norm_label": "localecaches"
     },
     {
@@ -5904,7 +6210,7 @@
       "source_file": "src/lib/assistant/catalogContext.js",
       "source_location": "L35",
       "id": "assistant_catalogcontext_loadcatalog",
-      "community": 88,
+      "community": 72,
       "norm_label": "loadcatalog()"
     },
     {
@@ -5913,7 +6219,7 @@
       "source_file": "src/lib/assistant/catalogContext.js",
       "source_location": "L44",
       "id": "assistant_catalogcontext_getcachedcatalog",
-      "community": 88,
+      "community": 72,
       "norm_label": "getcachedcatalog()"
     },
     {
@@ -5922,7 +6228,7 @@
       "source_file": "src/lib/assistant/catalogContext.js",
       "source_location": "L73",
       "id": "assistant_catalogcontext_formatitem",
-      "community": 88,
+      "community": 72,
       "norm_label": "formatitem()"
     },
     {
@@ -5931,7 +6237,7 @@
       "source_file": "src/lib/assistant/catalogContext.js",
       "source_location": "L88",
       "id": "assistant_catalogcontext_formatcategoryoverview",
-      "community": 88,
+      "community": 72,
       "norm_label": "formatcategoryoverview()"
     },
     {
@@ -5940,7 +6246,7 @@
       "source_file": "src/lib/assistant/catalogContext.js",
       "source_location": "L110",
       "id": "assistant_catalogcontext_mergehits",
-      "community": 88,
+      "community": 72,
       "norm_label": "mergehits()"
     },
     {
@@ -5949,7 +6255,7 @@
       "source_file": "src/lib/assistant/catalogContext.js",
       "source_location": "L132",
       "id": "assistant_catalogcontext_buildcatalogcontext",
-      "community": 88,
+      "community": 72,
       "norm_label": "buildcatalogcontext()"
     },
     {
@@ -5958,7 +6264,7 @@
       "source_file": "src/lib/assistant/catalogQueryExpand.js",
       "source_location": "L1",
       "id": "src_lib_assistant_catalogqueryexpand_js",
-      "community": 72,
+      "community": 39,
       "norm_label": "catalogqueryexpand.js"
     },
     {
@@ -5967,7 +6273,7 @@
       "source_file": "src/lib/assistant/catalogQueryExpand.js",
       "source_location": "L22",
       "id": "assistant_catalogqueryexpand_catalog_synonym_rules",
-      "community": 72,
+      "community": 39,
       "norm_label": "catalog_synonym_rules"
     },
     {
@@ -5976,7 +6282,7 @@
       "source_file": "src/lib/assistant/catalogQueryExpand.js",
       "source_location": "L86",
       "id": "assistant_catalogqueryexpand_expandwithsynonyms",
-      "community": 72,
+      "community": 39,
       "norm_label": "expandwithsynonyms()"
     },
     {
@@ -5985,7 +6291,7 @@
       "source_file": "src/lib/assistant/catalogQueryExpand.js",
       "source_location": "L106",
       "id": "assistant_catalogqueryexpand_rewritecatalogquerywithllm",
-      "community": 72,
+      "community": 39,
       "norm_label": "rewritecatalogquerywithllm()"
     },
     {
@@ -5994,7 +6300,7 @@
       "source_file": "src/lib/assistant/catalogQueryExpand.js",
       "source_location": "L139",
       "id": "assistant_catalogqueryexpand_parsekeywordarray",
-      "community": 72,
+      "community": 39,
       "norm_label": "parsekeywordarray()"
     },
     {
@@ -6003,7 +6309,7 @@
       "source_file": "src/lib/assistant/catalogQueryExpand.js",
       "source_location": "L168",
       "id": "assistant_catalogqueryexpand_expandcatalogqueryforsearch",
-      "community": 72,
+      "community": 39,
       "norm_label": "expandcatalogqueryforsearch()"
     },
     {
@@ -6012,7 +6318,7 @@
       "source_file": "src/lib/assistant/catalogQueryExpand.test.js",
       "source_location": "L1",
       "id": "src_lib_assistant_catalogqueryexpand_test_js",
-      "community": 72,
+      "community": 39,
       "norm_label": "catalogqueryexpand.test.js"
     },
     {
@@ -6021,7 +6327,7 @@
       "source_file": "src/lib/assistant/catalogQueryExpand.test.js",
       "source_location": "L11",
       "id": "assistant_catalogqueryexpand_test_terms_matchedruleids",
-      "community": 72,
+      "community": 39,
       "norm_label": "{ terms, matchedruleids }"
     },
     {
@@ -6030,7 +6336,7 @@
       "source_file": "src/lib/assistant/catalogQueryExpand.test.js",
       "source_location": "L27",
       "id": "assistant_catalogqueryexpand_test_matchedruleids_terms",
-      "community": 72,
+      "community": 39,
       "norm_label": "{ matchedruleids, terms }"
     },
     {
@@ -6039,7 +6345,7 @@
       "source_file": "src/lib/assistant/catalogQueryExpand.test.js",
       "source_location": "L35",
       "id": "assistant_catalogqueryexpand_test_matchedruleids",
-      "community": 72,
+      "community": 39,
       "norm_label": "{ matchedruleids }"
     },
     {
@@ -6048,7 +6354,7 @@
       "source_file": "src/lib/assistant/catalogQueryExpand.test.js",
       "source_location": "L59",
       "id": "assistant_catalogqueryexpand_test_sections",
-      "community": 72,
+      "community": 39,
       "norm_label": "sections"
     },
     {
@@ -6057,7 +6363,7 @@
       "source_file": "src/lib/assistant/catalogQueryExpand.test.js",
       "source_location": "L87",
       "id": "assistant_catalogqueryexpand_test_catalog",
-      "community": 72,
+      "community": 39,
       "norm_label": "catalog"
     },
     {
@@ -6066,7 +6372,7 @@
       "source_file": "src/lib/assistant/catalogQueryExpand.test.js",
       "source_location": "L89",
       "id": "assistant_catalogqueryexpand_test_direct",
-      "community": 72,
+      "community": 39,
       "norm_label": "direct"
     },
     {
@@ -6075,7 +6381,7 @@
       "source_file": "src/lib/assistant/catalogQueryExpand.test.js",
       "source_location": "L94",
       "id": "assistant_catalogqueryexpand_test_smart",
-      "community": 72,
+      "community": 39,
       "norm_label": "smart"
     },
     {
@@ -6084,7 +6390,7 @@
       "source_file": "src/lib/assistant/catalogQueryExpand.test.js",
       "source_location": "L106",
       "id": "assistant_catalogqueryexpand_test_fakeopenai",
-      "community": 72,
+      "community": 39,
       "norm_label": "fakeopenai"
     },
     {
@@ -6462,7 +6768,7 @@
       "source_file": "src/lib/business/campaigns.js",
       "source_location": "L1",
       "id": "src_lib_business_campaigns_js",
-      "community": 127,
+      "community": 148,
       "norm_label": "campaigns.js"
     },
     {
@@ -6471,7 +6777,7 @@
       "source_file": "src/lib/business/campaigns.js",
       "source_location": "L9",
       "id": "business_campaigns_getzoneddatekey",
-      "community": 127,
+      "community": 148,
       "norm_label": "getzoneddatekey()"
     },
     {
@@ -6480,7 +6786,7 @@
       "source_file": "src/lib/business/campaigns.js",
       "source_location": "L23",
       "id": "business_campaigns_iscampaignactive",
-      "community": 127,
+      "community": 148,
       "norm_label": "iscampaignactive()"
     },
     {
@@ -6489,7 +6795,7 @@
       "source_file": "src/lib/business/campaigns.js",
       "source_location": "L34",
       "id": "business_campaigns_getactivecampaign",
-      "community": 94,
+      "community": 152,
       "norm_label": "getactivecampaign()"
     },
     {
@@ -6498,7 +6804,7 @@
       "source_file": "src/lib/business/campaigns.js",
       "source_location": "L43",
       "id": "business_campaigns_tcampaign",
-      "community": 146,
+      "community": 31,
       "norm_label": "tcampaign()"
     },
     {
@@ -6507,7 +6813,7 @@
       "source_file": "src/lib/business/campaigns.js",
       "source_location": "L56",
       "id": "business_campaigns_formatcampaignprice",
-      "community": 127,
+      "community": 148,
       "norm_label": "formatcampaignprice()"
     },
     {
@@ -6516,7 +6822,7 @@
       "source_file": "src/lib/business/campaigns.test.js",
       "source_location": "L1",
       "id": "src_lib_business_campaigns_test_js",
-      "community": 127,
+      "community": 148,
       "norm_label": "campaigns.test.js"
     },
     {
@@ -6525,7 +6831,7 @@
       "source_file": "src/lib/business/campaigns.test.js",
       "source_location": "L12",
       "id": "business_campaigns_test_key",
-      "community": 127,
+      "community": 148,
       "norm_label": "key"
     },
     {
@@ -6534,7 +6840,7 @@
       "source_file": "src/lib/business/campaigns.test.js",
       "source_location": "L17",
       "id": "business_campaigns_test_campaign",
-      "community": 127,
+      "community": 148,
       "norm_label": "campaign"
     },
     {
@@ -6543,8 +6849,314 @@
       "source_file": "src/lib/business/campaigns.test.js",
       "source_location": "L31",
       "id": "business_campaigns_test_now",
-      "community": 127,
+      "community": 148,
       "norm_label": "now"
+    },
+    {
+      "label": "careers.js",
+      "file_type": "code",
+      "source_file": "src/lib/business/careers.js",
+      "source_location": "L1",
+      "id": "src_lib_business_careers_js",
+      "community": 56,
+      "norm_label": "careers.js"
+    },
+    {
+      "label": "ADDRESS_KEYS",
+      "file_type": "code",
+      "source_file": "src/lib/business/careers.js",
+      "source_location": "L10",
+      "id": "business_careers_address_keys",
+      "community": 56,
+      "norm_label": "address_keys"
+    },
+    {
+      "label": "FIELD_KEYS",
+      "file_type": "code",
+      "source_file": "src/lib/business/careers.js",
+      "source_location": "L20",
+      "id": "business_careers_field_keys",
+      "community": 56,
+      "norm_label": "field_keys"
+    },
+    {
+      "label": "FIELD_LABELS",
+      "file_type": "code",
+      "source_file": "src/lib/business/careers.js",
+      "source_location": "L41",
+      "id": "business_careers_field_labels",
+      "community": 56,
+      "norm_label": "field_labels"
+    },
+    {
+      "label": "EMPLOYMENT_LABELS",
+      "file_type": "code",
+      "source_file": "src/lib/business/careers.js",
+      "source_location": "L68",
+      "id": "business_careers_employment_labels",
+      "community": 56,
+      "norm_label": "employment_labels"
+    },
+    {
+      "label": "WORK_MODEL_LABELS",
+      "file_type": "code",
+      "source_file": "src/lib/business/careers.js",
+      "source_location": "L77",
+      "id": "business_careers_work_model_labels",
+      "community": 56,
+      "norm_label": "work_model_labels"
+    },
+    {
+      "label": "ADDRESS_SET",
+      "file_type": "code",
+      "source_file": "src/lib/business/careers.js",
+      "source_location": "L83",
+      "id": "business_careers_address_set",
+      "community": 56,
+      "norm_label": "address_set"
+    },
+    {
+      "label": "isPublicJobSlug()",
+      "file_type": "code",
+      "source_file": "src/lib/business/careers.js",
+      "source_location": "L85",
+      "id": "business_careers_ispublicjobslug",
+      "community": 56,
+      "norm_label": "ispublicjobslug()"
+    },
+    {
+      "label": "englishText()",
+      "file_type": "code",
+      "source_file": "src/lib/business/careers.js",
+      "source_location": "L89",
+      "id": "business_careers_englishtext",
+      "community": 56,
+      "norm_label": "englishtext()"
+    },
+    {
+      "label": "countryLabel()",
+      "file_type": "code",
+      "source_file": "src/lib/business/careers.js",
+      "source_location": "L96",
+      "id": "business_careers_countrylabel",
+      "community": 56,
+      "norm_label": "countrylabel()"
+    },
+    {
+      "label": "locationLine()",
+      "file_type": "code",
+      "source_file": "src/lib/business/careers.js",
+      "source_location": "L110",
+      "id": "business_careers_locationline",
+      "community": 56,
+      "norm_label": "locationline()"
+    },
+    {
+      "label": "isPastDeadline()",
+      "file_type": "code",
+      "source_file": "src/lib/business/careers.js",
+      "source_location": "L116",
+      "id": "business_careers_ispastdeadline",
+      "community": 56,
+      "norm_label": "ispastdeadline()"
+    },
+    {
+      "label": "formatDeadline()",
+      "file_type": "code",
+      "source_file": "src/lib/business/careers.js",
+      "source_location": "L123",
+      "id": "business_careers_formatdeadline",
+      "community": 56,
+      "norm_label": "formatdeadline()"
+    },
+    {
+      "label": "absoluteAdminUrl()",
+      "file_type": "code",
+      "source_file": "src/lib/business/careers.js",
+      "source_location": "L135",
+      "id": "business_careers_absoluteadminurl",
+      "community": 56,
+      "norm_label": "absoluteadminurl()"
+    },
+    {
+      "label": "optionLabel()",
+      "file_type": "code",
+      "source_file": "src/lib/business/careers.js",
+      "source_location": "L143",
+      "id": "business_careers_optionlabel",
+      "community": 56,
+      "norm_label": "optionlabel()"
+    },
+    {
+      "label": "rule()",
+      "file_type": "code",
+      "source_file": "src/lib/business/careers.js",
+      "source_location": "L148",
+      "id": "business_careers_rule",
+      "community": 56,
+      "norm_label": "rule()"
+    },
+    {
+      "label": "applyFields()",
+      "file_type": "code",
+      "source_file": "src/lib/business/careers.js",
+      "source_location": "L189",
+      "id": "business_careers_applyfields",
+      "community": 56,
+      "norm_label": "applyfields()"
+    },
+    {
+      "label": "labeledList()",
+      "file_type": "code",
+      "source_file": "src/lib/business/careers.js",
+      "source_location": "L212",
+      "id": "business_careers_labeledlist",
+      "community": 56,
+      "norm_label": "labeledlist()"
+    },
+    {
+      "label": "jobFacts()",
+      "file_type": "code",
+      "source_file": "src/lib/business/careers.js",
+      "source_location": "L218",
+      "id": "business_careers_jobfacts",
+      "community": 56,
+      "norm_label": "jobfacts()"
+    },
+    {
+      "label": "jobSections()",
+      "file_type": "code",
+      "source_file": "src/lib/business/careers.js",
+      "source_location": "L244",
+      "id": "business_careers_jobsections",
+      "community": 56,
+      "norm_label": "jobsections()"
+    },
+    {
+      "label": "friendlyFieldError()",
+      "file_type": "code",
+      "source_file": "src/lib/business/careers.js",
+      "source_location": "L276",
+      "id": "business_careers_friendlyfielderror",
+      "community": 56,
+      "norm_label": "friendlyfielderror()"
+    },
+    {
+      "label": "mapApplyErrors()",
+      "file_type": "code",
+      "source_file": "src/lib/business/careers.js",
+      "source_location": "L300",
+      "id": "business_careers_mapapplyerrors",
+      "community": 56,
+      "norm_label": "mapapplyerrors()"
+    },
+    {
+      "label": "errorFromResponse()",
+      "file_type": "code",
+      "source_file": "src/lib/business/careers.js",
+      "source_location": "L317",
+      "id": "business_careers_errorfromresponse",
+      "community": 56,
+      "norm_label": "errorfromresponse()"
+    },
+    {
+      "label": "mapCard()",
+      "file_type": "code",
+      "source_file": "src/lib/business/careers.js",
+      "source_location": "L330",
+      "id": "business_careers_mapcard",
+      "community": 56,
+      "norm_label": "mapcard()"
+    },
+    {
+      "label": "getCareersBoard()",
+      "file_type": "code",
+      "source_file": "src/lib/business/careers.js",
+      "source_location": "L343",
+      "id": "business_careers_getcareersboard",
+      "community": 56,
+      "norm_label": "getcareersboard()"
+    },
+    {
+      "label": "screeningQuestions()",
+      "file_type": "code",
+      "source_file": "src/lib/business/careers.js",
+      "source_location": "L358",
+      "id": "business_careers_screeningquestions",
+      "community": 56,
+      "norm_label": "screeningquestions()"
+    },
+    {
+      "label": "getPublicJob()",
+      "file_type": "code",
+      "source_file": "src/lib/business/careers.js",
+      "source_location": "L370",
+      "id": "business_careers_getpublicjob",
+      "community": 56,
+      "norm_label": "getpublicjob()"
+    },
+    {
+      "label": "careers.test.js",
+      "file_type": "code",
+      "source_file": "src/lib/business/careers.test.js",
+      "source_location": "L1",
+      "id": "src_lib_business_careers_test_js",
+      "community": 56,
+      "norm_label": "careers.test.js"
+    },
+    {
+      "label": "NOW",
+      "file_type": "code",
+      "source_file": "src/lib/business/careers.test.js",
+      "source_location": "L13",
+      "id": "business_careers_test_now",
+      "community": 56,
+      "norm_label": "now"
+    },
+    {
+      "label": "sections",
+      "file_type": "code",
+      "source_file": "src/lib/business/careers.test.js",
+      "source_location": "L40",
+      "id": "business_careers_test_sections",
+      "community": 56,
+      "norm_label": "sections"
+    },
+    {
+      "label": "hidden",
+      "file_type": "code",
+      "source_file": "src/lib/business/careers.test.js",
+      "source_location": "L72",
+      "id": "business_careers_test_hidden",
+      "community": 56,
+      "norm_label": "hidden"
+    },
+    {
+      "label": "shown",
+      "file_type": "code",
+      "source_file": "src/lib/business/careers.test.js",
+      "source_location": "L87",
+      "id": "business_careers_test_shown",
+      "community": 56,
+      "norm_label": "shown"
+    },
+    {
+      "label": "fields",
+      "file_type": "code",
+      "source_file": "src/lib/business/careers.test.js",
+      "source_location": "L99",
+      "id": "business_careers_test_fields",
+      "community": 56,
+      "norm_label": "fields"
+    },
+    {
+      "label": "mapped",
+      "file_type": "code",
+      "source_file": "src/lib/business/careers.test.js",
+      "source_location": "L129",
+      "id": "business_careers_test_mapped",
+      "community": 56,
+      "norm_label": "mapped"
     },
     {
       "label": "serviceCatalog.js",
@@ -6552,7 +7164,7 @@
       "source_file": "src/lib/business/serviceCatalog.js",
       "source_location": "L1",
       "id": "src_lib_business_servicecatalog_js",
-      "community": 88,
+      "community": 72,
       "norm_label": "servicecatalog.js"
     },
     {
@@ -6561,7 +7173,7 @@
       "source_file": "src/lib/business/serviceCatalog.js",
       "source_location": "L10",
       "id": "business_servicecatalog_getservicecatalog",
-      "community": 88,
+      "community": 72,
       "norm_label": "getservicecatalog()"
     },
     {
@@ -6570,7 +7182,7 @@
       "source_file": "src/lib/business/serviceCatalog.js",
       "source_location": "L39",
       "id": "business_servicecatalog_sortbyorder",
-      "community": 88,
+      "community": 72,
       "norm_label": "sortbyorder()"
     },
     {
@@ -6579,7 +7191,7 @@
       "source_file": "src/lib/business/serviceCatalog.js",
       "source_location": "L42",
       "id": "business_servicecatalog_pickmedia",
-      "community": 88,
+      "community": 72,
       "norm_label": "pickmedia()"
     },
     {
@@ -6588,7 +7200,7 @@
       "source_file": "src/lib/business/serviceCatalog.js",
       "source_location": "L53",
       "id": "business_servicecatalog_buildservicesections",
-      "community": 88,
+      "community": 72,
       "norm_label": "buildservicesections()"
     },
     {
@@ -6597,7 +7209,7 @@
       "source_file": "src/lib/business/serviceSearch.js",
       "source_location": "L1",
       "id": "src_lib_business_servicesearch_js",
-      "community": 88,
+      "community": 72,
       "norm_label": "servicesearch.js"
     },
     {
@@ -6606,7 +7218,7 @@
       "source_file": "src/lib/business/serviceSearch.js",
       "source_location": "L7",
       "id": "business_servicesearch_buildservicesearchcatalog",
-      "community": 88,
+      "community": 72,
       "norm_label": "buildservicesearchcatalog()"
     },
     {
@@ -6615,7 +7227,7 @@
       "source_file": "src/lib/business/serviceSearch.js",
       "source_location": "L65",
       "id": "business_servicesearch_searchservices",
-      "community": 88,
+      "community": 72,
       "norm_label": "searchservices()"
     },
     {
@@ -6624,7 +7236,7 @@
       "source_file": "src/lib/business/serviceSearch.js",
       "source_location": "L87",
       "id": "business_servicesearch_suggestservicetitles",
-      "community": 88,
+      "community": 72,
       "norm_label": "suggestservicetitles()"
     },
     {
@@ -6633,7 +7245,7 @@
       "source_file": "src/lib/business/serviceSearch.test.js",
       "source_location": "L1",
       "id": "src_lib_business_servicesearch_test_js",
-      "community": 88,
+      "community": 72,
       "norm_label": "servicesearch.test.js"
     },
     {
@@ -6642,7 +7254,7 @@
       "source_file": "src/lib/business/serviceSearch.test.js",
       "source_location": "L8",
       "id": "business_servicesearch_test_shared_item",
-      "community": 88,
+      "community": 72,
       "norm_label": "shared_item"
     },
     {
@@ -6651,7 +7263,7 @@
       "source_file": "src/lib/business/serviceSearch.test.js",
       "source_location": "L16",
       "id": "business_servicesearch_test_sections",
-      "community": 88,
+      "community": 72,
       "norm_label": "sections"
     },
     {
@@ -6660,7 +7272,7 @@
       "source_file": "src/lib/business/serviceSearch.test.js",
       "source_location": "L31",
       "id": "business_servicesearch_test_catalog",
-      "community": 88,
+      "community": 72,
       "norm_label": "catalog"
     },
     {
@@ -6669,7 +7281,7 @@
       "source_file": "src/lib/business/serviceSearch.test.js",
       "source_location": "L35",
       "id": "business_servicesearch_test_hits",
-      "community": 88,
+      "community": 72,
       "norm_label": "hits"
     },
     {
@@ -6678,7 +7290,7 @@
       "source_file": "src/lib/business/serviceSearch.test.js",
       "source_location": "L69",
       "id": "business_servicesearch_test_services",
-      "community": 88,
+      "community": 72,
       "norm_label": "services"
     },
     {
@@ -6687,7 +7299,7 @@
       "source_file": "src/lib/business/serviceSearch.test.js",
       "source_location": "L102",
       "id": "business_servicesearch_test_appearances",
-      "community": 88,
+      "community": 72,
       "norm_label": "appearances"
     },
     {
@@ -6696,7 +7308,7 @@
       "source_file": "src/lib/db/mongoose.js",
       "source_location": "L1",
       "id": "src_lib_db_mongoose_js",
-      "community": 41,
+      "community": 140,
       "norm_label": "mongoose.js"
     },
     {
@@ -6705,7 +7317,7 @@
       "source_file": "src/lib/db/mongoose.js",
       "source_location": "L8",
       "id": "db_mongoose_makeconnector",
-      "community": 41,
+      "community": 140,
       "norm_label": "makeconnector()"
     },
     {
@@ -6714,7 +7326,7 @@
       "source_file": "src/lib/db/mongoose.js",
       "source_location": "L43",
       "id": "db_mongoose_connectdb",
-      "community": 41,
+      "community": 140,
       "norm_label": "connectdb"
     },
     {
@@ -6723,7 +7335,7 @@
       "source_file": "src/lib/db/mongoose.js",
       "source_location": "L48",
       "id": "db_mongoose_connectservicesdb",
-      "community": 41,
+      "community": 140,
       "norm_label": "connectservicesdb"
     },
     {
@@ -6732,7 +7344,7 @@
       "source_file": "src/lib/leads/leadEvent.js",
       "source_location": "L1",
       "id": "src_lib_leads_leadevent_js",
-      "community": 41,
+      "community": 140,
       "norm_label": "leadevent.js"
     },
     {
@@ -6741,7 +7353,7 @@
       "source_file": "src/lib/leads/leadEvent.js",
       "source_location": "L8",
       "id": "leads_leadevent_leadeventschema",
-      "community": 41,
+      "community": 140,
       "norm_label": "leadeventschema"
     },
     {
@@ -6750,7 +7362,7 @@
       "source_file": "src/lib/leads/leadEvent.js",
       "source_location": "L90",
       "id": "leads_leadevent_getleadeventmodel",
-      "community": 41,
+      "community": 140,
       "norm_label": "getleadeventmodel()"
     },
     {
@@ -7497,7 +8109,7 @@
       "source_file": "src/utils/serviceCategoryUrl.js",
       "source_location": "L1",
       "id": "src_utils_servicecategoryurl_js",
-      "community": 88,
+      "community": 72,
       "norm_label": "servicecategoryurl.js"
     },
     {
@@ -7506,7 +8118,7 @@
       "source_file": "src/utils/serviceCategoryUrl.js",
       "source_location": "L14",
       "id": "utils_servicecategoryurl_resolveservicecategoryid",
-      "community": 88,
+      "community": 72,
       "norm_label": "resolveservicecategoryid()"
     },
     {
@@ -7515,7 +8127,7 @@
       "source_file": "src/utils/serviceCategoryUrl.js",
       "source_location": "L24",
       "id": "utils_servicecategoryurl_parsesubcategoryidsparam",
-      "community": 88,
+      "community": 72,
       "norm_label": "parsesubcategoryidsparam()"
     },
     {
@@ -7524,7 +8136,7 @@
       "source_file": "src/utils/serviceCategoryUrl.js",
       "source_location": "L39",
       "id": "utils_servicecategoryurl_resolveopensubcategoryids",
-      "community": 88,
+      "community": 72,
       "norm_label": "resolveopensubcategoryids()"
     },
     {
@@ -7542,7 +8154,7 @@
       "source_file": "src/utils/serviceCategoryUrl.js",
       "source_location": "L83",
       "id": "utils_servicecategoryurl_syncservicemenutourl",
-      "community": 88,
+      "community": 72,
       "norm_label": "syncservicemenutourl()"
     },
     {
@@ -7551,7 +8163,7 @@
       "source_file": "src/utils/serviceCategoryUrl.js",
       "source_location": "L128",
       "id": "utils_servicecategoryurl_syncservicecategorytourl",
-      "community": 88,
+      "community": 72,
       "norm_label": "syncservicecategorytourl()"
     },
     {
@@ -7983,7 +8595,7 @@
       "source_file": "FOLLOW_PATTERNS.md",
       "source_location": "L393",
       "id": "ken_follow_patterns_animation_patterns",
-      "community": 11,
+      "community": 151,
       "norm_label": "animation patterns"
     },
     {
@@ -7992,7 +8604,7 @@
       "source_file": "FOLLOW_PATTERNS.md",
       "source_location": "L395",
       "id": "ken_follow_patterns_framer_motion_basics",
-      "community": 11,
+      "community": 151,
       "norm_label": "framer motion basics"
     },
     {
@@ -8001,7 +8613,7 @@
       "source_file": "FOLLOW_PATTERNS.md",
       "source_location": "L399",
       "id": "ken_follow_patterns_codeblock_17",
-      "community": 11,
+      "community": 151,
       "norm_label": "code:jsx (import { motion, animatepresence } from \"framer-motion\";)"
     },
     {
@@ -8127,7 +8739,7 @@
       "source_file": "FOLLOW_PATTERNS.md",
       "source_location": "L492",
       "id": "ken_follow_patterns_7_disclosure_drop",
-      "community": 11,
+      "community": 151,
       "norm_label": "7. disclosure drop"
     },
     {
@@ -8136,7 +8748,7 @@
       "source_file": "FOLLOW_PATTERNS.md",
       "source_location": "L496",
       "id": "ken_follow_patterns_animation_timing",
-      "community": 11,
+      "community": 151,
       "norm_label": "animation timing"
     },
     {
@@ -8145,7 +8757,7 @@
       "source_file": "FOLLOW_PATTERNS.md",
       "source_location": "L502",
       "id": "ken_follow_patterns_easing_functions",
-      "community": 11,
+      "community": 151,
       "norm_label": "easing functions"
     },
     {
@@ -8154,7 +8766,7 @@
       "source_file": "FOLLOW_PATTERNS.md",
       "source_location": "L504",
       "id": "ken_follow_patterns_codeblock_24",
-      "community": 11,
+      "community": 151,
       "norm_label": "code:jsx (// standard easing)"
     },
     {
@@ -8658,7 +9270,7 @@
       "source_file": "FOLLOW_PATTERNS.md",
       "source_location": "L952",
       "id": "ken_follow_patterns_5_animation_performance",
-      "community": 143,
+      "community": 9,
       "norm_label": "5. animation performance"
     },
     {
@@ -8667,7 +9279,7 @@
       "source_file": "FOLLOW_PATTERNS.md",
       "source_location": "L956",
       "id": "ken_follow_patterns_codeblock_49",
-      "community": 143,
+      "community": 9,
       "norm_label": "code:jsx (<motion.div)"
     },
     {
@@ -8676,7 +9288,7 @@
       "source_file": "FOLLOW_PATTERNS.md",
       "source_location": "L965",
       "id": "ken_follow_patterns_codeblock_50",
-      "community": 143,
+      "community": 9,
       "norm_label": "code:jsx (<motion.div)"
     },
     {
@@ -8685,7 +9297,7 @@
       "source_file": "FOLLOW_PATTERNS.md",
       "source_location": "L973",
       "id": "ken_follow_patterns_6_accessibility_first",
-      "community": 9,
+      "community": 155,
       "norm_label": "6. accessibility first"
     },
     {
@@ -8694,7 +9306,7 @@
       "source_file": "FOLLOW_PATTERNS.md",
       "source_location": "L977",
       "id": "ken_follow_patterns_codeblock_51",
-      "community": 9,
+      "community": 155,
       "norm_label": "code:jsx (<iconname />)"
     },
     {
@@ -8703,7 +9315,7 @@
       "source_file": "FOLLOW_PATTERNS.md",
       "source_location": "L984",
       "id": "ken_follow_patterns_codeblock_52",
-      "community": 9,
+      "community": 155,
       "norm_label": "code:jsx (<iconname aria-hidden=\"true\" />)"
     },
     {
@@ -9547,7 +10159,7 @@
       "label": "Booking UI guarantees",
       "file_type": "document",
       "source_file": "docs/LEAD_TRACKING.md",
-      "source_location": "L78",
+      "source_location": "L81",
       "id": "docs_lead_tracking_booking_ui_guarantees",
       "community": 37,
       "norm_label": "booking ui guarantees"
@@ -9556,7 +10168,7 @@
       "label": "Change log",
       "file_type": "document",
       "source_file": "docs/LEAD_TRACKING.md",
-      "source_location": "L87",
+      "source_location": "L90",
       "id": "docs_lead_tracking_change_log",
       "community": 37,
       "norm_label": "change log"
@@ -10656,7 +11268,7 @@
       "source_file": "oldMD/IMPROVEMENT_PLAN.md",
       "source_location": "L1156",
       "id": "oldmd_improvement_plan_detailed_todo_list",
-      "community": 132,
+      "community": 143,
       "norm_label": "detailed todo list"
     },
     {
@@ -10665,7 +11277,7 @@
       "source_file": "oldMD/IMPROVEMENT_PLAN.md",
       "source_location": "L1158",
       "id": "oldmd_improvement_plan_design_system_priority_high_completed",
-      "community": 132,
+      "community": 143,
       "norm_label": "design system (priority: high) \u2705 **completed**"
     },
     {
@@ -10674,7 +11286,7 @@
       "source_file": "oldMD/IMPROVEMENT_PLAN.md",
       "source_location": "L1172",
       "id": "oldmd_improvement_plan_critical_bug_fixes_priority_high_completed",
-      "community": 132,
+      "community": 143,
       "norm_label": "critical bug fixes (priority: high) \u2705 **completed**"
     },
     {
@@ -10746,7 +11358,7 @@
       "source_file": "oldMD/IMPROVEMENT_PLAN.md",
       "source_location": "L1253",
       "id": "oldmd_improvement_plan_performance_optimizations_priority_medium",
-      "community": 132,
+      "community": 143,
       "norm_label": "performance optimizations (priority: medium)"
     },
     {
@@ -10755,7 +11367,7 @@
       "source_file": "oldMD/IMPROVEMENT_PLAN.md",
       "source_location": "L1270",
       "id": "oldmd_improvement_plan_code_quality_priority_medium",
-      "community": 132,
+      "community": 143,
       "norm_label": "code quality (priority: medium)"
     },
     {
@@ -10764,7 +11376,7 @@
       "source_file": "oldMD/IMPROVEMENT_PLAN.md",
       "source_location": "L1283",
       "id": "oldmd_improvement_plan_accessibility_priority_medium",
-      "community": 132,
+      "community": 143,
       "norm_label": "accessibility (priority: medium)"
     },
     {
@@ -10773,7 +11385,7 @@
       "source_file": "oldMD/IMPROVEMENT_PLAN.md",
       "source_location": "L1297",
       "id": "oldmd_improvement_plan_seo_metadata_priority_medium",
-      "community": 132,
+      "community": 143,
       "norm_label": "seo & metadata (priority: medium)"
     },
     {
@@ -10782,7 +11394,7 @@
       "source_file": "oldMD/IMPROVEMENT_PLAN.md",
       "source_location": "L1307",
       "id": "oldmd_improvement_plan_typescript_migration_priority_medium",
-      "community": 132,
+      "community": 143,
       "norm_label": "typescript migration (priority: medium)"
     },
     {
@@ -10791,7 +11403,7 @@
       "source_file": "oldMD/IMPROVEMENT_PLAN.md",
       "source_location": "L1344",
       "id": "oldmd_improvement_plan_documentation_priority_low",
-      "community": 132,
+      "community": 143,
       "norm_label": "documentation (priority: low)"
     },
     {
@@ -11619,7 +12231,7 @@
       "source_file": "src/data/assistantUi.js",
       "source_location": "L61",
       "id": "data_assistantui_assistant_quick_chips",
-      "community": 137,
+      "community": 41,
       "norm_label": "assistant_quick_chips"
     },
     {
@@ -11628,8 +12240,44 @@
       "source_file": "src/data/assistantUi.js",
       "source_location": "L64",
       "id": "data_assistantui_assistant_launcher_tips",
-      "community": 137,
+      "community": 41,
       "norm_label": "assistant_launcher_tips"
+    },
+    {
+      "label": "clipSrc()",
+      "file_type": "code",
+      "source_file": "src/components/campaign/CampaignFilm.jsx",
+      "source_location": "L13",
+      "community": 153,
+      "norm_label": "clipsrc()",
+      "id": "campaign_campaignfilm_clipsrc"
+    },
+    {
+      "label": "FLOATING_WHATSAPP",
+      "file_type": "code",
+      "source_file": "src/components/DraggableWhatsAppButton/DraggableWhatsAppButton.jsx",
+      "source_location": "L14",
+      "community": 44,
+      "norm_label": "floating_whatsapp",
+      "id": "draggablewhatsappbutton_draggablewhatsappbutton_floating_whatsapp"
+    },
+    {
+      "label": "HERO_CLIPS",
+      "file_type": "code",
+      "source_file": "src/components/hero/Hero.modern.jsx",
+      "source_location": "L11",
+      "community": 33,
+      "norm_label": "hero_clips",
+      "id": "hero_hero_modern_hero_clips"
+    },
+    {
+      "label": "clipSrc()",
+      "file_type": "code",
+      "source_file": "src/components/hero/Hero.modern.jsx",
+      "source_location": "L22",
+      "community": 33,
+      "norm_label": "clipsrc()",
+      "id": "hero_hero_modern_clipsrc"
     },
     {
       "label": "InstagramEmbed",
@@ -12014,7 +12662,7 @@
       "file_type": "code",
       "source_file": "src/app/(navPages)/offers/page.jsx",
       "source_location": "L14",
-      "community": 146,
+      "community": 31,
       "norm_label": "metadata",
       "id": "offers_page_metadata"
     },
@@ -12545,7 +13193,7 @@
       "file_type": "code",
       "source_file": "src/lib/business/serviceCatalog.js",
       "source_location": "L8",
-      "community": 88,
+      "community": 72,
       "norm_label": "getmodel()",
       "id": "business_servicecatalog_getmodel"
     },
@@ -12554,7 +13202,7 @@
       "file_type": "code",
       "source_file": "src/lib/business/serviceCatalog.js",
       "source_location": "L16",
-      "community": 88,
+      "community": 72,
       "norm_label": "businessschema",
       "id": "business_servicecatalog_businessschema"
     },
@@ -12563,7 +13211,7 @@
       "file_type": "code",
       "source_file": "src/lib/business/serviceCatalog.js",
       "source_location": "L21",
-      "community": 88,
+      "community": 72,
       "norm_label": "businessservicecategoryschema",
       "id": "business_servicecatalog_businessservicecategoryschema"
     },
@@ -12572,7 +13220,7 @@
       "file_type": "code",
       "source_file": "src/lib/business/serviceCatalog.js",
       "source_location": "L36",
-      "community": 88,
+      "community": 72,
       "norm_label": "businessserviceitemschema",
       "id": "business_servicecatalog_businessserviceitemschema"
     },
@@ -12581,7 +13229,7 @@
       "file_type": "code",
       "source_file": "src/lib/business/serviceCatalog.js",
       "source_location": "L51",
-      "community": 88,
+      "community": 72,
       "norm_label": "businessserviceitemcategorylinkschema",
       "id": "business_servicecatalog_businessserviceitemcategorylinkschema"
     },
@@ -12590,7 +13238,7 @@
       "file_type": "code",
       "source_file": "src/lib/business/serviceCatalog.js",
       "source_location": "L62",
-      "community": 88,
+      "community": 72,
       "norm_label": "resolvename()",
       "id": "business_servicecatalog_resolvename"
     },
@@ -12635,7 +13283,7 @@
       "file_type": "code",
       "source_file": "src/utils/serviceCategoryUrl.js",
       "source_location": "L1",
-      "community": 88,
+      "community": 72,
       "norm_label": "service_category_query_key",
       "id": "utils_servicecategoryurl_service_category_query_key"
     },
@@ -12644,7 +13292,7 @@
       "file_type": "code",
       "source_file": "src/utils/serviceCategoryUrl.js",
       "source_location": "L4",
-      "community": 88,
+      "community": 72,
       "norm_label": "service_subcategories_query_key",
       "id": "utils_servicecategoryurl_service_subcategories_query_key"
     }
@@ -13030,6 +13678,16 @@
       "confidence_score": 1,
       "source": "ken_package_dependencies",
       "target": "ken_package_dependencies_react_icons"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "package.json",
+      "source_location": "L28",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "ken_package_dependencies",
+      "target": "ken_package_dependencies_sharp"
     },
     {
       "relation": "contains",
@@ -14258,6 +14916,28 @@
       "relation": "imports_from",
       "context": "import",
       "confidence": "EXTRACTED",
+      "source_file": "src/components/careers/CareersBoard.jsx",
+      "source_location": "L1",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "src_components_careers_careersboard_jsx",
+      "target": "image"
+    },
+    {
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "src/components/careers/JobPage.jsx",
+      "source_location": "L1",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "src_components_careers_jobpage_jsx",
+      "target": "image"
+    },
+    {
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
       "source_file": "src/components/contact/ContactContent.jsx",
       "source_location": "L3",
       "weight": 1.0,
@@ -14318,6 +14998,17 @@
       "weight": 1.0,
       "confidence_score": 1.0,
       "source": "src_components_hero_hero_modern_jsx",
+      "target": "image"
+    },
+    {
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "src/components/hero/HeroFrame.jsx",
+      "source_location": "L2",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "src_components_hero_heroframe_jsx",
       "target": "image"
     },
     {
@@ -14926,6 +15617,28 @@
       "target": "app_not_found_notfound"
     },
     {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "INFERRED",
+      "confidence_score": 0.8,
+      "source_file": "src/app/(navPages)/careers/[slug]/page.jsx",
+      "source_location": "L40",
+      "weight": 1.0,
+      "source": "slug_page_careerjobpage",
+      "target": "app_not_found_notfound"
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "INFERRED",
+      "confidence_score": 0.8,
+      "source_file": "src/app/(navPages)/careers/[slug]/page.jsx",
+      "source_location": "L11",
+      "weight": 1.0,
+      "source": "slug_page_generatemetadata",
+      "target": "app_not_found_notfound"
+    },
+    {
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "src/app/page.jsx",
@@ -15046,6 +15759,101 @@
       "confidence_score": 1,
       "source": "src_app_navpages_about_page_jsx",
       "target": "about_page_metadata"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "src/app/(navPages)/careers/page.jsx",
+      "source_location": "L23",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "src_app_navpages_careers_page_jsx",
+      "target": "careers_page_careerspage"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "src/app/(navPages)/careers/page.jsx",
+      "source_location": "L7",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "src_app_navpages_careers_page_jsx",
+      "target": "careers_page_metadata"
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "INFERRED",
+      "confidence_score": 0.8,
+      "source_file": "src/app/(navPages)/careers/page.jsx",
+      "source_location": "L28",
+      "weight": 1.0,
+      "source": "careers_page_careerspage",
+      "target": "business_careers_getcareersboard"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "src/app/(navPages)/careers/[slug]/page.jsx",
+      "source_location": "L38",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "src_app_navpages_careers_slug_page_jsx",
+      "target": "slug_page_careerjobpage"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "src/app/(navPages)/careers/[slug]/page.jsx",
+      "source_location": "L9",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "src_app_navpages_careers_slug_page_jsx",
+      "target": "slug_page_generatemetadata"
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "INFERRED",
+      "confidence_score": 0.8,
+      "source_file": "src/app/(navPages)/careers/[slug]/page.jsx",
+      "source_location": "L15",
+      "weight": 1.0,
+      "source": "slug_page_generatemetadata",
+      "target": "business_careers_getpublicjob"
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "INFERRED",
+      "confidence_score": 0.8,
+      "source_file": "src/app/(navPages)/careers/[slug]/page.jsx",
+      "source_location": "L11",
+      "weight": 1.0,
+      "source": "slug_page_generatemetadata",
+      "target": "business_careers_ispublicjobslug"
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "INFERRED",
+      "confidence_score": 0.8,
+      "source_file": "src/app/(navPages)/careers/[slug]/page.jsx",
+      "source_location": "L44",
+      "weight": 1.0,
+      "source": "slug_page_careerjobpage",
+      "target": "business_careers_getpublicjob"
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "INFERRED",
+      "confidence_score": 0.8,
+      "source_file": "src/app/(navPages)/careers/[slug]/page.jsx",
+      "source_location": "L40",
+      "weight": 1.0,
+      "source": "slug_page_careerjobpage",
+      "target": "business_careers_ispublicjobslug"
     },
     {
       "relation": "contains",
@@ -16220,6 +17028,27 @@
     {
       "relation": "contains",
       "confidence": "EXTRACTED",
+      "source_file": "src/app/api/careers/[slug]/apply/route.js",
+      "source_location": "L8",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "src_app_api_careers_slug_apply_route_js",
+      "target": "apply_route_post"
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "INFERRED",
+      "confidence_score": 0.8,
+      "source_file": "src/app/api/careers/[slug]/apply/route.js",
+      "source_location": "L10",
+      "weight": 1.0,
+      "source": "apply_route_post",
+      "target": "business_careers_ispublicjobslug"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
       "source_file": "src/app/api/cron/assistant-cleanup/route.js",
       "source_location": "L15",
       "weight": 1.0,
@@ -16702,6 +17531,26 @@
     {
       "relation": "contains",
       "confidence": "EXTRACTED",
+      "source_file": "src/components/DeferredGoogleTag.jsx",
+      "source_location": "L21",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "src_components_deferredgoogletag_jsx",
+      "target": "components_deferredgoogletag_deferredgoogletag"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "src/components/DeferredGoogleTag.jsx",
+      "source_location": "L8",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "src_components_deferredgoogletag_jsx",
+      "target": "components_deferredgoogletag_injectgoogletag"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
       "source_file": "src/components/ErrorBoundary.jsx",
       "source_location": "L7",
       "weight": 1,
@@ -16982,32 +17831,10 @@
       "confidence": "INFERRED",
       "confidence_score": 0.8,
       "source_file": "src/components/AssistantWidget/AssistantWidget.jsx",
-      "source_location": "L49",
-      "weight": 1.0,
-      "source": "assistantwidget_assistantwidget_assistantprovider",
-      "target": "hero_useafterherovideo_useafterherovideo"
-    },
-    {
-      "relation": "calls",
-      "context": "call",
-      "confidence": "INFERRED",
-      "confidence_score": 0.8,
-      "source_file": "src/components/AssistantWidget/AssistantWidget.jsx",
       "source_location": "L31",
       "weight": 1.0,
       "source": "assistantwidget_assistantwidget_assistantwidget",
       "target": "data_assistantui_getassistantlaunchertips"
-    },
-    {
-      "relation": "calls",
-      "context": "call",
-      "confidence": "INFERRED",
-      "confidence_score": 0.8,
-      "source_file": "src/components/AssistantWidget/AssistantWidget.jsx",
-      "source_location": "L30",
-      "weight": 1.0,
-      "source": "assistantwidget_assistantwidget_assistantwidget",
-      "target": "hero_useafterherovideo_useafterherovideo"
     },
     {
       "relation": "calls",
@@ -17379,6 +18206,38 @@
     {
       "relation": "contains",
       "confidence": "EXTRACTED",
+      "source_file": "src/components/campaign/filmLoadGate.js",
+      "source_location": "L2",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "src_components_campaign_filmloadgate_js",
+      "target": "campaign_filmloadgate_shouldloadfilm"
+    },
+    {
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "src/components/campaign/filmLoadGate.test.js",
+      "source_location": "L2",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "src_components_campaign_filmloadgate_test_js",
+      "target": "src_components_campaign_filmloadgate_js"
+    },
+    {
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "src/components/campaign/filmLoadGate.test.js",
+      "source_location": "L2",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "src_components_campaign_filmloadgate_test_js",
+      "target": "campaign_filmloadgate_shouldloadfilm"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
       "source_file": "src/components/campaign/OffersContent.jsx",
       "source_location": "L8",
       "weight": 1.0,
@@ -17396,6 +18255,108 @@
       "weight": 1.0,
       "source": "campaign_offerscontent_offerscontent",
       "target": "business_campaigns_tcampaign"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "src/components/careers/CareersBoard.jsx",
+      "source_location": "L6",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "src_components_careers_careersboard_jsx",
+      "target": "careers_careersboard_careersboard"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "src/components/careers/JobApplyForm.jsx",
+      "source_location": "L12",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "src_components_careers_jobapplyform_jsx",
+      "target": "careers_jobapplyform_emptyerrors"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "src/components/careers/JobApplyForm.jsx",
+      "source_location": "L35",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "src_components_careers_jobapplyform_jsx",
+      "target": "careers_jobapplyform_fielderror"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "src/components/careers/JobApplyForm.jsx",
+      "source_location": "L22",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "src_components_careers_jobapplyform_jsx",
+      "target": "careers_jobapplyform_fileproblem"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "src/components/careers/JobApplyForm.jsx",
+      "source_location": "L16",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "src_components_careers_jobapplyform_jsx",
+      "target": "careers_jobapplyform_ispdf"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "src/components/careers/JobApplyForm.jsx",
+      "source_location": "L71",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "src_components_careers_jobapplyform_jsx",
+      "target": "careers_jobapplyform_jobapplyform"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "src/components/careers/JobApplyForm.jsx",
+      "source_location": "L40",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "src_components_careers_jobapplyform_jsx",
+      "target": "careers_jobapplyform_textcontrol"
+    },
+    {
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "src/components/careers/JobPage.jsx",
+      "source_location": "L4",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "src_components_careers_jobpage_jsx",
+      "target": "src_components_careers_jobapplyform_jsx"
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "source_file": "src/components/careers/JobApplyForm.jsx",
+      "source_location": "L29",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "careers_jobapplyform_fileproblem",
+      "target": "careers_jobapplyform_ispdf"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "src/components/careers/JobPage.jsx",
+      "source_location": "L7",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "src_components_careers_jobpage_jsx",
+      "target": "careers_jobpage_jobpage"
     },
     {
       "relation": "contains",
@@ -17593,15 +18554,110 @@
       "target": "draggablewhatsappbutton_draggablewhatsappbutton_readsavedposition"
     },
     {
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "src/components/DraggableWhatsAppButton/DraggableWhatsAppButton.jsx",
+      "source_location": "L7",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "src_components_draggablewhatsappbutton_draggablewhatsappbutton_jsx",
+      "target": "draggablewhatsappbutton_floatingwhatsapp_floatingwhatsappbasehref"
+    },
+    {
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "src/components/DraggableWhatsAppButton/DraggableWhatsAppButton.jsx",
+      "source_location": "L7",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "src_components_draggablewhatsappbutton_draggablewhatsappbutton_jsx",
+      "target": "draggablewhatsappbutton_floatingwhatsapp_floatingwhatsapphref"
+    },
+    {
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "src/components/DraggableWhatsAppButton/DraggableWhatsAppButton.jsx",
+      "source_location": "L7",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "src_components_draggablewhatsappbutton_draggablewhatsappbutton_jsx",
+      "target": "draggablewhatsappbutton_floatingwhatsapp_trackfloatingwhatsapp"
+    },
+    {
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "src/components/DraggableWhatsAppButton/DraggableWhatsAppButton.jsx",
+      "source_location": "L7",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "src_components_draggablewhatsappbutton_draggablewhatsappbutton_jsx",
+      "target": "src_components_draggablewhatsappbutton_floatingwhatsapp_js"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "src/components/DraggableWhatsAppButton/floatingWhatsApp.js",
+      "source_location": "L6",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "src_components_draggablewhatsappbutton_floatingwhatsapp_js",
+      "target": "draggablewhatsappbutton_floatingwhatsapp_floating_whatsapp"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "src/components/DraggableWhatsAppButton/floatingWhatsApp.js",
+      "source_location": "L11",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "src_components_draggablewhatsappbutton_floatingwhatsapp_js",
+      "target": "draggablewhatsappbutton_floatingwhatsapp_floatingwhatsappbasehref"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "src/components/DraggableWhatsAppButton/floatingWhatsApp.js",
+      "source_location": "L17",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "src_components_draggablewhatsappbutton_floatingwhatsapp_js",
+      "target": "draggablewhatsappbutton_floatingwhatsapp_floatingwhatsapphref"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "src/components/DraggableWhatsAppButton/floatingWhatsApp.js",
+      "source_location": "L24",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "src_components_draggablewhatsappbutton_floatingwhatsapp_js",
+      "target": "draggablewhatsappbutton_floatingwhatsapp_trackfloatingwhatsapp"
+    },
+    {
       "relation": "calls",
       "context": "call",
       "confidence": "INFERRED",
       "confidence_score": 0.8,
-      "source_file": "src/components/DraggableWhatsAppButton/DraggableWhatsAppButton.jsx",
-      "source_location": "L69",
+      "source_file": "src/components/DraggableWhatsAppButton/floatingWhatsApp.js",
+      "source_location": "L18",
       "weight": 1.0,
-      "source": "draggablewhatsappbutton_draggablewhatsappbutton_draggablewhatsappbutton",
-      "target": "hero_useafterherovideo_useafterherovideo"
+      "source": "draggablewhatsappbutton_floatingwhatsapp_floatingwhatsapphref",
+      "target": "lib_adsattribution_buildwhatsappurl"
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "INFERRED",
+      "confidence_score": 0.8,
+      "source_file": "src/components/DraggableWhatsAppButton/floatingWhatsApp.js",
+      "source_location": "L25",
+      "weight": 1.0,
+      "source": "draggablewhatsappbutton_floatingwhatsapp_trackfloatingwhatsapp",
+      "target": "leads_tracklead_recordoutbound"
     },
     {
       "relation": "contains",
@@ -17939,12 +18995,52 @@
     {
       "relation": "contains",
       "confidence": "EXTRACTED",
-      "source_file": "src/components/hero/useAfterHeroVideo.js",
-      "source_location": "L6",
+      "source_file": "src/components/hero/heroFetchGate.js",
+      "source_location": "L1",
       "weight": 1.0,
       "confidence_score": 1.0,
-      "source": "src_components_hero_useafterherovideo_js",
-      "target": "hero_useafterherovideo_useafterherovideo"
+      "source": "src_components_hero_herofetchgate_js",
+      "target": "hero_herofetchgate_savesdata"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "src/components/hero/HeroFrame.jsx",
+      "source_location": "L9",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "src_components_hero_heroframe_jsx",
+      "target": "hero_heroframe_heroframe"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "src/components/hero/HeroPress.jsx",
+      "source_location": "L17",
+      "weight": 1.0,
+      "source": "src_components_hero_heropress_jsx",
+      "target": "hero_heropress_heropress",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "src/components/hero/HeroPress.jsx",
+      "source_location": "L8",
+      "weight": 1.0,
+      "source": "src_components_hero_heropress_jsx",
+      "target": "hero_heropress_opening",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "src/components/hero/HeroWhatsApp.jsx",
+      "source_location": "L11",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "src_components_hero_herowhatsapp_jsx",
+      "target": "hero_herowhatsapp_herowhatsapp"
     },
     {
       "relation": "contains",
@@ -23139,6 +24235,678 @@
       "confidence_score": 1.0,
       "source": "src_lib_business_campaigns_test_js",
       "target": "business_campaigns_test_now"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "src/lib/business/careers.js",
+      "source_location": "L135",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "src_lib_business_careers_js",
+      "target": "business_careers_absoluteadminurl"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "src/lib/business/careers.js",
+      "source_location": "L10",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "src_lib_business_careers_js",
+      "target": "business_careers_address_keys"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "src/lib/business/careers.js",
+      "source_location": "L83",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "src_lib_business_careers_js",
+      "target": "business_careers_address_set"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "src/lib/business/careers.js",
+      "source_location": "L189",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "src_lib_business_careers_js",
+      "target": "business_careers_applyfields"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "src/lib/business/careers.js",
+      "source_location": "L96",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "src_lib_business_careers_js",
+      "target": "business_careers_countrylabel"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "src/lib/business/careers.js",
+      "source_location": "L68",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "src_lib_business_careers_js",
+      "target": "business_careers_employment_labels"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "src/lib/business/careers.js",
+      "source_location": "L89",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "src_lib_business_careers_js",
+      "target": "business_careers_englishtext"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "src/lib/business/careers.js",
+      "source_location": "L317",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "src_lib_business_careers_js",
+      "target": "business_careers_errorfromresponse"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "src/lib/business/careers.js",
+      "source_location": "L20",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "src_lib_business_careers_js",
+      "target": "business_careers_field_keys"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "src/lib/business/careers.js",
+      "source_location": "L41",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "src_lib_business_careers_js",
+      "target": "business_careers_field_labels"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "src/lib/business/careers.js",
+      "source_location": "L123",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "src_lib_business_careers_js",
+      "target": "business_careers_formatdeadline"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "src/lib/business/careers.js",
+      "source_location": "L276",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "src_lib_business_careers_js",
+      "target": "business_careers_friendlyfielderror"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "src/lib/business/careers.js",
+      "source_location": "L343",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "src_lib_business_careers_js",
+      "target": "business_careers_getcareersboard"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "src/lib/business/careers.js",
+      "source_location": "L370",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "src_lib_business_careers_js",
+      "target": "business_careers_getpublicjob"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "src/lib/business/careers.js",
+      "source_location": "L116",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "src_lib_business_careers_js",
+      "target": "business_careers_ispastdeadline"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "src/lib/business/careers.js",
+      "source_location": "L85",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "src_lib_business_careers_js",
+      "target": "business_careers_ispublicjobslug"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "src/lib/business/careers.js",
+      "source_location": "L218",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "src_lib_business_careers_js",
+      "target": "business_careers_jobfacts"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "src/lib/business/careers.js",
+      "source_location": "L244",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "src_lib_business_careers_js",
+      "target": "business_careers_jobsections"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "src/lib/business/careers.js",
+      "source_location": "L212",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "src_lib_business_careers_js",
+      "target": "business_careers_labeledlist"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "src/lib/business/careers.js",
+      "source_location": "L110",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "src_lib_business_careers_js",
+      "target": "business_careers_locationline"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "src/lib/business/careers.js",
+      "source_location": "L300",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "src_lib_business_careers_js",
+      "target": "business_careers_mapapplyerrors"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "src/lib/business/careers.js",
+      "source_location": "L330",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "src_lib_business_careers_js",
+      "target": "business_careers_mapcard"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "src/lib/business/careers.js",
+      "source_location": "L143",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "src_lib_business_careers_js",
+      "target": "business_careers_optionlabel"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "src/lib/business/careers.js",
+      "source_location": "L148",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "src_lib_business_careers_js",
+      "target": "business_careers_rule"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "src/lib/business/careers.js",
+      "source_location": "L358",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "src_lib_business_careers_js",
+      "target": "business_careers_screeningquestions"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "src/lib/business/careers.js",
+      "source_location": "L77",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "src_lib_business_careers_js",
+      "target": "business_careers_work_model_labels"
+    },
+    {
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "src/lib/business/careers.test.js",
+      "source_location": "L3",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "src_lib_business_careers_test_js",
+      "target": "src_lib_business_careers_js"
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "source_file": "src/lib/business/careers.js",
+      "source_location": "L372",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "business_careers_getpublicjob",
+      "target": "business_careers_ispublicjobslug"
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "source_file": "src/lib/business/careers.js",
+      "source_location": "L386",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "business_careers_getpublicjob",
+      "target": "business_careers_englishtext"
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "source_file": "src/lib/business/careers.js",
+      "source_location": "L226",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "business_careers_jobfacts",
+      "target": "business_careers_englishtext"
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "source_file": "src/lib/business/careers.js",
+      "source_location": "L246",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "business_careers_jobsections",
+      "target": "business_careers_englishtext"
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "source_file": "src/lib/business/careers.js",
+      "source_location": "L334",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "business_careers_mapcard",
+      "target": "business_careers_englishtext"
+    },
+    {
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "src/lib/business/careers.test.js",
+      "source_location": "L3",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "src_lib_business_careers_test_js",
+      "target": "business_careers_englishtext"
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "source_file": "src/lib/business/careers.js",
+      "source_location": "L111",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "business_careers_locationline",
+      "target": "business_careers_countrylabel"
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "source_file": "src/lib/business/careers.js",
+      "source_location": "L388",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "business_careers_getpublicjob",
+      "target": "business_careers_locationline"
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "source_file": "src/lib/business/careers.js",
+      "source_location": "L335",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "business_careers_mapcard",
+      "target": "business_careers_locationline"
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "source_file": "src/lib/business/careers.js",
+      "source_location": "L390",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "business_careers_getpublicjob",
+      "target": "business_careers_ispastdeadline"
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "source_file": "src/lib/business/careers.js",
+      "source_location": "L235",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "business_careers_jobfacts",
+      "target": "business_careers_ispastdeadline"
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "source_file": "src/lib/business/careers.js",
+      "source_location": "L339",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "business_careers_mapcard",
+      "target": "business_careers_ispastdeadline"
+    },
+    {
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "src/lib/business/careers.test.js",
+      "source_location": "L3",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "src_lib_business_careers_test_js",
+      "target": "business_careers_ispastdeadline"
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "source_file": "src/lib/business/careers.js",
+      "source_location": "L231",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "business_careers_jobfacts",
+      "target": "business_careers_formatdeadline"
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "source_file": "src/lib/business/careers.js",
+      "source_location": "L337",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "business_careers_mapcard",
+      "target": "business_careers_formatdeadline"
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "source_file": "src/lib/business/careers.js",
+      "source_location": "L389",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "business_careers_getpublicjob",
+      "target": "business_careers_absoluteadminurl"
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "source_file": "src/lib/business/careers.js",
+      "source_location": "L338",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "business_careers_mapcard",
+      "target": "business_careers_absoluteadminurl"
+    },
+    {
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "src/lib/business/careers.test.js",
+      "source_location": "L3",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "src_lib_business_careers_test_js",
+      "target": "business_careers_absoluteadminurl"
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "source_file": "src/lib/business/careers.js",
+      "source_location": "L206",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "business_careers_applyfields",
+      "target": "business_careers_rule"
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "source_file": "src/lib/business/careers.js",
+      "source_location": "L394",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "business_careers_getpublicjob",
+      "target": "business_careers_applyfields"
+    },
+    {
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "src/lib/business/careers.test.js",
+      "source_location": "L3",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "src_lib_business_careers_test_js",
+      "target": "business_careers_applyfields"
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "source_file": "src/lib/business/careers.js",
+      "source_location": "L220",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "business_careers_jobfacts",
+      "target": "business_careers_labeledlist"
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "source_file": "src/lib/business/careers.js",
+      "source_location": "L391",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "business_careers_getpublicjob",
+      "target": "business_careers_jobfacts"
+    },
+    {
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "src/lib/business/careers.test.js",
+      "source_location": "L3",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "src_lib_business_careers_test_js",
+      "target": "business_careers_jobfacts"
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "source_file": "src/lib/business/careers.js",
+      "source_location": "L392",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "business_careers_getpublicjob",
+      "target": "business_careers_jobsections"
+    },
+    {
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "src/lib/business/careers.test.js",
+      "source_location": "L3",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "src_lib_business_careers_test_js",
+      "target": "business_careers_jobsections"
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "source_file": "src/lib/business/careers.js",
+      "source_location": "L306",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "business_careers_mapapplyerrors",
+      "target": "business_careers_friendlyfielderror"
+    },
+    {
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "src/lib/business/careers.test.js",
+      "source_location": "L3",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "src_lib_business_careers_test_js",
+      "target": "business_careers_mapapplyerrors"
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "source_file": "src/lib/business/careers.js",
+      "source_location": "L349",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "business_careers_getcareersboard",
+      "target": "business_careers_errorfromresponse"
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "source_file": "src/lib/business/careers.js",
+      "source_location": "L379",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "business_careers_getpublicjob",
+      "target": "business_careers_errorfromresponse"
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "source_file": "src/lib/business/careers.js",
+      "source_location": "L395",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "business_careers_getpublicjob",
+      "target": "business_careers_screeningquestions"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "src/lib/business/careers.test.js",
+      "source_location": "L99",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "src_lib_business_careers_test_js",
+      "target": "business_careers_test_fields"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "src/lib/business/careers.test.js",
+      "source_location": "L72",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "src_lib_business_careers_test_js",
+      "target": "business_careers_test_hidden"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "src/lib/business/careers.test.js",
+      "source_location": "L129",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "src_lib_business_careers_test_js",
+      "target": "business_careers_test_mapped"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "src/lib/business/careers.test.js",
+      "source_location": "L13",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "src_lib_business_careers_test_js",
+      "target": "business_careers_test_now"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "src/lib/business/careers.test.js",
+      "source_location": "L62",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "src_lib_business_careers_test_js",
+      "target": "business_careers_test_sections"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "src/lib/business/careers.test.js",
+      "source_location": "L87",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "src_lib_business_careers_test_js",
+      "target": "business_careers_test_shown"
     },
     {
       "relation": "contains",
@@ -29913,5 +31681,5 @@
     }
   ],
   "hyperedges": [],
-  "built_at_commit": "5b8376f762cd3b0f44afcdf565f0bd80f1cd380c"
+  "built_at_commit": "088522b221a18d15acc4a75723f8358f57aa76b5"
 }

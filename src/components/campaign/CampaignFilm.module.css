@@ -113,6 +113,35 @@
   outline-offset: 3px;
 }
 
+.play {
+  position: absolute;
+  z-index: 3;
+  top: var(--spacing-3);
+  left: var(--spacing-3);
+  display: inline-flex;
+  align-items: center;
+  gap: var(--spacing-2);
+  min-height: 2.75rem;
+  padding: var(--spacing-2) var(--spacing-3);
+  border: 0;
+  border-radius: var(--radius-full);
+  background: var(--glass-black-medium);
+  color: var(--color-text-inverse);
+  font-size: var(--font-size-xs);
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  cursor: pointer;
+}
+
+.play:focus-visible {
+  outline: 2px solid var(--color-text-inverse);
+  outline-offset: 3px;
+}
+
+.play:active {
+  transform: scale(0.98);
+}
+
 .sound:active .soundChip {
   transform: scale(0.97);
 }

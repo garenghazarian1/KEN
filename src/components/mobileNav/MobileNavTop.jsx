@@ -91,7 +91,7 @@ export default function MobileNavTop() {
                   height={44}
                   className={styles.logo}
                   style={{ width: "44px", height: "44px", objectFit: "contain" }}
-                  priority
+                  priority={pathname !== "/"}
                 />
               </span>
               <span className={`${styles.markLayer} ${styles.markHome}`}>

@@ -9,6 +9,7 @@ import {
   useRef,
   useState,
 } from "react";
+import { usePathname } from "next/navigation";
 import dynamic from "next/dynamic";
 import Image from "next/image";
 import { X } from "lucide-react";
@@ -18,7 +19,6 @@ import {
   getAssistantLauncherTips,
 } from "@/data/assistantUi";
 import styles from "./AssistantWidget.module.css";
-import { useAfterHeroVideo } from "@/components/hero/useAfterHeroVideo";
 import { useHideNavOnScroll } from "@/components/mobileNav/useHideNavOnScroll";
 
 /** Panel is lazy-loaded on first open to keep First Load JS small. */
@@ -46,7 +46,6 @@ export function AssistantProvider({ children }) {
   const [typedTip, setTypedTip] = useState("");
   const [tipPhase, setTipPhase] = useState("idle"); // idle | typing | hold | exit
   const launcherRef = useRef(null);
-  const videoFirst = useAfterHeroVideo();
   const tipsDoneRef = useRef(false);
   const tipsRef = useRef(null);
   if (!tipsRef.current) tipsRef.current = getAssistantLauncherTips();
@@ -56,7 +55,6 @@ export function AssistantProvider({ children }) {
     // Launcher tip bubble is commented out in AssistantNavButton.
     // Restore the rotation below with that block.
     /*
-    if (!videoFirst) return undefined;
     let step = 0;
     let exitTimer = 0;
     setTipIndex(0);
@@ -86,7 +84,7 @@ export function AssistantProvider({ children }) {
     };
     */
     return undefined;
-  }, [launcherTips.length, videoFirst]);
+  }, [launcherTips.length]);
 
   useEffect(() => {
     if (!open || tipsDoneRef.current) return;
@@ -182,6 +180,7 @@ export function AssistantNavButton({ onActivate }) {
     // tipPhase,
   } = useAssistant();
 
+  const pathname = usePathname();
   const activate = () => {
     onActivate?.();
     toggle();
@@ -235,7 +234,7 @@ export function AssistantNavButton({ onActivate }) {
             width={28}
             height={28}
             className={styles.navFace}
-            priority
+            priority={pathname !== "/"}
           />
         )}
         <span className={styles.navLabel}>Ani</span>

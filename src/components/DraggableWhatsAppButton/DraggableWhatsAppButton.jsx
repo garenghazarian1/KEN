@@ -3,17 +3,15 @@
 import { useEffect, useRef, useState } from "react";
 import { motion } from "framer-motion";
 import { FaWhatsapp } from "react-icons/fa";
-import { WHATSAPP_CONTACTS } from "@/config/constants";
-import { buildWhatsAppUrl } from "@/lib/adsAttribution";
-import { recordOutbound } from "@/lib/leads/trackLead";
 import styles from "./DraggableWhatsAppButton.module.css";
-import { useAfterHeroVideo } from "@/components/hero/useAfterHeroVideo";
+import {
+  floatingWhatsAppBaseHref,
+  floatingWhatsAppHref,
+  trackFloatingWhatsApp,
+} from "./floatingWhatsApp";
 
 const STORAGE_KEY = "ken-whatsapp-position";
 const DRAG_THRESHOLD = 8;
-const FLOATING_WHATSAPP = WHATSAPP_CONTACTS.find(
-  (contact) => contact.shortLabel === "Rixos"
-);
 
 function readSavedPosition() {
   try {
@@ -66,14 +64,10 @@ export default function DraggableWhatsAppButton() {
   const buttonRef = useRef(null);
   const draggedRef = useRef(false);
   const [position, setPosition] = useState({ x: 0, y: 0 });
-  const [mounted, setMounted] = useState(false);
-  const videoFirst = useAfterHeroVideo();
-  const [whatsappHref, setWhatsappHref] = useState(() =>
-    buildWhatsAppUrl({
-      number: FLOATING_WHATSAPP.number,
-      message: FLOATING_WHATSAPP.message,
-    })
-  );
+  const [placed, setPlaced] = useState(false);
+  const [whatsappHref, setWhatsappHref] = useState(floatingWhatsAppBaseHref);
+  const [busy, setBusy] = useState(false);
+  const busyRef = useRef(false);
 
   const applyClamped = (pos) => {
     const clamped = clampIntoConstraints(
@@ -87,19 +81,13 @@ export default function DraggableWhatsAppButton() {
   };
 
   useEffect(() => {
-    setMounted(true);
     setPosition(readSavedPosition());
-    setWhatsappHref(
-      buildWhatsAppUrl({
-        number: FLOATING_WHATSAPP.number,
-        message: FLOATING_WHATSAPP.message,
-      })
-    );
+    setWhatsappHref(floatingWhatsAppHref());
+    setPlaced(true);
   }, []);
 
-  // After first paint (and on resize), pull any saved off-screen offset back in.
   useEffect(() => {
-    if (!mounted) return undefined;
+    if (!placed) return undefined;
 
     const clampNow = () => {
       setPosition((prev) => {
@@ -120,7 +108,7 @@ export default function DraggableWhatsAppButton() {
       cancelAnimationFrame(raf);
       window.removeEventListener("resize", clampNow);
     };
-  }, [mounted]);
+  }, [placed]);
 
   const handleDragEnd = (_, info) => {
     applyClamped({
@@ -128,6 +116,15 @@ export default function DraggableWhatsAppButton() {
       y: position.y + info.offset.y,
     });
   };
+
+  useEffect(() => {
+    const reset = () => {
+      busyRef.current = false;
+      setBusy(false);
+    };
+    window.addEventListener("pageshow", reset);
+    return () => window.removeEventListener("pageshow", reset);
+  }, []);
 
   const handleClick = (e) => {
     if (draggedRef.current) {
@@ -138,27 +135,25 @@ export default function DraggableWhatsAppButton() {
       return;
     }
 
-    // Refresh href in case attribution arrived after first paint
-    const nextHref = buildWhatsAppUrl({
-      number: FLOATING_WHATSAPP.number,
-      message: FLOATING_WHATSAPP.message,
-    });
-    recordOutbound(nextHref, {
-      branch: "rixos",
-      gtm: true,
-      gtmBranch: "Rixos",
-      placement: "floating",
-    });
-    if (nextHref !== whatsappHref) {
-      e.preventDefault();
-      setWhatsappHref(nextHref);
-      window.open(nextHref, "_blank", "noopener,noreferrer");
-    }
+    setBusy(true);
+    e.preventDefault();
+    if (busyRef.current) return;
+    busyRef.current = true;
+    requestAnimationFrame(() =>
+      setTimeout(() => {
+        const nextHref = floatingWhatsAppHref();
+        trackFloatingWhatsApp(nextHref);
+        setWhatsappHref(nextHref);
+        window.open(nextHref, "_blank", "noopener,noreferrer");
+        window.setTimeout(() => {
+          if (document.visibilityState === "visible") {
+            busyRef.current = false;
+            setBusy(false);
+          }
+        }, 4000);
+      }, 0)
+    );
   };
-
-  if (!mounted || !videoFirst) {
-    return null;
-  }
 
   return (
     <div ref={constraintsRef} className={styles.constraints}>
@@ -166,7 +161,8 @@ export default function DraggableWhatsAppButton() {
         ref={buttonRef}
         href={whatsappHref}
         className={styles.button}
-        aria-label="Contact Rixos on WhatsApp"
+        aria-label={busy ? "Opening…" : "Contact Rixos on WhatsApp"}
+        aria-busy={busy || undefined}
         target="_blank"
         rel="noopener noreferrer"
         drag
@@ -194,7 +190,11 @@ export default function DraggableWhatsAppButton() {
         onDragEnd={handleDragEnd}
         onClick={handleClick}
       >
-        <FaWhatsapp size={30} aria-hidden className={styles.icon} />
+        {busy ? (
+          <span className={styles.spinner} aria-hidden="true" />
+        ) : (
+          <FaWhatsapp size={30} aria-hidden className={styles.icon} />
+        )}
       </motion.a>
     </div>
   );

@@ -29,7 +29,8 @@
   cursor: grab;
   user-select: none;
   -webkit-user-select: none;
-  transition: box-shadow var(--transition-base) var(--ease-in-out);
+  -webkit-tap-highlight-color: transparent;
+  transition: background-color 100ms ease, box-shadow 100ms ease;
 }
 
 .button:hover {
@@ -38,6 +39,34 @@
 
 .button:active {
   cursor: grabbing;
+  background-color: color-mix(in srgb, var(--color-whatsapp) 78%, black);
+}
+
+.button[aria-busy="true"] {
+  cursor: progress;
+}
+
+.spinner {
+  width: 22px;
+  height: 22px;
+  border: 2px solid currentColor;
+  border-right-color: transparent;
+  border-radius: 50%;
+  animation: floatSpin 600ms linear infinite;
+}
+
+@keyframes floatSpin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .spinner {
+    animation: none;
+    border-right-color: currentColor;
+    opacity: 0.65;
+  }
 }
 
 .icon {

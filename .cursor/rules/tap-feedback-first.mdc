@@ -1,0 +1,33 @@
+---
+description: REQUIRED before any code - tap feedback first; every tappable shows pressed/loading state before any other work, so it never looks dead
+alwaysApply: true
+---
+
+# Tap feedback first - required check before any code (owner rule, Garen, Nov 16, 2026)
+
+Before writing or changing any code, check every button, link, card, photo link and form you touch (and the others on the same screen):
+1. Does it react in the same instant it is tapped or clicked?
+2. Does it show a loading state if the next page, app or call is slow?
+3. Does that feedback start BEFORE any other work (navigation, fetch, API call, tracking, analytics, state updates)?
+If any answer is no, fix it as part of the change and say so in your report. This check is required, not optional.
+
+## Rules
+- The FIRST line of every tap/click/submit handler sets the pressed/loading state. Nothing runs before it. Never await anything before showing feedback.
+- Let the browser paint first, then do the work: requestAnimationFrame(() => setTimeout(work, 0)).
+- Tracking (gtag, Clarity, Meta, etc.) never blocks feedback or navigation; use beacon transport.
+- Instant press state on every tappable: :active scale(0.97) + slightly darker, transition <= 100 ms. Never rely on :hover alone.
+- touch-action: manipulation and -webkit-tap-highlight-color: transparent on tappables (no tap delay on phones).
+- Loading state: small spinner (currentColor) + short text ("Opening...", "Loading...", "Sending..."). Same size as the button, no layout shift.
+- aria-busy="true" while loading; block extra taps (no double navigation, no double submit).
+- Internal links: prefetch, and keep the loading state until the route changes.
+- External links (WhatsApp, booking, maps, phone, payment): show loading, then open; reset after 4 s if the page is still visible.
+- Forms/API calls: disable the submit button and show a spinner at once; then show success or error.
+- Reset loading states on "pageshow" (back/forward cache) so nothing stays stuck.
+- prefers-reduced-motion: no scale or spin; use a color change + static text.
+- Contrast >= 4.5:1 in every state.
+- Mobile apps (React Native/Expo etc.): same rule - Pressable pressed style + ActivityIndicator first, then the action.
+
+## Before finishing, test and report
+- On a slow network (DevTools "Slow 4G"), tap every changed control: feedback shows within 100 ms.
+- Double tap does not trigger twice. Going back shows normal buttons again.
+- INP < 200 ms for these taps. No new console errors.

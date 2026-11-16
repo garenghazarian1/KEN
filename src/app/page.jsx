@@ -1,5 +1,6 @@
 ﻿import Script from "next/script";
 import DraggableWhatsAppButton from "@/components/DraggableWhatsAppButton/DraggableWhatsAppButton";
+import HeroFrame from "@/components/hero/HeroFrame";
 import HeroModern from "@/components/hero/Hero.modern";
 import { stores } from "@/data/stores";
 import {
@@ -72,6 +73,7 @@ export default function Home() {
           __html: JSON.stringify(localBusinessJsonLd),
         }}
       />
+      <HeroFrame />
       <HeroModern campaign={campaign} />
       <DraggableWhatsAppButton />
     </main>

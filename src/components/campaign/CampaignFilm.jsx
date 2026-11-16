@@ -2,7 +2,7 @@
 
 import { useEffect, useRef, useState } from "react";
 import Image from "next/image";
-import { Volume2, VolumeX } from "lucide-react";
+import { Pause, Play, Volume2, VolumeX } from "lucide-react";
 import { CONTACT } from "@/config/constants";
 import { recordOutbound } from "@/lib/leads/trackLead";
 import { tCampaign } from "@/lib/business/campaigns";
@@ -11,11 +11,6 @@ import { shouldLoadFilm } from "@/components/campaign/filmLoadGate";
 import styles from "./CampaignFilm.module.css";
 
 const AV1_CODEC = "av01.0.05M.08";
-
-function clipSrc(video, media) {
-  const support = video.canPlayType(`video/mp4; codecs="${AV1_CODEC}"`);
-  return support === "probably" || support === "maybe" ? media.av1 : media.h264;
-}
 
 function muteOthers(video) {
   document.querySelectorAll("video").forEach((other) => {
@@ -35,11 +30,12 @@ export default function CampaignFilm({ campaign, placement = "home" }) {
   const [failed, setFailed] = useState(false);
   const [ready, setReady] = useState(false);
   const [muted, setMuted] = useState(true);
+  const [playing, setPlaying] = useState(false);
   const [fetchAllowed, setFetchAllowed] = useState(false);
+  const playRequestRef = useRef(false);
   const media = campaign?.media;
   const av1 = media?.av1;
   const h264 = media?.h264;
-  const poster = media?.poster;
 
   useEffect(() => {
     if (savesData()) return undefined;
@@ -64,9 +60,13 @@ export default function CampaignFilm({ campaign, placement = "home" }) {
     observer = new IntersectionObserver(
       ([entry]) => {
         if (!entry?.isIntersecting) return;
+        const bar = document.querySelector("[class*='bottomBar']");
+        const nav = bar ? bar.getBoundingClientRect().height : 0;
+        const limit = window.innerHeight - nav;
+        if (entry.boundingClientRect.top >= limit - 13) return;
         allow(true);
       },
-      { rootMargin: "0px" }
+      { rootMargin: "100% 0px" }
     );
     observer.observe(stage);
 
@@ -95,26 +95,47 @@ export default function CampaignFilm({ campaign, placement = "home" }) {
       if (!video.muted) muteOthers(video);
     };
 
-    if (!video.getAttribute("src")) {
-      if (poster) video.poster = poster;
-      video.preload = "metadata";
-      video.defaultMuted = true;
-      video.muted = true;
-      video.playsInline = true;
-      video.src = clipSrc(video, { av1, h264 });
-      if (!reduce) video.play().catch(() => {});
-    }
+    const onPlay = () => {
+      if (!cancelled) setPlaying(true);
+    };
+    const onPause = () => {
+      if (!cancelled) setPlaying(false);
+    };
+
+    video.preload = "none";
+    video.defaultMuted = true;
+    video.muted = true;
+    video.playsInline = true;
+    video.load();
+    const asked = playRequestRef.current;
+    if (asked || (!reduce && !savesData())) video.play().catch(() => {});
     video.addEventListener("error", onError);
     video.addEventListener("loadedmetadata", onReady);
     video.addEventListener("volumechange", onVolume);
+    video.addEventListener("play", onPlay);
+    video.addEventListener("pause", onPause);
 
     return () => {
       cancelled = true;
       video.removeEventListener("error", onError);
       video.removeEventListener("loadedmetadata", onReady);
       video.removeEventListener("volumechange", onVolume);
+      video.removeEventListener("play", onPlay);
+      video.removeEventListener("pause", onPause);
     };
-  }, [fetchAllowed, av1, h264, poster]);
+  }, [fetchAllowed, av1, h264]);
+
+  function togglePlay() {
+    playRequestRef.current = true;
+    if (!fetchAllowed) {
+      setFetchAllowed(true);
+      return;
+    }
+    const video = videoRef.current;
+    if (!video) return;
+    if (video.paused) video.play().catch(() => {});
+    else video.pause();
+  }
 
   function toggleSound() {
     const video = videoRef.current;
@@ -164,6 +185,7 @@ export default function CampaignFilm({ campaign, placement = "home" }) {
           fill
           sizes="(min-width: 900px) 24rem, 100vw"
           className={styles.poster}
+          loading={placement === "page" ? "eager" : "lazy"}
           priority={placement === "page"}
         />
         <video
@@ -177,7 +199,14 @@ export default function CampaignFilm({ campaign, placement = "home" }) {
           preload="none"
           disablePictureInPicture
           aria-label={title}
-        />
+        >
+          {fetchAllowed ? (
+            <>
+              <source src={av1} type={`video/mp4; codecs="${AV1_CODEC}"`} />
+              <source src={h264} type="video/mp4" />
+            </>
+          ) : null}
+        </video>
         <button
           type="button"
           className={styles.sound}
@@ -197,6 +226,15 @@ export default function CampaignFilm({ campaign, placement = "home" }) {
               ) : null}
             </span>
           </span>
+        </button>
+        <button
+          type="button"
+          className={styles.play}
+          onClick={togglePlay}
+          aria-label={playing ? "Pause" : "Play"}
+        >
+          {playing ? <Pause size={18} aria-hidden /> : <Play size={18} aria-hidden />}
+          <span>{playing ? "Pause" : "Play"}</span>
         </button>
       </div>
 

@@ -11,6 +11,7 @@ import {
 export const inter = Inter({
   subsets: ["latin"],
   display: "swap",
+  adjustFontFallback: true,
   variable: "--font-inter",
 });
 export const abril = Abril_Fatface({ subsets: ["latin"], weight: "400" });
@@ -21,6 +22,8 @@ export const gv = Great_Vibes({ subsets: ["latin"], weight: "400" });
 export const lora = Lora({
   subsets: ["latin"],
   weight: ["400", "500", "600", "700"],
+  style: ["normal", "italic"],
   display: "swap",
+  adjustFontFallback: true,
   variable: "--font-lora",
 });

@@ -1,36 +1,11 @@
 "use client";
 
-import { useEffect, useRef, useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import { motion } from "framer-motion";
 import CampaignFilm from "@/components/campaign/CampaignFilm";
 import CampaignPoster from "@/components/campaign/CampaignPoster";
-import {
-  HERO_STILL,
-  heroFileBuffered,
-  releaseHeroVideoFetch,
-  savesData,
-} from "@/components/hero/heroFetchGate";
 import styles from "./Hero.modern.module.css";
-
-const HERO_CLIPS = {
-  desktop: {
-    av1: { src: "/videos/hero/hero-desktop-av1.mp4", codec: "av01.0.08M.08" },
-    h264: { src: "/videos/hero/hero-desktop-h264.mp4", codec: "avc1.640028" },
-  },
-  phone: {
-    av1: { src: "/videos/hero/hero-phone-av1.mp4", codec: "av01.0.05M.08" },
-    h264: { src: "/videos/hero/hero-phone-h264.mp4", codec: "avc1.64001F" },
-  },
-};
-
-function clipSrc(video) {
-  const desktop = window.matchMedia("(min-width: 900px)").matches;
-  const set = desktop ? HERO_CLIPS.desktop : HERO_CLIPS.phone;
-  const support = video.canPlayType(`video/mp4; codecs="${set.av1.codec}"`);
-  return support === "probably" || support === "maybe" ? set.av1.src : set.h264.src;
-}
 
 const slides = [
   {
@@ -112,175 +87,14 @@ function GalleryStack() {
 }
 
 export default function HeroModern({ campaign = null }) {
-  const videoRef = useRef(null);
-  const stillReadyRef = useRef(false);
-  const startRef = useRef(null);
-  const [visible, setVisible] = useState(false);
-  const [allowPlay, setAllowPlay] = useState(false);
-  const [paused, setPaused] = useState(false);
-
-  function onStillReady() {
-    stillReadyRef.current = true;
-    startRef.current?.();
-  }
-
-  function togglePlayback() {
-    const video = videoRef.current;
-    if (!video?.src) return;
-    if (video.paused) {
-      video.play().catch(() => {});
-      return;
-    }
-    video.pause();
-  }
-
-  useEffect(() => {
-    const video = videoRef.current;
-    if (!video) return undefined;
-
-    const skip =
-      window.matchMedia("(prefers-reduced-motion: reduce)").matches || savesData();
-    if (skip) {
-      video.removeAttribute("data-hero-video");
-      releaseHeroVideoFetch();
-      return undefined;
-    }
-
-    let cancelled = false;
-    let failed = false;
-    let released = false;
-    let revealTimer = 0;
-
-    const release = () => {
-      if (released) return;
-      released = true;
-      releaseHeroVideoFetch();
-    };
-
-    const reveal = () => {
-      if (!cancelled && !failed) setVisible(true);
-    };
-
-    const onError = () => {
-      failed = true;
-      window.clearTimeout(revealTimer);
-      if (!cancelled) setVisible(false);
-      release();
-    };
-
-    const onBuffer = () => {
-      if (heroFileBuffered(video)) release();
-    };
-
-    const start = () => {
-      if (cancelled || !stillReadyRef.current || video.src) return;
-      video.muted = true;
-      video.playsInline = true;
-      video.src = clipSrc(video);
-      video.load();
-      video.play().catch(() => {});
-      onBuffer();
-      revealTimer = window.setTimeout(() => {
-        if (!cancelled && !failed && video.readyState >= 2) setVisible(true);
-      }, 4000);
-    };
-
-    startRef.current = start;
-    setAllowPlay(true);
-
-    const onPause = () => setPaused(true);
-    const onPlay = () => setPaused(false);
-
-    video.addEventListener("playing", reveal);
-    video.addEventListener("loadeddata", reveal);
-    video.addEventListener("loadeddata", onBuffer);
-    video.addEventListener("progress", onBuffer);
-    video.addEventListener("error", onError);
-    video.addEventListener("pause", onPause);
-    video.addEventListener("play", onPlay);
-    if (stillReadyRef.current) start();
-
-    return () => {
-      cancelled = true;
-      startRef.current = null;
-      window.clearTimeout(revealTimer);
-      video.removeEventListener("playing", reveal);
-      video.removeEventListener("loadeddata", reveal);
-      video.removeEventListener("loadeddata", onBuffer);
-      video.removeEventListener("progress", onBuffer);
-      video.removeEventListener("error", onError);
-      video.removeEventListener("pause", onPause);
-      video.removeEventListener("play", onPlay);
-    };
-  }, []);
-
   return (
     <>
-      <section className={styles.heroSection}>
-        <div className={styles.media}>
-          <Image
-            src={HERO_STILL}
-            alt=""
-            fill
-            priority
-            sizes="100vw"
-            className={styles.heroStill}
-            style={{ objectFit: "cover", objectPosition: "center 18%" }}
-            data-hero-still=""
-            onLoad={onStillReady}
-            onError={onStillReady}
-          />
-          <video
-            ref={videoRef}
-            className={
-              visible ? `${styles.heroVideo} ${styles.heroVideoVisible}` : styles.heroVideo
-            }
-            data-hero-video=""
-            muted
-            playsInline
-            loop
-            preload="none"
-            aria-hidden="true"
-          />
-          {allowPlay ? (
-            <button
-              type="button"
-              className={styles.mediaPlay}
-              aria-label={paused ? "Play video" : "Pause video"}
-              onClick={togglePlayback}
-            />
-          ) : null}
-        </div>
-
-        <div className={styles.copy}>
-          <motion.h1
-            className={styles.mainTitle}
-            initial={{ opacity: 0, y: 16 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6 }}
-          >
-            <span className={styles.titleLine1}>Your Beauty</span>
-            <span className={styles.titleLine2}>Haven</span>
-          </motion.h1>
-          <p className={styles.subtitle}>
-            Discover luxury beauty services in the heart of the UAE
-          </p>
-        </div>
-
-        <div className={styles.ctaBar}>
-          <Link href="/services" className={styles.discoverLink}>
-            Discover our services
-          </Link>
-        </div>
-      </section>
-
       {campaign?.media ? (
         <CampaignFilm campaign={campaign} />
       ) : campaign && !campaign.packages?.length ? (
         <CampaignPoster campaign={campaign} />
       ) : null}
 
-      {/* Gallery Section — stacked images, free scroll */}
       <section className={styles.gallerySection}>
         <motion.div
           className={styles.sectionHeader}
@@ -300,7 +114,6 @@ export default function HeroModern({ campaign = null }) {
 
         <GalleryStack />
 
-        {/* Content Card */}
         <motion.div
           className={styles.welcome}
           initial="hidden"
@@ -308,7 +121,7 @@ export default function HeroModern({ campaign = null }) {
           viewport={{ once: true, amount: 0.3 }}
           variants={rise}
         >
-          <div className={styles.copy}>
+          <div className={styles.welcomeCopy}>
             <h2 className={styles.cardTitle}>Welcome to Excellence</h2>
             <div className={styles.cardText}>
               <p>
@@ -327,8 +140,8 @@ export default function HeroModern({ campaign = null }) {
               </p>
             </div>
           </div>
-          <div className={styles.ctaBar}>
-            <Link href="/services" className={styles.discoverLink}>
+          <div className={styles.welcomeCta}>
+            <Link href="/services" className={styles.welcomeLink}>
               Explore Services
             </Link>
           </div>
