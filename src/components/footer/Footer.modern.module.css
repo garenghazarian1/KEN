@@ -328,6 +328,16 @@
   border-radius: var(--radius-md);
 }
 
+.badgeReserve {
+  display: block;
+  width: min(100%, 180px);
+  aspect-ratio: 180 / 70;
+}
+
+.badgeReserveApple {
+  aspect-ratio: 180 / 60;
+}
+
 /* Bottom Section */
 .footerBottom {
   padding-top: var(--spacing-8);

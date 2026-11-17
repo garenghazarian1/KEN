@@ -21,7 +21,6 @@ export default function LoadingSkeletonModern() {
             alt=""
             width={160}
             height={160}
-            priority
             className={styles.logo}
             style={{ width: "100%", height: "100%", objectFit: "contain" }}
           />

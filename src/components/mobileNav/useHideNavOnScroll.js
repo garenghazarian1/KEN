@@ -1,26 +1,37 @@
 "use client";
 
-import { useRef, useState } from "react";
-import { useMotionValueEvent, useScroll } from "framer-motion";
+import { useEffect, useState } from "react";
 
 /** Hide chrome while scrolling down; show it while scrolling up or near the top. */
 export function useHideNavOnScroll() {
   const [hidden, setHidden] = useState(false);
-  const lastScrollY = useRef(0);
-  const { scrollY } = useScroll();
 
-  useMotionValueEvent(scrollY, "change", (latest) => {
-    const previous = lastScrollY.current;
-    const delta = latest - previous;
-    lastScrollY.current = latest;
+  useEffect(() => {
+    let last = window.scrollY;
+    let frame = 0;
 
-    if (latest < 48) {
-      setHidden(false);
-      return;
-    }
-    if (delta > 6) setHidden(true);
-    else if (delta < -6) setHidden(false);
-  });
+    const onScroll = () => {
+      if (frame) return;
+      frame = window.requestAnimationFrame(() => {
+        frame = 0;
+        const latest = window.scrollY;
+        const delta = latest - last;
+        last = latest;
+        setHidden((prev) => {
+          if (latest < 48) return false;
+          if (delta > 6) return true;
+          if (delta < -6) return false;
+          return prev;
+        });
+      });
+    };
+
+    window.addEventListener("scroll", onScroll, { passive: true });
+    return () => {
+      window.removeEventListener("scroll", onScroll);
+      if (frame) window.cancelAnimationFrame(frame);
+    };
+  }, []);
 
   return hidden;
 }

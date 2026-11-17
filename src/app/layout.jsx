@@ -1,4 +1,4 @@
-import { lora, inter } from "@/app/ui/fonts";
+import { inter, lora, loraItalic } from "@/app/ui/fonts";
 import "./globals.css";
 import { MobileNavTop, MobileNavBottom } from "@/components/mobileNav";
 import FooterModern from "@/components/footer/Footer.modern";
@@ -7,10 +7,9 @@ import AssistantWidget from "@/components/AssistantWidget/AssistantWidget";
 import BookingDock from "@/components/bookingDock/BookingDock";
 import ClientLayout from "@/components/ClientLayout";
 import ConsentAnalytics from "@/components/ConsentAnalytics/ConsentAnalytics";
-import DeferredGoogleTag from "@/components/DeferredGoogleTag";
+import DeferredGoogleTag, { DelayedAnalytics } from "@/components/DeferredGoogleTag";
 // import InitialLoader from "@/components/InitialLoader";
 import styles from "./Layout.module.css";
-import { Analytics } from "@vercel/analytics/react";
 import Script from "next/script";
 import {
   APPLE_TOUCH_ICON_URL,
@@ -61,17 +60,29 @@ export const metadata = {
 
 export default function RootLayout({ children }) {
   return (
-    <html lang="en" className={`${inter.variable} ${lora.variable}`}>
+    <html lang="en" className={`${inter.variable} ${lora.variable} ${loraItalic.variable}`}>
       <head>
-        {process.env.VERCEL_ENV === "production" ? (
-          <Script id="clarity-init" strategy="afterInteractive">
-            {`(function(c,l,a,r,i,t,y){
-c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};
-t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;
-y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);
-})(window, document, "clarity", "script", "${THIRD_PARTY.clarity.id}");`}
-          </Script>
-        ) : null}
+        <Script id="tracking-stubs" strategy="beforeInteractive">
+          {`(function(){
+window.dataLayer=window.dataLayer||[];
+window.__fbqEarly=window.__fbqEarly||[];
+if(!window.fbq){
+window.fbq=function(){window.fbq.queue.push(arguments);};
+window.fbq.queue=window.__fbqEarly;
+window.fbq.loaded=false;
+window.fbq.version="2.0";
+window.fbq.__kenStub=true;
+}
+window.clarity=window.clarity||function(){(window.clarity.q=window.clarity.q||[]).push(arguments)};
+document.addEventListener("click",function(event){
+if(window.__gtmListening)return;
+var node=event.target&&event.target.closest?event.target.closest("a,button"):null;
+if(!node)return;
+var payload={event:"gtm.click","gtm.element":node,"gtm.elementClasses":node.className||"","gtm.elementId":node.id||"","gtm.elementTarget":node.getAttribute("target")||"","gtm.elementUrl":node.href||"","gtm.elementText":(node.innerText||"").slice(0,200)};
+requestAnimationFrame(function(){setTimeout(function(){window.dataLayer.push(payload);},0);});
+},false);
+})();`}
+        </Script>
       </head>
       <body>
         <noscript>
@@ -82,7 +93,11 @@ y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);
             style={{ display: "none", visibility: "hidden" }}
           />
         </noscript>
-        <DeferredGoogleTag />
+        <DeferredGoogleTag
+          clarityId={
+            process.env.VERCEL_ENV === "production" ? THIRD_PARTY.clarity.id : ""
+          }
+        />
         <ConsentAnalytics />
         {/* <InitialLoader /> */}
         {/* <AppInstallBanner /> */}
@@ -100,7 +115,7 @@ y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);
           <AssistantWidget />
           <BookingDock />
         </ClientLayout>
-        <Analytics />
+        <DelayedAnalytics />
       </body>
     </html>
   );

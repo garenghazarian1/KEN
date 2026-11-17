@@ -1,3 +1,9 @@
+import bundleAnalyzer from "@next/bundle-analyzer";
+import fs from "fs";
+import path from "path";
+
+const preloadedFontFiles = [];
+
 /** @type {import('next').NextConfig} */
 const contentSecurityPolicy = [
   // 'unsafe-inline' matches the inline GTM bootstrap in src/app/layout.jsx and Next's own inline scripts.
@@ -14,6 +20,9 @@ const contentSecurityPolicy = [
 
 const nextConfig = {
   poweredByHeader: false,
+  experimental: {
+    optimizePackageImports: ["framer-motion", "lucide-react", "react-icons/fa"],
+  },
   images: {
     formats: ["image/avif", "image/webp"],
     remotePatterns: [
@@ -57,6 +66,57 @@ const nextConfig = {
       },
     ];
   },
+  webpack(config) {
+    config.plugins.push({
+      apply(compiler) {
+        const writeManifest = () => {
+          if (!preloadedFontFiles.length) return;
+          const manifestPath = path.join(process.cwd(), ".next/server/next-font-manifest.json");
+          const jsPath = path.join(process.cwd(), ".next/server/next-font-manifest.js");
+          if (!fs.existsSync(manifestPath)) return;
+          const json = JSON.parse(fs.readFileSync(manifestPath, "utf8"));
+          const filled = Object.values(json.app || {}).some(
+            (files) => Array.isArray(files) && files.length > 0,
+          );
+          if (filled) return;
+          const layoutKey = path
+            .resolve("src/app/layout.jsx")
+            .replace(/\.jsx$/, "")
+            .replace(/^([A-Z]):/, (_, drive) => `${drive.toLowerCase()}:`);
+          json.app[layoutKey] = preloadedFontFiles;
+          const source = JSON.stringify(json);
+          fs.writeFileSync(manifestPath, source);
+          if (fs.existsSync(jsPath)) {
+            fs.writeFileSync(jsPath, `self.__NEXT_FONT_MANIFEST=${JSON.stringify(source)}`);
+          }
+        };
+
+        compiler.hooks.thisCompilation.tap("KenFontPreload", (compilation) => {
+          compilation.hooks.processAssets.tap(
+            {
+              name: "KenFontPreload",
+              stage: compiler.webpack.Compilation.PROCESS_ASSETS_STAGE_REPORT,
+            },
+            () => {
+              const found = Object.keys(compilation.assets)
+                .filter((name) => name.endsWith(".p.woff2"))
+                .map((name) => name.replace(/^(\.\.\/)+/, "").replace(/^\//, ""));
+              if (found.length) preloadedFontFiles.splice(0, preloadedFontFiles.length, ...found);
+            },
+          );
+        });
+        compiler.hooks.done.tap("KenFontPreload", writeManifest);
+      },
+    });
+    return config;
+  },
 };
 
-export default nextConfig;
+const withBundleAnalyzer = bundleAnalyzer({
+  enabled: process.env.ANALYZE === "true",
+  openAnalyzer: false,
+});
+
+export default process.env.ANALYZE === "true"
+  ? withBundleAnalyzer(nextConfig)
+  : nextConfig;

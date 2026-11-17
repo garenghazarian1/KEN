@@ -1,29 +1,31 @@
-import {
-  Inter,
-  Abril_Fatface,
-  Sevillana,
-  Bad_Script,
-  PT_Sans_Narrow,
-  Great_Vibes,
-  Lora,
-} from "next/font/google";
+import { Inter, Lora } from "next/font/google";
 
+/** Buttons, eyebrow, and body. One variable file. */
 export const inter = Inter({
   subsets: ["latin"],
   display: "swap",
   adjustFontFallback: true,
   variable: "--font-inter",
+  preload: true,
 });
-export const abril = Abril_Fatface({ subsets: ["latin"], weight: "400" });
-export const sevillana = Sevillana({ subsets: ["latin"], weight: "400" });
-export const bad = Bad_Script({ subsets: ["latin"], weight: "400" });
-export const pt = PT_Sans_Narrow({ subsets: ["latin"], weight: "400" });
-export const gv = Great_Vibes({ subsets: ["latin"], weight: "400" });
+
+/** Hero H1 roman. Italic is a second file and is not preloaded. */
 export const lora = Lora({
   subsets: ["latin"],
-  weight: ["400", "500", "600", "700"],
-  style: ["normal", "italic"],
+  weight: "400",
+  style: "normal",
   display: "swap",
   adjustFontFallback: true,
   variable: "--font-lora",
+  preload: true,
+});
+
+export const loraItalic = Lora({
+  subsets: ["latin"],
+  weight: "400",
+  style: "italic",
+  display: "swap",
+  adjustFontFallback: true,
+  variable: "--font-lora-italic",
+  preload: false,
 });

@@ -22,9 +22,24 @@ export default function HeroFrame() {
     sizes: "100vw",
     quality: 65,
   });
+  const mobilePreload = mobile.srcSet
+    .split(",")
+    .map((part) => part.trim().split(" "))
+    .find((part) => part[1] === "750w")?.[0];
 
   return (
     <section className={styles.heroSection}>
+      {mobilePreload ? (
+        <link
+          rel="preload"
+          as="image"
+          href={mobilePreload}
+          imageSrcSet={mobile.srcSet}
+          imageSizes="100vw"
+          media="(max-width: 1023px)"
+          fetchPriority="high"
+        />
+      ) : null}
       <HeroPress
         className={styles.media}
         href="/services"
@@ -43,6 +58,7 @@ export default function HeroFrame() {
             className={styles.heroStill}
             alt={HERO_ALT}
             loading="eager"
+            decoding="sync"
             fetchPriority="high"
             data-hero-still=""
           />

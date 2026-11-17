@@ -1,12 +1,41 @@
 "use client";
 
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
+import { Analytics } from "@vercel/analytics/react";
 import { THIRD_PARTY } from "@/config/constants";
+import { whenThirdParties } from "@/components/scheduleThirdParties";
 
-const IDLE_CAP_MS = 3000;
+function releaseFbqStub() {
+  const stub = window.fbq;
+  if (!stub || stub.callMethod || stub.__kenStub !== true) return;
+  window.__fbqEarly = stub.queue || window.__fbqEarly || [];
+  try {
+    delete window.fbq;
+  } catch {
+    window.fbq = undefined;
+  }
+}
 
-function injectGoogleTag() {
+function replayFbq() {
+  const queued = window.__fbqEarly || [];
+  if (!queued.length) return;
+  const send = () => {
+    if (typeof window.fbq !== "function") return false;
+    const batch = queued.splice(0, queued.length);
+    batch.forEach((args) => window.fbq.apply(null, args));
+    return true;
+  };
+  if (send()) return;
+  const id = window.setInterval(() => {
+    if (send()) window.clearInterval(id);
+  }, 250);
+  window.setTimeout(() => window.clearInterval(id), 10000);
+}
+
+function injectGoogleTag(clarityId) {
   if (document.getElementById("gtm-init")) return;
+  window.__gtmListening = true;
+  releaseFbqStub();
   const id = THIRD_PARTY.googleTagManager.id;
   window.dataLayer = window.dataLayer || [];
   window.dataLayer.push({ "gtm.start": new Date().getTime(), event: "gtm.js" });
@@ -14,55 +43,26 @@ function injectGoogleTag() {
   script.id = "gtm-init";
   script.async = true;
   script.src = `https://www.googletagmanager.com/gtm.js?id=${id}`;
+  script.onload = () => replayFbq();
   document.head.appendChild(script);
+
+  if (clarityId && !document.getElementById("clarity-init")) {
+    const clarity = document.createElement("script");
+    clarity.id = "clarity-init";
+    clarity.async = true;
+    clarity.src = `https://www.clarity.ms/tag/${clarityId}`;
+    document.head.appendChild(clarity);
+  }
 }
 
-/** Home waits for the hero still, then idle. Every other page loads at once. */
-export default function DeferredGoogleTag() {
-  useEffect(() => {
-    const still = document.querySelector("[data-hero-still]");
-    if (!still) {
-      injectGoogleTag();
-      return undefined;
-    }
-
-    let cancelled = false;
-    let scheduled = false;
-    let cancelIdle = () => {};
-    const started = performance.now();
-
-    const run = () => {
-      if (!cancelled) injectGoogleTag();
-    };
-
-    const schedule = () => {
-      if (scheduled) return;
-      scheduled = true;
-      const remaining = Math.max(0, IDLE_CAP_MS - (performance.now() - started));
-      if (typeof window.requestIdleCallback === "function") {
-        const id = window.requestIdleCallback(run, { timeout: remaining });
-        cancelIdle = () => window.cancelIdleCallback(id);
-        return;
-      }
-      const timer = window.setTimeout(run, remaining);
-      cancelIdle = () => window.clearTimeout(timer);
-    };
-
-    if (still.complete && still.naturalWidth > 0) schedule();
-    else {
-      still.addEventListener("load", schedule, { once: true });
-      still.addEventListener("error", schedule, { once: true });
-    }
-    const cap = window.setTimeout(schedule, IDLE_CAP_MS);
-
-    return () => {
-      cancelled = true;
-      cancelIdle();
-      window.clearTimeout(cap);
-      still.removeEventListener("load", schedule);
-      still.removeEventListener("error", schedule);
-    };
-  }, []);
-
+export default function DeferredGoogleTag({ clarityId = "" }) {
+  useEffect(() => whenThirdParties(() => injectGoogleTag(clarityId)), [clarityId]);
   return null;
+}
+
+export function DelayedAnalytics() {
+  const [on, setOn] = useState(false);
+  useEffect(() => whenThirdParties(() => setOn(true)), []);
+  if (!on) return null;
+  return <Analytics />;
 }

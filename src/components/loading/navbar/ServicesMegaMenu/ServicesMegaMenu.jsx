@@ -121,7 +121,7 @@ function MobileLookbook({
     <div className={styles.phoneSheet}>
       <ul className={styles.phoneCategories} aria-label="Service categories">
         <li className={styles.phoneCategoryItem}>
-          <Link href="/services" className={styles.phoneCategory} onClick={onNavigate}>
+          <Link prefetch={false} href="/services" className={styles.phoneCategory} onClick={onNavigate}>
             All services
           </Link>
         </li>
@@ -144,7 +144,7 @@ function MobileLookbook({
         })}
       </ul>
 
-      <Link
+      <Link prefetch={false}
         href={buildServicesCategoryPath(activeSection.id)}
         className={styles.phoneView}
         onClick={onNavigate}
@@ -184,7 +184,7 @@ function MobileLookbook({
                   <ul className={styles.phoneServices} aria-label={column.title}>
                     {shown.map((item) => (
                       <li key={item.id}>
-                        <Link
+                        <Link prefetch={false}
                           href={buildServicesCategoryPath(
                             activeSection.id,
                             column.groupId ? [column.groupId] : [],
@@ -198,7 +198,7 @@ function MobileLookbook({
                       </li>
                     ))}
                     <li>
-                      <Link
+                      <Link prefetch={false}
                         href={href}
                         className={styles.phoneViewAll}
                         onClick={onNavigate}
@@ -257,7 +257,7 @@ function DesktopMegaPanel({
     <div className={styles.megaShell}>
       <ul className={styles.megaCategories} aria-label="Service categories">
         <li>
-          <Link href="/services" className={styles.megaCategory} onClick={onNavigate}>
+          <Link prefetch={false} href="/services" className={styles.megaCategory} onClick={onNavigate}>
             All services
           </Link>
         </li>
@@ -313,7 +313,7 @@ function DesktopMegaPanel({
                     {preview.title}
                   </p>
                 )}
-                <Link
+                <Link prefetch={false}
                   href={buildServicesCategoryPath(activeSection.id)}
                   className={styles.megaView}
                   onClick={onNavigate}
@@ -346,7 +346,7 @@ function DesktopMegaPanel({
                       setPreview(fallbackPreview);
                     }}
                   >
-                    <Link
+                    <Link prefetch={false}
                       href={href}
                       className={`${styles.megaColumnTitle} ${
                         hasArabic(column.title) ? styles.megaQuietScript : ""
@@ -359,7 +359,7 @@ function DesktopMegaPanel({
                     <ul className={styles.megaServiceList} aria-label={column.title}>
                       {shown.map((item) => (
                         <li key={item.id}>
-                          <Link
+                          <Link prefetch={false}
                             href={buildServicesCategoryPath(
                               activeSection.id,
                               column.groupId ? [column.groupId] : [],
@@ -391,7 +391,7 @@ function DesktopMegaPanel({
                         </li>
                       ))}
                     </ul>
-                    <Link
+                    <Link prefetch={false}
                       href={href}
                       className={styles.megaViewAll}
                       onClick={onNavigate}

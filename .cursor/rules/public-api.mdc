@@ -1,11 +1,6 @@
 ---
 description: How this consumer app reads data from the Garen admin system (public read-only API + Cloudinary media). Apply when touching the service catalog, careers, jobs, or any data that originates in the admin system.
-globs:
-  - src/lib/business/**
-  - src/components/serviceMenu/**
-  - src/app/(navPages)/services/**
-  - src/lib/assistant/catalogContext.js
-  - src/utils/cloudinary.js
+globs: src/lib/business/**,src/components/serviceMenu/**,src/app/(navPages)/services/**,src/lib/assistant/catalogContext.js,src/utils/cloudinary.js
 alwaysApply: false
 ---
 
@@ -54,7 +49,7 @@ read-only public HTTP API.
 - URLs are absolute Cloudinary `secure_url`s — use directly in `next/image` / `<video>`. Guard empties.
 - Optimize by URL rewrite via `cldTransform(url, "f_auto,q_auto,w_400,c_fit")` in `src/utils/cloudinary.js`
   (no SDK). Use `c_fit` for service media — full image inside the box, no crop or stretch.
-  (no SDK). Non-Cloudinary URLs pass through unchanged.
+  Non-Cloudinary URLs pass through unchanged.
 - `next.config.mjs` allows `res.cloudinary.com` with pathname `/**` so any admin cloud renders.
 
 See `docs/PUBLIC_API_INTEGRATION.md` for the full reference.

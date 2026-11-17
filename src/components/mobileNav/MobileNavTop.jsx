@@ -71,6 +71,7 @@ export default function MobileNavTop() {
         <div className={styles.navItem}>
           <Link
             href="/"
+            prefetch={false}
             className={styles.logoLink}
             aria-label="Ken Beauty Salon home"
             onMouseEnter={() => setMarkPaused(true)}
@@ -106,6 +107,7 @@ export default function MobileNavTop() {
         <div className={styles.navItem}>
           <Link
             href="/drinks"
+            prefetch={false}
             className={styles.actionLink}
             aria-label="Drinks menu"
             aria-current={drinksActive ? "page" : undefined}
@@ -117,6 +119,7 @@ export default function MobileNavTop() {
         <div className={styles.navItem}>
           <Link
             href={CAREERS_PATH}
+            prefetch={false}
             className={styles.actionLink}
             aria-label="Jobs"
             aria-current={careersActive ? "page" : undefined}

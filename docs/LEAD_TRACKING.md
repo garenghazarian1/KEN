@@ -1,4 +1,4 @@
-Last verified against code: 4 Nov 2026 (working tree)
+Last verified against code: 17 Nov 2026 (working tree)
 
 # Outbound contact-click tracking
 
@@ -71,10 +71,27 @@ The admin app shows these on the website-click detail. Records expire after 90 d
 ## Advertising tags
 
 Google Tag Manager (`GTM-M3QMMNGZ`) loads from
-`src/components/DeferredGoogleTag.jsx`. On the home page it waits until the
-hero still has loaded, then runs on idle with a cap of about 3 seconds. Other
-pages load it as soon as the page is interactive. It does not wait for a
-cookie prompt.
+`src/components/DeferredGoogleTag.jsx`. It does not start until the first
+pointer, key, scroll, or touch, or until the browser is idle at least 5
+seconds after load, whichever comes first. The script is inserted after the
+next paint, so a tap can show "Opening…" before Tag Manager runs. The same
+gate loads Microsoft Clarity on Vercel production and Vercel Analytics.
+Pages do not wait for a cookie prompt.
+
+The root layout installs queue stubs before hydration: `dataLayer`, a
+temporary `fbq` stub, and a `clarity` queue. A click on a link or button
+before Tag Manager is listening is pushed as `gtm.click` after paint. WhatsApp
+clicks also push `whatsapp_click`. Tag Manager replays the queue when it
+starts. The temporary `fbq` function is removed just before `gtm.js` so the
+container's own pixel snippet can install, then any early `fbq` calls are
+replayed.
+
+No Google Tag Manager container change is required for Click and
+`whatsapp_click` triggers. A tag that calls `fbq` only from a custom HTML tag
+which aborts when `window.fbq` already exists is safe, because the stub is
+removed before `gtm.js` runs. If a tag expects a different event name than
+`gtm.click` or `whatsapp_click`, add a Custom Event trigger for that name.
+
 `src/components/ConsentAnalytics/ConsentAnalytics.jsx` saves the Google click
 id and the first-touch visit on load. There is no cookie-consent banner.
 
@@ -88,6 +105,10 @@ id and the first-touch visit on load. There is no cookie-consent banner.
 - Saved services are deduplicated and bounded to 20 entries.
 
 ## Change log
+
+- 17 November 2026: Tag Manager, Clarity, and Vercel Analytics wait for the
+  first interaction or for idle at least 5 seconds. Early clicks stay on the
+  data-layer queue and are sent after paint.
 
 - 4 November 2026: On the home page, Tag Manager waits for the hero still and then
   idle, with a cap of about 3 seconds. Other pages still load it immediately.

@@ -1,7 +1,8 @@
 ﻿import Script from "next/script";
-import DraggableWhatsAppButton from "@/components/DraggableWhatsAppButton/DraggableWhatsAppButton";
+import { Suspense } from "react";
 import HeroFrame from "@/components/hero/HeroFrame";
-import HeroModern from "@/components/hero/Hero.modern";
+import HomeRest from "@/components/home/HomeRest";
+import HomeRestFallback from "@/components/home/HomeRestFallback";
 import { stores } from "@/data/stores";
 import {
   BASE_URL,
@@ -74,8 +75,9 @@ export default function Home() {
         }}
       />
       <HeroFrame />
-      <HeroModern campaign={campaign} />
-      <DraggableWhatsAppButton />
+      <Suspense fallback={<HomeRestFallback campaign={campaign} />}>
+        <HomeRest campaign={campaign} />
+      </Suspense>
     </main>
   );
 }

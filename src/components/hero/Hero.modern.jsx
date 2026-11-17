@@ -1,71 +1,19 @@
 "use client";
 
+import { useRef } from "react";
 import Image from "next/image";
-import Link from "next/link";
-import { motion } from "framer-motion";
 import CampaignFilm from "@/components/campaign/CampaignFilm";
 import CampaignPoster from "@/components/campaign/CampaignPoster";
+import HeroPress from "@/components/hero/HeroPress";
+import { heroSlides } from "@/components/hero/heroSlides";
+import { useReveal } from "@/components/useReveal";
 import styles from "./Hero.modern.module.css";
-
-const slides = [
-  {
-    image: "/heroGridImage/hero001.webp",
-    title: "Hair Styling Excellence",
-    subtitle: "Transform your look with our expert stylists",
-  },
-  {
-    image: "/heroGridImage/hero002.webp",
-    title: "Hair Coloring & Makeup",
-    subtitle: "Transform your look with vibrant colors and flawless makeup",
-  },
-  {
-    image: "/heroGridImage/hero003.webp",
-    title: "Facial Treatments",
-    subtitle: "Rejuvenate and refresh your skin",
-  },
-  {
-    image: "/heroGridImage/hero004.webp",
-    title: "Complete Makeover",
-    subtitle: "Your beauty journey starts here",
-  },
-  {
-    image: "/heroGridImage/hero007.webp",
-    title: "Men's Grooming",
-    subtitle: "Professional styling for gentlemen",
-  },
-  {
-    image: "/heroGridImage/hero008.webp",
-    title: "Men's Barbershop",
-    subtitle: "Professional haircuts and grooming services",
-  },
-  {
-    image: "/heroGridImage/hero009.webp",
-    title: "Luxury Experience",
-    subtitle: "Where beauty meets perfection",
-  },
-];
-
-const rise = {
-  hidden: { opacity: 0, y: 32 },
-  visible: {
-    opacity: 1,
-    y: 0,
-    transition: { duration: 0.6, ease: [0.22, 1, 0.36, 1] },
-  },
-};
 
 function GalleryStack() {
   return (
     <div className={styles.galleryStack}>
-      {slides.map((slide) => (
-        <motion.article
-          key={slide.image}
-          className={styles.galleryItem}
-          initial="hidden"
-          whileInView="visible"
-          viewport={{ once: true, amount: 0.28 }}
-          variants={rise}
-        >
+      {heroSlides.map((slide) => (
+        <article key={slide.image} className={styles.galleryItem} data-reveal="">
           <div className={styles.itemMedia}>
             <Image
               src={slide.image}
@@ -80,15 +28,18 @@ function GalleryStack() {
             <h3 className={styles.contentTitle}>{slide.title}</h3>
             <p className={styles.contentSubtitle}>{slide.subtitle}</p>
           </div>
-        </motion.article>
+        </article>
       ))}
     </div>
   );
 }
 
 export default function HeroModern({ campaign = null }) {
+  const rootRef = useRef(null);
+  useReveal(rootRef);
+
   return (
-    <>
+    <div ref={rootRef}>
       {campaign?.media ? (
         <CampaignFilm campaign={campaign} />
       ) : campaign && !campaign.packages?.length ? (
@@ -96,13 +47,7 @@ export default function HeroModern({ campaign = null }) {
       ) : null}
 
       <section className={styles.gallerySection}>
-        <motion.div
-          className={styles.sectionHeader}
-          initial={{ opacity: 0, y: -20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.6 }}
-        >
+        <div className={styles.sectionHeader} data-reveal="up">
           <h2 className={styles.sectionTitle}>
             <span className={styles.titleMain}>Our</span>{" "}
             <span className={styles.titleAccent}>Work</span>
@@ -110,17 +55,11 @@ export default function HeroModern({ campaign = null }) {
           <p className={styles.sectionSubtitle}>
             Browse our services — scroll to explore each look
           </p>
-        </motion.div>
+        </div>
 
         <GalleryStack />
 
-        <motion.div
-          className={styles.welcome}
-          initial="hidden"
-          whileInView="visible"
-          viewport={{ once: true, amount: 0.3 }}
-          variants={rise}
-        >
+        <div className={styles.welcome} data-reveal="">
           <div className={styles.welcomeCopy}>
             <h2 className={styles.cardTitle}>Welcome to Excellence</h2>
             <div className={styles.cardText}>
@@ -141,12 +80,16 @@ export default function HeroModern({ campaign = null }) {
             </div>
           </div>
           <div className={styles.welcomeCta}>
-            <Link href="/services" className={styles.welcomeLink}>
+            <HeroPress
+              className={styles.welcomeLink}
+              href="/services"
+              label="Explore services"
+            >
               Explore Services
-            </Link>
+            </HeroPress>
           </div>
-        </motion.div>
+        </div>
       </section>
-    </>
+    </div>
   );
 }

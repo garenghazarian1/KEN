@@ -141,6 +141,7 @@ export default function MobileNavBottom() {
               ) : (
                 <Link
                   href={path}
+                  prefetch={false}
                   className={styles.link}
                   aria-current={isActive ? "page" : undefined}
                   onClick={closeSheet}
@@ -252,6 +253,7 @@ export default function MobileNavBottom() {
 
               <Link
                 href="/contact"
+                prefetch={false}
                 className={styles.pageLink}
                 onClick={closeSheet}
               >

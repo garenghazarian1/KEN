@@ -514,7 +514,8 @@
   .media:active .heroStill,
   .bookNow:active,
   .whatsapp:active,
-  .discoverLink:active {
+  .discoverLink:active,
+  .welcomeLink:active {
     transform: none;
   }
 
@@ -668,7 +669,7 @@
 }
 
 .welcomeLink {
-  display: inline-flex;
+  display: inline-grid;
   align-items: center;
   justify-content: center;
   box-sizing: border-box;
@@ -683,8 +684,19 @@
   font-size: var(--font-size-xs);
   letter-spacing: 0.08em;
   text-transform: uppercase;
-  transition: color var(--transition-base) var(--ease-in-out),
-    border-color var(--transition-base) var(--ease-in-out);
+  cursor: pointer;
+  touch-action: manipulation;
+  -webkit-tap-highlight-color: transparent;
+  transition:
+    transform 100ms linear,
+    color 100ms ease,
+    border-color 100ms ease;
+}
+
+.welcomeLink:active {
+  transform: scale(0.97);
+  color: var(--color-secondary-dark);
+  border-color: var(--color-secondary-dark);
 }
 
 .welcomeLink:hover,
