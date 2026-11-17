@@ -27,9 +27,8 @@
   position: absolute;
   inset: 0;
   background: var(--glass-white-light);
+  -webkit-backdrop-filter: blur(var(--glass-blur-md));
   backdrop-filter: blur(var(--glass-blur-md));
-  -webkit-backdrop-filter: blur(var(--glass-blur-md));
-  -webkit-backdrop-filter: blur(var(--glass-blur-md));
   z-index: 0;
   pointer-events: none;
 }
@@ -150,8 +149,8 @@
   padding: var(--spacing-2) var(--spacing-3);
   border-radius: var(--radius-md);
   background: var(--glass-transparent);
-  backdrop-filter: blur(var(--glass-blur-sm));
   -webkit-backdrop-filter: blur(var(--glass-blur-sm));
+  backdrop-filter: blur(var(--glass-blur-sm));
   border: 1px solid transparent;
   transition: all var(--transition-base) var(--ease-in-out);
   min-height: 44px;
@@ -159,8 +158,8 @@
 
 .footerLink:hover {
   background: var(--glass-white-medium);
-  backdrop-filter: blur(var(--glass-blur-md));
   -webkit-backdrop-filter: blur(var(--glass-blur-md));
+  backdrop-filter: blur(var(--glass-blur-md));
   border-color: var(--glass-border-light);
   color: var(--color-text-primary);
   transform: translateX(4px);
@@ -184,8 +183,8 @@
 .locationItem {
   padding: var(--spacing-4);
   background: var(--glass-white-light);
-  backdrop-filter: blur(var(--glass-blur-sm));
   -webkit-backdrop-filter: blur(var(--glass-blur-sm));
+  backdrop-filter: blur(var(--glass-blur-sm));
   border: 1px solid var(--glass-border-light);
   border-radius: var(--radius-lg);
   transition: all var(--transition-base) var(--ease-in-out);
@@ -193,8 +192,8 @@
 
 .locationItem:hover {
   background: var(--glass-white-medium);
-  backdrop-filter: blur(var(--glass-blur-md));
   -webkit-backdrop-filter: blur(var(--glass-blur-md));
+  backdrop-filter: blur(var(--glass-blur-md));
   border-color: var(--glass-border-medium);
   transform: translateY(-2px);
   box-shadow: 0 4px 12px var(--shadow-card-hover);
@@ -266,8 +265,8 @@
   padding: var(--spacing-3) var(--spacing-4);
   border-radius: var(--radius-md);
   background: var(--glass-transparent);
-  backdrop-filter: blur(var(--glass-blur-sm));
   -webkit-backdrop-filter: blur(var(--glass-blur-sm));
+  backdrop-filter: blur(var(--glass-blur-sm));
   border: 1px solid transparent;
   transition: all var(--transition-base) var(--ease-in-out);
   min-height: 44px;
@@ -275,8 +274,8 @@
 
 .socialLink:hover {
   background: var(--glass-white-medium);
-  backdrop-filter: blur(var(--glass-blur-md));
   -webkit-backdrop-filter: blur(var(--glass-blur-md));
+  backdrop-filter: blur(var(--glass-blur-md));
   border-color: var(--glass-border-light);
   color: var(--color-text-primary);
   transform: translateX(4px);
@@ -375,8 +374,8 @@
   padding: var(--spacing-2) var(--spacing-3);
   border-radius: var(--radius-md);
   background: var(--glass-transparent);
-  backdrop-filter: blur(var(--glass-blur-sm));
   -webkit-backdrop-filter: blur(var(--glass-blur-sm));
+  backdrop-filter: blur(var(--glass-blur-sm));
   border: 1px solid transparent;
   transition: all var(--transition-base) var(--ease-in-out);
   min-height: 36px;
@@ -384,8 +383,8 @@
 
 .legalLink:hover {
   background: var(--glass-white-medium);
-  backdrop-filter: blur(var(--glass-blur-md));
   -webkit-backdrop-filter: blur(var(--glass-blur-md));
+  backdrop-filter: blur(var(--glass-blur-md));
   border-color: var(--glass-border-light);
   color: var(--color-text-primary);
 }

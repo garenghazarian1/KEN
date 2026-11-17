@@ -89,8 +89,8 @@
     background-size: cover;
     border: 2px solid var(--overlay-white-60);
     box-shadow: 0 8px 32px 0 var(--overlay-indigo);
-    backdrop-filter: blur(4px);
     -webkit-backdrop-filter: blur(4px);
+    backdrop-filter: blur(4px);
   }  */
   
 /* .profileImage {

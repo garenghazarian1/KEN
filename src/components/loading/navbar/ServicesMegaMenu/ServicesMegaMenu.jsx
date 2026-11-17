@@ -2,7 +2,10 @@
 
 import { useCallback, useEffect, useId, useLayoutEffect, useMemo, useRef, useState } from "react";
 import { createPortal } from "react-dom";
-import Link from "next/link";
+import { usePathname } from "next/navigation";
+import PressLink from "@/components/mobileNav/PressLink";
+import pressStyles from "@/components/mobileNav/pressFeedback.module.css";
+import { usePressFeedback } from "@/components/mobileNav/usePressFeedback";
 import Image from "next/image";
 import { ChevronDown, Scissors, X } from "lucide-react";
 import { getCategoryImage } from "@/data/serviceImages";
@@ -11,6 +14,7 @@ import { buildServicesCategoryPath } from "@/utils/serviceCategoryUrl";
 import { DropPanel, dropChevronClass } from "@/components/dropPanel/DropPanel";
 import FitName from "@/components/fitName/FitName";
 import styles from "./ServicesMegaMenu.module.css";
+import { takeServicesOpen } from "./servicesMenuOpen";
 
 const PREVIEW_TRANSFORM = "f_auto,q_auto,w_960,h_960,c_fill,g_auto";
 const DESKTOP_SERVICE_LIMIT = 4;
@@ -121,9 +125,9 @@ function MobileLookbook({
     <div className={styles.phoneSheet}>
       <ul className={styles.phoneCategories} aria-label="Service categories">
         <li className={styles.phoneCategoryItem}>
-          <Link prefetch={false} href="/services" className={styles.phoneCategory} onClick={onNavigate}>
+          <PressLink href="/services" className={styles.phoneCategory} onAction={onNavigate}>
             All services
-          </Link>
+          </PressLink>
         </li>
         {sections.map((section) => {
           const isActive = activeSection.id === section.id;
@@ -131,9 +135,9 @@ function MobileLookbook({
             <li key={section.id} className={styles.phoneCategoryItem}>
               <button
                 type="button"
-                className={`${styles.phoneCategory} ${
-                  isActive ? styles.phoneCategoryActive : ""
-                } ${hasArabic(section.title) ? styles.megaQuietScript : ""}`}
+                className={`${styles.phoneCategory} ${pressStyles.press} ${
+                  hasArabic(section.title) ? styles.megaQuietScript : ""
+                }`}
                 aria-current={isActive ? "true" : undefined}
                 onClick={() => onSelectCategory(section.id)}
               >
@@ -144,13 +148,13 @@ function MobileLookbook({
         })}
       </ul>
 
-      <Link prefetch={false}
+      <PressLink
         href={buildServicesCategoryPath(activeSection.id)}
         className={styles.phoneView}
-        onClick={onNavigate}
+        onAction={onNavigate}
       >
         View services
-      </Link>
+      </PressLink>
 
       {columns.length ? (
         <ul className={styles.phoneGroups} aria-label="Subcategories">
@@ -165,9 +169,9 @@ function MobileLookbook({
               <li key={column.id}>
                 <button
                   type="button"
-                  className={`${styles.phoneGroup} ${
-                    isOpen ? styles.phoneGroupOpen : ""
-                  } ${hasArabic(column.title) ? styles.megaQuietScript : ""}`}
+                  className={`${styles.phoneGroup} ${pressStyles.press} ${
+                    hasArabic(column.title) ? styles.megaQuietScript : ""
+                  }`}
                   aria-expanded={isOpen}
                   onClick={() => onToggleSubcategory(column.id)}
                 >
@@ -184,27 +188,27 @@ function MobileLookbook({
                   <ul className={styles.phoneServices} aria-label={column.title}>
                     {shown.map((item) => (
                       <li key={item.id}>
-                        <Link prefetch={false}
+                        <PressLink
                           href={buildServicesCategoryPath(
                             activeSection.id,
                             column.groupId ? [column.groupId] : [],
                             item.id,
                           )}
                           className={styles.phoneService}
-                          onClick={onNavigate}
+                          onAction={onNavigate}
                         >
                           <FitName>{item.name}</FitName>
-                        </Link>
+                        </PressLink>
                       </li>
                     ))}
                     <li>
-                      <Link prefetch={false}
+                      <PressLink
                         href={href}
                         className={styles.phoneViewAll}
-                        onClick={onNavigate}
+                        onAction={onNavigate}
                       >
                         View all
-                      </Link>
+                      </PressLink>
                     </li>
                   </ul>
                 </DropPanel>
@@ -257,9 +261,9 @@ function DesktopMegaPanel({
     <div className={styles.megaShell}>
       <ul className={styles.megaCategories} aria-label="Service categories">
         <li>
-          <Link prefetch={false} href="/services" className={styles.megaCategory} onClick={onNavigate}>
+          <PressLink href="/services" className={styles.megaCategory} onAction={onNavigate}>
             All services
-          </Link>
+          </PressLink>
         </li>
         {sections.map((section) => {
           const isActive = activeSection?.id === section.id;
@@ -267,9 +271,9 @@ function DesktopMegaPanel({
             <li key={section.id}>
               <button
                 type="button"
-                className={`${styles.megaCategory} ${
-                  isActive ? styles.megaCategoryActive : ""
-                } ${hasArabic(section.title) ? styles.megaQuietScript : ""}`}
+                className={`${styles.megaCategory} ${pressStyles.press} ${
+                  hasArabic(section.title) ? styles.megaQuietScript : ""
+                }`}
                 aria-current={isActive ? "true" : undefined}
                 onMouseEnter={() => onSelectCategory(section.id)}
                 onFocus={() => onSelectCategory(section.id)}
@@ -313,13 +317,13 @@ function DesktopMegaPanel({
                     {preview.title}
                   </p>
                 )}
-                <Link prefetch={false}
+                <PressLink
                   href={buildServicesCategoryPath(activeSection.id)}
                   className={styles.megaView}
-                  onClick={onNavigate}
+                  onAction={onNavigate}
                 >
                   View services
-                </Link>
+                </PressLink>
               </div>
             </div>
           </div>
@@ -346,27 +350,27 @@ function DesktopMegaPanel({
                       setPreview(fallbackPreview);
                     }}
                   >
-                    <Link prefetch={false}
+                    <PressLink
                       href={href}
                       className={`${styles.megaColumnTitle} ${
                         hasArabic(column.title) ? styles.megaQuietScript : ""
                       }`}
-                      onClick={onNavigate}
+                      onAction={onNavigate}
                       onFocus={() => showColumn(column)}
                     >
                       {column.title}
-                    </Link>
+                    </PressLink>
                     <ul className={styles.megaServiceList} aria-label={column.title}>
                       {shown.map((item) => (
                         <li key={item.id}>
-                          <Link prefetch={false}
+                          <PressLink
                             href={buildServicesCategoryPath(
                               activeSection.id,
                               column.groupId ? [column.groupId] : [],
                               item.id,
                             )}
                             className={styles.megaService}
-                            onClick={onNavigate}
+                            onAction={onNavigate}
                             onPointerEnter={() => showService(column, item)}
                             onPointerLeave={(event) => {
                               const next = event.relatedTarget;
@@ -387,17 +391,17 @@ function DesktopMegaPanel({
                             onFocus={() => showService(column, item)}
                           >
                             <FitName>{item.name}</FitName>
-                          </Link>
+                          </PressLink>
                         </li>
                       ))}
                     </ul>
-                    <Link prefetch={false}
+                    <PressLink
                       href={href}
                       className={styles.megaViewAll}
-                      onClick={onNavigate}
+                      onAction={onNavigate}
                     >
                       View all
-                    </Link>
+                    </PressLink>
                   </div>
                 );
               })}
@@ -589,6 +593,8 @@ export default function ServicesMegaMenu({
   const [activeSubcategoryId, setActiveSubcategoryId] = useState(null);
   const [panelCoords, setPanelCoords] = useState(null);
   const [isWide, setIsWide] = useState(false);
+  const { busy, press } = usePressFeedback();
+  const { busy: closing, press: pressClose } = usePressFeedback();
 
   useLayoutEffect(() => {
     const media = window.matchMedia(DESKTOP_MEDIA_QUERY);
@@ -616,6 +622,18 @@ export default function ServicesMegaMenu({
     resetTree();
   }, [resetTree]);
 
+  useLayoutEffect(() => {
+    let shown = false;
+    const frame = requestAnimationFrame(() => {
+      shown = true;
+    });
+    return () => {
+      cancelAnimationFrame(frame);
+      // Strict Mode unmounts before paint. Close only after the menu has been shown.
+      if (shown) setOpen(false);
+    };
+  }, []);
+
   const ensureCatalog = useCallback(async () => {
     if (loadRef.current === "ready" || loadRef.current === "loading") return;
     loadRef.current = "loading";
@@ -637,6 +655,21 @@ export default function ServicesMegaMenu({
       setErrorMessage(err?.message || "Failed to load services.");
     }
   }, []);
+
+  const pathname = usePathname();
+  const pathRef = useRef(pathname);
+  useEffect(() => {
+    if (pathRef.current === pathname) return;
+    pathRef.current = pathname;
+    setOpen(false);
+    resetTree();
+  }, [pathname, resetTree]);
+
+  useEffect(() => {
+    if (!takeServicesOpen()) return;
+    setOpen(true);
+    void ensureCatalog();
+  }, [ensureCatalog]);
 
   const toggle = useCallback(() => {
     setOpen((prev) => {
@@ -668,7 +701,15 @@ export default function ServicesMegaMenu({
     setActiveSubcategoryId(firstColumn?.id ?? null);
   }, [activeCategoryId, useEditorial, sections]);
 
+  // The first frame settles phone vs desktop. Close only when that choice changes later.
+  const modeSettled = useRef(false);
   useEffect(() => {
+    if (!modeSettled.current) {
+      const frame = requestAnimationFrame(() => {
+        modeSettled.current = true;
+      });
+      return () => cancelAnimationFrame(frame);
+    }
     setOpen(false);
     resetTree();
   }, [useEditorial, resetTree]);
@@ -752,13 +793,17 @@ export default function ServicesMegaMenu({
     onNavigate?.();
   }, [close, onNavigate]);
 
-  const triggerClassName = variant === "desktop"
-    ? `${styles.trigger} ${open ? styles.triggerOpen : ""}`
-    : variant === "mobile"
-      ? `${styles.mobileTrigger} ${open ? styles.mobileTriggerOpen : ""}`
-      : `${styles.topbarTrigger} ${open ? styles.topbarTriggerOpen : ""} ${
-          isActive ? styles.topbarTriggerActive : ""
-        }`;
+  const triggerClassName = [
+    variant === "desktop"
+      ? styles.trigger
+      : variant === "mobile"
+        ? styles.mobileTrigger
+        : styles.topbarTrigger,
+    pressStyles.press,
+    variant === "topbar" ? pressStyles.bar : "",
+  ]
+    .filter(Boolean)
+    .join(" ");
 
   const bodyContent = (
     <>
@@ -796,9 +841,10 @@ export default function ServicesMegaMenu({
             <>
               <button
                 type="button"
-                className={styles.backdrop}
+                className={`${styles.backdrop} ${pressStyles.press} ${pressStyles.flat}`}
                 aria-label="Close services menu"
-                onClick={close}
+                aria-busy={closing || undefined}
+                onClick={(event) => pressClose(event, close, { release: true })}
               />
               <div
                 id={panelId}
@@ -811,8 +857,9 @@ export default function ServicesMegaMenu({
                   <h2 className={styles.drawerTitle}>Services</h2>
                   <button
                     type="button"
-                    className={styles.iconButton}
-                    onClick={close}
+                    className={`${styles.iconButton} ${pressStyles.press}`}
+                    onClick={(event) => pressClose(event, close, { release: true })}
+                    aria-busy={closing || undefined}
                     aria-label="Close"
                   >
                     <X size={20} aria-hidden />
@@ -859,7 +906,9 @@ export default function ServicesMegaMenu({
         aria-controls={open ? panelId : undefined}
         aria-haspopup={isDrawer ? "dialog" : "true"}
         aria-label="Services"
-        onClick={toggle}
+        aria-current={isActive ? "page" : undefined}
+        aria-busy={busy || undefined}
+        onClick={(event) => press(event, toggle, { release: true })}
       >
         {variant === "desktop" || variant === "mobile" ? (
           <span>Services</span>

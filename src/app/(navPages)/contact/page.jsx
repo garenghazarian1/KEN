@@ -1,5 +1,5 @@
-﻿import Script from "next/script";
-import ContactContent from "@/components/contact/ContactContent";
+﻿import ContactContent from "@/components/contact/ContactContent";
+import JsonLd from "@/components/seo/JsonLd";
 import { stores } from "@/data/stores";
 import {
   BASE_URL,
@@ -54,12 +54,7 @@ const contactJsonLd = {
 export default function ContactPage() {
   return (
     <>
-      <Script
-        id="ld-contact"
-        type="application/ld+json"
-        strategy="beforeInteractive"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(contactJsonLd) }}
-      />
+      <JsonLd data={contactJsonLd} />
       <ContactContent stores={stores} />
     </>
   );

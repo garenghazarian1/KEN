@@ -1,7 +1,7 @@
 "use client";
 
 import { useState, useEffect, useRef } from "react";
-import { motion, AnimatePresence } from "framer-motion";
+import { motion, AnimatePresence } from "motion/react";
 import { X, Smartphone, Apple, Play } from "lucide-react";
 import { APP_STORES, BUSINESS } from "@/config/constants";
 import styles from "./AppInstallBanner.modern.module.css";

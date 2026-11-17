@@ -3,8 +3,6 @@ import { getAssistantModels } from "@/lib/assistant/models";
 import { applyAssistantCleanupBatch } from "@/lib/assistant/applyAssistantCleanupBatch";
 import { BUSINESS_SLUG } from "@/config/constants";
 
-export const dynamic = "force-dynamic";
-export const runtime = "nodejs";
 export const maxDuration = 60;
 
 /**

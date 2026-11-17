@@ -19,15 +19,13 @@
   padding: var(--spacing-2-5) var(--spacing-4);
   border-radius: var(--radius-full);
   background-color: var(--glass-black-light);
-  backdrop-filter: blur(var(--glass-blur-md));
   -webkit-backdrop-filter: blur(var(--glass-blur-md));
+  backdrop-filter: blur(var(--glass-blur-md));
   border: 1px solid var(--glass-border-white-light);
   cursor: pointer;
-  transition: all var(--transition-base) var(--ease-in-out);
 }
 
-.trigger:hover,
-.triggerOpen {
+.trigger[aria-expanded="true"] {
   background-color: var(--glass-black-medium);
   border-color: var(--glass-border-white-medium);
 }
@@ -43,15 +41,14 @@
   font-family: inherit;
   color: var(--color-text-inverse);
   background-color: var(--glass-black-light);
-  backdrop-filter: blur(var(--glass-blur-md));
   -webkit-backdrop-filter: blur(var(--glass-blur-md));
+  backdrop-filter: blur(var(--glass-blur-md));
   border: 1px solid var(--glass-border-white-light);
   border-radius: var(--radius-md);
   cursor: pointer;
 }
 
-.mobileTrigger:hover,
-.mobileTriggerOpen {
+.mobileTrigger[aria-expanded="true"] {
   background-color: var(--glass-black-medium);
 }
 
@@ -78,29 +75,14 @@
   border-radius: 0;
   box-sizing: border-box;
   cursor: pointer;
-  transition:
-    color var(--transition-base) var(--ease-in-out),
-    background-color var(--transition-base) var(--ease-in-out);
 }
 
-.topbarTrigger:hover,
-.topbarTriggerOpen {
+.topbarTrigger[aria-expanded="true"] {
   color: var(--color-text-primary);
   background-color: var(--overlay-black-12);
 }
 
-.topbarTrigger:focus-visible {
-  outline: 2px solid var(--color-accent-3);
-  outline-offset: -2px;
-}
-
-.trigger:focus-visible,
-.mobileTrigger:focus-visible {
-  outline: 2px solid var(--color-accent-3);
-  outline-offset: 2px;
-}
-
-.topbarTriggerActive {
+.topbarTrigger[aria-current="page"] {
   color: var(--color-bg-dark);
   font-weight: var(--font-weight-semibold);
 }
@@ -185,8 +167,8 @@
   min-height: 3.25rem;
   padding: var(--spacing-2) var(--spacing-3);
   background: var(--glass-white-strong);
-  backdrop-filter: blur(var(--glass-blur-md));
   -webkit-backdrop-filter: blur(var(--glass-blur-md));
+  backdrop-filter: blur(var(--glass-blur-md));
   border-bottom: 1px solid var(--color-neutral-600);
 }
 
@@ -214,19 +196,6 @@
   background: transparent;
   color: var(--color-text-secondary);
   cursor: pointer;
-  transition:
-    background var(--transition-fast) var(--ease-in-out),
-    color var(--transition-fast) var(--ease-in-out);
-}
-
-.iconButton:hover {
-  background: var(--overlay-black-04);
-  color: var(--color-text-primary);
-}
-
-.iconButton:focus-visible {
-  outline: 2px solid var(--color-accent-3);
-  outline-offset: 2px;
 }
 
 .drawerBody {
@@ -296,19 +265,9 @@
   cursor: pointer;
 }
 
-.megaCategory:hover,
-.megaCategoryActive {
+.megaCategory[aria-current="true"] {
   color: var(--color-text-primary);
   border-bottom-color: var(--color-text-primary);
-}
-
-.megaCategory:focus-visible,
-.megaColumnTitle:focus-visible,
-.megaService:focus-visible,
-.megaView:focus-visible,
-.megaViewAll:focus-visible {
-  outline: 1px solid var(--color-secondary);
-  outline-offset: 2px;
 }
 
 .mega {
@@ -432,12 +391,6 @@
   text-decoration: none;
 }
 
-.megaColumnTitle:hover,
-.megaView:hover,
-.megaViewAll:hover {
-  text-decoration: underline;
-  text-underline-offset: 0.25em;
-}
 
 .megaViewAll {
   text-decoration: underline;
@@ -478,9 +431,6 @@
   background: var(--color-secondary);
 }
 
-.megaService:hover {
-  color: var(--color-text-primary);
-}
 
 .megaQuietScript {
   letter-spacing: 0;
@@ -543,8 +493,7 @@
   white-space: nowrap;
 }
 
-.phoneCategoryActive,
-.phoneCategory:hover {
+.phoneCategory[aria-current="true"] {
   color: var(--color-text-primary);
   border-bottom-color: var(--color-text-primary);
 }
@@ -598,7 +547,7 @@
   transform: rotate(180deg);
 }
 
-.phoneGroupOpen {
+.phoneGroup[aria-expanded="true"] {
   box-shadow: inset 0 -1px 0 var(--color-text-primary);
 }
 
@@ -636,14 +585,6 @@
   text-underline-offset: 0.25em;
 }
 
-.phoneCategory:focus-visible,
-.phoneGroup:focus-visible,
-.phoneService:focus-visible,
-.phoneView:focus-visible,
-.phoneViewAll:focus-visible {
-  outline: 1px solid var(--color-secondary);
-  outline-offset: 2px;
-}
 
 .skeletonStatus {
   position: relative;
@@ -855,6 +796,44 @@
 
   to {
     background-position: -100% 0;
+  }
+}
+
+@media (hover: hover) and (pointer: fine) {
+  .trigger:hover {
+    background-color: var(--glass-black-medium);
+    border-color: var(--glass-border-white-medium);
+  }
+
+  .mobileTrigger:hover {
+    background-color: var(--glass-black-medium);
+  }
+
+  .topbarTrigger:hover {
+    color: var(--color-text-primary);
+    background-color: var(--overlay-black-12);
+  }
+
+  .iconButton:hover {
+    background: var(--overlay-black-04);
+    color: var(--color-text-primary);
+  }
+
+  .megaCategory:hover,
+  .phoneCategory:hover {
+    color: var(--color-text-primary);
+    border-bottom-color: var(--color-text-primary);
+  }
+
+  .megaColumnTitle:hover,
+  .megaView:hover,
+  .megaViewAll:hover {
+    text-decoration: underline;
+    text-underline-offset: 0.25em;
+  }
+
+  .megaService:hover {
+    color: var(--color-text-primary);
   }
 }
 

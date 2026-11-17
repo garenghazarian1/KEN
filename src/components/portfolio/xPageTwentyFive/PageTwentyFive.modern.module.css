@@ -19,8 +19,8 @@
 
 .contentCard {
   background: var(--overlay-white-03);
-  backdrop-filter: blur(10px);
   -webkit-backdrop-filter: blur(10px);
+  backdrop-filter: blur(10px);
   border: 1px solid var(--overlay-white-06);
   border-left: 3px solid var(--color-secondary);
   border-radius: 12px;

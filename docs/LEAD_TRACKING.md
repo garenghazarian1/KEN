@@ -1,4 +1,5 @@
-Last verified against code: 17 Nov 2026 (working tree)
+Last updated: 17 November 2026
+Last verified against code: 17 November 2026 (working tree)
 
 # Outbound contact-click tracking
 
@@ -14,7 +15,9 @@ No WhatsApp API, webhook, CRM, paid integration, or staff action is required.
 ## Runtime map
 
 1. A contact control calls `recordOutbound()` in
-   `src/lib/leads/trackLead.js`.
+   `src/lib/leads/trackLead.js`. The navbar Call and WhatsApp rows paint
+   Opening… first, then call `recordOutbound()` with the same arguments and
+   open the same href.
 2. The browser classifies the destination, creates an event ID, and sends a
    minimal payload to `POST /api/leads` without delaying navigation. Five
    clicks per minute are stored. Later taps in that minute still open the
@@ -105,6 +108,9 @@ id and the first-touch visit on load. There is no cookie-consent banner.
 - Saved services are deduplicated and bounded to 20 entries.
 
 ## Change log
+
+- 17 November 2026: Navbar Call and WhatsApp show Opening… before
+  `recordOutbound` and the same link open.
 
 - 17 November 2026: Tag Manager, Clarity, and Vercel Analytics wait for the
   first interaction or for idle at least 5 seconds. Early clicks stay on the

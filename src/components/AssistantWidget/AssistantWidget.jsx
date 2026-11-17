@@ -1,6 +1,7 @@
 "use client";
 
 import {
+  Suspense,
   createContext,
   useCallback,
   useContext,
@@ -14,11 +15,14 @@ import dynamic from "next/dynamic";
 import Image from "next/image";
 import { X } from "lucide-react";
 import { ASSISTANT_AVATAR_SRC } from "@/config/constants";
+import { imagePriorityProps } from "@/lib/ui/imagePriority";
 import {
   // ASSISTANT_LAUNCHER_TIP_MS, // restore with the launcher-tip rotation below
   getAssistantLauncherTips,
 } from "@/data/assistantUi";
 import styles from "./AssistantWidget.module.css";
+import pressStyles from "@/components/mobileNav/pressFeedback.module.css";
+import { paintThen } from "@/components/mobileNav/usePressFeedback";
 import { useHideNavOnScroll } from "@/components/mobileNav/useHideNavOnScroll";
 
 /** Panel is lazy-loaded on first open to keep First Load JS small. */
@@ -30,6 +34,16 @@ const TIP_CHAR_MS = 28;
 const TIP_EXIT_MS = 380;
 
 const AssistantContext = createContext(null);
+
+function CloseWhenPathChanges({ onPathChange }) {
+  const pathname = usePathname();
+
+  useEffect(() => {
+    onPathChange();
+  }, [pathname, onPathChange]);
+
+  return null;
+}
 
 export function useAssistant() {
   const value = useContext(AssistantContext);
@@ -47,9 +61,15 @@ export function AssistantProvider({ children }) {
   const [tipPhase, setTipPhase] = useState("idle"); // idle | typing | hold | exit
   const launcherRef = useRef(null);
   const tipsDoneRef = useRef(false);
-  const tipsRef = useRef(null);
-  if (!tipsRef.current) tipsRef.current = getAssistantLauncherTips();
-  const launcherTips = tipsRef.current;
+  const [launcherTips, setLauncherTips] = useState([]);
+
+  useEffect(() => {
+    setLauncherTips(getAssistantLauncherTips());
+  }, []);
+
+  const closeOnRouteChange = useCallback(() => {
+    setOpen(false);
+  }, []);
 
   useEffect(() => {
     // Launcher tip bubble is commented out in AssistantNavButton.
@@ -164,7 +184,12 @@ export function AssistantProvider({ children }) {
   );
 
   return (
-    <AssistantContext.Provider value={value}>{children}</AssistantContext.Provider>
+    <AssistantContext.Provider value={value}>
+      <Suspense fallback={null}>
+        <CloseWhenPathChanges onPathChange={closeOnRouteChange} />
+      </Suspense>
+      {children}
+    </AssistantContext.Provider>
   );
 }
 
@@ -180,10 +205,9 @@ export function AssistantNavButton({ onActivate }) {
     // tipPhase,
   } = useAssistant();
 
-  const pathname = usePathname();
   const activate = () => {
-    onActivate?.();
     toggle();
+    paintThen(() => onActivate?.());
   };
 
   return (
@@ -216,7 +240,7 @@ export function AssistantNavButton({ onActivate }) {
       <button
         type="button"
         ref={launcherRef}
-        className={styles.navButton}
+        className={`${styles.navButton} ${pressStyles.press} ${pressStyles.bar}`}
         onClick={activate}
         aria-expanded={open}
         aria-controls="ken-assistant-panel"
@@ -234,7 +258,7 @@ export function AssistantNavButton({ onActivate }) {
             width={28}
             height={28}
             className={styles.navFace}
-            priority={pathname !== "/"}
+            {...imagePriorityProps(false)}
           />
         )}
         <span className={styles.navLabel}>Ani</span>
@@ -260,7 +284,7 @@ export default function AssistantWidget() {
         role="dialog"
         aria-label="Ani, Ken Beauty Assistant"
         aria-hidden={!open}
-        inert={open ? undefined : ""}
+        inert={open ? undefined : true}
       >
         <AssistantPanel isOpen={open} onClose={close} />
       </div>

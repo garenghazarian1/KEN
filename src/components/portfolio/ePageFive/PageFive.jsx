@@ -1,5 +1,5 @@
 "use client";
-import { motion } from "framer-motion";
+import { motion } from "motion/react";
 import Image from "next/image";
 import styles from "./PageFive.modern.module.css";
 import { Swiper, SwiperSlide } from "swiper/react";

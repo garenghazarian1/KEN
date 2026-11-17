@@ -1,33 +1,38 @@
+import { Suspense } from "react";
 import { notFound } from "next/navigation";
+import { connection } from "next/server";
 import JobPage from "@/components/careers/JobPage";
 import styles from "@/components/careers/JobPage.module.css";
 import { BUSINESS } from "@/config/constants";
-import { getPublicJob, isPublicJobSlug } from "@/lib/business/careers";
+import { getPublicJob, getPublicJobMeta, isPublicJobSlug, jobMetaDescription } from "@/lib/business/careers";
 
-export const dynamic = "force-dynamic";
+async function ConnectionMarker() {
+  await connection();
+  return null;
+}
 
-export async function generateMetadata({ params }) {
+export async function generateMetadata(props) {
+  const params = await props.params;
   const slug = typeof params?.slug === "string" ? params.slug : "";
   if (!isPublicJobSlug(slug)) notFound();
 
-  let job = null;
+  let meta = null;
   try {
-    job = await getPublicJob(slug);
+    meta = await getPublicJobMeta(slug);
   } catch (err) {
     if (typeof err?.digest === "string" && err.digest.includes("NEXT_NOT_FOUND")) throw err;
     return { title: "Careers" };
   }
-  if (!job) notFound();
-  const description = job.sections.find((section) => section.key === "summary")?.body
-    || `Apply for ${job.title} at ${BUSINESS.name}.`;
+  if (!meta) notFound();
+  const description = jobMetaDescription(meta.title, meta.summary, BUSINESS.name);
   return {
-    title: `${job.title} | Careers`,
+    title: `${meta.title} | Careers`,
     description,
-    alternates: { canonical: `/careers/${job.publicSlug}` },
+    alternates: { canonical: `/careers/${meta.publicSlug}` },
     openGraph: {
-      title: `${job.title} | ${BUSINESS.name}`,
+      title: `${meta.title} | ${BUSINESS.name}`,
       description,
-      url: `/careers/${job.publicSlug}`,
+      url: `/careers/${meta.publicSlug}`,
       siteName: BUSINESS.name,
       locale: "en_US",
       type: "website",
@@ -35,8 +40,14 @@ export async function generateMetadata({ params }) {
   };
 }
 
-export default async function CareerJobPage({ params }) {
-  const slug = typeof params?.slug === "string" ? params.slug : "";
+function JobFallback() {
+  return <main className={styles.page} aria-busy="true" />;
+}
+
+async function CareerJobContent({ params }) {
+  await connection();
+  const resolved = await params;
+  const slug = typeof resolved?.slug === "string" ? resolved.slug : "";
   if (!isPublicJobSlug(slug)) notFound();
 
   let job = null;
@@ -55,4 +66,17 @@ export default async function CareerJobPage({ params }) {
 
   if (!job) notFound();
   return <JobPage job={job} />;
+}
+
+export default function CareerJobPage(props) {
+  return (
+    <>
+      <Suspense fallback={null}>
+        <ConnectionMarker />
+      </Suspense>
+      <Suspense fallback={<JobFallback />}>
+        <CareerJobContent params={props.params} />
+      </Suspense>
+    </>
+  );
 }

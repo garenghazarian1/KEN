@@ -7,7 +7,14 @@ import { CONTACT } from "@/config/constants";
 import { recordOutbound } from "@/lib/leads/trackLead";
 import { tCampaign } from "@/lib/business/campaigns";
 import { savesData } from "@/components/hero/heroFetchGate";
-import { shouldLoadFilm } from "@/components/campaign/filmLoadGate";
+import {
+  pictureTap,
+  shouldLoadFilm,
+  shouldPlayFilm,
+  shouldRevealFilm,
+  soundButtonLabel,
+} from "@/components/campaign/filmLoadGate";
+import { imagePriorityProps } from "@/lib/ui/imagePriority";
 import styles from "./CampaignFilm.module.css";
 
 const AV1_CODEC = "av01.0.05M.08";
@@ -19,8 +26,9 @@ function muteOthers(video) {
 }
 
 /**
- * Portrait campaign film. Starts muted so the browser allows autoplay.
- * The picture is the sound button: tap turns the voice-over on, tap again mutes.
+ * Portrait campaign film. The poster stays until a click.
+ * A click on the picture starts the film. It does not start by itself.
+ * The sound chip turns the voice-over on or off.
  * Unmuting this film mutes every other video on the page.
  * The book link opens WhatsApp with this campaign's message.
  */
@@ -28,11 +36,11 @@ export default function CampaignFilm({ campaign, placement = "home" }) {
   const videoRef = useRef(null);
   const stageRef = useRef(null);
   const [failed, setFailed] = useState(false);
-  const [ready, setReady] = useState(false);
   const [muted, setMuted] = useState(true);
   const [playing, setPlaying] = useState(false);
   const [fetchAllowed, setFetchAllowed] = useState(false);
   const playRequestRef = useRef(false);
+  const wantSoundRef = useRef(false);
   const media = campaign?.media;
   const av1 = media?.av1;
   const h264 = media?.h264;
@@ -81,13 +89,9 @@ export default function CampaignFilm({ campaign, placement = "home" }) {
     if (!fetchAllowed || !video || !av1 || !h264) return undefined;
 
     let cancelled = false;
-    const reduce = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
 
     const onError = () => {
       if (!cancelled) setFailed(true);
-    };
-    const onReady = () => {
-      if (!cancelled) setReady(true);
     };
     const onVolume = () => {
       if (cancelled) return;
@@ -108,9 +112,14 @@ export default function CampaignFilm({ campaign, placement = "home" }) {
     video.playsInline = true;
     video.load();
     const asked = playRequestRef.current;
-    if (asked || (!reduce && !savesData())) video.play().catch(() => {});
+    const withSound = wantSoundRef.current;
+    if (withSound) {
+      muteOthers(video);
+      video.muted = false;
+      video.volume = 1;
+    }
+    if (shouldPlayFilm(asked || withSound)) video.play().catch(() => {});
     video.addEventListener("error", onError);
-    video.addEventListener("loadedmetadata", onReady);
     video.addEventListener("volumechange", onVolume);
     video.addEventListener("play", onPlay);
     video.addEventListener("pause", onPause);
@@ -118,7 +127,6 @@ export default function CampaignFilm({ campaign, placement = "home" }) {
     return () => {
       cancelled = true;
       video.removeEventListener("error", onError);
-      video.removeEventListener("loadedmetadata", onReady);
       video.removeEventListener("volumechange", onVolume);
       video.removeEventListener("play", onPlay);
       video.removeEventListener("pause", onPause);
@@ -138,9 +146,17 @@ export default function CampaignFilm({ campaign, placement = "home" }) {
   }
 
   function toggleSound() {
+    const action = pictureTap({ failed, fetchAllowed, muted });
+    if (action === "none") return;
+    if (action === "start-with-sound") {
+      wantSoundRef.current = true;
+      playRequestRef.current = true;
+      setFetchAllowed(true);
+      return;
+    }
     const video = videoRef.current;
     if (!video) return;
-    if (video.muted) {
+    if (action === "unmute") {
       muteOthers(video);
       video.muted = false;
       video.volume = 1;
@@ -167,8 +183,7 @@ export default function CampaignFilm({ campaign, placement = "home" }) {
   const muteAr = tCampaign(campaign.muteLabel, "ar");
   const soundText = muted ? soundEn : muteEn;
   const soundTextAr = muted ? soundAr : muteAr;
-  const soundAria =
-    soundTextAr && soundTextAr !== soundText ? `${soundText}. ${soundTextAr}` : soundText;
+  const soundAria = soundButtonLabel(soundText, soundTextAr);
   const TitleTag = placement === "page" ? "h1" : "h2";
   const titleId = `${campaign.id}-title`;
 
@@ -185,13 +200,16 @@ export default function CampaignFilm({ campaign, placement = "home" }) {
           fill
           sizes="(min-width: 900px) 24rem, 100vw"
           className={styles.poster}
-          loading={placement === "page" ? "eager" : "lazy"}
-          priority={placement === "page"}
+          {...imagePriorityProps(placement === "page")}
         />
         <video
           ref={videoRef}
           className={
-            failed ? styles.filmHidden : ready ? `${styles.film} ${styles.filmReady}` : styles.film
+            failed
+              ? styles.filmHidden
+              : shouldRevealFilm(playing)
+                ? `${styles.film} ${styles.filmReady}`
+                : styles.film
           }
           muted
           playsInline
@@ -209,33 +227,36 @@ export default function CampaignFilm({ campaign, placement = "home" }) {
         </video>
         <button
           type="button"
-          className={styles.sound}
-          onClick={toggleSound}
-          disabled={failed || !ready}
-          aria-pressed={!muted}
-          aria-label={soundAria}
-        >
-          <span className={styles.soundChip}>
-            {muted ? <VolumeX size={18} aria-hidden /> : <Volume2 size={18} aria-hidden />}
-            <span className={styles.soundWords}>
-              <span className={styles.soundWord}>{soundText}</span>
-              {soundTextAr && soundTextAr !== soundText ? (
-                <span className={styles.soundWordAr} lang="ar" dir="rtl">
-                  {soundTextAr}
-                </span>
-              ) : null}
-            </span>
-          </span>
-        </button>
-        <button
-          type="button"
-          className={styles.play}
+          className={styles.start}
           onClick={togglePlay}
           aria-label={playing ? "Pause" : "Play"}
         >
-          {playing ? <Pause size={18} aria-hidden /> : <Play size={18} aria-hidden />}
-          <span>{playing ? "Pause" : "Play"}</span>
+          <span className={styles.play}>
+            {playing ? <Pause size={18} aria-hidden /> : <Play size={18} aria-hidden />}
+            <span>{playing ? "Pause" : "Play"}</span>
+          </span>
         </button>
+        {failed ? null : (
+          <button
+            type="button"
+            className={styles.sound}
+            onClick={toggleSound}
+            aria-pressed={!muted}
+            aria-label={soundAria}
+          >
+            <span className={styles.soundChip}>
+              {muted ? <VolumeX size={18} aria-hidden /> : <Volume2 size={18} aria-hidden />}
+              <span className={styles.soundWords}>
+                <span className={styles.soundWord}>{soundText}</span>
+                {soundTextAr && soundTextAr !== soundText ? (
+                  <span className={styles.soundWordAr} lang="ar" dir="rtl">
+                    {soundTextAr}
+                  </span>
+                ) : null}
+              </span>
+            </span>
+          </button>
+        )}
       </div>
 
       <div className={styles.copy}>

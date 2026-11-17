@@ -1,4 +1,5 @@
 import { BUSINESS } from "@/config/constants";
+import { getPrerenderClock } from "@/lib/business/prerenderClock";
 import styles from "./terms.module.css";
 
 export const metadata = {
@@ -9,14 +10,15 @@ export const metadata = {
   },
 };
 
-export default function TermsOfUse() {
+export default async function TermsOfUse() {
+  const { dateLabel } = await getPrerenderClock();
   return (
     <div className={styles.container}>
       <div className={styles.content}>
         <div className={styles.header}>
           <h1>Terms of Use</h1>
           <p className={styles.lastUpdated}>
-            Last Updated: {new Date().toLocaleDateString()}
+            Last Updated: {dateLabel}
           </p>
         </div>
 

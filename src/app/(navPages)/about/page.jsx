@@ -1,5 +1,5 @@
-﻿import Script from "next/script";
-import Portfolio from "@/components/portfolio/Portfolio";
+﻿import Portfolio from "@/components/portfolio/Portfolio";
+import JsonLd from "@/components/seo/JsonLd";
 import {
   BASE_URL,
   BUSINESS,
@@ -47,12 +47,7 @@ export default function Home() {
   return (
     <>
       <h1 className="sr-only">About KEN Beauty Salon Abu Dhabi</h1>
-      <Script
-        id="ld-about"
-        type="application/ld+json"
-        strategy="beforeInteractive"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(aboutJsonLd) }}
-      />
+      <JsonLd data={aboutJsonLd} />
       <Portfolio />{" "}
     </>
   );

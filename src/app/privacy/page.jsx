@@ -1,5 +1,5 @@
 ﻿// app/privacy/page.tsx
-import Script from "next/script";
+import JsonLd from "@/components/seo/JsonLd";
 import styles from "./privacy.module.css";
 import { BASE_URL, BUSINESS, getFullUrl } from "@/config/constants";
 
@@ -39,12 +39,7 @@ const privacyJsonLd = {
 export default function PrivacyPage() {
   return (
     <main className={styles.container}>
-      <Script
-        id="ld-privacy"
-        type="application/ld+json"
-        strategy="beforeInteractive"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(privacyJsonLd) }}
-      />
+      <JsonLd data={privacyJsonLd} />
       <div className={styles.content}>
         <div className={styles.header}>
           <h1>Privacy Policy</h1>

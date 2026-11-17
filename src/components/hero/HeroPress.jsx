@@ -2,7 +2,7 @@
 
 import Link from "next/link";
 import { usePathname, useRouter } from "next/navigation";
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useLayoutEffect, useRef, useState } from "react";
 import styles from "./Hero.modern.module.css";
 
 function Opening() {
@@ -40,6 +40,13 @@ export default function HeroPress({
     busyRef.current = false;
     setBusy(false);
   }, [pathname]);
+
+  useLayoutEffect(() => {
+    return () => {
+      busyRef.current = false;
+      setBusy(false);
+    };
+  }, []);
 
   function onClick(event) {
     setBusy(true);

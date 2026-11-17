@@ -1,7 +1,8 @@
 "use client";
 
-import { useEffect, useRef, useState } from "react";
-import { motion } from "framer-motion";
+import { useEffect, useLayoutEffect, useRef, useState } from "react";
+import { usePathname } from "next/navigation";
+import { motion } from "motion/react";
 import { FaWhatsapp } from "react-icons/fa";
 import styles from "./DraggableWhatsAppButton.module.css";
 import {
@@ -60,6 +61,7 @@ function clampIntoConstraints(buttonEl, constraintsEl, pos) {
 }
 
 export default function DraggableWhatsAppButton() {
+  const pathname = usePathname();
   const constraintsRef = useRef(null);
   const buttonRef = useRef(null);
   const draggedRef = useRef(false);
@@ -124,6 +126,18 @@ export default function DraggableWhatsAppButton() {
     };
     window.addEventListener("pageshow", reset);
     return () => window.removeEventListener("pageshow", reset);
+  }, []);
+
+  useEffect(() => {
+    busyRef.current = false;
+    setBusy(false);
+  }, [pathname]);
+
+  useLayoutEffect(() => {
+    return () => {
+      busyRef.current = false;
+      setBusy(false);
+    };
   }, []);
 
   const handleClick = (e) => {

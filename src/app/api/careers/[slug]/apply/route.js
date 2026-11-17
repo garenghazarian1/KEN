@@ -2,10 +2,8 @@ import { NextResponse } from "next/server";
 import { ADMIN_PUBLIC_BASE_URL } from "@/config/constants";
 import { isPublicJobSlug } from "@/lib/business/careers";
 
-export const dynamic = "force-dynamic";
-export const runtime = "nodejs";
-
-export async function POST(request, { params }) {
+export async function POST(request, props) {
+  const params = await props.params;
   const slug = typeof params?.slug === "string" ? decodeURIComponent(params.slug).trim() : "";
   if (!isPublicJobSlug(slug)) {
     return NextResponse.json(

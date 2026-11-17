@@ -1,9 +1,3 @@
-import bundleAnalyzer from "@next/bundle-analyzer";
-import fs from "fs";
-import path from "path";
-
-const preloadedFontFiles = [];
-
 /** @type {import('next').NextConfig} */
 const contentSecurityPolicy = [
   // 'unsafe-inline' matches the inline GTM bootstrap in src/app/layout.jsx and Next's own inline scripts.
@@ -20,11 +14,39 @@ const contentSecurityPolicy = [
 
 const nextConfig = {
   poweredByHeader: false,
+  // Job pages load their description from the admin API. Waiting for that
+  // metadata puts <meta name="description"> in <head>. Home metadata is static.
+  htmlLimitedBots: /.*/,
+  cacheComponents: true,
+  partialPrefetching: true,
+  turbopack: {
+    root: import.meta.dirname,
+  },
   experimental: {
-    optimizePackageImports: ["framer-motion", "lucide-react", "react-icons/fa"],
+    cssChunking: {
+      type: "graph",
+      // Home's first screen imports the hero CSS only. A high cost merged
+      // the below-fold film, gallery, and offers CSS into that same file,
+      // so the home <head> blocked on about 30 KB it does not paint.
+      // 2500 bytes is enough to split those files out, and still keeps
+      // the shared layout CSS in one request.
+      requestCost: 2500,
+    },
+    optimizePackageImports: ["motion", "lucide-react", "react-icons/fa"],
   },
   images: {
     formats: ["image/avif", "image/webp"],
+    qualities: [65, 75],
+    localPatterns: [
+      {
+        pathname: "/assistant/**",
+        search: "?v=3",
+      },
+      {
+        pathname: "/**",
+        search: "",
+      },
+    ],
     remotePatterns: [
       {
         protocol: "https",
@@ -66,57 +88,6 @@ const nextConfig = {
       },
     ];
   },
-  webpack(config) {
-    config.plugins.push({
-      apply(compiler) {
-        const writeManifest = () => {
-          if (!preloadedFontFiles.length) return;
-          const manifestPath = path.join(process.cwd(), ".next/server/next-font-manifest.json");
-          const jsPath = path.join(process.cwd(), ".next/server/next-font-manifest.js");
-          if (!fs.existsSync(manifestPath)) return;
-          const json = JSON.parse(fs.readFileSync(manifestPath, "utf8"));
-          const filled = Object.values(json.app || {}).some(
-            (files) => Array.isArray(files) && files.length > 0,
-          );
-          if (filled) return;
-          const layoutKey = path
-            .resolve("src/app/layout.jsx")
-            .replace(/\.jsx$/, "")
-            .replace(/^([A-Z]):/, (_, drive) => `${drive.toLowerCase()}:`);
-          json.app[layoutKey] = preloadedFontFiles;
-          const source = JSON.stringify(json);
-          fs.writeFileSync(manifestPath, source);
-          if (fs.existsSync(jsPath)) {
-            fs.writeFileSync(jsPath, `self.__NEXT_FONT_MANIFEST=${JSON.stringify(source)}`);
-          }
-        };
-
-        compiler.hooks.thisCompilation.tap("KenFontPreload", (compilation) => {
-          compilation.hooks.processAssets.tap(
-            {
-              name: "KenFontPreload",
-              stage: compiler.webpack.Compilation.PROCESS_ASSETS_STAGE_REPORT,
-            },
-            () => {
-              const found = Object.keys(compilation.assets)
-                .filter((name) => name.endsWith(".p.woff2"))
-                .map((name) => name.replace(/^(\.\.\/)+/, "").replace(/^\//, ""));
-              if (found.length) preloadedFontFiles.splice(0, preloadedFontFiles.length, ...found);
-            },
-          );
-        });
-        compiler.hooks.done.tap("KenFontPreload", writeManifest);
-      },
-    });
-    return config;
-  },
 };
 
-const withBundleAnalyzer = bundleAnalyzer({
-  enabled: process.env.ANALYZE === "true",
-  openAnalyzer: false,
-});
-
-export default process.env.ANALYZE === "true"
-  ? withBundleAnalyzer(nextConfig)
-  : nextConfig;
+export default nextConfig;

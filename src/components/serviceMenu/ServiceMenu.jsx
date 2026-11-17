@@ -10,7 +10,6 @@ import {
 } from "react";
 import Link from "next/link";
 import Image from "next/image";
-import { motion, AnimatePresence } from "framer-motion";
 import {
   Calendar,
   Check,
@@ -28,12 +27,8 @@ import {
   BOOKING_URL,
   BUSINESS_CURRENCY,
 } from "@/config/constants";
+import { useReveal } from "@/components/useReveal";
 import { getCategoryImage } from "@/data/serviceImages";
-import {
-  buildServiceSearchCatalog,
-  searchServices,
-  suggestServiceTitles,
-} from "@/lib/business/serviceSearch";
 import { BookingHint } from "./BookingGuide";
 import {
   BOOKING_OPEN_EVENT,
@@ -287,7 +282,7 @@ function ServiceLine({
   ]
     .filter(Boolean)
     .join(" ");
-  const [panelSrc, setPanelSrc] = useState(imageSrc);
+  const [panelSrc, setPanelSrc] = useState(selected ? imageSrc : null);
   const phoneAccordion = expandable || (responsive && !wide);
 
   useLayoutEffect(() => {
@@ -559,14 +554,10 @@ function SearchSuggestions({
   onHighlight,
 }) {
   return (
-    <motion.ul
+    <ul
       id={SUGGESTIONS_LIST_ID}
       role="listbox"
       className={styles.suggestionsList}
-      initial={{ opacity: 0, y: -4 }}
-      animate={{ opacity: 1, y: 0 }}
-      exit={{ opacity: 0, y: -4 }}
-      transition={{ duration: 0.15 }}
     >
       {suggestions.map((suggestion, index) => {
         const breadcrumb = suggestion.subcategoryTitle
@@ -593,7 +584,7 @@ function SearchSuggestions({
           </li>
         );
       })}
-    </motion.ul>
+    </ul>
   );
 }
 
@@ -899,7 +890,7 @@ function CategoryBoard({
                   fill
                   className={styles.boardImage}
                   sizes={isWide ? "40vw" : "100vw"}
-                  priority
+                  loading="eager"
                 />
               </div>
             </div>
@@ -1014,6 +1005,22 @@ export default function ServiceMenu({
   const [suggestionsDismissed, setSuggestionsDismissed] = useState(false);
   const [activeSuggestionIndex, setActiveSuggestionIndex] = useState(-1);
   const searchInputRef = useRef(null);
+  const rootRef = useRef(null);
+  const searchApiRef = useRef(null);
+  const searchRequestRef = useRef(0);
+  const [searchCatalog, setSearchCatalog] = useState(null);
+  useReveal(rootRef);
+
+  const ensureSearch = useCallback(() => {
+    const request = ++searchRequestRef.current;
+    void (async () => {
+      if (!searchApiRef.current) {
+        searchApiRef.current = await import("@/lib/business/serviceSearch");
+      }
+      if (request !== searchRequestRef.current) return;
+      setSearchCatalog(searchApiRef.current.buildServiceSearchCatalog(sections));
+    })();
+  }, [sections]);
   const ignoreNextUrlRef = useRef(false);
 
   useLayoutEffect(() => {
@@ -1114,22 +1121,17 @@ export default function ServiceMenu({
     [openSubcategories, sections, syncMenuUrl],
   );
 
-  const searchCatalog = useMemo(
-    () => buildServiceSearchCatalog(sections),
-    [sections],
-  );
-
   const suggestions = useMemo(() => {
-    if (!query.trim() || suggestionsDismissed) return [];
-    return suggestServiceTitles(searchCatalog, query);
+    if (!searchCatalog || !query.trim() || suggestionsDismissed) return [];
+    return searchApiRef.current.suggestServiceTitles(searchCatalog, query);
   }, [searchCatalog, query, suggestionsDismissed]);
 
   const searchResults = useMemo(() => {
-    if (!query.trim()) return [];
-    return searchServices(searchCatalog, query);
+    if (!searchCatalog || !query.trim()) return [];
+    return searchApiRef.current.searchServices(searchCatalog, query);
   }, [searchCatalog, query]);
 
-  const totalResults = query.trim() ? searchResults.length : null;
+  const totalResults = query.trim() && searchCatalog ? searchResults.length : null;
 
   const showSuggestions =
     isSearchFocused &&
@@ -1174,7 +1176,8 @@ export default function ServiceMenu({
     setQuery(event.target.value);
     setSuggestionsDismissed(false);
     setActiveSuggestionIndex(-1);
-  }, []);
+    ensureSearch();
+  }, [ensureSearch]);
 
   const selectCategory = useCallback(
     (id) => {
@@ -1233,17 +1236,12 @@ export default function ServiceMenu({
     );
   }, []);
 
-  const isSearching = Boolean(query.trim());
+  const isSearching = Boolean(query.trim()) && Boolean(searchCatalog);
 
   return (
-    <div className={styles.container}>
+    <div className={styles.container} ref={rootRef}>
       {!error && sections.length > 0 && (
-        <motion.div
-          className={styles.searchWrapper}
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.45 }}
-        >
+        <div className={styles.searchWrapper}>
           <div className={styles.searchCombobox}>
             <div className={styles.searchBar}>
               <Search size={18} className={styles.searchIcon} aria-hidden />
@@ -1254,7 +1252,10 @@ export default function ServiceMenu({
                 placeholder="Search services, e.g. Manicure, Facial…"
                 value={query}
                 onChange={handleSearchChange}
-                onFocus={() => setIsSearchFocused(true)}
+                onFocus={() => {
+                  setIsSearchFocused(true);
+                  ensureSearch();
+                }}
                 onBlur={() => setIsSearchFocused(false)}
                 onKeyDown={handleSearchKeyDown}
                 aria-label="Search services"
@@ -1268,26 +1269,19 @@ export default function ServiceMenu({
                 }
                 role="combobox"
               />
-              <AnimatePresence>
-                {query && (
-                  <motion.button
-                    type="button"
-                    className={styles.clearButton}
-                    onClick={clearSearch}
-                    aria-label="Clear search"
-                    initial={{ opacity: 0, scale: 0.8 }}
-                    animate={{ opacity: 1, scale: 1 }}
-                    exit={{ opacity: 0, scale: 0.8 }}
-                    transition={{ duration: 0.15 }}
-                  >
-                    <X size={16} />
-                  </motion.button>
-                )}
-              </AnimatePresence>
+              {query ? (
+                <button
+                  type="button"
+                  className={styles.clearButton}
+                  onClick={clearSearch}
+                  aria-label="Clear search"
+                >
+                  <X size={16} />
+                </button>
+              ) : null}
             </div>
 
-            <AnimatePresence>
-              {showSuggestions && (
+            {showSuggestions && (
                 <SearchSuggestions
                   suggestions={suggestions}
                   query={query}
@@ -1296,28 +1290,16 @@ export default function ServiceMenu({
                   onHighlight={setActiveSuggestionIndex}
                 />
               )}
-            </AnimatePresence>
           </div>
 
-          <AnimatePresence mode="wait">
-            {query && (
-              <motion.p
-                className={styles.resultsCount}
-                key={totalResults}
-                initial={{ opacity: 0 }}
-                animate={{ opacity: 1 }}
-                exit={{ opacity: 0 }}
-                transition={{ duration: 0.2 }}
-                role="status"
-                aria-live="polite"
-              >
-                {totalResults === 0
-                  ? "No services found"
-                  : `${totalResults} service${totalResults !== 1 ? "s" : ""} found`}
-              </motion.p>
-            )}
-          </AnimatePresence>
-        </motion.div>
+          {query && totalResults !== null ? (
+            <p className={styles.resultsCount} role="status" aria-live="polite">
+              {totalResults === 0
+                ? "No services found"
+                : `${totalResults} service${totalResults !== 1 ? "s" : ""} found`}
+            </p>
+          ) : null}
+        </div>
       )}
 
       {error && (
@@ -1377,12 +1359,7 @@ export default function ServiceMenu({
         </div>
       )}
 
-      <motion.div
-        className={styles.footerNote}
-        initial={{ opacity: 0, y: 30 }}
-        animate={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.6, delay: 0.15 }}
-      >
+      <div className={styles.footerNote} data-reveal="">
         <div className={styles.footerIcon}>
           <Calendar size={20} />
         </div>
@@ -1392,7 +1369,7 @@ export default function ServiceMenu({
             Or book online
           </Link>
         </p>
-      </motion.div>
+      </div>
     </div>
   );
 }

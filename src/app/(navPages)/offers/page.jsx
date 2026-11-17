@@ -1,22 +1,17 @@
-import Script from "next/script";
 import CampaignFilm from "@/components/campaign/CampaignFilm";
+import JsonLd from "@/components/seo/JsonLd";
 import CampaignPoster from "@/components/campaign/CampaignPoster";
 import OffersContent from "@/components/campaign/OffersContent";
 import { BUSINESS, BASE_URL } from "@/config/constants";
-import {
-  getActiveCampaign,
-  isCampaignActive,
-  tCampaign,
-} from "@/lib/business/campaigns";
+import { isCampaignActive, tCampaign } from "@/lib/business/campaigns";
+import { getCampaignCached } from "@/lib/business/campaignCache";
 import { CAMPAIGNS } from "@/data/campaigns";
 
 const augustCampaign =
   CAMPAIGNS.find((c) => c.id === "august-2026") || CAMPAIGNS[0] || null;
 
-export const revalidate = 3600;
-
-export function generateMetadata() {
-  const active = getActiveCampaign();
+export async function generateMetadata() {
+  const { campaign: active } = await getCampaignCached();
   const campaign = active || augustCampaign;
   const titleName = tCampaign(campaign?.theme) || "Offers";
   const description =
@@ -74,10 +69,10 @@ function offerItems(campaign) {
   ];
 }
 
-export default function OffersPage() {
-  const active = getActiveCampaign();
+export default async function OffersPage() {
+  const { campaign: active, now } = await getCampaignCached();
   const campaign = active || augustCampaign;
-  const expired = campaign ? !isCampaignActive(campaign) : true;
+  const expired = campaign ? !isCampaignActive(campaign, new Date(now)) : true;
   const film = Boolean(active?.media);
   const poster = Boolean(active && !active.packages?.length && !active.media);
 
@@ -94,16 +89,7 @@ export default function OffersPage() {
 
   return (
     <>
-      {offerJsonLd ? (
-        <Script
-          id="ld-offers"
-          type="application/ld+json"
-          strategy="beforeInteractive"
-          dangerouslySetInnerHTML={{
-            __html: JSON.stringify(offerJsonLd),
-          }}
-        />
-      ) : null}
+      {offerJsonLd ? <JsonLd data={offerJsonLd} /> : null}
       {film ? (
         <CampaignFilm campaign={active} placement="page" />
       ) : poster ? (

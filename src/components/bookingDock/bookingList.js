@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { createContext, createElement, useContext, useSyncExternalStore } from "react";
 
 const STORAGE_KEY = "ken-booking-services";
 const CHANGE_EVENT = "ken-booking-change";
@@ -65,19 +65,52 @@ export function toggleBookingService(item) {
   return { added: !removing };
 }
 
+const SERVER_SERVICES = [];
+let snapshotRaw = null;
+let snapshotValue = SERVER_SERVICES;
+
+function storageRaw() {
+  if (typeof window === "undefined") return "";
+  try {
+    return window.localStorage.getItem(STORAGE_KEY) ?? "";
+  } catch {
+    return "";
+  }
+}
+
+export function getBookingSnapshot() {
+  const raw = storageRaw();
+  if (raw === snapshotRaw) return snapshotValue;
+  snapshotRaw = raw;
+  const next = readBookingServices();
+  snapshotValue = next.length ? next : SERVER_SERVICES;
+  return snapshotValue;
+}
+
+function getServerBookingSnapshot() {
+  return SERVER_SERVICES;
+}
+
+const BookingContext = createContext(SERVER_SERVICES);
+
+export function BookingProvider({ children }) {
+  const services = useSyncExternalStore(
+    subscribeBookingServices,
+    getBookingSnapshot,
+    getServerBookingSnapshot,
+  );
+  return createElement(BookingContext.Provider, { value: services }, children);
+}
+
+function subscribeBookingServices(onStoreChange) {
+  window.addEventListener(CHANGE_EVENT, onStoreChange);
+  window.addEventListener("storage", onStoreChange);
+  return () => {
+    window.removeEventListener(CHANGE_EVENT, onStoreChange);
+    window.removeEventListener("storage", onStoreChange);
+  };
+}
+
 export function useBookingServices() {
-  const [services, setServices] = useState([]);
-
-  useEffect(() => {
-    const sync = () => setServices(readBookingServices());
-    sync();
-    window.addEventListener(CHANGE_EVENT, sync);
-    window.addEventListener("storage", sync);
-    return () => {
-      window.removeEventListener(CHANGE_EVENT, sync);
-      window.removeEventListener("storage", sync);
-    };
-  }, []);
-
-  return services;
+  return useContext(BookingContext);
 }

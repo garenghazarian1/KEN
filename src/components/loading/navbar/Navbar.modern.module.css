@@ -16,8 +16,8 @@
   align-items: center; /* Center vertically */
   z-index: var(--z-fixed);
   background-color: var(--glass-white-strong); /* Transparent background */
-  backdrop-filter: blur(var(--glass-blur-md));
   -webkit-backdrop-filter: blur(var(--glass-blur-md));
+  backdrop-filter: blur(var(--glass-blur-md));
   transition: all var(--transition-base) var(--ease-in-out);
   box-shadow: 0 2px 8px var(--shadow-very-light);
 }
@@ -26,8 +26,8 @@
   background-color: var(
     --glass-bg-primary
   ); /* Slightly more opaque when scrolled */
-  backdrop-filter: blur(var(--glass-blur-md));
   -webkit-backdrop-filter: blur(var(--glass-blur-md));
+  backdrop-filter: blur(var(--glass-blur-md));
   box-shadow: 0 4px 12px var(--shadow-card-hover);
 }
 
@@ -78,8 +78,8 @@
   background-color: var(
     --glass-black-light
   ); /* Slightly transparent black background */
-  backdrop-filter: blur(var(--glass-blur-md));
   -webkit-backdrop-filter: blur(var(--glass-blur-md));
+  backdrop-filter: blur(var(--glass-blur-md));
   transition: all var(--transition-base) var(--ease-in-out);
   position: relative;
   border: 1px solid var(--glass-border-white-light);
@@ -88,8 +88,8 @@
 .navLink:hover {
   color: var(--color-text-inverse);
   background-color: var(--glass-black-medium); /* More opaque on hover */
-  backdrop-filter: blur(var(--glass-blur-lg));
   -webkit-backdrop-filter: blur(var(--glass-blur-lg));
+  backdrop-filter: blur(var(--glass-blur-lg));
   border-color: var(--glass-border-white-medium);
   transform: translateY(-1px);
   box-shadow: 0 4px 12px var(--shadow-nav);
@@ -196,8 +196,8 @@
   background-color: var(
     --glass-black-light
   ); /* Slightly transparent black background */
-  backdrop-filter: blur(var(--glass-blur-xl)); /* Strong blur effect */
   -webkit-backdrop-filter: blur(var(--glass-blur-xl)); /* iOS support */
+  backdrop-filter: blur(var(--glass-blur-xl)); /* Strong blur effect */
   border: 1px solid var(--glass-border-white-light);
   color: var(--color-text-inverse);
   border-radius: var(--radius-full);
@@ -213,8 +213,8 @@
 
 .mobileBookButtonNavbar:hover {
   background-color: var(--glass-black-medium); /* More opaque on hover */
-  backdrop-filter: blur(var(--glass-blur-xl)); /* Maintain strong blur */
   -webkit-backdrop-filter: blur(var(--glass-blur-xl)); /* iOS support */
+  backdrop-filter: blur(var(--glass-blur-xl)); /* Maintain strong blur */
   border-color: var(--glass-border-white-medium);
   color: var(--color-text-inverse);
   transform: translateY(-2px);
@@ -230,8 +230,8 @@
   margin-top: var(--spacing-2);
   padding: var(--spacing-4) var(--spacing-5);
   background-color: var(--overlay-secondary-90);
-  backdrop-filter: blur(10px);
   -webkit-backdrop-filter: blur(10px);
+  backdrop-filter: blur(10px);
   color: var(--color-text-inverse);
   border-radius: var(--radius-full);
   font-size: var(--font-size-base);
@@ -244,8 +244,8 @@
 
 .mobileDrinksLink:hover {
   background-color: var(--glass-teal-darker);
-  backdrop-filter: blur(var(--glass-blur-md));
   -webkit-backdrop-filter: blur(var(--glass-blur-md));
+  backdrop-filter: blur(var(--glass-blur-md));
   transform: translateY(-2px);
   box-shadow: 0 4px 12px var(--shadow-light);
 }
@@ -288,8 +288,8 @@
   right: 0;
   width: 100%;
   background-color: var(--overlay-white-82);
-  backdrop-filter: blur(var(--glass-blur-lg)); /* Same blur as navbar */
   -webkit-backdrop-filter: blur(var(--glass-blur-lg)); /* iOS support */
+  backdrop-filter: blur(var(--glass-blur-lg)); /* Same blur as navbar */
   box-shadow: 0 2px 8px var(--shadow-very-light);
   overflow: hidden;
 }
@@ -312,8 +312,8 @@
   background-color: var(
     --glass-black-light
   ); /* Slightly transparent black background */
-  backdrop-filter: blur(var(--glass-blur-md));
   -webkit-backdrop-filter: blur(var(--glass-blur-md)); /* iOS support */
+  backdrop-filter: blur(var(--glass-blur-md));
   transition: all var(--transition-base) var(--ease-in-out);
   min-height: 44px;
   display: flex;
@@ -323,8 +323,8 @@
 
 .mobileLink:hover {
   background-color: var(--glass-black-medium); /* More opaque on hover */
-  backdrop-filter: blur(var(--glass-blur-md));
   -webkit-backdrop-filter: blur(var(--glass-blur-md)); /* iOS support */
+  backdrop-filter: blur(var(--glass-blur-md));
   color: var(--color-text-inverse);
   padding-left: var(--spacing-5);
   border-color: var(--glass-border-white-medium);
@@ -340,8 +340,8 @@
   background-color: var(
     --overlay-secondary-90
   ); /* Less transparent teal with glass effect */
-  backdrop-filter: blur(10px);
   -webkit-backdrop-filter: blur(10px); /* iOS support */
+  backdrop-filter: blur(10px);
   color: var(--color-text-inverse);
   border-radius: var(--radius-full);
   font-size: var(--font-size-base);
@@ -354,8 +354,8 @@
 
 .mobileBookButton:hover {
   background-color: var(--glass-teal-darker); /* Less transparent darker teal */
-  backdrop-filter: blur(var(--glass-blur-md));
   -webkit-backdrop-filter: blur(var(--glass-blur-md)); /* iOS support */
+  backdrop-filter: blur(var(--glass-blur-md));
   transform: translateY(-2px);
   box-shadow: 0 4px 12px var(--shadow-light);
 }

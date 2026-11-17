@@ -21,15 +21,18 @@ read-only public HTTP API.
 |--------|------|---------|
 | GET | `/api/public/businesses/{slug}/service-catalog` | Catalog + structured pricing |
 | GET | `/api/public/careers/company/{businessSlug}` | Careers board (published jobs) |
-| GET | `/api/public/jobs/{slug}` | Job detail + apply form config |
+| GET | `/api/public/jobs/{slug}` | Job detail + apply form config. Unknown slugs are HTTP 404 via `src/proxy.js` and `notFound()`. |
 | POST | `/api/public/jobs/{slug}/apply` | Submit application (multipart) |
 
 ## Service catalog rules
 
 - `getServiceCatalog(locale, branchId?)` in `src/lib/business/serviceCatalog.js`
   fetches the API with `cache: "no-store"` and returns
-  `{ businessSlug, total, services }`. The services page always gets fresh data;
-  the AI assistant builds a locale-specific MiniSearch index and caches it in
+  `{ businessSlug, total, services }`. The services page uses
+  `getServiceSectionsCached` (`"use cache"`, `cacheLife("hours")`, tag
+  `service-catalog`). Admin changes appear within 1 hour. `getServiceCatalog`
+  stays `no-store` for the assistant and `/api/services/catalog`. The AI
+  assistant builds a locale-specific MiniSearch index and caches it in
   process for 10 minutes to avoid an admin API request per turn (used by both
   the text chat route and the realtime voice turn route,
   `src/app/api/assistant/realtime/turn/route.js`).

@@ -1,5 +1,5 @@
-Last updated: 5 November 2026
-Last verified against code: 5 Nov 2026 (working tree)
+Last updated: 17 November 2026
+Last verified against code: 17 November 2026 (working tree)
 
 # Public API Integration (Admin System)
 
@@ -41,8 +41,13 @@ closures, contact.
 `src/lib/business/serviceCatalog.js`:
 
 - `getServiceCatalog(locale = "en", branchId = null)` — fetches the API with
-  `cache: "no-store"` on every request so admin media uploads appear immediately;
-  surfaces the API error `message`, and returns `{ businessSlug, total, services }`.
+  `cache: "no-store"` on every request so the assistant and `/api/services/catalog`
+  stay fresh; surfaces the API error `message`, and returns
+  `{ businessSlug, total, services }`.
+- `getServiceSectionsCached(locale = "en")` — `"use cache"`, `cacheLife("hours")`,
+  tag `service-catalog`. The services page uses this. Admin changes appear within
+  1 hour. It returns trimmed sections and throws if the catalog is empty or the
+  fetch fails, so an error is not cached.
 - `buildServiceSections(services)` — turns the flat list into
   category → subcategory → item sections for the UI, carrying media + price fields.
   A service with multiple `categoryIds` is listed under each matching folder.
@@ -87,7 +92,8 @@ in the catalog.
 
 `Contact` in `MobileNavBottom` opens a **full-width number sheet** in that same
 between-navs band (not `/contact`). Landline, mobile, and WhatsApp come from
-`src/data/stores.js`. A secondary “Visit contact page” link goes to `/contact`.
+`src/data/stores.js`. Call, WhatsApp, and Card show Opening… before they open
+the same link. A secondary “Visit contact page” link goes to `/contact`.
 Escape, the Contact tab, or another bottom-nav item closes the sheet.
 
 ### Tree rules
@@ -138,6 +144,7 @@ Every node (`category` / `subcategory` / `item`) can carry:
 
 ## History
 
+- **17 November 2026** — An unknown `/careers/[slug]` returns HTTP 404 before the page streams (`src/proxy.js` checks the public job API, then `notFound()`). A real job stays 200 and its `<meta name="description">` is a short summary from the job.
 - **5 November 2026** — Careers board, job page, and apply form render on this site. Board and job GETs run on the server. Apply is posted to `POST /api/careers/[slug]/apply`, which forwards multipart to the admin apply route. Page colors stay in this site's CSS. `careersPageTheme` is not applied.
 - **1 November 2026** — `connectServicesDB` is used for assistant models and lead events. `connectDB` has no caller. Careers was still an external link to the admin app.
 - **8 September 2026** — Navbar Services menu is a nested accordion (expand in
@@ -148,8 +155,11 @@ Every node (`category` / `subcategory` / `item`) can carry:
 - **11 July 2026** — Made service-card names, prices, and descriptions fluid and
   container-aware; long API price labels wrap within each card while amount/currency
   pairs remain together.
-- **6 July 2026** — Service catalog fetch is always `cache: "no-store"`; `/services` uses
-  `dynamic = "force-dynamic"` so admin media uploads show on the next page load.
+- **17 November 2026** — `/services` reads `getServiceSectionsCached` (1 hour, tag
+  `service-catalog`). `getServiceCatalog` stays `cache: "no-store"` for the assistant
+  and `/api/services/catalog`.
+- **6 July 2026** — Service catalog fetch is always `cache: "no-store"`; `/services` used
+  `dynamic = "force-dynamic"` so admin media uploads showed on the next page load.
 - **22 June 2026** — Migrated the service catalog from a direct admin-MongoDB query to the
   public HTTP API; added Cloudinary media rendering (`imageUrls`, `videoUrl`) and `priceLabel`
   support. `connectServicesDB` in `src/lib/db/mongoose.js` is now unused.

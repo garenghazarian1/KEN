@@ -1,7 +1,7 @@
 "use client";
 
 import Image from "next/image";
-import { motion } from "framer-motion";
+import { motion } from "motion/react";
 import { Coffee, GlassWater, Plus } from "lucide-react";
 import { drinksCategories } from "@/data/drinks";
 import styles from "./DrinksMenu.module.css";

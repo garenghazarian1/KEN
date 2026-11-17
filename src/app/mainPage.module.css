@@ -4,3 +4,7 @@
   height: 100%;
   box-sizing: border-box;
 }
+
+.belowReserve {
+  min-height: 50vh;
+}

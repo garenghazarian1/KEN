@@ -1,3 +1,4 @@
+import { cacheLife, cacheTag } from "next/cache";
 import { ADMIN_PUBLIC_BASE_URL, BUSINESS_SLUG } from "@/config/constants";
 
 /**
@@ -119,4 +120,55 @@ export function buildServiceSections(services) {
       (section) =>
         (section.items?.length ?? 0) > 0 || (section.groups?.length ?? 0) > 0
     );
+}
+
+function firstImageOnly(imageUrls) {
+  return Array.isArray(imageUrls) && imageUrls[0] ? [imageUrls[0]] : [];
+}
+
+function trimItem(item) {
+  return {
+    id: item.id,
+    name: item.name,
+    defaultPrice: item.defaultPrice,
+    priceLabel: item.priceLabel ?? null,
+    priceCompareAtLabel: item.priceCompareAtLabel ?? null,
+    priceDisplayType: item.priceDisplayType ?? null,
+    durationMinutes: item.durationMinutes,
+    description: item.description ?? null,
+    imageUrls: firstImageOnly(item.imageUrls),
+  };
+}
+
+/** Fields the services page renders. Drops sort order, folder ids, and video. */
+export function trimServiceSections(sections) {
+  return sections.map((section) => ({
+    id: section.id,
+    title: section.title,
+    items: section.items?.map(trimItem),
+    groups: section.groups?.map((group) => ({
+      id: group.id,
+      title: group.title,
+      items: group.items.map(trimItem),
+      imageUrls: firstImageOnly(group.imageUrls),
+    })),
+    imageUrls: firstImageOnly(section.imageUrls),
+  }));
+}
+
+/**
+ * Services page catalog. Cached for 1 hour. Throws on failure or an empty
+ * list so an error is never stored.
+ * @param {string} [locale="en"]
+ */
+export async function getServiceSectionsCached(locale = "en") {
+  "use cache";
+  cacheLife("hours");
+  cacheTag("service-catalog");
+  const data = await getServiceCatalog(locale);
+  const sections = trimServiceSections(buildServiceSections(data.services));
+  if (!sections.length) {
+    throw new Error("Failed to load services.");
+  }
+  return sections;
 }

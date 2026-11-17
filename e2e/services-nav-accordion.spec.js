@@ -11,6 +11,10 @@ test("phone Services opens a lookbook sheet", async ({ page }) => {
 
   const dialog = page.getByRole("dialog", { name: "Browse services" });
   await expect(dialog).toBeVisible({ timeout: 20_000 });
+  await page.getByRole("button", { name: "Close", exact: true }).click();
+  await expect(dialog).toBeHidden();
+  await page.getByRole("button", { name: "Services" }).click();
+  await expect(dialog).toBeVisible();
   await expect(page.getByRole("button", { name: "Go back" })).toHaveCount(0);
   await expect(dialog.getByRole("heading", { name: "Services" })).toBeVisible();
   await expect(dialog.getByRole("link", { name: "View services" })).toBeVisible();
@@ -54,6 +58,10 @@ test("desktop Services opens a lookbook panel", async ({ page }) => {
 
   const dialog = page.getByRole("dialog", { name: "Browse services" });
   await expect(dialog).toBeVisible({ timeout: 20_000 });
+  await page.getByRole("button", { name: "Services" }).click();
+  await expect(dialog).toBeHidden();
+  await page.getByRole("button", { name: "Services" }).click();
+  await expect(dialog).toBeVisible();
   await expect(dialog.getByRole("list", { name: "Service categories" })).toBeVisible();
   await expect(dialog.getByRole("link", { name: "View services" })).toBeVisible();
   await expect(dialog.getByRole("heading", { name: "Services" })).toHaveCount(0);

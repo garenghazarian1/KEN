@@ -1,6 +1,7 @@
 "use client";
 
-import { useEffect, useMemo, useRef, useState } from "react";
+import { useEffect, useLayoutEffect, useMemo, useRef, useState } from "react";
+import { usePathname } from "next/navigation";
 import { ShoppingBag, X } from "lucide-react";
 import { WHATSAPP_CONTACTS } from "@/config/constants";
 import { buildWhatsAppUrl } from "@/lib/adsAttribution";
@@ -25,16 +26,36 @@ const FOCUSABLE_SELECTOR = [
   '[tabindex]:not([tabindex="-1"])',
 ].join(",");
 
-export default function BookingDock() {
+export default function BookingDock({ startOpen = false }) {
+  const pathname = usePathname();
   const services = useBookingServices();
   const navHidden = useHideNavOnScroll();
-  const [open, setOpen] = useState(false);
+  const [open, setOpen] = useState(startOpen);
   const panelRef = useRef(null);
   const barRef = useRef(null);
   const returnFocusRef = useRef(null);
   const wasOpen = useRef(false);
   const activeOpen = open && services.length > 0;
   const countLabel = `${services.length} ${services.length === 1 ? "service" : "services"}`;
+
+  const pathRef = useRef(pathname);
+
+  useEffect(() => {
+    if (pathRef.current === pathname) return;
+    pathRef.current = pathname;
+    setOpen(false);
+  }, [pathname]);
+
+  useLayoutEffect(() => {
+    let shown = false;
+    const frame = requestAnimationFrame(() => {
+      shown = true;
+    });
+    return () => {
+      cancelAnimationFrame(frame);
+      if (shown) setOpen(false);
+    };
+  }, []);
 
   useEffect(() => {
     const onOpen = () => {
@@ -166,7 +187,7 @@ export default function BookingDock() {
         aria-hidden={activeOpen ? undefined : true}
         aria-labelledby="booking-sheet-title"
         aria-describedby="booking-sheet-lead"
-        inert={activeOpen ? undefined : ""}
+        inert={activeOpen ? undefined : true}
         tabIndex={-1}
       >
         <div className={styles.bookingSheetPanel}>

@@ -103,8 +103,8 @@
   bottom: 2rem;
   right: 2rem;
   background: var(--overlay-black-70);
-  backdrop-filter: blur(10px);
   -webkit-backdrop-filter: blur(10px);
+  backdrop-filter: blur(10px);
   border: 1px solid var(--glass-border-gold-medium);
   border-radius: 8px;
   padding: 0.75rem 1.5rem;

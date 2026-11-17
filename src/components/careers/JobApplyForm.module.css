@@ -2,8 +2,8 @@
   background: var(--glass-white-light);
   border: 1px solid var(--glass-border-light);
   border-radius: var(--radius-lg);
-  backdrop-filter: blur(var(--glass-blur-md));
   -webkit-backdrop-filter: blur(var(--glass-blur-md));
+  backdrop-filter: blur(var(--glass-blur-md));
   padding: var(--spacing-6);
 }
 
@@ -47,7 +47,14 @@
 }
 
 .hint a {
-  color: var(--color-link, var(--color-secondary));
+  /* --color-link (#8b6b5a) is 4.09:1 on this panel (#f1ebe9). */
+  color: var(--color-secondary-deep);
+  text-decoration: underline;
+  text-underline-offset: 0.15em;
+}
+
+.hint a:active {
+  color: var(--color-text-primary);
 }
 
 .input,

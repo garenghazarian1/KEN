@@ -11,7 +11,11 @@
     )
     0
     calc(var(--spacing-16) + var(--spacing-8));
-  min-height: calc(100vh - 10rem);
+  /* Keeps the footer below the first screen so the catalog swap does not shift it. */
+  min-height: calc(
+    100svh - 3.5rem - var(--spacing-2) - env(safe-area-inset-top, 0px) -
+      var(--mobile-nav-bottom-height) + 1px
+  );
   overflow-x: clip;
   background: var(--color-bg-primary);
   background-image:
@@ -39,8 +43,8 @@
   position: absolute;
   inset: 0;
   background: var(--glass-white-light);
-  backdrop-filter: blur(var(--glass-blur-sm));
   -webkit-backdrop-filter: blur(var(--glass-blur-sm));
+  backdrop-filter: blur(var(--glass-blur-sm));
   z-index: 0;
   pointer-events: none;
 }
@@ -160,8 +164,8 @@
     var(--color-bg-primary) 82%,
     var(--glass-white-stronger)
   );
-  backdrop-filter: blur(var(--glass-blur-xl)) saturate(1.15);
   -webkit-backdrop-filter: blur(var(--glass-blur-xl)) saturate(1.15);
+  backdrop-filter: blur(var(--glass-blur-xl)) saturate(1.15);
   border: 1px solid var(--glass-border-medium);
   border-radius: var(--border-radius-lg, 0.75rem);
   box-shadow:
@@ -170,6 +174,24 @@
   max-height: min(20rem, 50vh);
   overflow-y: auto;
   isolation: isolate;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .suggestionsList {
+    animation: serviceSuggestionsIn 150ms ease-out;
+  }
+}
+
+@keyframes serviceSuggestionsIn {
+  from {
+    opacity: 0;
+    transform: translateY(-4px);
+  }
+
+  to {
+    opacity: 1;
+    transform: none;
+  }
 }
 
 .suggestionItem {

@@ -1,0 +1,34 @@
+.surface {
+  isolation: isolate;
+  overflow: hidden;
+  background: color-mix(in srgb, var(--color-bg-primary) 28%, transparent);
+  /* Prefixed line first. If it comes last, the CSS build drops backdrop-filter and Chrome keeps only the transparent fill. */
+  -webkit-backdrop-filter: blur(var(--glass-blur-md)) saturate(160%);
+  backdrop-filter: blur(var(--glass-blur-md)) saturate(160%);
+  box-shadow:
+    inset 0 1px 0 color-mix(in srgb, var(--color-text-inverse) 88%, transparent),
+    inset 0 0 0 1px color-mix(in srgb, var(--color-text-inverse) 36%, transparent);
+}
+
+.sheet {
+  position: absolute;
+  inset: 0;
+  z-index: var(--z-behind);
+  pointer-events: none;
+  border: none;
+  border-radius: 0;
+  background: var(--glass-white-strong);
+}
+
+@media (prefers-reduced-transparency: reduce) {
+  .surface {
+    background: var(--color-bg-primary);
+    -webkit-backdrop-filter: none;
+    backdrop-filter: none;
+    box-shadow: none;
+  }
+
+  .sheet {
+    background: var(--color-bg-primary);
+  }
+}

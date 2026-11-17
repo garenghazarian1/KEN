@@ -1,16 +1,41 @@
+import { readFileSync } from "node:fs";
 import { describe, expect, it } from "vitest";
 import { ADMIN_PUBLIC_BASE_URL } from "@/config/constants";
 import {
   absoluteAdminUrl,
   applyFields,
+  careerDetailSlug,
   englishText,
   isPastDeadline,
   jobFacts,
+  jobMetaDescription,
   jobSections,
   mapApplyErrors,
 } from "./careers";
 
 const NOW = new Date("2026-06-01T00:00:00.000Z");
+
+describe("job routes", () => {
+  it("reads a single job slug and ignores the board", () => {
+    expect(careerDetailSlug("/careers/master-barber")).toBe("master-barber");
+    expect(careerDetailSlug("/careers")).toBeNull();
+    expect(careerDetailSlug("/careers/master-barber/apply")).toBeNull();
+    expect(careerDetailSlug("/services")).toBeNull();
+  });
+
+  it("builds a short meta description from the summary", () => {
+    expect(jobMetaDescription("Master Barber", "  Fades and beard work. ", "Ken Beauty Salon")).toBe(
+      "Fades and beard work."
+    );
+    expect(jobMetaDescription("Master Barber", "", "Ken Beauty Salon")).toBe(
+      "Apply for Master Barber at Ken Beauty Salon."
+    );
+    const long = "word ".repeat(80).trim();
+    const description = jobMetaDescription("Master Barber", long, "Ken Beauty Salon");
+    expect(description.length).toBeLessThanOrEqual(155);
+    expect(description.endsWith("...")).toBe(true);
+  });
+});
 
 describe("careers content helpers", () => {
   it("treats a past deadline as closed and ignores empty or invalid dates", () => {
@@ -148,5 +173,37 @@ describe("careers content helpers", () => {
     expect(mapped.fields.extraPdf).toBe("File is too large. Maximum size is 5 MB.");
     expect(mapped.fields.consent).toMatch(/consent/i);
     expect(mapped.fields.screening_q1).toBe("Years in a salon is required.");
+  });
+});
+
+describe("job page prerender", () => {
+  it("does not read the clock while building the meta description", () => {
+    const source = readFileSync(new URL("./careers.js", import.meta.url), "utf8");
+    const metaStart = source.indexOf("export async function getPublicJobMeta");
+    const jobStart = source.indexOf("export async function getPublicJob");
+    const metaFn = source.slice(metaStart, jobStart);
+    const jobFn = source.slice(jobStart);
+
+    expect(metaFn).not.toContain("new Date(");
+    expect(jobFn.indexOf("await fetchPublicJobBody")).toBeGreaterThan(-1);
+    expect(jobFn.indexOf("new Date()")).toBeGreaterThan(jobFn.indexOf("await fetchPublicJobBody"));
+  });
+
+  it("loads the job page clock only after connection()", () => {
+    const page = readFileSync(
+      new URL("../../app/(navPages)/careers/[slug]/page.jsx", import.meta.url),
+      "utf8"
+    );
+    const metaStart = page.indexOf("export async function generateMetadata");
+    const contentStart = page.indexOf("async function CareerJobContent");
+    const metaFn = page.slice(metaStart, contentStart);
+
+    expect(metaFn).toContain("getPublicJobMeta(");
+    expect(metaFn).not.toContain("getPublicJob(");
+    expect(metaFn).not.toContain("new Date(");
+
+    const contentFn = page.slice(contentStart);
+    expect(contentFn.indexOf("await connection()")).toBeGreaterThan(-1);
+    expect(contentFn.indexOf("await connection()")).toBeLessThan(contentFn.indexOf("getPublicJob("));
   });
 });

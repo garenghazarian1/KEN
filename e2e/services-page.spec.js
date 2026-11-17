@@ -142,6 +142,9 @@ test("phone services page opens one service at a time", async ({ page }) => {
   await other.click();
   await expect(other).toHaveAttribute("aria-expanded", "false");
   await expect(photo).toHaveCount(0);
+  await other.click();
+  await expect(other).toHaveAttribute("aria-expanded", "true");
+  await expect(photo).toHaveCount(1);
 });
 
 test("menu link opens the priced category", async ({ page }) => {

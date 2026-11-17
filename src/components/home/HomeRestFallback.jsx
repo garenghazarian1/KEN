@@ -1,5 +1,5 @@
 import { heroSlides } from "@/components/hero/heroSlides";
-import heroStyles from "@/components/hero/Hero.modern.module.css";
+import heroStyles from "@/components/hero/HeroBelow.module.css";
 import filmStyles from "@/components/campaign/CampaignFilm.module.css";
 
 export default function HomeRestFallback({ campaign }) {

@@ -2,7 +2,6 @@
 
 import { useEffect, useId, useRef, useState } from "react";
 import { createPortal } from "react-dom";
-import Link from "next/link";
 import Image from "next/image";
 import { usePathname } from "next/navigation";
 import {
@@ -23,7 +22,11 @@ import { stores } from "@/data/stores";
 import { buildWhatsAppUrl } from "@/lib/adsAttribution";
 import { branchKey } from "@/lib/leads/leadRecord";
 import { recordOutbound } from "@/lib/leads/trackLead";
+import glassStyles from "@/components/IphoneGlass/iphoneGlass.module.css";
 import styles from "./MobileNavBottom.module.css";
+import pressStyles from "./pressFeedback.module.css";
+import PressLink from "./PressLink";
+import { usePressFeedback } from "./usePressFeedback";
 import { useHideNavOnScroll } from "./useHideNavOnScroll";
 
 const mobileNavLinks = [
@@ -49,6 +52,7 @@ export default function MobileNavBottom() {
   const [open, setOpen] = useState(false);
   const [mounted, setMounted] = useState(false);
   const { open: assistantOpen, close: closeAssistant } = useAssistant();
+  const { busy: contactBusy, press } = usePressFeedback();
   const hidden = useHideNavOnScroll() && !open && !assistantOpen;
 
   useEffect(() => {
@@ -100,8 +104,12 @@ export default function MobileNavBottom() {
       role="navigation"
       aria-label="Main navigation"
       data-hidden={hidden ? "true" : "false"}
-      {...(hidden ? { inert: "" } : {})}
+      {...(hidden ? { inert: true } : {})}
     >
+      <div
+        className={`${glassStyles.surface} ${glassStyles.sheet}`}
+        aria-hidden="true"
+      />
       <ul className={styles.navList}>
         <li className={styles.navItem}>
           <AssistantNavButton
@@ -121,34 +129,48 @@ export default function MobileNavBottom() {
                 <button
                   ref={contactButtonRef}
                   type="button"
-                  className={styles.link}
+                  className={`${styles.link} ${pressStyles.press} ${pressStyles.bar}`}
                   aria-expanded={open}
                   aria-controls={panelId}
+                  aria-busy={contactBusy || undefined}
                   aria-current={isActive && !open ? "page" : undefined}
-                  onClick={() => {
-                    closeAssistant({ focus: false });
-                    setOpen((current) => !current);
+                  onClick={(event) => {
+                    press(
+                      event,
+                      () => {
+                        setOpen((current) => !current);
+                        closeAssistant({ focus: false });
+                      },
+                      { release: true },
+                    );
                   }}
                 >
                   <Icon size={22} strokeWidth={1} className={styles.icon} aria-hidden />
                   <span className={styles.label}>{label}</span>
                 </button>
               ) : external ? (
-                <a href={path} className={styles.link} onClick={closeSheet}>
-                  <Icon size={22} strokeWidth={1} className={styles.icon} aria-hidden />
-                  <span className={styles.label}>{label}</span>
-                </a>
-              ) : (
-                <Link
+                <PressLink
                   href={path}
-                  prefetch={false}
+                  external
+                  showOpening
+                  insetFocus
                   className={styles.link}
-                  aria-current={isActive ? "page" : undefined}
-                  onClick={closeSheet}
+                  onAction={closeSheet}
                 >
                   <Icon size={22} strokeWidth={1} className={styles.icon} aria-hidden />
                   <span className={styles.label}>{label}</span>
-                </Link>
+                </PressLink>
+              ) : (
+                <PressLink
+                  href={path}
+                  insetFocus
+                  className={styles.link}
+                  aria-current={isActive ? "page" : undefined}
+                  onAction={closeSheet}
+                >
+                  <Icon size={22} strokeWidth={1} className={styles.icon} aria-hidden />
+                  <span className={styles.label}>{label}</span>
+                </PressLink>
               )}
             </li>
           );
@@ -174,7 +196,6 @@ export default function MobileNavBottom() {
                 fill
                 className={styles.atmosphereImage}
                 sizes="100vw"
-                priority
               />
               <div className={styles.sheetPhotoScrim} aria-hidden="true" />
               <h2 id={`${panelId}-title`} className={styles.sheetTitle}>
@@ -197,10 +218,12 @@ export default function MobileNavBottom() {
                   return (
                     <li key={store._id} className={styles.branch}>
                       <h3 className={styles.branchName}>{label}</h3>
-                      <a
+                      <PressLink
                         href={getTelLink(store.phone)}
+                        external
+                        showOpening
                         className={styles.numberRow}
-                        onClick={() =>
+                        onAction={() =>
                           recordOutbound(getTelLink(store.phone), {
                             branch: branchKey(store.name),
                           })
@@ -211,11 +234,13 @@ export default function MobileNavBottom() {
                           <span className={styles.numberKind}>Landline</span>
                           <span className={styles.numberValue}>{store.phone}</span>
                         </span>
-                      </a>
-                      <a
+                      </PressLink>
+                      <PressLink
                         href={getTelLink(store.mobile)}
+                        external
+                        showOpening
                         className={styles.numberRow}
-                        onClick={() =>
+                        onAction={() =>
                           recordOutbound(getTelLink(store.mobile), {
                             branch: branchKey(store.name),
                           })
@@ -226,17 +251,18 @@ export default function MobileNavBottom() {
                           <span className={styles.numberKind}>Mobile</span>
                           <span className={styles.numberValue}>{store.mobile}</span>
                         </span>
-                      </a>
-                      <a
+                      </PressLink>
+                      <PressLink
                         href={buildWhatsAppUrl({
                           number: whatsappDigits,
                           message: `Hello KEN Beauty Center (${label}), I would like to book a service.`,
                         })}
+                        external
+                        blank
+                        showOpening
                         className={styles.whatsappRow}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        onClick={(event) => {
-                          recordOutbound(event.currentTarget.href, {
+                        onAction={(liveHref) => {
+                          recordOutbound(liveHref, {
                             branch: branchKey(store.name),
                             gtm: true,
                             gtmBranch: label,
@@ -245,21 +271,20 @@ export default function MobileNavBottom() {
                       >
                         <MessageCircle size={18} aria-hidden />
                         <span>WhatsApp {label}</span>
-                      </a>
+                      </PressLink>
                     </li>
                   );
                 })}
               </ul>
 
-              <Link
+              <PressLink
                 href="/contact"
-                prefetch={false}
                 className={styles.pageLink}
-                onClick={closeSheet}
+                onAction={closeSheet}
               >
                 <span>Visit contact page</span>
                 <ArrowUpRight size={16} aria-hidden />
-              </Link>
+              </PressLink>
             </div>
           </div>,
           document.body

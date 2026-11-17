@@ -1,5 +1,5 @@
-Last updated: 16 November 2026
-Last verified against code: 16 Nov 2026 (working tree)
+Last updated: 17 November 2026
+Last verified against code: 17 Nov 2026 (working tree)
 
 # Campaigns (promotional packages)
 
@@ -9,7 +9,7 @@ Helpers: [`src/lib/business/campaigns.js`](../src/lib/business/campaigns.js) —
 
 ## Website surfaces
 
-- Home, under the hero: [`CampaignFilm`](../src/components/campaign/CampaignFilm.jsx) when the active campaign has a film (November iPhone offer). The poster is lazy on the home page. The film file is not requested until the section reaches the viewport (`preload="none"`, sources attached by an IntersectionObserver with `rootMargin: 100% 0px` once the frame meets the screen). It then plays muted, with a visible Play/Pause control. A “Tap for sound” button on the video unmutes it; tapping the video or the button again mutes it. Only one video on the page plays with sound. “Watch with sound” still opens the YouTube short. [`CampaignPoster`](../src/components/campaign/CampaignPoster.jsx) when the active campaign has no package list and no film (Pink October). From 1200px the poster title and offer sit on one side and the explanation on the other; narrower screens keep that text behind Read more.
+- Home, under the hero: [`CampaignFilm`](../src/components/campaign/CampaignFilm.jsx) when the active campaign has a film (November iPhone offer). The poster is lazy on the home page. The film file is not requested until the section reaches the viewport (`preload="none"`, sources attached by an IntersectionObserver with `rootMargin: 100% 0px` once the frame meets the screen). It then plays muted, with a visible Play/Pause control. A “Tap for sound” button on the video unmutes it. Its accessible name is the same as the visible words: `TAP FOR SOUND / اضغطي للصوت` (and `MUTE / كتمي الصوت` after it is on). Tapping the video or the button again mutes it. Only one video on the page plays with sound. “Watch with sound” still opens the YouTube short. [`CampaignPoster`](../src/components/campaign/CampaignPoster.jsx) when the active campaign has no package list and no film (Pink October). From 1200px the poster title and offer sit on one side and the explanation on the other; narrower screens keep that text behind Read more.
 - Destination: [`/offers`](../src/app/(navPages)/offers/page.jsx) — the film is its own section at the top of the page while that campaign is active; otherwise the same poster, or package cards for a package campaign such as August
 - `soldOut: true` on a campaign hides it before `endsOn` (home, `/offers`, and Ani). The November iPhone offer uses this when the 200 places are gone.
 - Services does not show a campaign popup

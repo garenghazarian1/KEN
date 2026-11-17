@@ -1,8 +1,5 @@
-﻿import Script from "next/script";
-import { Suspense } from "react";
-import HeroFrame from "@/components/hero/HeroFrame";
-import HomeRest from "@/components/home/HomeRest";
-import HomeRestFallback from "@/components/home/HomeRestFallback";
+﻿import HeroFrame from "@/components/hero/HeroFrame";
+import JsonLd from "@/components/seo/JsonLd";
 import { stores } from "@/data/stores";
 import {
   BASE_URL,
@@ -11,9 +8,9 @@ import {
   IMAGES,
   getSocialMediaArray,
 } from "@/config/constants";
-import { getActiveCampaign } from "@/lib/business/campaigns";
+import { getCampaignCached } from "@/lib/business/campaignCache";
+import HomeRestGate from "@/components/home/HomeRestGate";
 import styles from "./mainPage.module.css";
-export const revalidate = 3600;
 
 export const metadata = {
   title: BUSINESS.fullName,
@@ -61,23 +58,14 @@ const localBusinessJsonLd = {
   sameAs: getSocialMediaArray(),
 };
 
-export default function Home() {
-  const campaign = getActiveCampaign();
+export default async function Home() {
+  const { campaign } = await getCampaignCached();
 
   return (
     <main className={styles.main}>
-      <Script
-        id="ld-local-business"
-        type="application/ld+json"
-        strategy="beforeInteractive"
-        dangerouslySetInnerHTML={{
-          __html: JSON.stringify(localBusinessJsonLd),
-        }}
-      />
+      <JsonLd data={localBusinessJsonLd} />
       <HeroFrame />
-      <Suspense fallback={<HomeRestFallback campaign={campaign} />}>
-        <HomeRest campaign={campaign} />
-      </Suspense>
+      <HomeRestGate campaign={campaign} />
     </main>
   );
 }

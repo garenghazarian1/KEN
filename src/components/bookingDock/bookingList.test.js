@@ -1,5 +1,6 @@
 import { afterEach, beforeEach, describe, expect, it, vi } from "vitest";
 import {
+  getBookingSnapshot,
   readBookingServices,
   toggleBookingService,
   writeBookingServices,
@@ -47,6 +48,18 @@ describe("bookingList", () => {
     expect(stored).toHaveLength(20);
     expect(stored[0]).toEqual({ id: "service-0", name: "Service 0" });
     expect(stored.filter((service) => service.id === "service-0")).toHaveLength(1);
+  });
+
+  it("keeps a stable snapshot of what is stored", () => {
+    writeBookingServices([{ id: "cut", name: "Haircut" }]);
+    const first = getBookingSnapshot();
+    expect(first).toEqual([{ id: "cut", name: "Haircut" }]);
+    expect(getBookingSnapshot()).toBe(first);
+
+    writeBookingServices([]);
+    const empty = getBookingSnapshot();
+    expect(empty).toEqual([]);
+    expect(getBookingSnapshot()).toBe(empty);
   });
 
   it("adds and removes the same service", () => {

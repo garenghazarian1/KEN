@@ -8,7 +8,7 @@ export function DropPanel({ open, children }) {
     <div
       className={open ? `${styles.panel} ${styles.open}` : styles.panel}
       aria-hidden={open ? undefined : true}
-      inert={open ? undefined : ""}
+      inert={open ? undefined : true}
     >
       <div className={styles.inner}>{children}</div>
     </div>

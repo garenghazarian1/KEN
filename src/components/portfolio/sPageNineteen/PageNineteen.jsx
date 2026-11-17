@@ -1,6 +1,6 @@
 "use client";
 import { useState, useEffect } from "react";
-import { motion, AnimatePresence } from "framer-motion";
+import { motion, AnimatePresence } from "motion/react";
 import LazyVideo from "@/components/portfolio/LazyVideo.modern";
 import styles from "./PageNineteen.modern.module.css";
 

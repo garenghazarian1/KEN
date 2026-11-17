@@ -1,7 +1,7 @@
 "use client";
 
 import { useState } from "react";
-import { motion } from "framer-motion";
+import { motion } from "motion/react";
 import LoadingSkeletonModern from "@/components/loading/LoadingSkeleton.modern";
 import styles from "./test-loading.module.css";
 

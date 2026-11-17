@@ -38,8 +38,8 @@
   position: absolute;
   inset: 0;
   background: var(--glass-white-light);
-  backdrop-filter: blur(var(--glass-blur-sm));
   -webkit-backdrop-filter: blur(var(--glass-blur-sm));
+  backdrop-filter: blur(var(--glass-blur-sm));
   z-index: 0;
   pointer-events: none;
 }
@@ -176,8 +176,8 @@
 .drinkCard {
   position: relative;
   background: var(--glass-white-light);
-  backdrop-filter: blur(var(--glass-blur-lg));
   -webkit-backdrop-filter: blur(var(--glass-blur-lg));
+  backdrop-filter: blur(var(--glass-blur-lg));
   border: 1.5px solid var(--glass-border-light);
   border-radius: var(--radius-xl);
   overflow: hidden;
@@ -296,8 +296,8 @@
 .drinkInfo {
   padding: var(--spacing-3) var(--spacing-4);
   background: var(--glass-white-light);
-  backdrop-filter: blur(var(--glass-blur-md));
   -webkit-backdrop-filter: blur(var(--glass-blur-md));
+  backdrop-filter: blur(var(--glass-blur-md));
   flex-grow: 1;
   display: flex;
   align-items: center;
@@ -322,8 +322,8 @@
   text-align: center;
   padding: var(--spacing-8) var(--spacing-6);
   background: var(--glass-white-light);
-  backdrop-filter: blur(var(--glass-blur-lg));
   -webkit-backdrop-filter: blur(var(--glass-blur-lg));
+  backdrop-filter: blur(var(--glass-blur-lg));
   border: 1.5px solid var(--glass-border-light);
   border-radius: var(--radius-2xl);
   margin-top: var(--spacing-12);

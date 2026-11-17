@@ -47,7 +47,7 @@
 }
 
 .portfolioText {
-  color: var(--color-accent-3);
+  color: var(--color-accent-on-dark);
   font-size: clamp(2rem, 4vw, 4rem);
   font-weight: var(--font-weight-normal);
   text-transform: uppercase;

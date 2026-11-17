@@ -1,5 +1,6 @@
 import Image from "next/image";
 import { NAVBAR_LOGO_DEFAULT_SRC } from "@/config/constants";
+import { imagePriorityProps } from "@/lib/ui/imagePriority";
 import styles from "./LoadingSkeleton.modern.module.css";
 
 export default function LoadingSkeletonModern() {
@@ -23,6 +24,7 @@ export default function LoadingSkeletonModern() {
             height={160}
             className={styles.logo}
             style={{ width: "100%", height: "100%", objectFit: "contain" }}
+            {...imagePriorityProps(false)}
           />
         </div>
       </div>

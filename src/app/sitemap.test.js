@@ -1,4 +1,10 @@
-import { describe, expect, it } from "vitest";
+import { describe, expect, it, vi } from "vitest";
+
+vi.mock("next/cache", () => ({
+  cacheLife: () => {},
+  cacheTag: () => {},
+}));
+
 import sitemap from "./sitemap";
 import { BASE_URL } from "@/config/constants";
 
@@ -19,8 +25,8 @@ const EXPECTED_URLS = [
 ];
 
 describe("sitemap", () => {
-  it("lists exactly the 13 public pages", () => {
-    const entries = sitemap();
+  it("lists exactly the 13 public pages", async () => {
+    const entries = await sitemap();
 
     expect(entries.map((entry) => entry.url)).toEqual(EXPECTED_URLS);
 

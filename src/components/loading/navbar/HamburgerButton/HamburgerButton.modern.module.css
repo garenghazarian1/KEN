@@ -20,8 +20,8 @@
   min-height: 44px;
   border-radius: var(--radius-md);
   background-color: var(--glass-transparent);
-  backdrop-filter: blur(var(--glass-blur-md));
   -webkit-backdrop-filter: blur(var(--glass-blur-md));
+  backdrop-filter: blur(var(--glass-blur-md));
   border: 2px solid var(--color-secondary);
   transition: all var(--transition-base) var(--ease-in-out);
   cursor: pointer;

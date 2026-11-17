@@ -22,13 +22,14 @@ import {
   isAndroidWebView,
   isIOSWebView,
 } from "@/config/constants";
+import { imagePriorityProps } from "@/lib/ui/imagePriority";
 import { linkifyToNodes } from "@/utils/linkifyText";
 import { recordOutbound } from "@/lib/leads/trackLead";
 import useAssistantRealtime, {
   voiceSupported as detectVoiceSupport,
 } from "@/hooks/useAssistantRealtime";
 import { shouldAdoptAssistantSession } from "@/lib/assistant/shouldAdoptAssistantSession";
-import styles from "./AssistantWidget.module.css";
+import styles from "./AssistantPanel.module.css";
 
 const VOICE_UNSUPPORTED_IN_APP =
   "Voice isn’t available in the app yet (microphone permission). You can keep typing your question here.";
@@ -711,6 +712,7 @@ export default function AssistantPanel({ isOpen, onClose }) {
             width={36}
             height={36}
             className={styles.headerFace}
+            {...imagePriorityProps(false)}
           />
           <span className={styles.headerTitle}>{ASSISTANT_WELCOME.title}</span>
         </div>
@@ -805,6 +807,7 @@ export default function AssistantPanel({ isOpen, onClose }) {
                 width={28}
                 height={28}
                 className={styles.bubbleFace}
+                {...imagePriorityProps(false)}
               />
             )}
             <div
@@ -857,6 +860,7 @@ export default function AssistantPanel({ isOpen, onClose }) {
               width={28}
               height={28}
               className={styles.bubbleFace}
+              {...imagePriorityProps(false)}
             />
             <div className={styles.assistantMessage}>
               <p className={`${styles.messageText} ${styles.typing}`}>…</p>

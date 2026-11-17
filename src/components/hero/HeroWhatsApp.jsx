@@ -1,6 +1,7 @@
 "use client";
 
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useLayoutEffect, useRef, useState } from "react";
+import { usePathname } from "next/navigation";
 import {
   floatingWhatsAppBaseHref,
   floatingWhatsAppHref,
@@ -9,6 +10,7 @@ import {
 import styles from "./Hero.modern.module.css";
 
 export default function HeroWhatsApp({ className }) {
+  const pathname = usePathname();
   const [href, setHref] = useState(floatingWhatsAppBaseHref);
   const [busy, setBusy] = useState(false);
   const busyRef = useRef(false);
@@ -24,6 +26,18 @@ export default function HeroWhatsApp({ className }) {
     };
     window.addEventListener("pageshow", reset);
     return () => window.removeEventListener("pageshow", reset);
+  }, []);
+
+  useEffect(() => {
+    busyRef.current = false;
+    setBusy(false);
+  }, [pathname]);
+
+  useLayoutEffect(() => {
+    return () => {
+      busyRef.current = false;
+      setBusy(false);
+    };
   }, []);
 
   function onClick(event) {

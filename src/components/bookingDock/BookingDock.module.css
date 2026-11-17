@@ -26,8 +26,8 @@
     max(var(--spacing-5), env(safe-area-inset-left, 0px));
   background: var(--glass-white-strong);
   border: 0;
-  backdrop-filter: blur(var(--glass-blur-lg));
   -webkit-backdrop-filter: blur(var(--glass-blur-lg));
+  backdrop-filter: blur(var(--glass-blur-lg));
   transform: translateY(100%);
   transition: transform 0.45s ease-out;
   overflow: auto;
@@ -107,8 +107,8 @@
   border: 0;
   border-top: 1px solid var(--glass-border-light);
   background: var(--glass-white-strong);
-  backdrop-filter: blur(var(--glass-blur-md));
   -webkit-backdrop-filter: blur(var(--glass-blur-md));
+  backdrop-filter: blur(var(--glass-blur-md));
   color: var(--color-text-primary);
   font-size: var(--font-size-sm);
   cursor: pointer;

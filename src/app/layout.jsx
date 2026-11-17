@@ -1,14 +1,17 @@
+import { Suspense } from "react";
 import { inter, lora, loraItalic } from "@/app/ui/fonts";
 import "./globals.css";
 import { MobileNavTop, MobileNavBottom } from "@/components/mobileNav";
 import FooterModern from "@/components/footer/Footer.modern";
 // import AppInstallBanner from "@/components/AppInstallBanner/AppInstallBanner";
 import AssistantWidget from "@/components/AssistantWidget/AssistantWidget";
-import BookingDock from "@/components/bookingDock/BookingDock";
+import BookingDockGate from "@/components/bookingDock/BookingDockGate";
+import { BookingProvider } from "@/components/bookingDock/bookingList";
 import ClientLayout from "@/components/ClientLayout";
 import ConsentAnalytics from "@/components/ConsentAnalytics/ConsentAnalytics";
 import DeferredGoogleTag, { DelayedAnalytics } from "@/components/DeferredGoogleTag";
 // import InitialLoader from "@/components/InitialLoader";
+import { getPrerenderClock } from "@/lib/business/prerenderClock";
 import styles from "./Layout.module.css";
 import Script from "next/script";
 import {
@@ -58,9 +61,14 @@ export const metadata = {
   },
 };
 
-export default function RootLayout({ children }) {
+export default async function RootLayout({ children }) {
+  const { year } = await getPrerenderClock();
   return (
-    <html lang="en" className={`${inter.variable} ${lora.variable} ${loraItalic.variable}`}>
+    <html
+      lang="en"
+      data-scroll-behavior="smooth"
+      className={`${inter.variable} ${lora.variable} ${loraItalic.variable}`}
+    >
       <head>
         <Script id="tracking-stubs" strategy="beforeInteractive">
           {`(function(){
@@ -74,6 +82,24 @@ window.fbq.version="2.0";
 window.fbq.__kenStub=true;
 }
 window.clarity=window.clarity||function(){(window.clarity.q=window.clarity.q||[]).push(arguments)};
+try{
+var adParams=new URLSearchParams(location.search);
+var adKeys=["gclid","gbraid","wbraid"];
+var adNext={};
+var adChanged=false;
+for(var adI=0;adI<adKeys.length;adI++){
+var adValue=(adParams.get(adKeys[adI])||"").trim();
+if(/^[A-Za-z0-9._-]{20,200}$/.test(adValue)&&!/^test/i.test(adValue)){adNext[adKeys[adI]]=adValue;adChanged=true;}
+}
+if(adChanged){
+var adTtl=90*24*60*60*1000;
+adNext.capturedAt=new Date().toISOString();
+adNext.expiresAt=Date.now()+adTtl;
+adNext.landingPath=location.pathname+location.search;
+localStorage.setItem("ken_ads_attribution",JSON.stringify(adNext));
+if(adNext.gclid){document.cookie="ken_gclid="+encodeURIComponent(adNext.gclid)+"; Max-Age="+Math.floor(adTtl/1000)+"; Path=/; SameSite=Lax; Secure";}
+}
+}catch(adError){}
 document.addEventListener("click",function(event){
 if(window.__gtmListening)return;
 var node=event.target&&event.target.closest?event.target.closest("a,button"):null;
@@ -102,18 +128,32 @@ requestAnimationFrame(function(){setTimeout(function(){window.dataLayer.push(pay
         {/* <InitialLoader /> */}
         {/* <AppInstallBanner /> */}
         <ClientLayout>
-          <div className={styles.layoutContainer}>
-            <div className={styles.mobileNavTopWrapper}>
-              <MobileNavTop />
+          <BookingProvider>
+            <div className={styles.layoutContainer}>
+              <Suspense
+                fallback={
+                  <div className={styles.mobileNavTopWrapper} aria-hidden="true" />
+                }
+              >
+                <div className={styles.mobileNavTopWrapper}>
+                  <MobileNavTop />
+                </div>
+              </Suspense>
+              <div className={styles.childrenContainer}>{children}</div>
+              <FooterModern year={year} />
+              <Suspense
+                fallback={
+                  <div className={styles.mobileNavBottomWrapper} aria-hidden="true" />
+                }
+              >
+                <div className={styles.mobileNavBottomWrapper}>
+                  <MobileNavBottom />
+                </div>
+              </Suspense>
             </div>
-            <div className={styles.childrenContainer}>{children}</div>
-            <FooterModern />
-            <div className={styles.mobileNavBottomWrapper}>
-              <MobileNavBottom />
-            </div>
-          </div>
-          <AssistantWidget />
-          <BookingDock />
+            <AssistantWidget />
+            <BookingDockGate />
+          </BookingProvider>
         </ClientLayout>
         <DelayedAnalytics />
       </body>

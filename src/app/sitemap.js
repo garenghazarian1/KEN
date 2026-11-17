@@ -1,4 +1,5 @@
 import { BASE_URL } from "@/config/constants";
+import { getPrerenderClock } from "@/lib/business/prerenderClock";
 
 const routes = [
   { path: "", changeFrequency: "weekly", priority: 1 },
@@ -16,8 +17,9 @@ const routes = [
   { path: "/cookie-notice", changeFrequency: "yearly", priority: 0.3 },
 ];
 
-export default function sitemap() {
-  const lastModified = new Date();
+export default async function sitemap() {
+  const { iso } = await getPrerenderClock();
+  const lastModified = iso;
 
   return routes.map(({ path, changeFrequency, priority }) => ({
     url: `${BASE_URL}${path}`,

@@ -4,9 +4,6 @@ import { useRef, useState, useEffect } from "react";
 import Link from "next/link";
 import Image from "next/image";
 import {
-  Instagram,
-  Facebook,
-  Youtube,
   Mail,
   Phone,
   Calendar,
@@ -23,6 +20,7 @@ import {
   Briefcase,
   Scissors,
 } from "lucide-react";
+import { Facebook, Instagram, Youtube } from "@/components/icons/BrandIcons";
 import {
   SOCIAL_MEDIA,
   BUSINESS,
@@ -85,8 +83,8 @@ function AppStoreBadges() {
   );
 }
 
-export default function FooterModern() {
-  const currentYear = new Date().getFullYear();
+export default function FooterModern({ year }) {
+  const currentYear = year;
   const rootRef = useRef(null);
   useReveal(rootRef);
 
@@ -116,7 +114,7 @@ export default function FooterModern() {
           <div className={styles.footerTop}>
             {/* Company Info */}
             <div className={styles.footerSection} data-reveal="">
-              <h3 className={styles.sectionTitle}>{BUSINESS.name}</h3>
+              <h2 className={styles.sectionTitle}>{BUSINESS.name}</h2>
               <p className={styles.sectionDescription}>
                 {BUSINESS.description}
               </p>
@@ -217,7 +215,7 @@ export default function FooterModern() {
 
             {/* Quick Links */}
             <div className={styles.footerSection} data-reveal="">
-              <h4 className={styles.sectionSubtitle}>Quick Links</h4>
+              <h3 className={styles.sectionSubtitle}>Quick Links</h3>
               <ul className={styles.linkList}>
                 {navigationLinks.map((link) => {
                   const Icon = link.icon;
@@ -242,7 +240,7 @@ export default function FooterModern() {
 
             {/* Social Media */}
             <div className={styles.footerSection} data-reveal="">
-              <h4 className={styles.sectionSubtitle}>Follow Us</h4>
+              <h3 className={styles.sectionSubtitle}>Follow Us</h3>
               <div className={styles.socialLinks}>
                 <a
                   href={SOCIAL_MEDIA.instagram.beauty}
@@ -305,7 +303,7 @@ export default function FooterModern() {
 
             {/* Get Our App */}
             <div className={styles.footerSection} data-reveal="">
-              <h4 className={styles.sectionSubtitle}>Get Our App</h4>
+              <h3 className={styles.sectionSubtitle}>Get Our App</h3>
               <p className={styles.appDescription}>
                 Download our mobile app for a better experience
               </p>

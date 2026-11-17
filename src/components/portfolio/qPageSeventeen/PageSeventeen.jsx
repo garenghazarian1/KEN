@@ -1,5 +1,5 @@
 "use client";
-import { motion } from "framer-motion";
+import { motion } from "motion/react";
 import styles from "./PageSeventeen.modern.module.css";
 
 const coreValues = [

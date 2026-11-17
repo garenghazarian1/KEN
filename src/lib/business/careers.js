@@ -86,6 +86,31 @@ export function isPublicJobSlug(slug) {
   return typeof slug === "string" && slug.length <= 200 && PUBLIC_JOB_SLUG_RE.test(slug);
 }
 
+/** One job path, such as /careers/master-barber. The board itself returns null. */
+export function careerDetailSlug(pathname) {
+  if (typeof pathname !== "string") return null;
+  const match = pathname.match(/^\/careers\/([^/]+)$/);
+  if (!match) return null;
+  try {
+    return decodeURIComponent(match[1]);
+  } catch {
+    return null;
+  }
+}
+
+const META_DESCRIPTION_MAX = 155;
+
+/** Short search blurb from the job summary. Falls back to the title. */
+export function jobMetaDescription(title, summary, businessName) {
+  const clean = String(summary || "").replace(/\s+/g, " ").trim();
+  const text = clean || `Apply for ${title || "this role"} at ${businessName}.`;
+  if (text.length <= META_DESCRIPTION_MAX) return text;
+  const cut = text.slice(0, META_DESCRIPTION_MAX - 3);
+  const space = cut.lastIndexOf(" ");
+  const base = (space > 40 ? cut.slice(0, space) : cut).replace(/[.,;:]+$/, "");
+  return `${base}...`;
+}
+
 export function englishText(translations, fallback) {
   const en =
     translations && typeof translations.en === "string" ? translations.en.trim() : "";
@@ -367,8 +392,7 @@ function screeningQuestions(formConfig) {
     }));
 }
 
-export async function getPublicJob(slug) {
-  const now = new Date();
+async function fetchPublicJobBody(slug) {
   if (!isPublicJobSlug(slug)) return null;
   const res = await fetch(
     `${ADMIN_PUBLIC_BASE_URL}/api/public/jobs/${encodeURIComponent(slug)}`,
@@ -378,7 +402,26 @@ export async function getPublicJob(slug) {
   if (!res.ok) {
     throw await errorFromResponse(res, "Could not load the job. Try again later.");
   }
-  const job = await res.json();
+  return res.json();
+}
+
+/** Title and summary only. No clock, so job metadata can prerender. */
+export async function getPublicJobMeta(slug) {
+  const job = await fetchPublicJobBody(slug);
+  if (!job) return null;
+  const sections = jobSections(job);
+  return {
+    title: englishText(job.publicTitleTranslations, job.publicTitle) || "Open role",
+    publicSlug: job.publicSlug || slug,
+    summary: sections.find((section) => section.key === "summary")?.body || "",
+  };
+}
+
+export async function getPublicJob(slug) {
+  const job = await fetchPublicJobBody(slug);
+  if (!job) return null;
+  // After the job request. The page awaits connection() before calling this.
+  const now = new Date();
   const formConfig = job.formConfig ?? {};
   return {
     id: job.id,

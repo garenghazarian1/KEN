@@ -1,3 +1,4 @@
+import { connection } from "next/server";
 import { NextResponse } from "next/server";
 import {
   buildServiceSections,
@@ -39,6 +40,7 @@ function slimSections(sections) {
 }
 
 export async function GET() {
+  await connection();
   try {
     const data = await getServiceCatalog("en");
     const sections = slimSections(buildServiceSections(data.services));

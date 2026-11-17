@@ -1,5 +1,5 @@
 "use client";
-import { motion } from "framer-motion";
+import { motion } from "motion/react";
 import LazyVideo from "@/components/portfolio/LazyVideo.modern";
 import styles from "./PageTwelve.modern.module.css";
 

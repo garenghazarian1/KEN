@@ -1,4 +1,5 @@
 import { BUSINESS, CONTACT } from "@/config/constants";
+import { getPrerenderClock } from "@/lib/business/prerenderClock";
 import { stores } from "@/data/stores";
 import LeadLink from "@/components/leadLink/LeadLink";
 import styles from "./imprint.module.css";
@@ -11,8 +12,9 @@ export const metadata = {
   },
 };
 
-export default function Imprint() {
+export default async function Imprint() {
   const primaryStore = stores && stores.length > 0 ? stores[0] : null;
+  const { year } = await getPrerenderClock();
 
   return (
     <div className={styles.container}>
@@ -96,7 +98,7 @@ export default function Imprint() {
           </p>
           <div className={styles.highlight}>
             <p>
-              <strong>Copyright:</strong> © {new Date().getFullYear()} {BUSINESS.name}. All rights
+              <strong>Copyright:</strong> © {year} {BUSINESS.name}. All rights
               reserved.
             </p>
           </div>

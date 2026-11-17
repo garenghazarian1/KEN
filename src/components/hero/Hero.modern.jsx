@@ -7,7 +7,10 @@ import CampaignPoster from "@/components/campaign/CampaignPoster";
 import HeroPress from "@/components/hero/HeroPress";
 import { heroSlides } from "@/components/hero/heroSlides";
 import { useReveal } from "@/components/useReveal";
-import styles from "./Hero.modern.module.css";
+import frameStyles from "./Hero.modern.module.css";
+import belowStyles from "./HeroBelow.module.css";
+
+const styles = { ...frameStyles, ...belowStyles };
 
 function GalleryStack() {
   return (

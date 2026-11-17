@@ -1,4 +1,4 @@
-﻿import Script from "next/script";
+﻿import JsonLd from "@/components/seo/JsonLd";
 import styles from "./delete-account.module.css";
 import { BASE_URL, BUSINESS, getFullUrl } from "@/config/constants";
 
@@ -43,12 +43,7 @@ const deleteJsonLd = {
 export default function DeleteAccountPage() {
   return (
     <main className={styles.container}>
-      <Script
-        id="ld-delete-account"
-        type="application/ld+json"
-        strategy="beforeInteractive"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(deleteJsonLd) }}
-      />
+      <JsonLd data={deleteJsonLd} />
       <h1 className={styles.heading}>Request to Delete Your Data</h1>
       <p>
         At {BUSINESS.name}, we respect your privacy. While we do not offer

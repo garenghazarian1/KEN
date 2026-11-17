@@ -12,6 +12,11 @@ const REQUIRED_HEADERS = {
 describe("next.config security headers", () => {
   it("turns off X-Powered-By and sets the hardened headers on every path", async () => {
     expect(nextConfig.poweredByHeader).toBe(false);
+    expect(nextConfig.experimental.cssChunking).toEqual({
+      type: "graph",
+      requestCost: 2500,
+    });
+    expect(nextConfig.htmlLimitedBots.source).toBe(".*");
 
     const rules = await nextConfig.headers();
     expect(rules).toHaveLength(2);
