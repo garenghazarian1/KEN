@@ -15,10 +15,6 @@ vi.mock("next/link", () => ({ default: () => null }));
 
 vi.mock("./MobileNavTop.module.css", () => ({ default: {} }));
 
-vi.mock("@/components/IphoneGlass/iphoneGlass.module.css", () => ({
-  default: { surface: "surface", sheet: "sheet" },
-}));
-
 vi.mock("./pressFeedback.module.css", () => ({ default: {} }));
 
 vi.mock("@/components/loading/navbar/ServicesMegaMenu/ServicesMegaMenu", () => ({

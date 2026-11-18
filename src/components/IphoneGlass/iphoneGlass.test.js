@@ -83,12 +83,13 @@ describe("glass blur across the site", () => {
 });
 
 describe("nav bars", () => {
-  it("do not pin a transform layer that clears the glass", () => {
+  it("use a solid salon fill, not glass blur", () => {
     for (const file of [
       "../mobileNav/MobileNavTop.module.css",
       "../mobileNav/MobileNavBottom.module.css",
     ]) {
       const css = readFileSync(join(root, file), "utf8");
+      expect(css).toContain("background-color: var(--color-bg-primary)");
       expect(css).not.toContain("will-change: transform");
       expect(css).not.toContain("backdrop-filter");
     }

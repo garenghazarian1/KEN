@@ -1,5 +1,5 @@
-Last updated: 17 November 2026
-Last verified against code: 17 November 2026 (working tree)
+Last updated: 18 November 2026
+Last verified against code: 18 November 2026 (working tree)
 
 # Public API Integration (Admin System)
 
@@ -66,8 +66,8 @@ Consumed by:
 ### Navbar services viewer (nested accordion)
 
 `Services` in the live top bar (`MobileNavTop`) opens a **full-height nested
-accordion drawer** portaled to `document.body` (so the top bar’s `backdrop-filter`
-cannot trap it). Categories stay on screen and expand in place; subcategories
+accordion drawer** portaled to `document.body`. The top and bottom bars use a
+solid `--color-bg-primary` fill (not iPhone glass). Categories stay on screen and expand in place; subcategories
 expand under their parent. There is no Back / drill-down level. Escape closes
 the drawer. Desktop `Navbar.modern` uses the same catalog in a **mega panel**
 (category rail + nested pane), not a full-screen sheet. Rows deep-link to

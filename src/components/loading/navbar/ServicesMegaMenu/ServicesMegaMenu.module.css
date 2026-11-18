@@ -85,6 +85,12 @@
 .topbarTrigger[aria-current="page"] {
   color: var(--color-bg-dark);
   font-weight: var(--font-weight-semibold);
+  background-color: var(--overlay-black-12);
+}
+
+.topbarTrigger[aria-current="page"] .topbarIcon,
+.topbarTrigger[aria-expanded="true"] .topbarIcon {
+  color: inherit;
 }
 
 .topbarIcon {

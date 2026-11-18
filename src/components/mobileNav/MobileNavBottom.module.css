@@ -16,7 +16,7 @@
   align-items: stretch;
   justify-content: space-around;
   z-index: var(--z-fixed);
-  background-color: transparent;
+  background-color: var(--color-bg-primary);
   box-shadow: 0 -2px 8px var(--shadow-very-light);
   box-sizing: border-box;
   transition: transform 0.28s ease;
@@ -78,6 +78,12 @@
 .link[aria-expanded="true"] {
   color: var(--color-bg-dark);
   font-weight: var(--font-weight-semibold);
+  background-color: var(--overlay-black-12);
+}
+
+.link[aria-current="page"] .icon,
+.link[aria-expanded="true"] .icon {
+  color: inherit;
 }
 
 .icon {

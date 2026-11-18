@@ -10,7 +10,6 @@ import {
   CAREERS_PATH,
   NAVBAR_LOGO_DEFAULT_SRC,
 } from "@/config/constants";
-import glassStyles from "@/components/IphoneGlass/iphoneGlass.module.css";
 import styles from "./MobileNavTop.module.css";
 import pressStyles from "./pressFeedback.module.css";
 import PressLink, { OpeningMark, openingName } from "./PressLink";
@@ -161,10 +160,6 @@ export default function MobileNavTop() {
       data-hidden={hidden ? "true" : "false"}
       {...(hidden ? { inert: true } : {})}
     >
-      <div
-        className={`${glassStyles.surface} ${glassStyles.sheet}`}
-        aria-hidden="true"
-      />
       <nav
         className={styles.navList}
         aria-label="Primary actions"

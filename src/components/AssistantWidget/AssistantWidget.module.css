@@ -334,6 +334,11 @@
 .navButton[aria-expanded="true"] {
   color: var(--color-bg-dark);
   font-weight: var(--font-weight-semibold);
+  background-color: var(--overlay-black-12);
+}
+
+.navButton[aria-expanded="true"] .navClose {
+  color: inherit;
 }
 
 @media (hover: hover) and (pointer: fine) {

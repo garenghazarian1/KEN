@@ -22,7 +22,6 @@ import { stores } from "@/data/stores";
 import { buildWhatsAppUrl } from "@/lib/adsAttribution";
 import { branchKey } from "@/lib/leads/leadRecord";
 import { recordOutbound } from "@/lib/leads/trackLead";
-import glassStyles from "@/components/IphoneGlass/iphoneGlass.module.css";
 import styles from "./MobileNavBottom.module.css";
 import pressStyles from "./pressFeedback.module.css";
 import PressLink from "./PressLink";
@@ -106,10 +105,6 @@ export default function MobileNavBottom() {
       data-hidden={hidden ? "true" : "false"}
       {...(hidden ? { inert: true } : {})}
     >
-      <div
-        className={`${glassStyles.surface} ${glassStyles.sheet}`}
-        aria-hidden="true"
-      />
       <ul className={styles.navList}>
         <li className={styles.navItem}>
           <AssistantNavButton
